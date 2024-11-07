@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression">
+
+    <parameter name="browser" value="firefox"/>
+
+    <test name="FNMA XML - Regression Test - Staging5 - FF" preserve-order="true">
+        <classes>
+<!--                        <class name="FNMA_PCA_XML_Staging" />-->
+<!--                        <class name="FNMA_ESA_XML_Staging" />-->
+<!--                        <class name="FNMA_SRA_XML_Staging" />-->
+<!--                        <class name="FNMA_ZON_XML_Staging" />-->
+        </classes>
+    </test> <!-- Test -->
+
+
+
+    <test name="CK4, Smart Table, FM1104+1105, Regression Suite - Staging5 - FF" preserve-order="true">
+        <classes>
+<!--            <class name="CK_Editor" />-->
+<!--            <class name="Smart_Tables_CK5" />-->
+            <class name="Freddie_Macs" />
+            <class name="Regression_Suite" />
+        </classes>
+    </test> <!-- Test -->
+
+    <test name="Medium Priority Test Suite- Staging5 - FF" preserve-order="true">
+        <classes>
+            <class name="Medium_priority_suite" />
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->
