@@ -10,7 +10,7 @@ blocks:
       prologue:
         commands:
           - checkout
-      jobs:gi
+      jobs:
         - name: Sanity Job Prod
           commands:
             - sem-version java 17
