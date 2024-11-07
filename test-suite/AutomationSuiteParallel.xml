@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My Test Suite" parallel="tests" thread-count="2">
+	<test name="Chrome Tests">
+		<parameter name="browser" value="chrome" />
+		<classes>
+<!--            <class name="FNMA_PCA_XML_Staging" />-->
+<!--            <class name="FNMA_ESA_XML_Staging" />-->
+<!--            <class name="FNMA_SRA_XML_Staging" />-->
+<!--            <class name="FNMA_ZON_XML_Staging" />-->
+<!--            <class name="CK_Editor" />-->
+<!--                        <class name="Smart_Tables_CK5" />-->
+<!--                        <class name="Freddie_Macs" />-->
+<!--            <class name="Regression_Suite" />-->
+                        <class name="Medium_priority_suite" />
+<!--                                    <class name="New_CK5_Editor" />-->
+
+
+        </classes>
+    </test>
+   	<test name="Firefox Tests">
+ 		<parameter name="browser" value= "firefox" />
+    	<classes>
+<!--            <class name="FNMA_PCA_XML_Staging" />-->
+<!--            <class name="FNMA_ESA_XML_Staging" />-->
+<!--            <class name="FNMA_SRA_XML_Staging" />-->
+<!--            <class name="FNMA_ZON_XML_Staging" />-->
+<!--            <class name="CK_Editor" />-->
+<!--            <class name="Smart_Tables_CK5" />-->
+<!--                        <class name="Freddie_Macs" />-->
+<!--                        <class name="Regression_Suite" />-->
+<!--                        <class name="Medium_priority_suite" />-->
+<!--            <class name="New_CK5_Editor" />-->
+
+
+        </classes>
+     </test>
+</suite>
