@@ -186,7 +186,7 @@ public class SendEmailWithAttachment_test extends ReusableAnnotations {
             // Set the recipient address
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ibrarj@openquire.com, hetnam@openquire.com"));
             // Set the subject of the email
-            message.setSubject("Company Usage Reports Test Email:  " + previousMonth + " -> " + currentMonth + " - QA Automated");
+            message.setSubject("QA Updated projeect Company Usage Reports Test Email:  " + previousMonth + " -> " + currentMonth + " - QA Automated");
 
             // Create a Multipart object to hold the email body and attachments
             // Create a Multipart object to hold the email body and attachments
