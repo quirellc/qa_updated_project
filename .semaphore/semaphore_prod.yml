@@ -23,4 +23,4 @@ blocks:
       epilogue:
         always:
           commands:
-            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force
+            - artifact push project /home/semaphore/qa_updated_project/src/main/java/HTML_Report --force
