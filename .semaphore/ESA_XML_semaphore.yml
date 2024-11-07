@@ -1,0 +1,23 @@
+version: v1.0
+name: Java
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: ESA XML Test
+    task:
+      epilogue:
+        always:
+          commands:
+            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force
+      jobs:
+        - name: ESA XML Job
+          commands:
+            - sem-version java 17
+            - mvn clean test -Dtest="FNMA_ESA_XML_Prod"
+
+      prologue:
+        commands:
+          - checkout
+    dependencies: []
