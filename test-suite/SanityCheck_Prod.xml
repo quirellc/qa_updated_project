@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="SanityCheck_Prod">
 
-    <parameter name="browser.." value="chrome"/>
+    <parameter name="browser" value="chrome"/>
 
     <test name="Sanity Test prod" preserve-order="true">
         <classes>
