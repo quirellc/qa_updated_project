@@ -1,0 +1,23 @@
+version: v1.0
+name: Java
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Marketing Site - Regression Suite
+    task:
+      epilogue:
+        always:
+          commands:
+            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force
+      jobs:
+        - name: Marketing Site - Regression Job
+          commands:
+            - sem-version java 17
+#            - sem-version firefox 102
+            - mvn clean test -Dfile="test-suite\marketing.xml"
+      prologue:
+        commands:
+          - checkout
+    dependencies: []

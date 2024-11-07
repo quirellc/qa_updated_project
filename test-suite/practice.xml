@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My Test Suite 2" parallel="classes" thread-count="1">
+
+    <parameter name="browser" value="chrome"/>
+
+    <test name="Practice Cases
+" preserve-order="true">
+        <classes>
+            <class name="Regression2" />
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+
+
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">-->
+<!--<suite name="My Test Suite 1" parallel="classes" thread-count="4">-->
+
+<!--&lt;!&ndash;        <parameter name="browser" value="firefox"/>&ndash;&gt;-->
+
+<!--    <test name="End to End Test" preserve-order="true">-->
+<!--        <parameter name="browser" value="chrome"/>-->
+
+<!--        <classes>-->
+<!--            <class name="SanityCheck_Prod" />-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+
+<!--    <test name="End to End Test2" preserve-order="true">-->
+<!--        <parameter name="browser" value="chrome"/>-->
+
+<!--        <classes>-->
+<!--            <class name="Marketing_Site" />-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+<!--</suite> &lt;!&ndash; Suite &ndash;&gt;-->
