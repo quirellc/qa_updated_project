@@ -1,0 +1,22 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Sanity Test Staging5
+    task:
+      prologue:
+        commands:
+          - checkout
+      jobs:
+        - name: Sanity Job Staging5
+          commands:
+            - sem-version java 17
+            - mvn clean test -Dtest="SanityCheck_Staging5"
+      env_vars: []
+      epilogue:
+        always:
+          commands:
+            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force

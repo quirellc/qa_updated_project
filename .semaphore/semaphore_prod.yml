@@ -1,0 +1,26 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Sanity Test Prod
+    task:
+      prologue:
+        commands:
+          - checkout
+      jobs:gi
+        - name: Sanity Job Prod
+          commands:
+            - sem-version java 17
+            #            - mvn clean test -DsuiteXmlFile=test-suite\SanityCheck_Prod.xml
+            - mvn clean test -Dfile="test-suite\SanityCheck_Prod.xml"
+
+
+
+      env_vars: []
+      epilogue:
+        always:
+          commands:
+            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force

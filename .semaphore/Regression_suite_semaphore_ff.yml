@@ -1,0 +1,25 @@
+version: v1.0
+name: Java
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Regression Test
+    task:
+      epilogue:
+        always:
+          commands:
+            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force
+      jobs:
+        - name: Regression Job
+          commands:
+            - sem-version java 17            
+            - sem-version firefox 102
+            - mvn clean test -Dfile="test-suite\Regression_ff.xml"
+#           - mvn clean test -DsuiteXmlFile=test-suite/Regression_ff.xml
+
+      prologue:
+        commands:
+          - checkout
+    dependencies: []
