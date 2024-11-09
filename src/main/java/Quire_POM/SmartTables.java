@@ -363,8 +363,8 @@ public class SmartTables extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, date_column_dropdown, logger, " date_column_dropdown ");
     }
 
-    @FindBy(xpath = "//div[@class='ht_clone_top handsontable']//div[@class='wtHolder']//div[@class='wtHider']//div[@class='wtSpreader']//table[@class='htCore']//thead//tr//th//span[@class='colHeader'][normalize-space()='To Be Deleted']//a[@class='column-definition-settings-dropdown js-column-definition-settings-dropdown']")
-    WebElement toBeDeleted_column_dropdown;
+@FindBy(xpath = "//div[@class='ht_clone_top handsontable']//span[@role='presentation'][normalize-space()='To Be Deleted']//i[@class='fa fa-caret-down']")
+WebElement toBeDeleted_column_dropdown;
 
     public void click_toBeDeleted_column_dropdown() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, toBeDeleted_column_dropdown, logger, " toBeDeleted_column_dropdown ");

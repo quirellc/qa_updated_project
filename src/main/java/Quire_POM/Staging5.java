@@ -3084,6 +3084,12 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, add_button, logger, "add_button");
     }
 
+    @FindBy(xpath = "(//button[@type='button'][normalize-space()='Add'])[2]")
+    WebElement add_button_package;
+
+    public void click_add_button_unassigned_package() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, add_button_package, logger, "add_button_package");
+    }
     @FindBy(xpath = "//a[@title='Insert']")
     WebElement insert_wordbank_arrow_button;
 

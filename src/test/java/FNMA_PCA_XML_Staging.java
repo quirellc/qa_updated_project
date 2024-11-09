@@ -14,7 +14,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         WebDriver driver = getDriver();
         System.out.println(driver.getClass().getSimpleName());
        // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging4.openquire.com/");
+        driver.navigate().to("https://staging5.openquire.com/");
       //  WebDriver driver1 = getDriver();
 
         String pageTitle = driver.getTitle();

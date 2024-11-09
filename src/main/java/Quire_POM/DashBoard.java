@@ -471,10 +471,12 @@ public class DashBoard extends ReusableAnnotations {
     public void refresh_all_widgets() throws InterruptedException {
         int refresh_widget_buttons = refresh_widget_button.size();
         System.out.println("dashboard refresh buttons :   " + refresh_widget_buttons);
-
+Thread.sleep(2000);
         for (int i = 0; i < refresh_widget_buttons; i++) {
-            ReusableMethodsLoggersPOM.scrollandClickMethod(driver, refresh_widget_button.get(i), logger, "refresh_widget_button: " + i );
-           // Thread.sleep(200);
+            ReusableMethodsLoggersPOM.scrollToElementMethod(driver, refresh_widget_button.get(i), logger, "refresh_widget_button: " + i );
+            ReusableMethodsLoggersPOM.clickMethod(driver, refresh_widget_button.get(i), logger, "refresh_widget_button: " + i );
+
+            // Thread.sleep(200);
         }
     }
 
