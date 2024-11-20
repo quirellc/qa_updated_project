@@ -214,8 +214,8 @@ public class Regression_Suite extends ReusableAnnotations {
     @Test
     public void TR_007b_ck5_admin_status_trigger_pinnedItems() throws InterruptedException {
 
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
         BaseClass.quireLogin().navigate_to_admin_pinnedStatus_reports();
 
         BaseClass.quireLogin().enter_admin_Email();

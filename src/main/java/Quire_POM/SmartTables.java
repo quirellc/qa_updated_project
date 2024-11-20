@@ -182,8 +182,11 @@ public class SmartTables extends ReusableAnnotations {
     @FindBy(xpath = "//table[@class='table info-table']//tr[1]//td[1]")
     WebElement row1_column1;
 
-    public void enter_row1_richText() throws InterruptedException {
-        ReusableMethodsLoggersPOM.doubleClickandSendKeysMethod(driver, row1_column1, "qa automation rich rich text roww 1 columm 1", logger, " row1_column1 ");
+//    public void enter_row1_long_richText() throws InterruptedException {
+//        ReusableMethodsLoggersPOM.doubleClickandSendKeysMethod(driver, row1_column1, "qa automation rich rich text roww 1 columm 1", logger, " row1_column1 ");
+//    }
+    public void enter_row1_richText() {
+        ReusableMethodsLoggersPOM.doubleClickandSendKeysMethod(driver, row1_column1, "QA Automation line 1\n\nQA Automation line 3", logger, "row1_column1");
     }
 
     @FindBy(xpath = "//table[@class='table info-table']//tr[10]//td[1]")
@@ -212,7 +215,7 @@ public class SmartTables extends ReusableAnnotations {
     }
 
     public void click_r1_c5_dynamic() throws InterruptedException {
-        ReusableMethodsLoggersPOM.doubleClickMethod(driver, row1_column5_number, logger, " row1_column5_number ");
+        ReusableMethodsLoggersPOM.doubleClickMethod(driver, row1_column5_number, logger, " row1_column5_dynamic ");
     }
 
     public void verify_r1_empty() throws InterruptedException {
@@ -327,6 +330,40 @@ public class SmartTables extends ReusableAnnotations {
     public void verify_r2_header_is_empty() throws InterruptedException {
         ReusableMethodsLoggersPOM.verifyEmptyText(driver, row_2_header_content, logger, " row_2_header_content ");
     }
+    @FindBy(xpath = "//table[@class='htCore']//tr[1]//td[2]")
+    WebElement row1_column2_inside_ST;
+    public void click_row1_plainText_inside_ST() throws InterruptedException {
+        ReusableMethodsLoggersPOM.doubleClickMethod(driver, row1_column2_inside_ST, logger, " row1_column2_inside_ST ");
+     //   Thread.sleep(1000);
+      //  ReusableMethodsLoggersPOM.clickMethod(driver, row1_column2_inside_ST, logger, " row1_column2_inside_ST ");
+
+    }
+
+    @FindBy(xpath = "//table[@class='htCore']//tr[1]//td[3]")
+    WebElement row1_column3_inside_ST;
+    public void click_row1_number_inside_ST() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, row1_column3_inside_ST, logger, " row1_column3_inside_ST ");
+    }
+
+    @FindBy(xpath = "//table[@class='htCore']//tr[1]//td[4]")
+    WebElement row1_column4_inside_ST;
+    public void click_row1_formula_inside_ST() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, row1_column4_inside_ST, logger, " row1_column4_inside_ST ");
+    }
+
+    @FindBy(xpath = "//table[@class='htCore']//tr[1]//td[5]")
+    WebElement row1_column5_inside_ST;
+    public void click_row1_dynamic_inside_ST() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, row1_column5_inside_ST, logger, " row1_column5_inside_ST ");
+    }
+
+    @FindBy(xpath = "//table[@class='htCore']//tr[1]//td[6]")
+    WebElement row1_column6_inside_ST;
+    public void click_row1_date_inside_ST() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver,row1_column6_inside_ST , logger, " row1_column6_inside_ST ");
+    }
+
+
 
     @FindBy(xpath = "//table[@class='table info-table']//tr[1]//td[2]")
     WebElement row1_column2;
@@ -363,7 +400,7 @@ public class SmartTables extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, date_column_dropdown, logger, " date_column_dropdown ");
     }
 
-@FindBy(xpath = "//div[@class='ht_clone_top handsontable']//span[@role='presentation'][normalize-space()='To Be Deleted']//i[@class='fa fa-caret-down']")
+@FindBy(xpath = "//div[@class='ht_clone_top handsontable']//div[@class='wtHolder']//div[@class='wtHider']//div[@class='wtSpreader']//table[@class='htCore']//thead//tr//th//span[@class='colHeader'][normalize-space()='To Be Deleted']//a[@class='column-definition-settings-dropdown js-column-definition-settings-dropdown']")
 WebElement toBeDeleted_column_dropdown;
 
     public void click_toBeDeleted_column_dropdown() throws InterruptedException {

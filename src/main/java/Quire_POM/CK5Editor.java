@@ -41,7 +41,7 @@ public class CK5Editor extends ReusableAnnotations {
    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']")
     WebElement text_body;
     public void enter_text_body_ck5() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body");}
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body,"QA Automationn Testing Script - Spell Check Check Section_" , logger, "text_body");}
     public void select_all_text_introPages_body() {
         ReusableMethodsLoggersPOM.selectAll_method(driver, text_body, logger, " text_introPages_body");
     }
@@ -267,7 +267,7 @@ public class CK5Editor extends ReusableAnnotations {
     WebElement footNote_textBox;
     public void enter_footNote_textBox() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, footNote_textBox,"QA Automation Footnote text" ,  logger, "footNote_textBox");}
-    @FindBy(xpath = "//button[@class='ck ck-button ck-footnote-form__save-button ck-off']")
+    @FindBy(xpath = "//div[@class='ck ck-dialog__actions']//button[2]")
     WebElement save_button_footnote;
     public void click_save_button_footnote() {
         ReusableMethodsLoggersPOM.clickMethod(driver, save_button_footnote, logger, "save_button_footnote");}
@@ -287,6 +287,33 @@ public class CK5Editor extends ReusableAnnotations {
     public void click_link_to_section_defaultSectionTitle() {
         ReusableMethodsLoggersPOM.clickMethod(driver, link_to_section_defaultSectionTitle, logger, "link_to_section_defaultSectionTitle ");
     }
+
+    @FindBy(xpath = "//a[@id='id-modal-unlink']")
+    WebElement unlink_button_sectionLink_view;
+
+    public void click_unlink_button_sectionLinkView() {
+        ReusableMethodsLoggersPOM.doubleClickMethod(driver, unlink_button_sectionLink_view, logger, "unlink_button_sectionLink_view ");
+    }
+
+
+    @FindBy(xpath = "//div[contains(@aria-label,'Rich Text Editor. Editing area: main. Press ⌥0 for help.')]//span[contains(@class, 'has-tooltip') and contains(@class, 'js-quire-section-link') and contains(@class, 'mceNonEditable')]")
+    WebElement linked_section_text_smartTable;
+
+    public void doubleclick_linked_section_text() {
+        ReusableMethodsLoggersPOM.doubleClickMethod(driver, linked_section_text_smartTable, logger, "linked_section_text ");
+    }
+
+    public void verify_sectionLink_smartTable_isVisible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, linked_section_text_smartTable, true, logger, "linked_section_text_smartTable ");}
+
+    public void verify_linked_sectionLink_isNot_visible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, linked_section_text_smartTable, false, logger, "linked_section_text ");
+    }
+
+    @FindBy(xpath = "//button[@data-cke-tooltip-text='Insert Variable']")
+    WebElement insert_variable_tag_icon_ck5;
+    public void verify_insert_variable_tag_icon_isVisible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, insert_variable_tag_icon_ck5, true, logger, "insert_variable_tag_icon_ck5");}
 
     @FindBy(xpath = "//button[@data-cke-tooltip-text='Insert Reference Tag']")
     WebElement reference_tag_icon_ck5;
@@ -324,11 +351,20 @@ public class CK5Editor extends ReusableAnnotations {
     public void verify_unresolved_1_comment_is_Visible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, unresolved_1_comment_icon, true, logger, "unresolved_1_comment_icon");}
 
-
+    public void click_unresolved_1_comment_icon() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, unresolved_1_comment_icon,  logger, "unresolved_1_comment_icon");}
     @FindBy(xpath = "//li[@class='section-comments js-sectionComments flex-container flex-align-center flex-content-center js-commentsActionTooltipProvider']")
     WebElement empty_comments_icon;
     public void verify_grey_empty_comments_icon() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, empty_comments_icon, true, logger, "empty_comments_icon");}
+
+    public void click_grey_empty_comments_icon() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, empty_comments_icon,  logger, "empty_comments_icon");}
+
+    @FindBy(xpath = "(//li[@class='section-comments js-sectionComments flex-container flex-align-center flex-content-center js-commentsActionTooltipProvider'])[2]")
+    WebElement second_empty_comments_icon;
+    public void click_second_empty_comments_icon() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, second_empty_comments_icon, logger, "second_empty_comments_icon");}
 
     @FindBy(xpath = "//ul[@class='section-actions unstyled js-leaves-editor-open']//li[contains(@class, 'unresolved-comments') and @data-comment-count='2']")
     WebElement unresolved_2_comments_icon;
@@ -350,6 +386,17 @@ public class CK5Editor extends ReusableAnnotations {
 
     public void click_resolved_2_comments_icon() {
         ReusableMethodsLoggersPOM.clickMethod(driver, resolved_2_comments_icon,  logger, "resolved_2_comments_icon");}
+
+    @FindBy(xpath = "//ul[@class='section-actions unstyled js-leaves-editor-open']//li[contains(@class, 'unresolved-comments') and @data-comment-count='4']")
+    WebElement unresolved_4_comments_icon;
+    public void click_unresolved_4_comments_icon() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, unresolved_4_comments_icon, logger, "unresolved_4_comments_icon");}
+    public void verify_unresolved_4_comment_is_Visible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, unresolved_4_comments_icon, true, logger, "unresolved_4_comments_icon");}
+
+    public void hover_unresolved_4_comments_icon() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, unresolved_4_comments_icon, logger, "unresolved_4_comments_icon");}
+
     @FindBy(xpath = "//button[@class='ck ck-button ck-off ck-button_with-text ck-comment__input-actions--submit']")
     WebElement submit_comment_button;
     public void click_submit_comment_button() {
@@ -414,10 +461,10 @@ public class CK5Editor extends ReusableAnnotations {
     }
 
         public void update_comments_in_field() throws InterruptedException {
-            BaseClass.ck5editor().click_comments_detail_button();
-        BaseClass.ck5editor().click_comments_edit_button();
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, " - edited comment" , logger, "add_a_comment_field");
-        BaseClass.ck5editor().click_submit_comment_button();
+//            BaseClass.ck5editor().click_comments_detail_button();
+//        BaseClass.ck5editor().click_comments_edit_button();
+//        ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, " - edited comment" , logger, "add_a_comment_field");
+//        BaseClass.ck5editor().click_submit_comment_button();
 
         BaseClass.ck5editor().click_comments_detail_second_button();
         BaseClass.ck5editor().click_comments_remove_button();
@@ -550,6 +597,9 @@ int count = TC_highlights.size();
             System.out.println("\n" + "This is a PM  Account.  There are: " + itemCount + " items in CK Editor. " + "\n");
             logger.log(LogStatus.PASS, "This is a PM  Account.  There are: " + itemCount + " items in CK Editor. ");
 
+        } else if (itemCount % 34 == 0) {
+            System.out.println("\n" + "This CK Editor is for Email Notification Template Items.  There are: " + itemCount + " items in CK Editor. " + "\n");
+            logger.log(LogStatus.PASS, "This CK Editor is for Email Notification Template Items.  There are: " + itemCount + " items in CK Editor. ");
         } else if (itemCount % 29 == 0) {
             System.out.println("\n" + "This CK5 Editor is for Instruction Items in templates.  There are: " + itemCount + " items in CK Editor. " + "\n");
             logger.log(LogStatus.PASS, "This CK5 Editor is for Instruction Items in templates.  There are: " + itemCount + " items in CK Editor. ");
@@ -581,6 +631,19 @@ int count = TC_highlights.size();
     }
 
 
+    public void verify_ck_editor_root_emailStatusTemplate_permission_level() throws InterruptedException {
+
+        BaseClass.ck5editor().verify_report_tag_icon_isVisible();
+        BaseClass.ck5editor().verify_footnote_icon_isVisible();
+        BaseClass.ck5editor().verify_lock_icon_isVisible();
+        BaseClass.ck5editor().verify_insert_variable_tag_icon_isVisible();
+        BaseClass.ck5editor().verify_reference_tag_icon_isVisible();
+
+        BaseClass.ck5editor().capture_ck5_editor_icons();
+        Thread.sleep(1000);
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(1000);
+    }
     public void verify_ck5_admin_permission_level() throws InterruptedException {
         BaseClass.staging5().click_and_capture_track_changes_button();
         BaseClass.staging5().click_Section_row_editor_browser();
@@ -749,7 +812,7 @@ int count = TC_highlights.size();
         Thread.sleep(500);
         BaseClass.ck5editor().reopen_archived_comment_discussion();
         Thread.sleep(500);
-        BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
+        BaseClass.ck5editor().verify_unresolved_4_comment_is_Visible();
         Thread.sleep(500);
         //delete both comments
         BaseClass.ck5editor().delete_comments_in_field();
@@ -764,13 +827,79 @@ int count = TC_highlights.size();
         Thread.sleep(1000);
     }
 
-    @FindBy(xpath = "//td[@class='htLeft current']")
+    public void ck5_special_section_comments_test() throws InterruptedException {
+        BaseClass.ck5editor().click_grey_empty_comments_icon();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().add_new_comment_to_ST();
+        BaseClass.ck5editor().verify_unresolved_1_comment_is_Visible();
+        BaseClass.ck5editor().click_comments_resolve_button();
+        BaseClass.ck5editor().verify_resolved_1_comment_is_Visible();
 
-    WebElement dynamic_cell_smartTable;
+        BaseClass.ck5editor().click_and_verify_comments_archive_icon();
 
-    public void rightClick_dynamic_cell_smartTable() {
-        ReusableMethodsLoggersPOM.rightClickMethod(driver, dynamic_cell_smartTable, logger, " dynamic_cell_smartTable ");
+        BaseClass.ck5editor().reopen_archived_comment_discussion();
+        BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
+        BaseClass.ck5editor().delete_comments_in_field();
+        BaseClass.ck5editor().verify_grey_empty_comments_icon();
+
     }
+    @FindBy(xpath = "//div[@id='comments-createNewThreadAction']")
+    WebElement add_new_comment_button;
+    public void add_new_comment_to_ST() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, add_new_comment_button, logger, " add_new_comment_button ");
+        BaseClass.ck5editor().enter_comment_to_field();
+    }
+
+    @FindBy(xpath = "//td[contains(@class, 'htLeft') and contains(@class, 'unresolved-comments')]")
+    List <WebElement> unresolved_cells;
+
+    @FindBy(xpath = "//div[@class='comments-unresolvedIcon cursor-default text-center height-22 width-22 text-tiny line-height-2 js-item-unresolvedCommentCount'][normalize-space()='1']")
+    List <WebElement> unresolved_comments_comment_panel;
+    public void verify_unresolved_comments_smartTable() throws InterruptedException {
+        int unresolved_comments_panel_count = unresolved_comments_comment_panel.size();
+        int unresolved_cells_count = unresolved_cells.size();
+        if (unresolved_comments_panel_count == unresolved_cells_count) {
+            System.out.println("Test Passed: There are exactly " + unresolved_comments_panel_count + " unresolved comments in the comment panel and the cells.");
+            logger.log(LogStatus.PASS, "Test Passed: There are exactly " + unresolved_comments_panel_count + " unresolved comments in the comment panel and the cells.");
+        } else {
+            System.out.println("Unable to verify same number of unresolved comments in the comment panel (" + unresolved_comments_panel_count + ") and the cells  (" + unresolved_cells_count + ").");
+            logger.log(LogStatus.FAIL, "Unable to verify same number of unresolved comments in the comment panel (" + unresolved_comments_panel_count + ") and the cells  (" + unresolved_cells_count + ").");
+        }
+    }
+
+    @FindBy(xpath = "//td[contains(@class, 'htLeft') and contains(@class, 'archived-comments')]")
+    List <WebElement> resolved_cells;
+    @FindBy(xpath = "//div[@class='comments-resolvedIcon cursor-default text-center height-22 width-22 text-tiny line-height-2 js-item-resolvedCommentCount'][normalize-space()='1']")
+    List <WebElement> resolved_comments_comment_panel;
+    public void verify_resolved_comments_smartTable() throws InterruptedException {
+        int resolved_comments_panel_count = resolved_comments_comment_panel.size();
+        int resolved_cells_count = resolved_cells.size();
+        if (resolved_comments_panel_count == 3 && resolved_cells_count == 2) {
+            System.out.println("Test Passed: There are  " + resolved_comments_panel_count + " resolved comments in the comment panel and " + resolved_cells_count + " resolved comments in the cells.");
+            logger.log(LogStatus.PASS, "Test Passed: There are  " + resolved_comments_panel_count + " resolved comments in the comment panel and " + resolved_cells_count + " resolved comments in the cells.");
+        } else {
+            System.out.println("Unable to verify 3 resolved comments in the comment panel (" + resolved_comments_panel_count + ") and the 2 resolved cells  (" + resolved_cells_count + ").");
+            logger.log(LogStatus.FAIL, "Unable to verify 3 resolved comments in the comment panel (" + resolved_comments_panel_count + ") and the 2 resolved cells  (" + resolved_cells_count + ").");
+        }
+    }
+
+    @FindBy(xpath = "//span[@class='badge-count color-black text-small font-semibold bg-color-yellow-bright' and contains(text(), '4')]")
+    WebElement unresolved_4_comments_hover_icon;
+    @FindBy(xpath = "//span[@class='badge-count color-black text-small font-semibold bg-color-green-bright' and contains(text(), '3')]")
+    WebElement resolved_3_comments_hover_icon;
+
+    public void verify_comments_hover_icon() throws InterruptedException {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, unresolved_4_comments_hover_icon,true,  logger, " unresolved_4_comments_hover_icon ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, resolved_3_comments_hover_icon,true,  logger, " resolved_3_comments_hover_icon ");
+    }
+
+    @FindBy(xpath = "//div[@class='js-commentsActionTooltipProvider height-20 width-20 unresolved-comments comments-unresolvedIcon']")
+    WebElement comments_icon_statusBar;
+
+    public void hover_comments_icon_statusBar() throws InterruptedException {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, comments_icon_statusBar,  logger, " comments_icon_statusBar ");
+    }
+
     }
 
 

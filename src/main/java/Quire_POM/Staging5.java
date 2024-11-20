@@ -346,6 +346,9 @@ public class Staging5 extends ReusableAnnotations {
     public void enter_quire_CA_ProjectFolder_Template_SearchField() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, projectFolder_Template_SearchField, "Quire ESA Condition Action", logger, "quire ESA Condition Action");}
 
+    public void clear_package_SearchField() {
+        ReusableMethodsLoggersPOM.clearMethod(driver, projectFolder_Template_SearchField, logger, "quire ESA Condition Action");}
+
     @FindBy(xpath = "//*[contains(text(),'QA Automation Testing Template')]")
     WebElement projectFolder_QATemplate;
 
@@ -496,7 +499,7 @@ public class Staging5 extends ReusableAnnotations {
     WebElement searchField;
 
     public void enter_587_cost_rec_searchField() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, searchField, "587", logger, "587");
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchField, "587", logger, "587");
     }
 
     @FindBy(xpath = "//div[@class='option active']")
@@ -522,12 +525,22 @@ public class Staging5 extends ReusableAnnotations {
     @FindBy(xpath = "//tr/td[@class='htLeft q-readonly' and position()=1]")
     List <WebElement> wordbank_items_filtered;
 
-    public void click_wordbank_items_filtered() throws InterruptedException {
+    public void delete_QA_WB_items() throws InterruptedException {
         // Click on each element
-        for (WebElement element : wordbank_items_filtered) {
+        if (!wordbank_items_filtered.isEmpty()) {
+            for (WebElement element : wordbank_items_filtered) {
             element.click();
             Thread.sleep(500);
-        }}
+        }
+            BaseClass.reportfoldersection().click_delete_selected_items();
+            Thread.sleep(500);
+            driver.switchTo().alert().accept();
+
+
+
+        } else {
+        System.out.println("No links found.");
+    }}
     @FindBy(xpath = "//span[contains(text(),'Settings')]")
     WebElement settingsTab;
 
@@ -3046,7 +3059,7 @@ public class Staging5 extends ReusableAnnotations {
     }
 
     public void enter_QA_ST_wordBank_unassigned_items() {
-        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, QA_wordBank_searchField, "QA WordBank Smart Table New Item", logger, " QA_wordBank_searchField ");
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, QA_wordBank_searchField, "QA_WordBank_Smart_Table_New_Item", logger, " QA_wordBank_searchField ");
         ReusableMethodsLoggersPOM.submitMethod(driver, QA_wordBank_searchField, logger, " QA_wordBank_searchField ");
 
     }
@@ -3153,8 +3166,10 @@ public class Staging5 extends ReusableAnnotations {
     }
 //td[@class='htLeft quire-rich-text current highlight']//span[contains(@class, 'has-tooltip') and contains(@class, 'js-quire-section-link') and contains(@class, 'mceNonEditable')]
 
+
     @FindBy(xpath = "//td[@class='htLeft quire-rich-text current highlight']//span[contains(@class, 'has-tooltip') and contains(@class, 'js-quire-section-link') and contains(@class, 'mceNonEditable')]")
     WebElement linked_section_text_smartTable;
+
 
     public void doubleclick_linked_section_text() {
         ReusableMethodsLoggersPOM.doubleClickMethod(driver, linked_section_text_smartTable, logger, "linked_section_text ");

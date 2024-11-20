@@ -226,6 +226,8 @@ public class TemplatesSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, existing_template_Name, "QA Automation Testing New Updated Medium Priority Template-Firefox", logger, "New Medium Priority template name field");}
         }
 
+    // Locate all elements with the specified XPath
+
     @FindBy(xpath = "//input[@id='template_name']")
     WebElement templateName;
     public void enterTemplateNameField_FM_1104() {
@@ -311,9 +313,79 @@ public class TemplatesSection extends ReusableAnnotations {
     WebElement new_TemplateName_warningMessage;
     public void verify_new_TemplateName_warningMessage() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, new_TemplateName_warningMessage, true, logger, "new template name warning message");}
+    @FindBy(xpath = "//a[@class='edit-link']")
+    List<WebElement> search_results;
+    public void delete_automation_templates() throws InterruptedException {
+        BaseClass.templatesSection().enterSearchField_automated_files();
+        Thread.sleep(3000);
 
+        if (!search_results.isEmpty()) {
+            for (WebElement result_link : search_results) {
+                try {
+
+                    BaseClass.pca_xml_section().clickFirstTemplateLink();
+
+                    BaseClass.templatesSection().clickTemplateSettingsButton();
+                    BaseClass.templatesSection().clickdeleteToTrash();
+                    Thread.sleep(200);
+                    BaseClass.staging5().captureAlertMessage();
+                    Thread.sleep(500);
+                    BaseClass.templatesSection().enterSearchField_automated_files();
+                    Thread.sleep(1000);
+
+                } catch (Exception e) {
+                    System.out.println("Failed to delete edit link: " + e.getMessage());
+                    logger.log(LogStatus.FAIL, "Failed to delete edit link: " + e.getMessage());
+
+                }
+            }
+        } else {
+            System.out.println("No edit links found.");
+            logger.log(LogStatus.PASS, "No edit links found.");
+
+        }
+    }
+    public void delete_automation_folders() throws InterruptedException {
+        BaseClass.templatesSection().enterSearchField_automated_files();
+        Thread.sleep(3000);
+
+        if (!search_results.isEmpty()) {
+            for (WebElement result_link : search_results) {
+                try {
+                    BaseClass.pca_xml_section().clickFirstTemplateLink();
+                    BaseClass.projectFolderSection().click_projectFolderSettings_button();
+                    Thread.sleep(200);
+                    BaseClass.templatesSection().clickdeleteToTrash();
+                    Thread.sleep(500);
+                    BaseClass.staging5().captureAlertMessage();
+                    Thread.sleep(500);
+                    BaseClass.templatesSection().enterSearchField_automated_files();
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("Failed to delete edit link: " + e.getMessage());
+                    logger.log(LogStatus.FAIL, "Failed to delete edit link: " + e.getMessage());
+                }
+            }
+        } else {
+            System.out.println("No edit links found.");
+            logger.log(LogStatus.PASS, "No edit links found.");
+
+        }
+    }
     @FindBy(xpath = "//input[@id='tag-matrix-search']")
     WebElement search_field;
+
+    public void enterSearchField_automated_files() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, search_field, "-Chrome", logger, "Chrome files");
+            ReusableMethodsLoggersPOM.submitMethod(driver, search_field,  logger, "Chrome files");
+
+
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, search_field, "-Firefox", logger, "Firefox files");
+            ReusableMethodsLoggersPOM.submitMethod(driver, search_field, logger, "Firefox files");
+
+        }}
     public void enterTemplateSearchField_FM_1104() {
         if (browserName.contains("Chrome")) {
             ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, search_field, "QA Automation Testing FM_1104 Template-Chrome", logger, "FreddieMac1104 template search_field");

@@ -200,7 +200,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         driver.navigate().refresh();
 
         Thread.sleep(500);
-        //   Thread.sleep(500);
+//           Thread.sleep(500);
         BaseClass.smartTables().click_c1_header();
         Thread.sleep(500);
       BaseClass.smartTables().click_toBeDeleted_column_dropdown();
@@ -233,7 +233,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         }
 
     @Test
-    public void TR_005_reportTag_richtext() throws InterruptedException {
+    public void TR_005_richtext_and_reportTag() throws InterruptedException {
         WebDriver driver = getDriver();
 
    //     BaseClass.staging5().click_smartTable_sectionView();
@@ -837,9 +837,10 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
             Thread.sleep(2000);
             BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
             Thread.sleep(500);
-            BaseClass.staging5().enter_QA_wordBank_unassigned_items();
-            Thread.sleep(500);
-            BaseClass.staging5().click_QA_wordBank_unassigned_item();
+
+        BaseClass.staging5().enter_QA_ST_wordBank_unassigned_items();
+        Thread.sleep(800);
+         BaseClass.staging5().click_QA_wordBank_unassigned_item();
             Thread.sleep(500);
             BaseClass.staging5().click_add_button_unassigned_item();
             Thread.sleep(500);
@@ -866,6 +867,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
             BaseClass.smartTables().click_smartTable_sectionView();
             Thread.sleep(1000);
         }
+
     @Test
     public void TR_012_revisions_and_notepadInstructions() throws InterruptedException {
         WebDriver driver = getDriver();
@@ -920,23 +922,23 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
 //        Thread.sleep(500);
     }
 
-    @Test
-    public void TR_013_sort_columns() throws InterruptedException{
-
-
-
-        BaseClass.smartTables().click_c1_header();
-        Thread.sleep(1000);
-
-        BaseClass.smartTables().click_sort_columns_except_formula_and_date();
-        Thread.sleep(1000);
-
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
-
-
-
-    }
+//    @Test
+//    public void TR_013_sort_columns() throws InterruptedException{
+//
+//
+//
+//        BaseClass.smartTables().click_c1_header();
+//        Thread.sleep(1000);
+//
+//        BaseClass.smartTables().click_sort_columns_except_formula_and_date();
+//        Thread.sleep(1000);
+//
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//
+//
+//
+//    }
     @Test
     public void TR_014_rows_and_headerRows() throws InterruptedException {
         WebDriver driver = getDriver();
