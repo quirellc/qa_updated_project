@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CK4 Test Suite" thread-count="1">
+
+    <parameter name="browser" value="chrome"/>
+
+    <test name="CK4 Tests" preserve-order="true">
+        <classes>
+            <class name="CK_Editor" />
+            <class name="Smart_Tables_CK5" />
+
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
