@@ -189,6 +189,10 @@ public class SmartTables extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.doubleClickandSendKeysMethod(driver, row1_column1, "QA Automation line 1\n\nQA Automation line 3", logger, "row1_column1");
     }
 
+    public void enter_row1_Spellcheck_richText() {
+        ReusableMethodsLoggersPOM.doubleClickandSendKeysMethod(driver, row1_column1, "QA Automationn Testing Script - Spell Check Check Section", logger, "row1_column1");
+    }
+
     @FindBy(xpath = "//table[@class='table info-table']//tr[10]//td[1]")
     WebElement row8_column1;
 
@@ -375,8 +379,14 @@ public class SmartTables extends ReusableAnnotations {
     @FindBy(xpath = "//table[@class='table info-table']//tr[1]//td[3]")
     WebElement row1_column3;
 
-    public void enter_row1_number() throws InterruptedException {
-        ReusableMethodsLoggersPOM.doubleClickandSendKeysMethod(driver, row1_column3, "99.99", logger, " row1_column3 ");
+    public void update_row1_number_99() throws InterruptedException {
+        ReusableMethodsLoggersPOM.doubleClickMethod(driver, row1_column3,  logger, " row1_column3 ");
+
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, dynamic_cell_with_data, "99.99", logger, " 99.99 ");    }
+
+    public void enter_row1_number_999() throws InterruptedException {
+        ReusableMethodsLoggersPOM.doubleClickandSendKeysMethod(driver, row1_column3, "999.99", logger, " 999.99 ");
+
     }
 
     @FindBy(xpath = "//table[@class='table info-table']//tr[1]//td[5]")
@@ -641,12 +651,19 @@ WebElement toBeDeleted_column_dropdown;
         ReusableMethodsLoggersPOM.clickMethod(driver, reference_tag_dropDown_ck_modal, logger, "reference_tag_dropDown_ck_modal ");
     }
 
-    @FindBy(xpath = "//span[@class='mceNonEditable referenceTag']")
+    @FindBy(xpath = "//span[@class='mceNonEditable referenceTag' and text()='100']")
 //    @FindBy(xpath = "a[title='SUM OF NUMBERS - QA AUTOMATION']")
-    WebElement reference_tag_value;
+    WebElement reference_tag_value_100;
+    public void verify_reference_tag_value_100() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, reference_tag_value_100, true, logger, "reference_tag_value_100");
+    }
 
-    public void capture_reference_tag_value() {
-        ReusableMethodsLoggersPOM.captureTextMethod(driver, reference_tag_value, logger, "reference_tag_value ");
+    @FindBy(xpath = "//span[@class='mceNonEditable referenceTag' and text()='1000']")
+//    @FindBy(xpath = "a[title='SUM OF NUMBERS - QA AUTOMATION']")
+    WebElement reference_tag_value_1000;
+
+    public void verify_reference_tag_value_1000() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, reference_tag_value_1000, true, logger, "reference_tag_value_1000");
     }
 
     @FindBy(xpath = "//td[@class='htLeft quire-rich-text']//span[@class='mceNonEditable referenceTag orphaned' and @data-value='undefined']")

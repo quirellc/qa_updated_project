@@ -443,6 +443,30 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
     }
 
+    @Test
+    public void TR007a_upload_titlePageImage_ReporTag() throws InterruptedException {
+        WebDriver driver = getDriver();
+
+        BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
+        BaseClass.reporttagssection().click_title_page_image_button();
+        BaseClass.staging5().click_gallery_image_in_popup();
+        BaseClass.staging5().click_save_button();
+        BaseClass.reporttagssection().verify_title_page_image_loaded();
+        BaseClass.staging5().click_default_section_title();
+        BaseClass.staging5().clickSection_row_editor();
+        BaseClass.staging5().click_reportTag_icon_ck_modal();
+        Thread.sleep(500);
+        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
+        BaseClass.staging5().click_titlePageImage_RT_dropDownItem();
+        driver.switchTo().defaultContent();
+        BaseClass.staging5().click_out_of_section();
+        Thread.sleep(500);
+        BaseClass.reporttagssection().verify_title_page_image_loaded();
+        Thread.sleep(500);
+
+
+    }
+
 
     @Test
     public void TR008_PCA_FannieMae_quickFactsTable_export_quickPreview() throws InterruptedException {

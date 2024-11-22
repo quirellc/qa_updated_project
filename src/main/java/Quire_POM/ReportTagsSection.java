@@ -132,6 +132,17 @@ public class ReportTagsSection extends ReusableAnnotations {
     public void verify_ReportTags_settings_view_isVisible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, ReportTags_settings_view, true,logger, "ReportTags_manage_settings_icon");}
 
+    @FindBy(xpath = "//span[normalize-space()='Title Page Image']/following::a[@class='js-select-gallery-image btn btn-default btn-xs']")
+    WebElement title_page_image_button;
+    public void click_title_page_image_button() {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, title_page_image_button, logger, "title_page_image_button");}
+
+
+    @FindBy(xpath = "//img[contains(@alt, 'picture of a') and contains(@alt, 'mapp')]")
+    WebElement title_page_image_loaded;
+    public void verify_title_page_image_loaded() throws InterruptedException {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, title_page_image_loaded,true,  logger," title_page_image_loaded ");
+    }
 
 }
 

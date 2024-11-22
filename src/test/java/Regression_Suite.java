@@ -132,6 +132,9 @@ public class Regression_Suite extends ReusableAnnotations {
 
         BaseClass.pca_xml_section().click_package_ESA();
         Thread.sleep(800);
+        BaseClass.staging5().clear_package_SearchField();
+        Thread.sleep(800);
+
         BaseClass.staging5().click_add_button_unassigned_package();
         Thread.sleep(800);
         //hover and click first arrow button unassigned package
@@ -162,11 +165,11 @@ public class Regression_Suite extends ReusableAnnotations {
         Thread.sleep(1000);
         BaseClass.staging5().click_save_button();
         Thread.sleep(500);
-        WebDriver driver = getDriver();
-
-        driver.switchTo().alert().accept();
-        Thread.sleep(1500);
-     driver.navigate().refresh();
+//        WebDriver driver = getDriver();
+//
+//        driver.switchTo().alert().accept();
+//        Thread.sleep(1500);
+//     driver.navigate().refresh();
         Thread.sleep(1500);
 
 
@@ -213,16 +216,17 @@ public class Regression_Suite extends ReusableAnnotations {
 
     @Test
     public void TR_007b_ck5_admin_status_trigger_pinnedItems() throws InterruptedException {
+        WebDriver driver = getDriver();
 
 //        BaseClass.staging5().clickUserProfileTab();
 //        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
         BaseClass.quireLogin().navigate_to_admin_pinnedStatus_reports();
 
-        BaseClass.quireLogin().enter_admin_Email();
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(1000);
+//        BaseClass.quireLogin().enter_admin_Email();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(1000);
         BaseClass.staging5().click_modal_close_window();
         Thread.sleep(500);
 

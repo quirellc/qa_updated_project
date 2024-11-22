@@ -404,7 +404,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
     public void TR_008_number_and_formula_column() throws InterruptedException {
 
 //enter number value r1c3
-        BaseClass.smartTables().enter_row1_number();
+        BaseClass.smartTables().enter_row1_number_999();
         BaseClass.smartTables().click_smartTable_sectionView();
         Thread.sleep(1500);
 
@@ -448,8 +448,14 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().click_section_1_header();
         Thread.sleep(500);
-        BaseClass.smartTables().capture_reference_tag_value();
+        BaseClass.smartTables().verify_reference_tag_value_1000();
         Thread.sleep(500);
+        BaseClass.smartTables().update_row1_number_99();
+        Thread.sleep(500);
+        BaseClass.staging5().click_smartTable_title_header();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_reference_tag_value_100();
+        Thread.sleep(1500);
 
 
 

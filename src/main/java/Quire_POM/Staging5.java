@@ -347,7 +347,11 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, projectFolder_Template_SearchField, "Quire ESA Condition Action", logger, "quire ESA Condition Action");}
 
     public void clear_package_SearchField() {
-        ReusableMethodsLoggersPOM.clearMethod(driver, projectFolder_Template_SearchField, logger, "quire ESA Condition Action");}
+        ReusableMethodsLoggersPOM.clearMethod(driver, projectFolder_Template_SearchField, logger, "quire ESA Condition Action");
+        ReusableMethodsLoggersPOM.submitMethod(driver, projectFolder_Template_SearchField, logger, "quire ESA Condition Action");
+
+
+    }
 
     @FindBy(xpath = "//*[contains(text(),'QA Automation Testing Template')]")
     WebElement projectFolder_QATemplate;
@@ -1393,7 +1397,9 @@ public class Staging5 extends ReusableAnnotations {
         int spell_check_errors = spellCheck_errors.size();
         System.out.println("\n" + "There are: " + spell_check_errors + " spell check errors" + "\n");
     }
-
+    public void verify_no_spellCheck_errors() {
+   ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, spellCheck_error, false, logger, "spell check errors");
+    }
     public void fix_all_spellCheck_errors() throws InterruptedException {
         int spell_check_errors = spellCheck_errors.size();
 
@@ -1916,14 +1922,16 @@ public class Staging5 extends ReusableAnnotations {
 //    WebElement green_highlighted_text;
 
     @FindBy(xpath = "//ins[@class='ice-ins ice-cts-1']")
-    List<WebElement> green_highlighted_text_list;
+    WebElement green_highlighted_text;
 
-    public void capture_green_tracked_changes() {
-        int green_count = green_highlighted_text_list.size();
-        System.out.println("\n" + "There are: " + green_count + " green highlighted changes");
+    public void verify_green_track_changes_isVisible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, green_highlighted_text, true, logger, "green_highlighted_text ");
+
+//        int green_count = green_highlighted_text_list.size();
+//        System.out.println("\n" + "There are: " + green_count + " green highlighted changes");
     }
 
-    @FindBy(xpath = "//ins[normalize-space()='QA Test Automation - Instructions']")
+    @FindBy(xpath = "//ins[normalize-space()='123']")
     WebElement green_highlighted_wb_item;
 
     public void verify_green_highlighted_wb_item_is_Visible() {
@@ -1943,18 +1951,7 @@ public class Staging5 extends ReusableAnnotations {
 //    }
 
 
-    @FindBy(xpath = "//del[@class='ice-del ice-cts-1']")
-    List<WebElement> red_highlighted_text_list;
 
-    public void capture_red_tracked_changes() {
-        int red_count = red_highlighted_text_list.size();
-
-        System.out.println("\n" + "There are: " + red_count + " red highlighted changes");
-//        for (WebElement webElement : red_highlighted_text_list) {
-//            ReusableMethodsLoggersPOM.captureTextMethod(driver, webElement, logger, "red_highlighted_text_list # " + iteration);
-//            iteration++;
-//        }
-    }
 
     @FindBy(xpath = "//del[@class='ice-del ice-cts-1']")
     WebElement red_highlighted_text;
@@ -2088,6 +2085,13 @@ public class Staging5 extends ReusableAnnotations {
 
     public void click_reportTag_dropDownItem_ck_modal() {
         ReusableMethodsLoggersPOM.clickMethod(driver, reportTag_dropDownItem_ck_modal, logger, "reportTag_dropDownItem_ck_modal ");
+    }
+
+    @FindBy(xpath = "//a[normalize-space()='Title Page Image']")
+    WebElement titlePageImage_RT_dropDownItem;
+
+    public void click_titlePageImage_RT_dropDownItem() {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, titlePageImage_RT_dropDownItem, logger, "titlePageImage_RT_dropDownItem ");
     }
 
     @FindBy(xpath = "//input[@id='word_bank_definition_keyword']")
@@ -2614,6 +2618,14 @@ public class Staging5 extends ReusableAnnotations {
             Thread.sleep(500);
         }
     }
+
+    @FindBy(xpath = "//li[contains(@class,'appendix_file js-imageSelectionItem js-leavesTableOpen')]")
+    WebElement gallery_image_popup;
+    public void click_gallery_image_in_popup() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, gallery_image_popup, logger, " gallery_image_popup ");
+    }
+
+
     @FindBy(xpath = "//span[contains(@data-title,'Section I:')]")
     //  @FindBy(xpath = "//a[@id='gen_info_form_outline']")
     WebElement section_I_general_details;
@@ -2828,8 +2840,28 @@ public class Staging5 extends ReusableAnnotations {
     @FindBy(xpath = "//table[@class='table cost-summary']//tbody")
     WebElement fm_1105_table_cost_summary;
 
-    public void capture_fm_1105_table_cost_summary() {
-        ReusableMethodsLoggersPOM.captureTextMethod(driver, fm_1105_table_cost_summary, logger, " fm_1105_table_cost_summary ");
+    public void verify_fm_1105_table_cost_summary() {
+      String fm_1105_table_cost_summary_text =  ReusableMethodsLoggersPOM.captureTextMethod(driver, fm_1105_table_cost_summary, logger, " fm_1105_table_cost_summary ");
+        if (fm_1105_table_cost_summary_text.equalsIgnoreCase("Carports\n" +
+                "Critical\n" +
+                "$50\n" +
+                "Garages\n" +
+                "Critical\n" +
+                "$50\n" +
+                "Total $100") )
+                {
+
+            // Log success if all conditions are met
+            logger.log(LogStatus.PASS, "cost rec table matches whats expected");
+            System.out.println("cost rec table matches whats expected");
+
+        } else {
+            // Log failure if any condition is not met
+            logger.log(LogStatus.FAIL, "cost rec DOES NOT match of whats expected");
+            System.out.println("cost rec DOES NOT  match of whats expected");
+
+            // Optionally, fail the test or take other actions
+        }
     }
 
     @FindBy(xpath = "//input[@id='cost_summary_quantity']")

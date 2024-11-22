@@ -327,11 +327,8 @@ public class TemplatesSection extends ReusableAnnotations {
 
                     BaseClass.templatesSection().clickTemplateSettingsButton();
                     BaseClass.templatesSection().clickdeleteToTrash();
-                    Thread.sleep(200);
                     BaseClass.staging5().captureAlertMessage();
-                    Thread.sleep(500);
                     BaseClass.templatesSection().enterSearchField_automated_files();
-                    Thread.sleep(1000);
 
                 } catch (Exception e) {
                     System.out.println("Failed to delete edit link: " + e.getMessage());
@@ -347,7 +344,7 @@ public class TemplatesSection extends ReusableAnnotations {
     }
     public void delete_automation_folders() throws InterruptedException {
         BaseClass.templatesSection().enterSearchField_automated_files();
-        Thread.sleep(3000);
+        Thread.sleep(3500);
 
         if (!search_results.isEmpty()) {
             for (WebElement result_link : search_results) {
@@ -375,14 +372,17 @@ public class TemplatesSection extends ReusableAnnotations {
     @FindBy(xpath = "//input[@id='tag-matrix-search']")
     WebElement search_field;
 
-    public void enterSearchField_automated_files() {
+    public void enterSearchField_automated_files() throws InterruptedException {
         if (browserName.contains("Chrome")) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, search_field, "-Chrome", logger, "Chrome files");
+            Thread.sleep(1000);
             ReusableMethodsLoggersPOM.submitMethod(driver, search_field,  logger, "Chrome files");
 
 
         } else if (browserName.contains("Firefox")) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, search_field, "-Firefox", logger, "Firefox files");
+            Thread.sleep(1000);
+
             ReusableMethodsLoggersPOM.submitMethod(driver, search_field, logger, "Firefox files");
 
         }}
@@ -621,7 +621,10 @@ public class TemplatesSection extends ReusableAnnotations {
     public void verify_alertMessage_reportTag() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_reportTag, true,  logger, "alertMessage_reportTag");}
 
-
+    @FindBy(xpath = "//div[contains(text(), 'Template was deleted')]")
+    WebElement alertMessage_templateDeleted;
+    public void verify_alertMessage_templateDeleted() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_templateDeleted, true,  logger, "alertMessage_templateDeleted");}
 
 
     @FindBy(xpath = "//a[text()='here']")
