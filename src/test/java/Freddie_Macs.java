@@ -473,9 +473,13 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.staging5().enter_comments_to_field();
         BaseClass.staging5().capture_comments_content();
         BaseClass.staging5().click_cancel_button_popup();
-        Thread.sleep(500);
-        driver.navigate().refresh();
-        Thread.sleep(500);
+        Thread.sleep(1000);
+        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+        Thread.sleep(1000);
+
+//        Thread.sleep(500);
+//        driver.navigate().refresh();
+//        Thread.sleep(500);
 
         BaseClass.staging5().verify_if_comments_icon_isActive();
         Thread.sleep(1000);
@@ -492,13 +496,13 @@ public class Freddie_Macs extends ReusableAnnotations {
         Thread.sleep(2000);
         //insert track changes
         BaseClass.staging5().click_and_capture_track_changes_button();
-        Thread.sleep(1500);
+        Thread.sleep(2500);
 
 
         BaseClass.staging5().click_default_section_title();
         Thread.sleep(1000);
         BaseClass.pca_xml_section().clickAddSectionButton();
-        Thread.sleep(1500);
+        Thread.sleep(2500);
         BaseClass.staging5().click_add_section_toSection();
         Thread.sleep(1000);
         BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
