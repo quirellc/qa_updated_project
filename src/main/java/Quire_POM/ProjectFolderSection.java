@@ -252,9 +252,9 @@ public class ProjectFolderSection extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_SRA_Link_ff, logger, "project folder sra link ff");
         }}
 
-    @FindBy(xpath = "//*[contains(text(),'CK5 Project Folder-Chrome')]")
+    @FindBy(xpath = "//span[contains(text(),'CK5 Project Folder-Chrome')]")
     WebElement projectFolder_CK5_Link_chrome;
-    @FindBy(xpath = "//*[contains(text(),'CK5 Project Folder-Firefox')]")
+    @FindBy(xpath = "//span[contains(text(),'CK5 Project Folder-Firefox')]")
     WebElement projectFolder_CK5_Link_ff;
 
     public void click_CK5_ProjectFolderLink() {
