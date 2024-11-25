@@ -3,6 +3,7 @@
 <suite name="My Test Suite 2" parallel="classes" thread-count="1">
 
     <parameter name="browser" value="chrome"/>
+<!--    <parameter name="browser" value="firefox"/>-->
 
     <test name="Practice Cases
 " preserve-order="true">

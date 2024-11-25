@@ -43,7 +43,7 @@ public class Regression2 extends ReusableAnnotations {
         WebDriver driver = getDriver();
         System.out.println(driver.getClass().getSimpleName());
         // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging5.openquire.com/");
+        driver.navigate().to("https://staging5.openquire.com/reports/669198");
         //  WebDriver driver1 = getDriver();
 
         String pageTitle = driver.getTitle();
@@ -59,11 +59,41 @@ public class Regression2 extends ReusableAnnotations {
             Thread.sleep(3000);
         }
 
-        BaseClass.staging5().captureURL();
-        Thread.sleep(2000);
+
+        BaseClass.smartTables().click_c1_header();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_date_column_dropdown();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_add_column_to_right_dropdown();
+
+        BaseClass.smartTables().enter_column_name_toBeDeleted_smartTable();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_save_button();
+        // Thread.sleep(500);
+        Thread.sleep(500);
+
+        driver.navigate().refresh();
+
+        Thread.sleep(500);
+//           Thread.sleep(500);
+        BaseClass.smartTables().click_c1_header();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_toBeDeleted_column_dropdown();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_delete_column_dropdown();
+        Thread.sleep(500);
+        driver.switchTo().alert().accept();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_toBeDeletedColumn_isNot_visible();
+        Thread.sleep(1500);
 
 
 
+
+
+
+
+    }
 
 
     }
@@ -473,7 +503,7 @@ public class Regression2 extends ReusableAnnotations {
 //        driver.close();
 //        BaseClass.reportfoldersection().change_to_default_tab();
 //        Thread.sleep(500);
-    }
+
 
 
 

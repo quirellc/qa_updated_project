@@ -74,6 +74,8 @@ public class ReusableAnnotations {
 
             options.setPageLoadStrategy(PageLoadStrategy.EAGER);
             options.addArguments("start-maximized");
+//            options.addArguments("--headless"); // Add headless mode
+
 //            driver = new ChromeDriver(options);
          // Set the WebDriver instance for this thread
             driver.set(new ChromeDriver(options));
