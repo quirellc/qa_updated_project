@@ -6,7 +6,7 @@
 
     <test name="CK4 Test" preserve-order="true">
         <classes>
-<!--            <class name="CK_Editor" />-->
+            <class name="CK_Editor" />
             <class name="Smart_Tables_CK5" />
 <!--                        <class name="Regression2" />-->
 

@@ -606,7 +606,7 @@ public class Freddie_Macs extends ReusableAnnotations {
         //turn on spell check and fix all issues
 
         BaseClass.staging5().capture_spellCheck_error_sections();
-        Thread.sleep(1000);
+        Thread.sleep(4000);
 
         BaseClass.staging5().fix_all_spellCheck_errors();
         Thread.sleep(1000);
