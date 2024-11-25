@@ -479,7 +479,11 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         // unlink section link
         BaseClass.smartTables().click_row4_richText();
         Thread.sleep(500);
+        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        Thread.sleep(500);
         BaseClass.staging5().doubleclick_linked_section_text();
+        Thread.sleep(500);
+        driver.switchTo().parentFrame();
         Thread.sleep(500);
         BaseClass.staging5().click_unlink_button_sectionLinkView();
         Thread.sleep(500);

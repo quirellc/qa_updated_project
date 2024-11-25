@@ -3199,7 +3199,7 @@ public class Staging5 extends ReusableAnnotations {
 //td[@class='htLeft quire-rich-text current highlight']//span[contains(@class, 'has-tooltip') and contains(@class, 'js-quire-section-link') and contains(@class, 'mceNonEditable')]
 
 
-    @FindBy(xpath = "//td[@class='htLeft quire-rich-text current highlight']//span[contains(@class, 'has-tooltip') and contains(@class, 'js-quire-section-link') and contains(@class, 'mceNonEditable')]")
+    @FindBy(xpath = "//span[@class='has-tooltip js-quire-section-link mceNonEditable quire-section-link cke_widget_element']")
     WebElement linked_section_text_smartTable;
 
 
