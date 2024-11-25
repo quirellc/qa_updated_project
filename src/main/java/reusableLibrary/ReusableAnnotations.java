@@ -74,6 +74,8 @@ public class ReusableAnnotations {
 
             options.setPageLoadStrategy(PageLoadStrategy.EAGER);
             options.addArguments("start-maximized");
+            options.addArguments("--window-size=1920,1080");
+
 //            options.addArguments("--headless"); // Add headless mode
 
 //            driver = new ChromeDriver(options);
