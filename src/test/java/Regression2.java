@@ -77,7 +77,7 @@ public class Regression2 extends ReusableAnnotations {
         Thread.sleep(500);
 //           Thread.sleep(500);
         BaseClass.smartTables().click_c1_header();
-        Thread.sleep(500);
+        Thread.sleep(2500);
         BaseClass.smartTables().click_toBeDeleted_column_dropdown();
         Thread.sleep(500);
         BaseClass.smartTables().click_delete_column_dropdown();
