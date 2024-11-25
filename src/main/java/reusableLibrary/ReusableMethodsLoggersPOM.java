@@ -115,7 +115,7 @@ public class ReusableMethodsLoggersPOM {
                 System.out.println("Unable to click on " + elementName + ": " + e);
                 logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ": " + e);
                 wait.until(ExpectedConditions.elementToBeClickable(xpath));
-                  getScreenShot(driver, "screenshot", logger);
+               //   getScreenShot(driver, "screenshot", logger);
             }
 
         }
