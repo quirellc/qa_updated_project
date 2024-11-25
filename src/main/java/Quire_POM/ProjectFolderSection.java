@@ -183,9 +183,9 @@ public class ProjectFolderSection extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_ZON_Template_ff, logger, "QA zon template firefox");
         }}
 
-    @FindBy(xpath = "//*[contains(text(),'CK5 Template-Chrome')]")
+    @FindBy(xpath = "//div[contains(text(),'CK5 Template-Chrome')]")
     WebElement projectFolder_CK5_Template_chrome;
-    @FindBy(xpath = "//*[contains(text(),'CK5 Template-Firefox')]")
+    @FindBy(xpath = "//div[contains(text(),'CK5 Template-Firefox')]")
     WebElement projectFolder_CK5_Template_ff;
     public void click_CK5_Template_projectFolder_templatesTab() {
         if (browserName.contains("Chrome")) {
@@ -194,9 +194,9 @@ public class ProjectFolderSection extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.clickMethod(driver, projectFolder_CK5_Template_ff, logger, "QA ck5 template firefox");
         }}
 
-    @FindBy(xpath = "//*[contains(text(),'Testing New CK5 Template-Chrome')]")
+    @FindBy(xpath = "//div[contains(text(),'Testing New CK5 Template-Chrome')]")
     WebElement projectFolder_New_CK5_Template_chrome;
-    @FindBy(xpath = "//*[contains(text(),'Testing New CK5 Template-Firefox')]")
+    @FindBy(xpath = "//div[contains(text(),'Testing New CK5 Template-Firefox')]")
     WebElement projectFolder_New_CK5_Template_ff;
     public void click_CK5_Template_projectFolder_New_templatesTab() {
         if (browserName.contains("Chrome")) {
