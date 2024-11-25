@@ -60,24 +60,24 @@ public class Regression2 extends ReusableAnnotations {
         }
 
 
-        BaseClass.smartTables().click_c1_header();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_date_column_dropdown();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_add_column_to_right_dropdown();
-
-        BaseClass.smartTables().enter_column_name_toBeDeleted_smartTable();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_save_button();
-        // Thread.sleep(500);
-        Thread.sleep(500);
-
-        driver.navigate().refresh();
-
-        Thread.sleep(500);
+//        BaseClass.smartTables().click_c1_header();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_date_column_dropdown();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_add_column_to_right_dropdown();
+//
+//        BaseClass.smartTables().enter_column_name_toBeDeleted_smartTable();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_save_button();
+//        // Thread.sleep(500);
+//        Thread.sleep(500);
+//
+//        driver.navigate().refresh();
+//
+//        Thread.sleep(500);
 //           Thread.sleep(500);
         BaseClass.smartTables().click_c1_header();
-        Thread.sleep(2500);
+        Thread.sleep(3500);
         BaseClass.smartTables().click_toBeDeleted_column_dropdown();
         Thread.sleep(500);
         BaseClass.smartTables().click_delete_column_dropdown();
