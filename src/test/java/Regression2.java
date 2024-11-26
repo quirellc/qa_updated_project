@@ -43,7 +43,7 @@ public class Regression2 extends ReusableAnnotations {
         WebDriver driver = getDriver();
         System.out.println(driver.getClass().getSimpleName());
         // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging5.openquire.com/reports/669198");
+        driver.navigate().to("https://staging5.openquire.com/");
         //  WebDriver driver1 = getDriver();
 
         String pageTitle = driver.getTitle();
@@ -59,39 +59,56 @@ public class Regression2 extends ReusableAnnotations {
             Thread.sleep(3000);
         }
 
-
-        BaseClass.smartTables().click_c1_header();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_date_column_dropdown();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_add_column_to_right_dropdown();
-
-        BaseClass.smartTables().enter_column_name_toBeDeleted_smartTable();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_save_button();
-        // Thread.sleep(500);
-        Thread.sleep(500);
-
-        driver.navigate().refresh();
-
-        Thread.sleep(500);
-//           Thread.sleep(500);
-        BaseClass.smartTables().click_c1_header();
+        BaseClass.reportfoldersection().clickReportsTab();
+        Thread.sleep(700);
+        BaseClass.reportfoldersection().enterSearchField_QA_Report();
         Thread.sleep(3500);
-        BaseClass.smartTables().click_toBeDeleted_column_dropdown();
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(700);
+
+
+        //create ck5 project folder
+
+        BaseClass.projectFolderSection().clickAddProjectFolderButton();
         Thread.sleep(500);
-        BaseClass.smartTables().click_delete_column_dropdown();
+        BaseClass.projectFolderSection().enterProjectFolderNameField_CK5();
         Thread.sleep(500);
-        driver.switchTo().alert().accept();
+        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
         Thread.sleep(500);
-        BaseClass.smartTables().verify_toBeDeletedColumn_isNot_visible();
-        Thread.sleep(1500);
+        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
 
+        //need to add wait before typing so it can search item in dropdownssffy
+        Thread.sleep(700);
 
+        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
+        Thread.sleep(3000);
+        BaseClass.projectFolderSection().click_CK5_Template_projectFolder_templatesTab();
+        Thread.sleep(1000);
+        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
+        Thread.sleep(1000);
 
+        BaseClass.projectFolderSection().clickSave();
+        Thread.sleep(2000);
+        BaseClass.projectFolderSection().click_CK5_ProjectFolderLink();
+        Thread.sleep(1000);
 
+        //create ck5 report folder with ck5 template created
 
-
+        BaseClass.reportfoldersection().clickAddReportButton();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().enterReportName_QA_CK5_Field();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().enterReportDescriptionField();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().clickReport_TemplateDropdown();
+        Thread.sleep(3000);
+        BaseClass.reportfoldersection().clickDropdownItem();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().clickSave();
+        Thread.sleep(4500);
+        BaseClass.reportfoldersection().captureAlertMessage();
+        BaseClass.reportfoldersection().clickHereLink();
+        Thread.sleep(2000);
 
     }
 

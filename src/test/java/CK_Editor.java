@@ -474,7 +474,7 @@ public class CK_Editor extends ReusableAnnotations {
         Thread.sleep(700);
 
         BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         BaseClass.projectFolderSection().click_CK5_Template_projectFolder_templatesTab();
         Thread.sleep(1000);
         BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
