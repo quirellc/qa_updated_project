@@ -760,6 +760,9 @@ for (int i = 0; i < search_results_int; i++) {
     public void clickAddContentRow_introPages() {
         ReusableMethodsLoggersPOM.clickMethod(driver, addContentRow, logger, "addContentRow");}
 
+    public void enter_text_ContentRow_introPages() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, addContentRow,"QA Automationn Testing Script - Spell Check Check Section_" , logger, "text_body");}
+
     @FindBy(xpath = "//iframe[@class='cke_wysiwyg_frame cke_reset']")
     WebElement reference_tag_ck5_iFrame;
     public void switchTo_instruction_text_ck5_iFrame() {
