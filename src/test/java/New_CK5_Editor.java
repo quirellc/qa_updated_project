@@ -107,7 +107,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         //go to text body iframe, enter text
         BaseClass.templatesSection().clickAddContentRow_introPages();
         Thread.sleep(2000);
-        BaseClass.ck5editor().enter_text_body_ck5();
+        BaseClass.ck5editor().enter_section_row_1_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
@@ -660,7 +660,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
             Thread.sleep(1000);
             BaseClass.staging5().click_section_row_editor_projectSummary();
             Thread.sleep(500);
-            BaseClass.ck5editor().enter_text_body_ck5();
+            BaseClass.ck5editor().enter_section_row_1_body_ck5();
             Thread.sleep(500);
             // click out of section, capture proj summary alert message
             BaseClass.staging5().click_out_of_section();
