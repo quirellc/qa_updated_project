@@ -548,270 +548,270 @@ public class New_CK5_Editor extends ReusableAnnotations {
 //        BaseClass.staging5().click_default_section_title();
 //        Thread.sleep(1000);
 //    }
-
-        @Test
-        public void TR_003a_new_ck5_report_creation() throws InterruptedException{
-
-        //Go into to QA Automation Parent folders
-
-        BaseClass.reportfoldersection().clickReportsTab();
-        Thread.sleep(1000);
-        BaseClass.reportfoldersection().enterSearchField_QA_Report();
-        Thread.sleep(3500);
-        BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(1000);
-
-
-        //create ck5 project folder
-
-        BaseClass.projectFolderSection().clickAddProjectFolderButton();
-        Thread.sleep(500);
-        BaseClass.projectFolderSection().enterProjectFolderNameField_New_CK5();
-        Thread.sleep(500);
-        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
-        Thread.sleep(500);
-        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
-
-        //need to add wait before typing so it can search item in dropdownssffy
-        Thread.sleep(1000);
-
-        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
-        Thread.sleep(3000);
-        BaseClass.projectFolderSection().click_CK5_Template_projectFolder_New_templatesTab();
-        Thread.sleep(1000);
-        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
-        Thread.sleep(1000);
-
-        BaseClass.projectFolderSection().clickSave();
-        Thread.sleep(2000);
-        BaseClass.projectFolderSection().click_CK5_ProjectFolderLink();
-        Thread.sleep(1000);
-
-        //create ck5 report folder with ck5 template created
-
-        BaseClass.reportfoldersection().clickAddReportButton();
-        Thread.sleep(500);
-        BaseClass.reportfoldersection().enterReportName_QA_New_CK5_Field();
-        Thread.sleep(500);
-        BaseClass.reportfoldersection().enterReportDescriptionField();
-        Thread.sleep(500);
-        BaseClass.reportfoldersection().clickReport_TemplateDropdown();
-        Thread.sleep(3000);
-        BaseClass.reportfoldersection().clickDropdownItem();
-        Thread.sleep(1000);
-        BaseClass.reportfoldersection().clickSave();
-        Thread.sleep(4500);
-        BaseClass.reportfoldersection().captureAlertMessage();
-        BaseClass.reportfoldersection().clickHereLink();
-        Thread.sleep(2000);
-
-    }
-
-    //@add smart table creation with track changes, link/unlink report link
-
-    @Test
-    public void TR_003b_insert_stamp_signature_report() throws InterruptedException {
-        BaseClass.staging5().click_default_section_title();
-        Thread.sleep(1000);
-        BaseClass.pca_xml_section().clickAddSectionButton();
-        Thread.sleep(2000);
-        BaseClass.staging5().click_add_section_toSection();
-        Thread.sleep(1000);
-        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_Section2_row_editor();
-        Thread.sleep(1000);
-        BaseClass.ck5editor().click_stamp_icon_ck5();
-        Thread.sleep(1500);
-        BaseClass.ck5editor().click_stamp_icon_dropdown_ck5();
-        Thread.sleep(1500);
-        BaseClass.ck5editor().click_signature_icon_ck5();
-        Thread.sleep(1500);
-        BaseClass.ck5editor().click_stamp_icon_dropdown_ck5();
-        Thread.sleep(500);
-        BaseClass.staging5().click_out_of_section();
-        Thread.sleep(1000);
-        BaseClass.ck5editor().verify_stamp_signature_in_section();
-        Thread.sleep(500);
-    }
-
-        @Test
-    public void TR_003c_report_packages_projSummary() throws InterruptedException {
-        BaseClass.reportfoldersection().clickReportSettingsButton();
-        BaseClass.pca_xml_section().clickTemplatePackagesTab();
-        Thread.sleep(1000);
-        //hover and click first arrow button unassigned package
-        BaseClass.staging5().hover_unassigned__dropdown_value();
-        Thread.sleep(800);
-        BaseClass.staging5().click_unassigned_items_right_arrow();
-        Thread.sleep(1000);
-        BaseClass.pca_xml_section().getTemplatesPackagesList();
-       Thread.sleep(1000);
-      BaseClass.staging5().click_save_button();
-     Thread.sleep(1500);
-            BaseClass.staging5().click_default_section_title();
-            Thread.sleep(1000);
-            BaseClass.pca_xml_section().clickAddSectionButton();
-            Thread.sleep(2000);
-            BaseClass.staging5().click_add_projSummary_toSection();
-            Thread.sleep(1000);
-            BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-            Thread.sleep(1000);
-            BaseClass.staging5().click_section_row_editor_projectSummary();
-            Thread.sleep(500);
-            BaseClass.ck5editor().enter_text_body_ck5();
-            Thread.sleep(500);
-            // click out of section, capture proj summary alert message
-            BaseClass.staging5().click_out_of_section();
-            Thread.sleep(500);
-            BaseClass.templatesSection().verify_alertMessage_projectSummary();
-            Thread.sleep(500);
-            BaseClass.templatesSection().verify_spellCheck_text();
-
-        }
-
-
-        @Test
-        public void TR_004_ck5_author_login() throws InterruptedException {
-            BaseClass.staging5().clickUserProfileTab();
-            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-
-            BaseClass.quireLogin().enter_author_BV_Email();
-            BaseClass.quireLogin().enterPassword();
-            //Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(500);
-            BaseClass.staging5().click_modal_close_window();
-            Thread.sleep(500);
-
-            BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
-          //  BaseClass.staging5().clickSection_row_editor();
-            BaseClass.ck5editor().verify_ck5_lower_permission_level();
-
-        }
-
-        @Test
-        public void TR_005_ck5_editor_login() throws InterruptedException {
-            BaseClass.staging5().clickUserProfileTab();
-            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-
-            BaseClass.quireLogin().enter_editor_BV_Email();
-            BaseClass.quireLogin().enterPassword();
-            //Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(500);
-            BaseClass.staging5().click_modal_close_window();
-            Thread.sleep(500);
-
-            BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
-          //  BaseClass.staging5().clickSection_row_editor();
-            BaseClass.ck5editor().verify_ck5_lower_permission_level();
-
-        }
-
-        @Test
-        public void TR_006_ck5_PM_login() throws InterruptedException {
-            BaseClass.staging5().clickUserProfileTab();
-            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-
-            BaseClass.quireLogin().enter_pm_BV_Email();
-            BaseClass.quireLogin().enterPassword();
-            //Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(500);
-            BaseClass.staging5().click_modal_close_window();
-            Thread.sleep(500);
-
-            BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
-            //Thread.sleep(1000);
-
-          //  BaseClass.staging5().clickSection_row_editor();
-            BaseClass.ck5editor().verify_ck_editor_PM_permission_level();
-        }
-
-    @Test
-    public void TR_06b_ck5_root_login() throws InterruptedException {
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-
-        BaseClass.quireLogin().enterRootUserEmail();
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(1000);
-        WebDriver driver = getDriver();
-
-
-        driver.navigate().to("https://staging5.openquire.com/companies/20/company_email_templates?filter=report%3Astatus_chang");
-
-        Thread.sleep(1000);
-        BaseClass.staging5().click_modal_close_window();
-        Thread.sleep(500);
-        BaseClass.staging5().captureURL();
-        Thread.sleep(500);
-
-        BaseClass.ck5editor().click_status_Email_Notification_Template();
-        Thread.sleep(500);
-        BaseClass.ck5editor().click_email_template_message();
-        Thread.sleep(500);
-        BaseClass.ck5editor().verify_ck_editor_root_emailStatusTemplate_permission_level();
-        Thread.sleep(500);
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(1000);
-
-
-
-    }
-
-        @Test
-        public void TR_007_ck5_contractor_login() throws InterruptedException {
-            BaseClass.staging5().clickUserProfileTab();
-            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-
-            BaseClass.quireLogin().enter_contractor_Email();
-            BaseClass.quireLogin().enterPassword();
-            //Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(500);
-            BaseClass.staging5().click_modal_close_window();
-            Thread.sleep(500);
-            //Thread.sleep(2000);
-
-           // BaseClass.staging5().click_testing_inc_company();
-            BaseClass.ck5editor().click_ck5_permissions_report_link();
-            //Thread.sleep(1000);
-           // BaseClass.staging5().switchToAutomationReportTab();
-            Thread.sleep(1000);
-        //    BaseClass.staging5().clickSection_row_editor();
-            BaseClass.ck5editor().verify_ck5_lower_permission_level();
-         //   WebDriver driver = getDriver();
-
-            //Thread.sleep(1000);
-        //    driver.close();
-            //Thread.sleep(1000);
-        //    BaseClass.staging5().switchToOriginalTab();
-
-        }
-        @Test
-        public void TR_008_ck5_sysadmin_login() throws InterruptedException {
-            BaseClass.staging5().clickUserProfileTab();
-            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-
-            BaseClass.quireLogin().enterEmail_bv_sysadmin_level();
-            BaseClass.quireLogin().enterPassword();
-            //Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(500);
-            BaseClass.staging5().click_modal_close_window();
-            Thread.sleep(500);
-            //Thread.sleep(2000);
-
-            BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
-            //Thread.sleep(1000);
-
-          //  BaseClass.staging5().clickSection_row_editor();
-            BaseClass.ck5editor().verify_ck5_admin_permission_level();
-        }
+//
+//        @Test
+//        public void TR_003a_new_ck5_report_creation() throws InterruptedException{
+//
+//        //Go into to QA Automation Parent folders
+//
+//        BaseClass.reportfoldersection().clickReportsTab();
+//        Thread.sleep(1000);
+//        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+//        Thread.sleep(3500);
+//        BaseClass.reportfoldersection().clickReportsFirstLink();
+//        Thread.sleep(1000);
+//
+//
+//        //create ck5 project folder
+//
+//        BaseClass.projectFolderSection().clickAddProjectFolderButton();
+//        Thread.sleep(500);
+//        BaseClass.projectFolderSection().enterProjectFolderNameField_New_CK5();
+//        Thread.sleep(500);
+//        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
+//        Thread.sleep(500);
+//        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
+//
+//        //need to add wait before typing so it can search item in dropdownssffy
+//        Thread.sleep(1000);
+//
+//        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
+//        Thread.sleep(3000);
+//        BaseClass.projectFolderSection().click_CK5_Template_projectFolder_New_templatesTab();
+//        Thread.sleep(1000);
+//        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
+//        Thread.sleep(1000);
+//
+//        BaseClass.projectFolderSection().clickSave();
+//        Thread.sleep(2000);
+//        BaseClass.projectFolderSection().click_CK5_ProjectFolderLink();
+//        Thread.sleep(1000);
+//
+//        //create ck5 report folder with ck5 template created
+//
+//        BaseClass.reportfoldersection().clickAddReportButton();
+//        Thread.sleep(500);
+//        BaseClass.reportfoldersection().enterReportName_QA_New_CK5_Field();
+//        Thread.sleep(500);
+//        BaseClass.reportfoldersection().enterReportDescriptionField();
+//        Thread.sleep(500);
+//        BaseClass.reportfoldersection().clickReport_TemplateDropdown();
+//        Thread.sleep(3000);
+//        BaseClass.reportfoldersection().clickDropdownItem();
+//        Thread.sleep(1000);
+//        BaseClass.reportfoldersection().clickSave();
+//        Thread.sleep(4500);
+//        BaseClass.reportfoldersection().captureAlertMessage();
+//        BaseClass.reportfoldersection().clickHereLink();
+//        Thread.sleep(2000);
+//
+//    }
+//
+//    //@add smart table creation with track changes, link/unlink report link
+//
+//    @Test
+//    public void TR_003b_insert_stamp_signature_report() throws InterruptedException {
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().clickAddSectionButton();
+//        Thread.sleep(2000);
+//        BaseClass.staging5().click_add_section_toSection();
+//        Thread.sleep(1000);
+//        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_Section2_row_editor();
+//        Thread.sleep(1000);
+//        BaseClass.ck5editor().click_stamp_icon_ck5();
+//        Thread.sleep(1500);
+//        BaseClass.ck5editor().click_stamp_icon_dropdown_ck5();
+//        Thread.sleep(1500);
+//        BaseClass.ck5editor().click_signature_icon_ck5();
+//        Thread.sleep(1500);
+//        BaseClass.ck5editor().click_stamp_icon_dropdown_ck5();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_out_of_section();
+//        Thread.sleep(1000);
+//        BaseClass.ck5editor().verify_stamp_signature_in_section();
+//        Thread.sleep(500);
+//    }
+//
+//        @Test
+//    public void TR_003c_report_packages_projSummary() throws InterruptedException {
+//        BaseClass.reportfoldersection().clickReportSettingsButton();
+//        BaseClass.pca_xml_section().clickTemplatePackagesTab();
+//        Thread.sleep(1000);
+//        //hover and click first arrow button unassigned package
+//        BaseClass.staging5().hover_unassigned__dropdown_value();
+//        Thread.sleep(800);
+//        BaseClass.staging5().click_unassigned_items_right_arrow();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().getTemplatesPackagesList();
+//       Thread.sleep(1000);
+//      BaseClass.staging5().click_save_button();
+//     Thread.sleep(1500);
+//            BaseClass.staging5().click_default_section_title();
+//            Thread.sleep(1000);
+//            BaseClass.pca_xml_section().clickAddSectionButton();
+//            Thread.sleep(2000);
+//            BaseClass.staging5().click_add_projSummary_toSection();
+//            Thread.sleep(1000);
+//            BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+//            Thread.sleep(1000);
+//            BaseClass.staging5().click_section_row_editor_projectSummary();
+//            Thread.sleep(500);
+//            BaseClass.ck5editor().enter_text_body_ck5();
+//            Thread.sleep(500);
+//            // click out of section, capture proj summary alert message
+//            BaseClass.staging5().click_out_of_section();
+//            Thread.sleep(500);
+//            BaseClass.templatesSection().verify_alertMessage_projectSummary();
+//            Thread.sleep(500);
+//            BaseClass.templatesSection().verify_spellCheck_text();
+//
+//        }
+//
+//
+//        @Test
+//        public void TR_004_ck5_author_login() throws InterruptedException {
+//            BaseClass.staging5().clickUserProfileTab();
+//            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//
+//            BaseClass.quireLogin().enter_author_BV_Email();
+//            BaseClass.quireLogin().enterPassword();
+//            //Thread.sleep(1000);
+//            BaseClass.quireLogin().clickLogin();
+//            Thread.sleep(500);
+//            BaseClass.staging5().click_modal_close_window();
+//            Thread.sleep(500);
+//
+//            BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
+//          //  BaseClass.staging5().clickSection_row_editor();
+//            BaseClass.ck5editor().verify_ck5_lower_permission_level();
+//
+//        }
+//
+//        @Test
+//        public void TR_005_ck5_editor_login() throws InterruptedException {
+//            BaseClass.staging5().clickUserProfileTab();
+//            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//
+//            BaseClass.quireLogin().enter_editor_BV_Email();
+//            BaseClass.quireLogin().enterPassword();
+//            //Thread.sleep(1000);
+//            BaseClass.quireLogin().clickLogin();
+//            Thread.sleep(500);
+//            BaseClass.staging5().click_modal_close_window();
+//            Thread.sleep(500);
+//
+//            BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
+//          //  BaseClass.staging5().clickSection_row_editor();
+//            BaseClass.ck5editor().verify_ck5_lower_permission_level();
+//
+//        }
+//
+//        @Test
+//        public void TR_006_ck5_PM_login() throws InterruptedException {
+//            BaseClass.staging5().clickUserProfileTab();
+//            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//
+//            BaseClass.quireLogin().enter_pm_BV_Email();
+//            BaseClass.quireLogin().enterPassword();
+//            //Thread.sleep(1000);
+//            BaseClass.quireLogin().clickLogin();
+//            Thread.sleep(500);
+//            BaseClass.staging5().click_modal_close_window();
+//            Thread.sleep(500);
+//
+//            BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
+//            //Thread.sleep(1000);
+//
+//          //  BaseClass.staging5().clickSection_row_editor();
+//            BaseClass.ck5editor().verify_ck_editor_PM_permission_level();
+//        }
+//
+//    @Test
+//    public void TR_06b_ck5_root_login() throws InterruptedException {
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//
+//        BaseClass.quireLogin().enterRootUserEmail();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(1000);
+//        WebDriver driver = getDriver();
+//
+//
+//        driver.navigate().to("https://staging5.openquire.com/companies/20/company_email_templates?filter=report%3Astatus_chang");
+//
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_modal_close_window();
+//        Thread.sleep(500);
+//        BaseClass.staging5().captureURL();
+//        Thread.sleep(500);
+//
+//        BaseClass.ck5editor().click_status_Email_Notification_Template();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().click_email_template_message();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().verify_ck_editor_root_emailStatusTemplate_permission_level();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(1000);
+//
+//
+//
+//    }
+//
+//        @Test
+//        public void TR_007_ck5_contractor_login() throws InterruptedException {
+//            BaseClass.staging5().clickUserProfileTab();
+//            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//
+//            BaseClass.quireLogin().enter_contractor_Email();
+//            BaseClass.quireLogin().enterPassword();
+//            //Thread.sleep(1000);
+//            BaseClass.quireLogin().clickLogin();
+//            Thread.sleep(500);
+//            BaseClass.staging5().click_modal_close_window();
+//            Thread.sleep(500);
+//            //Thread.sleep(2000);
+//
+//           // BaseClass.staging5().click_testing_inc_company();
+//            BaseClass.ck5editor().click_ck5_permissions_report_link();
+//            //Thread.sleep(1000);
+//           // BaseClass.staging5().switchToAutomationReportTab();
+//            Thread.sleep(1000);
+//        //    BaseClass.staging5().clickSection_row_editor();
+//            BaseClass.ck5editor().verify_ck5_lower_permission_level();
+//         //   WebDriver driver = getDriver();
+//
+//            //Thread.sleep(1000);
+//        //    driver.close();
+//            //Thread.sleep(1000);
+//        //    BaseClass.staging5().switchToOriginalTab();
+//
+//        }
+//        @Test
+//        public void TR_008_ck5_sysadmin_login() throws InterruptedException {
+//            BaseClass.staging5().clickUserProfileTab();
+//            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//
+//            BaseClass.quireLogin().enterEmail_bv_sysadmin_level();
+//            BaseClass.quireLogin().enterPassword();
+//            //Thread.sleep(1000);
+//            BaseClass.quireLogin().clickLogin();
+//            Thread.sleep(500);
+//            BaseClass.staging5().click_modal_close_window();
+//            Thread.sleep(500);
+//            //Thread.sleep(2000);
+//
+//            BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
+//            //Thread.sleep(1000);
+//
+//          //  BaseClass.staging5().clickSection_row_editor();
+//            BaseClass.ck5editor().verify_ck5_admin_permission_level();
+//        }
 @Test
 public void TR_009_navigate_ck5_report() throws InterruptedException {
 //
@@ -821,7 +821,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
     BaseClass.reportfoldersection().clickReportsFirstLink();
     Thread.sleep(1000);
     BaseClass.projectFolderSection().click_new_CK5_ProjectFolderLink();
-    Thread.sleep(1000);
+    Thread.sleep(4500);
     //cloned fm 1104 report
     BaseClass.reportfoldersection().clickReportsFirstLink();
     Thread.sleep(2000);
