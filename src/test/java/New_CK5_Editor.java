@@ -98,12 +98,12 @@ public class New_CK5_Editor extends ReusableAnnotations {
         BaseClass.staging5().upload_footer_image();
         Thread.sleep(1000);
         BaseClass.staging5().upload_header_image();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
 
         //go to text body iframe, enter text
         BaseClass.templatesSection().clickAddContentRow_introPages();
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         BaseClass.ck5editor().enter_text_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
