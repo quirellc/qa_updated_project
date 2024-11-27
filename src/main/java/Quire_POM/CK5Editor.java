@@ -361,6 +361,12 @@ public class CK5Editor extends ReusableAnnotations {
     public void click_grey_empty_comments_icon() {
         ReusableMethodsLoggersPOM.clickMethod(driver, empty_comments_icon,  logger, "empty_comments_icon");}
 
+    @FindBy(xpath = "//section[@class='switchboard CT-hide']//li[@class='section-comments js-sectionComments flex-container flex-align-center flex-content-center js-commentsActionTooltipProvider']")
+    WebElement section_empty_comments_icon;
+    public void click_section_grey_empty_comments_icon() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, section_empty_comments_icon,  logger, "section_empty_comments_icon");}
+    public void verify_section_grey_empty_comments_icon() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, section_empty_comments_icon, true, logger, "section_empty_comments_icon");}
     @FindBy(xpath = "(//li[@class='section-comments js-sectionComments flex-container flex-align-center flex-content-center js-commentsActionTooltipProvider'])[2]")
     WebElement second_empty_comments_icon;
     public void click_second_empty_comments_icon() {
@@ -413,11 +419,16 @@ public class CK5Editor extends ReusableAnnotations {
     @FindBy(xpath = "//div[@class='ck ck-annotation-wrapper ck-rounded-corners ck-annotation-wrapper--active']//div[@aria-label='Editor editing area: main']")
     WebElement add_a_comment_field;
 
+    @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")
+    WebElement comment_box;
+
     public void enter_comments_to_field() throws InterruptedException {
         for (int i = 1; i <= 3; i++) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, "QA Automation Comment Test Message - Iteration: " + i, logger, "add_a_comment_field");
             Thread.sleep(500);
             BaseClass.ck5editor().click_submit_comment_button();
+            Thread.sleep(500);
+            ReusableMethodsLoggersPOM.clickMethod(driver, comment_box, logger, "comment_box");
             Thread.sleep(500);
         }
         }
@@ -505,7 +516,7 @@ public class CK5Editor extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, comments_archive_marked_as_resolved_message,true,  logger, "comments_archive_marked_as_resolved_message");
 }
 
-    @FindBy(xpath = "//button[@class='ck ck-button ck-on' and @data-cke-tooltip-text='Toggle Track Changes Markup']")
+    @FindBy(xpath = "//button[@class='ck ck-button quireToggleTrackChanges ck-on']")
     WebElement TC_markup_icon_ck5;
     @FindBy(xpath = "//button[@class='ck ck-button ck-on ck-splitbutton__action' and @data-cke-tooltip-text='Track changes']")
     WebElement TC_enabled_icon_ck5;
@@ -738,6 +749,14 @@ int count = TC_highlights.size();
             Thread.sleep(1000);
         }
 
+    @FindBy(xpath = "//a[normalize-space()='QA Automation permission level test report']")
+    WebElement ck5_permissions_report_link;
+
+    public void click_ck5_permissions_report_link() {
+      //  driver.navigate().to("https://staging5.openquire.com/reports/666610");
+
+         ReusableMethodsLoggersPOM.clickMethod(driver, ck5_permissions_report_link, logger, "ck5_permissions_report_link");
+    }
 
         public void navigateTo_ck5_report_HM_folder () throws InterruptedException {
            // driver.navigate().to("https://staging5.openquire.com/reports/666610");
@@ -764,6 +783,8 @@ int count = TC_highlights.size();
         ReusableMethodsLoggersPOM.clickMethod(driver, email_template_message,  logger, "email_template_message");}
 
     public void ck5_multiple_comments_test() throws InterruptedException {
+        BaseClass.staging5().click_default_section_title();
+
         BaseClass.staging5().clickSection_row_editor();
         Thread.sleep(500);
         BaseClass.ck5editor().enter_long_text_body_ck5();
@@ -828,7 +849,7 @@ int count = TC_highlights.size();
     }
 
     public void ck5_special_section_comments_test() throws InterruptedException {
-        BaseClass.ck5editor().click_grey_empty_comments_icon();
+        BaseClass.ck5editor().click_section_grey_empty_comments_icon();
         Thread.sleep(1000);
         BaseClass.ck5editor().add_new_comment_to_ST();
         BaseClass.ck5editor().verify_unresolved_1_comment_is_Visible();
@@ -840,7 +861,8 @@ int count = TC_highlights.size();
         BaseClass.ck5editor().reopen_archived_comment_discussion();
         BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
         BaseClass.ck5editor().delete_comments_in_field();
-        BaseClass.ck5editor().verify_grey_empty_comments_icon();
+        BaseClass.ck5editor().verify_section_grey_empty_comments_icon();
+        BaseClass.ck5editor().click_close_button_popup();
 
     }
     @FindBy(xpath = "//div[@id='comments-createNewThreadAction']")
@@ -898,6 +920,13 @@ int count = TC_highlights.size();
 
     public void hover_comments_icon_statusBar() throws InterruptedException {
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, comments_icon_statusBar,  logger, " comments_icon_statusBar ");
+    }
+
+    @FindBy(xpath = "//a[@class='js-closePanel']")
+    WebElement close_button_popup;
+
+    public void click_close_button_popup() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, close_button_popup, logger, "close_button_popup");
     }
 
     }

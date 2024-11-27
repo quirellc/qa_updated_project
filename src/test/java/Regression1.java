@@ -28,6 +28,8 @@ public class Regression1 extends ReusableAnnotations {
         Thread.sleep(600);
         BaseClass.quireLogin().clickLogin();
         Thread.sleep(2000);
+        BaseClass.staging5().click_modal_close_window();
+
     }
 
     @Test

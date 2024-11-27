@@ -120,8 +120,11 @@ public class ProjectFolderSection extends ReusableAnnotations {
     @FindBy(xpath = "//div[@class='project-template-assignment']//input[@id='unassigned_items_search']")
     WebElement projectFolder_Template_SearchField;
 
-    public void enterProjectFolder_Template_SearchField() {
+    public void enterProjectFolder_Template_SearchField() throws InterruptedException {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, projectFolder_Template_SearchField, "QA Automation", logger, "project folder-template search field ");
+        Thread.sleep(1000);
+        ReusableMethodsLoggersPOM.submitMethod(driver, projectFolder_Template_SearchField, logger, "project folder-template search field ");
+
     }
 
     @FindBy(xpath = "//*[contains(text(),'PCA Template-Chrome')]")

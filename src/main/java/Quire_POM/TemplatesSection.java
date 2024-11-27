@@ -317,11 +317,12 @@ public class TemplatesSection extends ReusableAnnotations {
     List<WebElement> search_results;
     public void delete_automation_templates() throws InterruptedException {
         BaseClass.templatesSection().enterSearchField_automated_files();
-        Thread.sleep(3000);
+        Thread.sleep(4000);
+        int search_results_int = search_results.size();
 
         if (!search_results.isEmpty()) {
-            for (WebElement result_link : search_results) {
-                try {
+for (int i = 0; i < search_results_int; i++) {
+    try {
 
                     BaseClass.pca_xml_section().clickFirstTemplateLink();
 
@@ -344,10 +345,11 @@ public class TemplatesSection extends ReusableAnnotations {
     }
     public void delete_automation_folders() throws InterruptedException {
         BaseClass.templatesSection().enterSearchField_automated_files();
-        Thread.sleep(3500);
+        Thread.sleep(4000);
+        int search_results_int = search_results.size();
 
         if (!search_results.isEmpty()) {
-            for (WebElement result_link : search_results) {
+            for (int i = 0; i < search_results_int; i++) {
                 try {
                     BaseClass.pca_xml_section().clickFirstTemplateLink();
                     BaseClass.projectFolderSection().click_projectFolderSettings_button();

@@ -780,8 +780,8 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
             BaseClass.smartTables().click_smartTable_sectionView();
 
             BaseClass.smartTables().click_smartTable_sectionView();
-
-            //  driver.navigate().refresh();
+//formula dropdown
+              driver.navigate().refresh();
             Thread.sleep(1000);
 
             // click r5c5 dynamic cell - formula

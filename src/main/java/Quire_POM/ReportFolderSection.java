@@ -370,14 +370,7 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, automationReport_link, logger, "automationReport_link");
     }
 
-    @FindBy(xpath = "//*[normalize-space()='new ck5 test']")
-    WebElement ck5_report_link;
 
-    public void click_ck5_report_link() {
-        driver.navigate().to("https://staging5.openquire.com/reports/666610");
-
-      //  ReusableMethodsLoggersPOM.clickMethod(driver, ck5_report_link, logger, "ck5_report_link");
-    }
 
     @FindBy(xpath = "//a[@id='report_appendices_outline']")
     WebElement sectionView_Appendices;

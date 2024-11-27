@@ -118,7 +118,7 @@ public class SmartTables extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, plaintext_dropDown_dynamic_cell, logger, " plaintext_dropDown_dynamic_cell ");
     }
 
-    @FindBy(xpath = "(//i[@class='fa fa-line-chart'])[2]")
+    @FindBy(xpath = "//div[@class='selectize-dropdown single js-data-type-selector column-type-selector']//div[@class='selectize-dropdown-content']//i[@class='fa fa-line-chart']")
     WebElement formula_dropDown_dynamic_cell;
 
     public void click_formula_dropDown_dynamic_cell() {
@@ -375,6 +375,7 @@ public class SmartTables extends ReusableAnnotations {
     public void enter_row1_plainText() throws InterruptedException {
         ReusableMethodsLoggersPOM.doubleClickandSendKeysMethod(driver, row1_column2, "qa plain text r1c2", logger, " row1_column2 ");
     }
+
 
     @FindBy(xpath = "//table[@class='table info-table']//tr[1]//td[3]")
     WebElement row1_column3;

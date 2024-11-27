@@ -14,10 +14,40 @@ public class New_CK5_Editor extends ReusableAnnotations {
     public void TR_001_User_Login() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
         WebDriver driver = getDriver();
 
-        driver.navigate().to("https://staging5.openquire.com/reports/669029");
+        driver.navigate().to("https://staging5.openquire.com/");
         BaseClass.quireLogin().enterEmail_bv_admin_level();
         BaseClass.quireLogin().enterPassword();
         BaseClass.quireLogin().clickLogin();
+    }
+
+    @Test
+    public void TR_001a_delete_items() throws InterruptedException {
+//delete report
+        BaseClass.staging5().clickReportsTab();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(1000);
+        BaseClass.templatesSection().delete_automation_folders();
+        Thread.sleep(1000);
+//delete templates
+ BaseClass.templatesSection().clickTemplatesTab();
+        Thread.sleep(1000);
+        BaseClass.templatesSection().delete_automation_templates();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_cancel_alert_message();
+        Thread.sleep(1000);
+
+        //delete wb items
+        BaseClass.staging5().clickLibrariesTab();
+        BaseClass.staging5().click_librariesTab_wordBankDropdown();
+        Thread.sleep(600);
+        BaseClass.templatesSection().enterSearchField_QA_WB();
+        Thread.sleep(3000);
+        BaseClass.staging5().delete_QA_WB_items();
+        Thread.sleep(1000);
+
     }
 
     @Test
@@ -75,6 +105,8 @@ public class New_CK5_Editor extends ReusableAnnotations {
         BaseClass.templatesSection().clickAddContentRow_introPages();
         Thread.sleep(1500);
         BaseClass.ck5editor().enter_text_body_ck5();
+        Thread.sleep(500);
+        BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
 
 
@@ -338,6 +370,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
 
         BaseClass.ck5editor().enter_section_row_1_body_ck5();
         Thread.sleep(500);
+        BaseClass.staging5().click_out_of_section();
 
 
         //click grey icon and add instruction text to cover letter
@@ -497,7 +530,8 @@ public class New_CK5_Editor extends ReusableAnnotations {
         BaseClass.staging5().click_wordBank_add_content_row();
         Thread.sleep(500);
         BaseClass.ck5editor().capture_ck5_editor_inner_icons();
-
+        Thread.sleep(500);
+        BaseClass.ck5editor().enter_instruction_text_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_wordBank_assign_to_section();
         Thread.sleep(400);
@@ -575,9 +609,16 @@ public class New_CK5_Editor extends ReusableAnnotations {
 
     @Test
     public void TR_003b_insert_stamp_signature_report() throws InterruptedException {
-
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(1500);
+        BaseClass.staging5().click_default_section_title();
+        Thread.sleep(1000);
+        BaseClass.pca_xml_section().clickAddSectionButton();
+        Thread.sleep(2000);
+        BaseClass.staging5().click_add_section_toSection();
+        Thread.sleep(1000);
+        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_Section2_row_editor();
+        Thread.sleep(1000);
         BaseClass.ck5editor().click_stamp_icon_ck5();
         Thread.sleep(1500);
         BaseClass.ck5editor().click_stamp_icon_dropdown_ck5();
@@ -735,10 +776,10 @@ public class New_CK5_Editor extends ReusableAnnotations {
             //Thread.sleep(2000);
 
            // BaseClass.staging5().click_testing_inc_company();
-            BaseClass.reportfoldersection().click_ck5_report_link();
+            BaseClass.ck5editor().click_ck5_permissions_report_link();
             //Thread.sleep(1000);
            // BaseClass.staging5().switchToAutomationReportTab();
-            //Thread.sleep(1000);
+            Thread.sleep(1000);
         //    BaseClass.staging5().clickSection_row_editor();
             BaseClass.ck5editor().verify_ck5_lower_permission_level();
          //   WebDriver driver = getDriver();
@@ -1220,7 +1261,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         Thread.sleep(500 );
         //quick preview tab - capture header and footer data
         BaseClass.smartTables().verify_qp_ST_reference_tag_not_visible();
-        Thread.sleep(505000);
+        Thread.sleep(500);
 
         BaseClass.smartTables().verify_quickPreview_linked_section_isNot_visible();
         Thread.sleep(500);
@@ -1247,22 +1288,31 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         //wordbank create item
         BaseClass.smartTables().click_row5_richText();
         Thread.sleep(500);
-
         BaseClass.smartTables().click_first_column_dropdown_smartTable();
         Thread.sleep(500);
         BaseClass.smartTables().click_create_wordBank_item_smartTable_dropdown();
         Thread.sleep(500);
         BaseClass.staging5().enter_wordbank_ST_new_title();
         Thread.sleep(900);
-
-        //NOT WORKING 10-21-24
-       // BaseClass.staging5().click_wordBank_add_content_row();
-       // Thread.sleep(500);
-
-        BaseClass.templatesSection().enter_wb_text_iFrame();
+        BaseClass.staging5().clickWordBank_label_dropdown_arrow();
+        Thread.sleep(800);
+        BaseClass.staging5().clickWordBank_label_dropdown_firstLink();
+        Thread.sleep(900);
+        //add content row
+        BaseClass.templatesSection().clickAddContentRow_instruction();
+        Thread.sleep(500);
+        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+        Thread.sleep(500);
+        BaseClass.ck5editor().enter_instruction_text_ck5();
+        Thread.sleep(500);
+        BaseClass.staging5().click_wordBank_add_content_row();
+        Thread.sleep(500);
+        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+        Thread.sleep(500);
+        BaseClass.ck5editor().enter_instruction_text_ck5();
         Thread.sleep(500);
         BaseClass.templatesSection().clickSave2();
-        Thread.sleep(500);
+        Thread.sleep(800);
         BaseClass.smartTables().click_smartTable_sectionView();
         Thread.sleep(500);
 
@@ -1455,8 +1505,8 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         BaseClass.smartTables().click_smartTable_sectionView();
 
         BaseClass.smartTables().click_smartTable_sectionView();
-
-        //  driver.navigate().refresh();
+//for formula dropdown
+          driver.navigate().refresh();
         Thread.sleep(1000);
 
         // click r5c5 dynamic cell - formula
@@ -1566,11 +1616,20 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         Thread.sleep(500);
         //resolve second comment
         BaseClass.ck5editor().click_comments_resolve_button();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_smartTable_title_header();
+
+        //     BaseClass.ck5editor().click_unresolved_1_comment_icon();
+        Thread.sleep(1000);
+        BaseClass.smartTables().click_c1_header();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().click_unresolved_1_comment_icon();
         Thread.sleep(1500);
 
 //click next cell, pl,aintext to add comment to
         BaseClass.smartTables().click_row1_plainText_inside_ST();
         Thread.sleep(500);
+
         BaseClass.ck5editor().add_new_comment_to_ST();
         Thread.sleep(500);
 
@@ -1627,7 +1686,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         //verify green icons in cells match and so does the the comments panel
         BaseClass.ck5editor().verify_resolved_comments_smartTable();
         Thread.sleep(500);
-        BaseClass.staging5().click_cancel_button_popup();
+        BaseClass.ck5editor().click_close_button_popup();
         Thread.sleep(500);
         BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
         BaseClass.smartTables().click_smartTable_sectionView();
@@ -1674,32 +1733,29 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         //hover r7c5 dynamic cell - verify instruction text
         BaseClass.smartTables().hover_row7_column5_inside_ST();
         Thread.sleep(500);
-        BaseClass.staging5().click_smartTable_title_header();
-        Thread.sleep(500);
-        driver.navigate().refresh();
-        Thread.sleep(500);
-
-    }
-
-
-
-    @Test
-    public void TR_020_sort_columns() throws InterruptedException{
-
-
-
-        BaseClass.smartTables().click_c1_header();
-        Thread.sleep(1000);
-
-        BaseClass.smartTables().click_sort_columns_except_formula_and_date();
-        Thread.sleep(1000);
-
         BaseClass.smartTables().click_smartTable_sectionView();
         Thread.sleep(500);
-
-
-
     }
+
+
+
+//    @Test
+//    public void TR_020_sort_columns() throws InterruptedException{
+//
+//
+//
+//        BaseClass.smartTables().click_c1_header();
+//        Thread.sleep(1000);
+//
+//        BaseClass.smartTables().click_sort_columns_except_formula_and_date();
+//        Thread.sleep(1000);
+//
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//
+//
+//
+//    }
     @Test
     public void TR_021_rows_and_headerRows() throws InterruptedException {
         WebDriver driver = getDriver();
@@ -1858,14 +1914,14 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         Thread.sleep(1000);
         BaseClass.ck5editor().ck5_multiple_comments_test();
         Thread.sleep(1000);
-        //sra
-        driver.navigate().to("https://staging5.openquire.com/templates/668838");
-        Thread.sleep(1000);
-        BaseClass.ck5editor().ck5_multiple_comments_test();
-        //zon
-        driver.navigate().to("https://staging5.openquire.com/templates/668840");
-        Thread.sleep(1000);
-        BaseClass.ck5editor().ck5_multiple_comments_test();
+//        //sra
+//        driver.navigate().to("https://staging5.openquire.com/templates/668838");
+//        Thread.sleep(1000);
+//        BaseClass.ck5editor().ck5_multiple_comments_test();
+//        //zon
+//        driver.navigate().to("https://staging5.openquire.com/templates/668840");
+//        Thread.sleep(1000);
+//        BaseClass.ck5editor().ck5_multiple_comments_test();
 
 
         //fm1104
