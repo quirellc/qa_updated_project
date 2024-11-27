@@ -66,7 +66,7 @@ public class Regression2 extends ReusableAnnotations {
         //go to text body iframe, enter text
         BaseClass.templatesSection().clickAddContentRow_introPages();
         Thread.sleep(2000);
-        BaseClass.ck5editor().enter_text_body_ck5();
+        BaseClass.ck5editor().enter_section_row_1_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
