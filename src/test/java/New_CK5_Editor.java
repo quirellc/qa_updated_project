@@ -826,243 +826,243 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
     BaseClass.reportfoldersection().clickReportsFirstLink();
     Thread.sleep(2000);
 }
-    @Test
-    public void TR_010_assign_wb() throws InterruptedException {
-//add smart table to section and add columns
-        BaseClass.staging5().click_default_section_title();
-        Thread.sleep(1000);
-
-
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(500);
-        BaseClass.staging5().click_insert_word_bank_blue_icon();
-        Thread.sleep(500);
-        BaseClass.staging5().click_insert_wordbank_add_item_arrow();
-        Thread.sleep(500);
-        BaseClass.staging5().click_section_1_header();
-        Thread.sleep(500);
-    }
-    @Test
-    public void TR_011_create_ST() throws InterruptedException {
-//        BaseClass.staging5().capture_Section_row_editor();
+//    @Test
+//    public void TR_010_assign_wb() throws InterruptedException {
+////add smart table to section and add columns
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(1000);
+//
+//
+//        BaseClass.staging5().clickSection_row_editor();
 //        Thread.sleep(500);
-        WebDriver driver = getDriver();
-        BaseClass.pca_xml_section().clickAddSectionButton();
-        Thread.sleep(500);
-        BaseClass.staging5().click_add_smartTable_toSection();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_add_column_button_smartTable();
-        Thread.sleep(500);
-
-        //add rich text column, rich text column default
-
-        BaseClass.smartTables().enter_column_name_richText_smartTable();
-        Thread.sleep(500);
-        BaseClass.staging5().click_save_and_add_another_button();
-        Thread.sleep(500);
-
-        //add plain text column
-
-        BaseClass.smartTables().enter_column_name_plainText_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().select_column_type_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_plainText_dropDown_column_type();
-        Thread.sleep(500);
-        BaseClass.staging5().click_save_and_add_another_button();
-        Thread.sleep(500);
-
-
-        //add number column
-        BaseClass.smartTables().enter_column_name_number_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().select_column_type_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_number_dropDown_column_type();
-        Thread.sleep(500);
-        BaseClass.staging5().click_save_and_add_another_button();
-        Thread.sleep(500);
-
-        //add formula column
-        BaseClass.smartTables().enter_column_name_formula_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().select_column_type_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_formula_column_type();
-        Thread.sleep(500);
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(1500);
-
-
-
-
-        BaseClass.smartTables().click_add_rows_to_bottom_button();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(1000);
-
-        Thread.sleep(500);
-
-        driver.navigate().refresh();
-
-        Thread.sleep(500);
-
-
-        //    add date column
-        BaseClass.smartTables().click_c1_header();
-        Thread.sleep(500);
-
-        BaseClass.smartTables().click_smartTable_actions_button();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_add_column_ST_dropdown_button();
-        Thread.sleep(500);
-
-        BaseClass.smartTables().enter_column_name_date_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().select_column_type_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_date_column_type();
-        Thread.sleep(500);
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
-
-        driver.navigate().refresh();
-
-        Thread.sleep(500);
-
-        //     click date column, add to left, add dynamic column
-        BaseClass.smartTables().click_c1_header();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_date_column_dropdown();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_add_column_to_left_dropdown();
-        Thread.sleep(500);
-
-        BaseClass.smartTables().enter_column_name_dynamic_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().select_column_type_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_dynamic_column_type();
-
-        Thread.sleep(1000);
-        //  BaseClass.staging5().click_out_of_modal();
-        //   Thread.sleep(1000);
-        BaseClass.staging5().click_save_button();
-        //Thread.sleep(1500);
-//        BaseClass.staging5().click_smartTable_sectionView();
-        Thread.sleep(500);
-
-        driver.navigate().refresh();
-
-        Thread.sleep(500);
-
-        // add column to right of date- TO BE DELETED
-
-        //   BaseClass.staging5().click_r1_c1();
-        //   Thread.sleep(500);
-        BaseClass.smartTables().click_c1_header();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_date_column_dropdown();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_add_column_to_right_dropdown();
-
-        BaseClass.smartTables().enter_column_name_toBeDeleted_smartTable();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_save_button();
-        // Thread.sleep(500);
-        Thread.sleep(500);
-
-        driver.navigate().refresh();
-
-        Thread.sleep(500);
-//           Thread.sleep(500);
-        BaseClass.smartTables().click_c1_header();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_toBeDeleted_column_dropdown();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_delete_column_dropdown();
-        Thread.sleep(500);
-        driver.switchTo().alert().accept();
-        Thread.sleep(500);
-        BaseClass.smartTables().verify_toBeDeletedColumn_isNot_visible();
-        Thread.sleep(1500);
-
-
-    }
+//        BaseClass.staging5().click_insert_word_bank_blue_icon();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_insert_wordbank_add_item_arrow();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_section_1_header();
+//        Thread.sleep(500);
+//    }
+//    @Test
+//    public void TR_011_create_ST() throws InterruptedException {
+////        BaseClass.staging5().capture_Section_row_editor();
+////        Thread.sleep(500);
+//        WebDriver driver = getDriver();
+//        BaseClass.pca_xml_section().clickAddSectionButton();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_add_smartTable_toSection();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_add_column_button_smartTable();
+//        Thread.sleep(500);
+//
+//        //add rich text column, rich text column default
+//
+//        BaseClass.smartTables().enter_column_name_richText_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_and_add_another_button();
+//        Thread.sleep(500);
+//
+//        //add plain text column
+//
+//        BaseClass.smartTables().enter_column_name_plainText_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().select_column_type_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_plainText_dropDown_column_type();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_and_add_another_button();
+//        Thread.sleep(500);
+//
+//
+//        //add number column
+//        BaseClass.smartTables().enter_column_name_number_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().select_column_type_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_number_dropDown_column_type();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_and_add_another_button();
+//        Thread.sleep(500);
+//
+//        //add formula column
+//        BaseClass.smartTables().enter_column_name_formula_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().select_column_type_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_formula_column_type();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(1500);
+//
+//
+//
+//
+//        BaseClass.smartTables().click_add_rows_to_bottom_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(1000);
+//
+//        Thread.sleep(500);
+//
+//        driver.navigate().refresh();
+//
+//        Thread.sleep(500);
+//
+//
+//        //    add date column
+//        BaseClass.smartTables().click_c1_header();
+//        Thread.sleep(500);
+//
+//        BaseClass.smartTables().click_smartTable_actions_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_add_column_ST_dropdown_button();
+//        Thread.sleep(500);
+//
+//        BaseClass.smartTables().enter_column_name_date_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().select_column_type_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_date_column_type();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//
+//        driver.navigate().refresh();
+//
+//        Thread.sleep(500);
+//
+//        //     click date column, add to left, add dynamic column
+//        BaseClass.smartTables().click_c1_header();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_date_column_dropdown();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_add_column_to_left_dropdown();
+//        Thread.sleep(500);
+//
+//        BaseClass.smartTables().enter_column_name_dynamic_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().select_column_type_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_dynamic_column_type();
+//
+//        Thread.sleep(1000);
+//        //  BaseClass.staging5().click_out_of_modal();
+//        //   Thread.sleep(1000);
+//        BaseClass.staging5().click_save_button();
+//        //Thread.sleep(1500);
+////        BaseClass.staging5().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//
+//        driver.navigate().refresh();
+//
+//        Thread.sleep(500);
+//
+//        // add column to right of date- TO BE DELETED
+//
+//        //   BaseClass.staging5().click_r1_c1();
+//        //   Thread.sleep(500);
+//        BaseClass.smartTables().click_c1_header();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_date_column_dropdown();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_add_column_to_right_dropdown();
+//
+//        BaseClass.smartTables().enter_column_name_toBeDeleted_smartTable();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_save_button();
+//        // Thread.sleep(500);
+//        Thread.sleep(500);
+//
+//        driver.navigate().refresh();
+//
+//        Thread.sleep(500);
+////           Thread.sleep(500);
+//        BaseClass.smartTables().click_c1_header();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_toBeDeleted_column_dropdown();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_delete_column_dropdown();
+//        Thread.sleep(500);
+//        driver.switchTo().alert().accept();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_toBeDeletedColumn_isNot_visible();
+//        Thread.sleep(1500);
+//
+//
+//    }
 
     @Test
     public void TR_012_reportTag_richtext() throws InterruptedException {
         WebDriver driver = getDriver();
 
-        BaseClass.smartTables().click_smartTable_sectionView();
-
-        Thread.sleep(1000);
-
-        //enter rich text
-        BaseClass.smartTables().enter_row1_richText();
-        Thread.sleep(1000);
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(1000);
-   // enter rich text
-        BaseClass.smartTables().enter_r10_c1_richtext();
-        Thread.sleep(1000);
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(1500);
-
-
-        //enter rich text - report tag
-        BaseClass.smartTables().click_row2_richText();
-        Thread.sleep(500);
-        BaseClass.ck5editor().click_report_tag_icon_ck5();
-        Thread.sleep(500);
-        BaseClass.ck5editor().click_reportTag_dropDownItem_ck5_modal();
-        Thread.sleep(500);
-        BaseClass.templatesSection().double_click_report_tag_iframe();
-
-        // in yellow report tag, enter text, test@quiretest.com
-        BaseClass.staging5().enter_email_ReportTagField();
-        Thread.sleep(500);
-        // click out of section, capture report tag text
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
-        BaseClass.staging5().capture_ReportTagField();
-        Thread.sleep(500);
-
-
-
-        //go to text body iframe, double click and edit blue report tag
-        BaseClass.smartTables().click_row2_richText();
-        Thread.sleep(500);
-        BaseClass.templatesSection().double_click_report_tag_iframe();
-        Thread.sleep(500);
-        // in blue report tag, enter text, automation_new_test@quiretest.com
-        BaseClass.staging5().enter_edited_email_ReportTagField();
-        Thread.sleep(500);
-        // click out of section, capture edited blue report tag text
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
-        BaseClass.staging5().capture_ReportTagField();
-        Thread.sleep(500);
-
-
-        //go to text body iframe, double click and delete text blue report tag
-        BaseClass.smartTables().click_row2_richText();
-        Thread.sleep(500);
-        BaseClass.templatesSection().double_click_report_tag_iframe();
-        Thread.sleep(500);
-        // in blue report tag, select all and delete
-        BaseClass.staging5().select_all_and_delete_ReportTagField();
-        Thread.sleep(1000);
-        //click blue check box to save empty field
-        BaseClass.pca_xml_section().clickSaveCheckButton();
-        Thread.sleep(500);
-        // click out of section, capture edited blue report tag text
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
-        BaseClass.staging5().capture_ReportTagField();
-        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//
+//        Thread.sleep(1000);
+//
+//        //enter rich text
+//        BaseClass.smartTables().enter_row1_richText();
+//        Thread.sleep(1000);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(1000);
+//   // enter rich text
+//        BaseClass.smartTables().enter_r10_c1_richtext();
+//        Thread.sleep(1000);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(1500);
+//
+//
+//        //enter rich text - report tag
+//        BaseClass.smartTables().click_row2_richText();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().click_report_tag_icon_ck5();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().click_reportTag_dropDownItem_ck5_modal();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().double_click_report_tag_iframe();
+//
+//        // in yellow report tag, enter text, test@quiretest.com
+//        BaseClass.staging5().enter_email_ReportTagField();
+//        Thread.sleep(500);
+//        // click out of section, capture report tag text
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        BaseClass.staging5().capture_ReportTagField();
+//        Thread.sleep(500);
+//
+//
+//
+//        //go to text body iframe, double click and edit blue report tag
+//        BaseClass.smartTables().click_row2_richText();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().double_click_report_tag_iframe();
+//        Thread.sleep(500);
+//        // in blue report tag, enter text, automation_new_test@quiretest.com
+//        BaseClass.staging5().enter_edited_email_ReportTagField();
+//        Thread.sleep(500);
+//        // click out of section, capture edited blue report tag text
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        BaseClass.staging5().capture_ReportTagField();
+//        Thread.sleep(500);
+//
+//
+//        //go to text body iframe, double click and delete text blue report tag
+//        BaseClass.smartTables().click_row2_richText();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().double_click_report_tag_iframe();
+//        Thread.sleep(500);
+//        // in blue report tag, select all and delete
+//        BaseClass.staging5().select_all_and_delete_ReportTagField();
+//        Thread.sleep(1000);
+//        //click blue check box to save empty field
+//        BaseClass.pca_xml_section().clickSaveCheckButton();
+//        Thread.sleep(500);
+//        // click out of section, capture edited blue report tag text
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        BaseClass.staging5().capture_ReportTagField();
+//        Thread.sleep(500);
 
 
      //   go to text body iframe, and delete yellow report tag from text

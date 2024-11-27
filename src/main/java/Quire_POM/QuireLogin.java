@@ -144,16 +144,16 @@ public class QuireLogin extends ReusableAnnotations {
 
     public void enterEmail_bv_admin_level() {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_admin_bv@quiretest.com", logger, "test2 admin ID");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_admin_bv@quiretest.com", logger, "bv admin ID");
         } else if (browserName.contains("Firefox")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_admin_bv2@quiretest.com", logger, "test admin ID");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_admin_bv2@quiretest.com", logger, "bv admin ID");
         }}
 
     public void enterEmail_bv_sysadmin_level() {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_bv@quiretest.com", logger, "test2 admin ID");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_bv@quiretest.com", logger, "bv  sysadmin ID");
         } else if (browserName.contains("Firefox")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_bv2@quiretest.com", logger, "test admin ID");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_bv2@quiretest.com", logger, "bv sysadmin ID");
         }}
 
     public void enterEmail_admin_atlas() {

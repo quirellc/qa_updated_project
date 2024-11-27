@@ -87,11 +87,11 @@ WebElement text_body;
     }
 
     public void clear_current_text_body() {
-        ReusableMethodsLoggersPOM.selectAllandDelete_method(driver, text_body, logger, " text body");
+        ReusableMethodsLoggersPOM.selectAllandDelete_method(driver, section_row_1_body, logger, " text body");
     }
 
     public void click_escape_current_text() {
-        ReusableMethodsLoggersPOM.escapeMethod(driver, text_body, logger, " text body");
+        ReusableMethodsLoggersPOM.escapeMethod(driver, section_row_1_body, logger, " text body");
     }
 
     public void select_all_and_backspace_section_body() throws InterruptedException {
