@@ -1345,7 +1345,7 @@ public class Staging5 extends ReusableAnnotations {
     public void upload_footer_image() throws InterruptedException {
         ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "signature.jpg", logger, "Footer_image");
         Thread.sleep(500);
-        ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "signature.jpg", logger, "Footer_image");
+        //ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "signature.jpg", logger, "Footer_image");
 
         BaseClass.staging5().captureAlertMessage();
     }
