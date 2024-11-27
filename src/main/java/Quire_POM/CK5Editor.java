@@ -89,6 +89,12 @@ WebElement text_body;
     public void clear_current_text_body() {
         ReusableMethodsLoggersPOM.selectAllandDelete_method(driver, section_row_1_body, logger, " text body");
     }
+    @FindBy(xpath = "//td[@class='htLeft quire-rich-text current']//p")
+    WebElement text_body_ST;
+    public void clear_current_text_body_ST() {
+        ReusableMethodsLoggersPOM.selectAllandDelete_method(driver, text_body_ST, logger, "text_body_ST");
+    }
+
 
     public void click_escape_current_text() {
         ReusableMethodsLoggersPOM.escapeMethod(driver, section_row_1_body, logger, " text body");
