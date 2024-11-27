@@ -111,7 +111,7 @@ public class CK5Editor extends ReusableAnnotations {
 
 
 //    @FindBy(xpath = "//div[@aria-label='Editor editing area: main. Press ⌥0 for help.']")
-@FindBy(xpath = "(//p)[1]")
+@FindBy(xpath = "//p[@class='ck-placeholder']")
 WebElement instruction_text_ck5;
     public void enter_instruction_text_ck5() {
 
