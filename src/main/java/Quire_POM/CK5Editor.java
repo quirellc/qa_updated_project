@@ -110,8 +110,9 @@ public class CK5Editor extends ReusableAnnotations {
 
 
 
-    @FindBy(xpath = "//div[@aria-label='Editor editing area: main. Press ⌥0 for help.']")
-    WebElement instruction_text_ck5;
+//    @FindBy(xpath = "//div[@aria-label='Editor editing area: main. Press ⌥0 for help.']")
+@FindBy(xpath = "(//p)[1]")
+WebElement instruction_text_ck5;
     public void enter_instruction_text_ck5() {
 
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Test Automation - Instructions", logger, "instruction_text_iFrame");
