@@ -22,6 +22,14 @@ public class New_CK5_Editor extends ReusableAnnotations {
 
     @Test
     public void TR_001a_delete_items() throws InterruptedException {
+        //delete wb items
+        BaseClass.staging5().clickLibrariesTab();
+        BaseClass.staging5().click_librariesTab_wordBankDropdown();
+        Thread.sleep(600);
+        BaseClass.templatesSection().enterSearchField_QA_WB();
+        Thread.sleep(3000);
+        BaseClass.staging5().delete_QA_WB_items();
+        Thread.sleep(1000);
 //delete report
         BaseClass.staging5().clickReportsTab();
         Thread.sleep(1000);
@@ -36,17 +44,8 @@ public class New_CK5_Editor extends ReusableAnnotations {
         Thread.sleep(1000);
         BaseClass.templatesSection().delete_automation_templates();
         Thread.sleep(1000);
-        BaseClass.staging5().click_cancel_alert_message();
-        Thread.sleep(1000);
 
-        //delete wb items
-        BaseClass.staging5().clickLibrariesTab();
-        BaseClass.staging5().click_librariesTab_wordBankDropdown();
-        Thread.sleep(600);
-        BaseClass.templatesSection().enterSearchField_QA_WB();
-        Thread.sleep(3000);
-        BaseClass.staging5().delete_QA_WB_items();
-        Thread.sleep(1000);
+
 
     }
 
