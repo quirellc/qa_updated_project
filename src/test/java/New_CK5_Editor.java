@@ -96,9 +96,9 @@ public class New_CK5_Editor extends ReusableAnnotations {
         BaseClass.staging5().click_coverLetter_sectionView();
         Thread.sleep(1000);
         BaseClass.staging5().upload_footer_image();
-        Thread.sleep(1000);
+        Thread.sleep(2500);
         BaseClass.staging5().upload_header_image();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
 
 
         //go to text body iframe, enter text
