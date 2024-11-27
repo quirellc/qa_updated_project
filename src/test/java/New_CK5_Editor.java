@@ -1068,6 +1068,9 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
      //   go to text body iframe, and delete yellow report tag from text
         BaseClass.smartTables().click_row2_richText();
         Thread.sleep(500);
+        System.out.println(driver.getPageSource());  // Log page source
+        Thread.sleep(500);
+
         BaseClass.ck5editor().clear_current_text_body_ST();
         Thread.sleep(500);
         //go back to parent frame
