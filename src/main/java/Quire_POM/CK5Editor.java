@@ -38,7 +38,7 @@ public class CK5Editor extends ReusableAnnotations {
     WebElement section_row_1_body;
     public void enter_section_row_1_body_ck5() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body,"QA Automationn Testng Script - Spell Check Check Section" , logger, "section_row_1_body");}
-   @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']")
+   @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
     WebElement text_body;
     public void enter_text_body_ck5() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body,"QA Automationn Testing Script - Spell Check Check Section_" , logger, "text_body");}
