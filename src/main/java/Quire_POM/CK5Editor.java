@@ -272,7 +272,7 @@ WebElement instruction_text_ck5;
     public void click_footNote_icon_ck5() {
         ReusableMethodsLoggersPOM.clickMethod(driver, footnote_icon_ck5, logger, "footnote_icon_ck5");}
 
-    @FindBy(xpath = "//div[@class='ck ck-editor__main']")
+    @FindBy(xpath = "//div[@aria-label='Create Footnote']//div[@class='ck ck-editor__main']//p")
 //    @FindBy(xpath = "(//p)[1]")
 
     WebElement footNote_textBox;
