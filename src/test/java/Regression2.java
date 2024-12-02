@@ -57,8 +57,8 @@ public class Regression2 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.ck5editor().click_footNote_icon_ck5();
         Thread.sleep(500);
-        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
-        Thread.sleep(1500); // Use sparingly for debugging; replace with proper waits.
+       // BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+        Thread.sleep(1500);
 
         BaseClass.ck5editor().enter_footNote_textBox();
         Thread.sleep(1000);
