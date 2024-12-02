@@ -41,37 +41,34 @@ public class Regression2 extends ReusableAnnotations {
     @Test
     public void TR001_user_login() throws InterruptedException {
         WebDriver driver = getDriver();
-        System.out.println(driver.getClass().getSimpleName());
+      //  System.out.println(driver.getClass().getSimpleName());
         // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging5.openquire.com/templates/669256");
+        driver.navigate().to("https://staging5.openquire.com/reports/669267");
         //  WebDriver driver1 = getDriver();
 
-        String pageTitle = driver.getTitle();
-        if (pageTitle.contains("OpenQuire")) {
             BaseClass.quireLogin().enterEmail_bv_sysadmin_level();
             Thread.sleep(1000);
             BaseClass.quireLogin().enterPassword();
             Thread.sleep(1000);
             BaseClass.quireLogin().clickLogin();
             Thread.sleep(3000);
-        } else {
-            System.out.println("\n" + "Already logged in. Skipping login steps.");
-            Thread.sleep(3000);
-        }
 
-
-        BaseClass.staging5().click_coverLetter_sectionView();
+        BaseClass.smartTables().click_row3_richText();
         Thread.sleep(500);
-
-        //go to text body iframe, enter text
-        BaseClass.templatesSection().clickAddContentRow_introPages();
-        Thread.sleep(2000);
-     //   BaseClass.ck5editor().enter_text_body_ck5();
+        BaseClass.ck5editor().click_footNote_icon_ck5();
         Thread.sleep(500);
-        BaseClass.staging5().click_out_of_section();
+        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+        BaseClass.ck5editor().enter_footNote_textBox();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().click_save_button_footnote();
+
+//        BaseClass.templatesSection().enter_instruction_text_iFrame();
+//        driver.switchTo().parentFrame();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_ok_button_footNote();
         Thread.sleep(500);
-
-
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
 
     }
 
