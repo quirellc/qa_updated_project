@@ -1605,13 +1605,13 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         BaseClass.smartTables().click_r1_c1();
         Thread.sleep(1000);
         //        Add 2 new comments
-        BaseClass.ck5editor().double_click_first_line();
+        BaseClass.ck5editor().double_click_first_line_cell();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comment_icon_ck5();
         Thread.sleep(500);
         BaseClass.ck5editor().enter_comment_to_field();
         Thread.sleep(500);
-        BaseClass.ck5editor().double_click_third_line();
+        BaseClass.ck5editor().double_click_third_line_cell();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comment_icon_ck5();
         Thread.sleep(500);

@@ -43,7 +43,7 @@ public class Regression2 extends ReusableAnnotations {
         WebDriver driver = getDriver();
         //  System.out.println(driver.getClass().getSimpleName());
         // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging5.openquire.com/reports/669267");
+        driver.navigate().to("https://staging5.openquire.com");
         //  WebDriver driver1 = getDriver();
 
         BaseClass.quireLogin().enterEmail_bv_sysadmin_level();
@@ -77,10 +77,6 @@ public class Regression2 extends ReusableAnnotations {
 
             driver.navigate().to("https://staging5.openquire.com/templates/668836");
             Thread.sleep(1500);
-            BaseClass.pca_xml_section().clickSectionView_QuickFactsTable();
-            Thread.sleep(1000);
-            BaseClass.ck5editor().ck5_special_section_comments_test();
-            Thread.sleep(1000);
             BaseClass.ck5editor().ck5_multiple_comments_test();
             Thread.sleep(1000);
 

@@ -53,6 +53,41 @@ WebElement text_body;
 
     //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
     @FindBy(xpath = "//div[@class='quire-smarttable-rt-editor-container']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
+    WebElement text_body_firstLine_cell;
+    public void double_click_first_line_cell() {
+// JavaScript to select the entire contents of the specified paragraph
+        String script = "var element = arguments[0];" +
+                "var range = document.createRange();" +
+                "var sel = window.getSelection();" +
+                "range.selectNodeContents(element);" + // Select the entire content of the paragraph
+                "sel.removeAllRanges();" +
+                "sel.addRange(range);";
+
+// Execute the script to select the paragraph
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(script, text_body_firstLine_cell);
+        //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
+    }
+    //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
+    @FindBy(xpath = "//div[@class='quire-smarttable-rt-editor-container']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 3')]")
+    WebElement text_body_thirdLine_cell;
+    public void double_click_third_line_cell() {
+// JavaScript to select the entire contents of the specified paragraph
+        String script = "var element = arguments[0];" +
+                "var range = document.createRange();" +
+                "var sel = window.getSelection();" +
+                "range.selectNodeContents(element);" + // Select the entire content of the paragraph
+                "sel.removeAllRanges();" +
+                "sel.addRange(range);";
+
+// Execute the script to select the paragraph
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(script, text_body_thirdLine_cell);
+     //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
+    }
+
+
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
     WebElement text_body_firstLine;
     public void double_click_first_line() {
 // JavaScript to select the entire contents of the specified paragraph
@@ -68,8 +103,8 @@ WebElement text_body;
         js.executeScript(script, text_body_firstLine);
         //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
     }
-    //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
-    @FindBy(xpath = "//p[contains(text(),'QA Automation line 3')]")
+
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 3')]")
     WebElement text_body_thirdLine;
     public void double_click_third_line() {
 // JavaScript to select the entire contents of the specified paragraph
@@ -83,8 +118,9 @@ WebElement text_body;
 // Execute the script to select the paragraph
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(script, text_body_thirdLine);
-     //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
+        //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
     }
+
 
     public void clear_current_text_body() {
         ReusableMethodsLoggersPOM.selectAllandDelete_method(driver, section_row_1_body, logger, " text body");
