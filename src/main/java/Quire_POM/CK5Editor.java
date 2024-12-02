@@ -92,7 +92,7 @@ WebElement text_body;
       }}
 
 
-    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
+    @FindBy(xpath = "//section[@class='reportbody CT-hide']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
     WebElement text_body_firstLine;
     public void double_click_first_line() {
 // JavaScript to select the entire contents of the specified paragraph
@@ -109,7 +109,7 @@ WebElement text_body;
         //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
     }
 
-    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 3')]")
+    @FindBy(xpath = "//section[@class='reportbody CT-hide']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 3')]")
     WebElement text_body_thirdLine;
     public void double_click_third_line() {
 // JavaScript to select the entire contents of the specified paragraph
