@@ -473,7 +473,7 @@ WebElement instruction_text_ck5;
         BaseClass.ck5editor().click_submit_comment_button();
 
     }
-    @FindBy(xpath = "//div[@id='slidePanel-body-left']//p[@data-placeholder='Write a comment...']")
+    @FindBy(xpath = "//div[@id='slidePanel-body-left']//div[@id='comments-contentRegion']//div[@aria-label='Editor editing area: main']//p[@data-placeholder='Write a comment...']")
     WebElement add_a_comment_field;
 
     @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")
