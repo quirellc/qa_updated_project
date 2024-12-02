@@ -272,12 +272,12 @@ WebElement instruction_text_ck5;
     public void click_footNote_icon_ck5() {
         ReusableMethodsLoggersPOM.clickMethod(driver, footnote_icon_ck5, logger, "footnote_icon_ck5");}
 
-    @FindBy(xpath = "//div[@aria-label='Editor editing area: main. Press ⌥0 for help.']")
+    @FindBy(xpath = "//div[@aria-label='Editor editing area: main. Press ⌥0 for help.']//p")
 //    @FindBy(xpath = "(//p)[1]")
 
     WebElement footNote_textBox;
     public void enter_footNote_textBox() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, footNote_textBox, logger, "footNote_textBox");
+      //  ReusableMethodsLoggersPOM.clickMethod(driver, footNote_textBox, logger, "footNote_textBox");
 
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, footNote_textBox,"QA Automation Footnote text" ,  logger, "footNote_textBox");}
     @FindBy(xpath = "//div[@class='ck ck-dialog__actions']//button[2]")
