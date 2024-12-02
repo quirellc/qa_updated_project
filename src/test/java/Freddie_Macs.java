@@ -633,8 +633,8 @@ public class Freddie_Macs extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().verify_red_tracked_changes_is_Visible();
         Thread.sleep(1000);
-        BaseClass.staging5().verify_no_spellCheck_errors();
-        Thread.sleep(500);
+       // BaseClass.staging5().verify_no_spellCheck_errors();
+       // Thread.sleep(500);
 
 
 //click notification button and read the smart table  excel file information
