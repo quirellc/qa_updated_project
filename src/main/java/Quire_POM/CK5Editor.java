@@ -277,6 +277,8 @@ WebElement instruction_text_ck5;
 
     WebElement footNote_textBox;
     public void enter_footNote_textBox() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, footNote_textBox, logger, "footNote_textBox");
+
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, footNote_textBox,"QA Automation Footnote text" ,  logger, "footNote_textBox");}
     @FindBy(xpath = "//div[@class='ck ck-dialog__actions']//button[2]")
     WebElement save_button_footnote;
