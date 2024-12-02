@@ -60,19 +60,6 @@ public class Regression2 extends ReusableAnnotations {
         @Test
         public void TR_023_ck5_multiple_comments() throws InterruptedException {
             WebDriver driver = getDriver();
-            BaseClass.staging5().clickUserProfileTab();
-            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-            Thread.sleep(500);
-
-            //  String pageTitle = driver.getTitle();
-
-            BaseClass.quireLogin().enterEmail_bv_sysadmin_level();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().enterPassword();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(2000);
-
             //pca
 
             driver.navigate().to("https://staging5.openquire.com/templates/668836");
