@@ -92,7 +92,7 @@ WebElement text_body;
       }}
 
 
-    @FindBy(xpath = "//section[@class='reportbody CT-hide']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
+    @FindBy(xpath = "//section[@class='reportbody CT-hide']//div[@class='section-block']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
     WebElement text_body_firstLine;
     public void double_click_first_line() {
 // JavaScript to select the entire contents of the specified paragraph
@@ -847,7 +847,7 @@ int count = TC_highlights.size();
         BaseClass.ck5editor().enter_long_text_body_ck5();
         //   BaseClass.staging5().click_default_section_title();
         //       BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         //        Add 2 new comments
         BaseClass.ck5editor().double_click_first_line();
         Thread.sleep(500);
