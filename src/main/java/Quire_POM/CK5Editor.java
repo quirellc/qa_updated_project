@@ -52,7 +52,7 @@ WebElement text_body;
     }
 
     //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
-    @FindBy(xpath = "//p[contains(text(),'QA Automation line 1')]")
+    @FindBy(xpath = "//div[@class='quire-smarttable-rt-editor-container']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
     WebElement text_body_firstLine;
     public void double_click_first_line() {
 // JavaScript to select the entire contents of the specified paragraph
