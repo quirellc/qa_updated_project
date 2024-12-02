@@ -37,7 +37,7 @@ public class CK5Editor extends ReusableAnnotations {
     public void enter_intro_page_body_ck5() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body,"QA Automationn Testng Script - Spell Check Check Section" , logger, "section_row_1_body");}
 //   @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
-@FindBy(xpath = "(//p)[2]")
+@FindBy(xpath = "//section[@class='switchboard CT-hide']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
 WebElement text_body;
     public void enter_text_body_ck5() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body,"QA Automationn Testing Script - Spell Check Check Section_" , logger, "text_body");}
@@ -473,7 +473,7 @@ WebElement instruction_text_ck5;
         BaseClass.ck5editor().click_submit_comment_button();
 
     }
-    @FindBy(xpath = "//div[@id='slidePanel-body-left']//div[@id='comments-contentRegion']//div[@aria-label='Editor editing area: main']//p[@data-placeholder='Write a comment...']")
+    @FindBy(xpath = "//div[@id='slidePanel-body-left']//div[@id='comments-contentRegion']//div[@aria-label='Editor editing area: main']//p")
     WebElement add_a_comment_field;
 
     @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")

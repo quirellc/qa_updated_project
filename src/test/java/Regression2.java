@@ -43,7 +43,7 @@ public class Regression2 extends ReusableAnnotations {
         WebDriver driver = getDriver();
         //  System.out.println(driver.getClass().getSimpleName());
         // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging5.openquire.com");
+        driver.navigate().to("https://staging5.openquire.com/templates/669271");
         //  WebDriver driver1 = getDriver();
 
         BaseClass.quireLogin().enterEmail_bv_sysadmin_level();
@@ -53,85 +53,25 @@ public class Regression2 extends ReusableAnnotations {
         BaseClass.quireLogin().clickLogin();
         Thread.sleep(3000);
 
+        Thread.sleep(1000);
+
+        BaseClass.staging5().click_coverLetter_sectionView();
+        Thread.sleep(1000);
+        BaseClass.templatesSection().clickAddContentRow_introPages();
+        Thread.sleep(500);
+        BaseClass.ck5editor().select_all_text_introPages_body();
+        Thread.sleep(500);
+        BaseClass.ck5editor().click_comment_icon_ck5();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().verify_comment_highlight_is_Visible();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().enter_comments_to_field();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().update_comments_in_field();
+        Thread.sleep(9000);
+
+
     }
-
-
-
-        @Test
-        public void TR_023_ck5_multiple_comments() throws InterruptedException {
-            WebDriver driver = getDriver();
-            //pca
-
-            driver.navigate().to("https://staging5.openquire.com/templates/668836");
-            Thread.sleep(1500);
-            BaseClass.ck5editor().ck5_multiple_comments_test();
-            Thread.sleep(1000);
-
-
-
-//esa
-            driver.navigate().to("https://staging5.openquire.com/templates/668839");
-            Thread.sleep(1500);
-            BaseClass.pca_xml_section().clickSectionView_ESA_XML();
-            Thread.sleep(1000);
-            BaseClass.ck5editor().ck5_special_section_comments_test();
-            Thread.sleep(1000);
-            BaseClass.ck5editor().ck5_multiple_comments_test();
-            Thread.sleep(1000);
-//        //sra
-//        driver.navigate().to("https://staging5.openquire.com/templates/668838");
-//        Thread.sleep(1000);
-//        BaseClass.ck5editor().ck5_multiple_comments_test();
-//        //zon
-//        driver.navigate().to("https://staging5.openquire.com/templates/668840");
-//        Thread.sleep(1000);
-//        BaseClass.ck5editor().ck5_multiple_comments_test();
-
-
-            //fm1104
-            driver.navigate().to("https://staging5.openquire.com/templates/668841");
-            Thread.sleep(1000);
-            BaseClass.staging5().click_section_III_property_details_sectionView();
-            Thread.sleep(1000);
-            BaseClass.ck5editor().ck5_special_section_comments_test();
-            Thread.sleep(1000);
-            BaseClass.ck5editor().ck5_multiple_comments_test();
-            Thread.sleep(1000);
-
-
-            //fm1105
-            driver.navigate().to("https://staging5.openquire.com/templates/668845");
-            Thread.sleep(1000);
-            BaseClass.staging5().click_section_II_unit_details_sectionView();
-            Thread.sleep(1000);
-            BaseClass.ck5editor().ck5_special_section_comments_test();
-            Thread.sleep(1000);
-            BaseClass.ck5editor().ck5_multiple_comments_test();
-            Thread.sleep(1000);
-
-            //cost_recommendation
-            driver.navigate().to("https://staging5.openquire.com/templates/668846");
-            Thread.sleep(1000);
-            BaseClass.ck5editor().click_second_empty_comments_icon();
-            Thread.sleep(1000);
-            BaseClass.ck5editor().add_new_comment_to_ST();
-            BaseClass.ck5editor().verify_unresolved_1_comment_is_Visible();
-            BaseClass.ck5editor().click_comments_resolve_button();
-            BaseClass.ck5editor().verify_resolved_1_comment_is_Visible();
-
-            BaseClass.ck5editor().click_and_verify_comments_archive_icon();
-
-            BaseClass.ck5editor().reopen_archived_comment_discussion();
-            BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
-            BaseClass.ck5editor().delete_comments_in_field();
-            BaseClass.ck5editor().verify_grey_empty_comments_icon();
-            Thread.sleep(1000);
-
-        }
-
-
-
-
 }
 
 // click r5c5 dynamic cell - formu
