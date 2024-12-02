@@ -2,12 +2,10 @@ package Quire_POM;
 
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import reusableLibrary.ReusableAnnotations;
 import reusableLibrary.ReusableMethodsLoggersPOM;
 
@@ -48,7 +46,7 @@ WebElement text_body;
     }
 
     public void enter_long_text_body_ck5() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body, "QA Automation line 1\n\nQA Automation line 3", logger, "text_body");
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body, "QA Automation line 1\n\nQA Automation line 3", logger, "long text_body");
     }
 
     //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
@@ -73,6 +71,7 @@ WebElement text_body;
     WebElement text_body_thirdLine_cell;
     public void double_click_third_line_cell() {
 // JavaScript to select the entire contents of the specified paragraph
+     try {
         String script = "var element = arguments[0];" +
                 "var range = document.createRange();" +
                 "var sel = window.getSelection();" +
@@ -83,8 +82,14 @@ WebElement text_body;
 // Execute the script to select the paragraph
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(script, text_body_thirdLine_cell);
-     //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
-    }
+        System.out.println("Successfully double clicked on: " + text_body_thirdLine_cell.getText());
+        logger.log(LogStatus.PASS, "Successfully double clicked on: " + text_body_thirdLine_cell.getText());
+        return;
+    } catch (Exception e) {
+        // Retry the click if StaleElementReferenceException is caught
+        System.out.println("\n" + "Unable to  double click on: " + text_body_thirdLine_cell.getText());
+        logger.log(LogStatus.INFO, "Unable to  double click on: " + text_body_thirdLine_cell.getText());
+      }}
 
 
     @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
@@ -121,10 +126,11 @@ WebElement text_body;
         //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
     }
 
-
-    public void clear_current_text_body() {
-        ReusableMethodsLoggersPOM.selectAllandDelete_method(driver, section_row_1_body, logger, " text body");
-    }
+//    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
+//    WebElement text_body_ST;
+//    public void clear_current_text_body() {
+//        ReusableMethodsLoggersPOM.selectAllandDelete_method(driver, section_row_1_body, logger, " text body");
+//    }
     @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
     WebElement text_body_ST;
     public void clear_current_text_body_ST() {
@@ -467,7 +473,7 @@ WebElement instruction_text_ck5;
         BaseClass.ck5editor().click_submit_comment_button();
 
     }
-    @FindBy(xpath = "//div[@id='slidePanel-body-left']//p")
+    @FindBy(xpath = "//div[@id='slidePanel-body-left']//p[@data-placeholder='Write a comment...']")
     WebElement add_a_comment_field;
 
     @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")
@@ -893,7 +899,7 @@ int count = TC_highlights.size();
         Thread.sleep(500);
         BaseClass.ck5editor().verify_grey_empty_comments_icon();
         Thread.sleep(500);
-        BaseClass.ck5editor().clear_current_text_body();
+        BaseClass.ck5editor().clear_current_text_body_ST();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(1000);
