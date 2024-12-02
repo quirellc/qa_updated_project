@@ -431,7 +431,7 @@ WebElement instruction_text_ck5;
         BaseClass.ck5editor().click_submit_comment_button();
 
     }
-    @FindBy(xpath = "//div[@id='comments-contentRegion-virtual']//div[@class='ck ck-annotation-wrapper ck-rounded-corners ck-annotation-wrapper--active']//div[@aria-label='Editor editing area: main']//p")
+    @FindBy(xpath = "//div[@id='slidePanel-container-left']//div[@class='threadContainer flex-container flex-column gap-8']//p")
     WebElement add_a_comment_field;
 
     @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")
