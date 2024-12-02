@@ -667,8 +667,8 @@ public class ReusableMethodsLoggersPOM {
             logger.log(LogStatus.PASS, "Successfully clicked escape " + elementName);
 
         } catch (Exception e) {
-            System.out.println("Unable to right click : " + elementName + ": " + e);
-            logger.log(LogStatus.FAIL, "Unable to right click: " + elementName + ": " + e);
+            System.out.println("Unable to  click escape: " + elementName + ": " + e);
+            logger.log(LogStatus.FAIL, "Unable to  click escape: " + elementName + ": " + e);
         }
     }
 

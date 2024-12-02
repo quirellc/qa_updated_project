@@ -36,7 +36,7 @@ public class CK5Editor extends ReusableAnnotations {
 
     @FindBy(xpath = "(//p)[1]")
     WebElement section_row_1_body;
-    public void enter_section_row_1_body_ck5() {
+    public void enter_intro_page_body_ck5() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body,"QA Automationn Testng Script - Spell Check Check Section" , logger, "section_row_1_body");}
 //   @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
 @FindBy(xpath = "(//p)[2]")
@@ -95,9 +95,11 @@ WebElement text_body;
         ReusableMethodsLoggersPOM.selectAllandDelete_method(driver, text_body_ST, logger, "text_body_ST");
     }
 
+    @FindBy(xpath = "//div[@class='quire-smarttable-rt-editor-container']//p")
+    WebElement ST_cell;
 
-    public void click_escape_current_text() {
-        ReusableMethodsLoggersPOM.escapeMethod(driver, section_row_1_body, logger, " text body");
+    public void click_escape_current_cell() {
+        ReusableMethodsLoggersPOM.escapeMethod(driver, ST_cell, logger, " ST_cell");
     }
 
     public void select_all_and_backspace_section_body() throws InterruptedException {

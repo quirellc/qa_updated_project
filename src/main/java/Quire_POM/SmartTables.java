@@ -718,7 +718,7 @@ WebElement toBeDeleted_column_dropdown;
         ReusableMethodsLoggersPOM.rightClickMethod(driver, formula_cell_hasReferenceTag_smartTable, logger, " formula_cell_hasReferenceTag_smartTable ");
     }
 
-    @FindBy(xpath = "//td[contains(@class, 'htLeft') and contains(@class, 'current')]\n")
+    @FindBy(xpath = "//td[contains(@class, 'htLeft') and contains(@class, 'current')]")
 
     WebElement dynamic_cell_smartTable;
 

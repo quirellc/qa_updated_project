@@ -106,7 +106,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         //go to text body iframe, enter text
         BaseClass.templatesSection().clickAddContentRow_introPages();
         Thread.sleep(2000);
-        BaseClass.ck5editor().enter_section_row_1_body_ck5();
+        BaseClass.ck5editor().enter_intro_page_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
@@ -263,7 +263,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.templatesSection().clickAddContentRow_introPages();
         Thread.sleep(500);
-        BaseClass.ck5editor().enter_section_row_1_body_ck5();
+        BaseClass.ck5editor().enter_intro_page_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
 
@@ -370,7 +370,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.templatesSection().clickAddContentRow_introPages();
 
-        BaseClass.ck5editor().enter_section_row_1_body_ck5();
+        BaseClass.ck5editor().enter_intro_page_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
 
@@ -1369,7 +1369,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
      //   click r1c5 dynamic cell - number
         BaseClass.smartTables().click_row1_dynamic();
         Thread.sleep(500);
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(500);
         //right click r1c5 dynamic cell - after escape is clicked
         BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
@@ -1401,7 +1401,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         BaseClass.smartTables().click_row2_dynamic();
         Thread.sleep(500);
 //switch r2c5 dynamic cell to iframe - to click escape button
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(500);
         //  right click r2c5 dynamic cell - after escape is clicked
         BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
@@ -1435,7 +1435,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
 
         BaseClass.smartTables().click_row3_dynamic();
         Thread.sleep(500);
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(500);
         // right click r3c5 dynamic cell - after escape is clicked
         BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
@@ -1467,7 +1467,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
 
         BaseClass.smartTables().click_row4_dynamic();
         Thread.sleep(500);
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(500);
         //right click r4c5 dynamic cell - after escape is clicked
         BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
@@ -1518,7 +1518,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
 
         BaseClass.smartTables().click_row5_dynamic();
         Thread.sleep(500);
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(500);
         //right click r5c5 dynamic cell - after escape is clicked
         BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
@@ -1558,7 +1558,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
 
         BaseClass.smartTables().click_row6_dynamic();
         Thread.sleep(500);
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(1000);
         //right click r5c5 dynamic cell - after escape is clicked
         BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
@@ -1718,7 +1718,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
 
         BaseClass.smartTables().click_row7_column5_dynamic();
         Thread.sleep(500);
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(1000);
         //right click r7c5 dynamic cell - after escape is clicked
         BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
@@ -1790,7 +1790,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
    //     BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
     //    Thread.sleep(500);
 //switch r5c5 dynamic cell to iframe - to click escape button
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(500);
         driver.switchTo().parentFrame();
         Thread.sleep(500);
@@ -1847,7 +1847,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
     //    BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
         Thread.sleep(500);
 //switch r1c5 dynamic cell to iframe - to click escape button
-        BaseClass.ck5editor().click_escape_current_text();
+        BaseClass.ck5editor().click_escape_current_cell();
         Thread.sleep(500);
         driver.switchTo().parentFrame();
         Thread.sleep(500);
