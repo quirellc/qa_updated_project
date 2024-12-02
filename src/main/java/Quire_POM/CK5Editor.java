@@ -899,7 +899,7 @@ int count = TC_highlights.size();
         Thread.sleep(500);
         BaseClass.ck5editor().verify_grey_empty_comments_icon();
         Thread.sleep(500);
-        BaseClass.ck5editor().clear_current_text_body_ST();
+//        BaseClass.ck5editor().clear_current_text_body_ST();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(1000);

@@ -6,8 +6,8 @@
 
     <test name="CK5 Test" preserve-order="true">
         <classes>
-<!--            <class name="New_CK5_Editor" />-->
-                        <class name="Regression2" />
+            <class name="New_CK5_Editor" />
+<!--                        <class name="Regression2" />-->
 
         </classes>
     </test> <!-- Test -->
