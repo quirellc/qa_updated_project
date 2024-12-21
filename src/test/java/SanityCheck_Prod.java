@@ -306,8 +306,8 @@ public void TC_006_Prod_login() throws InterruptedException {
         BaseClass.staging5().click_export_to_excel_fm1105();
         Thread.sleep(500);
         BaseClass.templatesSection().captureAlertMessage();
-        Thread.sleep(500);
-        BaseClass.staging5().click_cancel_alert_message();
+        //Thread.sleep(500);
+      //  BaseClass.staging5().click_cancel_alert_message();
         Thread.sleep(500);
 
         //change to default view
