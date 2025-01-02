@@ -56,7 +56,7 @@ public class SendEmailWithAttachment extends ReusableAnnotations {
 
 
 //  logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + previousMonth + "&year=2024");
+        driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + previousMonth + "&year=2025");
 
         Thread.sleep(1000);
 
@@ -89,7 +89,7 @@ public class SendEmailWithAttachment extends ReusableAnnotations {
         BaseClass.staging5().open_company_usage_reports_link();
 
         Thread.sleep(1000);
-        driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + currentMonth + "&year=2024");
+        driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + currentMonth + "&year=2025");
         Thread.sleep(1000);
 
 
