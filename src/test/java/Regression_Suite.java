@@ -126,17 +126,17 @@ public class Regression_Suite extends ReusableAnnotations {
         BaseClass.pca_xml_section().getTemplatesPackagesList();
         Thread.sleep(1000);
 
-//        //  click aei package
-        BaseClass.templatesSection().enter_PackagesTab_SearchField_ESA_CA();
-        Thread.sleep(800);
-
-        BaseClass.pca_xml_section().click_package_ESA();
-        Thread.sleep(800);
-        BaseClass.staging5().clear_package_SearchField();
-        Thread.sleep(800);
-
-        BaseClass.staging5().click_add_button_unassigned_package();
-        Thread.sleep(800);
+////        //  click aei package
+//        BaseClass.templatesSection().enter_PackagesTab_SearchField_ESA_CA();
+//        Thread.sleep(800);
+//
+//        BaseClass.pca_xml_section().click_package_ESA();
+//        Thread.sleep(800);
+//        BaseClass.staging5().clear_package_SearchField();
+//        Thread.sleep(800);
+//
+//        BaseClass.staging5().click_add_button_unassigned_package();
+//        Thread.sleep(800);
         //hover and click first arrow button unassigned package
         BaseClass.staging5().hover_unassigned__dropdown_value();
         Thread.sleep(800);
@@ -734,7 +734,7 @@ public class Regression_Suite extends ReusableAnnotations {
 
         driver.navigate().to("https://staging5.openquire.com/projects/328760");
         Thread.sleep(500);
-        BaseClass.staging5().click_modal_close_window();
+
 
 
         BaseClass.quireLogin().enter_admin_matrix_Email();
@@ -743,8 +743,10 @@ public class Regression_Suite extends ReusableAnnotations {
         BaseClass.quireLogin().enterPassword();
         Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
 
-        Thread.sleep(2500);
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(1500);
 
         BaseClass.reportfoldersection().ck4PackagesCheck();
         Thread.sleep(1000);

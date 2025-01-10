@@ -831,6 +831,14 @@ for (int i = 0; i < search_results_int; i++) {
     public void double_click_report_tag_iframe() {
         ReusableMethodsLoggersPOM.doubleClickMethod(driver, report_tag_iframe, logger, "report_tag_iframe");
     }
+
+
+    @FindBy(xpath = "(//span[contains(@class, 'mceNonEditable reportTag ck') and contains(@class, 'widget')])[2]")
+    WebElement second_report_tag_iframe;
+    public void double_click_second_report_tag_iframe() {
+        ReusableMethodsLoggersPOM.doubleClickMethod(driver, second_report_tag_iframe, logger, "second_report_tag_iframe");
+    }
+
     public void select_all_and_backspace_Section_section_row_iFrame() throws InterruptedException {
         //Actions mouseActions = new Actions(driver);
         String os = System.getProperty("os.name").toLowerCase();

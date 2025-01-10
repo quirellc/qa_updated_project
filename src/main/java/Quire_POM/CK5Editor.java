@@ -49,6 +49,10 @@ WebElement text_body;
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body, "QA Automation line 1\n\nQA Automation line 3", logger, "long text_body");
     }
 
+    public void paste_text_introPages_body() {
+        ReusableMethodsLoggersPOM.clickEnterThenPaste_method(driver, text_body, logger, " text_introPages_body");
+    }
+
     //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
     @FindBy(xpath = "//div[@class='quire-smarttable-rt-editor-container']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
     WebElement text_body_firstLine_cell;
@@ -229,6 +233,14 @@ WebElement instruction_text_ck5;
 
     public void click_reportTag_dropDownItem_ck5_modal() {
         ReusableMethodsLoggersPOM.clickMethod(driver, reportTag_dropDownItem_ck5_modal, logger, "reportTag_dropDownItem_ck5_modal ");
+
+    }
+
+    @FindBy(xpath = "//div[@id='report_section_editor_toolbar']//li[2]")
+    WebElement reportTag_second_dropDownItem_ck5_modal;
+
+    public void click_reportTag_second_dropDownItem_ck5_modal() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, reportTag_second_dropDownItem_ck5_modal, logger, "reportTag_second_dropDownItem_ck5_modal ");
     }
 
 //    @FindBy(xpath = "//input[@class='form-control js-tag-widget-editor']")
@@ -473,7 +485,7 @@ WebElement instruction_text_ck5;
         BaseClass.ck5editor().click_submit_comment_button();
 
     }
-    @FindBy(xpath = "//div[@id='slidePanel-body-left']//div[@id='comments-contentRegion']//div[@aria-label='Editor editing area: main']//p")
+    @FindBy(xpath = "//div[@class='ck-comment__input-container ck-comment__input-container--active']//div[@aria-label='Editor editing area: main']//p[@class='ck-placeholder']")
     WebElement add_a_comment_field;
 
     @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")
@@ -899,7 +911,7 @@ int count = TC_highlights.size();
         Thread.sleep(500);
         BaseClass.ck5editor().verify_grey_empty_comments_icon();
         Thread.sleep(500);
-//        BaseClass.ck5editor().clear_current_text_body_ST();
+        BaseClass.ck5editor().clear_current_text_body_ST();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(1000);
@@ -986,7 +998,11 @@ int count = TC_highlights.size();
         ReusableMethodsLoggersPOM.clickMethod(driver, close_button_popup, logger, "close_button_popup");
     }
 
-    }
+
+
+
+
+}
 
 
 

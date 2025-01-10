@@ -106,6 +106,13 @@ public class New_CK5_Editor extends ReusableAnnotations {
         //go to text body iframe, enter text
         BaseClass.templatesSection().clickAddContentRow_introPages();
         Thread.sleep(2000);
+        //add report tag into cover letter
+        Thread.sleep(500);
+        BaseClass.ck5editor().click_report_tag_icon_ck5();
+        Thread.sleep(500);
+        BaseClass.ck5editor().click_reportTag_second_dropDownItem_ck5_modal();
+        Thread.sleep(500);
+
         BaseClass.ck5editor().enter_intro_page_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
@@ -120,6 +127,9 @@ public class New_CK5_Editor extends ReusableAnnotations {
         BaseClass.ck5editor().click_grey_instruction_Icon_template();
         Thread.sleep(500);
         BaseClass.templatesSection().clickAddContentRow_instruction();
+
+
+
         Thread.sleep(1000);
         BaseClass.ck5editor().enter_instruction_text_ck5();
         Thread.sleep(500);
@@ -192,10 +202,17 @@ public class New_CK5_Editor extends ReusableAnnotations {
         BaseClass.ck5editor().click_reportTag_dropDownItem_ck5_modal();
         Thread.sleep(500);
         BaseClass.templatesSection().double_click_report_tag_iframe();
-
         // in yellow report tag, enter text, test@quiretest.com
         BaseClass.staging5().enter_email_ReportTagField();
         Thread.sleep(500);
+
+        BaseClass.templatesSection().double_click_second_report_tag_iframe();
+        // in yellow report tag, enter text, test@quiretest.com
+        BaseClass.staging5().enter_email_ReportTagField();
+        Thread.sleep(500);
+
+
+
         // click out of section, capture report tag text
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
@@ -730,7 +747,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         }
 
     @Test
-    public void TR_06b_ck5_root_login() throws InterruptedException {
+    public void TR_006b_ck5_root_login() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 
@@ -1549,9 +1566,9 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         BaseClass.smartTables().click_smartTable_sectionView();
         Thread.sleep(1000);
 
-        Thread.sleep(600);
-        driver.navigate().refresh();
-        Thread.sleep(600);
+      //  Thread.sleep(600);
+       // driver.navigate().refresh();
+       // Thread.sleep(600);
 
 
        // wordbank assign items
@@ -1869,6 +1886,9 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         WebDriver driver = getDriver();
 
         //DUPLICATE
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+
         BaseClass.smartTables().click_smartTable_sectionView_checkbox();
         Thread.sleep(500);
         BaseClass.smartTables().click_duplicate_button_sectionView();
