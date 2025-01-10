@@ -24,6 +24,12 @@ public class BaseClass extends ReusableAnnotations {
         return quireHome;
     }//end of static reference for GoogleHome class
 
+    public static QuireHome_New quireHomeNew() {
+        WebDriver driver = getDriver();
+        QuireHome_New quireHomeNew = new QuireHome_New(driver);
+        return quireHomeNew;
+    }//end of static reference for GoogleHome class
+
     //create static reference for quire staging5 dashboard
     public static Staging5 staging5() {
     	WebDriver driver = getDriver();
@@ -103,4 +109,10 @@ public class BaseClass extends ReusableAnnotations {
         SmartTables smartTables = new SmartTables(driver);
         return smartTables;
     }//end of static reference for GoogleHome class
+
+    public static Quire_AI quire_AI() {
+        WebDriver driver = getDriver();
+        Quire_AI quire_AI = new Quire_AI(driver);
+        return quire_AI;
+    }
 }

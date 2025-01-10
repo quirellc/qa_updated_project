@@ -822,12 +822,14 @@ WebElement toBeDeleted_column_dropdown;
 
     public void click_smartTable_sectionView() {
         ReusableMethodsLoggersPOM.clickMethod(driver, smartTable_sectionView, logger, " smartTable_sectionView ");
-    }
 
+    }
     @FindBy(xpath = "//li[@class='outlineItem info_table_section sortable-body-item linkable indent-level-1 ui-sortable-handle active']//input[@value='1']")
     WebElement smartTable_sectionView_checkbox;
 
     public void click_smartTable_sectionView_checkbox() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, smartTable_sectionView_checkbox, logger, " smartTable_sectionView_checkbox ");
+
         ReusableMethodsLoggersPOM.clickMethod(driver, smartTable_sectionView_checkbox, logger, " smartTable_sectionView_checkbox ");
     }
 

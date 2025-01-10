@@ -865,6 +865,30 @@ public class Staging5 extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, company_user_name_field, "QA Dummy User-Firefox", logger, "company_user_name_field ");
         }}
 
+    public void create_10_company_users_jmeter() throws InterruptedException {
+        for (int i = 1; i <= 10; i++) {
+            BaseClass.staging5().click_add_company_user();
+            Thread.sleep(500);
+        // Construct username
+        String username = "Jmeter_User_" + i;
+        // Enter username
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, company_user_name_field, username, logger, "jmeter_user_name_field");
+        // Construct email
+        String email = username + "@test.com";
+        // Enter email
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, company_user_email_field, email, logger, "company_user_email_field");
+            BaseClass.staging5().enter_company_user_pw_field();
+            BaseClass.staging5().enter_company_user_pw_confirmation_field();
+            Thread.sleep(500);
+            BaseClass.staging5().select_company_user_permission_level_editor();
+            Thread.sleep(1000);
+            BaseClass.staging5().clickSave();
+            Thread.sleep(1000);
+    }
+    }
+
+
+
     @FindBy(xpath = "//h2[normalize-space()='Quire Help Center']")
     WebElement email_support_popup_header;
     @FindBy(xpath = "//iframe[@id='widget-frame']")
@@ -1026,6 +1050,9 @@ public class Staging5 extends ReusableAnnotations {
 
     public void select_company_user_permission_level() {
         ReusableMethodsLoggersPOM.selectByIndex(driver, company_user_permission_level, 2, logger, "company_user_permission_level ");
+    }
+    public void select_company_user_permission_level_editor() {
+        ReusableMethodsLoggersPOM.selectByText(driver, company_user_permission_level, "Editor","company_user_permission_level_editor");
     }
 
     @FindBy(xpath = "//a[text()='Contractors']")
@@ -2423,6 +2450,8 @@ public class Staging5 extends ReusableAnnotations {
     }
 
     public void click_add_section_toSection() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, add_section_toSection, logger, " add_section_toSection ");
+
         ReusableMethodsLoggersPOM.clickMethod(driver, add_section_toSection, logger, " add_section_toSection ");
     }
 
@@ -3506,7 +3535,8 @@ public class Staging5 extends ReusableAnnotations {
         for (WebElement element : qa_pca_portfolio_project_name_cells) {
             String text = element.getText();
             // System.out.println(text);
-            tableTextList.add(text);}
+            tableTextList.add(text);
+        }
 
         System.out.println(tableTextList);
         System.out.println(pdfContent);
@@ -3535,6 +3565,20 @@ public class Staging5 extends ReusableAnnotations {
             logger.log(LogStatus.FAIL, "some report name in portfolio DO NOT match with pdf");
         }
     }
+
+        public void acceptAlert() {
+            try {
+                // Switch to alert
+                Alert alert = driver.switchTo().alert();
+                // Accept the alert
+                alert.accept();
+                System.out.println("Alert accepted successfully.");
+            } catch (NoAlertPresentException e) {
+                // No alert is present
+                System.out.println("No alert present.");
+            }
+        }
+
 //    @FindBy(xpath = "(//table[@class='htCore'])//tr//td[2]")
 //    List<WebElement> pca_portfolio_report_name_cells;
 //     List<String> tableTextList = new ArrayList<>();

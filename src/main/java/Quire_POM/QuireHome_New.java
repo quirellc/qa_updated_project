@@ -1,62 +1,463 @@
 package Quire_POM;
 
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import reusableLibrary.ReusableAnnotations;
 import reusableLibrary.ReusableMethodsLoggersPOM;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuireHome extends ReusableAnnotations {
+public class QuireHome_New extends ReusableAnnotations {
     //must declare a local logger variable to be used for each pom class
     ExtentTest logger;
     WebDriver driver = getDriver();
     //constructor method is a helper method which creates a bridge between
     //your pom class and test class. Without constructor, you can't create a pom class
-    public QuireHome(WebDriver driver) {
+    public QuireHome_New(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.logger = ReusableAnnotations.logger;
     }//end of constructor
 
     @FindBy(xpath = "//div[@class='site-header__logo']//img[@alt='Quire']")
-//    @FindBy(xpath = "(//a[@href='https://openquire.com'])[3]")
     WebElement quire_home_Button;
 
     public void click_quire_home_Button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, quire_home_Button, logger, "quire_home_Button");}
 
+    @FindBy(xpath = "//a[normalize-space()='TRM Platform']")
+WebElement trm_platform_headerButton;
+    @FindBy(xpath = "//span[normalize-space()='GET THE PLATFORM']")
+    WebElement trm_platform_page_text;
+    public void click_and_verify_trm_platform_headerButton() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, trm_platform_headerButton, logger, "trm_platform_headerButton");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, trm_platform_page_text, true,logger, "trm_platform_page_text");}
 
-//    @FindBy(xpath = "(//li[@class='menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-808'])[5]")
-@FindBy(xpath = "//ul[@id='main-menu']//li")
+    public void verify_trm_platform_Page() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, trm_platform_page_text, true,logger, "trm_platform_page_text");}
 
-WebElement whyQuire_headerButton;
-    public void click_whyQuire_headerButton() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, whyQuire_headerButton, logger, "whyQuire_headerButton");}
+        public void hover_trm_platform_headerButton() {
+            ReusableMethodsLoggersPOM.mouseHoverMethod(driver, quire_home_Button, logger, "quire_home_Button");
+            ReusableMethodsLoggersPOM.mouseHoverMethod(driver, trm_platform_headerButton, logger, "trm_platform_headerButton");
+}
 
-    @FindBy(xpath = "(//a[@class='elementor-sub-item'][normalize-space()='How It Works'])[5]")
-    WebElement howItWorks_subHeader_button;
-    public void click_howItWorks_subHeader_button() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, howItWorks_subHeader_button, logger, "howItWorks_subHeader_button");
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, howItWorks, true,logger, "howItWorks");
+    @FindBy(xpath = "//ul[@id='main-menu']//li//li")
+    WebElement reportWriting_subHeader_button;
+    @FindBy(xpath = "//p[contains(text(),'Stop struggling with tools that were never made fo')]")
+    WebElement reportWriting_page_text;
+    public void click_and_verify_reportWriting_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, reportWriting_subHeader_button, logger, "reportWriting_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, reportWriting_page_text, true,logger, "reportWriting_page_text");}
+
+    @FindBy(xpath = "//ul[@id='main-menu']//li[2]")
+    WebElement mobile_subHeader_button;
+    @FindBy(xpath = "//p[contains(text(),'re on the go. Quire is, too. Get the mobile app th')]")
+    WebElement mobile_page_text;
+    public void click_and_verify_mobile_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, mobile_subHeader_button, logger, "mobile_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, mobile_page_text, true,logger, "mobile_page_text");}
+
+
+    @FindBy(xpath = "//ul[@id='main-menu']//li[3]")
+    WebElement analytics_subHeader_button;
+    @FindBy(xpath = "//p[contains(text(),'You can’t manage what you can’t measure')]")
+    WebElement analytics_page_text;
+    public void click_and_verify_analytics_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, analytics_subHeader_button, logger, "analytics_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, analytics_page_text, true,logger, "analytics_page_text");}
+
+
+    @FindBy(xpath = "//ul[@id='main-menu']//li[4]")
+    WebElement integrations_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='INTEGRATION CAPABILITIES' and //p[contains(text(),'connects with all your systems and applications th')]]\n")
+    WebElement integrations_page_text;
+    public void click_and_verify_integrations_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, integrations_subHeader_button, logger, "integrations_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, integrations_page_text, true,logger, "integrations_page_text");}
+
+    @FindBy(xpath = "//ul[@id='main-menu']//li[5]")
+    WebElement toolkits_subHeader_button;
+    @FindBy(xpath = "//p[contains(text(),'Create your technical reports faster, with less wo')]")
+    WebElement toolkits_page_text;
+    public void click_and_verify_toolkits_subHeader_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, toolkits_subHeader_button, logger, "toolkits_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, toolkits_page_text, true,logger, "toolkits_page_text");}
+
+    public void hover_toolkits_subHeader_button() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, toolkits_subHeader_button, logger, "toolkits_subHeader_button");
     }
-    public void click_and_verify_howItWorks_page() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, howItWorks_subHeader_button, logger, "howItWorks_subHeader_button");
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, howItWorks, true,logger, "howItWorks");
+
+    @FindBy(xpath = "(//ul[@class='sub-menu'])[2]//li[2]")
+    WebElement pca_toolkit_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='PCA TOOLKIT']")
+    WebElement pca_toolkit_page_text;
+    public void click_and_verify_pca_toolkit_sub_subHeader_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, pca_toolkit_sub_subHeader_button, logger, "pca_toolkit_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, pca_toolkit_page_text, true,logger, "pca_toolkit_page_text");}
+
+    @FindBy(xpath = "(//ul[@class='sub-menu'])[2]//li[3]")
+    WebElement fnmae_xml_toolkit_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='FANNIE MAE XML TOOLKIT']")
+    WebElement fnmae_xml_toolkit_page_text;
+    public void click_and_verify_fnmae_xml_toolkit_sub_subHeader_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, fnmae_xml_toolkit_sub_subHeader_button, logger, "fnmae_xml_toolkit_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fnmae_xml_toolkit_page_text, true,logger, "fnmae_xml_toolkit_page_text");}
+
+
+    @FindBy(xpath = "(//ul[@class='sub-menu'])[2]//li[4]")
+    WebElement fnmae_4099_toolkit_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='FANNIE MAE 4099 TOOLKIT']")
+    WebElement fnmae_4099_toolkit_page_text;
+    public void click_and_verify_fnmae_4099_toolkit_sub_subHeader_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, fnmae_4099_toolkit_sub_subHeader_button, logger, "fnmae_4099_toolkit_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fnmae_4099_toolkit_page_text, true,logger, "fnmae_4099_toolkit_page_text");}
+
+    @FindBy(xpath = "(//ul[@class='sub-menu'])[2]//li[5]")
+    WebElement closer_xml_toolkit_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='CLOSER XML TOOLKIT']")
+    WebElement closer_xml_toolkit_page_text;
+    public void click_and_verify_closer_xml_toolkit_sub_subHeader_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, closer_xml_toolkit_sub_subHeader_button, logger, "closer_xml_toolkit_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, closer_xml_toolkit_page_text, true,logger, "closer_xml_toolkit_page_text");}
+
+    @FindBy(xpath = "(//ul[@class='sub-menu'])[2]//li[6]")
+    WebElement freddie_mac_toolkit_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='FREDDIE MAC TOOLKITS']")
+    WebElement freddie_mac_toolkit_page_text;
+    public void click_and_verify_freddie_mac_toolkit_sub_subHeader_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, freddie_mac_toolkit_sub_subHeader_button, logger, "freddie_mac_toolkit_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, freddie_mac_toolkit_page_text, true,logger, "freddie_mac_toolkit_page_text");}
+
+
+
+
+    @FindBy(xpath = "//li[@id='menu-item-12611']")
+    WebElement benefits_subHeader_button;
+
+    public void hover_benefits_subHeader_button() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, benefits_subHeader_button, logger, "benefits_subHeader_button");
     }
-    public void verify_howItWorks_page() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, howItWorks, true,logger, "howItWorks");
-        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/how-it-works", logger);
+
+    @FindBy(xpath = "(//ul[@class='sub-menu'])[3]//li[2]")
+    WebElement quality_sub_subheader_button;
+    @FindBy(xpath = "//h1[contains(text(),'HOW QUIRE RAMPS')]")
+    WebElement quality_page_text;
+
+    public void click_and_verify_quality_sub_subheaderButton() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quality_sub_subheader_button, logger, "quality_sub_subheader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quality_page_text, true,logger, "quality_page_text");}
+
+
+
+
+    @FindBy(xpath = "(//ul[@class='sub-menu'])[3]//li[3]")
+    WebElement efficiency_sub_subheader_button;
+    @FindBy(xpath = "//h1[contains(text(),'HOW QUIRE DRIVES UP')]")
+    WebElement efficiency_page_text;
+
+    public void click_and_verify_efficiency_sub_subheaderButton() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, efficiency_sub_subheader_button, logger, "efficiency_sub_subheader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, efficiency_page_text, true,logger, "efficiency_page_text");}
+
+
+    @FindBy(xpath = "(//ul[@class='sub-menu'])[3]//li[4]")
+    WebElement throughput_sub_subheader_button;
+    @FindBy(xpath = "//h1[contains(text(),'HOW QUIRE POWERS')]")
+    WebElement throughput_page_text;
+
+    public void click_and_verify_throughput_sub_subheaderButton() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, throughput_sub_subheader_button, logger, "throughput_sub_subheader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, throughput_page_text, true,logger, "throughput_page_text");}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "//a[normalize-space()='Industries']")
+    WebElement industries_header_button;
+    @FindBy(xpath = "//h1[normalize-space()='Industry Overview']")
+    WebElement industries_page_text;
+    public void click_and_verify_industries_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, industries_header_button, logger, "industries_header_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, industries_page_text, true,logger, "industries_page_text");}
+
+
+    public void hover_industries_headerButton() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, quire_home_Button, logger, "quire_home_Button");
+
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, industries_header_button, logger, "industries_header_button");}
+
+    @FindBy(xpath = "//a[normalize-space()='AEC']")
+    WebElement aec_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='AEC INDUSTRY']")
+    WebElement aec_page_text;
+    public void click_and_verify_aec_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, aec_subHeader_button, logger, "aec_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, aec_page_text, true,logger, "aec_page_text");}
+
+    @FindBy(xpath = "//a[normalize-space()='Commercial Real Estate']")
+    WebElement commercial_real_estate_subHeader_button;
+    @FindBy(xpath = "//h1[contains(text(),'Commerical Real')]")
+    WebElement commercial_real_estate_page_text; ;
+    public void click_and_verify_commercial_real_estate_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, commercial_real_estate_subHeader_button, logger, "commercial_real_estate_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, commercial_real_estate_page_text, true,logger, "commercial_real_estate_page_text");}
+
+
+    @FindBy(xpath = "//a[normalize-space()='Environmental']")
+    WebElement environmental_subHeader_button;
+    @FindBy(xpath = "//h1[contains(text(),'Environmental')]")
+    WebElement environmental_page_text;
+    public void click_and_verify_environmental_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, environmental_subHeader_button, logger, "environmental_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, environmental_page_text, true,logger, "environmental_page_text");}
+
+
+
+    @FindBy(xpath = "//a[@href='https://next.openquire.com/roles/']")
+    WebElement roles_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='Roles Overview']")
+    WebElement roles_page_text;
+    public void click_and_verify_roles_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, roles_subHeader_button, logger, "roles_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, roles_page_text, true,logger, "roles_page_text");}
+
+    public void hover_roles_subHeader_button() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, roles_subHeader_button, logger, "roles_subHeader_button");}
+
+
+    @FindBy(xpath = "//a[normalize-space()='Executives']")
+    WebElement executives_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='Executives and Owners']")
+    WebElement executives_page_text;
+    public void click_and_verify_executives_sub_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, executives_sub_subHeader_button, logger, "executives_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, executives_page_text, true,logger, "executives_page_text");}
+
+
+    @FindBy(xpath = "//a[normalize-space()='Service Line Leaders']")
+    WebElement service_line_leaders_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='Service Line Leaders']")
+    WebElement service_line_leaders_page_text;
+    public void click_and_verify_service_line_leaders_sub_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, service_line_leaders_sub_subHeader_button, logger, "service_line_leaders_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, service_line_leaders_page_text, true,logger, "service_line_leaders_page_text");}
+
+    @FindBy(xpath = "//a[normalize-space()='Project Managers']")
+    WebElement project_managers_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='Project Managers']")
+    WebElement project_managers_page_text;
+    public void click_and_verify_project_managers_sub_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, project_managers_sub_subHeader_button, logger, "project_managers_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, project_managers_page_text, true,logger, "project_managers_page_text");}
+
+    @FindBy(xpath = "//a[normalize-space()='Report Writers']")
+    WebElement report_writers_sub_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='Report Writers']")
+    WebElement report_writers_page_text;
+    public void click_and_verify_report_writers_sub_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, report_writers_sub_subHeader_button, logger, "report_writers_sub_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, report_writers_page_text, true,logger, "report_writers_page_text");}
+
+
+
+
+
+
+
+    @FindBy(xpath = "//a[normalize-space()='Resources']")
+    WebElement resources_header_button;
+    public void hover_resources_header_button() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, quire_home_Button, logger, "quire_home_Button");
+
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver,  resources_header_button, logger, "resources_header_button");}
+
+    @FindBy(xpath = "//a[normalize-space()='Blog']")
+    WebElement blog_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='Blog']")
+    WebElement blog_page_text;
+    public void click_and_verify_blog_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, blog_subHeader_button, logger, "blog_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, blog_page_text, true,logger, "blog_page_text");}
+
+    @FindBy(xpath = "//a[normalize-space()='Case Studies']")
+    WebElement case_studies_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='Case Studies']")
+    WebElement case_studies_page_text;
+    public void click_and_verify_case_studies_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, case_studies_subHeader_button, logger, "case_studies_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, case_studies_page_text, true,logger, "case_studies_page_text");}
+
+
+    @FindBy(xpath = "//a[normalize-space()='Certifications']")
+    WebElement certifications_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='QUIRE CERTIFICATIONS']")
+    WebElement certifications_page_text;
+    public void click_and_verify_certifications_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, certifications_subHeader_button, logger, "certifications_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, certifications_page_text, true,logger, "certifications_page_text");}
+
+
+    @FindBy(xpath = "//a[normalize-space()='FAQs']")
+    WebElement faqs_subHeader_button;
+    @FindBy(xpath = "//p[normalize-space()='Take a browse through our FAQ categories.']")
+    WebElement faqs_page_text;
+    public void click_and_verify_faqs_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, faqs_subHeader_button, logger, "faqs_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, faqs_page_text, true,logger, "faqs_page_text");}
+
+    @FindBy(xpath = "//a[normalize-space()='Self-Guided Tour']")
+    WebElement self_guided_tour_subHeader_button;
+    @FindBy(xpath = "//h1[contains(text(),'TAKE A SELF-GUIDED')]")
+    WebElement self_guided_tour_page_text;
+    public void click_and_verify_self_guided_tour_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, self_guided_tour_subHeader_button, logger, "self_guided_tour_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, self_guided_tour_page_text, true,logger, "self_guided_tour_page_text");
     }
+
+
+    @FindBy(xpath = "//a[normalize-space()='Partnerships']")
+    WebElement partnerships_header_button;
+    @FindBy(xpath = "//h1[contains(text(),'PARTNERS AND')]")
+    WebElement partnerships_page_text;
+    public void click_and_verify_partnerships_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, partnerships_header_button, logger, "partnerships_header_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, partnerships_page_text, true,logger, "partnerships_page_text");}
+
+
+    @FindBy(xpath = "//a[normalize-space()='Take a Closer Look at Quire TRM']")
+    WebElement take_a_closer_look_at_quire_trm_button;
+    public void click_take_a_closer_look_at_quire_trm_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, take_a_closer_look_at_quire_trm_button, logger, "take_a_closer_look_at_quire_trm_button");
+    }
+
+
+    @FindBy(xpath = "//a[normalize-space()='Contact Us']")
+    WebElement contact_us_header_button;
+
+    @FindBy(xpath = "//h1[contains(text(),'READY TO TAKE THE NEXT STEP?')]")
+    WebElement contact_us_page_text;
+    public void click_and_verify_contact_us_header_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver,  contact_us_header_button, logger, "contact_us_header_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, contact_us_page_text, true,logger, "contact_us_page_text");
+    }
+
+    @FindBy(xpath = "//a[normalize-space()='Login']")
+    WebElement login_button;
+
+
+
+    public void click_login_and_verify() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, login_button, logger, "login_button");
+        Thread.sleep(500);
+
+        BaseClass.reportfoldersection().change_to_next_tab();
+        //click login button and login with prod id
+        Thread.sleep(500);
+        BaseClass.quireLogin().enterProdEmail();
+        Thread.sleep(500);
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(500);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(1500);
+        ReusableMethodsLoggersPOM.verify_url(driver, "https://app.openquire.com/dashboard", logger);
+//        driver.close();
+//        BaseClass.staging5().switchToOriginalTab();
+
+    }
+
+
+
+
+
+    @FindBy(xpath = "//a[normalize-space()='About']")
+    WebElement about_header_button;
+    @FindBy(xpath = "//h1[normalize-space()='WHO WE ARE']")
+    WebElement about_page_text;
+    public void click_and_verify_about_header_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, about_header_button, logger, "about_header_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, about_page_text, true,logger, "about_page_text");}
+
+
+
+    public void hover_about_header_button() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, quire_home_Button, logger, "quire_home_Button");
+
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, about_header_button, logger, "about_header_button");}
+
+
+    @FindBy(xpath = "//a[normalize-space()='Our Team']")
+    WebElement our_team_header_button;
+    @FindBy(xpath = "//h1[normalize-space()='OUR TEAM']")
+    WebElement our_team_page_text;
+    public void click_and_verify_our_team_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, our_team_header_button, logger, "our_team_header_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, our_team_page_text, true,logger, "our_team_page_text");}
+
+
+    @FindBy(xpath = "//a[normalize-space()='Our Founder']")
+    WebElement our_founder_header_button;
+    @FindBy(xpath = "//h1[normalize-space()='MEET OUR FOUNDER']")
+    WebElement our_founder_page_text;
+    public void click_and_verify_our_founder_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, our_founder_header_button, logger, "our_founder_header_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, our_founder_page_text, true,logger, "our_founder_page_text");}
+
+    @FindBy(xpath = "//a[@href='/join-our-team/']")
+    WebElement careers_subHeader_button;
+    @FindBy(xpath = "//h1[normalize-space()='CAREERS']")
+    WebElement careers_page_text;
+    public void click_and_verify_careers_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, careers_subHeader_button, logger, "careers_subHeader_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, careers_page_text, true,logger, "careers_page_text");}
+
+    @FindBy(xpath = "//a[normalize-space()='News']")
+    WebElement news_header_button;
+    @FindBy(xpath = "//h1[normalize-space()='Newsroom']")
+    WebElement news_page_text;
+    public void click_and_verify_news_subHeader_page() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, news_header_button, logger, "news_header_button");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, news_page_text, true,logger, "news_page_text");}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @FindBy(xpath = "(//a[@class='elementor-button elementor-slide-button elementor-size-lg'][normalize-space()='Learn More'])[2]")
     WebElement learnMore_home_Button;
@@ -404,21 +805,21 @@ Thread.sleep(1500);
 
 
 
-    @FindBy(xpath = "(//li[@class='menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-813'])[5]")
-    WebElement whoWeServe_headerButton;
-
-    public void click_whoWeServe_headerButton() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, whoWeServe_headerButton, logger, "whoWeServe_headerButton");}
-    @FindBy(xpath = "(//a[@class='elementor-sub-item'][normalize-space()='Industries'])[5]")
-    WebElement industries_subHeaderButton;
-    @FindBy(xpath = "//h6[normalize-space()='INDUSTRIES WE SERVE']")
-    WebElement industries_page_text;
-    public void click_and_confirm_industries_subHeaderButton() throws InterruptedException {
-        ReusableMethodsLoggersPOM.clickMethod(driver, industries_subHeaderButton, logger, "industries_subHeaderButton");
-        Thread.sleep(1000);
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, industries_page_text, true,logger, "industries_page_text");
-        ReusableMethodsLoggersPOM.verify_url(driver, "https://openquire.com/industries", logger);
-    }
+//    @FindBy(xpath = "(//li[@class='menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-813'])[5]")
+//    WebElement whoWeServe_headerButton;
+//
+//    public void click_whoWeServe_headerButton() {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, whoWeServe_headerButton, logger, "whoWeServe_headerButton");}
+//    @FindBy(xpath = "(//a[@class='elementor-sub-item'][normalize-space()='Industries'])[5]")
+//    WebElement industries_subHeaderButton;
+//    @FindBy(xpath = "//h6[normalize-space()='INDUSTRIES WE SERVE']")
+//    WebElement industries_page_text;
+//    public void click_and_confirm_industries_subHeaderButton() throws InterruptedException {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, industries_subHeaderButton, logger, "industries_subHeaderButton");
+//        Thread.sleep(1000);
+//        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, industries_page_text, true,logger, "industries_page_text");
+//        ReusableMethodsLoggersPOM.verify_url(driver, "https://openquire.com/industries", logger);
+//    }
 
     @FindBy(xpath = "(//span[@class='elementor-button-text'][normalize-space()='Learn More'])[1]")
     WebElement learnMore_button_industriesPage;
@@ -451,78 +852,78 @@ Thread.sleep(1500);
     public void verify_industrialHygienePage_text() throws InterruptedException {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, industrialHygienePage_text, true,logger, "industrialHygienePage_text");
         ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/industries/industrial-hygiene", logger);}
-
-////////////////// resources header ////////////////////////////////
-
-    @FindBy(xpath = "(//li[@class='menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-816'])[5]//span[@class='sub-arrow']")
-    WebElement resources_headerButton;
-    public void click_resources_headerButton() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, resources_headerButton, logger, "resources_headerButton");}
-
-    @FindBy(xpath = "(//a[@class='elementor-sub-item'][normalize-space()='Quire vs. Word'])[5]")
-    WebElement quireVsWord_subHeaderButton;
-    @FindBy(xpath = "//h6[contains(text(),'QUIRE VS MICROSOFT WORD™')]")
-    WebElement quireVsWord_page_text;
-    public void click_and_confirm_quireVsWord_subHeaderButton() throws InterruptedException {
-        ReusableMethodsLoggersPOM.clickMethod(driver, quireVsWord_subHeaderButton, logger, "quireVsWord_subHeaderButton");
-        Thread.sleep(1000);
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quireVsWord_page_text, true,logger, "quireVsWord_page_text");
-        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/quire-vs-word", logger);}
-
-    @FindBy(xpath = "//div[contains(@id, 'elementor-tab-title-255')]")
-    List <WebElement> tabItems_quireVsWord_page;
-
-    @FindBy(xpath = "//h3[normalize-space()='Report Setup']")
-    WebElement Setup_text;
-    @FindBy(xpath = "//h3[normalize-space()='Report Writing']")
-    WebElement Writing_text;
-    @FindBy(xpath = "//h3[normalize-space()='Managing the Project']")
-    WebElement management_text;
-    @FindBy(xpath = "//h3[normalize-space()='Reviewing the Report']")
-    WebElement reviews_text;
-    @FindBy(xpath = "//h3[normalize-space()='Assembly & Delivery']")
-    WebElement assemblyAndDelivery_text;
-    @FindBy(xpath = "//h3[normalize-space()='Client-Mandated Revisions']")
-    WebElement revisions_text;
-
-    public void performActions_quireVsWord_page() throws InterruptedException {
-        List<WebElement> elementsList = new ArrayList<>();
-        elementsList.add(Setup_text);
-        elementsList.add(Writing_text);
-        elementsList.add(management_text);
-        elementsList.add(reviews_text);
-        elementsList.add(assemblyAndDelivery_text);
-        elementsList.add(revisions_text);
-
-        ReusableMethodsLoggersPOM.scrollToElementMethod(driver, tabItems_quireVsWord_page.get(1), logger, "tabItems_quireVsWord_page");
-        Thread.sleep(1500);
-
-        for (int i = 0; i < 6; i++) {
-            ReusableMethodsLoggersPOM.clickMethod(driver, tabItems_quireVsWord_page.get(i), logger, "Item at index: " + i);
-            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, elementsList.get(i), true,logger, String.valueOf(elementsList.get(i)));
-        }}
-
-
-
-
-
-    @FindBy(xpath = "(//a[@class='elementor-sub-item'][normalize-space()='Help Center'])[5]")
-    WebElement helpCenter_subHeaderButton;
-    public void click_helpCenter_subHeaderButton() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, helpCenter_subHeaderButton, logger, "helpCenter_subHeaderButton");}
-    @FindBy(xpath = "//span[text()='Visit Quire Help Center']")
-    WebElement visit_quire_helpCenter_button;
-    public void click_visit_quire_helpCenter_button() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, visit_quire_helpCenter_button, logger, "visit_quire_helpCenter_button");}
-
-    @FindBy(xpath = "//div[@class='customer-login-link']//a[contains(text(),'Login here')]")
-    WebElement login_here_to_supportPortal_button;
-    public void click_login_here_to_supportPortal_button() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, login_here_to_supportPortal_button, logger, "login_here_to_supportPortal_button");}
-
-
-
-
+//
+//////////////////// resources header ////////////////////////////////
+//
+//    @FindBy(xpath = "(//li[@class='menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-816'])[5]//span[@class='sub-arrow']")
+//    WebElement resources_headerButton;
+//    public void click_resources_headerButton() {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, resources_headerButton, logger, "resources_headerButton");}
+//
+//    @FindBy(xpath = "(//a[@class='elementor-sub-item'][normalize-space()='Quire vs. Word'])[5]")
+//    WebElement quireVsWord_subHeaderButton;
+//    @FindBy(xpath = "//h6[contains(text(),'QUIRE VS MICROSOFT WORD™')]")
+//    WebElement quireVsWord_page_text;
+//    public void click_and_confirm_quireVsWord_subHeaderButton() throws InterruptedException {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, quireVsWord_subHeaderButton, logger, "quireVsWord_subHeaderButton");
+//        Thread.sleep(1000);
+//        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quireVsWord_page_text, true,logger, "quireVsWord_page_text");
+//        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/quire-vs-word", logger);}
+//
+//    @FindBy(xpath = "//div[contains(@id, 'elementor-tab-title-255')]")
+//    List <WebElement> tabItems_quireVsWord_page;
+//
+//    @FindBy(xpath = "//h3[normalize-space()='Report Setup']")
+//    WebElement Setup_text;
+//    @FindBy(xpath = "//h3[normalize-space()='Report Writing']")
+//    WebElement Writing_text;
+//    @FindBy(xpath = "//h3[normalize-space()='Managing the Project']")
+//    WebElement management_text;
+//    @FindBy(xpath = "//h3[normalize-space()='Reviewing the Report']")
+//    WebElement reviews_text;
+//    @FindBy(xpath = "//h3[normalize-space()='Assembly & Delivery']")
+//    WebElement assemblyAndDelivery_text;
+//    @FindBy(xpath = "//h3[normalize-space()='Client-Mandated Revisions']")
+//    WebElement revisions_text;
+//
+//    public void performActions_quireVsWord_page() throws InterruptedException {
+//        List<WebElement> elementsList = new ArrayList<>();
+//        elementsList.add(Setup_text);
+//        elementsList.add(Writing_text);
+//        elementsList.add(management_text);
+//        elementsList.add(reviews_text);
+//        elementsList.add(assemblyAndDelivery_text);
+//        elementsList.add(revisions_text);
+//
+//        ReusableMethodsLoggersPOM.scrollToElementMethod(driver, tabItems_quireVsWord_page.get(1), logger, "tabItems_quireVsWord_page");
+//        Thread.sleep(1500);
+//
+//        for (int i = 0; i < 6; i++) {
+//            ReusableMethodsLoggersPOM.clickMethod(driver, tabItems_quireVsWord_page.get(i), logger, "Item at index: " + i);
+//            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, elementsList.get(i), true,logger, String.valueOf(elementsList.get(i)));
+//        }}
+//
+//
+//
+//
+//
+//    @FindBy(xpath = "(//a[@class='elementor-sub-item'][normalize-space()='Help Center'])[5]")
+//    WebElement helpCenter_subHeaderButton;
+//    public void click_helpCenter_subHeaderButton() {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, helpCenter_subHeaderButton, logger, "helpCenter_subHeaderButton");}
+//    @FindBy(xpath = "//span[text()='Visit Quire Help Center']")
+//    WebElement visit_quire_helpCenter_button;
+//    public void click_visit_quire_helpCenter_button() {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, visit_quire_helpCenter_button, logger, "visit_quire_helpCenter_button");}
+//
+//    @FindBy(xpath = "//div[@class='customer-login-link']//a[contains(text(),'Login here')]")
+//    WebElement login_here_to_supportPortal_button;
+//    public void click_login_here_to_supportPortal_button() {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, login_here_to_supportPortal_button, logger, "login_here_to_supportPortal_button");}
+//
+//
+//
+//
 
 
     @FindBy(xpath = "(//li[@class='menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-820'])[5]")
@@ -594,14 +995,14 @@ Thread.sleep(1500);
     public void navigate_to_urls() throws InterruptedException {
         WebDriver driver = getDriver();
 
-        driver.navigate().to("https://next.openquire.com/features");
+        driver.navigate().to("https://openquire.com/features");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, trmPlatform, true,logger, "trmPlatform");
-        ReusableMethodsLoggersPOM.verify_url(driver, "next.openquire.com/trm-platform", logger);
+        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/trm-platform", logger);
         Thread.sleep(1000);
 
-        driver.navigate().to("https://next.openquire.com/why_quire");
+        driver.navigate().to("https://openquire.com/why_quire");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, trmPlatform, true,logger, "trmPlatform");
-        ReusableMethodsLoggersPOM.verify_url(driver, "next.openquire.com/trm-platform", logger);
+        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/trm-platform", logger);
         Thread.sleep(1000);
 //
 //        driver.navigate().to("https://openquire.com/integrations");
@@ -614,13 +1015,13 @@ Thread.sleep(1500);
 //        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/integrations", logger);
 //        Thread.sleep(1000);
 
-        driver.navigate().to("https://next.openquire.com/join-our-team");
+        driver.navigate().to("https://openquire.com/join-our-team");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, careersPage, true, logger, "careersPage");
-        ReusableMethodsLoggersPOM.verify_url(driver, "next.openquire.com/careers", logger);
+        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/careers", logger);
 
-        driver.navigate().to("https://next.openquire.com/media-kit");
+        driver.navigate().to("https://openquire.com/media-kit");
         Thread.sleep(2000);
-        ReusableMethodsLoggersPOM.verify_url(driver, "next.openquire.com", logger);
+        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com", logger);
         Thread.sleep(1000);
 
 //        driver.navigate().to("https://openquire.com/privacy");
@@ -628,24 +1029,24 @@ Thread.sleep(1500);
 //        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/privacy", logger);
 //        Thread.sleep(1000);
 
-        driver.navigate().to("https://next.openquire.com/see-how-it-works");
+        driver.navigate().to("https://openquire.com/see-how-it-works");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, contactUsPage, true, logger, "contactUsPage");
-        ReusableMethodsLoggersPOM.verify_url(driver, "next.openquire.com/contact-us", logger);
+        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/contact-us", logger);
         Thread.sleep(1000);
 
-        driver.navigate().to("https://next.openquire.com/covid");
+        driver.navigate().to("https://openquire.com/covid");
         Thread.sleep(2000);
-        ReusableMethodsLoggersPOM.verify_url(driver, "next.openquire.com", logger);
+        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com", logger);
         Thread.sleep(1000);
 
-        driver.navigate().to("https://next.openquire.com/xml-ready");
+        driver.navigate().to("https://openquire.com/xml-ready");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fannieMaeXmlToolkit, true, logger, "fannieMaeXmlToolkit");
-        ReusableMethodsLoggersPOM.verify_url(driver, "next.openquire.com/fannie-mae-xml-toolkit", logger);
+        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/fannie-mae-xml-toolkit", logger);
         Thread.sleep(1000);
 
-        driver.navigate().to("https://next.openquire.com/xml-data-standards");
+        driver.navigate().to("https://openquire.com/xml-data-standards");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fannieMaeXmlToolkit, true, logger, "fannieMaeXmlToolkit");
-        ReusableMethodsLoggersPOM.verify_url(driver, "next.openquire.com/fannie-mae-xml-toolkit", logger);
+        ReusableMethodsLoggersPOM.verify_url(driver, "openquire.com/fannie-mae-xml-toolkit", logger);
 
     }
 
@@ -681,17 +1082,16 @@ Thread.sleep(1500);
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, faq_page_text, true,logger, "faq_page_text");
         ReusableMethodsLoggersPOM.verify_url(driver, "https://openquire.com/frequently-asked-questions", logger);
     }
-
-    @FindBy(xpath = "(//span[@class='elementor-icon-list-text'][normalize-space()='Login'])[3]")
-    WebElement login_button;
-    public void    click_login_button() throws InterruptedException {
-        ReusableMethodsLoggersPOM.clickMethod(driver, login_button, logger, "login_button");}
-
-    public void verify_prod_site() throws InterruptedException {
-        ReusableMethodsLoggersPOM.verify_url(driver, "https://openquire.com/frequently-asked-questions", logger);
+//
+//    @FindBy(xpath = "(//span[@class='elementor-icon-list-text'][normalize-space()='Login'])[3]")
+//    WebElement login_button;
+//    public void    click_login_button() throws InterruptedException {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, login_button, logger, "login_button");}
+//
+//    public void verify_prod_site() throws InterruptedException {
+//        ReusableMethodsLoggersPOM.verify_url(driver, "https://openquire.com/frequently-asked-questions", logger);
     }
 
-}
 
 
 

@@ -45,7 +45,7 @@ public class Quire_AI extends ReusableAnnotations {
                 "Thesaurus\n" +
                 "Dictionary\n" +
                 "Suggest References\n" +
-                "Insert/Suggest Report Tags\n" +
+                "Insert/Suggest ReportTags\n" +
                 "Adjust Content Tone\n" +
                 "Professional\n" +
                 "Technical\n" +
@@ -70,6 +70,11 @@ public class Quire_AI extends ReusableAnnotations {
     public void click_quire_AI_dropDown_thesaurus_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_dropDown_thesaurus_button, logger, "quire_AI_dropDown_thesaurus_button");}
 
+    @FindBy(xpath = "//span[contains(text(), 'Technical')]")
+    WebElement  quire_AI_dropDown_technical_button;
+    public void click_quire_AI_dropDown_technical_tone_button() {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, quire_AI_dropDown_technical_button, logger, "quire_AI_dropDown_technical_button");}
+
     @FindBy(xpath = "//div[@class='ck ck-ai-form__loader']")
     WebElement quire_AI_loading_prompt;
     public void click_quire_AI_loading_prompt() {
@@ -88,9 +93,26 @@ public class Quire_AI extends ReusableAnnotations {
        // ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_empty_prompt, true, logger, "quire_AI_empty_prompt");}
 
     @FindBy(xpath = "//p[contains(text(),'content appears to be a brief title or header')]")
-    WebElement quire_AI_generated_prompt;
-    public void verify_quire_AI_generated_prompt() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_generated_prompt, true, logger, "quire_AI_generated_prompt");}
+    WebElement quire_AI_summarized_generated_prompt;
+    public void verify_quire_AI_summarize_generated_prompt() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_summarized_generated_prompt, true, logger, "quire_AI_summarized_generated_prompt");}
+
+    @FindBy(xpath = "//li[contains(text(),': quality assurance, quality control, inspection')]")
+    WebElement quire_AI_thesaurus_generated_prompt;
+    public void verify_quire_AI_thesaurus_generated_prompt() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_thesaurus_generated_prompt, true, logger, "quire_AI_thesaurus_generated_prompt");}
+
+
+    @FindBy(xpath = "//p[contains(text(),'implements a comprehensive spell-checking mechanism designed to systematically validate')]")
+    WebElement quire_AI_technical_tone_generated_prompt;
+    public void verify_quire_AI_technical_tone_generated_prompt() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_technical_tone_generated_prompt, true, logger, "quire_AI_technical_tone_generated_prompt");}
+
+
+
+
+
+
 
     @FindBy(xpath = "//div[@class='ck ck-toolbar ck-ai-form__toolbar']//span[contains(text(), 'Replace')]")
     WebElement quire_AI_replace_button;

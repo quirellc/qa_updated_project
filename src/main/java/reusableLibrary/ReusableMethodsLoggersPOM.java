@@ -619,6 +619,29 @@ public class ReusableMethodsLoggersPOM {
         }
     }
 
+    public static void clickEnterThenPaste_method(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        try {
+            // Wait until the element is clickable
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(xpath));
+
+            // Determine OS and set the appropriate key combination for pasting clipboard content
+            String os = System.getProperty("os.name").toLowerCase();
+            String pasteKey = (os.contains("mac")) ? Keys.chord(Keys.COMMAND, "v") : Keys.chord(Keys.CONTROL, "v");
+
+            // Send Enter key followed by paste action
+            element.sendKeys(Keys.ENTER); // Click Enter
+            element.sendKeys(pasteKey);   // Paste clipboard content
+
+            System.out.println("Successfully clicked Enter and pasted text in: " + elementName);
+            logger.log(LogStatus.PASS, "Successfully clicked Enter and pasted text in " + elementName);
+        } catch (Exception e) {
+            System.out.println("Unable to click Enter and paste text in: " + elementName + ": " + e);
+            logger.log(LogStatus.FAIL, "Unable to click Enter and paste text in " + elementName + ": " + e);
+        }
+    }
+
     public static void selectAllandDelete_method(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         //  Actions mouseActions = new Actions(driver);
@@ -782,7 +805,14 @@ public class ReusableMethodsLoggersPOM {
             } catch (TimeoutException e) {
                 // Handle timeout explicitly
                 elementState = false; // Element not found, set visibility to false
+            } catch (Exception e) {
+                // Handle WebDriverException explicitly
+                System.out.println("WebDriverException encountered: " + e.getMessage());
+                logger.log(LogStatus.ERROR, "WebDriverException encountered: " + e.getMessage());
+                attempt++;
+                continue; // Retry the operation
             }
+
 
             if (elementState == expectedValue) {
                 System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - as expected" + "\n");
@@ -793,14 +823,6 @@ public class ReusableMethodsLoggersPOM {
                 attempt++;
                 System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected....retrying attempt: " + attempt + "\n");
                 logger.log(LogStatus.FAIL, "\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected....retrying attempt: " + attempt );
-
-
-
-//        } catch (Exception e) {
-//            System.out.println("\n" + "Unable to find :  " + elementName + "___Visibility expected: " +  expectedValue);
-//            logger.log(LogStatus.PASS,"Unable to find :  " + elementName + "___Visibility expected: " +  expectedValue );
-//
-//        }//end of exception
             }
         }
     }//end of verifyBooleanStatement
