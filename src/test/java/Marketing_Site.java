@@ -28,7 +28,7 @@ public class Marketing_Site extends ReusableAnnotations {
     @Test
     public void TR_001_Marketing_Site_Regression() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
         WebDriver driver = getDriver();
-        driver.navigate().to("https://next.openquire.com/");
+        driver.navigate().to("https://openquire.com/");
         Thread.sleep(500);
 
         BaseClass.quireHomeNew().click_and_verify_trm_platform_headerButton();
