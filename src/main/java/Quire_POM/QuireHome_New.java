@@ -225,7 +225,7 @@ WebElement trm_platform_headerButton;
 
 
 
-    @FindBy(xpath = "//a[@href='https://next.openquire.com/roles/']")
+    @FindBy(xpath = "//a[contains(@href, 'openquire.com/roles/')]")
     WebElement roles_subHeader_button;
     @FindBy(xpath = "//h1[normalize-space()='Roles Overview']")
     WebElement roles_page_text;
