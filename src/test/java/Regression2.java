@@ -37,43 +37,149 @@ public class Regression2 extends ReusableAnnotations {
     //  String browserName1 = driver.getClass().getName();
 
 
-
     @Test
     public void TR001_user_login() throws InterruptedException {
         WebDriver driver = getDriver();
+
+        driver.navigate().to("https://next.openquire.com/");
+        Thread.sleep(500);
+
+
+        // TC5 - Old URLs are Redirected Appropriately
+
+        BaseClass.quireHome().navigate_to_urls();
+        Thread.sleep(1000);
+    }}
+
+
+//        BaseClass.quireHomeNew().hover_benefits_subHeader_button();
+//        BaseClass.quireHomeNew().hover_toolkits_subHeader_button();
+//        BaseClass.quireHomeNew().click_and_verify_quality_sub_subheaderButton();
+//        //Thread.sleep(500);
+
+
         //  System.out.println(driver.getClass().getSimpleName());
         // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging5.openquire.com/templates/669271");
-        //  WebDriver driver1 = getDriver();
+//        driver.navigate().to("https://staging5.openquire.com/companies/187/company_users");
+//        //  WebDriver driver1 = getDriver();
+//
+//        BaseClass.quireLogin().enterRootUserEmail();
+//        //Thread.sleep(1000);
+//        BaseClass.quireLogin().enterPassword();
+//        //Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        //Thread.sleep(2000);
 
-        BaseClass.quireLogin().enterEmail_bv_sysadmin_level();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(3000);
-
-        Thread.sleep(1000);
-
-        BaseClass.staging5().click_coverLetter_sectionView();
-        Thread.sleep(1000);
-        BaseClass.templatesSection().clickAddContentRow_introPages();
-        Thread.sleep(500);
-        BaseClass.ck5editor().select_all_text_introPages_body();
-        Thread.sleep(500);
-        BaseClass.ck5editor().click_comment_icon_ck5();
-        Thread.sleep(1000);
-        BaseClass.ck5editor().verify_comment_highlight_is_Visible();
-        Thread.sleep(1000);
-        BaseClass.ck5editor().enter_comments_to_field();
-        Thread.sleep(1000);
-        BaseClass.ck5editor().update_comments_in_field();
-        Thread.sleep(9000);
+//            BaseClass.staging5().create_10_company_users_jmeter();
+//            //Thread.sleep(500);
 
 
-    }
-}
+//
+//        BaseClass.staging5().click_coverLetter_sectionView();
+//
+//
+//  BaseClass.templatesSection().clickAddContentRow_introPages();
+//
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().verify_quire_AI_icon_isVisible();
+//        //Thread.sleep(1000);
+//
+//        BaseClass.quire_AI().click_quire_AI_icon();
+//        //Thread.sleep(1000);
+//
+//        BaseClass.quire_AI().verify_quire_AI_dropDownItems();
+//        //Thread.sleep(1000);
+//
+//        BaseClass.quire_AI().click_quire_AI_dropDown_summarize_button();
+//        BaseClass.quire_AI().verify_quire_AI_loading_prompt();
+//
+//        BaseClass.quire_AI().click_quire_AI_stop_button();
+//        BaseClass.quire_AI().verify_quire_AI_empty_prompt();
+//        BaseClass.quire_AI().click_quire_AI_try_again_button();
+//     //   //Thread.sleep(3000);
+//
+//        BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+//        //Thread.sleep(1000);
+//
+//        BaseClass.quire_AI().click_quire_AI_replace_button();
+//        //Thread.sleep(1000);
+//        BaseClass.staging5().acceptAlert();
+//        //Thread.sleep(1500);
+//
+//        BaseClass.staging5().click_out_of_section();
+//        //Thread.sleep(1000);
+//
+//        BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+//
+//        BaseClass.staging5().click_title_page_sectionView();
+//        //Thread.sleep(1000);
+//        BaseClass.templatesSection().clickAddContentRow_introPages();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_icon();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_dropDown_summarize_button();
+//        BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_copy_text_button();
+//        //Thread.sleep(1000);
+//        BaseClass.staging5().click_out_of_section();
+//        //Thread.sleep(1000);
+//        BaseClass.templatesSection().clickAddContentRow_introPages();
+//        //Thread.sleep(1000);
+//        BaseClass.ck5editor().paste_text_introPages_body();
+//        //Thread.sleep(1000);
+//        BaseClass.staging5().click_out_of_section();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+//
+//
+//                BaseClass.staging5().click_executive_summary_sectionView();
+//        //Thread.sleep(1000);
+//        BaseClass.templatesSection().clickAddContentRow_introPages();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_icon();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_dropDown_thesaurus_button();
+//        //Thread.sleep(3000);
+//        BaseClass.quire_AI().verify_quire_AI_thesaurus_generated_prompt();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_replace_button();
+//        //Thread.sleep(1000);
+//        BaseClass.staging5().acceptAlert();
+//        //Thread.sleep(1500);
+//        BaseClass.staging5().click_out_of_section();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().verify_quire_AI_thesaurus_generated_prompt();
+//
+//
+//        BaseClass.staging5().click_default_section_title();
+//        //Thread.sleep(1000);
+//
+//    BaseClass.staging5().clickSection_row_editor();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_icon();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_dropDown_technical_tone_button();
+//        //Thread.sleep(1000);
+//
+//        BaseClass.quire_AI().verify_quire_AI_technical_tone_generated_prompt();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().click_quire_AI_replace_button();
+//        //Thread.sleep(1000);
+//        BaseClass.staging5().acceptAlert();
+//        //Thread.sleep(1500);
+//        BaseClass.staging5().click_out_of_section();
+//        //Thread.sleep(1000);
+//        BaseClass.quire_AI().verify_quire_AI_technical_tone_generated_prompt();
+//
+//        //Thread.sleep(5000);
+//
+//    }
 
+
+
+
+//}
 // click r5c5 dynamic cell - formu
 
 
