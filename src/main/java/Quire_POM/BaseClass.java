@@ -115,4 +115,11 @@ public class BaseClass extends ReusableAnnotations {
         Quire_AI quire_AI = new Quire_AI(driver);
         return quire_AI;
     }
+
+    public static FM_Section fm_section() {
+        WebDriver driver = getDriver();
+        FM_Section fm_section = new FM_Section(driver);
+        return fm_section;
+    }
+
 }

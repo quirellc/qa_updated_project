@@ -465,7 +465,7 @@ public class ReusableMethodsLoggersPOM {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(500));
         String result = null;
         try {
-            WebElement foundElement = wait.until(ExpectedConditions.elementToBeClickable(xpath));
+            WebElement foundElement = wait.until(ExpectedConditions.elementToBeClickable(xpath)) ;
             result = foundElement.getAttribute("href");
             driver.get(result);
            System.out.println("Successfully opened href link  from " + elementName);

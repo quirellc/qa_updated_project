@@ -866,8 +866,8 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
             Thread.sleep(500);
             BaseClass.staging5().click_smartTable_title_header();
             Thread.sleep(500);
-//        BaseClass.staging5().click_smartTable_sectionView();
-//        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
 
 //last date column
             BaseClass.smartTables().click_row1_date();

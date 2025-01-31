@@ -144,6 +144,14 @@ public class ReportTagsSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, title_page_image_loaded,true,  logger," title_page_image_loaded ");
     }
 
+    @FindBy(xpath = "//span[normalize-space()='Form Version']/following::select[1]")
+    WebElement formVersion;
+    public void scroll_and_enter_FM1104_updated_formVersion() {
+        ReusableMethodsLoggersPOM.scrollToElementMethod(driver, formVersion, logger, "formVersion");
+        ReusableMethodsLoggersPOM.selectByValue(driver, formVersion,"2024_12_12", logger, "formVersion");
+
+    }
+
 }
 
 

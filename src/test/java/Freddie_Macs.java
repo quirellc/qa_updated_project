@@ -484,6 +484,59 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.staging5().verify_if_comments_icon_isActive();
         Thread.sleep(1000);
     }
+
+    @Test
+    public void TR_004cc_FM1104_v11_sections_check() throws InterruptedException {
+        WebDriver driver = getDriver();
+
+        BaseClass.staging5().click_section_III_property_details_sectionView();
+        BaseClass.fm_section().scroll_to_ElectricalConditions();
+        BaseClass.fm_section().select_electricalConditions_60amps_Dropdown();
+        BaseClass.fm_section().select_electricalConditions_lessThan40amps_Dropdown();
+        BaseClass.fm_section().enter_levelOfService_field();
+
+        BaseClass.fm_section().click_load_analysis_description_field();
+        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        BaseClass.fm_section().enter_loadAnalysis_text();
+        Thread.sleep(500);
+        // WebDriver driver = getDriver();
+        driver.switchTo().defaultContent();
+        //pca
+        BaseClass.staging5().click_out_of_section();
+        Thread.sleep(500);
+        BaseClass.fm_section().click_add_cost_rec_button_section_III_electrical_conditions();
+        Thread.sleep(500);
+
+
+        BaseClass.fm_section().enter_item_name_cost_recommendation();
+        Thread.sleep(500);
+        BaseClass.staging5().enter_cost_summary_quantity();
+        BaseClass.staging5().enter_cost_summary_unit_cost();
+        BaseClass.staging5().click_critical_repair_cost_checkbox();
+        Thread.sleep(500);
+        BaseClass.fm_section().enter_cost_summary_comments();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(1000);
+
+        BaseClass.fm_section().select_are_there_any_elevators_dropDown();
+        BaseClass.fm_section().select_elevators_repairs_dropDown();
+        BaseClass.fm_section().click_elevators_description_field();
+        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        BaseClass.fm_section().enter_elevator_ck4_text();
+        Thread.sleep(500);
+        // WebDriver driver = getDriver();
+        driver.switchTo().defaultContent();
+        BaseClass.fm_section().enter_elevator_costToCure_field();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().click_quick_preview_button();
+        BaseClass.reportfoldersection().change_to_next_tab();
+        Thread.sleep(500);
+        BaseClass.fm_section().verify_fm1104_v11_QP();
+        driver.close();
+        BaseClass.staging5().switchToOriginalTab();
+        Thread.sleep(500);
+    }
     @Test
     public void TR_004d_TrackChanges_SpellCheck_in_SmartTable_FM1104_report() throws InterruptedException, IOException {
 
@@ -722,33 +775,38 @@ public class Freddie_Macs extends ReusableAnnotations {
 
     }
     @Test
-    public void TR_005a_Freddie_Mac_1105_generate_json_in_template() throws InterruptedException {
-            BaseClass.templatesSection().clickTemplatesTab();
-            Thread.sleep(500);
+    public void TR_005_Freddie_Mac_1105_creation_template() throws InterruptedException {
+        BaseClass.templatesSection().clickTemplatesTab();
+        Thread.sleep(500);
 
-            BaseClass.templatesSection().clickAddTemplateButton();
-            Thread.sleep(500);
+        BaseClass.templatesSection().clickAddTemplateButton();
+        Thread.sleep(500);
 
-            BaseClass.templatesSection().enterTemplateNameField_FM_1105();
-            Thread.sleep(500);
+        BaseClass.templatesSection().enterTemplateNameField_FM_1105();
+        Thread.sleep(500);
 
-            BaseClass.templatesSection().selectTemplateTypeDropdown_FM_1105();
-            Thread.sleep(500);
+        BaseClass.templatesSection().selectTemplateTypeDropdown_FM_1105();
+        Thread.sleep(500);
 
-            BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
-            Thread.sleep(1000);
+        BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
+        Thread.sleep(1000);
         BaseClass.templatesSection().enterTemplateDescriptionField();
-            Thread.sleep(500);
+        Thread.sleep(500);
 
         BaseClass.templatesSection().clickSave();
-            Thread.sleep(1000);
+        Thread.sleep(1000);
+        BaseClass.templatesSection().capture_created_AlertMessage();
+        BaseClass.templatesSection().clickHereLinkTemplate();
+        Thread.sleep(1000);
+
+    }
+@Test
+        public void TR_006_FM1105_v11_sections() throws InterruptedException {
+
+    WebDriver driver = getDriver();
 
 
-            BaseClass.templatesSection().capture_created_AlertMessage();
-            BaseClass.templatesSection().clickHereLinkTemplate();
-            //add cover letter and default section 2.0
-            Thread.sleep(500);
-            BaseClass.staging5().click_section_I_general_details_sectionView();
+             BaseClass.staging5().click_section_I_general_details_sectionView();
             Thread.sleep(500);
             BaseClass.staging5().click_section_III_property_details_sectionView();
             Thread.sleep(500);
@@ -778,7 +836,6 @@ public class Freddie_Macs extends ReusableAnnotations {
             BaseClass.staging5().click_add_costRecommendation_toSection();
 
             Thread.sleep(1000);
-        WebDriver driver = getDriver();
 
             driver.navigate().refresh();
             Thread.sleep(500);
@@ -814,6 +871,35 @@ public class Freddie_Macs extends ReusableAnnotations {
             BaseClass.staging5().click_section_II_unit_details_sectionView();
             Thread.sleep(2000);
             BaseClass.staging5().verify_section_II_error_message();
+
+
+//            v11_sections
+    BaseClass.staging5().click_section_I_general_details_sectionView();
+    BaseClass.fm_section().verify_fm1105_section1_v11();
+    BaseClass.fm_section().verify_sectionI_seismic_checklist_v11_fm1105();
+    BaseClass.staging5().click_section_II_unit_details_sectionView();
+    BaseClass.fm_section().enter_sectionII_overall_property_conditionRating_v11_fm1105();
+    BaseClass.fm_section().select_overall_condition_rating_dropDown_v11_fm1105();
+    BaseClass.staging5().click_section_III_property_details_sectionView();
+    BaseClass.fm_section().verify_section_III_repairs_identification_v11();
+    BaseClass.fm_section().verify_fm1105_v11_footer_text();
+    BaseClass.reportfoldersection().click_quick_preview_button();
+    BaseClass.reportfoldersection().change_to_next_tab();
+    Thread.sleep(500);
+    BaseClass.fm_section().verify_fm1105_v11_qp();
+
+    BaseClass.fm_section().verify_cost_rec_table_v11_fm1105_qp();
+    driver.close();
+    BaseClass.staging5().switchToOriginalTab();
+    Thread.sleep(500);
+    BaseClass.staging5().click_section_III_property_details_sectionView();
+    Thread.sleep(500);
+
+
+
+
+
+
 
 
 //generate json , capture generated json text

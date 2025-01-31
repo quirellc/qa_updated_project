@@ -165,11 +165,11 @@ public class Regression_Suite extends ReusableAnnotations {
         Thread.sleep(1000);
         BaseClass.staging5().click_save_button();
         Thread.sleep(500);
-//        WebDriver driver = getDriver();
+        WebDriver driver = getDriver();
 //
 //        driver.switchTo().alert().accept();
-//        Thread.sleep(1500);
-//     driver.navigate().refresh();
+        Thread.sleep(1500);
+     driver.navigate().refresh();
         Thread.sleep(1500);
 
 

@@ -199,9 +199,9 @@ public class TemplatesSection extends ReusableAnnotations {
     WebElement start_another_export_button;
     public void click_start_another_export_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, start_another_export_button, logger, "start_another_export_button");}
-    @FindBy(xpath = "//div[contains(text(),'123')]")
+    @FindBy(xpath = "//div[contains(text(),'Automation WB Item')]")
     WebElement exported_wb_item_1;
-    @FindBy(xpath = "//div[contains(text(),'123123')]")
+    @FindBy(xpath = "//div[contains(text(),'ck4 wb item')]")
     WebElement exported_wb_item_2;
     public void verify_exported_wb_item() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, exported_wb_item_1,true,  logger, "exported_wb_item");
@@ -447,16 +447,16 @@ for (int i = 0; i < search_results_int; i++) {
 
             public void enterTemplateSearchField_medium() {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, search_field, "QA Automation Testing Medium Priority Template-Chrome", logger, " QA Automation Testing New Updated Medium Priority Template-chrome");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, search_field, "QA Automation Testing Medium Priority Template-Chrome", logger, " QA Automation Testing New Updated Medium Priority Template-chrome");
         } else if (browserName.contains("Firefox")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, search_field, "QA Automation Testing Medium Priority Template-Firefox", logger, " QA Automation Testing New Updated Medium Priority Template-ff");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, search_field, "QA Automation Testing Medium Priority Template-Firefox", logger, " QA Automation Testing New Updated Medium Priority Template-ff");
         }
         ReusableMethodsLoggersPOM.submitMethod(driver, search_field, logger, "search_field ");}
     public void enterTemplateSearchField_updated_medium() {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, search_field, "QA Automation Testing New Updated Medium Priority Template-Chrome", logger, " QA Automation Testing New Updated Medium Priority Template-chrome");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, search_field, "QA Automation Testing New Updated Medium Priority Template-Chrome", logger, " QA Automation Testing New Updated Medium Priority Template-chrome");
         } else if (browserName.contains("Firefox")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, search_field, "QA Automation Testing New Updated Medium Priority Template-Firefox", logger, " QA Automation Testing New Updated Medium Priority Template-ff");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, search_field, "QA Automation Testing New Updated Medium Priority Template-Firefox", logger, " QA Automation Testing New Updated Medium Priority Template-ff");
         }
         ReusableMethodsLoggersPOM.submitMethod(driver, search_field, logger, " search_field ");}
     public void enterSearchField_QA_WB() {

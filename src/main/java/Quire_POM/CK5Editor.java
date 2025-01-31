@@ -477,7 +477,7 @@ WebElement instruction_text_ck5;
     public void click_submit_comment_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, submit_comment_button, logger, "submit_comment_button");}
 
-    @FindBy(xpath = "//div[@id='comments-resolvedAnnotationContainer']//div[@aria-label='Editor editing area: main']")
+    @FindBy(xpath = "//div[@aria-label='Comment editor']//p[@data-placeholder='Reply to reopen discussion...']")
     WebElement reopen_discussion_comments_field;
 
     public void reopen_archived_comment_discussion() {
@@ -485,7 +485,7 @@ WebElement instruction_text_ck5;
         BaseClass.ck5editor().click_submit_comment_button();
 
     }
-    @FindBy(xpath = "//div[@class='ck-comment__input-container ck-comment__input-container--active']//div[@aria-label='Editor editing area: main']//p[@class='ck-placeholder']")
+    @FindBy(xpath = "//div[@class='ck-comment__input-container ck-comment__input-container--active']//p[@class='ck-placeholder']")
     WebElement add_a_comment_field;
 
     @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")
@@ -509,7 +509,7 @@ WebElement instruction_text_ck5;
             Thread.sleep(500);
         }
 
-    @FindBy(xpath = "//ul[@class='ck-thread__comments']//button[@class='ck ck-button ck-off ck-dropdown__button']")
+    @FindBy(xpath = "//div[@class='ck-comment__actions ck-annotation__actions']//div[@class='ck ck-dropdown']/button[1]")
     WebElement comments_detail_button;
     public void click_comments_detail_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, comments_detail_button, logger, "comments_detail_button");}
@@ -999,6 +999,53 @@ int count = TC_highlights.size();
     }
 
 
+    @FindBy(xpath = "//button[@data-cke-tooltip-text='To-do List']")
+    WebElement to_do_list_ck5;
+    public void click_to_do_list_ck5() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, to_do_list_ck5,  logger, "to_do_list_ck5");}
+
+    @FindBy(xpath = "//ul[@class='todo-list']//li")
+    List <WebElement> to_do_list_textBox_ck5;
+
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//ul[@class='todo-list']//input")
+    List <WebElement> to_do_list_checkBox_ck5;
+
+    public void enter_text_toDoList_ck5_() {
+        for (int i = 0; i <= 3; i++) {
+            String text = "QA Automation Notes Text " + i; // Append iteration count for uniqueness
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, to_do_list_textBox_ck5.get(i), text, logger, "toDo List iteration " + i);
+        }
+        for (int i = 0; i <= 1; i++) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, to_do_list_checkBox_ck5.get(i), logger, "toDo checkbox # " + i);
+        }
+    }
+
+
+    @FindBy(xpath = "//input[@checked]")
+    WebElement checked_toDOList_item1_ck5_qp;
+    @FindBy(xpath = "(//input[@checked])[2]")
+    WebElement checked_toDOList_item2_ck5_qp;
+
+    @FindBy(xpath = "//ul[@class='todo-list']")
+    WebElement toDoList_text_ck5_qp;
+
+    public void verify_toDoList_items_ck5_qp() throws InterruptedException {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, checked_toDOList_item1_ck5_qp,true,  logger, " checked_toDOList_item1_ck5_qp ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, checked_toDOList_item2_ck5_qp, true, logger, " checked_toDOList_item2_ck5_qp ");
+
+        String toDoList_text_string = ReusableMethodsLoggersPOM.saveTextMethod(driver, toDoList_text_ck5_qp,  logger, " toDoList_text_ck5_qp ");
+
+        if (toDoList_text_string.contains("QA Automation Notes Text 0\n" +
+                "QA Automation Notes Text 1\n" +
+                "QA Automation Notes Text 2\n" +
+                "QA Automation Notes Text 3")) {
+            logger.log(LogStatus.PASS, "Successfully verified - To-Do List items - as expected.");
+            System.out.println("Successfully verified - To-Do List items - as expected.");
+        } else {
+            logger.log(LogStatus.FAIL, "Failed to verify - To-Do List items - NOT as expected.");
+            System.out.println("Failed to verify - To-Do List items - NOT as expected.");
+        }
+    }
 
 
 

@@ -362,8 +362,10 @@ public void TC_006_Prod_login() throws InterruptedException {
         BaseClass.dashBoard().verify_no_fetching_data_messages();
         Thread.sleep(500);
         BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
         Thread.sleep(500);
+
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        Thread.sleep(1000);
     }
 
     @Test
