@@ -48,7 +48,10 @@ public class Staging5 extends ReusableAnnotations {
     @FindBy(xpath = "//span[normalize-space()='QA Automation PCA Portfolio']")
     WebElement QA_PCA_portfolio;
 
-    public void click_QA_PCA_portfolio() {
+    public void click_QA_PCA_portfolio() throws InterruptedException {
+        ReusableMethodsLoggersPOM.scrollToElementMethod(driver, QA_PCA_portfolio, logger, "QA_PCA_portfolio");
+        Thread.sleep(1000);
+
         ReusableMethodsLoggersPOM.clickMethod(driver, QA_PCA_portfolio, logger, "QA_PCA_portfolio");
     }
 
@@ -2367,7 +2370,7 @@ public class Staging5 extends ReusableAnnotations {
 
 
     //
-    @FindBy(xpath = "//a[normalize-space()='Close window']")
+    @FindBy(xpath = "//div[@id='step-0']//button[@class='btn btn-default btn-sm'] | //a[normalize-space()='Close window']\n")
     WebElement modal_close_window;
 
     public void click_modal_close_window() {

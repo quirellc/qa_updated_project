@@ -162,7 +162,7 @@ public class ReusableMethodsLoggersPOM {
 //            Thread.sleep(1000);
 //
 //            jse.executeScript("scroll(0,-5000)");
-            Thread.sleep(700);
+            Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(xpath)).click();
             System.out.println("Successfully scrolled and clicked: " + elementName);
             logger.log(LogStatus.PASS, "Successfully scrolled and clicked " + elementName);
@@ -342,7 +342,7 @@ public class ReusableMethodsLoggersPOM {
             try {
                 WebElement element = wait.until(ExpectedConditions.elementToBeClickable((xpath)));
                 element.sendKeys(userValue);
-                Thread.sleep(500);
+                Thread.sleep(1500);
               //  element.click();
                // Thread.sleep(500);
 

@@ -1,14 +1,16 @@
 import Quire_POM.BaseClass;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 import reusableLibrary.ReusableAnnotations;
 import reusableLibrary.ReusableMethodsLoggersPOM;
 
 
 public class Regression_Suite extends ReusableAnnotations {
-	//WebDriver driver = getDriver();
-    String browserName = driver.getClass().getSimpleName();
+//	WebDriver driver = getDriver();
+//    String browserName = ((RemoteWebDriver) driver).getCapabilities().getBrowserName();
+
 
     //@BeforeTest
     @Test
@@ -16,7 +18,7 @@ public class Regression_Suite extends ReusableAnnotations {
         WebDriver driver = getDriver();
 
         driver.navigate().to("https://staging5.openquire.com/");
-//
+//        driver.navigate().to("https://staging5-next.openquire.com/");
 //        driver.navigate().to("https://staging5.openquire.com/reports/1191555");
         String pageTitle = driver.getTitle();
 
@@ -35,198 +37,206 @@ public class Regression_Suite extends ReusableAnnotations {
 
     }
 
-    @Test
-    public void TR_005c_ck5_and_uploadtoProfile_current_admin_login() throws InterruptedException {
-
-
-        //UPLOAD STAMP
-
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_editProfile_dropdownItem();
-        BaseClass.staging5().click_stamps_tab();
-        Thread.sleep(1000);
-        BaseClass.staging5().upload_stamp_button();
-        Thread.sleep(1500);
-        BaseClass.templatesSection().clickSave2();
-        Thread.sleep(1500);
-
-        //UPLOAD SIGNATURE
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_editProfile_dropdownItem();
-        Thread.sleep(1000);
-        BaseClass.staging5().upload_signature_button();
-        Thread.sleep(1500);
-        BaseClass.templatesSection().clickSave2();
-        Thread.sleep(3000);
-
-        //open cloned fm 1105 report, and upload stamp and signature
-        BaseClass.reportfoldersection().clickReportsTab();
-        BaseClass.reportfoldersection().enterSearchField_QA_Report();
-        Thread.sleep(3500);
-        BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(1500);
-        BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
-        Thread.sleep(1500);
-        BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(1500);
-//add a section 2 for stamp and signature
-        BaseClass.staging5().click_default_section_title();
-        Thread.sleep(1000);
-        BaseClass.pca_xml_section().clickAddSectionButton();
-        Thread.sleep(2000);
-        BaseClass.staging5().click_add_section_toSection();
-        Thread.sleep(1000);
-        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_Section2_row_editor();
-
-        Thread.sleep(1500);
-        BaseClass.staging5().click_signature_icon_ck_modal();
-        Thread.sleep(500);
-        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.staging5().click_reportTag_dropDownItem_ck_modal();
-        Thread.sleep(500);
-        WebDriver driver = getDriver();
-
-        driver.switchTo().defaultContent();
-        Thread.sleep(500);
-        BaseClass.staging5().click_out_of_section();
-        Thread.sleep(1500);
-        BaseClass.staging5().click_Section2_row_editor();
-        Thread.sleep(1500);
-
-        BaseClass.staging5().click_stamp_icon_ck_modal();
-        Thread.sleep(500);
-        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.staging5().click_reportTag_dropDownItem_ck_modal();
-        Thread.sleep(500);
-        driver.switchTo().defaultContent();
-        Thread.sleep(500);
-        BaseClass.staging5().verify_ck_editor_admin_permission_level();
-        Thread.sleep(1200);
-         BaseClass.staging5().click_out_of_section();
-        Thread.sleep(1000);
-        BaseClass.staging5().verify_stamp_in_section();
-        Thread.sleep(1000);
-        BaseClass.staging5().verify_signature_in_section();
-        Thread.sleep(1000);
-
-        //        BaseClass.staging5().click_default_section_title();
+//    @Test
+//    public void TR_005c_ck5_and_uploadtoProfile_current_admin_login() throws InterruptedException {
+//
+//
+//        //UPLOAD STAMP
+//
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_editProfile_dropdownItem();
+//        BaseClass.staging5().click_stamps_tab();
 //        Thread.sleep(1000);
-
-    }
-    @Test
-    public void TR_006_report_packages() throws InterruptedException {
-
-        BaseClass.reportfoldersection().clickReportSettingsButton();
-        BaseClass.pca_xml_section().clickTemplatePackagesTab();
-        Thread.sleep(1000);
-        BaseClass.pca_xml_section().getTemplatesPackagesList();
-        Thread.sleep(1000);
-
-////        //  click aei package
-//        BaseClass.templatesSection().enter_PackagesTab_SearchField_ESA_CA();
-//        Thread.sleep(800);
+//        BaseClass.staging5().upload_stamp_button();
+//        Thread.sleep(1500);
+//        BaseClass.templatesSection().clickSave2();
+//        Thread.sleep(1500);
 //
+//        //UPLOAD SIGNATURE
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_editProfile_dropdownItem();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().upload_signature_button();
+//        Thread.sleep(1500);
+//        BaseClass.templatesSection().clickSave2();
+//        Thread.sleep(3000);
+//
+//        //open cloned fm 1105 report, and upload stamp and signature
+//        BaseClass.reportfoldersection().clickReportsTab();
+//        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+//        Thread.sleep(3500);
+//        BaseClass.reportfoldersection().clickReportsFirstLink();
+//        Thread.sleep(1500);
+//        BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
+//        Thread.sleep(1500);
+//        BaseClass.reportfoldersection().clickReportsFirstLink();
+//        Thread.sleep(1500);
+////add a section 2 for stamp and signature
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().clickAddSectionButton();
+//        Thread.sleep(2000);
+//        BaseClass.staging5().click_add_section_toSection();
+//        Thread.sleep(1000);
+//        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_Section2_row_editor();
+//
+//        Thread.sleep(1500);
+//        BaseClass.staging5().click_signature_icon_ck_modal();
+//        Thread.sleep(500);
+//        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_reportTag_dropDownItem_ck_modal();
+//        Thread.sleep(500);
+//        WebDriver driver = getDriver();
+//
+//        driver.switchTo().defaultContent();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_out_of_section();
+//        Thread.sleep(1500);
+//        BaseClass.staging5().click_Section2_row_editor();
+//        Thread.sleep(1500);
+//
+//        BaseClass.staging5().click_stamp_icon_ck_modal();
+//        Thread.sleep(500);
+//        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_reportTag_dropDownItem_ck_modal();
+//        Thread.sleep(500);
+//        driver.switchTo().defaultContent();
+//        Thread.sleep(500);
+//        BaseClass.staging5().verify_ck_editor_admin_permission_level();
+//        Thread.sleep(1200);
+//         BaseClass.staging5().click_out_of_section();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().verify_stamp_in_section();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().verify_signature_in_section();
+//        Thread.sleep(1000);
+//
+//        //        BaseClass.staging5().click_default_section_title();
+////        Thread.sleep(1000);
+//
+//    }
+//    @Test
+//    public void TR_006_report_packages() throws InterruptedException {
+//
+//        BaseClass.reportfoldersection().clickReportSettingsButton();
+//        BaseClass.pca_xml_section().clickTemplatePackagesTab();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().getTemplatesPackagesList();
+//        Thread.sleep(1000);
+//
+//////        //  click aei package
+////        BaseClass.templatesSection().enter_PackagesTab_SearchField_ESA_CA();
+////        Thread.sleep(800);
+////
+////        BaseClass.pca_xml_section().click_package_ESA();
+////        Thread.sleep(800);
+////        BaseClass.staging5().clear_package_SearchField();
+////        Thread.sleep(800);
+////
+////        BaseClass.staging5().click_add_button_unassigned_package();
+////        Thread.sleep(800);
+//        //hover and click first arrow button unassigned package
+//        BaseClass.staging5().hover_unassigned__dropdown_value();
+//        Thread.sleep(800);
+//        BaseClass.staging5().click_unassigned_items_right_arrow();
+//        Thread.sleep(1000);
+//
+//        BaseClass.pca_xml_section().getTemplatesPackagesList();
+//        Thread.sleep(1000);
+//
+////remove AEI package
+//   //     BaseClass.templatesSection().enter_PackagesTab_SearchField_ESA_CA();
+//     //   Thread.sleep(800);
 //        BaseClass.pca_xml_section().click_package_ESA();
-//        Thread.sleep(800);
-//        BaseClass.staging5().clear_package_SearchField();
-//        Thread.sleep(800);
+//        Thread.sleep(500);
+//        BaseClass.pca_xml_section().click_remove_button();
+//        Thread.sleep(500);
+////remove other package hovering over checkbox
+//        BaseClass.pca_xml_section().hover_assigned_packages_second_item();
+//        Thread.sleep(500);
+//        BaseClass.pca_xml_section().click_cancel_assigned_package_button();
+//        Thread.sleep(500);
 //
-//        BaseClass.staging5().click_add_button_unassigned_package();
-//        Thread.sleep(800);
-        //hover and click first arrow button unassigned package
-        BaseClass.staging5().hover_unassigned__dropdown_value();
-        Thread.sleep(800);
-        BaseClass.staging5().click_unassigned_items_right_arrow();
-        Thread.sleep(1000);
-
-        BaseClass.pca_xml_section().getTemplatesPackagesList();
-        Thread.sleep(1000);
-
-//remove AEI package
-   //     BaseClass.templatesSection().enter_PackagesTab_SearchField_ESA_CA();
-     //   Thread.sleep(800);
-        BaseClass.pca_xml_section().click_package_ESA();
-        Thread.sleep(500);
-        BaseClass.pca_xml_section().click_remove_button();
-        Thread.sleep(500);
-//remove other package hovering over checkbox
-        BaseClass.pca_xml_section().hover_assigned_packages_second_item();
-        Thread.sleep(500);
-        BaseClass.pca_xml_section().click_cancel_assigned_package_button();
-        Thread.sleep(500);
-
-
-        BaseClass.pca_xml_section().getTemplatesPackagesList();
-
-        Thread.sleep(1000);
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(500);
-        WebDriver driver = getDriver();
 //
-//        driver.switchTo().alert().accept();
-        Thread.sleep(1500);
-     driver.navigate().refresh();
-        Thread.sleep(1500);
-
-
-    }
-    @Test
-    public void TR_007_lock_unlock_ck5() throws InterruptedException {
-
-        //enter body text iframe
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(500);
-
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        BaseClass.templatesSection().enter_instruction_text_iFrame();
-
-        //double click last word and leave iframe and click lock icon
-        BaseClass.templatesSection().double_click_body_iFrame();
-        Thread.sleep(500);
-        WebDriver driver = getDriver();
-
-        driver.switchTo().defaultContent();
-        BaseClass.staging5().click_lock_icon_ck5();
-
-        //switch back into iframe and verify locked content - leave iframe
-
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.staging5().verify_locked_content_ck5();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_locked_content_ck5();
-
-        driver.switchTo().defaultContent();
-
-        BaseClass.staging5().click_unlock_icon_ck5();
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.staging5().verify_unlocked_content_ck5();
-        Thread.sleep(500);
-        driver.switchTo().defaultContent();
-        Thread.sleep(500);
-        BaseClass.staging5().click_default_section_title();
-        Thread.sleep(500);
-
-    }
+//        BaseClass.pca_xml_section().getTemplatesPackagesList();
+//
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(500);
+//        WebDriver driver = getDriver();
+////
+////        driver.switchTo().alert().accept();
+//        Thread.sleep(1500);
+//     driver.navigate().refresh();
+//        Thread.sleep(1500);
+//
+//
+//    }
+//    @Test
+//    public void TR_007a_lock_unlock_ck5() throws InterruptedException {
+//
+//        //enter body text iframe
+//        BaseClass.staging5().clickSection_row_editor();
+//        Thread.sleep(500);
+//
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        BaseClass.templatesSection().enter_instruction_text_iFrame();
+//
+//        //double click last word and leave iframe and click lock icon
+//        BaseClass.templatesSection().double_click_body_iFrame();
+//        Thread.sleep(500);
+//        WebDriver driver = getDriver();
+//
+//        driver.switchTo().defaultContent();
+//        BaseClass.staging5().click_lock_icon_ck5();
+//
+//        //switch back into iframe and verify locked content - leave iframe
+//
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.staging5().verify_locked_content_ck5();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_locked_content_ck5();
+//
+//        driver.switchTo().defaultContent();
+//
+//        BaseClass.staging5().click_unlock_icon_ck5();
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.staging5().verify_unlocked_content_ck5();
+//        Thread.sleep(500);
+//        driver.switchTo().defaultContent();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(500);
+//
+//    }
 
     @Test
     public void TR_007b_ck5_admin_status_trigger_pinnedItems() throws InterruptedException {
         WebDriver driver = getDriver();
+        String browserName = driver.getClass().getSimpleName();
 
-//        BaseClass.staging5().clickUserProfileTab();
-//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().navigate_to_admin_pinnedStatus_reports();
+//
+        BaseClass.staging5().clickUserProfileTab();
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        System.out.println("Browser name: " + browserName);
+        if (browserName.contains("Chrome")) {
+            driver.navigate().to("https://staging5.openquire.com/reports/666419");
+        } else if (browserName.contains("Firefox")) {
+            driver.navigate().to("https://staging5.openquire.com/reports/666418");
+        }
+     //   BaseClass.quireLogin().navigate_to_admin_pinnedStatus_reports();
 
-//        BaseClass.quireLogin().enter_admin_Email();
-//        BaseClass.quireLogin().enterPassword();
-//        Thread.sleep(1000);
-//        BaseClass.quireLogin().clickLogin();
-//        Thread.sleep(1000);
+        BaseClass.quireLogin().enter_admin_Email();
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(1000);
         BaseClass.staging5().click_modal_close_window();
         Thread.sleep(500);
 

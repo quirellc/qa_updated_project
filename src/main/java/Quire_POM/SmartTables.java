@@ -726,8 +726,10 @@ WebElement toBeDeleted_column_dropdown;
         ReusableMethodsLoggersPOM.rightClickMethod(driver, dynamic_cell_smartTable, logger, " dynamic_cell_smartTable ");
     }
 
-    @FindBy(xpath = "//table[@class='htCore']//tbody//tr[1]//td[@class='qit-header-row mergeCells-ignore current']")
+//    @FindBy(xpath = "//td[@class='htLeft htAutocomplete current highlight']")   maybe for ck5
+    @FindBy(xpath = "//td[contains(@class, 'qit-header-row') and contains(@class, 'mergeCells-ignore') and contains(@class, 'current')]")
     WebElement r1_header_smartTable;
+
 
     public void rightClick_r1_header_smartTable() {
         ReusableMethodsLoggersPOM.rightClickMethod(driver, r1_header_smartTable, logger, " r1_header_smartTable ");
