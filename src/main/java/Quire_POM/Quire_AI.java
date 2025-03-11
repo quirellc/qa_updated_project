@@ -11,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 import reusableLibrary.ReusableAnnotations;
 import reusableLibrary.ReusableMethodsLoggersPOM;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Quire_AI extends ReusableAnnotations {
@@ -34,23 +36,13 @@ public class Quire_AI extends ReusableAnnotations {
     public void verify_quire_AI_icon_isNotVisible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_icon_ck5, false, logger, "quire_AI_icon_ck5");}
 
-    @FindBy(xpath = "(//ul[@class='ck ck-reset ck-list'])[1]")
+    @FindBy(xpath = "(//ul[contains(@class, 'ck') and contains(@class, 'ck-reset')])[1]")
         WebElement quire_AI_dropDownItems;
         public void verify_quire_AI_dropDownItems() {
-           String quire_AI_dropDownItems_text = ReusableMethodsLoggersPOM.saveTextMethod(driver, quire_AI_dropDownItems, logger, "quire_AI_dropDownItems");
+           String quire_AI_dropDownItems_text = ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_dropDownItems, logger, "quire_AI_dropDownItems");
         if (quire_AI_dropDownItems_text.equals("Generate Content\n" +
-                "Summarize\n" +
-                "Expand\n" +
                 "Content Assistant\n" +
-                "Thesaurus\n" +
-                "Dictionary\n" +
-                "Suggest References\n" +
-                "Insert/Suggest ReportTags\n" +
-                "Adjust Content Tone\n" +
-                "Professional\n" +
-                "Technical\n" +
-                "Non-Technical\n" +
-                "Legal")) {
+                "Adjust Content Tone")) {
             System.out.println("Test Passed:  quire_AI_dropDownItems  are as expected.");
             logger.log(LogStatus.PASS, "Test Passed:  quire_AI_dropDownItems  are as expected.");
         } else {
@@ -59,6 +51,20 @@ public class Quire_AI extends ReusableAnnotations {
         }
     }
 
+    @FindBy(xpath = "//span[contains(text(), 'Generate Content')]")
+    WebElement quire_AI_dropDown_generateContent_header_button;
+    public void click_quire_AI_dropDown_generateContent_header_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_dropDown_generateContent_header_button, logger, "quire_AI_dropDown_generateContent_header_button");}
+
+    @FindBy(xpath = "//span[contains(text(), 'Content Assistant')]")
+    WebElement quire_AI_dropDown_contentAssistant_header_button;
+    public void click_quire_AI_dropDown_contentAssistant_header_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_dropDown_contentAssistant_header_button, logger, "quire_AI_dropDown_contentAssistant_header_button");}
+
+    @FindBy(xpath = "//span[contains(text(), 'Adjust Content Tone')]")
+    WebElement quire_AI_dropDown_adjustContentTone_header_button;
+    public void click_quire_AI_dropDown_adjustContentTone_header_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_dropDown_adjustContentTone_header_button, logger, "quire_AI_dropDown_adjustContentTone_header_button");}
 
     @FindBy(xpath = "//span[contains(text(), 'Summarize')]")
     WebElement quire_AI_dropDown_summarize_button;
@@ -92,7 +98,7 @@ public class Quire_AI extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyEmptyText(driver, quire_AI_empty_prompt, logger, "quire_AI_empty_prompt");}
        // ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_empty_prompt, true, logger, "quire_AI_empty_prompt");}
 
-    @FindBy(xpath = "//p[contains(text(),'content appears to be a brief title or header')]")
+    @FindBy(xpath = "QA Automation Testing")
     WebElement quire_AI_summarized_generated_prompt;
     public void verify_quire_AI_summarize_generated_prompt() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_summarized_generated_prompt, true, logger, "quire_AI_summarized_generated_prompt");}
@@ -103,12 +109,16 @@ public class Quire_AI extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_thesaurus_generated_prompt, true, logger, "quire_AI_thesaurus_generated_prompt");}
 
 
-    @FindBy(xpath = "//p[contains(text(),'implements a comprehensive spell-checking mechanism designed to systematically validate')]")
+    @FindBy(xpath = "//div[@class='ck ck-content ck-reset_all-excluded ck-ai-form__content-field']//h2[contains(text(), 'Systematic') and contains(text(), 'Automation') and contains(text(), 'Framework')]")
     WebElement quire_AI_technical_tone_generated_prompt;
     public void verify_quire_AI_technical_tone_generated_prompt() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_technical_tone_generated_prompt, true, logger, "quire_AI_technical_tone_generated_prompt");}
 
 
+    @FindBy(xpath = "//h2[contains(text(), 'Systematic') and contains(text(), 'Automation')]")
+    WebElement quire_AI_technical_tone_generated_text;
+    public void verify_quire_AI_technical_tone_generated_text() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_technical_tone_generated_text, true, logger, "quire_AI_technical_tone_generated_text");}
 
 
 
@@ -146,6 +156,78 @@ public class Quire_AI extends ReusableAnnotations {
     WebElement quire_AI_close_prompt_button;
     public void click_quire_AI_close_prompt_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_close_prompt_button, logger, "quire_AI_close_prompt_button");}
+
+//    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------
+    //    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------
+
+    @FindBy(xpath = "//span[@class='label-full truncate']")
+    WebElement quire_AI_search_field;
+    public void click_quire_AI_search_field() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_search_field, logger, "quire_AI_search_field");}
+
+@FindBy(xpath= "//input[@placeholder=\"Tell Quire AI what you're looking for...\"]")
+WebElement quire_AI_prompt_search_field;
+public void enter_quire_AI_prompt_search_field() {
+    ReusableMethodsLoggersPOM.sendKeysMethod(driver, quire_AI_prompt_search_field, "texas" ,  logger, "quire_AI_prompt_search_field");}
+
+    @FindBy(xpath= "//button[normalize-space()='Search']")
+    WebElement quire_AI_search_button;
+    public void click_quire_AI_search_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_search_button, logger, "quire_AI_search_button");}
+
+    @FindBy(xpath= "//sl-select[@placeholder='Status']")
+    WebElement quire_AI_status_field;
+    public void click_quire_AI_status_field() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_status_field, logger, "quire_AI_status_field");}
+
+    @FindBy(xpath= "//sl-select[@placeholder='System Label']")
+    WebElement quire_AI_system_label_field;
+    public void click_quire_AI_system_label_field() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_system_label_field, logger, "quire_AI_system_label_field");}
+
+    @FindBy(xpath= "//sl-option[contains(@role, 'option')]")
+    List<WebElement> quire_AI_status_dropdown_values;
+    public void capture_quire_AI_status_value() {
+
+        List<String> expectedValues = Arrays.asList("Data Entry", "Review", "Draft", "Final", "Final - Locked");
+        List<String> actualValues = new ArrayList<>();
+
+        for (int i = 0; i <= 4; i++) {
+            String text =ReusableMethodsLoggersPOM.saveTextMethod(driver, quire_AI_status_dropdown_values.get(i), logger, "quire_AI_status_dropdown_values");
+            actualValues.add(text);
+        }
+        if (actualValues.equals(expectedValues)) {
+            System.out.println("Dropdown values match expected values ✅");
+        } else {
+            System.out.println("Mismatch in dropdown values ❌");
+            System.out.println("Expected: " + expectedValues);
+            System.out.println("Actual: " + actualValues);
+        }
+    }
+
+    @FindBy(xpath= "//div[contains(@class, 'ai-search-result js-ai-search-result flex items-center gap-8 width-full')]")
+    WebElement quire_AI_search_result;
+    public void hover_quire_AI_first_search_result() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, quire_AI_search_result, logger, "quire_AI_search_result");
+    }
+
+    @FindBy(xpath= "//button[contains(@data-original-title, 'Ask AI about this Report')]")
+    WebElement quire_AI_ask_about_report_button;
+    public void click_quire_AI_ask_ai_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_ask_about_report_button, logger, "quire_AI_ask_about_report_button");
+    }
+
+    @FindBy(xpath = "//button[contains(@data-action, 'open-external')]")
+    WebElement quire_AI_open_external_button;
+    public void click_quire_AI_open_external_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_open_external_button, logger, "quire_AI_open_external_button");
+    }
+
+    @FindBy(xpath = "//button[@data-action='open']")
+    WebElement quire_AI_open_link_button;
+    public void click_quire_AI_open_link_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_open_link_button, logger, "quire_AI_open_link_button");
+    }
 
 }
 
