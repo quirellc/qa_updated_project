@@ -157,8 +157,9 @@ WebElement text_body;
         Thread.sleep(500);
     }
 
-    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
-    WebElement text_body1;
+//    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
+@FindBy(xpath = "(//p)[1]")
+WebElement text_body1;
     public void select_all_and_backspace_section_body1() throws InterruptedException {
         ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1, logger, " text_body");
         // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
