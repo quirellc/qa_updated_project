@@ -4,6 +4,8 @@ import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import reusableLibrary.ReusableAnnotations;
+
+import java.io.IOException;
 //
 
 public class CK_Editor extends ReusableAnnotations {
@@ -12,27 +14,27 @@ public class CK_Editor extends ReusableAnnotations {
 
     public void TR_001_user_login() throws InterruptedException {
         WebDriver driver = getDriver();
+        System.out.println(driver.getClass().getSimpleName());
+        driver.navigate().to(baseUrl);
+        System.out.println("Navigating to: " + baseUrl);
+        Thread.sleep(500);
 
-        logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
 
-//        driver.navigate().to("https://staging5.openquire.com/");
-        driver.navigate().to("https://staging5.openquire.com/");
 
-        String pageTitle = driver.getTitle();
-        if (pageTitle.contains("OpenQuire")) {
+
+        if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().enterPassword();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(3000);
-        } else {
-            System.out.println("\n" + "Already logged in. Skipping login steps.");
-            Thread.sleep(3000);
+        } else if (baseUrl.contains("app")) {
+            BaseClass.quireLogin().enterProdEmail();
         }
 
-        BaseClass.staging5().captureURL();
         Thread.sleep(1000);
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(2000);
+           BaseClass.staging5().captureURL();
+          Thread.sleep(500);
     }
 
     @Test
@@ -506,7 +508,9 @@ public class CK_Editor extends ReusableAnnotations {
     }
 
     @Test
-    public void TR_004_generate_and_email_PDF_Link() throws InterruptedException {
+    public void TR_004_generate_and_email_PDF_Link() throws InterruptedException, IOException {
+        WebDriver driver = getDriver();
+//generate pdf
         BaseClass.reportfoldersection().clickGeneratePDFButton();
         Thread.sleep(4500);
 
@@ -514,20 +518,41 @@ public class CK_Editor extends ReusableAnnotations {
         Thread.sleep(2000);
         BaseClass.reportfoldersection().clickSaveAndCopyLink();
         Thread.sleep(800);
+
+
+// open email pdf link in email preview
+        BaseClass.reportfoldersection().clickSavedLinksButton();
+        Thread.sleep(800);
+        BaseClass.reportfoldersection().clickEmailLink_hyperLink();
+        BaseClass.reportfoldersection().open_report_email_pdf_link();
+        Thread.sleep(1500);
+        BaseClass.staging5().verify_email_link_PDF();
+        Thread.sleep(1000);
+        driver.navigate().back();
+        Thread.sleep(500);
+        driver.navigate().refresh();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(800);
+
+//generate pdf not saving, need to click again
+        // open email pdf and send email
+    //    BaseClass.reportfoldersection().clickGeneratePDFButton();
+     //   Thread.sleep(4500);
+     //   BaseClass.reportfoldersection().clickSaveAndCopyLink();
+     //   Thread.sleep(800);
         BaseClass.reportfoldersection().clickSavedLinksButton();
         Thread.sleep(800);
         BaseClass.reportfoldersection().clickEmailLink_hyperLink();
         Thread.sleep(800);
-
+        BaseClass.staging5().upload_signature_attachment();
+        Thread.sleep(800);
         BaseClass.reportfoldersection().enter_SendTo_EmailAddress();
         Thread.sleep(800);
-
         BaseClass.reportfoldersection().enter_email_message_body();
         Thread.sleep(800);
-
         BaseClass.reportfoldersection().clickSendEmailButton();
         Thread.sleep(800);
-
         BaseClass.templatesSection().captureAlertMessage();
         Thread.sleep(2000);
 

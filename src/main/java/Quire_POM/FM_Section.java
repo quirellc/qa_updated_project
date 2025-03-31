@@ -94,17 +94,19 @@ public class FM_Section extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.selectByValue(driver, elevators_repairs_dropDown, "1",  logger, "elevators_repairs_dropDown");
     }
 
-    @FindBy(xpath = "//div[@class='fmac1104-optionalContainer js-fmac-question-container-with-response fmac1104-optionalContainer-elevatorsInvestigationRepairs']//div[@class='fmac1104-questionAnswer-labelResponseContainer']/following-sibling::div[1]//section")
+//    @FindBy(xpath = "//div[@class='fmac1104-optionalContainer js-fmac-question-container-with-response fmac1104-optionalContainer-elevatorsInvestigationRepairs']//div[@class='fmac1104-questionAnswer-labelResponseContainer']/following-sibling::div[1]//section")
+
+    @FindBy(xpath = "//textarea[@name='elevators_investigation_repairs_description']")
     WebElement elevators_description_field;
 
-    public void click_elevators_description_field() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, elevators_description_field, logger, " elevators_description_field ");
+    public void enter_elevators_description_field() {
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, elevators_description_field, "QA Automation Text - Elevator Description", logger, "elevators_description_field");
     }
 
 
-    public void enter_elevator_ck4_text() {
-        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, instruction_text_iFrame, "QA Automation Text - Elevator Description", logger, "instruction_text_iFrame");
-    }
+//    public void enter_elevator_ck4_text() {
+//        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, instruction_text_iFrame, "QA Automation Text - Elevator Description", logger, "instruction_text_iFrame");
+//    }
 
 
     @FindBy(xpath = "//input[@name='elevators_investigation_repairs_cost_to_cure']")
@@ -115,7 +117,7 @@ public class FM_Section extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "(//p[contains(text(),'QA Automation Text - Elevator Description')])[2]")
+    @FindBy(xpath = "(//*[contains(text(),'QA Automation Text - Elevator Description')])[2]")
     WebElement elevator_description_field_qp;
 
 

@@ -11,30 +11,24 @@ public class Freddie_Macs extends ReusableAnnotations {
 	//WebDriver driver = getDriver();
     //@BeforeTest
     @Test
-    public void TR_001_User_Login() throws InterruptedException {
+    public void TR_001_user_login() throws InterruptedException {
         WebDriver driver = getDriver();
-
-//        driver.navigate().to("https://staging5.openquire.com/");
-
-        driver.navigate().to("https://staging5.openquire.com/");
-        String pageTitle = driver.getTitle();
-
-        if (pageTitle.contains("OpenQuire")) {
+        System.out.println(driver.getClass().getSimpleName());
+        driver.navigate().to(baseUrl);
+        System.out.println("Navigating to: " + baseUrl);
+        Thread.sleep(500);
+        if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
-            Thread.sleep(1000);
-            //BaseClass.quireLogin().clickNextButton();
-            BaseClass.quireLogin().enterPassword();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-        } else {
-            // The title does not indicate a login page, assume the user is already logged in
-            System.out.println("\n" + "Already logged in. Skipping login steps.");
+        } else if (baseUrl.contains("app")) {
+            BaseClass.quireLogin().enterProdEmail();
         }
-        Thread.sleep(3000);
-
-
-
-    }
+        Thread.sleep(1000);
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(2000);
+        BaseClass.staging5().captureURL();
+        Thread.sleep(500);}
 
 //    @Test
 //    public void TR_002_Global_Search() throws InterruptedException {
@@ -316,7 +310,7 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.staging5().captureAlertMessage();
         Thread.sleep(500);
 
-        BaseClass.staging5().enter_conditionAction_opinion_field();
+        BaseClass.staging5().enter_conditionAction_comment_field();
         Thread.sleep(500);
 
         BaseClass.staging5().click_out_of_section();
@@ -521,12 +515,12 @@ public class Freddie_Macs extends ReusableAnnotations {
 
         BaseClass.fm_section().select_are_there_any_elevators_dropDown();
         BaseClass.fm_section().select_elevators_repairs_dropDown();
-        BaseClass.fm_section().click_elevators_description_field();
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        BaseClass.fm_section().enter_elevator_ck4_text();
+        BaseClass.fm_section().enter_elevators_description_field();
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        BaseClass.fm_section().enter_elevator_ck4_text();
         Thread.sleep(500);
         // WebDriver driver = getDriver();
-        driver.switchTo().defaultContent();
+//        driver.switchTo().defaultContent();
         BaseClass.fm_section().enter_elevator_costToCure_field();
         Thread.sleep(500);
         BaseClass.reportfoldersection().click_quick_preview_button();

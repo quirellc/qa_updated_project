@@ -9,29 +9,39 @@ import reusableLibrary.ReusableAnnotations;
 // new
 public class FNMA_SRA_XML_Staging extends ReusableAnnotations {
 //	WebDriver driver = getDriver();
-    @Test
-    public void TR001_user_login() throws InterruptedException {
-        WebDriver driver = getDriver();
+@Test
+public void TR001_user_login() throws InterruptedException {
+    WebDriver driver = getDriver();
+    System.out.println(driver.getClass().getSimpleName());
+    driver.navigate().to(baseUrl);
+    System.out.println("Navigating to: " + baseUrl);
+    // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
+//        driver.navigate().to("https://staging5.openquire.com/");
+    //     driver.navigate().to("https://app-next.openquire.com/");
+//        driver.navigate().to("https://staging5-next.openquire.com/");
 
-     //   logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging5.openquire.com/");
+    //  WebDriver driver1 = getDriver();
 
-        String pageTitle = driver.getTitle();
-        if (pageTitle.contains("OpenQuire")) {
-            BaseClass.quireLogin().enter_admin_Email();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().enterPassword();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(3000);
-        } else {
-            System.out.println("\n" + "Already logged in. Skipping login steps.");
-            Thread.sleep(3000);
-        }
-
-        BaseClass.staging5().captureURL();
-        Thread.sleep(1000);
+    //   String pageTitle = driver.getTitle();
+    if (baseUrl.contains("staging")) {
+        BaseClass.quireLogin().enter_admin_Email();
+    } else if (baseUrl.contains("app")) {
+        BaseClass.quireLogin().enterProdEmail();
     }
+
+    Thread.sleep(1000);
+    BaseClass.quireLogin().enterPassword();
+    Thread.sleep(1000);
+    BaseClass.quireLogin().clickLogin();
+    Thread.sleep(3000);
+    //   } else {
+    //       System.out.println("\n" + "Already logged in. Skipping login steps.");
+    //      Thread.sleep(3000);
+    //  }
+
+    BaseClass.staging5().captureURL();
+    Thread.sleep(2000);
+}
     @Test
     public void TR002_SRA_Template_ProjectFolder_Report_Creation() throws InterruptedException {
         //create new template - name it SRA

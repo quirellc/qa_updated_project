@@ -155,8 +155,25 @@ WebElement text_body;
         //  mouseActions.sendKeys(Keys.BACK_SPACE).perform();
         text_body.sendKeys(String.valueOf(Keys.BACK_SPACE));
         Thread.sleep(500);
-
     }
+
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']")
+    WebElement text_body1;
+    public void select_all_and_backspace_section_body1() throws InterruptedException {
+        ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1, logger, " text_body");
+        // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
+        Thread.sleep(1000);
+        //  mouseActions.sendKeys(Keys.BACK_SPACE).perform();
+        text_body1.sendKeys(String.valueOf(Keys.BACK_SPACE));
+        Thread.sleep(500);
+    }
+    public void enter_sc_text_body_ck5() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");}
+//   @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
+
+
+
+
     @FindBy(xpath = "//section[@class='switchboard CT-hide']//i[@class='fa fa-exclamation-circle fa-lg fa-fw']")
     WebElement grey_instruction_Icon_template;
     public void click_grey_instruction_Icon_template() {
@@ -615,8 +632,8 @@ int count = TC_highlights.size();
 
     @FindBy(xpath = "//span[@class='ck-suggestion-marker ck-suggestion-marker-deletion']")
     WebElement TC_red_highlight;
-    public void verify_TC_red_highlight() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, TC_red_highlight, true, logger, "TC_red_highlight");}
+    public void click_TC_red_highlight() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, TC_red_highlight, logger, "TC_red_highlight");}
 
 
     @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//span[contains(@class, 'ck-suggestion-marker ck-suggestion-marker-')]")
@@ -633,6 +650,8 @@ int count = TC_highlights.size();
     WebElement reject_TC_suggestion;
     public void click_discard_TC_suggestion() {
         ReusableMethodsLoggersPOM.clickMethod(driver, reject_TC_suggestion, logger, "discard_TC_suggestion");}
+
+
 
 //    @FindBy(xpath = "//button[@data-cke-tooltip-text='WProofreader text checker']")
 //    WebElement SC_icon_ck5;
@@ -829,7 +848,13 @@ int count = TC_highlights.size();
 
         public void navigateTo_ck5_report_HM_folder () throws InterruptedException {
            // driver.navigate().to("https://staging5.openquire.com/reports/666610");
-            driver.navigate().to("https://staging5.openquire.com/reports/668855");
+
+            if (baseUrl.contains("staging5")) {
+                driver.navigate().to("https://staging5.openquire.com/reports/668855");
+            }
+            else if (baseUrl.contains("staging3")) {
+                driver.navigate().to("https://staging3.openquire.com/reports/1330083");
+            }
 
 //            BaseClass.staging5().clickReportsTab();
 //            BaseClass.reportfoldersection().enterSearchField_HMReports();
@@ -1012,7 +1037,7 @@ int count = TC_highlights.size();
 
     public void enter_text_toDoList_ck5_() {
         for (int i = 0; i <= 3; i++) {
-            String text = "QA Automation Notes Text " + i; // Append iteration count for uniqueness
+            String text = "QA 'Automation' Notes Text " + i; // Append iteration count for uniqueness
             ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, to_do_list_textBox_ck5.get(i), text, logger, "toDo List iteration " + i);
         }
         for (int i = 0; i <= 1; i++) {
@@ -1033,12 +1058,10 @@ int count = TC_highlights.size();
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, checked_toDOList_item1_ck5_qp,true,  logger, " checked_toDOList_item1_ck5_qp ");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, checked_toDOList_item2_ck5_qp, true, logger, " checked_toDOList_item2_ck5_qp ");
 
-        String toDoList_text_string = ReusableMethodsLoggersPOM.saveTextMethod(driver, toDoList_text_ck5_qp,  logger, " toDoList_text_ck5_qp ");
+        String toDoList_text_string = ReusableMethodsLoggersPOM.captureTextMethod(driver, toDoList_text_ck5_qp,  logger, " toDoList_text_ck5_qp ");
 
-        if (toDoList_text_string.contains("QA Automation Notes Text 0\n" +
-                "QA Automation Notes Text 1\n" +
-                "QA Automation Notes Text 2\n" +
-                "QA Automation Notes Text 3")) {
+        if (toDoList_text_string.contains("QA ‘Automation’ Notes Text 0") &&
+                toDoList_text_string.contains("QA ‘Automation’ Notes Text 3")) {
             logger.log(LogStatus.PASS, "Successfully verified - To-Do List items - as expected.");
             System.out.println("Successfully verified - To-Do List items - as expected.");
         } else {

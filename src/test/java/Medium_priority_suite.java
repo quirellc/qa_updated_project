@@ -12,24 +12,39 @@ import java.io.IOException;
 public class Medium_priority_suite extends ReusableAnnotations {
 
 //	WebDriver driver = getDriver();
-    @Test
-    public void TR_001_User_Login() throws InterruptedException {
-	WebDriver driver = getDriver();
+@Test
+public void TR001_user_login() throws InterruptedException {
+    WebDriver driver = getDriver();
+    System.out.println(driver.getClass().getSimpleName());
+    driver.navigate().to(baseUrl);
+    System.out.println("Navigating to: " + baseUrl);
+    // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
+//        driver.navigate().to("https://staging5.openquire.com/");
+    //     driver.navigate().to("https://app-next.openquire.com/");
+//        driver.navigate().to("https://staging5-next.openquire.com/");
 
-      //  logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://staging5.openquire.com/");
+    //  WebDriver driver1 = getDriver();
 
-
+    //   String pageTitle = driver.getTitle();
+    if (baseUrl.contains("staging")) {
         BaseClass.quireLogin().enter_admin_Email();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().enterPassword();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(3000);
-
-        BaseClass.staging5().captureURL();
-        Thread.sleep(2000);
+    } else if (baseUrl.contains("app")) {
+        BaseClass.quireLogin().enterProdEmail();
     }
+
+    Thread.sleep(1000);
+    BaseClass.quireLogin().enterPassword();
+    Thread.sleep(1000);
+    BaseClass.quireLogin().clickLogin();
+    Thread.sleep(3000);
+    //   } else {
+    //       System.out.println("\n" + "Already logged in. Skipping login steps.");
+    //      Thread.sleep(3000);
+    //  }
+
+    BaseClass.staging5().captureURL();
+    Thread.sleep(2000);
+}
     @Test
     public void TR_001a_create_proj_folder() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
 
@@ -381,22 +396,22 @@ public class Medium_priority_suite extends ReusableAnnotations {
         //capture and click generated pdf
 
         BaseClass.reportfoldersection().captureGeneratedPDF_text();
-        BaseClass.reportfoldersection().click_GeneratedPDF_button();
-        Thread.sleep(5000);
+//        BaseClass.reportfoldersection().click_GeneratedPDF_button();
+        Thread.sleep(2000);
 
        //  BaseClass.reportfoldersection().open_GeneratedPDF_button();
 //        //switch to next tab and capture url
-        BaseClass.reportfoldersection().change_to_next_tab();
-        Thread.sleep(500);
-        BaseClass.staging5().captureURL();
+//        BaseClass.reportfoldersection().change_to_next_tab();
 //        Thread.sleep(500);
+//        BaseClass.staging5().captureURL();
+//        Thread.sleep(1500);
 //verify if header and footer has contents expected
         BaseClass.staging5().verify_header_footer_PDF_contents();
          Thread.sleep(500);
         //close second tab and go to default tab
-        driver.close();
-         Thread.sleep(500);
-         BaseClass.reportfoldersection().change_to_default_tab();
+//        driver.close();
+//         Thread.sleep(500);
+//         BaseClass.reportfoldersection().change_to_default_tab();
         Thread.sleep(2000);
 
 
@@ -416,7 +431,7 @@ public class Medium_priority_suite extends ReusableAnnotations {
     }
     @Test
     public void TR_007_delete_restore_template() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
-        BaseClass.templatesSection().clickTemplateSettingsButton();
+        BaseClass.templatesSection().  clickTemplateSettingsButton();
         BaseClass.templatesSection().clickdeleteToTrash();
         Thread.sleep(1000);
         BaseClass.staging5().captureAlertMessage();
@@ -442,7 +457,6 @@ public class Medium_priority_suite extends ReusableAnnotations {
         Thread.sleep(1000);
 
     }
-
     @Test
     public void TR_008_export_templates() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
         BaseClass.templatesSection().clickTemplatesTab();
@@ -769,9 +783,13 @@ public class Medium_priority_suite extends ReusableAnnotations {
     @Test
     public void TR_012_Report_tag_matrix_features() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
         WebDriver driver = getDriver();
-
-        driver.navigate().to("https://staging5.openquire.com/projects/327971/report_tags");
-        Thread.sleep(2000);
+        if (baseUrl.contains("staging5")) {
+            driver.navigate().to("https://staging5.openquire.com/projects/327971/report_tags");
+            Thread.sleep(2000);
+        } else if (baseUrl.contains("staging3")) {
+            driver.navigate().to("https://staging3.openquire.com/projects/601010/report_tags");
+            Thread.sleep(2000);
+        }
         //enter account manager name
         BaseClass.staging5().click_reportTagMatrix_first_cell();
         Thread.sleep(500);
@@ -800,9 +818,13 @@ public class Medium_priority_suite extends ReusableAnnotations {
     @Test
     public void TR_013_Portfolio_features() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
         WebDriver driver = getDriver();
-
-        driver.navigate().to("https://staging5.openquire.com/portfolios/4699");
-        Thread.sleep(1000);
+ if (baseUrl.contains("staging5")) {
+     driver.navigate().to("https://staging5.openquire.com/portfolios/4699");
+     Thread.sleep(2000);
+ } else if (baseUrl.contains("staging3")) {
+     driver.navigate().to("https://staging3.openquire.com/portfolios/9299");
+     Thread.sleep(2000);
+ }
 
         //change to aggregated cost view
         BaseClass.staging5().click_change_porfolio_view_button();
@@ -1020,6 +1042,7 @@ public class Medium_priority_suite extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.templatesSection().verify_alertMessage_submitted_for_request();
         Thread.sleep(500);
+        BaseClass.staging5().click_cancel_alert_message();
 
 
 
