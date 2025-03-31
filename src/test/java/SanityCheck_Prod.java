@@ -14,7 +14,7 @@ public class SanityCheck_Prod extends ReusableAnnotations {
 public void TC_006_Prod_login() throws InterruptedException {
     WebDriver driver = getDriver();
 
-    driver.navigate().to("https://app.openquire.com/");
+    driver.navigate().to(baseUrl);
     Thread.sleep(1000);
 
     BaseClass.quireLogin().enterProdEmail();
@@ -41,16 +41,18 @@ public void TC_006_Prod_login() throws InterruptedException {
         Thread.sleep(500);
 
         BaseClass.reportfoldersection().enterSearchField_HMReports();
-        Thread.sleep(3000);
-        BaseClass.reportfoldersection().captureRecentReportName();
-        Thread.sleep(1500);
+        Thread.sleep(4000);
+ //       BaseClass.reportfoldersection().captureRecentReportName();
+    //    Thread.sleep(1500);
 //
         BaseClass.reportfoldersection().clickReportsFirstLink();
         Thread.sleep(3000);
 
         BaseClass.projectFolderSection().clickProjectFolderLink_2023QAReport();
         Thread.sleep(1500);
-        BaseClass.reportfoldersection().clickAutomationReport_link();
+        BaseClass.reportfoldersection().click_ck5_sanity_test_report_link();
+
+//        BaseClass.reportfoldersection().clickAutomationReport_link();
         Thread.sleep(1500);
         BaseClass.staging5().capture_current_report_location();
         Thread.sleep(2000);
@@ -61,36 +63,86 @@ public void TC_006_Prod_login() throws InterruptedException {
     public void TC_008_appendices() throws InterruptedException {
 
         BaseClass.reportfoldersection().clickSectionView_Appendices();
-        Thread.sleep(5000);
+        Thread.sleep(1500);
+        //add pdf appendix - pdf checkbox is set by default
+        BaseClass.reportfoldersection().click_add_appendix_button();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().enter_pdf_appendix_title();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
+        BaseClass.staging5().captureAlertMessage();
+        Thread.sleep(1000);
+
+        //add gallery appendix -
+        BaseClass.reportfoldersection().click_add_appendix_button();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().enter_gallery_appendix_title();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().click_gallery_format_checkbox_appendix();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        BaseClass.staging5().captureAlertMessage();
+        Thread.sleep(1000);
+
+
+        BaseClass.staging5().upload_files_to_gallery_2nd_appendix();
+        Thread.sleep(6000);
+//upload to pdf - first appendix item
+        BaseClass.staging5().upload_files_to_pdf_first_appendix();
+        Thread.sleep(6000);
 
         BaseClass.reportfoldersection().capture_all_items_appendix_section();
-        Thread.sleep(500);
-
-        BaseClass.reportfoldersection().capture_processing_gallery_items_appendix_section();
-        Thread.sleep(500);
-
-        BaseClass.reportfoldersection().capture_processing_pdf_items_appendix_section();
-        Thread.sleep(500);
-
-        // Thread.sleep(1000);
-        BaseClass.reportfoldersection().capture_broken_link();
         Thread.sleep(1000);
+
+
         // BaseClass.reportfoldersection().capture_broken_link_api();
         //  Thread.sleep(2000);
 
     }
-//     @Test
-//    public void TC_009_generatePDF() throws InterruptedException {
-//         BaseClass.reportfoldersection().clickRegeneratePDFButton();
-//         Thread.sleep(500);
+     @Test
+    public void TC_009_generatePDF() throws InterruptedException, IOException {
+         WebDriver driver = getDriver();
+
+         BaseClass.reportfoldersection().clickRegeneratePDFButton();
+         Thread.sleep(500);
 //         BaseClass.reportfoldersection().clickRegeneratePDFButton1();
-//         Thread.sleep(500);
-//         BaseClass.staging5().captureAlertMessage();
-//         Thread.sleep(4000);
-//         BaseClass.reportfoldersection().captureGeneratedPDF_text();
-//         Thread.sleep(500);
-//
-//     }
+         Thread.sleep(500);
+         BaseClass.staging5().captureAlertMessage();
+         Thread.sleep(5000);
+         BaseClass.reportfoldersection().captureGeneratedPDF_text();
+         BaseClass.staging5().verify_appendices_PDF_contents();
+         Thread.sleep(500);
+
+       //  driver.close();
+        // BaseClass.reportfoldersection().change_to_default_tab();
+         BaseClass.reportfoldersection().verify_no_processing_items_appendix_section();
+
+         // Thread.sleep(1000);
+         BaseClass.reportfoldersection().capture_broken_link();
+         Thread.sleep(1000);
+         BaseClass.staging5().hover_to_delete_first_pdf_appendix_file();
+         Thread.sleep(1000);
+         BaseClass.staging5().hover_to_delete_first_pdf_appendix_file();
+         Thread.sleep(1000);
+
+         BaseClass.staging5().hover_to_delete_first_gallery_appendix_file();
+         Thread.sleep(1000);
+         BaseClass.staging5().hover_to_delete_first_gallery_appendix_file();
+
+
+         Thread.sleep(1000);
+         BaseClass.reportfoldersection().click_delete_appendix_button();
+         Thread.sleep(500);
+         BaseClass.staging5().captureAlertMessage();
+         Thread.sleep(500);
+         BaseClass.reportfoldersection().click_delete_appendix_button();
+         Thread.sleep(500);
+         BaseClass.staging5().captureAlertMessage();
+         Thread.sleep(500);
+         BaseClass.reportfoldersection().verify_empty_appendix_section();
+         Thread.sleep(500);
+     }
 
     @Test
     public void TC_010_templates() throws InterruptedException {
@@ -212,11 +264,11 @@ public void TC_006_Prod_login() throws InterruptedException {
     }
 
     @Test
-    public void TC_018_Spellcheck_trackChanges_ck4() throws InterruptedException {
+    public void TC_018_Spellcheck_trackChanges_ck5() throws InterruptedException {
         WebDriver driver = getDriver();
 
         //navigate to empty report-automation testing report
-        driver.navigate().to("https://app.openquire.com/reports/1119498");
+        driver.navigate().to("https://app.openquire.com/reports/1379930");
         Thread.sleep(500);
         BaseClass.staging5().captureURL();
         Thread.sleep(500);
@@ -336,7 +388,7 @@ public void TC_006_Prod_login() throws InterruptedException {
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().open_jenTest_pdf_notification_link();
-        Thread.sleep(500);
+        Thread.sleep(4000);
         BaseClass.staging5().verify_report_names_from_jen_portfolio_PDF();
         Thread.sleep(500);
     }
