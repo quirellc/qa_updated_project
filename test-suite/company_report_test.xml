@@ -3,6 +3,7 @@
 <suite name="My Test Suite 2" thread-count="1">
 
     <parameter name="browser" value="chrome"/>
+    <parameter name="env" value="app" />
 
     <test name="Company report usage email" preserve-order="true">
         <classes>
