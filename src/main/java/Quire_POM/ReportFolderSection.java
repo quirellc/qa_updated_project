@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -370,7 +371,12 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, automationReport_link, logger, "automationReport_link");
     }
 
+    @FindBy(xpath = "//span[normalize-space()='QA CK5 Sanity Test Report']")
+    WebElement ck5_sanity_test_report_link;
 
+    public void click_ck5_sanity_test_report_link() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ck5_sanity_test_report_link, logger, "ck5_sanity_test_report_link");
+    }
 
     @FindBy(xpath = "//a[@id='report_appendices_outline']")
     WebElement sectionView_Appendices;
@@ -491,13 +497,37 @@ public class ReportFolderSection extends ReusableAnnotations {
     }
 
     public void capture_all_items_appendix_section() {
-        int appendix_items = items_appendix_sections.size();
-        System.out.println("There are: " + appendix_items + " items in the appendix");
-        for (int i = 0; i < appendix_items; i++) {
+        List<String> expectedItems = Arrays.asList("maptest", "maptest2", "picture of a", "signature");
+
+        int appendixItemsCount = items_appendix_sections.size();
+        System.out.println("There are: " + appendixItemsCount + " items in the appendix");
+     //   System.out.println(items_appendix_sections);
+
+        if (appendixItemsCount != expectedItems.size()) {
+            System.out.println("Mismatch in expected count! Expected: " + expectedItems.size() + ", Found: " + appendixItemsCount);
+            return;
+        }
+
+        for (int i = 0; i < appendixItemsCount; i++) {
             WebElement item = items_appendix_sections.get(i);
-            ReusableMethodsLoggersPOM.captureTextMethod(driver, item, logger, "appendix Item at index: " + i);
+            String actualText = ReusableMethodsLoggersPOM.saveTextMethod(driver, item, logger, "appendix Item at index: " + i).trim();
+            String expectedText = expectedItems.get(i);
+
+            if (actualText.contains(expectedText)) {
+                System.out.println("✅ Match at index " + i + ": " + actualText);
+            } else {
+                System.out.println("❌ Mismatch at index " + i + ": Expected '" + expectedText + "', but found '" + actualText + "'");
+            }
         }
     }
+
+    @FindBy(xpath = "//p[normalize-space()='There are no Appendices in this report.']")
+    WebElement empty_appendix_section;
+
+    public void verify_empty_appendix_section() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, empty_appendix_section, true,  logger, "empty_appendix_section");
+    }
+
 
     @FindBy(xpath = "(//div[@class='appendix-item-caption-container'])[1]")
     WebElement image_1_report_section;
@@ -534,7 +564,7 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, custom_image1_caption, true, logger, "custom_image1_caption ");
     }
 
-    @FindBy(xpath = "//img[contains(@src,'_processing.gif')]")
+    @FindBy(xpath = "//*[contains(@src,'_processing.')]")
     WebElement processing_items_appendix_section;
 
     public void verify_no_processing_items_appendix_section() {
@@ -542,23 +572,29 @@ public class ReportFolderSection extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "//img[contains(@src,'_processing.gif')]")
-    List<WebElement> processing_gallery_items_appendix_section;
-
-    public void capture_processing_gallery_items_appendix_section() {
-
-        System.out.println("\n" + "There are: " + processing_gallery_items_appendix_section.size() + " unrendered gallery items" + "\n");
-        logger.log(LogStatus.PASS, "There are:  " + processing_gallery_items_appendix_section.size() + " unrendered gallery items" + "\n");
-    }
-
-    @FindBy(xpath = "//img[contains(@src,'_processing.pdf')]")
-    List<WebElement> processing_pdf_items_appendix_section;
-
-    public void capture_processing_pdf_items_appendix_section() {
-
-        System.out.println("\n" + "There are: " + processing_pdf_items_appendix_section.size() + " unrendered pdf files" + "\n");
-        logger.log(LogStatus.PASS, "There are:  " + processing_pdf_items_appendix_section.size() + " unrendered pdf files " + "\n");
-    }
+//    @FindBy(xpath = "//img[contains(@src,'_processing.gif')]")
+//   // List<WebElement> processing_gallery_items_appendix_section;
+//    WebElement processing_gallery_item_appendix_section;
+//
+//    public void verify_no_processing_gallery_items_appendix_section() {
+//
+//        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, processing_gallery_item_appendix_section, false, logger, "processing_gallery_item_appendix_section ");
+//
+//     //   System.out.println("\n" + "There are: " + processing_gallery_items_appendix_section.size() + " unrendered gallery items" + "\n");
+//      //  logger.log(LogStatus.PASS, "There are:  " + processing_gallery_items_appendix_section.size() + " unrendered gallery items" + "\n");
+//    }
+//
+//    @FindBy(xpath = "//img[contains(@src,'_processing.pdf')]")
+//    WebElement processing_pdf_item_appendix_section;
+//
+//   // List<WebElement> processing_pdf_items_appendix_section;
+//
+//    public void verify_no_processing_pdf_items_appendix_section() {
+//        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, processing_pdf_item_appendix_section, false, logger, "processing_pdf_item_appendix_section ");
+//
+//     //   System.out.println("\n" + "There are: " + processing_pdf_items_appendix_section.size() + " unrendered pdf files" + "\n");
+//      //  logger.log(LogStatus.PASS, "There are:  " + processing_pdf_items_appendix_section.size() + " unrendered pdf files " + "\n");
+//    }
 
 
     @FindBy(xpath = "//img[@class='appendix-item-thumb-img']")
@@ -711,6 +747,12 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, email_message_body, "QA Automation Script - Test Email", logger, "email_message_body");
     }
 
+
+    @FindBy(xpath = "//a[normalize-space()='QA Automation CK5 Test Report.pdf']")
+    WebElement report_email_pdf_link;
+    public void open_report_email_pdf_link() throws InterruptedException {
+        ReusableMethodsLoggersPOM.open_href_attribute_link(driver, report_email_pdf_link, logger, "report_email_pdf_link");}
+
     @FindBy(xpath = "//input[@value='Send']")
     WebElement send_email_button;
 
@@ -849,13 +891,13 @@ public class ReportFolderSection extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "//div[@class='region--bottom-center']//div[@class='footer-left'][normalize-space()='test@quiretest.com']")
+    @FindBy(xpath = "(//div[@class='region--bottom-center']//div[@class='footer-left'][normalize-space()='test@quiretest.com'])[1]")
     WebElement footer_section_left_quickPreview;
-    @FindBy(xpath = "//div[@class='region--bottom-center']//div[@class='footer-right'][normalize-space()='QA - Right Footer Text Sample']")
+    @FindBy(xpath = "(//div[@class='region--bottom-center']//div[@class='footer-right'][normalize-space()='QA - Right Footer Text Sample'])[1]")
     WebElement footer_section_right_quickPreview;
 
     String currentYear = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy"));
-    @FindBy(xpath = "//div[@class='region--bottom-center']//div[@class='footer-center']")
+    @FindBy(xpath = "(//div[@class='region--bottom-center']//div[@class='footer-center'])[1]")
     WebElement footer_section_center_quickPreview;
 
     public void verify_footer_section_quickPreview() {
@@ -966,18 +1008,72 @@ public class ReportFolderSection extends ReusableAnnotations {
 int linkItemCount = linkItem.size();
 
         if (browserName.contains("Chrome")) {
-            Thread.sleep(10);
+            Thread.sleep(100);
         } else if (browserName.contains("Firefox")) {
             Thread.sleep(4000);
         }
-        for (int i = 0; i < linkItemCount; i++) {
+        for (int i = 0; i <( linkItemCount-1); i++) {
 
-
+            // Skip index 3 and 7
+            if (i == 0 || i == 4) {
+                continue; // Skip this iteration and go to the next one
+            }
             ReusableMethodsLoggersPOM.captureTextMethod(driver, linkItem.get(i), logger, "report link name at index: " + i);
             ReusableMethodsLoggersPOM.scrollToElementMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
             ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
 
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+            BaseClass.pca_xml_section().clickAddSectionButton();
+            Thread.sleep(1000);
+            BaseClass.staging5().click_add_conditionAction_toSection();
+            Thread.sleep(800);
+            BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+            Thread.sleep(800);
 
+            //change name for section title
+            BaseClass.staging5().enter_section_2_title_text();
+
+
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+
+
+            if (i != 5) {
+                BaseClass.staging5().click_conditionAction_dropdown();
+                Thread.sleep(500);
+                BaseClass.staging5().click_conditionAction_dropdown_first_item();
+            }
+
+//    BaseClass.staging5().click_conditionAction_dropdown_items();
+
+
+
+            BaseClass.staging5().captureAlertMessage();
+            Thread.sleep(500);
+
+            BaseClass.staging5().enter_conditionAction_comment_field();
+            Thread.sleep(500);
+
+            BaseClass.staging5().click_out_of_section();
+            BaseClass.staging5().captureAlertMessage();
+            Thread.sleep(500);
+
+            //quick preview button in next tab
+            BaseClass.reportfoldersection().click_quick_preview_button();
+            Thread.sleep(1000);
+            BaseClass.reportfoldersection().change_to_next_tab();
+            Thread.sleep(500);
+            //quick preview tab - capture header and footer data
+            BaseClass.staging5().verify_QP_proj_summary_section();
+          //  Thread.sleep(500);
+            WebDriver driver = getDriver();
+
+            //close second tab and go back to default tab
+            driver.close();
+            Thread.sleep(500);
+            BaseClass.reportfoldersection().change_to_default_tab();
+            Thread.sleep(1000);
             //  ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
 
             BaseClass.staging5().click_project_summary_sectionView();
@@ -1002,7 +1098,18 @@ int linkItemCount = linkItem.size();
            // BaseClass.staging5().click_project_summary_sectionView();
            // Thread.sleep(500);
             BaseClass.templatesSection().verify_spellCheck_text();
+            BaseClass.staging5().verify_QP_proj_summary_section();
+
             Thread.sleep(500);
+
+            //delete c/a section 2
+            BaseClass.staging5().hover_and_click_section_2_checkbox();
+            Thread.sleep(500);
+            BaseClass.staging5().click_trash_icon_sectionView();
+            Thread.sleep(500);
+            driver.switchTo().alert().accept();
+            Thread.sleep(500);
+
             BaseClass.projectFolderSection().clickPrevProjectButton();
             Thread.sleep(1000);
 
@@ -1021,10 +1128,279 @@ int linkItemCount = linkItem.size();
 
 
     }
+
+
+
+    public void ck4PackagesCheck2() throws InterruptedException {
+        int linkItemCount = linkItem.size();
+
+        if (browserName.contains("Chrome")) {
+            Thread.sleep(100);
+        } else if (browserName.contains("Firefox")) {
+            Thread.sleep(4000);
+        }
+        for (int i = 0; i < linkItemCount; i++) {
+
+            // Skip index 3 and 7
+            if (i != 0 && i != 4) {
+                continue; // Skip this iteration and go to the next one
+
+            }
+            ReusableMethodsLoggersPOM.captureTextMethod(driver, linkItem.get(i), logger, "report link name at index: " + i);
+            ReusableMethodsLoggersPOM.scrollToElementMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+            ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+            BaseClass.pca_xml_section().clickAddSectionButton();
+            Thread.sleep(1000);
+            BaseClass.staging5().click_add_conditionAction_toSection();
+            Thread.sleep(800);
+            BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+            Thread.sleep(800);
+
+            //change name for section title
+            BaseClass.staging5().enter_section_2_title_text();
+
+
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+
+
+
+
+    BaseClass.staging5().click_conditionAction_dropdown_items();
+
+            BaseClass.staging5().enter_ca_section_cost();
+
+
+            BaseClass.staging5().captureAlertMessage();
+            Thread.sleep(500);
+
+            BaseClass.staging5().enter_conditionAction_comment_field();
+            Thread.sleep(500);
+
+            BaseClass.staging5().click_out_of_section();
+            BaseClass.staging5().captureAlertMessage();
+            Thread.sleep(500);
+
+            //quick preview button in next tab
+            BaseClass.reportfoldersection().click_quick_preview_button();
+            Thread.sleep(1000);
+            BaseClass.reportfoldersection().change_to_next_tab();
+            Thread.sleep(500);
+            //quick preview tab - capture header and footer data
+            BaseClass.staging5().verify_QP_proj_summary_section2();
+            //  Thread.sleep(500);
+            WebDriver driver = getDriver();
+
+            //close second tab and go back to default tab
+            driver.close();
+            Thread.sleep(500);
+            BaseClass.reportfoldersection().change_to_default_tab();
+            Thread.sleep(1000);
+            //  ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+
+            BaseClass.staging5().click_project_summary_sectionView();
+
+
+            BaseClass.staging5().click_section_row_editor_projectSummary();
+
+            BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+
+            BaseClass.templatesSection().select_all_body_and_delete_iFrame();
+
+            BaseClass.templatesSection().enter_spellCheck_text_time_iFrame();
+
+            Thread.sleep(500);
+            driver.switchTo().parentFrame();
+            Thread.sleep(500);
+            // click out of section, capture report tag text
+            BaseClass.staging5().click_out_of_section();
+            BaseClass.templatesSection().verify_alertMessage_projectSummary();
+            // driver.navigate().refresh();
+            // Thread.sleep(500);
+            // BaseClass.staging5().click_project_summary_sectionView();
+            // Thread.sleep(500);
+            BaseClass.templatesSection().verify_spellCheck_text();
+            BaseClass.staging5().verify_QP_proj_summary_section2();
+
+            Thread.sleep(500);
+
+            //delete c/a section 2
+            BaseClass.staging5().hover_and_click_section_2_checkbox();
+            Thread.sleep(500);
+            BaseClass.staging5().click_trash_icon_sectionView();
+            Thread.sleep(500);
+            driver.switchTo().alert().accept();
+            Thread.sleep(500);
+
+            BaseClass.projectFolderSection().clickPrevProjectButton();
+            Thread.sleep(1000);
+
+        }
+        //  ReusableMethodsLoggersPOM.captureTextMethodByIndex(driver, linkItem,linkItem.get(i) ,logger, "QA automation Reports - search field");}
+
+        //  @FindBy(xpath = "//*[@class='htLeft q-readonly current highlight']")
+        //  WebElement dateCreatedReport;
+
+//    public void captureRecentFolderDateCreated() {
+//        //String reportDate= dateCreatedReport.getAttribute("text");
+//       // System.out.println("date created: " + reportDate);
+//        String result2 = ReusableMethodsLoggersPOM.captureTextMethod(driver, dateCreatedReport, logger, "date created message ");
+//        System.out.println("\n" + "Date Created: " + result2);
+//    }
+
+
+    }
+
+
+    public void ck4PackagesCheck_matrix() throws InterruptedException {
+        int linkItemCount = linkItem.size();
+
+        if (browserName.contains("Chrome")) {
+            Thread.sleep(100);
+        } else if (browserName.contains("Firefox")) {
+            Thread.sleep(4000);
+        }
+        for (int i = 0; i < linkItemCount; i++) {
+
+            // Skip index 3 and 7
+//            if (i == 0 || i == 4) {
+//                continue; // Skip this iteration and go to the next one
+//            }
+            ReusableMethodsLoggersPOM.captureTextMethod(driver, linkItem.get(i), logger, "report link name at index: " + i);
+            ReusableMethodsLoggersPOM.scrollToElementMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+            ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+            BaseClass.pca_xml_section().clickAddSectionButton();
+            Thread.sleep(1000);
+            BaseClass.staging5().click_add_conditionAction_toSection();
+            Thread.sleep(2000);
+            BaseClass.staging5().click_add_costRecommendation_toSection();
+            Thread.sleep(2000);
+
+            BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+            Thread.sleep(800);
+
+            //change name for section title
+            BaseClass.staging5().enter_section_2_title_text();
+
+
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+
+//
+//            if (i != 5) {
+//                BaseClass.staging5().click_conditionAction_dropdown();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_conditionAction_dropdown_first_item();
+//            }
+
+    BaseClass.staging5().click_conditionAction_dropdown_items();
+
+
+
+//            BaseClass.staging5().captureAlertMessage();
+//            Thread.sleep(500);
+
+    //        BaseClass.staging5().enter_conditionAction_comment_field();
+            Thread.sleep(500);
+
+            BaseClass.staging5().click_out_of_section();
+            BaseClass.staging5().captureAlertMessage();
+            Thread.sleep(500);
+
+            //add cost rec
+            BaseClass.staging5().click_add_cost_recommendation_button();
+            BaseClass.staging5().enter_item_name_cost_recommendation();
+            Thread.sleep(500);
+            BaseClass.staging5().enter_cost_summary_quantity();
+            BaseClass.staging5().enter_cost_summary_unit_cost();
+            BaseClass.staging5().click_critical_repair_cost_checkbox();
+            Thread.sleep(500);
+            BaseClass.staging5().enter_cost_summary_comments();
+            Thread.sleep(500);
+            BaseClass.staging5().click_save_button();
+            Thread.sleep(500);
+
+            //quick preview button in next tab
+            BaseClass.reportfoldersection().click_quick_preview_button();
+            Thread.sleep(1000);
+            BaseClass.reportfoldersection().change_to_next_tab();
+            Thread.sleep(1000);
+            //quick preview tab - capture header and footer data
+            BaseClass.staging5().verify_QP_proj_summary_section_matrix();
+            //  Thread.sleep(500);
+            WebDriver driver = getDriver();
+
+            //close second tab and go back to default tab
+            driver.close();
+            Thread.sleep(500);
+            BaseClass.reportfoldersection().change_to_default_tab();
+            Thread.sleep(1000);
+            //  ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+
+            BaseClass.staging5().click_project_summary_sectionView();
+
+
+            BaseClass.staging5().click_section_row_editor_projectSummary();
+
+            BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+
+            BaseClass.templatesSection().select_all_body_and_delete_iFrame();
+
+            BaseClass.templatesSection().enter_spellCheck_text_time_iFrame();
+
+            Thread.sleep(500);
+            driver.switchTo().parentFrame();
+            Thread.sleep(500);
+            // click out of section, capture report tag text
+            BaseClass.staging5().click_out_of_section();
+            Thread.sleep(500);
+
+            BaseClass.templatesSection().verify_alertMessage_projectSummary();
+            // driver.navigate().refresh();
+            // Thread.sleep(500);
+            // BaseClass.staging5().click_project_summary_sectionView();
+            // Thread.sleep(500);
+            BaseClass.templatesSection().verify_spellCheck_text();
+            BaseClass.staging5().verify_QP_proj_summary_section_matrix();
+
+            Thread.sleep(500);
+
+            //delete c/a section 2
+            BaseClass.staging5().hover_and_click_section_2_checkbox();
+            BaseClass.staging5().click_cost_rec_section_checkbox();
+
+            Thread.sleep(500);
+            BaseClass.staging5().click_trash_icon_sectionView();
+            Thread.sleep(500);
+            driver.switchTo().alert().accept();
+            Thread.sleep(500);
+
+            BaseClass.projectFolderSection().clickPrevProjectButton();
+            Thread.sleep(1000);
+
+        }
+        //  ReusableMethodsLoggersPOM.captureTextMethodByIndex(driver, linkItem,linkItem.get(i) ,logger, "QA automation Reports - search field");}
+
+        //  @FindBy(xpath = "//*[@class='htLeft q-readonly current highlight']")
+        //  WebElement dateCreatedReport;
+
+//    public void captureRecentFolderDateCreated() {
+//        //String reportDate= dateCreatedReport.getAttribute("text");
+//       // System.out.println("date created: " + reportDate);
+//        String result2 = ReusableMethodsLoggersPOM.captureTextMethod(driver, dateCreatedReport, logger, "date created message ");
+//        System.out.println("\n" + "Date Created: " + result2);
+//    }
+
+
+    }
+
 }
-
-
-
 
 
 

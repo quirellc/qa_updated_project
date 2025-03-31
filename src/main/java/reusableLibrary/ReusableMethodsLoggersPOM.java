@@ -29,7 +29,7 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -85,6 +85,37 @@ public class ReusableMethodsLoggersPOM {
 
     //void method will only perform the action but won't return anything
     //void actions are click, sendKeys, scrolling, submit, select, mouse hover, clear
+
+    public static void closePDFViewer(WebDriver driver) {
+        Set<String> windowHandles = driver.getWindowHandles();
+        String originalWindow = driver.getWindowHandle();
+
+        for (String windowHandle : windowHandles) {
+            driver.switchTo().window(windowHandle);
+            String currentURL = driver.getCurrentUrl();
+
+            if (driver instanceof ChromeDriver) {
+                // **Chrome: Check for Chrome PDF Viewer extension**
+                if (currentURL.startsWith("chrome-extension://")) {
+                    System.out.println("Detected Chrome PDF Viewer. Closing tab...");
+                    driver.findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.COMMAND, "W")); // Mac
+                    driver.findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.CONTROL, "W")); // Windows/Linux
+                    return;
+                }
+            } else if (driver instanceof FirefoxDriver) {
+                // **Firefox: Usually opens PDFs in same tab or separate tab**
+                System.out.println("Detected PDF tab in Firefox. Closing tab...");
+                driver.close(); // Close the current tab
+                return;
+            }
+        }
+
+        // **Ensure switching back to original window**
+        driver.switchTo().window(originalWindow);
+    }
+
+
+
 
     //click action is one of the type of void method
     public static void clickMethod(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
@@ -404,7 +435,7 @@ public class ReusableMethodsLoggersPOM {
 
     //capture a text and return it using return method
     public static String captureTextMethod(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
         String result = null;
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable((xpath)));
@@ -1258,6 +1289,7 @@ public class ReusableMethodsLoggersPOM {
             WebDriver driver = getDriver();
 
             String pdfUrl = driver.getCurrentUrl();
+
             URL pdfURL = new URL(pdfUrl);
 
             InputStream is = pdfURL.openStream();
@@ -1282,28 +1314,121 @@ public class ReusableMethodsLoggersPOM {
         }
     } // end of main
 
-    public static String getPdfContent_from_downloads(String pdf_file_name) throws IOException {
+
+
+    public static String getPdfContent_from_downloads(String partialFileName) throws IOException {
         try {
+            // Specify the custom download directory
+            String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads"; // Custom directory
 
-            String pdfFilePath = System.getProperty("user.dir")  +pdf_file_name;
+            // Create a File object for the downloads folder
+            File folder = new File(downloadDir);
 
+            // List all PDF files in the directory that match the partial file name
+            File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf") && name.contains(partialFileName));
 
-            // Load PDF document
-            PDDocument document = PDDocument.load(new File(pdfFilePath));
+            // Check if no file was found
+            if (files == null || files.length == 0) {
+                System.out.println("No PDF file found with partial name: " + partialFileName);
+                return null;
+            }
 
-            // Instantiate PDFTextStripper class
+            // Use the first match (adjust if necessary to handle multiple files)
+            File pdfFile = files[0];
+
+            // Load the PDF document
+            PDDocument document = PDDocument.load(pdfFile);
+
+            // Create PDFTextStripper to extract text
             PDFTextStripper pdfStripper = new PDFTextStripper();
 
-            // Get text from PDF
+            // Get text from the PDF
             String text = pdfStripper.getText(document);
-
-            // Print extracted text
-            System.out.println(text);
 
             // Close the document
             document.close();
 
+            // Print the extracted text (for debugging purposes)
+            System.out.println("Extracted text from PDF: ");
+            System.out.println(text);
+
             return text;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null; // Handle the exception and return null if an error occurs
+        }
+    }
+
+
+    public static String getPDFContent_from_most_recent_download() throws IOException {
+        try {
+            // Specify the custom download directory
+            String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads";
+
+            // Create a File object for the downloads folder
+            File folder = new File(downloadDir);
+
+            // List all PDF files in the directory
+            File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf"));
+
+            // Check if there are no PDF files
+            if (files == null || files.length == 0) {
+                System.out.println("No PDF files found in the downloads folder.");
+                return null;
+            }
+
+            // Sort files by last modified timestamp (most recent first)
+            Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+
+            // Get the most recently downloaded PDF file
+            File latestPdfFile = files[0];
+            System.out.println("Opening latest downloaded PDF: " + latestPdfFile.getName());
+
+            // Load the PDF document
+            PDDocument document = PDDocument.load(latestPdfFile);
+
+            // Extract text using PDFTextStripper
+            PDFTextStripper pdfStripper = new PDFTextStripper();
+            String text = pdfStripper.getText(document);
+
+            // Close the document
+            document.close();
+
+            // Print extracted text for debugging
+            System.out.println("Extracted text from PDF:");
+            System.out.println(text);
+
+            return text;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null; // Handle the exception and return null if an error occurs
+        }
+    }
+
+    public static String getPdfContent_from_browser_href(String pdfUrl) throws IOException {
+        try {
+            WebDriver driver = getDriver();
+
+           // String pdfUrl = driver.getCurrentUrl();
+
+            URL pdfURL = new URL(pdfUrl);
+
+            InputStream is = pdfURL.openStream();
+
+            BufferedInputStream bis = new BufferedInputStream(is);
+
+            PDDocument doc = PDDocument.load(bis);
+
+            PDFTextStripper strip = new PDFTextStripper();
+            String stripText = strip.getText(doc);
+
+            //  System.out.println(stripText);
+
+            doc.close();
+
+            return stripText;
 
         } catch (IOException e) {
             e.printStackTrace();

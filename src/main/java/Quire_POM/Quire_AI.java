@@ -165,6 +165,12 @@ public class Quire_AI extends ReusableAnnotations {
     public void click_quire_AI_search_field() {
         ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_search_field, logger, "quire_AI_search_field");}
 
+
+    @FindBy(xpath = "//div[contains(@class, 'ai-search-modal-body') and contains(., 'Welcome to Quire AI Search')]")
+    WebElement quire_AI_prompt_text;
+    public void verify_quire_AI_prompt_text() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_prompt_text, true, logger, "quire_AI_prompt_text");}
+
 @FindBy(xpath= "//input[@placeholder=\"Tell Quire AI what you're looking for...\"]")
 WebElement quire_AI_prompt_search_field;
 public void enter_quire_AI_prompt_search_field() {
@@ -211,7 +217,45 @@ public void enter_quire_AI_prompt_search_field() {
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, quire_AI_search_result, logger, "quire_AI_search_result");
     }
 
-    @FindBy(xpath= "//button[contains(@data-original-title, 'Ask AI about this Report')]")
+    @FindBy(xpath= "//div[@class='js-ai-search-result-title font-semibold text-lg truncate has-tooltip']")
+    WebElement quire_AI_search_result_title;
+
+    @FindBy(xpath= "//a[@title='Click to view all reports in this project']")
+    WebElement report_title;
+    public void confirm_report_opened_new_tab() throws InterruptedException {
+      String report_name_AI =  ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_search_result_title, logger, "quire_AI_search_result_title");
+
+        BaseClass.quire_AI().click_quire_AI_open_external_button();
+        Thread.sleep(500);
+
+        BaseClass.reportfoldersection().change_to_next_tab();
+
+        String report_title_name =  ReusableMethodsLoggersPOM.captureTextMethod(driver, report_title, logger, "report_title");
+
+if (report_name_AI.equals(report_title_name)) {
+    System.out.println("Report name matches: " + report_name_AI);
+} else {
+    System.out.println("Report from AI search " + report_name_AI + " does not match report opened: " + report_title_name);
+}
+        BaseClass.reportfoldersection().change_to_default_tab();
+        BaseClass.quire_AI().hover_quire_AI_first_search_result();
+
+
+        BaseClass.quire_AI().click_quire_AI_open_link_button();
+
+        String report_title_name_1 =  ReusableMethodsLoggersPOM.captureTextMethod(driver, report_title, logger, "report_title");
+
+
+        if (report_name_AI.equals(report_title_name_1)) {
+            System.out.println("Report name matches: " + report_name_AI);
+        } else {
+            System.out.println("Report from AI search " + report_name_AI + " does not match report opened: " + report_title_name);
+        }
+    }
+
+
+
+    @FindBy(xpath= "//button[contains(@data-original-title, 'Ask AI')]")
     WebElement quire_AI_ask_about_report_button;
     public void click_quire_AI_ask_ai_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_ask_about_report_button, logger, "quire_AI_ask_about_report_button");

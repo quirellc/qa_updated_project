@@ -279,6 +279,19 @@ public class ProjectFolderSection extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_new_CK5_Link_ff, logger, "project folder new ck5 link ff");
         }}
 
+
+    @FindBy(xpath = "//span[contains(text(),'Misc Folder')]")
+    WebElement projectFolder_misc_Link_chrome;
+    @FindBy(xpath = "//*[contains(text(),'Misc Folder')]")
+    WebElement projectFolder_misc_Link_ff;
+
+    public void click_misc_Link_ProjectFolderLink() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_misc_Link_chrome, logger, "projectFolder_misc_Link_chrome");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_misc_Link_ff, logger, "projectFolder_misc_Link_ff");
+        }}
+
     @FindBy(xpath = "//span[contains(text(),'ZON Project Folder-Chrome')]")
     WebElement projectFolder_ZON_Link_chrome;
     @FindBy(xpath = "//span[contains(text(),'ZON Project Folder-Firefox')]")

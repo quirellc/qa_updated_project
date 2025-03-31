@@ -360,7 +360,7 @@ WebElement trm_platform_headerButton;
 
     public void click_login_and_verify() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, login_button, logger, "login_button");
-        Thread.sleep(500);
+        Thread.sleep(2000);
 
         BaseClass.reportfoldersection().change_to_next_tab();
         //click login button and login with prod id

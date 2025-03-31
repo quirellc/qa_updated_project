@@ -51,6 +51,17 @@ public class ReusableAnnotations {
     public static WebDriver getDriver() {
         return driver.get();
     }
+    protected static String baseUrl;
+
+
+
+    @Parameters("env")
+    @BeforeClass
+    public void setup(String env) {
+        baseUrl = "https://" + env + ".openquire.com/";
+        System.out.println("Running tests on: " + baseUrl);
+}
+
     //set before suite annotation method
     @Parameters("browser")
     @BeforeClass
@@ -67,6 +78,10 @@ public class ReusableAnnotations {
 
             // Set Chrome options to specify download directory
             Map<String, Object> prefs = new HashMap<>();
+            prefs.put("plugins.always_open_pdf_externally", true); // Forces Chrome to download PDFs instead of opening
+            prefs.put("download.prompt_for_download", false); // Disable download popups
+            prefs.put("download.directory_upgrade", true);
+
             prefs.put("download.default_directory", downloadDir);
             ChromeOptions options = new ChromeOptions();
 
@@ -103,6 +118,9 @@ public class ReusableAnnotations {
             profile.setPreference("browser.download.dir", downloadDir);
             profile.setPreference("browser.download.folderList", 2);
             profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf"); // Set MIME type of the file you're downloading
+            profile.setPreference("pdfjs.disabled", true); // **Disable Firefox built-in PDF viewer**
+            profile.setPreference("browser.download.useDownloadDir", true); // Ensure files go to the specified folder
+            profile.setPreference("browser.download.panel.shown", false); // Hide download panel popup
 
 
             options.setProfile(profile);

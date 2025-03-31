@@ -15,25 +15,41 @@ import java.util.List;
 public class Regression1 extends ReusableAnnotations {
 
     @Test
-    public void TC01_login() throws InterruptedException {
+    public void TC001_user_login() throws InterruptedException {
         WebDriver driver = getDriver();
-//    driver.navigate().to("https://app.openquire.com/reports/1025962");
-        driver.navigate().to("https://staging5.openquire.com/");
-        Thread.sleep(600);
+        System.out.println(driver.getClass().getSimpleName());
+        driver.navigate().to(baseUrl);
+        System.out.println("Navigating to: " + baseUrl);
+        // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
+//        driver.navigate().to("https://staging5.openquire.com/");
+        //     driver.navigate().to("https://app-next.openquire.com/");
+//        driver.navigate().to("https://staging5-next.openquire.com/");
 
-        BaseClass.quireLogin().enter_sysadmin_testingInc_email();
-        Thread.sleep(600);
-        //   BaseClass.quireLogin().clickNextButton();
+        //  WebDriver driver1 = getDriver();
+
+        //   String pageTitle = driver.getTitle();
+        if (baseUrl.contains("staging")) {
+            BaseClass.quireLogin().enter_admin_Email();
+        } else if (baseUrl.contains("app")) {
+            BaseClass.quireLogin().enterProdEmail();
+        }
+
+        Thread.sleep(1000);
         BaseClass.quireLogin().enterPassword();
-        Thread.sleep(600);
+        Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
-        Thread.sleep(2000);
-        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(3000);
+        //   } else {
+        //       System.out.println("\n" + "Already logged in. Skipping login steps.");
+        //      Thread.sleep(3000);
+        //  }
 
+        BaseClass.staging5().captureURL();
+        Thread.sleep(2000);
     }
 
     @Test
-    public void TC02_delete_generated_automation_reports() throws InterruptedException {
+    public void TC002_delete_generated_automation_reports() throws InterruptedException {
 
         BaseClass.staging5().clickReportsTab();
         Thread.sleep(1000);
@@ -102,7 +118,7 @@ public class Regression1 extends ReusableAnnotations {
     }
 
     @Test
-    public void TC02_delete_generated_automation_templates() throws InterruptedException {
+    public void TC003_delete_generated_automation_templates() throws InterruptedException {
 
         BaseClass.templatesSection().clickTemplatesTab();
         Thread.sleep(1000);

@@ -59,8 +59,13 @@ public class QuireLogin extends ReusableAnnotations {
         }}
 
     public void enterProdEmail() {
-        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "ijsysadminmatrix@quiretest.com", logger, "prod sysadmin email ID");}
+        if (browserName.contains("Chrome")) {
 
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "ijsysadminmatrix@quiretest.com", logger, "prod sysadmin email ID");
+    } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_matrix@quiretest.com", logger, "prod sysadmin email ID");
+
+        }}
     public void enterProdEmail2() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, userID, "ijsysadminmatrix@quiretest.com", logger, "prod sysadmin email ID");}
 
@@ -225,13 +230,22 @@ public class QuireLogin extends ReusableAnnotations {
     }
 
 
-    public void navigate_to_admin_pinnedStatus_reports() {
-
-        if (browserName.contains("Chrome")) {
-            driver.navigate().to("https://staging5.openquire.com/reports/666419");
-        } else if (browserName.contains("Firefox")) {
-            driver.navigate().to("https://staging5.openquire.com/reports/666418");
-        }
+    public void navigate_to_admin_pinnedStatus_reports() throws InterruptedException {
+        BaseClass.reportfoldersection().clickReportsTab();
+        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+        Thread.sleep(4500);
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(1000);
+        BaseClass.projectFolderSection().click_misc_Link_ProjectFolderLink();
+        Thread.sleep(2000);
+        //cloned fm 1104 report
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(2000);
+//        if (browserName.contains("Chrome")) {
+//            driver.navigate().to("https://staging5.openquire.com/reports/666419");
+//        } else if (browserName.contains("Firefox")) {
+//            driver.navigate().to("https://staging5.openquire.com/reports/666418");
+//        }
     }
 
 

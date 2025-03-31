@@ -10,27 +10,23 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
 
     @Test
     public void TR_001_user_login() throws InterruptedException {
-        //   logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-    	WebDriver driver = getDriver();
-        driver.navigate().to("https://staging5.openquire.com");
-
-        String pageTitle = driver.getTitle();
-        if (pageTitle.contains("OpenQuire")) {
+        WebDriver driver = getDriver();
+        System.out.println(driver.getClass().getSimpleName());
+        driver.navigate().to(baseUrl);
+        System.out.println("Navigating to: " + baseUrl);
+        Thread.sleep(500);
+        if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().enterPassword();
-            Thread.sleep(1000);
-            BaseClass.quireLogin().clickLogin();
-            Thread.sleep(3000);
-        } else {
-            System.out.println("\n" + "Already logged in. Skipping login steps.");
-            Thread.sleep(3000);
+        } else if (baseUrl.contains("app")) {
+            BaseClass.quireLogin().enterProdEmail();
         }
-
+        Thread.sleep(1000);
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(2000);
         BaseClass.staging5().captureURL();
-        Thread.sleep(1500);
-    }
-
+        Thread.sleep(500);}
 
     @Test
     public void TR_002_navigate_ck5_report() throws InterruptedException {
@@ -891,6 +887,9 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.staging5().capture_recent_revisions_history();
         Thread.sleep(2500);
         BaseClass.staging5().verify_done_icon_after_revision_isNotVisible();
+        BaseClass.staging5().click_cancel_button_popup();
+        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+        Thread.sleep(500);
 
 
         //right click and add instruction - yellow notepad

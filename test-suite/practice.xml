@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="My Test Suite 2" parallel="classes" thread-count="1">
 
+<!--    <parameter name="env" value="staging5" />-->
+    <parameter name="env" value="app" />
+
+
     <parameter name="browser" value="chrome"/>
 <!--    <parameter name="browser" value="firefox"/>-->
 

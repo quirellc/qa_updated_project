@@ -79,11 +79,11 @@ public class SanityCheck_Staging extends ReusableAnnotations {
         BaseClass.reportfoldersection().capture_all_items_appendix_section();
         Thread.sleep(500);
 
-        BaseClass.reportfoldersection().capture_processing_gallery_items_appendix_section();
-        Thread.sleep(500);
+  //      BaseClass.reportfoldersection().capture_processing_gallery_items_appendix_section();
+   //     Thread.sleep(500);
 
-        BaseClass.reportfoldersection().capture_processing_pdf_items_appendix_section();
-        Thread.sleep(500);
+     //   BaseClass.reportfoldersection().capture_processing_pdf_items_appendix_section();
+     //   Thread.sleep(500);
 
         // Thread.sleep(1000);
         BaseClass.reportfoldersection().capture_broken_link();

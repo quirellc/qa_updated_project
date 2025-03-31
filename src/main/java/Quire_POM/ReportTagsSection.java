@@ -138,7 +138,8 @@ public class ReportTagsSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.scrollandClickMethod(driver, title_page_image_button, logger, "title_page_image_button");}
 
 
-    @FindBy(xpath = "//img[contains(@alt, 'picture of a') and contains(@alt, 'mapp')]")
+   // @FindBy(xpath = "//img[contains(@alt, 'picture of a') and contains(@alt, 'mapp')]")
+    @FindBy(xpath = "//img[@alt='signature']")
     WebElement title_page_image_loaded;
     public void verify_title_page_image_loaded() throws InterruptedException {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, title_page_image_loaded,true,  logger," title_page_image_loaded ");

@@ -3,6 +3,7 @@ package Quire_POM;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,9 +21,8 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.logging.Logger;
 
 //
 public class Staging5 extends ReusableAnnotations {
@@ -277,16 +277,18 @@ public class Staging5 extends ReusableAnnotations {
     }
 
     public void navigateTo_automation_report_HM_folder() throws InterruptedException {
-        driver.navigate().to("https://staging5.openquire.com/reports/666234");
 
-//        BaseClass.staging5().clickReportsTab();
-//        BaseClass.reportfoldersection().enterSearchField_HMReports();
-//        // Thread.sleep(4500);
+//        driver.navigate().to("https://staging5.openquire.com/reports/666234");
+//        driver.navigate().to("https://staging3.openquire.com/reports/1330028");
+
+        BaseClass.staging5().clickReportsTab();
+        BaseClass.reportfoldersection().enterSearchField_HMReports();
+         Thread.sleep(2000);
 //
 //        BaseClass.reportfoldersection().captureRecentReportName();
-//        BaseClass.reportfoldersection().clickReportsFirstLink();
-//        BaseClass.projectFolderSection().clickProjectFolderLink_2023QAReport();
-//        BaseClass.reportfoldersection().clickAutomationReport_link();
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        BaseClass.projectFolderSection().clickProjectFolderLink_2023QAReport();
+        BaseClass.reportfoldersection().clickAutomationReport_link();
     }
 
 
@@ -1355,6 +1357,10 @@ public class Staging5 extends ReusableAnnotations {
         BaseClass.staging5().captureAlertMessage();
     }
 
+    public void upload_signature_attachment() throws InterruptedException {
+        ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_1, "signature.jpg", logger, "Header_image");
+    }
+
     public void upload_files_to_pdf_first_appendix() throws InterruptedException {
         ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_1, "maptest.pdf", logger, "maptest pdf");
         Thread.sleep(1000);
@@ -1368,6 +1374,7 @@ public class Staging5 extends ReusableAnnotations {
         public void upload_files_to_gallery_2nd_appendix() throws InterruptedException {
             ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "picture of a---------------------------------------------mapp.png", logger, "map picture - spellcheck");
             Thread.sleep(1500);
+
             ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "signature.jpg", logger, "signature");
           //  Thread.sleep(500);
     }
@@ -2413,6 +2420,20 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, default_section_2_pca_report_checkbox, logger, "default_section_2_checkbox ");
     }
 
+    public void hover_and_click_section_2_checkbox() throws InterruptedException {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, second_default_section_title, logger, "second_default_section_title");
+        Thread.sleep(500);
+        ReusableMethodsLoggersPOM.clickMethod(driver, default_section_2_pca_report_checkbox, logger, "default_section_2_pca_report_checkbox");
+    }
+
+    @FindBy(xpath = "//a[@title='Recommendation']/following-sibling::div[@class='outlineItem-actions']//input[@value='1']")
+    WebElement cost_rec_section_checkbox;
+
+    public void click_cost_rec_section_checkbox() {
+        //   ReusableMethodsLoggersPOM.mouseHoverMethod(driver, fannie_mae_ConditionAction_section_checkbox, logger, "fannie_mae_ConditionAction_section");
+        ReusableMethodsLoggersPOM.clickMethod(driver, cost_rec_section_checkbox, logger, "cost_rec_section_checkbox");
+    }
+
     @FindBy(xpath = "(//input[@value='1'])[5]")
     WebElement default_section_2_pca_template_checkbox;
 
@@ -2420,6 +2441,13 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, default_section_2_pca_template_checkbox, logger, "default_section_2_pca_template_checkbox ");
     }
 
+    @FindBy(xpath = "//div[normalize-space()='2.0']/following-sibling::div[1]")
+    WebElement default_section_2_title_text_box;
+
+    public void enter_section_2_title_text() {
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, default_section_2_title_text_box, "C/A section", logger, "default_section_2_title_text_box ");
+
+    }
     @FindBy(xpath = "//span[normalize-space()='3.0']")
     WebElement third_default_section_title;
 
@@ -2651,10 +2679,10 @@ public class Staging5 extends ReusableAnnotations {
         }
     }
 
-    @FindBy(xpath = "//li[contains(@class,'appendix_file js-imageSelectionItem js-leavesTableOpen')]")
-    WebElement gallery_image_popup;
-    public void click_gallery_image_in_popup() throws InterruptedException {
-        ReusableMethodsLoggersPOM.clickMethod(driver, gallery_image_popup, logger, " gallery_image_popup ");
+    @FindBy(xpath = "//div[@class='appendix-item-caption'][normalize-space()='signature']")
+    WebElement signature_image_popup;
+    public void click_signature_image_in_popup() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, signature_image_popup, logger, " signature_image_popup ");
     }
 
 
@@ -2684,6 +2712,31 @@ public class Staging5 extends ReusableAnnotations {
     public void click_conditionAction_dropdown_value_HREC() {
         ReusableMethodsLoggersPOM.clickMethod(driver, conditionAction_dropdown_value_HREC, logger,  " conditionAction_dropdown_value_HREC ");}
 
+
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu']//li")
+    WebElement conditionAction_dropdown_list;
+
+
+    public void click_conditionAction_dropdown_first_item() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, conditionAction_dropdown_list, logger, " conditionAction_dropdown_list ");
+    }
+
+    @FindBy(xpath = "//select[contains(@name,'package_data_item[')]")
+List<WebElement> conditionAction_dropdown_items;
+    @FindBy(xpath = "//input[contains(@name,'cost')]")
+    WebElement CA_section_cost;
+
+    public void click_conditionAction_dropdown_items() {
+        for (WebElement element : conditionAction_dropdown_items) {
+            // Ensure each element is visible and clickable
+            ReusableMethodsLoggersPOM.selectByIndex(driver, element, 1, logger," conditionAction_dropdown_items ");
+        }
+    }
+public void enter_ca_section_cost() {
+    ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, CA_section_cost, "1000", logger, " CA_section_cost ");
+}
+
+
     @FindBy(xpath = "//td[@class='hrec']//i[@class='fa fa-check']")
     WebElement projSummary_HREC_checked;
 
@@ -2693,10 +2746,73 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, projSummary_HREC_checked, true, logger, " projSummary_HREC_check_isVisible ");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, projSummary_opinion_field, true, logger, " projSummary_opinion_field ");
     }
-    @FindBy(xpath = "//textarea[@name='package_data_item[opinion]']")
-    WebElement conditionAction_opinion_field;
-    public void enter_conditionAction_opinion_field() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, conditionAction_opinion_field, "QA automation testing condition/action text script" , logger,  " conditionAction_opinion_field ");}
+
+    @FindBy(xpath = "//table[contains(@class, 'table itemization')]//thead/following-sibling::tbody/tr")
+    WebElement QP_proj_summary_section;
+
+    @FindBy(xpath = "//td[normalize-space()='C/A section']/following-sibling::*//i[@class='fa fa-check']")
+    WebElement QP_proj_summary_noAction_checked;
+
+    @FindBy(xpath = "//td[normalize-space()='C/A section']/following-sibling::*//span[normalize-space()='Yes']")
+    WebElement QP_proj_summary_yes_field;
+
+    @FindBy(xpath = "//td[@class='estimated-cost' and normalize-space(text())='1000']")
+    WebElement QP_proj_summary_cost_field;
+
+    public void verify_QP_proj_summary_section() {
+
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, QP_proj_summary_noAction_checked, true, logger, " QP_proj_summary_noAction_checked ");
+
+        String QP_proj_summary_text = ReusableMethodsLoggersPOM.captureTextMethod(driver, QP_proj_summary_section, logger, " QP_proj_summary_section ");
+        if (QP_proj_summary_text.contains("QA automation testing condition/action text script") && QP_proj_summary_text.contains("C/A section")) {
+            System.out.println("QA automation testing condition/action text script is displayed");
+            logger.log(LogStatus.PASS, "QA automation testing condition/action text script is displayed");
+        } else {
+            System.out.println("QA automation testing condition/action text script is not displayed");
+            logger.log(LogStatus.FAIL, "QA automation testing condition/action text script is not displayed");
+        }
+
+    }
+    @FindBy(xpath = "//span[normalize-space()='QA automation testing condition/action text script']")
+    WebElement QP_proj_summary_text;
+
+        public void verify_QP_proj_summary_section2() {
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, QP_proj_summary_yes_field, true, logger, " QP_proj_summary_yes_field ");
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, QP_proj_summary_cost_field, true, logger, " QP_proj_summary_cost_field ");
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, QP_proj_summary_text, true, logger, " QP_proj_summary_text ");
+        }
+
+    @FindBy(xpath = "//table[contains(@class, 'table-bordered')]")
+
+ //   @FindBy(xpath = "//table[@class='table summary-immediate table-bordered']")
+    WebElement QP_proj_summary_repairs_text;
+    public void verify_QP_proj_summary_section_matrix() {
+
+        String QP_proj_summary_text = ReusableMethodsLoggersPOM.saveTextMethod(driver, QP_proj_summary_section, logger, " verify_QP_proj_summary_section_matrix ");
+        if (QP_proj_summary_text.contains("C/A section")) {
+            System.out.println("QA automation testing condition/action text script is displayed");
+            logger.log(LogStatus.PASS, "QA automation testing condition/action text script is displayed");
+        } else {
+            System.out.println("QA automation testing condition/action text script is not displayed");
+            logger.log(LogStatus.FAIL, "QA automation testing condition/action text script is not displayed");
+        }
+
+
+        String QP_proj_summary_text_repairs = ReusableMethodsLoggersPOM.saveTextMethod(driver, QP_proj_summary_repairs_text, logger, " QP_proj_summary_repairs_text ");
+        if ( QP_proj_summary_text_repairs.contains("$50")) {
+            System.out.println("Successful - QA automation testing C/A repairs - text AS Expected");
+            logger.log(LogStatus.PASS, "Successful - QA automation testing C/A repairs - text AS Expected");
+        } else {
+            System.out.println("QA automation testing C/A repairs - text NOT AS Expected");
+            logger.log(LogStatus.FAIL, "QA automation testing C/A repairs - text NOT AS Expected");
+        }
+    }
+
+
+    @FindBy(xpath = "//textarea[contains(@name,'package_data_item[')]")
+    WebElement conditionAction_comment_field;
+    public void enter_conditionAction_comment_field() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, conditionAction_comment_field, "QA automation testing condition/action text script" , logger,  " conditionAction_opinion_field ");}
 
     @FindBy(xpath = "//i[@class='fa fa-exclamation-circle js-has-warning-tooltip']")
     WebElement section_II_error_message;
@@ -2968,7 +3084,7 @@ public class Staging5 extends ReusableAnnotations {
     public void click_projSummary_sectionView_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, projSummary_sectionView, logger, " projSummary_sectionView ");}
 
-    @FindBy(xpath = "//a[normalize-space()='Condition/Action Section']")
+    @FindBy(xpath = "//a[@data-action='add:package_data_items/create_as_section']")
     WebElement add_conditionAction_toSection;
     public void click_add_conditionAction_toSection() {
         ReusableMethodsLoggersPOM.clickMethod(driver, add_conditionAction_toSection, logger, " add_conditionAction_toSection ");}
@@ -3385,13 +3501,28 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.captureXMLdata("nns1:noNamespaceSchemaLocation", "src/main/java/downloads/123456_ZON.xml", logger, "ZON Version ");
     }
 
+    @FindBy(xpath = "//a[contains(@title, '!@#$%^&*()test@quiretest.com')]")
+    WebElement generated_pdf_header_footer_link;
     public void verify_header_footer_PDF_contents() throws IOException, InterruptedException {
+
+     //  String pdf_url = ReusableMethodsLoggersPOM.captureAttributeMethod(driver, generated_pdf_header_footer_link, logger, "generated_pdf_href_link", "href");
+         BaseClass.reportfoldersection().click_GeneratedPDF_button();
+        Thread.sleep(4000);
+
+
+//        //switch to next tab and capture url
+     //   BaseClass.reportfoldersection().change_to_next_tab();
+    //    Thread.sleep(500);
+     //   BaseClass.staging5().captureURL();
+     //   Thread.sleep(1500);
+
+
         String currentMonth = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM"));
         String currentYear = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy"));
 
-        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+       // String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
        // String pdfContent=   ReusableMethodsLoggersPOM.getPdfContent_from_downloads("!@#$%^&*()test@quiretest.com" + currentDate + ".pdf");
-        String pdfContent=   ReusableMethodsLoggersPOM.getPdfContent_from_browser();
+        String pdfContent=   ReusableMethodsLoggersPOM.getPdfContent_from_downloads("test@quiretest.com");
 
         SoftAssert softAssert = new SoftAssert();
         Thread.sleep(1000);
@@ -3421,6 +3552,62 @@ public class Staging5 extends ReusableAnnotations {
         }
 // Assert all
         softAssert.assertAll();
+
+            // BaseClass.reportfoldersection().change_to_default_tab();
+        // Switch back to the original window if no PDF viewer tab was found
+
+    }
+
+    @FindBy(xpath = "//a[@title='Automation Report.pdf']")
+    WebElement generated_pdf_appendices_link;
+    public void verify_appendices_PDF_contents() throws IOException, InterruptedException {
+
+       // String pdf_url = ReusableMethodsLoggersPOM.captureAttributeMethod(driver, generated_pdf_appendices_link, logger, "generated_pdf_appendices_link", "href");
+        BaseClass.reportfoldersection().click_GeneratedPDF_button();
+        Thread.sleep(1500);
+//        //switch to next tab and capture url
+     //   BaseClass.reportfoldersection().change_to_next_tab();
+      //  Thread.sleep(500);
+       // BaseClass.staging5().captureURL();
+       // Thread.sleep(1500);
+
+     //   String pdfContent=   ReusableMethodsLoggersPOM.getPdfContent_from_browser_href(pdf_url);
+      //  String pdfContent=   ReusableMethodsLoggersPOM.getPdfContent_from_downloads("Automation Report");
+          String pdfContent=   ReusableMethodsLoggersPOM.getPDFContent_from_most_recent_download();
+
+
+        SoftAssert softAssert = new SoftAssert();
+        Thread.sleep(1000);
+
+// Define expected appendix items
+        List<String> expectedAppendixItems = Arrays.asList( "picture of a---------------------------------------------mapp", "signature");
+
+// Check if all expected items are present in pdfContent
+        boolean allItemsPresent = expectedAppendixItems.stream().allMatch(pdfContent::contains);
+
+// Perform assertion
+        softAssert.assertTrue(allItemsPresent);
+
+        if (allItemsPresent) {
+            System.out.println("✅ Appendix items verification passed. All expected items are present in the PDF.");
+            logger.log(LogStatus.PASS, "Assertion Passed: All expected appendix items are found in the PDF content.");
+        } else {
+            System.out.println("❌ Assertion failed: Some expected appendix items are missing in the PDF.");
+            logger.log(LogStatus.FAIL, "Assertion Failed: Some expected appendix items are missing in the PDF.");
+
+            // Log missing items for debugging
+            for (String item : expectedAppendixItems) {
+                if (!pdfContent.contains(item)) {
+                    System.out.println("❌ Missing item: " + item);
+                    logger.log(LogStatus.FAIL, "Missing appendix item: " + item);
+                }
+            }
+        }
+// Assert all
+        softAssert.assertAll();
+
+     //   ReusableMethodsLoggersPOM.closePDFViewer(driver);
+//BaseClass.reportfoldersection().change_to_default_tab();
     }
 
     public void verify_portfolio_from_PDF() throws IOException {
@@ -3435,6 +3622,22 @@ public class Staging5 extends ReusableAnnotations {
         } else {
             System.out.println("Assertion 1 failed: Portfolio cells do not match");
             logger.log(LogStatus.FAIL, "Assertion 1 failed: Portfolio cells do not match");
+        }
+    }
+
+
+    public void verify_email_link_PDF() throws IOException {
+        String pdfContent = ReusableMethodsLoggersPOM.getPDFContent_from_most_recent_download();
+        SoftAssert softAssert = new SoftAssert();
+        // Assertion 1
+        boolean assertionResult1 = pdfContent.contains("test@quiretest.com") && pdfContent.contains("QA Automation Testing Script - Spell Check Section") ;
+        softAssert.assertTrue(assertionResult1);
+        if (assertionResult1) {
+            System.out.println("PDF Email Link Verification passed ");
+            logger.log(LogStatus.PASS, "PDF Email Link Verification passed");
+        } else {
+            System.out.println("Assertion 1 failed: PDF Email Link Verification does not match");
+            logger.log(LogStatus.FAIL, "Assertion 1 failed: PDF Email Link Verification does not match");
         }
     }
 
@@ -3476,7 +3679,11 @@ public class Staging5 extends ReusableAnnotations {
     List<WebElement> pca_portfolio_report_name_cells;
     List<String> tableTextList = new ArrayList<>();
     public void verify_report_names_from_jen_portfolio_PDF() throws IOException, InterruptedException {
-        String pdfContent = ReusableMethodsLoggersPOM.getPdfContent_from_browser();
+        //String pdfContent = ReusableMethodsLoggersPOM.getPdfContent_from_browser();
+       // String pdfContent=   ReusableMethodsLoggersPOM.getPdfContent_from_downloads("-");
+        String pdfContent=   ReusableMethodsLoggersPOM.getPDFContent_from_most_recent_download();
+
+
         Thread.sleep(1000);
         driver.navigate().to("https://app.openquire.com/portfolios/3891");
         Thread.sleep(2000);
