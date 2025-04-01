@@ -183,7 +183,7 @@ WebElement text_body1;
     }
     public void enter_sc_text_body_ck5() {
         if(driver instanceof ChromeDriver) {
-                ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");
+                ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automation Testng Script - Spell Check Check Section" , logger, "text_body1");
         }
         else {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
