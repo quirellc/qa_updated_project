@@ -91,11 +91,11 @@ public class ReusableAnnotations {
             options.addArguments("start-maximized");
             options.addArguments("--window-size=1920,1080");
 
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--disable-gpu");
-            options.addArguments("--disable-features=VizDisplayCompositor"); // Helps rendering issues
-            options.addArguments("--disable-software-rasterizer");
+//            options.addArguments("--no-sandbox");
+//            options.addArguments("--disable-dev-shm-usage");
+//            options.addArguments("--disable-gpu");
+//            options.addArguments("--disable-features=VizDisplayCompositor"); // Helps rendering issues
+//            options.addArguments("--disable-software-rasterizer");
 
        //     options.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu");
 

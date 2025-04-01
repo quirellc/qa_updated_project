@@ -272,69 +272,92 @@ public void TC_006_Prod_login() throws InterruptedException {
         Thread.sleep(500);
         BaseClass.staging5().captureURL();
         Thread.sleep(500);
-
-
-        //enable track changes button
         BaseClass.staging5().click_and_capture_track_changes_button();
         Thread.sleep(1000);
-
-        // go to section 1 and type spellcheck error text
-        BaseClass.staging5().clickSection_row_editor();
+        BaseClass.staging5().click_Section2_row_editor();
         Thread.sleep(500);
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
-        BaseClass.templatesSection().enter_spellCheck_text_iFrame();
+        BaseClass.ck5editor().click_current_section_TC_highlight();
+        BaseClass.ck5editor().click_accept_TC_suggestion();
         Thread.sleep(500);
-        driver.switchTo().defaultContent();
-        BaseClass.staging5().click_accept_change_icon_ck5();
-        Thread.sleep(500);
-
-//        // go to section 2 and type spellcheck
-//        BaseClass.staging5().click_Section2_row_editor();
-//        Thread.sleep(500);
-//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-//        Thread.sleep(500);
-//        BaseClass.templatesSection().enter_spellCheck_text_iFrame();
-//        Thread.sleep(500);
-//        driver.switchTo().defaultContent();
-//        Thread.sleep(500);
-//        BaseClass.staging5().click_default_section_title();
-//        Thread.sleep(500);
-
-        //turn on spell check and fix all issues
         BaseClass.staging5().click_and_capture_spell_check_button();
         Thread.sleep(500);
         BaseClass.staging5().capture_spellCheck_error_sections();
         Thread.sleep(2000);
         BaseClass.staging5().fix_all_spellCheck_errors_sanity();
         Thread.sleep(500);
-
-        //track changes delete section - red - section 1
-
-        BaseClass.staging5().clickSection_row_editor();
-
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        BaseClass.staging5().click_Section2_row_editor();
         Thread.sleep(500);
-        BaseClass.templatesSection().select_all_and_backspace_Section_section_row_iFrame();
+        BaseClass.ck5editor().select_all_and_backspace_section_body1();
+        BaseClass.ck5editor().click_TC_red_highlight();
         Thread.sleep(500);
-        driver.switchTo().defaultContent();
+        BaseClass.ck5editor().click_accept_TC_suggestion();
         Thread.sleep(500);
-        BaseClass.staging5().click_section_1_header();
-        Thread.sleep(500);
-
-        //verify green and red track change showing
-//        BaseClass.staging5().verify_green_tracked_changes_is_Visible();
-//        Thread.sleep(500);
-        BaseClass.staging5().verify_red_tracked_changes_is_Visible();
-        Thread.sleep(500);
-        //delete section 1 by accepting red cross change
-
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(500);
-        BaseClass.staging5().click_accept_all_change_icon_ck5();
-        Thread.sleep(500);
-        BaseClass.staging5().click_section_1_header();
+        BaseClass.staging5().click_section_2_header();
         Thread.sleep(1000);
+
+//        //enable track changes button
+//        BaseClass.staging5().click_and_capture_track_changes_button();
+//        Thread.sleep(1000);
+//
+//        // go to section 1 and type spellcheck error text
+//        BaseClass.staging5().clickSection_row_editor();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().enter_spellCheck_text_iFrame();
+//        Thread.sleep(500);
+//        driver.switchTo().defaultContent();
+//        BaseClass.staging5().click_accept_change_icon_ck5();
+//        Thread.sleep(500);
+//
+////        // go to section 2 and type spellcheck
+////        BaseClass.staging5().click_Section2_row_editor();
+////        Thread.sleep(500);
+////        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+////        Thread.sleep(500);
+////        BaseClass.templatesSection().enter_spellCheck_text_iFrame();
+////        Thread.sleep(500);
+////        driver.switchTo().defaultContent();
+////        Thread.sleep(500);
+////        BaseClass.staging5().click_default_section_title();
+////        Thread.sleep(500);
+//
+//        //turn on spell check and fix all issues
+//        BaseClass.staging5().click_and_capture_spell_check_button();
+//        Thread.sleep(500);
+//        BaseClass.staging5().capture_spellCheck_error_sections();
+//        Thread.sleep(2000);
+//        BaseClass.staging5().fix_all_spellCheck_errors_sanity();
+//        Thread.sleep(500);
+//
+//        //track changes delete section - red - section 1
+//
+//        BaseClass.staging5().clickSection_row_editor();
+//
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().select_all_and_backspace_Section_section_row_iFrame();
+//        Thread.sleep(500);
+//        driver.switchTo().defaultContent();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_section_1_header();
+//        Thread.sleep(500);
+//
+//        //verify green and red track change showing
+////        BaseClass.staging5().verify_green_tracked_changes_is_Visible();
+////        Thread.sleep(500);
+//        BaseClass.staging5().verify_red_tracked_changes_is_Visible();
+//        Thread.sleep(500);
+//        //delete section 1 by accepting red cross change
+//
+//        BaseClass.staging5().clickSection_row_editor();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_accept_all_change_icon_ck5();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_section_1_header();
+//        Thread.sleep(1000);
 
 //        //delete section 2 by rejecting green change
 //

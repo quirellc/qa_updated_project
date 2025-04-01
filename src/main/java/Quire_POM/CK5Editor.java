@@ -3,6 +3,8 @@ package Quire_POM;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -157,20 +159,32 @@ WebElement text_body;
         Thread.sleep(500);
     }
 
-//    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
-@FindBy(xpath = "(//p)[1]")
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']")
+    WebElement text_body1_ff;
+    @FindBy(xpath = "(//p)[1]")
 WebElement text_body1;
     public void select_all_and_backspace_section_body1() throws InterruptedException {
-        ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1, logger, " text_body");
+        if (driver instanceof FirefoxDriver) {
+            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1_ff, logger, " text_body");
+            Thread.sleep(1000);
+            text_body1_ff.sendKeys(String.valueOf(Keys.BACK_SPACE));
+        }
+        else {
+            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1, logger, " text_body");
+            Thread.sleep(1000);
+            text_body1.sendKeys(String.valueOf(Keys.BACK_SPACE));
+
+        }
         // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
-        Thread.sleep(1000);
-        //  mouseActions.sendKeys(Keys.BACK_SPACE).perform();
-        text_body1.sendKeys(String.valueOf(Keys.BACK_SPACE));
         Thread.sleep(500);
     }
     public void enter_sc_text_body_ck5() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");}
-//   @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p")
+        if(driver instanceof ChromeDriver) {
+                ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");
+        }
+        else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
+    }}
 
 
 

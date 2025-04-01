@@ -334,6 +334,29 @@ public class ReusableMethodsLoggersPOM {
         }
     }//end of sendkeys method
 
+    public static void sendkeys_js_method(WebDriver driver, WebElement element, String userValue, ExtentTest logger, String elementName) {
+        int maxAttempts = 2; // Maximum number of attempts
+        int attempt = 0;
+
+        while (attempt < maxAttempts) {
+            try {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].value = arguments[1];", element, userValue);
+
+                System.out.println("Successfully entered a value using JavaScript on: " + elementName);
+                logger.log(LogStatus.PASS, "Successfully entered a value using JavaScript on: " + elementName);
+                return; // Exit loop if successful
+            } catch (Exception e) {
+                attempt++;
+                System.out.println("Attempt " + attempt + ": Failed to enter value using JavaScript on " + elementName + " - " + e);
+                logger.log(LogStatus.FAIL, "Attempt " + attempt + ": Failed to enter value using JavaScript on " + elementName + " - " + e);
+
+                if (attempt == maxAttempts) {
+                    getScreenShot(driver, "screenshot", logger);
+                }
+            }
+        }
+    }
 
     //sendkeys action is one of the type of void method
     public static void sendKeysandSubmitMethod(WebDriver driver, WebElement xpath, String userValue, ExtentTest logger, String elementName) {
