@@ -289,7 +289,7 @@ public void TC_006_Prod_login() throws InterruptedException {
         Thread.sleep(500);
         BaseClass.staging5().click_Section2_row_editor();
         Thread.sleep(500);
-        BaseClass.ck5editor().select_all_and_backspace_section_body1();
+        BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
         BaseClass.ck5editor().click_TC_red_highlight();
         Thread.sleep(500);
         BaseClass.ck5editor().click_accept_TC_suggestion();

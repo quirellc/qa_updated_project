@@ -77,7 +77,7 @@ public class Regression2 extends ReusableAnnotations {
                 Thread.sleep(500);
                 BaseClass.ck5editor().enter_sc_text_body_ck5();
                 Thread.sleep(500);
-                 BaseClass.staging5().click_out_of_section();
+                BaseClass.staging5().click_default_section_title();
                 Thread.sleep(500);
 
                 BaseClass.ck5editor().click_current_section_TC_highlight();
@@ -96,7 +96,7 @@ public class Regression2 extends ReusableAnnotations {
         BaseClass.staging5().click_Section2_row_editor();
                 Thread.sleep(500);
 
-                BaseClass.ck5editor().select_all_and_backspace_section_body1();
+                BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
 //
 //                //track changes delete section - red - section 1
 //

@@ -1460,9 +1460,9 @@ public class Staging5 extends ReusableAnnotations {
             Thread.sleep(1000);
 
             BaseClass.staging5().hover_to_spellCheck_error();
-            Thread.sleep(3000);
+            Thread.sleep(1500);
             BaseClass.staging5().click_first_spellcheck_suggestion_prod();
-            Thread.sleep(2500);
+            Thread.sleep(1000);
             BaseClass.staging5().click_default_section_title();
             Thread.sleep(2000);
         }

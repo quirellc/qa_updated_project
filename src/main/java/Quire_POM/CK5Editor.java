@@ -163,16 +163,19 @@ WebElement text_body;
     WebElement text_body1_ff;
     @FindBy(xpath = "(//p)[1]")
 WebElement text_body1;
-    public void select_all_and_backspace_section_body1() throws InterruptedException {
+
+    @FindBy(xpath = "(//p)[2]")
+    WebElement text_body2;
+    public void select_all_and_backspace_sc_tc_section() throws InterruptedException {
         if (driver instanceof FirefoxDriver) {
             ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1_ff, logger, " text_body");
             Thread.sleep(1000);
             text_body1_ff.sendKeys(String.valueOf(Keys.BACK_SPACE));
         }
         else {
-            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1, logger, " text_body");
+            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body2, logger, " text_body");
             Thread.sleep(1000);
-            text_body1.sendKeys(String.valueOf(Keys.BACK_SPACE));
+            text_body2.sendKeys(String.valueOf(Keys.BACK_SPACE));
 
         }
         // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
