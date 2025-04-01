@@ -651,7 +651,8 @@ int count = TC_highlights.size();
         ReusableMethodsLoggersPOM.clickMethod(driver, TC_red_highlight, logger, "TC_red_highlight");}
 
 
-    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//span[contains(@class, 'ck-suggestion-marker ck-suggestion-marker-')]")
+//    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//span[contains(@class, 'ck-suggestion-marker ck-suggestion-marker-')]")
+   @FindBy(xpath = "//span[@class='ck-suggestion-marker ck-suggestion-marker-insertion']")
      WebElement current_section_TC_highlight;
     public void click_current_section_TC_highlight() {
         ReusableMethodsLoggersPOM.clickMethod(driver, current_section_TC_highlight, logger, "current_section_TC_highlight");}
