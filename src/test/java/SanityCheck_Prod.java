@@ -278,18 +278,28 @@ public void TC_006_Prod_login() throws InterruptedException {
         Thread.sleep(500);
         BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
+        BaseClass.staging5().click_default_section_title();
+        Thread.sleep(500);
+
         BaseClass.ck5editor().click_current_section_TC_highlight();
+        Thread.sleep(1000);
+
         BaseClass.ck5editor().click_accept_TC_suggestion();
         Thread.sleep(500);
+
         BaseClass.staging5().click_and_capture_spell_check_button();
         Thread.sleep(500);
         BaseClass.staging5().capture_spellCheck_error_sections();
         Thread.sleep(2000);
         BaseClass.staging5().fix_all_spellCheck_errors_sanity();
         Thread.sleep(500);
+
         BaseClass.staging5().click_Section2_row_editor();
         Thread.sleep(500);
+
         BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
+        Thread.sleep(500);
+
         BaseClass.ck5editor().click_TC_red_highlight();
         Thread.sleep(500);
         BaseClass.ck5editor().click_accept_TC_suggestion();
