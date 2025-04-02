@@ -90,6 +90,7 @@ public class ReusableAnnotations {
             options.setPageLoadStrategy(PageLoadStrategy.EAGER);
             options.addArguments("start-maximized");
             options.addArguments("--window-size=1920,1080");
+            options.addArguments("--disable-gpu");
 
 //            options.addArguments("--no-sandbox");
 //            options.addArguments("--disable-dev-shm-usage");
@@ -129,6 +130,7 @@ public class ReusableAnnotations {
             profile.setPreference("pdfjs.disabled", true); // **Disable Firefox built-in PDF viewer**
             profile.setPreference("browser.download.useDownloadDir", true); // Ensure files go to the specified folder
             profile.setPreference("browser.download.panel.shown", false); // Hide download panel popup
+            options.addArguments("--disable-gpu");
 
 
             options.setProfile(profile);
