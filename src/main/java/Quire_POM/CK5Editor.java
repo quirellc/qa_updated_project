@@ -43,9 +43,7 @@ public class CK5Editor extends ReusableAnnotations {
 WebElement text_body;
     public void enter_text_body_ck5() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body,"QA Automationn Testing Script - Spell Check Check Section_" , logger, "text_body");}
-    public void select_all_text_introPages_body() {
-        ReusableMethodsLoggersPOM.selectAll_method(driver, text_body, logger, " text_introPages_body");
-    }
+
 
     public void enter_long_text_body_ck5() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body, "QA Automation line 1\n\nQA Automation line 3", logger, "long text_body");
@@ -181,13 +179,23 @@ WebElement text_body1;
         // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
         Thread.sleep(500);
     }
-    public void enter_sc_text_body_ck5() {
-        if(driver instanceof ChromeDriver) {
-                ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");
+
+    public void select_all_text_introPages_body() {
+        if (driver instanceof FirefoxDriver) {
+            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1_ff, logger, " text_body");
+
         }
         else {
+            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body2, logger, " text_body");
+        }    }
+    public void enter_sc_text_body_ck5() {
+//        if(driver instanceof ChromeDriver) {
+//                ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");
+//        }
+//        else {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
-    }}
+//    }
+}
 
 
 
@@ -205,9 +213,12 @@ WebElement text_body1;
 @FindBy(xpath = "//p[@class='ck-placeholder']")
 WebElement instruction_text_ck5;
     public void enter_instruction_text_ck5() {
-
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Test Automation - Instructions", logger, "instruction_text_iFrame");
-    }
+        if (driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Test Automation - Instructions", logger, "instruction_text_ck5");
+        }
+        else{
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff, "QA Test Automation - Instructions", logger, "instruction_text_iFrame");
+    }}
 
 
     @FindBy(xpath = "//button[@data-cke-tooltip-text='To-do List']")
@@ -516,11 +527,22 @@ WebElement instruction_text_ck5;
     WebElement reopen_discussion_comments_field;
 
     public void reopen_archived_comment_discussion() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, reopen_discussion_comments_field, "QA Automation updated comment - on archived comment", logger, "reopen_discussion_comments_field");
+        if (driver instanceof FirefoxDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, "QA Automation updated comment - on archived comment", logger, "reopen_archived_comment");
+
+        }
+        else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Automation Comment Test Message: ", logger, "reopen_archived_comment");
+
+        }
         BaseClass.ck5editor().click_submit_comment_button();
 
     }
-    @FindBy(xpath = "//div[@class='ck-comment__input-container ck-comment__input-container--active']//p[@class='ck-placeholder']")
+
+    @FindBy(xpath = "//div[@aria-label='Comment editor']")
+    WebElement add_a_comment_field_ff;
+
+    @FindBy(xpath = "//div[@aria-label='Comment editor']")
     WebElement add_a_comment_field;
 
     @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")
@@ -528,7 +550,16 @@ WebElement instruction_text_ck5;
 
     public void enter_comments_to_field() throws InterruptedException {
         for (int i = 1; i <= 3; i++) {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, "QA Automation Comment Test Message - Iteration: " + i, logger, "add_a_comment_field");
+            if (driver instanceof FirefoxDriver) {
+                ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, "QA Automation Comment Test Message - Iteration: " + i, logger, "add_a_comment_field");
+                Thread.sleep(500);
+                BaseClass.ck5editor().click_submit_comment_button();
+                Thread.sleep(500);
+                ReusableMethodsLoggersPOM.clickMethod(driver, comment_box, logger, "comment_box");
+                Thread.sleep(500);
+            }
+            else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Automation Comment Test Message - Iteration: " + i, logger, "instruction_text_ck5");
             Thread.sleep(500);
             BaseClass.ck5editor().click_submit_comment_button();
             Thread.sleep(500);
@@ -536,9 +567,15 @@ WebElement instruction_text_ck5;
             Thread.sleep(500);
         }
         }
+        }
 
     public void enter_comment_to_field() throws InterruptedException {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, "QA Automation Comment Test Message", logger, "add_a_comment_field");
+        if (driver instanceof FirefoxDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, "QA Automation Comment Test Message:", logger, "add_a_comment_field");
+        }
+        else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Automation Comment Test Message: " , logger, "instruction_text_ck5");
+        }
             Thread.sleep(500);
             BaseClass.ck5editor().click_submit_comment_button();
             Thread.sleep(500);

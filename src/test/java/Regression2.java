@@ -74,9 +74,9 @@ public class Regression2 extends ReusableAnnotations {
 
                 // go to section 1 and type spellcheck error text
         BaseClass.staging5().click_Section2_row_editor();
-                Thread.sleep(500);
+                Thread.sleep(5000);
                 BaseClass.ck5editor().enter_sc_text_body_ck5();
-                Thread.sleep(500);
+                Thread.sleep(50000);
                 BaseClass.staging5().click_default_section_title();
                 Thread.sleep(500);
 

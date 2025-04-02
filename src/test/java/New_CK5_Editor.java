@@ -17,7 +17,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         driver.navigate().to(baseUrl);
         System.out.println("Navigating to: " + baseUrl);
         if (baseUrl.contains("staging")) {
-            BaseClass.quireLogin().enterEmail_bv_sysadmin_level();
+            BaseClass.quireLogin().enter_admin_Email();
         } else if (baseUrl.contains("app")) {
             BaseClass.quireLogin().enterProdEmail();
         }
@@ -37,20 +37,20 @@ public class New_CK5_Editor extends ReusableAnnotations {
         Thread.sleep(3000);
         BaseClass.staging5().delete_QA_WB_items();
         Thread.sleep(1000);
-//delete report
-        BaseClass.staging5().clickReportsTab();
-        Thread.sleep(1000);
-        BaseClass.reportfoldersection().enterSearchField_QA_Report();
-        Thread.sleep(1000);
-        BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(1000);
-        BaseClass.templatesSection().delete_automation_folders();
-        Thread.sleep(1000);
-//delete templates
- BaseClass.templatesSection().clickTemplatesTab();
-        Thread.sleep(1000);
-        BaseClass.templatesSection().delete_automation_templates();
-        Thread.sleep(1000);
+////delete report
+//        BaseClass.staging5().clickReportsTab();
+//        Thread.sleep(1000);
+//        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+//        Thread.sleep(1000);
+//        BaseClass.reportfoldersection().clickReportsFirstLink();
+//        Thread.sleep(1000);
+//        BaseClass.templatesSection().delete_automation_folders();
+//        Thread.sleep(1000);
+////delete templates
+// BaseClass.templatesSection().clickTemplatesTab();
+//        Thread.sleep(1000);
+//        BaseClass.templatesSection().delete_automation_templates();
+//        Thread.sleep(1000);
 
 
 
@@ -120,7 +120,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         BaseClass.ck5editor().click_reportTag_second_dropDownItem_ck5_modal();
         Thread.sleep(500);
 
-        BaseClass.ck5editor().enter_intro_page_body_ck5();
+        BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
@@ -287,7 +287,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.templatesSection().clickAddContentRow_introPages();
         Thread.sleep(500);
-        BaseClass.ck5editor().enter_intro_page_body_ck5();
+        BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
 
@@ -394,7 +394,7 @@ public class New_CK5_Editor extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.templatesSection().clickAddContentRow_introPages();
 
-        BaseClass.ck5editor().enter_intro_page_body_ck5();
+        BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
 
