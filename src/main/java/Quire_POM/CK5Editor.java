@@ -198,8 +198,10 @@ WebElement text_body1;
 //
 //        js.executeScript("arguments[0].scrollIntoView(true);", text_body1_ff);
 //        js.executeScript("arguments[0].innerHTML = 'meow';", text_body1_ff);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.querySelector('div[role=\"textbox\"]').innerText = 'Automated Text'");
 
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
+     //   ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
 //    }
 }
 
