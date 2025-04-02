@@ -157,7 +157,7 @@ WebElement text_body;
         Thread.sleep(500);
     }
 
-    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']")
+    @FindBy(xpath = "div[role='textbox']")
     WebElement text_body1_ff;
     @FindBy(xpath = "(//p)[1]")
 WebElement text_body1;
@@ -193,17 +193,13 @@ WebElement text_body1;
 //                ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");
 //        }
 //        else {
-        List<WebElement> iframes = driver.findElements(By.tagName("iframe"));
-        System.out.println("Total Iframes: " + iframes.size());
-        for (WebElement iframe : iframes) {
-            System.out.println("Iframe Source: " + iframe.getAttribute("src"));
-        }
+
 //        JavascriptExecutor js = (JavascriptExecutor) driver;
 //
 //        js.executeScript("arguments[0].scrollIntoView(true);", text_body1_ff);
 //        js.executeScript("arguments[0].innerHTML = 'meow';", text_body1_ff);
 
-   //     ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
 //    }
 }
 
