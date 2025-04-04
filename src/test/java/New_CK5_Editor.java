@@ -915,7 +915,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         BaseClass.ck5editor().click_to_do_list_ck5();
         Thread.sleep(500);
 
-        BaseClass.ck5editor().enter_text_toDoList_ck5_();
+        BaseClass.ck5editor().enter_text_toDoList_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
@@ -1079,12 +1079,24 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
     }
 
     @Test
-    public void TR_012_reportTag_richtext() throws InterruptedException {
-        WebDriver driver = getDriver();
+    public void TR_011a_verify_report_header_text() throws InterruptedException {
+        BaseClass.smartTables().Verify_ST_edit_mode();
+        Thread.sleep(1500);
 
         BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(1500);
 
-        Thread.sleep(1000);
+        BaseClass.smartTables().capture_ST_preview_mode();
+        Thread.sleep(500);
+
+
+    } @Test
+    public void TR_012_reportTag_richtext() throws InterruptedException {
+      //  WebDriver driver = getDriver();
+
+     //   BaseClass.smartTables().click_smartTable_sectionView();
+
+       // Thread.sleep(1000);
 
         //enter rich text
         BaseClass.smartTables().enter_row1_richText();

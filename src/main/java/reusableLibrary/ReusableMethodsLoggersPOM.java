@@ -620,6 +620,29 @@ public class ReusableMethodsLoggersPOM {
         }//end of double click exception
     }//end of double click method
 
+    public static void doubleClick_noScrollMethod(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+       // JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+        Actions mouseActions = new Actions(driver);
+
+        try {
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable((xpath)));
+//            jse.executeScript("arguments[0].scrollIntoView(true)",element);
+          //  jse.executeScript("arguments[0].scrollIntoView({block: 'center'})", element);
+
+         //   Thread.sleep(500);
+            mouseActions.doubleClick(element).perform();
+            System.out.println("Successfully double clicked: " + elementName);
+            logger.log(LogStatus.PASS, "Successfully double clicked " + elementName);
+
+        } catch (Exception e) {
+            System.out.println("Unable to double click : " + elementName + ": " + e);
+            logger.log(LogStatus.FAIL, "Unable to double click: " + elementName + ": " + e);
+            getScreenShot(driver, "screenshot", logger);
+        }//end of double click exception
+    }//end of double click method
+
 
     public static void rightClickMethod(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));

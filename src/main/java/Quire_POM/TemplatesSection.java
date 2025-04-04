@@ -829,7 +829,11 @@ for (int i = 0; i < search_results_int; i++) {
     @FindBy(xpath = "//span[contains(@class, 'mceNonEditable reportTag ck') and contains(@class, 'widget')]")
     WebElement report_tag_iframe;
     public void double_click_report_tag_iframe() {
-        ReusableMethodsLoggersPOM.doubleClickMethod(driver, report_tag_iframe, logger, "report_tag_iframe");
+       // ReusableMethodsLoggersPOM.mouseHoverMethod(driver, report_tag_iframe, logger, "report_tag_iframe");
+//        ReusableMethodsLoggersPOM.clickMethod(driver, report_tag_iframe, logger, "report_tag_iframe");
+        ReusableMethodsLoggersPOM.doubleClick_noScrollMethod(driver, report_tag_iframe, logger, "report_tag_iframe");
+
+//        ReusableMethodsLoggersPOM.doubleClick_noScrollMethod(driver, report_tag_iframe, logger, "report_tag_iframe");
     }
 
 

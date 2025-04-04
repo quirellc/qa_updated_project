@@ -2099,7 +2099,21 @@ public class Staging5 extends ReusableAnnotations {
 
     //using attribute method to capture report tag text fireld
     public void capture_ReportTagField() {
-        ReusableMethodsLoggersPOM.captureAttributeMethod(driver, ReportTagText, logger, "ReportTagText", "data-value");
+      String ReportTag =  ReusableMethodsLoggersPOM.captureAttributeMethod(driver, ReportTagText, logger, "ReportTagText", "data-value");
+
+        if (ReportTag.equals("test@quiretest.com")) {
+            System.out.println(ReportTag + ": PASSED - AS expected");
+        }
+        else if (ReportTag.equals("automation_new_test@quiretest.com")) {
+            System.out.println(ReportTag + ": PASSED - AS expected");
+        }
+        else if (ReportTag.equals("undefined") ) { // Handling undefined case
+            System.out.println(ReportTag + ": PASSED - AS expected");
+        }
+        else {
+            System.out.println(ReportTag + " does not match any expected values");
+        }
+
     }
 
     @FindBy(xpath = "//span[@class='cke_button_icon cke_button__quire_insert_footnote_icon']")
@@ -2124,7 +2138,7 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, reportTag_dropDownItem_ck_modal, logger, "reportTag_dropDownItem_ck_modal ");
     }
 
-    @FindBy(xpath = "//a[normalize-space()='Title Page Image']")
+    @FindBy(xpath = "//span[normalize-space()='Title Page Image']")
     WebElement titlePageImage_RT_dropDownItem;
 
     public void click_titlePageImage_RT_dropDownItem() {

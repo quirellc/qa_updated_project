@@ -157,8 +157,13 @@ WebElement text_body;
         Thread.sleep(500);
     }
 
-    @FindBy(xpath = "div[role='textbox']")
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']")
     WebElement text_body1_ff;
+
+    @FindBy(xpath = "(//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.'])[2]")
+    WebElement wb_body_ff;
+
+
     @FindBy(xpath = "(//p)[1]")
 WebElement text_body1;
 
@@ -173,12 +178,35 @@ WebElement text_body1;
         else {
             ReusableMethodsLoggersPOM.selectAll_method(driver, text_body2, logger, " text_body");
             Thread.sleep(1000);
-            text_body2.sendKeys(String.valueOf(Keys.BACK_SPACE));
+            text_body2.sendKeys(Keys.DELETE);
 
         }
         // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
         Thread.sleep(500);
     }
+
+    @FindBy(xpath = "//p[contains(text(),'')]")
+    WebElement RT_cell_ST;
+
+    public void select_all_and_backspace_RT_cell() throws InterruptedException {
+        if (driver instanceof FirefoxDriver) {
+            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1_ff, logger, " text_body");
+            Thread.sleep(1000);
+            text_body1_ff.sendKeys(String.valueOf(Keys.BACK_SPACE));
+        }
+        else {
+            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body_ST, logger, " text_body");
+            Thread.sleep(1000);
+            text_body_ST.sendKeys(Keys.DELETE);
+
+            //  toDoList_body.sendKeys(String.valueOf(Keys.BACK_SPACE));
+
+        }
+        // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
+        Thread.sleep(500);
+    }
+
+
 
     public void select_all_text_introPages_body() {
         if (driver instanceof FirefoxDriver) {
@@ -189,23 +217,22 @@ WebElement text_body1;
             ReusableMethodsLoggersPOM.selectAll_method(driver, text_body2, logger, " text_body");
         }    }
     public void enter_sc_text_body_ck5() {
-//        if(driver instanceof ChromeDriver) {
-//                ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");
-//        }
-//        else {
-
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//
-//        js.executeScript("arguments[0].scrollIntoView(true);", text_body1_ff);
-//        js.executeScript("arguments[0].innerHTML = 'meow';", text_body1_ff);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("document.querySelector('div[role=\"textbox\"]').innerText = 'Automated Text'");
-
-     //   ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
-//    }
-}
+        if(driver instanceof ChromeDriver) {
+                ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");
+        }
+        else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
+    }}
 
 
+
+    public void enter_loadAnalysis_text() throws InterruptedException {
+        if(driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automation Text - Load Analysis" , logger, "text_body1");
+        }
+        else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automation Text - Load Analysis" , logger, "text_body1_ff");
+        }}
 
 
     @FindBy(xpath = "//section[@class='switchboard CT-hide']//i[@class='fa fa-exclamation-circle fa-lg fa-fw']")
@@ -228,6 +255,20 @@ WebElement instruction_text_ck5;
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff, "QA Test Automation - Instructions", logger, "instruction_text_iFrame");
     }}
 
+    public void enter_wb_text_ck5() {
+        if (driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Test Automation - WordBank Content", logger, "instruction_text_ck5");
+        }
+        else{
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, wb_body_ff, "QA Test Automation - WordBank Content", logger, "wb_body_ff");
+        }}
+    public void enter_footnote_text_ck5() {
+        if (driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, footNote_textBox,"QA Automation Footnote text" ,  logger, "footNote_textBox");
+        }
+        else{
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, wb_body_ff, "QA Test Automation - WordBank Content", logger, "wb_body_ff");
+        }}
 
     @FindBy(xpath = "//button[@data-cke-tooltip-text='To-do List']")
     WebElement to_do_list_icon_ck5;
@@ -547,11 +588,13 @@ WebElement instruction_text_ck5;
 
     }
 
-    @FindBy(xpath = "//div[@aria-label='Comment editor']")
-    WebElement add_a_comment_field_ff;
+    @FindBy(xpath = "//p[@data-placeholder='Write a comment...']")
+    WebElement add_a_comment_field1;
 
     @FindBy(xpath = "//div[@aria-label='Comment editor']")
     WebElement add_a_comment_field;
+    @FindBy(xpath = "(//div[@aria-label='Comment editor'])[2]")
+    WebElement add_a_comment_field_second_comment;
 
     @FindBy(xpath = "//div[@class='ck-comment ck-annotation']")
     WebElement comment_box;
@@ -582,12 +625,28 @@ WebElement instruction_text_ck5;
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, "QA Automation Comment Test Message:", logger, "add_a_comment_field");
         }
         else {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Automation Comment Test Message: " , logger, "instruction_text_ck5");
+//            ReusableMethodsLoggersPOM.clickMethod(driver, instruction_text_ck5 , logger, "instruction_text_ck5");
+//            Thread.sleep(500);
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field1, "QA Automation Comment Test Message: " , logger, "instruction_text_ck5");
         }
             Thread.sleep(500);
             BaseClass.ck5editor().click_submit_comment_button();
             Thread.sleep(500);
         }
+
+    public void enter_second_comment_to_field() throws InterruptedException {
+        if (driver instanceof FirefoxDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field_second_comment, "QA Automation Comment Test Message:", logger, "add_a_comment_field");
+        }
+        else {
+//            ReusableMethodsLoggersPOM.clickMethod(driver, instruction_text_ck5 , logger, "instruction_text_ck5");
+//            Thread.sleep(500);
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field1, "QA Automation Comment Test Message: " , logger, "add_a_comment_field_second_comment");
+        }
+        Thread.sleep(500);
+        BaseClass.ck5editor().click_submit_comment_button();
+        Thread.sleep(500);
+    }
 
     @FindBy(xpath = "//div[@class='ck-comment__actions ck-annotation__actions']//div[@class='ck ck-dropdown']/button[1]")
     WebElement comments_detail_button;
@@ -697,6 +756,9 @@ int count = TC_highlights.size();
     WebElement TC_red_highlight;
     public void click_TC_red_highlight() {
         ReusableMethodsLoggersPOM.clickMethod(driver, TC_red_highlight, logger, "TC_red_highlight");}
+
+    public void verify_TC_red_highlight() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, TC_red_highlight, true, logger, "TC_red_highlight");}
 
 
 //    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//span[contains(@class, 'ck-suggestion-marker ck-suggestion-marker-')]")
@@ -1099,10 +1161,21 @@ int count = TC_highlights.size();
     @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//ul[@class='todo-list']//input")
     List <WebElement> to_do_list_checkBox_ck5;
 
-    public void enter_text_toDoList_ck5_() {
+
+
+    public void enter_text_toDoList_ck5() {
+
         for (int i = 0; i <= 3; i++) {
-            String text = "QA 'Automation' Notes Text " + i; // Append iteration count for uniqueness
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, to_do_list_textBox_ck5.get(i), text, logger, "toDo List iteration " + i);
+            String text = "QA 'Automation' Notes Text " + i; // Ensures left-to-right order
+            if (driver instanceof ChromeDriver) {
+                ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, to_do_list_textBox_ck5.get(i), text, logger, "toDo List iteration " + i);
+            }
+            else if (driver instanceof FirefoxDriver) {
+                ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, text_body1_ff, text, logger, "toDo List iteration " + i);
+            }
+
+//                ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, to_do_list_textBox_ck5.get(i), text, logger, "toDo List iteration " + i);
+            // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
         }
         for (int i = 0; i <= 1; i++) {
             ReusableMethodsLoggersPOM.clickMethod(driver, to_do_list_checkBox_ck5.get(i), logger, "toDo checkbox # " + i);

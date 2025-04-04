@@ -748,7 +748,7 @@ public class ReportFolderSection extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "//a[normalize-space()='QA Automation CK5 Test Report.pdf']")
+    @FindBy(xpath = "//a[normalize-space()='QA Automation New CK5 Test Report.pdf']")
     WebElement report_email_pdf_link;
     public void open_report_email_pdf_link() throws InterruptedException {
         ReusableMethodsLoggersPOM.open_href_attribute_link(driver, report_email_pdf_link, logger, "report_email_pdf_link");}

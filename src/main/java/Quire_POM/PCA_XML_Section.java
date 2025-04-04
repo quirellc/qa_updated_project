@@ -223,6 +223,8 @@ public class PCA_XML_Section extends ReusableAnnotations {
     WebElement addSectionButton;
 
     public void clickAddSectionButton() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, addSectionButton, logger, " add section button ");
+
         ReusableMethodsLoggersPOM.clickMethod(driver, addSectionButton, logger, " add section button ");
     }
 
