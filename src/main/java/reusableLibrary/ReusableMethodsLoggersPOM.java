@@ -6,6 +6,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -939,6 +940,15 @@ public class ReusableMethodsLoggersPOM {
         }
     }//end of verifyBooleanStatement
 
+    public static boolean isElementPresent(WebDriver driver, WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (Exception e) {
+            System.out.println("Element not present or visible: " + e.getClass().getSimpleName() + " - " + e.getMessage());
+
+            return false;
+        }
+    }
 
     public static void verify_url(WebDriver driver, String urlContent, ExtentTest logger)  {
         try {

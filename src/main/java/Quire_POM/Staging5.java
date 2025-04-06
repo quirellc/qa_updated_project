@@ -1688,7 +1688,7 @@ public class Staging5 extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "//a[@class='cke_button cke_button__quire_lock_content cke_button_off']")
+    @FindBy(xpath = "//button[@class='ck ck-button quireToogleLock ck-off']")
     WebElement lock_icon_ck5;
 
     public void click_lock_icon_ck5() {
@@ -1703,7 +1703,7 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, lock_icon_ck5, false, logger, "lock_icon_ck5 ");
     }
 
-    @FindBy(xpath = "//span[@class='mceNonEditable cke_widget_element']")
+    @FindBy(xpath = "//span[contains(@class, 'mceNonEditable')]")
     WebElement locked_content_ck5;
     List<WebElement> locked_content_list_ck5;
 

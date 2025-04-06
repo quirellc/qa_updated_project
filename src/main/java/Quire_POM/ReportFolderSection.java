@@ -670,8 +670,13 @@ public class ReportFolderSection extends ReusableAnnotations {
     WebElement regeneratePDF_Button;
 
     public void clickRegeneratePDFButton() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, regeneratePDF_Button, logger, "regeneratePDF_Button");
+        if (ReusableMethodsLoggersPOM.isElementPresent(driver, regeneratePDF_Button)) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, regeneratePDF_Button, logger, "regeneratePDF_Button");
+        } else {
+            ReusableMethodsLoggersPOM.clickMethod(driver, generatePDF_Button, logger, "generatePDF_Button");
+        }
     }
+
 
     @FindBy(xpath = "//i[@class='fa fa-repeat fa-fw']")
     WebElement regeneratePDF_Button1;

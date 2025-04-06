@@ -169,6 +169,8 @@ WebElement text_body1;
 
     @FindBy(xpath = "(//p)[2]")
     WebElement text_body2;
+
+
     public void select_all_and_backspace_sc_tc_section() throws InterruptedException {
         if (driver instanceof FirefoxDriver) {
             ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1_ff, logger, " text_body");
@@ -205,6 +207,18 @@ WebElement text_body1;
         // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
         Thread.sleep(500);
     }
+    public void click_ck5_body_with_text() throws InterruptedException {
+        if (driver instanceof FirefoxDriver) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, text_body1_ff, logger, "text_body1_ff");
+        }
+        else {
+            ReusableMethodsLoggersPOM.clickMethod(driver, text_body2, logger, "text_body2");
+            //  toDoList_body.sendKeys(String.valueOf(Keys.BACK_SPACE));
+
+        }
+        // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
+        Thread.sleep(500);
+    }
 
 
 
@@ -224,7 +238,15 @@ WebElement text_body1;
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
     }}
 
-
+    @FindBy(xpath = "(//p)[3]")
+    WebElement proj_summary_text_body;
+    public void enter_proj_summary_text_body() {
+        if(driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, proj_summary_text_body,"QA Automationn Testng Script - Project Summary" , logger, "proj_summary_text_body");
+        }
+        else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Project Summary" , logger, "text_body1_ff");
+        }}
 
     public void enter_loadAnalysis_text() throws InterruptedException {
         if(driver instanceof ChromeDriver) {
@@ -370,12 +392,16 @@ WebElement instruction_text_ck5;
     public void verify_lock_icon_is_NotVisible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, lock_icon_ck5, false, logger, "lock_icon_ck5 ");}
 
-    //  @FindBy(xpath = "//button[@data-cke-tooltip-text='Lock Content']")   - DNE
-//    WebElement unlock_icon_ck5;
-//    public void verify_unlock_icon_isVisible() {
-//        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, unlock_icon_ck5, true,  logger, "unlock_icon_ck5");}
-//    public void verify_unlock_icon_is_notVisible() {
-//        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, unlock_icon_ck5, false,  logger, "unlock_icon_ck5");}
+      @FindBy(xpath = "//button[@class='ck ck-button quireToogleLock ck-on']")
+    WebElement unlock_icon_ck5;
+
+    public void click_unlock_icon_ck5() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, unlock_icon_ck5, logger, "unlock_icon_ck5");
+    }
+    public void verify_unlock_icon_isVisible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, unlock_icon_ck5, true,  logger, "unlock_icon_ck5");}
+    public void verify_unlock_icon_is_notVisible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, unlock_icon_ck5, false,  logger, "unlock_icon_ck5");}
 
     @FindBy(xpath = "//button[@data-cke-tooltip-text='Insert Stamp']")
     WebElement stamp_icon_ck5;
