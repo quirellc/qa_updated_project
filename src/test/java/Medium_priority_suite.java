@@ -240,28 +240,21 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.staging5().clickSection_row_editor();
         Thread.sleep(1000);
         //click report tag icon, switch frame to dropdown, click dropdown, go back to parent frame
-        BaseClass.staging5().click_reportTag_icon_ck_modal();
-        Thread.sleep(1000);
-        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
-        Thread.sleep(1000);
 
-        BaseClass.staging5().click_reportTag_dropDownItem_ck_modal();
-        Thread.sleep(500);
-        WebDriver driver = getDriver();
-
-        driver.switchTo().defaultContent();
-        Thread.sleep(500);
-        //go to text body iframe, double click yellow report tag, go to parent frame
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        BaseClass.ck5editor().click_report_tag_icon_ck5();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().click_reportTag_second_dropDownItem_ck5_modal();
         Thread.sleep(500);
         BaseClass.templatesSection().double_click_report_tag_iframe();
         Thread.sleep(500);
-        driver.switchTo().parentFrame();
+
+        BaseClass.staging5().enter_email_ReportTagField();
         Thread.sleep(500);
+
+        BaseClass.templatesSection().double_click_second_report_tag_iframe();
         // in yellow report tag, enter text, test@quiretest.com
         BaseClass.staging5().enter_email_ReportTagField();
         Thread.sleep(500);
-        // click out of section, capture report tag text
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
 
@@ -918,13 +911,7 @@ public void TR001_user_login() throws InterruptedException {
 
         BaseClass.staging5().click_section_row_editor_projectSummary();
         Thread.sleep(1000);
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.templatesSection().enter_spellCheck_text_iFrame();
-        Thread.sleep(500);
-        WebDriver driver = getDriver();
-
-        driver.switchTo().parentFrame();
+        BaseClass.ck5editor().enter_proj_summary_text_body();
         Thread.sleep(500);
         // click out of section, capture report tag text
         BaseClass.staging5().click_out_of_section();
@@ -935,7 +922,7 @@ public void TR001_user_login() throws InterruptedException {
 
 
         BaseClass.staging5().click_section_row_editor_projectSummary();
-        BaseClass.staging5().click_section_link_ck_modal();
+        BaseClass.ck5editor().click_report_link_icon_ck5();
         BaseClass.staging5().click_link_updated_project_summary_to_section();
         BaseClass.staging5().click_submit_button();
         BaseClass.staging5().click_out_of_section();
@@ -955,6 +942,7 @@ public void TR001_user_login() throws InterruptedException {
         //quick preview tab - capture project summary linked section, updated title, checkmark, default section
         BaseClass.reportfoldersection().verify_quick_preview_projectSummary();
         Thread.sleep(500);
+        WebDriver driver = getDriver();
 //close second tab and go back to default tab
         driver.close();
         Thread.sleep(500);

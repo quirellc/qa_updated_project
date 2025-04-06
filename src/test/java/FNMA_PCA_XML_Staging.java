@@ -312,7 +312,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         //verify appendix is marked complete
         BaseClass.reportfoldersection().clickSectionView_Appendices();
         Thread.sleep(1000);
-        BaseClass.staging5().verify_blue_marked_complete_icon_is_Visible();
+        BaseClass.staging5().verify_intro_pages_blue_marked_complete_icon_is_Visible();
         Thread.sleep(1000);
 
 
@@ -460,17 +460,23 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         Thread.sleep(1000);
 
         BaseClass.reporttagssection().click_title_page_image_button();
+        Thread.sleep(1000);
+
         BaseClass.staging5().click_signature_image_in_popup();
         BaseClass.staging5().click_save_button();
         BaseClass.reporttagssection().verify_title_page_image_loaded();
         BaseClass.staging5().click_default_section_title();
         BaseClass.staging5().clickSection_row_editor();
-        BaseClass.staging5().click_reportTag_icon_ck_modal();
         Thread.sleep(500);
-        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
+        BaseClass.ck5editor().click_report_tag_icon_ck5();
+        Thread.sleep(500);
+
+//        BaseClass.staging5().click_reportTag_icon_ck_modal();
+//        Thread.sleep(500);
+//        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
         BaseClass.staging5().click_titlePageImage_RT_dropDownItem();
-        driver.switchTo().defaultContent();
-        BaseClass.staging5().click_out_of_section();
+//        driver.switchTo().defaultContent();
+        BaseClass.staging5().click_default_section_title();
         Thread.sleep(500);
         BaseClass.reporttagssection().verify_title_page_image_loaded();
         Thread.sleep(500);

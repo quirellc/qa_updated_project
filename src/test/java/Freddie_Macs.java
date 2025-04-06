@@ -118,96 +118,182 @@ public class Freddie_Macs extends ReusableAnnotations {
         Thread.sleep(500);
 
     }
-    @Test
-    public void TR_003_report_Tags_template_FM_1104() throws InterruptedException {
+//    @Test
+//    public void TR_003_report_Tags_template_FM_1104() throws InterruptedException {
+//
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(1000);
+//        //click text box
+//        BaseClass.staging5().clickSection_row_editor();
+//        Thread.sleep(1000);
+//        //click report tag icon, switch frame to dropdown, click dropdown, go back to parent frame
+//
+//        BaseClass.staging5().click_reportTag_icon_ck_modal();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
+//        BaseClass.staging5().click_reportTag_dropDownItem_ck_modal();
+//        Thread.sleep(500);
+//        WebDriver driver = getDriver();
+//
+//        driver.switchTo().defaultContent();
+//        Thread.sleep(500);
+//
+//        //go to text body iframe, double click yellow report tag, go to parent frame
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().double_click_report_tag_iframe();
+//        Thread.sleep(500);
+//        driver.switchTo().parentFrame();
+//        Thread.sleep(500);
+//        // in yellow report tag, enter text, test@quiretest.com
+//        BaseClass.staging5().enter_email_ReportTagField();
+//        Thread.sleep(500);
+//        // click out of section, capture report tag text
+//        BaseClass.staging5().click_out_of_section();
+//        Thread.sleep(500);
+//        BaseClass.staging5().capture_ReportTagField();
+//        Thread.sleep(500);
+//
+//
+//        //go to text body iframe, double click and edit blue report tag
+//        BaseClass.staging5().clickSection_row_editor();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().double_click_report_tag_iframe();
+//        Thread.sleep(500);
+//        driver.switchTo().parentFrame();
+//        Thread.sleep(500);
+//        // in blue report tag, enter text, automation_new_test@quiretest.com
+//        BaseClass.staging5().enter_edited_email_ReportTagField();
+//        Thread.sleep(500);
+//        // click out of section, capture edited blue report tag text
+//        BaseClass.staging5().click_out_of_section();
+//        Thread.sleep(500);
+//        BaseClass.staging5().capture_ReportTagField();
+//        Thread.sleep(500);
+//
+//
+//        //go to text body iframe, double click and delete text blue report tag
+//        BaseClass.staging5().clickSection_row_editor();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().double_click_report_tag_iframe();
+//        Thread.sleep(500);
+//        driver.switchTo().parentFrame();
+//        Thread.sleep(500);
+//        // in blue report tag, select all and delete
+//        BaseClass.staging5().select_all_and_delete_ReportTagField();
+//        Thread.sleep(1000);
+//        //click blue check box to save empty field
+//        BaseClass.pca_xml_section().clickSaveCheckButton();
+//        Thread.sleep(500);
+//        // click out of section, capture edited blue report tag text
+//        BaseClass.staging5().click_out_of_section();
+//        Thread.sleep(500);
+//        BaseClass.staging5().capture_ReportTagField();
+//        Thread.sleep(500);
+//
+//
+//        //go to text body iframe, and delete yellow report tag from text
+//        BaseClass.staging5().clickSection_row_editor();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().select_all_body_and_delete_iFrame();
+//        Thread.sleep(1000);
+//        //go back to parent frame
+//        driver.switchTo().parentFrame();
+//        BaseClass.staging5().click_out_of_section();
+//        Thread.sleep(1000);
+//    }
+@Test
+public void TR_003_report_Tags_template_FM_1104() throws InterruptedException {
 
-        BaseClass.staging5().click_default_section_title();
-        Thread.sleep(1000);
-        //click text box
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(1000);
-        //click report tag icon, switch frame to dropdown, click dropdown, go back to parent frame
+    BaseClass.staging5().click_default_section_title();
+    Thread.sleep(1000);
+    //click text box
+    BaseClass.staging5().clickSection_row_editor();
+    Thread.sleep(1000);
+    //click report tag icon, switch frame to dropdown, click dropdown, go back to parent frame
+    BaseClass.ck5editor().enter_sc_text_body_ck5();
+    Thread.sleep(1000);
 
-        BaseClass.staging5().click_reportTag_icon_ck_modal();
-        Thread.sleep(1000);
-        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
-        BaseClass.staging5().click_reportTag_dropDownItem_ck_modal();
-        Thread.sleep(500);
-        WebDriver driver = getDriver();
+    BaseClass.ck5editor().click_report_tag_icon_ck5();
+    Thread.sleep(500);
+    BaseClass.ck5editor().click_reportTag_dropDownItem_ck5_modal();
+    Thread.sleep(1000);
+//                BaseClass.staging5().click_out_of_section();
+//                Thread.sleep(500);
 
-        driver.switchTo().defaultContent();
-        Thread.sleep(500);
+//                Thread.sleep(2000);
+//                BaseClass.staging5().clickSection_row_editor();
+//                Thread.sleep(500);
 
-        //go to text body iframe, double click yellow report tag, go to parent frame
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.templatesSection().double_click_report_tag_iframe();
-        Thread.sleep(500);
-        driver.switchTo().parentFrame();
-        Thread.sleep(500);
-        // in yellow report tag, enter text, test@quiretest.com
-        BaseClass.staging5().enter_email_ReportTagField();
-        Thread.sleep(500);
-        // click out of section, capture report tag text
-        BaseClass.staging5().click_out_of_section();
-        Thread.sleep(500);
-        BaseClass.staging5().capture_ReportTagField();
-        Thread.sleep(500);
+    BaseClass.templatesSection().double_click_report_tag_iframe();
 
+    // in yellow report tag, enter text, test@quiretest.com
+    BaseClass.staging5().enter_email_ReportTagField();
+    Thread.sleep(500);
+    BaseClass.staging5().click_out_of_section();
 
-        //go to text body iframe, double click and edit blue report tag
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(500);
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.templatesSection().double_click_report_tag_iframe();
-        Thread.sleep(500);
-        driver.switchTo().parentFrame();
-        Thread.sleep(500);
-        // in blue report tag, enter text, automation_new_test@quiretest.com
-        BaseClass.staging5().enter_edited_email_ReportTagField();
-        Thread.sleep(500);
-        // click out of section, capture edited blue report tag text
-        BaseClass.staging5().click_out_of_section();
-        Thread.sleep(500);
-        BaseClass.staging5().capture_ReportTagField();
-        Thread.sleep(500);
+//                BaseClass.pca_xml_section().clickSaveCheckButton();
+    Thread.sleep(500);
+
+    // click out of section, capture report tag text
+    //      BaseClass.staging5().click_default_section_title();
+    //       Thread.sleep(500);
+    BaseClass.staging5().capture_ReportTagField();
+    Thread.sleep(500);
+
+    BaseClass.staging5().clickSection_row_editor();
+    Thread.sleep(500);
+
+    BaseClass.templatesSection().double_click_report_tag_iframe();
+    Thread.sleep(500);
+    // in blue report tag, enter text, automation_new_test@quiretest.com
+    BaseClass.staging5().enter_edited_email_ReportTagField();
+    Thread.sleep(500);
+    // click out of section, capture edited blue report tag text
+    BaseClass.staging5().click_out_of_section();
+    Thread.sleep(500);
+    BaseClass.staging5().capture_ReportTagField();
+    Thread.sleep(500);
 
 
-        //go to text body iframe, double click and delete text blue report tag
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(500);
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.templatesSection().double_click_report_tag_iframe();
-        Thread.sleep(500);
-        driver.switchTo().parentFrame();
-        Thread.sleep(500);
-        // in blue report tag, select all and delete
-        BaseClass.staging5().select_all_and_delete_ReportTagField();
-        Thread.sleep(1000);
-        //click blue check box to save empty field
-        BaseClass.pca_xml_section().clickSaveCheckButton();
-        Thread.sleep(500);
-        // click out of section, capture edited blue report tag text
-        BaseClass.staging5().click_out_of_section();
-        Thread.sleep(500);
-        BaseClass.staging5().capture_ReportTagField();
-        Thread.sleep(500);
+
+    //go to text body iframe, double click and delete text blue report tag
+    BaseClass.staging5().clickSection_row_editor();
+    Thread.sleep(500);
+    BaseClass.templatesSection().double_click_report_tag_iframe();
+    Thread.sleep(500);
+    // in blue report tag, select all and delete
+    BaseClass.staging5().select_all_and_delete_ReportTagField();
+    Thread.sleep(1000);
+    //click blue check box to save empty field
+    BaseClass.pca_xml_section().clickSaveCheckButton();
+    Thread.sleep(500);
+    // click out of section, capture edited blue report tag text
+    BaseClass.staging5().click_out_of_section();
+    Thread.sleep(500);
+    BaseClass.staging5().capture_ReportTagField();
+    Thread.sleep(500);
 
 
-        //go to text body iframe, and delete yellow report tag from text
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(500);
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        Thread.sleep(500);
-        BaseClass.templatesSection().select_all_body_and_delete_iFrame();
-        Thread.sleep(1000);
-        //go back to parent frame
-        driver.switchTo().parentFrame();
-        BaseClass.staging5().click_out_of_section();
-        Thread.sleep(1000);
-    }
+    // go to text body iframe, and delete yellow report tag from text
+    BaseClass.staging5().clickSection_row_editor();
+    Thread.sleep(500);
+    // System.out.println(driver.getPageSource());  // Log page source
+    //         Thread.sleep(500);
+
+    BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
+    Thread.sleep(500);
+    //go back to parent frame
+    BaseClass.staging5().click_out_of_section();
+    Thread.sleep(1000);
+}
+
     @Test
     public void TR_004a_Packages_template_FM1104() throws InterruptedException {
 
@@ -405,79 +491,194 @@ public class Freddie_Macs extends ReusableAnnotations {
 
     }
 
-    @Test
-    public void TR_004c_FM1104_report_creation_and_comments() throws InterruptedException {
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-         //create report for FM 1104
-        //Go into to QA Automation Parent folder
+//    @Test
+//    public void TR_004c_FM1104_report_creation_and_comments() throws InterruptedException {
+//        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//         //create report for FM 1104
+//        //Go into to QA Automation Parent folder
+//
+//
+//        BaseClass.reportfoldersection().clickReportsTab();
+//        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+//        Thread.sleep(3500);
+//
+//        BaseClass.reportfoldersection().clickReportsFirstLink();
+//        Thread.sleep(500);
+//
+//
+//        // create new project folder with  FM 1104 templete created from previous step
+//        BaseClass.projectFolderSection().clickAddProjectFolderButton();
+//        BaseClass.projectFolderSection().enterProjectFolderNameField_FM_1104();
+//        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
+//        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
+//
+//        //need to add wait before typing so it can search item in dropdown
+//        Thread.sleep(2000);
+//        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
+//        Thread.sleep(2000);
+//
+//        BaseClass.projectFolderSection().click_FM_1104_Template_projectFolder_templatesTab();
+//        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
+//        Thread.sleep(2000);
+//
+//        BaseClass.projectFolderSection().clickSave();
+//        Thread.sleep(1000);
+//        WebDriver driver = getDriver();
+//
+//        driver.navigate().refresh();
+//        Thread.sleep(1000);
+//
+//        BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
+//
+//        Thread.sleep(2000);
+//
+//        // create new FM 1104 report folder inside FM_1104 project folder w  template
+//
+//        BaseClass.reportfoldersection().clickAddReportButton();
+//        BaseClass.reportfoldersection().enterReportName_QA_FM_1104_Field();
+//        BaseClass.reportfoldersection().enterReportDescriptionField();
+//        BaseClass.reportfoldersection().clickReport_TemplateDropdown();
+//        Thread.sleep(1500);
+//
+//        BaseClass.reportfoldersection().clickDropdownItem();
+//        Thread.sleep(1000);
+//        BaseClass.reportfoldersection().clickSave();
+//        Thread.sleep(3000);
+//        BaseClass.templatesSection().capture_created_AlertMessage();
+//        BaseClass.reportfoldersection().clickHereLink();
+//        Thread.sleep(1000);
+//
+//        //comments
+//        BaseClass.staging5().click_comment_button_icon();
+//        BaseClass.staging5().enter_comments_to_field();
+//        BaseClass.staging5().capture_comments_content();
+//        BaseClass.staging5().click_cancel_button_popup();
+//        Thread.sleep(1000);
+//        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+//        Thread.sleep(1000);
+//
+////        Thread.sleep(500);
+////        driver.navigate().refresh();
+////        Thread.sleep(500);
+//
+//        BaseClass.staging5().verify_if_comments_icon_isActive();
+//        Thread.sleep(1000);
+//    }
+@Test
+public void TR_004c_FM1104_report_creation() throws InterruptedException {
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //create report for FM 1104
+    //Go into to QA Automation Parent folder
 
 
-        BaseClass.reportfoldersection().clickReportsTab();
-        BaseClass.reportfoldersection().enterSearchField_QA_Report();
-        Thread.sleep(3500);
+    BaseClass.reportfoldersection().clickReportsTab();
+    BaseClass.reportfoldersection().enterSearchField_QA_Report();
+    Thread.sleep(3500);
 
-        BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(500);
+    BaseClass.reportfoldersection().clickReportsFirstLink();
+    Thread.sleep(500);
 
 
-        // create new project folder with  FM 1104 templete created from previous step
-        BaseClass.projectFolderSection().clickAddProjectFolderButton();
-        BaseClass.projectFolderSection().enterProjectFolderNameField_FM_1104();
-        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
-        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
+    // create new project folder with  FM 1104 templete created from previous step
+    BaseClass.projectFolderSection().clickAddProjectFolderButton();
+    BaseClass.projectFolderSection().enterProjectFolderNameField_FM_1104();
+    BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
+    BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
 
-        //need to add wait before typing so it can search item in dropdown
-        Thread.sleep(2000);
-        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
-        Thread.sleep(2000);
+    //need to add wait before typing so it can search item in dropdown
+    Thread.sleep(2000);
+    BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
+    Thread.sleep(2000);
 
-        BaseClass.projectFolderSection().click_FM_1104_Template_projectFolder_templatesTab();
-        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
-        Thread.sleep(2000);
+    BaseClass.projectFolderSection().click_FM_1104_Template_projectFolder_templatesTab();
+    BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
+    Thread.sleep(2000);
 
-        BaseClass.projectFolderSection().clickSave();
-        Thread.sleep(1000);
-        WebDriver driver = getDriver();
+    BaseClass.projectFolderSection().clickSave();
+    Thread.sleep(1000);
+    WebDriver driver = getDriver();
 
-        driver.navigate().refresh();
-        Thread.sleep(1000);
+    driver.navigate().refresh();
+    Thread.sleep(1000);
 
-        BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
+    BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
 
-        Thread.sleep(2000);
+    Thread.sleep(2000);
 
-        // create new FM 1104 report folder inside FM_1104 project folder w  template
+    // create new FM 1104 report folder inside FM_1104 project folder w  template
 
-        BaseClass.reportfoldersection().clickAddReportButton();
-        BaseClass.reportfoldersection().enterReportName_QA_FM_1104_Field();
-        BaseClass.reportfoldersection().enterReportDescriptionField();
-        BaseClass.reportfoldersection().clickReport_TemplateDropdown();
-        Thread.sleep(1500);
+    BaseClass.reportfoldersection().clickAddReportButton();
+    BaseClass.reportfoldersection().enterReportName_QA_FM_1104_Field();
+    BaseClass.reportfoldersection().enterReportDescriptionField();
+    BaseClass.reportfoldersection().clickReport_TemplateDropdown();
+    Thread.sleep(1500);
 
-        BaseClass.reportfoldersection().clickDropdownItem();
-        Thread.sleep(1000);
-        BaseClass.reportfoldersection().clickSave();
-        Thread.sleep(3000);
-        BaseClass.templatesSection().capture_created_AlertMessage();
-        BaseClass.reportfoldersection().clickHereLink();
-        Thread.sleep(1000);
+    BaseClass.reportfoldersection().clickDropdownItem();
+    Thread.sleep(1000);
+    BaseClass.reportfoldersection().clickSave();
+    Thread.sleep(3000);
+    BaseClass.templatesSection().capture_created_AlertMessage();
+    BaseClass.reportfoldersection().clickHereLink();
+    Thread.sleep(1000);
 
-        //comments
-        BaseClass.staging5().click_comment_button_icon();
-        BaseClass.staging5().enter_comments_to_field();
-        BaseClass.staging5().capture_comments_content();
-        BaseClass.staging5().click_cancel_button_popup();
-        Thread.sleep(1000);
-        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-        Thread.sleep(1000);
 
 //        Thread.sleep(500);
 //        driver.navigate().refresh();
 //        Thread.sleep(500);
 
-        BaseClass.staging5().verify_if_comments_icon_isActive();
-        Thread.sleep(1000);
-    }
+}
+//    @Test
+//    public void TR_004cc_FM1104_v11_sections_check() throws InterruptedException {
+//        WebDriver driver = getDriver();
+//
+//        BaseClass.staging5().click_section_III_property_details_sectionView();
+//        BaseClass.fm_section().scroll_to_ElectricalConditions();
+//        BaseClass.fm_section().select_electricalConditions_60amps_Dropdown();
+//        BaseClass.fm_section().select_electricalConditions_lessThan40amps_Dropdown();
+//        BaseClass.fm_section().enter_levelOfService_field();
+//
+//        BaseClass.fm_section().click_load_analysis_description_field();
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        BaseClass.fm_section().enter_loadAnalysis_text();
+//        Thread.sleep(500);
+//        // WebDriver driver = getDriver();
+//        driver.switchTo().defaultContent();
+//        //pca
+//        BaseClass.staging5().click_out_of_section();
+//        Thread.sleep(500);
+//        BaseClass.fm_section().click_add_cost_rec_button_section_III_electrical_conditions();
+//        Thread.sleep(500);
+//
+//
+//        BaseClass.fm_section().enter_item_name_cost_recommendation();
+//        Thread.sleep(500);
+//        BaseClass.staging5().enter_cost_summary_quantity();
+//        BaseClass.staging5().enter_cost_summary_unit_cost();
+//        BaseClass.staging5().click_critical_repair_cost_checkbox();
+//        Thread.sleep(500);
+//        BaseClass.fm_section().enter_cost_summary_comments();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(1000);
+//
+//        BaseClass.fm_section().select_are_there_any_elevators_dropDown();
+//        BaseClass.fm_section().select_elevators_repairs_dropDown();
+//        BaseClass.fm_section().enter_elevators_description_field();
+////        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+////        BaseClass.fm_section().enter_elevator_ck4_text();
+//        Thread.sleep(500);
+//        // WebDriver driver = getDriver();
+////        driver.switchTo().defaultContent();
+//        BaseClass.fm_section().enter_elevator_costToCure_field();
+//        Thread.sleep(500);
+//        BaseClass.reportfoldersection().click_quick_preview_button();
+//        BaseClass.reportfoldersection().change_to_next_tab();
+//        Thread.sleep(500);
+//        BaseClass.fm_section().verify_fm1104_v11_QP();
+//        driver.close();
+//        BaseClass.staging5().switchToOriginalTab();
+//        Thread.sleep(500);
+//    }
 
     @Test
     public void TR_004cc_FM1104_v11_sections_check() throws InterruptedException {
@@ -490,11 +691,11 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.fm_section().enter_levelOfService_field();
 
         BaseClass.fm_section().click_load_analysis_description_field();
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        BaseClass.fm_section().enter_loadAnalysis_text();
+        Thread.sleep(500);
+
+        BaseClass.ck5editor().enter_loadAnalysis_text();
         Thread.sleep(500);
         // WebDriver driver = getDriver();
-        driver.switchTo().defaultContent();
         //pca
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
@@ -527,7 +728,10 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.reportfoldersection().change_to_next_tab();
         Thread.sleep(500);
         BaseClass.fm_section().verify_fm1104_v11_QP();
+
         driver.close();
+        Thread.sleep(500);
+
         BaseClass.staging5().switchToOriginalTab();
         Thread.sleep(500);
     }
@@ -537,10 +741,10 @@ public class Freddie_Macs extends ReusableAnnotations {
         // create comments and verify icon
 
         //enter text to section 2.0 - wrong grammar
-      //  BaseClass.staging5().click_Section2_row_editor();
+        //  BaseClass.staging5().click_Section2_row_editor();
 
-        BaseClass.staging5().click_and_capture_spell_check_button();
-        Thread.sleep(2000);
+        //      BaseClass.staging5().click_and_capture_spell_check_button();
+        //    Thread.sleep(2000);
         //insert track changes
         BaseClass.staging5().click_and_capture_track_changes_button();
         Thread.sleep(2500);
@@ -558,14 +762,19 @@ public class Freddie_Macs extends ReusableAnnotations {
 
         //enter section 2.0 , wrong spelling
         BaseClass.staging5().click_Section2_row_editor();
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        BaseClass.templatesSection().enter_spellCheck_text_iFrame();
+        //   BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        //   BaseClass.templatesSection().enter_spellCheck_text_iFrame();
         Thread.sleep(500);
-        WebDriver driver = getDriver();
+        // WebDriver driver = getDriver();
+        BaseClass.ck5editor().enter_sc_text_body_ck5();
+        Thread.sleep(500);
+        BaseClass.ck5editor().click_current_section_TC_highlight();
+        Thread.sleep(500);
 
-        driver.switchTo().defaultContent();
+        // driver.switchTo().defaultContent();
+        //  Thread.sleep(500);
+        BaseClass.ck5editor().click_accept_TC_suggestion();
         Thread.sleep(500);
-        BaseClass.staging5().click_accept_change_icon_ck5();
 
         //second default  section - add smart table
         BaseClass.staging5().click_default_section_2();
@@ -597,7 +806,7 @@ public class Freddie_Macs extends ReusableAnnotations {
 //enter rich text - wrong spelling
         BaseClass.smartTables().enter_row1_Spellcheck_richText();
         Thread.sleep(1000);
-        BaseClass.smartTables().click_smartTable_sectionView();
+        BaseClass.staging5().click_smartTable_title_header();
         Thread.sleep(1000);
 
 
@@ -633,7 +842,7 @@ public class Freddie_Macs extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().click_smartTable_title_header();
         Thread.sleep(500);
-        BaseClass.staging5().verify_green_highlighted_wb_item_is_Visible();
+        //  BaseClass.staging5().verify_green_highlighted_wb_item_is_Visible();
         Thread.sleep(1500);
         BaseClass.smartTables().click_row5_richText();
         Thread.sleep(1000);
@@ -646,42 +855,44 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.staging5().captureAlertMessage();
         Thread.sleep(3000);
 
-      //  BaseClass.smartTables().click_smartTable_sectionView();
-      //  Thread.sleep(2000);
+        //  BaseClass.smartTables().click_smartTable_sectionView();
+        //  Thread.sleep(2000);
 
 
         //turn on spell check and fix all issues
 
-        BaseClass.staging5().capture_spellCheck_error_sections();
-        Thread.sleep(5000);
+        //       BaseClass.staging5().capture_spellCheck_error_sections();
+        //      Thread.sleep(5000);
 
-        BaseClass.staging5().fix_all_spellCheck_errors();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_smartTable_title_header();
-        Thread.sleep(500);
+        //      BaseClass.staging5().fix_all_spellCheck_errors();
+        //      Thread.sleep(1000);
+        //      BaseClass.staging5().click_smartTable_title_header();
+        //     Thread.sleep(500);
 
 
         //click first row cell, accept changes, then cross out changes, print red items
         BaseClass.smartTables().click_r1_c1();
-        BaseClass.staging5().click_accept_change_icon_ck5();
-        Thread.sleep(1000);
-        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
         Thread.sleep(500);
-        BaseClass.templatesSection().select_all_and_backspace_Section_section_row_iFrame();
+
+        BaseClass.ck5editor().click_accept_TC_suggestion();
+        //    Thread.sleep(1000);
+        //    BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        //    Thread.sleep(500);
+        BaseClass.ck5editor().select_all_and_backspace_RT_cell();
         Thread.sleep(500);
-        driver.switchTo().defaultContent();
-        Thread.sleep(1500);
+        //     driver.switchTo().defaultContent();
+        //   Thread.sleep(1500);
         BaseClass.staging5().click_section_2_header();
         Thread.sleep(1500);
 
         //capture green , red , and spell check count
 
-        BaseClass.staging5().verify_green_track_changes_isVisible();
+        BaseClass.ck5editor().verify_TC_green_highlight();
         Thread.sleep(500);
-        BaseClass.staging5().verify_red_tracked_changes_is_Visible();
+        BaseClass.ck5editor().verify_TC_red_highlight();
         Thread.sleep(1000);
-       // BaseClass.staging5().verify_no_spellCheck_errors();
-       // Thread.sleep(500);
+        // BaseClass.staging5().verify_no_spellCheck_errors();
+        // Thread.sleep(500);
 
 
 //click notification button and read the smart table  excel file information
@@ -693,6 +904,169 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.staging5().click_and_capture_track_changes_button();
         Thread.sleep(1000);
     }
+
+//    @Test
+//    public void TR_004d_TrackChanges_SpellCheck_in_SmartTable_FM1104_report() throws InterruptedException, IOException {
+//
+//        // create comments and verify icon
+//
+//        //enter text to section 2.0 - wrong grammar
+//      //  BaseClass.staging5().click_Section2_row_editor();
+//
+//        BaseClass.staging5().click_and_capture_spell_check_button();
+//        Thread.sleep(2000);
+//        //insert track changes
+//        BaseClass.staging5().click_and_capture_track_changes_button();
+//        Thread.sleep(2500);
+//
+//
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().clickAddSectionButton();
+//        Thread.sleep(2500);
+//        BaseClass.staging5().click_add_section_toSection();
+//        Thread.sleep(1000);
+//        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+//        Thread.sleep(500);
+//
+//
+//        //enter section 2.0 , wrong spelling
+//        BaseClass.staging5().click_Section2_row_editor();
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        BaseClass.templatesSection().enter_spellCheck_text_iFrame();
+//        Thread.sleep(500);
+//        WebDriver driver = getDriver();
+//
+//        driver.switchTo().defaultContent();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_accept_change_icon_ck5();
+//
+//        //second default  section - add smart table
+//        BaseClass.staging5().click_default_section_2();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().clickAddSectionButton();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_add_smartTable_toSection();
+//        Thread.sleep(1000);
+//        BaseClass.smartTables().click_add_column_button_smartTable();
+//        Thread.sleep(1000);
+//
+//        //add rich text column, rich text column default
+//
+//        BaseClass.smartTables().enter_column_name_richText_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(1500);
+//
+//        BaseClass.smartTables().click_add_rows_to_bottom_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(1000);
+//
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//
+//        Thread.sleep(1000);
+//
+//
+////enter rich text - wrong spelling
+//        BaseClass.smartTables().enter_row1_Spellcheck_richText();
+//        Thread.sleep(1000);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(1000);
+//
+//
+//
+//
+//        //enter rich text - wordbank r5c1
+//        //wordbank assign items
+//        BaseClass.smartTables().click_row5_richText();
+//        Thread.sleep(1500);
+//
+//        BaseClass.staging5().click_column_dropdown_smartTable();
+//        Thread.sleep(500);
+//
+//        BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
+//        Thread.sleep(2000);
+//        //hover and click first arrow button unassigned package
+//        BaseClass.staging5().hover_unassigned__dropdown_value();
+//        Thread.sleep(800);
+//        BaseClass.staging5().click_unassigned_items_right_arrow();
+//        Thread.sleep(1000);
+//        BaseClass.templatesSection().clickSave2();
+//        Thread.sleep(500);
+//
+//
+////add wordbank assigned item to cell
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//
+//        BaseClass.smartTables().click_row5_richText();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_insert_wordbank_arrow_button();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_smartTable_title_header();
+//        Thread.sleep(500);
+//        BaseClass.staging5().verify_green_highlighted_wb_item_is_Visible();
+//        Thread.sleep(1500);
+//        BaseClass.smartTables().click_row5_richText();
+//        Thread.sleep(1000);
+//
+//        //export to excel from smart table actions
+//        BaseClass.smartTables().click_smartTable_actions_button();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_export_to_excel_file_dropdown_button();
+//        Thread.sleep(500);
+//        BaseClass.staging5().captureAlertMessage();
+//        Thread.sleep(3000);
+//
+//      //  BaseClass.smartTables().click_smartTable_sectionView();
+//      //  Thread.sleep(2000);
+//
+//
+//        //turn on spell check and fix all issues
+//
+//        BaseClass.staging5().capture_spellCheck_error_sections();
+//        Thread.sleep(5000);
+//
+//        BaseClass.staging5().fix_all_spellCheck_errors();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_smartTable_title_header();
+//        Thread.sleep(500);
+//
+//
+//        //click first row cell, accept changes, then cross out changes, print red items
+//        BaseClass.smartTables().click_r1_c1();
+//        BaseClass.staging5().click_accept_change_icon_ck5();
+//        Thread.sleep(1000);
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().select_all_and_backspace_Section_section_row_iFrame();
+//        Thread.sleep(500);
+//        driver.switchTo().defaultContent();
+//        Thread.sleep(1500);
+//        BaseClass.staging5().click_section_2_header();
+//        Thread.sleep(1500);
+//
+//        //capture green , red , and spell check count
+//
+//        BaseClass.staging5().verify_green_track_changes_isVisible();
+//        Thread.sleep(500);
+//        BaseClass.staging5().verify_red_tracked_changes_is_Visible();
+//        Thread.sleep(1000);
+//       // BaseClass.staging5().verify_no_spellCheck_errors();
+//       // Thread.sleep(500);
+//
+//
+////click notification button and read the smart table  excel file information
+//        BaseClass.staging5().click_active_notification_button();
+//        BaseClass.staging5().capture_unread_notification();
+//        Thread.sleep(1000);
+//
+//        //turn off track changes
+//        BaseClass.staging5().click_and_capture_track_changes_button();
+//        Thread.sleep(1000);
+//    }
     @Test
     public void TR_004e_FM1104_new_cloned_template_and_report() throws InterruptedException {
 
@@ -752,19 +1126,19 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.reportfoldersection().clickHereLink();
         Thread.sleep(1000);
 
-        //comments
-        BaseClass.staging5().click_comment_button_icon();
-        BaseClass.staging5().enter_comments_to_field();
-        BaseClass.staging5().capture_comments_content();
-        BaseClass.staging5().click_cancel_button_popup();
-        Thread.sleep(500);
-        WebDriver driver = getDriver();
-
-        driver.navigate().refresh();
-        Thread.sleep(500);
-
-        BaseClass.staging5().verify_if_comments_icon_isActive();
-        Thread.sleep(1000);
+//        //comments
+//        BaseClass.staging5().click_comment_button_icon();
+//        BaseClass.staging5().enter_comments_to_field();
+//        BaseClass.staging5().capture_comments_content();
+//        BaseClass.staging5().click_cancel_button_popup();
+//        Thread.sleep(500);
+//        WebDriver driver = getDriver();
+//
+//        driver.navigate().refresh();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().verify_if_comments_icon_isActive();
+//        Thread.sleep(1000);
 
 
     }
@@ -872,8 +1246,11 @@ public class Freddie_Macs extends ReusableAnnotations {
     BaseClass.fm_section().verify_fm1105_section1_v11();
     BaseClass.fm_section().verify_sectionI_seismic_checklist_v11_fm1105();
     BaseClass.staging5().click_section_II_unit_details_sectionView();
+    Thread.sleep(1000);
     BaseClass.fm_section().enter_sectionII_overall_property_conditionRating_v11_fm1105();
+    Thread.sleep(1000);
     BaseClass.fm_section().select_overall_condition_rating_dropDown_v11_fm1105();
+    Thread.sleep(1000);
     BaseClass.staging5().click_section_III_property_details_sectionView();
     BaseClass.fm_section().verify_section_III_repairs_identification_v11();
     BaseClass.fm_section().verify_fm1105_v11_footer_text();
