@@ -284,7 +284,7 @@ public void TC_006_Prod_login() throws InterruptedException {
         Thread.sleep(500);
         BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
-        BaseClass.staging5().click_default_section_title();
+        BaseClass.staging5().click_pixel_out_of_section();
         Thread.sleep(500);
 
         BaseClass.ck5editor().click_current_section_TC_highlight();
