@@ -3320,8 +3320,15 @@ public void enter_ca_section_cost() {
     public void click_out_of_section() {
         ReusableMethodsLoggersPOM.clickMethod(driver, out_of_section, logger, "out_of_section");}
 
+    @FindBy(xpath = "//div[@title='Expand']")
+    WebElement pixel_out_of_section;
+
     public void click_pixel_out_of_section() {
-        ReusableMethodsLoggersPOM.clickByPixelMethod(driver, 1500,300);}
+
+// Move to the element and offset 10 pixels to the right (x: +10, y: 0)
+        Actions actions = new Actions(driver);
+        actions.moveToElement(pixel_out_of_section, 10, 0).click().perform();}
+
     @FindBy(xpath = "//div[normalize-space()='1.0']")
     WebElement default_section_case;
 
