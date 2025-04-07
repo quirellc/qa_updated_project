@@ -54,13 +54,17 @@ public void TC_006_Prod_login() throws InterruptedException {
 
 //        BaseClass.reportfoldersection().clickAutomationReport_link();
         Thread.sleep(1500);
+
         BaseClass.staging5().capture_current_report_location();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
     }
 
     @Test
     public void TC_008_appendices() throws InterruptedException {
+        BaseClass.staging5().skip_if_error_message_appears();
+        Thread.sleep(500);
+
 
         BaseClass.reportfoldersection().clickSectionView_Appendices();
         Thread.sleep(1500);
@@ -271,6 +275,8 @@ public void TC_006_Prod_login() throws InterruptedException {
         driver.navigate().to("https://app.openquire.com/reports/1379930");
         Thread.sleep(500);
         BaseClass.staging5().captureURL();
+        Thread.sleep(500);
+        BaseClass.staging5().skip_if_error_message_appears();
         Thread.sleep(500);
         BaseClass.staging5().click_and_capture_track_changes_button();
         Thread.sleep(1000);
