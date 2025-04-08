@@ -668,7 +668,7 @@ public class CK_Editor extends ReusableAnnotations {
         BaseClass.reportfoldersection().clickEmailLink_hyperLink();
        // Thread.sleep(800);
 
-    //    BaseClass.reportfoldersection().open_report_email_pdf_link();
+        BaseClass.reportfoldersection().open_report_email_pdf_link();
         Thread.sleep(1500);
         BaseClass.staging5().verify_email_link_PDF();
         Thread.sleep(1000);

@@ -25,6 +25,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
      //   String pageTitle = driver.getTitle();
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
+
         } else if (baseUrl.contains("app")) {
             BaseClass.quireLogin().enterProdEmail();
         }

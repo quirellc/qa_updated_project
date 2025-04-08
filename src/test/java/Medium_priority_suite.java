@@ -243,7 +243,7 @@ public void TR001_user_login() throws InterruptedException {
 
         BaseClass.ck5editor().click_report_tag_icon_ck5();
         Thread.sleep(1000);
-        BaseClass.ck5editor().click_reportTag_second_dropDownItem_ck5_modal();
+        BaseClass.ck5editor().click_reportTag_dropDownItem_ck5_modal();
         Thread.sleep(500);
         BaseClass.templatesSection().double_click_report_tag_iframe();
         Thread.sleep(500);
@@ -251,7 +251,7 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.staging5().enter_email_ReportTagField();
         Thread.sleep(500);
 
-        BaseClass.templatesSection().double_click_second_report_tag_iframe();
+        BaseClass.templatesSection().double_click_report_tag_iframe();
         // in yellow report tag, enter text, test@quiretest.com
         BaseClass.staging5().enter_email_ReportTagField();
         Thread.sleep(500);
@@ -571,10 +571,11 @@ public void TR001_user_login() throws InterruptedException {
         Thread.sleep(1000);
         BaseClass.staging5().mark_all_as_read();
         Thread.sleep(500);
+        driver.close();
+
 //        BaseClass.templatesSection().verify_export_completed();
 //        Thread.sleep(1000);
 
-        driver.close();
         Thread.sleep(500);
         BaseClass.reportfoldersection().change_to_default_tab();
         Thread.sleep(1000);
@@ -748,11 +749,12 @@ public void TR001_user_login() throws InterruptedException {
 //        BaseClass.templatesSection().verify_export_completed();
         Thread.sleep(1000);
 
+
         driver.close();
         Thread.sleep(500);
         BaseClass.reportfoldersection().change_to_default_tab();
         Thread.sleep(1000);
-
+//
         //Go into to QA Automation Parent folder
         BaseClass.reportfoldersection().clickReportsTab();
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
@@ -924,7 +926,7 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.staging5().click_section_row_editor_projectSummary();
         BaseClass.ck5editor().click_report_link_icon_ck5();
         BaseClass.staging5().click_link_updated_project_summary_to_section();
-        BaseClass.staging5().click_submit_button();
+        BaseClass.staging5().click_save_button();
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
 

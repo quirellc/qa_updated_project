@@ -204,9 +204,22 @@ public class TemplatesSection extends ReusableAnnotations {
     @FindBy(xpath = "//div[contains(text(),'ck4 wb item')]")
     WebElement exported_wb_item_2;
     public void verify_exported_wb_item() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, exported_wb_item_1,true,  logger, "exported_wb_item");
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, exported_wb_item_2,true,  logger, "exported_wb_item");}
+        if (baseUrl.contains("staging5")) {
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, exported_wb_item_1, true, logger, "exported_wb_item");
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, exported_wb_item_2, true, logger, "exported_wb_item");
+        } else if (baseUrl.contains("staging3")) {
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, export_1_wb_item1, true, logger, "export_1_wb_item1");
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, export_1_wb_item2, true, logger, "export_1_wb_item2");
+        }
+    }
 
+
+
+    @FindBy(xpath = "//div[contains(text(), 'Accessibility  Restroom/s')]")
+    WebElement export_1_wb_item1;
+
+    @FindBy(xpath = "//div[normalize-space()='Accessibility ADA Assessment - EXTERIOR CIRCULATION ACCEPTABLE']")
+    WebElement export_1_wb_item2;
 
     @FindBy(xpath = "//input[@id='unassigned_items_search']")
     WebElement unassigned_items_searchField;

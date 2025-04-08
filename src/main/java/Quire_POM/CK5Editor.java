@@ -367,7 +367,22 @@ WebElement instruction_text_ck5;
 //        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, ReportTagField, "123", logger, "email_ReportTagField");
 //    }
 
+    @FindBy(xpath = "//li[@class='assign-word-bank has-wb-items']//a[@class='has-tooltip']")
+    WebElement assign_word_bank_blue_icon;
 
+    public void click_assign_word_bank_blue_icon() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, assign_word_bank_blue_icon, logger, "assign_word_bank_blue_icon");
+    }
+
+    @FindBy(xpath = "//div[contains(text(), 'Accessibility  Restroom/s')]")
+    WebElement export_1_wb_item1;
+
+    @FindBy(xpath = "//div[normalize-space()='Accessibility ADA Assessment - EXTERIOR CIRCULATION ACCEPTABLE']")
+    WebElement export_1_wb_item2;
+    public void verify_export1_items_wb_assigned_packages() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, export_1_wb_item1, true, logger, "export_1_wb_item1");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, export_1_wb_item2, true, logger, "export_1_wb_item2");
+    }
     @FindBy(xpath = "//button[@data-cke-tooltip-text='Create Word Bank Item']")
     WebElement wordBank_icon_ck5;
     public void click_create_wordBank_icon_ck5() {

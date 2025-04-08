@@ -46,7 +46,7 @@ public void TC_006_Prod_login() throws InterruptedException {
     //    Thread.sleep(1500);
 //
         BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(3000);
+        Thread.sleep(4000);
 
         BaseClass.projectFolderSection().clickProjectFolderLink_2023QAReport();
         Thread.sleep(1500);

@@ -704,6 +704,14 @@ public class Staging5 extends ReusableAnnotations {
     @FindBy(xpath = "//a[normalize-space()='Export Complete']")
     WebElement export_complete;
 
+    @FindBy(xpath = "//div[@class='target-container']//span[@class='view-source']")
+    WebElement target_report_view_link;
+public void click_target_report_view_link() {
+    ReusableMethodsLoggersPOM.clickMethod(driver, target_report_view_link, logger, "target_report_view_link");
+}
+
+
+
     public void confirm_export_1_unread_notification() {
 
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, export_complete,true,  logger, "export_complete");
@@ -2215,7 +2223,7 @@ public class Staging5 extends ReusableAnnotations {
     public void click_introPages_wordbank_grey_icon() {
         ReusableMethodsLoggersPOM.clickMethod(driver, introPages_wordbank_grey_icon, logger, "introPages_wordbank_grey_icon");}
 
-    @FindBy(xpath = "//a[@data-original-title='Assign WordBank Items']//i[@class='fa fa-book']")
+    @FindBy(xpath = "//a[@data-original-title='Assign WordBank Items']//i[contains(@class, 'fa fa-book')]\n")
     WebElement wordbank_grey_icon;
     public void click_wordbank_grey_icon() {
         ReusableMethodsLoggersPOM.clickMethod(driver, wordbank_grey_icon, logger, "wordbank_grey_icon");}
@@ -3543,7 +3551,7 @@ public void enter_ca_section_cost() {
 
        // String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
        // String pdfContent=   ReusableMethodsLoggersPOM.getPdfContent_from_downloads("!@#$%^&*()test@quiretest.com" + currentDate + ".pdf");
-        String pdfContent=   ReusableMethodsLoggersPOM.getPdfContent_from_downloads("test@quiretest.com");
+        String pdfContent=   ReusableMethodsLoggersPOM.getPDFContent_from_most_recent_download();
 
         SoftAssert softAssert = new SoftAssert();
         Thread.sleep(1000);
