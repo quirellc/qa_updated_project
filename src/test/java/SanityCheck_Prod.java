@@ -115,6 +115,8 @@ public void TC_006_Prod_login() throws InterruptedException {
          BaseClass.staging5().captureAlertMessage();
          Thread.sleep(5000);
          BaseClass.reportfoldersection().captureGeneratedPDF_text();
+         Thread.sleep(5000);
+
          BaseClass.staging5().verify_appendices_PDF_contents();
          Thread.sleep(500);
 

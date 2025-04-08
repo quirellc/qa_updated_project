@@ -530,7 +530,7 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.templatesSection().click_target_export_template_dropdown_arrow();
         Thread.sleep(1000);
         BaseClass.templatesSection().click_medium_priority_updated_dropdownValue_export();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         BaseClass.templatesSection().click_export_default_section_title_1();
         Thread.sleep(1000);
         BaseClass.templatesSection().click_export_now_button();
@@ -927,6 +927,8 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.ck5editor().click_report_link_icon_ck5();
         BaseClass.staging5().click_link_updated_project_summary_to_section();
         BaseClass.staging5().click_save_button();
+        Thread.sleep(1000);
+
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
 
@@ -973,26 +975,50 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.templatesSection().verify_PDF_AlertMessage();
         Thread.sleep(500);
 
-
-        BaseClass.staging5().click_comment_button_icon_introPages();
-        BaseClass.staging5().enter_comments_to_field();
-        BaseClass.staging5().capture_comments_content();
-        Thread.sleep(500);
-        driver.navigate().refresh();
-        Thread.sleep(500);
-
         BaseClass.staging5().click_project_summary_sectionView();
         Thread.sleep(1000);
-
-        BaseClass.staging5().verify_introPages_comments_icon_isActive();
+        BaseClass.staging5().click_section_row_editor_projectSummary();
         Thread.sleep(1000);
+
+        BaseClass.ck5editor().select_all_text_projSummary_section_body();
+        Thread.sleep(500);
+        BaseClass.ck5editor().click_comment_icon_ck5();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().verify_comment_highlight_is_Visible();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().enter_comments_to_field();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().update_comments_in_field();
+        Thread.sleep(1000);
+        //verify yellow comments bubble says 1
+        //NOT WORKING AS OF NOW 9_16_24 -
+        // 10/16/24 - Working
+        BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
+        //   BaseClass.staging5().verify_if_comments_icon_isActive();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().click_comments_resolve_button();
+        Thread.sleep(1000);
+
+        //        //NOT WORKING AS OF NOW 9_16_24
+        BaseClass.ck5editor().verify_resolved_2_comment_is_Visible();
+        Thread.sleep(1000);
+        //no comments archive button anymore 10-16-24
+        BaseClass.ck5editor().click_and_verify_comments_archive_icon();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().update_comments_in_field();
+        Thread.sleep(1000);
+        // NEED VERIFICATION STEPS
+        BaseClass.ck5editor().reopen_archived_comment_discussion();
+        Thread.sleep(1000);
+        //NOT WORKING AS OF NOW 9_16_24
+        BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
+        // Thread.sleep(1000);
 
         BaseClass.staging5().click_mark_intro_pages_complete_grey_icon_();
         BaseClass.templatesSection().captureAlertMessage();
         Thread.sleep(1000);
         BaseClass.staging5().verify_intro_pages_blue_marked_complete_icon_is_Visible();
         Thread.sleep(500);
-
 
 
         BaseClass.templatesSection().clickdeleteToTrash();
@@ -1033,6 +1059,7 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.templatesSection().verify_alertMessage_submitted_for_request();
         Thread.sleep(500);
         BaseClass.staging5().click_cancel_alert_message();
+        Thread.sleep(500);
 
 
 

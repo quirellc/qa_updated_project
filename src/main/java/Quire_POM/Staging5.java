@@ -3593,7 +3593,7 @@ public void enter_ca_section_cost() {
 
        // String pdf_url = ReusableMethodsLoggersPOM.captureAttributeMethod(driver, generated_pdf_appendices_link, logger, "generated_pdf_appendices_link", "href");
         BaseClass.reportfoldersection().click_GeneratedPDF_button();
-        Thread.sleep(1500);
+        Thread.sleep(5000);
 //        //switch to next tab and capture url
      //   BaseClass.reportfoldersection().change_to_next_tab();
       //  Thread.sleep(500);
