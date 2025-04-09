@@ -1239,7 +1239,8 @@ int count = TC_highlights.size();
     @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//ul[@class='todo-list']//input[@type='checkbox']")
     List <WebElement> to_do_list_checkBox_ck5;
 
-
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//ul[@class='todo-list']//input[@type='checkbox']")
+    WebElement to_do_list_checkBox1_ck5;
 
     public void enter_text_toDoList_ck5() throws InterruptedException {
 
@@ -1260,9 +1261,10 @@ Thread.sleep(1000);
 //        BaseClass.staging5().click_pixel_out_of_section();
 //        Thread.sleep(1000);
 //        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(9000);
-        System.out.println("Number of checkboxes found: " + to_do_list_checkBox_ck5.size());
+      //  Thread.sleep(9000);
+       // System.out.println("Number of checkboxes found: " + to_do_list_checkBox_ck5.size());
 
+            ReusableMethodsLoggersPOM.clickMethod(driver, to_do_list_checkBox1_ck5, logger, "to_do_list_checkBox1_ck5");
 
 //        for (int i = 0; i <= 1; i++) {
 //            ReusableMethodsLoggersPOM.clickMethod(driver, to_do_list_checkBox_ck5.get(i), logger, "toDo checkbox # " + i);
