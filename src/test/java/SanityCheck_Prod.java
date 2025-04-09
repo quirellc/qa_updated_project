@@ -423,9 +423,9 @@ public void TC_006_Prod_login() throws InterruptedException {
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().mark_all_as_read();
-        Thread.sleep(7000);
+        Thread.sleep(9500);
         driver.navigate().refresh();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().open_jenTest_pdf_notification_link();
