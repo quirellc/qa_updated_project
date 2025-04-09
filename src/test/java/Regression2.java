@@ -48,7 +48,7 @@ public class Regression2 extends ReusableAnnotations {
 
                 //   String pageTitle = driver.getTitle();
                 if (baseUrl.contains("staging")) {
-                        BaseClass.quireLogin().enter_sysadmin_testingInc_email();
+                        BaseClass.quireLogin().enter_admin_Email();
                 } else if (baseUrl.contains("app")) {
                         BaseClass.quireLogin().enterProdEmail();
                 }
@@ -58,87 +58,254 @@ public class Regression2 extends ReusableAnnotations {
                 Thread.sleep(1000);
                 BaseClass.quireLogin().clickLogin();
                 Thread.sleep(3000);
-        }
-        @Test
-        public void TR018_Spellcheck_trackChanges_ck4() throws InterruptedException {
-                WebDriver driver = getDriver();
 
+
+        }
+
+
+        @Test
+        public void TR_001a_navigate() throws InterruptedException {
+                WebDriver driver = getDriver();
                 //navigate to empty report-automation testing report
-                driver.navigate().to("https://app.openquire.com/reports/1379930");
+                driver.navigate().to("https://staging3.openquire.com/reports/1330277");
                 Thread.sleep(500);
                 BaseClass.staging5().captureURL();
                 Thread.sleep(500);
-                BaseClass.staging5().click_and_capture_track_changes_button();
+               // BaseClass.staging5().click_and_capture_track_changes_button();
                 Thread.sleep(1000);
-
-
-                // go to section 1 and type spellcheck error text
-        BaseClass.staging5().click_Section2_row_editor();
-                Thread.sleep(5000);
-                BaseClass.ck5editor().enter_sc_text_body_ck5();
-                Thread.sleep(50000);
-                BaseClass.staging5().click_default_section_title();
-                Thread.sleep(500);
-
-                BaseClass.ck5editor().click_current_section_TC_highlight();
-                Thread.sleep(1000);
-
-                BaseClass.ck5editor().click_accept_TC_suggestion();
-                Thread.sleep(500);
-
-                BaseClass.staging5().click_and_capture_spell_check_button();
-                Thread.sleep(500);
-                BaseClass.staging5().capture_spellCheck_error_sections();
-                Thread.sleep(2000);
-                BaseClass.staging5().fix_all_spellCheck_errors_sanity();
-                Thread.sleep(500);
-
-        BaseClass.staging5().click_Section2_row_editor();
-                Thread.sleep(500);
-
-                BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
-//
-//                //track changes delete section - red - section 1
-//
-//                BaseClass.staging5().clickSection_row_editor();
-//
-//                BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-//                Thread.sleep(500);
-//                BaseClass.templatesSection().select_all_and_backspace_Section_section_row_iFrame();
-//                Thread.sleep(500);
-//                driver.switchTo().defaultContent();
-//                Thread.sleep(500);
-               // BaseClass.staging5().click_section_1_header();
-               // Thread.sleep(500);
-//
-//                //verify green and red track change showing
-////        BaseClass.staging5().verify_green_tracked_changes_is_Visible();
-////        Thread.sleep(500);
-                BaseClass.ck5editor().click_TC_red_highlight();
-                Thread.sleep(500);
-//                //delete section 1 by accepting red cross change
-//
-              //  BaseClass.staging5().click_Section2_row_editor();
-               // Thread.sleep(500);
-                BaseClass.ck5editor().click_accept_TC_suggestion();
-                Thread.sleep(500);
-                BaseClass.staging5().click_section_2_header();
-                Thread.sleep(1000);
-
-//        //delete section 2 by rejecting green change
-//
-//        BaseClass.staging5().click_Section2_row_editor();
-//        Thread.sleep(500);
-//        BaseClass.staging5().click_reject_change_icon_ck5();
-//        Thread.sleep(500);
-//
-//        BaseClass.staging5().click_default_section_title();
-//        BaseClass.staging5().capture_spellCheck_errors();
-
-                //       Thread.sleep(500);
-
 
         }
+
+    @Test
+    public void TR_011b_toDo_List() throws InterruptedException {
+        WebDriver driver = getDriver();
+//delete wb item
+        BaseClass.staging5().clickSection_row_editor();
+        Thread.sleep(1500);
+
+        BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
+
+        //   Thread.sleep(500);
+        //   BaseClass.ck5editor().clear_current_text_body_ST();
+        Thread.sleep(5000);
+
+        BaseClass.ck5editor().click_to_do_list_ck5();
+        Thread.sleep(500);
+        BaseClass.ck5editor().enter_text_toDoList_ck5();
+        Thread.sleep(500);
+        BaseClass.staging5().click_out_of_section();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().click_quick_preview_button();
+        BaseClass.reportfoldersection().change_to_next_tab();
+        Thread.sleep(2000);
+
+        BaseClass.ck5editor().verify_toDoList_items_ck5_qp();
+        driver.close();
+        BaseClass.staging5().switchToOriginalTab();
+        Thread.sleep(500);
+    }
+
+
+                //    @Test
+//    public void TR_020_sort_columns() throws InterruptedException{
+//
+//
+//
+//        BaseClass.smartTables().click_c1_header();
+//        Thread.sleep(1000);
+//
+//        BaseClass.smartTables().click_sort_columns_except_formula_and_date();
+//        Thread.sleep(1000);
+//
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//
+//
+//
+//    }
+//    @Test
+//    public void TR_021_rows_and_headerRows() throws InterruptedException {
+//        WebDriver driver = getDriver();
+//
+////INSERT ROW ABOVE
+//        BaseClass.smartTables().click_r1_c5_dynamic();
+//        Thread.sleep(500);
+////click escape dynamic cell with data
+//        BaseClass.smartTables().click_escape_dynamic_cell_with_data();
+//
+//        Thread.sleep(500);
+//        //right click r1c5 dynamic cell - after escape is clicked
+//        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+//        Thread.sleep(500);
+//        // dynamic cell - after right click - click insert row above
+//        BaseClass.smartTables().click_insert_row_above_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_r1_empty();
+//        Thread.sleep(500);
+//
+//        //DELETE ROW 1 - no data
+//        BaseClass.smartTables().click_r1_c5_dynamic();
+//        Thread.sleep(500);
+////switch r5c5 dynamic cell to iframe
+//   //     BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//    //    Thread.sleep(500);
+////switch r5c5 dynamic cell to iframe - to click escape button
+//        BaseClass.ck5editor().click_escape_current_cell();
+//        Thread.sleep(500);
+//        driver.switchTo().parentFrame();
+//        Thread.sleep(500);
+//        //right click r1c5 dynamic cell - after escape is clicked
+//        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+//        Thread.sleep(500);
+//        // dynamic cell - after right click - click insert row above
+//        BaseClass.smartTables().click_delete_row_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        //   BaseClass.smartTables().verify_con();
+//        //   Thread.sleep(500);
+//
+//
+////INSERT ROW Below
+//        BaseClass.smartTables().click_r1_c5_dynamic();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_escape_dynamic_cell_with_data();
+//        Thread.sleep(500);
+//        //right click r1c5 dynamic cell - after escape is clicked
+//        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+//        Thread.sleep(500);
+//        // dynamic cell - after right click - click insert row above
+//        BaseClass.smartTables().click_insert_row_below_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_r2_empty();
+//        Thread.sleep(500);
+//
+//
+////INSERT Header Above in R1
+//        BaseClass.smartTables().click_r1_c5_dynamic();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_escape_dynamic_cell_with_data();
+//        Thread.sleep(500);
+//        //right click r1c5 dynamic cell - after escape is clicked
+//        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+//        Thread.sleep(500);
+//        // dynamic cell - after right click - click insert row above
+//        BaseClass.smartTables().click_insert_header_above_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_r1_header_is_empty();
+//        Thread.sleep(500);
+//
+//
+//        //INSERT Header below empty R1 Header
+//        BaseClass.smartTables().click_r1_header();
+//        Thread.sleep(500);
+////switch r1c5 dynamic cell to iframe
+//    //    BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        Thread.sleep(500);
+////switch r1c5 dynamic cell to iframe - to click escape button
+//        BaseClass.ck5editor().click_escape_current_cell();
+//        Thread.sleep(500);
+//        driver.switchTo().parentFrame();
+//        Thread.sleep(500);
+//        //right click r1_header_smartTable - after escape is clicked
+//        BaseClass.smartTables().rightClick_r1_header_smartTable();
+//        Thread.sleep(500);
+//        // dynamic cell - after right click - click insert row above
+//        BaseClass.smartTables().click_insert_header_below_button();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_r2_header_is_empty();
+//        Thread.sleep(500);
+//    }
+
+        }
+//        @Test
+//        public void TR018_Spellcheck_trackChanges_ck4() throws InterruptedException {
+//                WebDriver driver = getDriver();
+//
+//                //navigate to empty report-automation testing report
+//                driver.navigate().to("https://app.openquire.com/reports/1379930");
+//                Thread.sleep(500);
+//                BaseClass.staging5().captureURL();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_and_capture_track_changes_button();
+//                Thread.sleep(1000);
+//
+//
+//                // go to section 1 and type spellcheck error text
+//        BaseClass.staging5().click_Section2_row_editor();
+//                Thread.sleep(5000);
+//                BaseClass.ck5editor().enter_sc_text_body_ck5();
+//                Thread.sleep(50000);
+//                BaseClass.staging5().click_default_section_title();
+//                Thread.sleep(500);
+//
+//                BaseClass.ck5editor().click_current_section_TC_highlight();
+//                Thread.sleep(1000);
+//
+//                BaseClass.ck5editor().click_accept_TC_suggestion();
+//                Thread.sleep(500);
+//
+//                BaseClass.staging5().click_and_capture_spell_check_button();
+//                Thread.sleep(500);
+//                BaseClass.staging5().capture_spellCheck_error_sections();
+//                Thread.sleep(2000);
+//                BaseClass.staging5().fix_all_spellCheck_errors_sanity();
+//                Thread.sleep(500);
+//
+//        BaseClass.staging5().click_Section2_row_editor();
+//                Thread.sleep(500);
+//
+//                BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
+////
+////                //track changes delete section - red - section 1
+////
+////                BaseClass.staging5().clickSection_row_editor();
+////
+////                BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+////                Thread.sleep(500);
+////                BaseClass.templatesSection().select_all_and_backspace_Section_section_row_iFrame();
+////                Thread.sleep(500);
+////                driver.switchTo().defaultContent();
+////                Thread.sleep(500);
+//               // BaseClass.staging5().click_section_1_header();
+//               // Thread.sleep(500);
+////
+////                //verify green and red track change showing
+//////        BaseClass.staging5().verify_green_tracked_changes_is_Visible();
+//////        Thread.sleep(500);
+//                BaseClass.ck5editor().click_TC_red_highlight();
+//                Thread.sleep(500);
+////                //delete section 1 by accepting red cross change
+////
+//              //  BaseClass.staging5().click_Section2_row_editor();
+//               // Thread.sleep(500);
+//                BaseClass.ck5editor().click_accept_TC_suggestion();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_section_2_header();
+//                Thread.sleep(1000);
+//
+////        //delete section 2 by rejecting green change
+////
+////        BaseClass.staging5().click_Section2_row_editor();
+////        Thread.sleep(500);
+////        BaseClass.staging5().click_reject_change_icon_ck5();
+////        Thread.sleep(500);
+////
+////        BaseClass.staging5().click_default_section_title();
+////        BaseClass.staging5().capture_spellCheck_errors();
+//
+//                //       Thread.sleep(500);
+//
+//
+//        }
 //        @Test
 //        public void TR_006a_Headers_Footers() throws InterruptedException, IOException {
 ////not adding in report, doing to template
@@ -264,8 +431,6 @@ public class Regression2 extends ReusableAnnotations {
 ////        Thread.sleep(500);
 //
 //        }
-}
-
 
 
 
