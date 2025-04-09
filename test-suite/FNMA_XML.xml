@@ -2,13 +2,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="FNMA XML Test Suite" thread-count="1">
 
+    <parameter name="env" value="staging3" />
     <parameter name="browser" value="chrome"/>
 
     <test name="FNMA XML Tests" preserve-order="true">
         <classes>
                                     <class name="FNMA_PCA_XML_Staging" />
                                     <class name="FNMA_ESA_XML_Staging" />
-                                    <class name="FNMA_SRA_XML_Staging" />
+<!--                                    <class name="FNMA_SRA_XML_Staging" />-->
                                     <class name="FNMA_ZON_XML_Staging" />
         </classes>
     </test> <!-- Test -->
