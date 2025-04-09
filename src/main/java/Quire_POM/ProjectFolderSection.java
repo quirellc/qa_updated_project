@@ -371,7 +371,7 @@ public class ProjectFolderSection extends ReusableAnnotations {
         String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, recentReportName, logger, "recent report name ");
         System.out.println("\n" + "Report name: " + result);}
 
-    @FindBy(xpath = "//span[contains(text(),'2023 QA Report')]")
+    @FindBy(xpath = "//*[contains(text(),'2023 QA Report')]")
     WebElement projectFolderLink_2023QAReport;
     public void clickProjectFolderLink_2023QAReport() {
         ReusableMethodsLoggersPOM.clickMethod(driver, projectFolderLink_2023QAReport, logger, "projectFolderLink_2023QAReport");}

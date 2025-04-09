@@ -46,8 +46,13 @@ WebElement text_body;
 
 
     public void enter_long_text_body_ck5() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body, "QA Automation line 1\n\nQA Automation line 3", logger, "long text_body");
-    }
+        if(driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automation line 1\n\nQA Automation line 3" , logger, "text_body1");
+        }
+        else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automation line 1\n\nQA Automation line 3" , logger, "text_body1_ff");
+     //   ReusableMethodsLoggersPOM.sendKeysMethod(driver, section_row_1_body, "QA Automation line 1\n\nQA Automation line 3", logger, "long text_body");
+    }}
 
     public void paste_text_introPages_body() {
         ReusableMethodsLoggersPOM.clickEnterThenPaste_method(driver, text_body, logger, " text_introPages_body");
@@ -281,6 +286,7 @@ WebElement text_body1;
 //    @FindBy(xpath = "//div[@aria-label='Editor editing area: main. Press ⌥0 for help.']")
 @FindBy(xpath = "//p[@class='ck-placeholder']")
 WebElement instruction_text_ck5;
+
     public void enter_instruction_text_ck5() {
         if (driver instanceof ChromeDriver) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Test Automation - Instructions", logger, "instruction_text_ck5");
@@ -625,7 +631,7 @@ WebElement instruction_text_ck5;
     public void click_submit_comment_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, submit_comment_button, logger, "submit_comment_button");}
 
-    @FindBy(xpath = "//div[@aria-label='Comment editor']//p[@data-placeholder='Reply to reopen discussion...']")
+    @FindBy(xpath = "//p[@data-placeholder='Reply to reopen discussion...']")
     WebElement reopen_discussion_comments_field;
 
     public void reopen_archived_comment_discussion() {
@@ -635,6 +641,23 @@ WebElement instruction_text_ck5;
         }
         else {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA Automation Comment Test Message: ", logger, "reopen_archived_comment");
+
+        }
+        BaseClass.ck5editor().click_submit_comment_button();
+
+    }
+
+    public void reopen_second_archived_comment_discussion() {
+        if (driver instanceof FirefoxDriver) {
+           // ReusableMethodsLoggersPOM.clickMethod(driver, add_a_comment_field1, logger, "reopen_archived_comment");
+
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field1, "QA Automation updated comment - on archived comment", logger, "reopen_archived_comment");
+
+        }
+        else {
+         //   ReusableMethodsLoggersPOM.clickMethod(driver, instruction_text_ck5, logger, "reopen_archived_comment");
+
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, reopen_discussion_comments_field, "QA Automation Comment Test Message: ", logger, "reopen_archived_comment");
 
         }
         BaseClass.ck5editor().click_submit_comment_button();
@@ -1057,6 +1080,7 @@ int count = TC_highlights.size();
 
     public void ck5_multiple_comments_test() throws InterruptedException {
         BaseClass.staging5().click_default_section_title();
+        Thread.sleep(500);
 
         BaseClass.staging5().clickSection_row_editor();
         Thread.sleep(500);
@@ -1077,7 +1101,8 @@ int count = TC_highlights.size();
         Thread.sleep(500);
         BaseClass.ck5editor().verify_comment_highlight_is_Visible();
         Thread.sleep(500);
-        BaseClass.ck5editor().enter_comment_to_field();
+
+        BaseClass.ck5editor().enter_second_comment_to_field();
         Thread.sleep(500);
         //        Refresh page
 
@@ -1104,7 +1129,7 @@ int count = TC_highlights.size();
         Thread.sleep(500);
         BaseClass.ck5editor().reopen_archived_comment_discussion();
         Thread.sleep(500);
-        BaseClass.ck5editor().reopen_archived_comment_discussion();
+        BaseClass.ck5editor().reopen_second_archived_comment_discussion();
         Thread.sleep(500);
         BaseClass.ck5editor().verify_unresolved_4_comment_is_Visible();
         Thread.sleep(500);
@@ -1115,7 +1140,7 @@ int count = TC_highlights.size();
         Thread.sleep(500);
         BaseClass.ck5editor().verify_grey_empty_comments_icon();
         Thread.sleep(500);
-        BaseClass.ck5editor().clear_current_text_body_ST();
+        BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(1000);
