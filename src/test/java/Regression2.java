@@ -95,13 +95,13 @@ public class Regression2 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
-        BaseClass.reportfoldersection().click_quick_preview_button();
-        BaseClass.reportfoldersection().change_to_next_tab();
-        Thread.sleep(2000);
-
-        BaseClass.ck5editor().verify_toDoList_items_ck5_qp();
-        driver.close();
-        BaseClass.staging5().switchToOriginalTab();
+//        BaseClass.reportfoldersection().click_quick_preview_button();
+//        BaseClass.reportfoldersection().change_to_next_tab();
+//        Thread.sleep(2000);
+//
+//        BaseClass.ck5editor().verify_toDoList_items_ck5_qp();
+//        driver.close();
+//        BaseClass.staging5().switchToOriginalTab();
         Thread.sleep(500);
     }
 

@@ -1251,7 +1251,12 @@ int count = TC_highlights.size();
             else if (driver instanceof FirefoxDriver) {
                 ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, text_body1_ff, text, logger, "toDo List iteration " + i);
             }
-Thread.sleep(3000);
+Thread.sleep(1000);
+            BaseClass.staging5().click_pixel_out_of_section();
+            Thread.sleep(1000);
+            BaseClass.staging5().clickSection_row_editor();
+            Thread.sleep(1000);
+
 //                ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, to_do_list_textBox_ck5.get(i), text, logger, "toDo List iteration " + i);
             // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
         }
