@@ -202,7 +202,7 @@ WebElement text_body1;
             text_body1_ff.sendKeys(String.valueOf(Keys.BACK_SPACE));
         }
         else {
-            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body_ST, logger, " text_body");
+            ReusableMethodsLoggersPOM.selectAll_method(driver, RT_cell_ST, logger, " text_body");
             Thread.sleep(1000);
             text_body_ST.sendKeys(Keys.DELETE);
 

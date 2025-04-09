@@ -468,12 +468,12 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         //quick preview tab - capture header and footer data
         BaseClass.smartTables().verify_qp_ST_reference_tag();
         BaseClass.smartTables().verify_quickPreview_linked_section_is_visible();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         //close second tab and go back to default tab
         driver.close();
         Thread.sleep(500);
         BaseClass.reportfoldersection().change_to_default_tab();
-        Thread.sleep(1000);
+        Thread.sleep(2500);
 
 
 
