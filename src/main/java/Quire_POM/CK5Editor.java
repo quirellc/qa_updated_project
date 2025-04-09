@@ -1252,15 +1252,17 @@ int count = TC_highlights.size();
                 ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, text_body1_ff, text, logger, "toDo List iteration " + i);
             }
 Thread.sleep(1000);
-            BaseClass.staging5().click_pixel_out_of_section();
-            Thread.sleep(1000);
-            BaseClass.staging5().clickSection_row_editor();
-            Thread.sleep(1000);
+
 
 //                ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, to_do_list_textBox_ck5.get(i), text, logger, "toDo List iteration " + i);
             // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
         }
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(1000);
+        BaseClass.staging5().clickSection_row_editor();
+        Thread.sleep(1000);
         System.out.println("Number of checkboxes found: " + to_do_list_checkBox_ck5.size());
+
 
 //        for (int i = 0; i <= 1; i++) {
 //            ReusableMethodsLoggersPOM.clickMethod(driver, to_do_list_checkBox_ck5.get(i), logger, "toDo checkbox # " + i);
