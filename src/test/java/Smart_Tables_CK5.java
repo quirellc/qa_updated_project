@@ -281,7 +281,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         // click out of section, capture report tag text
         BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
+        Thread.sleep(1500);
         BaseClass.staging5().capture_ReportTagField();
         Thread.sleep(500);
 
@@ -297,7 +297,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         // click out of section, capture edited blue report tag text
         BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
+        Thread.sleep(1500);
         BaseClass.staging5().capture_ReportTagField();
         Thread.sleep(500);
 
@@ -315,7 +315,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         // click out of section, capture edited blue report tag text
         BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
+        Thread.sleep(1500);
         BaseClass.staging5().capture_ReportTagField();
         Thread.sleep(500);
 
@@ -385,7 +385,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(2000);
 
         BaseClass.smartTables().click_second_column_dropdown_smartTable();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         BaseClass.smartTables().click_manage_dropDown_values_smartTable_dropDown();
         Thread.sleep(500);
@@ -480,7 +480,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
 
         // unlink section link
         BaseClass.smartTables().click_row4_richText();
-        Thread.sleep(500);
+        Thread.sleep(2000);
         BaseClass.ck5editor().doubleclick_linked_section_text();
         Thread.sleep(500);
         BaseClass.ck5editor().click_unlink_button_sectionLinkView();

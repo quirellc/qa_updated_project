@@ -1241,7 +1241,7 @@ int count = TC_highlights.size();
 
 
 
-    public void enter_text_toDoList_ck5() {
+    public void enter_text_toDoList_ck5() throws InterruptedException {
 
         for (int i = 0; i <= 3; i++) {
             String text = "QA 'Automation' Notes Text " + i; // Ensures left-to-right order
@@ -1251,7 +1251,7 @@ int count = TC_highlights.size();
             else if (driver instanceof FirefoxDriver) {
                 ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, text_body1_ff, text, logger, "toDo List iteration " + i);
             }
-
+Thread.sleep(2000);
 //                ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, to_do_list_textBox_ck5.get(i), text, logger, "toDo List iteration " + i);
             // mouseActions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
         }
