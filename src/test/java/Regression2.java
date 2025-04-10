@@ -67,7 +67,7 @@ public class Regression2 extends ReusableAnnotations {
         public void TR_001a_navigate() throws InterruptedException {
                 WebDriver driver = getDriver();
                 //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com/reports/1330277");
+                driver.navigate().to("https://staging3.openquire.com/reports/1330290");
                 Thread.sleep(500);
                 BaseClass.staging5().captureURL();
                 Thread.sleep(500);
@@ -87,7 +87,7 @@ public class Regression2 extends ReusableAnnotations {
 
         //   Thread.sleep(500);
         //   BaseClass.ck5editor().clear_current_text_body_ST();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         BaseClass.ck5editor().click_to_do_list_ck5();
         Thread.sleep(500);
@@ -95,14 +95,14 @@ public class Regression2 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
-//        BaseClass.reportfoldersection().click_quick_preview_button();
-//        BaseClass.reportfoldersection().change_to_next_tab();
-//        Thread.sleep(2000);
-//
-//        BaseClass.ck5editor().verify_toDoList_items_ck5_qp();
-//        driver.close();
-//        BaseClass.staging5().switchToOriginalTab();
-        Thread.sleep(500);
+        BaseClass.reportfoldersection().click_quick_preview_button();
+        BaseClass.reportfoldersection().change_to_next_tab();
+        Thread.sleep(2000);
+
+        BaseClass.ck5editor().verify_toDoList_items_ck5_qp();
+        driver.close();
+        BaseClass.staging5().switchToOriginalTab();
+        Thread.sleep(5000);
     }
 
 

@@ -333,7 +333,7 @@ public class Regression_Suite extends ReusableAnnotations {
         BaseClass.staging5().clickUserProfileTab();
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 
-        BaseClass.quireLogin().enter_author_BV_Email();
+        BaseClass.quireLogin().enter_author_Email();
         BaseClass.quireLogin().enterPassword();
         //Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
@@ -365,7 +365,7 @@ public class Regression_Suite extends ReusableAnnotations {
         BaseClass.staging5().clickUserProfileTab();
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 
-        BaseClass.quireLogin().enter_editor_BV_Email();
+        BaseClass.quireLogin().enter_editor_Email();
         BaseClass.quireLogin().enterPassword();
         //Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
@@ -396,7 +396,7 @@ public class Regression_Suite extends ReusableAnnotations {
         BaseClass.staging5().clickUserProfileTab();
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 
-        BaseClass.quireLogin().enter_pm_BV_Email();
+        BaseClass.quireLogin().enter_pm_Email();
         BaseClass.quireLogin().enterPassword();
         //Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
