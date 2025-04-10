@@ -143,7 +143,7 @@ public class CK_Editor extends ReusableAnnotations {
 
         // create comments and verify icon in cover letter
         BaseClass.templatesSection().clickAddContentRow_introPages();
-        Thread.sleep(500);
+        Thread.sleep(2000);
         BaseClass.ck5editor().select_all_text_introPages_body();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comment_icon_ck5();
@@ -302,7 +302,7 @@ public class CK_Editor extends ReusableAnnotations {
 
         // create comments and verify icon in cover letter
         BaseClass.templatesSection().clickAddContentRow_introPages();
-        Thread.sleep(500);
+        Thread.sleep(1500);
         BaseClass.ck5editor().select_all_text_introPages_body();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comment_icon_ck5();
@@ -403,7 +403,7 @@ public class CK_Editor extends ReusableAnnotations {
 
         // create comments and verify icon in cover letter
         BaseClass.templatesSection().clickAddContentRow_introPages();
-        Thread.sleep(500);
+        Thread.sleep(1500);
         BaseClass.ck5editor().select_all_text_introPages_body();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comment_icon_ck5();
