@@ -2114,8 +2114,7 @@ public void click_target_report_view_link() {
         }
         else if (ReportTag.equals("automation_new_test@quiretest.com")) {
             System.out.println(ReportTag + ": PASSED - AS expected");
-        }
-        else if (ReportTag.equals("undefined") ) { // Handling undefined case
+        } else if ("undefined".equals(ReportTag) || ReportTag == null) {
             System.out.println(ReportTag + ": PASSED - AS expected");
         }
         else {

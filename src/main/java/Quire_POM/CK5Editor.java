@@ -61,6 +61,9 @@ WebElement text_body;
     //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
     @FindBy(xpath = "//div[@class='quire-smarttable-rt-editor-container']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
     WebElement text_body_firstLine_cell;
+
+    @FindBy(xpath = "(//p[contains(text(),'QA Automation line 1')])[2]")
+    WebElement text_body_firstLine_cell_chrome;
     public void double_click_first_line_cell() {
 // JavaScript to select the entire contents of the specified paragraph
         String script = "var element = arguments[0];" +
@@ -72,7 +75,11 @@ WebElement text_body;
 
 // Execute the script to select the paragraph
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript(script, text_body_firstLine_cell);
+        if (driver instanceof ChromeDriver) {
+            js.executeScript(script, text_body_firstLine_cell_chrome);
+        } else  {
+            js.executeScript(script, text_body_firstLine_cell);
+        }
         //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
     }
     //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
@@ -1267,7 +1274,7 @@ int count = TC_highlights.size();
           //  ReusableMethodsLoggersPOM.clickMethod(driver, to_do_list_checkBox1_ck5, logger, "to_do_list_checkBox1_ck5");
 Thread.sleep(2000);
         String osName = System.getProperty("os.name").toLowerCase();
-        System.out.println(osName);
+       // System.out.println(osName);
         if (!osName.contains("linux")) {
             for (int i = 0; i <= 1; i++) {
                 ReusableMethodsLoggersPOM.clickMethod(driver, to_do_list_checkBox_ck5.get(i), logger, "toDo checkbox # " + i);
@@ -1289,7 +1296,7 @@ Thread.sleep(2000);
 
     public void verify_toDoList_items_ck5_qp() throws InterruptedException {
         String osName = System.getProperty("os.name").toLowerCase();
-        System.out.println(osName);
+      //  System.out.println(osName);
         if (!osName.contains("linux")) {
             ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, checked_toDOList_item1_ck5_qp,true,  logger, " checked_toDOList_item1_ck5_qp ");
             ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, checked_toDOList_item2_ck5_qp, true, logger, " checked_toDOList_item2_ck5_qp ");
