@@ -67,7 +67,7 @@ public class Regression2 extends ReusableAnnotations {
         public void TR_001a_navigate() throws InterruptedException {
                 WebDriver driver = getDriver();
                 //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com/reports/1330318");
+                driver.navigate().to("https://staging3.openquire.com/reports/1330319");
                 Thread.sleep(500);
                 BaseClass.staging5().captureURL();
                 Thread.sleep(500);
@@ -81,16 +81,11 @@ public class Regression2 extends ReusableAnnotations {
 //        WebDriver driver = getDriver();
 
         // go to text body iframe, and delete yellow report tag from text
-        BaseClass.smartTables().click_row2_richText();
-        Thread.sleep(4000);
-        // System.out.println(driver.getPageSource());  // Log page source
-        //Thread.sleep(500);
-
-        BaseClass.ck5editor().select_all_and_backspace_RT_cell();
-        Thread.sleep(500);
-        //go back to parent frame
-        BaseClass.staging5().click_pixel_out_of_section();
-        Thread.sleep(1000);
+                // unlink section link
+                BaseClass.smartTables().click_row4_richText();
+                Thread.sleep(2000);
+                BaseClass.ck5editor().doubleclick_linked_section_text();
+                Thread.sleep(2000);
     }
     }
 

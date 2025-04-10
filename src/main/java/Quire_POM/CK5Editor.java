@@ -528,10 +528,15 @@ WebElement instruction_text_ck5;
     }
 
 
-    @FindBy(xpath = "//div[contains(@aria-label,'Rich Text Editor. Editing area: main. Press ⌥0 for help.')]//span[contains(@class, 'has-tooltip') and contains(@class, 'js-quire-section-link') and contains(@class, 'mceNonEditable')]")
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//span[1]")
     WebElement linked_section_text_smartTable;
 
     public void doubleclick_linked_section_text() {
+        if (driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, RT_cell_ST," " , logger, "text_body");
+
+        }
+
         ReusableMethodsLoggersPOM.doubleClickMethod(driver, linked_section_text_smartTable, logger, "linked_section_text ");
     }
 
