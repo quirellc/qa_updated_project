@@ -528,7 +528,7 @@ WebElement instruction_text_ck5;
     }
 
 
-    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//span[1]")
+    @FindBy(xpath = "//td[contains(@class,'htLeft quire-rich-text current')]//p")
     WebElement linked_section_text_smartTable;
 
     public void doubleclick_linked_section_text() {
