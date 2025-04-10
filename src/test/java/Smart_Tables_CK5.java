@@ -67,7 +67,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
 
         //   Thread.sleep(500);
         //   BaseClass.ck5editor().clear_current_text_body_ST();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         BaseClass.ck5editor().click_to_do_list_ck5();
         Thread.sleep(500);
@@ -82,7 +82,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.ck5editor().verify_toDoList_items_ck5_qp();
         driver.close();
         BaseClass.staging5().switchToOriginalTab();
-        Thread.sleep(500);
+        Thread.sleep(1000);
     }
     @Test
     public void TR_011c_create_ST() throws InterruptedException {
@@ -322,9 +322,9 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
 
         // go to text body iframe, and delete yellow report tag from text
         BaseClass.smartTables().click_row2_richText();
-        Thread.sleep(500);
+        Thread.sleep(2500);
         // System.out.println(driver.getPageSource());  // Log page source
-        Thread.sleep(500);
+        //Thread.sleep(500);
 
         BaseClass.ck5editor().select_all_and_backspace_RT_cell();
         Thread.sleep(500);

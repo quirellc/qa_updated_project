@@ -199,7 +199,7 @@ WebElement text_body1;
         Thread.sleep(500);
     }
 
-    @FindBy(xpath = "//p[contains(text(),'')]")
+    @FindBy(xpath = "//div[@role='textbox']//p")
     WebElement RT_cell_ST;
 
     public void select_all_and_backspace_RT_cell() throws InterruptedException {

@@ -67,7 +67,7 @@ public class Regression2 extends ReusableAnnotations {
         public void TR_001a_navigate() throws InterruptedException {
                 WebDriver driver = getDriver();
                 //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com/reports/1330290");
+                driver.navigate().to("https://staging3.openquire.com/reports/1330318");
                 Thread.sleep(500);
                 BaseClass.staging5().captureURL();
                 Thread.sleep(500);
@@ -79,30 +79,19 @@ public class Regression2 extends ReusableAnnotations {
     @Test
     public void TR_011b_toDo_List() throws InterruptedException {
         WebDriver driver = getDriver();
-//delete wb item
-        BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(1500);
 
-        BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
+        // go to text body iframe, and delete yellow report tag from text
+        BaseClass.smartTables().click_row2_richText();
+        Thread.sleep(2500);
+        // System.out.println(driver.getPageSource());  // Log page source
+        //Thread.sleep(500);
 
-        //   Thread.sleep(500);
-        //   BaseClass.ck5editor().clear_current_text_body_ST();
+        BaseClass.ck5editor().select_all_and_backspace_RT_cell();
+        Thread.sleep(500);
+        //go back to parent frame
+        BaseClass.staging5().click_pixel_out_of_section();
         Thread.sleep(1000);
-
-        BaseClass.ck5editor().click_to_do_list_ck5();
-        Thread.sleep(500);
-        BaseClass.ck5editor().enter_text_toDoList_ck5();
-        Thread.sleep(500);
-        BaseClass.staging5().click_out_of_section();
-        Thread.sleep(500);
-        BaseClass.reportfoldersection().click_quick_preview_button();
-        BaseClass.reportfoldersection().change_to_next_tab();
-        Thread.sleep(2000);
-
-        BaseClass.ck5editor().verify_toDoList_items_ck5_qp();
-        driver.close();
-        BaseClass.staging5().switchToOriginalTab();
-        Thread.sleep(5000);
+    }
     }
 
 
@@ -225,7 +214,7 @@ public class Regression2 extends ReusableAnnotations {
 //        Thread.sleep(500);
 //    }
 
-        }
+        //}
 //        @Test
 //        public void TR018_Spellcheck_trackChanges_ck4() throws InterruptedException {
 //                WebDriver driver = getDriver();
