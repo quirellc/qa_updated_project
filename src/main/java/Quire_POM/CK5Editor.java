@@ -76,8 +76,8 @@ WebElement text_body;
 // Execute the script to select the paragraph
         JavascriptExecutor js = (JavascriptExecutor) driver;
         if (driver instanceof ChromeDriver) {
-            js.executeScript(script, text_body_firstLine_cell);
-            System.out.println("Successfully double clicked on: " + text_body_firstLine_cell.getText());
+            js.executeScript(script, text_body_firstLine_cell_chrome);
+            System.out.println("Successfully double clicked on: " + text_body_firstLine_cell_chrome.getText());
 
         } else  {
             js.executeScript(script, text_body_firstLine_cell);
