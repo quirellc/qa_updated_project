@@ -77,8 +77,12 @@ WebElement text_body;
         JavascriptExecutor js = (JavascriptExecutor) driver;
         if (driver instanceof ChromeDriver) {
             js.executeScript(script, text_body_firstLine_cell_chrome);
+            System.out.println("Successfully double clicked on: " + text_body_firstLine_cell_chrome.getText());
+
         } else  {
             js.executeScript(script, text_body_firstLine_cell);
+            System.out.println("Successfully double clicked on: " + text_body_firstLine_cell.getText());
+
         }
         //   ReusableMethodsLoggersPOM.doubleClickMethod(driver, text_body_thirdLine, logger, "text_body_thirdLine");
     }
@@ -716,7 +720,9 @@ WebElement instruction_text_ck5;
         }
         else {
 //            ReusableMethodsLoggersPOM.clickMethod(driver, instruction_text_ck5 , logger, "instruction_text_ck5");
-//            Thread.sleep(500);
+
+            ReusableMethodsLoggersPOM.clickMethod(driver, add_a_comment_field1 , logger, "instruction_text_ck5");
+            Thread.sleep(500);
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field1, "QA Automation Comment Test Message: " , logger, "instruction_text_ck5");
         }
             Thread.sleep(500);
