@@ -199,7 +199,7 @@ WebElement text_body1;
         Thread.sleep(500);
     }
 
-    @FindBy(xpath = "//td[@class='htLeft quire-rich-text current']")
+    @FindBy(xpath = "//div[@role='textbox']//p")
     WebElement RT_cell_ST;
 
     public void select_all_and_backspace_RT_cell() throws InterruptedException {
@@ -209,9 +209,10 @@ WebElement text_body1;
             text_body1_ff.sendKeys(String.valueOf(Keys.BACK_SPACE));
         }
         else {
-            ReusableMethodsLoggersPOM.clickMethod(driver, RT_cell_ST, logger, " RT_cell_ST");
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, RT_cell_ST,"delete" , logger, "text_body");
+            Thread.sleep(500);
             ReusableMethodsLoggersPOM.selectAll_method(driver, RT_cell_ST, logger, " text_body");
-            Thread.sleep(1200);
+            Thread.sleep(500);
             RT_cell_ST.sendKeys(Keys.DELETE);
 
             //  toDoList_body.sendKeys(String.valueOf(Keys.BACK_SPACE));
