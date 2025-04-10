@@ -86,7 +86,12 @@ public class Regression2 extends ReusableAnnotations {
                 Thread.sleep(2000);
                 BaseClass.ck5editor().doubleclick_linked_section_text();
                 Thread.sleep(2000);
-    }
+                BaseClass.ck5editor().click_unlink_button_sectionLinkView();
+                Thread.sleep(500);
+                BaseClass.staging5().click_pixel_out_of_section();
+                Thread.sleep(500);
+
+        }
     }
 
 
