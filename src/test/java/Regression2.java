@@ -82,7 +82,7 @@ public class Regression2 extends ReusableAnnotations {
 
         // go to text body iframe, and delete yellow report tag from text
         BaseClass.smartTables().click_row2_richText();
-        Thread.sleep(2100);
+        Thread.sleep(4000);
         // System.out.println(driver.getPageSource());  // Log page source
         //Thread.sleep(500);
 
