@@ -532,10 +532,10 @@ WebElement instruction_text_ck5;
     WebElement linked_section_text_smartTable;
 
     public void doubleclick_linked_section_text() {
-        if (driver instanceof ChromeDriver) {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, RT_cell_ST," " , logger, "text_body");
-
-        }
+//        if (driver instanceof ChromeDriver) {
+//            ReusableMethodsLoggersPOM.sendKeysMethod(driver, RT_cell_ST," " , logger, "text_body");
+//
+//        }
 
         ReusableMethodsLoggersPOM.doubleClickMethod(driver, linked_section_text_smartTable, logger, "linked_section_text ");
     }
