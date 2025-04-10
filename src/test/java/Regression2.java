@@ -83,10 +83,10 @@ public class Regression2 extends ReusableAnnotations {
         // go to text body iframe, and delete yellow report tag from text
                 // unlink section link
                 BaseClass.smartTables().click_r1_c1();
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 //        Add 2 new comments
                 BaseClass.ck5editor().double_click_first_line_cell();
-                Thread.sleep(500);
+                Thread.sleep(1000);
                 BaseClass.ck5editor().click_comment_icon_ck5();
                 Thread.sleep(500);
                 BaseClass.ck5editor().verify_comment_highlight_is_Visible();
