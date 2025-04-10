@@ -210,7 +210,7 @@ WebElement text_body1;
         }
         else {
             ReusableMethodsLoggersPOM.selectAll_method(driver, RT_cell_ST, logger, " text_body");
-            Thread.sleep(1000);
+            Thread.sleep(1200);
             text_body_ST.sendKeys(Keys.DELETE);
 
             //  toDoList_body.sendKeys(String.valueOf(Keys.BACK_SPACE));
