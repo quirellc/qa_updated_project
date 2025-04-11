@@ -67,40 +67,37 @@ public class Regression2 extends ReusableAnnotations {
         public void TR_001a_navigate() throws InterruptedException {
                 WebDriver driver = getDriver();
                 //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com/reports/1330319");
+                driver.navigate().to("https://staging3.openquire.com/reports/1330334");
                 Thread.sleep(500);
                 BaseClass.staging5().captureURL();
                 Thread.sleep(500);
                // BaseClass.staging5().click_and_capture_track_changes_button();
                 Thread.sleep(1000);
 //
-//        }
-//
-//    @Test
-//    public void TR_011b_toDo_List() throws InterruptedException {
-//        WebDriver driver = getDriver();
+        }
 
-        // go to text body iframe, and delete yellow report tag from text
-                // unlink section link
+        @Test
+        public void TR_018a_comments_ST_testing_ck5() throws InterruptedException{
+//click r1c1 rich text cell and add 2 comments
                 BaseClass.smartTables().click_r1_c1();
-                Thread.sleep(2000);
+                Thread.sleep(1000);
                 //        Add 2 new comments
                 BaseClass.ck5editor().double_click_first_line_cell();
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 BaseClass.ck5editor().click_comment_icon_ck5();
                 Thread.sleep(500);
                 BaseClass.ck5editor().verify_comment_highlight_is_Visible();
                 Thread.sleep(500);
-//
-//                BaseClass.ck5editor().enter_comment_to_field();
-//                Thread.sleep(500);
+
+                BaseClass.ck5editor().enter_comment_to_field();
+                Thread.sleep(1000);
 //                BaseClass.ck5editor().double_click_third_line_cell();
 //                Thread.sleep(500);
 //                BaseClass.ck5editor().click_comment_icon_ck5();
 //                Thread.sleep(500);
 //                BaseClass.ck5editor().verify_comment_highlight_is_Visible();
 //                Thread.sleep(500);
-//                BaseClass.ck5editor().enter_second_comment_to_field();
+//                BaseClass.ck5editor().enter_comment_to_field();
 //                Thread.sleep(500);
 //                //resolve second comment
 //                BaseClass.ck5editor().click_comments_resolve_button();
@@ -181,6 +178,7 @@ public class Regression2 extends ReusableAnnotations {
 //                Thread.sleep(500);
 
         }
+//        }
     }
 
 

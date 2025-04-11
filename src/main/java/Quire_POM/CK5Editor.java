@@ -89,6 +89,10 @@ WebElement text_body;
     //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
     @FindBy(xpath = "//div[@class='quire-smarttable-rt-editor-container']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 3')]")
     WebElement text_body_thirdLine_cell;
+
+
+    @FindBy(xpath = "(//p[contains(text(),'QA Automation line 3')])[4]")
+    WebElement text_body_thirdLine_cell_chrome;
     public void double_click_third_line_cell() {
 // JavaScript to select the entire contents of the specified paragraph
      try {
@@ -101,10 +105,17 @@ WebElement text_body;
 
 // Execute the script to select the paragraph
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript(script, text_body_thirdLine_cell);
-        System.out.println("Successfully double clicked on: " + text_body_thirdLine_cell.getText());
-        logger.log(LogStatus.PASS, "Successfully double clicked on: " + text_body_thirdLine_cell.getText());
-        return;
+         if (driver instanceof ChromeDriver) {
+             js.executeScript(script, text_body_thirdLine_cell_chrome);
+             System.out.println("Successfully double clicked on: " + text_body_thirdLine_cell_chrome.getText());
+             logger.log(LogStatus.PASS, "Successfully double clicked on: " + text_body_thirdLine_cell_chrome.getText());
+
+         } else  {
+             js.executeScript(script, text_body_thirdLine_cell);
+             System.out.println("Successfully double clicked on: " + text_body_thirdLine_cell.getText());
+             logger.log(LogStatus.PASS, "Successfully double clicked on: " + text_body_thirdLine_cell.getText());
+         }
+
     } catch (Exception e) {
         // Retry the click if StaleElementReferenceException is caught
         System.out.println("\n" + "Unable to  double click on: " + text_body_thirdLine_cell.getText());
