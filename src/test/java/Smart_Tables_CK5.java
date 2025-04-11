@@ -53,7 +53,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().click_insert_wordbank_add_item_arrow();
         Thread.sleep(500);
-        BaseClass.staging5().click_section_1_header();
+        BaseClass.staging5().click_pixel_out_of_section();
         Thread.sleep(500);
     }
     @Test
