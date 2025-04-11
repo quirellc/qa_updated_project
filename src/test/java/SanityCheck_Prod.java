@@ -41,12 +41,15 @@ public void TC_006_Prod_login() throws InterruptedException {
         Thread.sleep(500);
 
         BaseClass.reportfoldersection().enterSearchField_HMReports();
-        Thread.sleep(4000);
- //       BaseClass.reportfoldersection().captureRecentReportName();
+        Thread.sleep(2000);
+        BaseClass.reportfoldersection().clickHMReportsFolder();
+        Thread.sleep(2000);
+
+        //       BaseClass.reportfoldersection().captureRecentReportName();
     //    Thread.sleep(1500);
 //
-        BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(4000);
+  //      BaseClass.reportfoldersection().clickReportsFirstLink();
+   //     Thread.sleep(5000);
 
         BaseClass.projectFolderSection().clickProjectFolderLink_2023QAReport();
         Thread.sleep(1500);

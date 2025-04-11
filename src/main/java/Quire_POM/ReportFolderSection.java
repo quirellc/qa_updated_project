@@ -271,6 +271,14 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "HM Reports", logger, "HM Reports - search field");
     }
 
+    @FindBy(xpath = "//span[contains(text(), 'HM Reports')]")
+    WebElement hm_reports_folder_link;
+
+    public void clickHMReportsFolder() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, hm_reports_folder_link, logger, "hm_reports_folder_link");
+    }
+
+
     public void enterSearchField_QA_Report() throws InterruptedException {
         if (browserName.contains("Chrome")) {
             ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Automation Testing Folder-Chrome", logger, "QA automation Reports - search field-chrome");
@@ -357,12 +365,7 @@ public class ReportFolderSection extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "//span[text()='HM Reports']")
-    WebElement hmReportsLink;
 
-    public void clickHMReportsLink() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, hmReportsLink, logger, "hmReportsLink");
-    }
 
     @FindBy(xpath = "//span[normalize-space()='Automation Report']")
     WebElement automationReport_link;
