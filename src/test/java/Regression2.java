@@ -77,107 +77,77 @@ public class Regression2 extends ReusableAnnotations {
         }
 
         @Test
-        public void TR_018a_comments_ST_testing_ck5() throws InterruptedException{
-//click r1c1 rich text cell and add 2 comments
-                BaseClass.smartTables().click_r1_c1();
-                Thread.sleep(1000);
-                //        Add 2 new comments
-                BaseClass.ck5editor().double_click_first_line_cell();
-                Thread.sleep(500);
-                BaseClass.ck5editor().click_comment_icon_ck5();
-                Thread.sleep(500);
-                BaseClass.ck5editor().verify_comment_highlight_is_Visible();
-                Thread.sleep(500);
+        public void TR_019_revisions_and_notepadInstructions() throws InterruptedException {
+                WebDriver driver = getDriver();
+                //click revert blue icon and revert to most recent
 
-                BaseClass.ck5editor().enter_comment_to_field();
-                Thread.sleep(1000);
-                BaseClass.ck5editor().double_click_third_line_cell();
+                BaseClass.staging5().click_smartTable_revisions_blue_icon();
+                Thread.sleep(600);
+                BaseClass.staging5().click_revert_button_firstLink();
                 Thread.sleep(500);
-                BaseClass.ck5editor().click_comment_icon_ck5();
-                Thread.sleep(500);
-                BaseClass.ck5editor().verify_comment_highlight_is_Visible();
-                Thread.sleep(500);
-                BaseClass.ck5editor().enter_comment_to_field();
-                Thread.sleep(500);
-                //resolve second comment
-                BaseClass.ck5editor().click_comments_resolve_button();
-                Thread.sleep(1000);
-                BaseClass.staging5().click_smartTable_title_header();
-                Thread.sleep(1000);
-                //     BaseClass.ck5editor().click_unresolved_1_comment_icon();
-                Thread.sleep(1000);
-                BaseClass.smartTables().click_c1_header();
-                Thread.sleep(1000);
-                BaseClass.ck5editor().click_unresolved_1_comment_icon();
-                Thread.sleep(1500);
-
-//click next cell, pl,aintext to add comment to
-                BaseClass.smartTables().click_row1_plainText_inside_ST();
-                Thread.sleep(500);
-
-                BaseClass.ck5editor().add_new_comment_to_ST();
-                Thread.sleep(500);
-
-                //click next cell, number column to add comment to
-                BaseClass.smartTables().click_row1_number_inside_ST();
-                Thread.sleep(500);
-                BaseClass.ck5editor().add_new_comment_to_ST();
-                Thread.sleep(500);
-
-//click next cell, formula column to add comment to
-                BaseClass.smartTables().click_row1_formula_inside_ST();
-                Thread.sleep(500);
-                BaseClass.ck5editor().add_new_comment_to_ST();
-                Thread.sleep(500);
-
-//click next cell, dynamic column to add comment to and resolve comment
-                BaseClass.smartTables().click_row1_dynamic_inside_ST();
-                Thread.sleep(500);
-                BaseClass.ck5editor().add_new_comment_to_ST();
-                Thread.sleep(500);
-                BaseClass.ck5editor().click_comments_resolve_button();
-                Thread.sleep(500);
-
-//click next cell, date column to add comment to and resolve comment
-                BaseClass.smartTables().click_row1_date_inside_ST();
-                Thread.sleep(500);
-                BaseClass.ck5editor().add_new_comment_to_ST();
-                Thread.sleep(500);
-                BaseClass.ck5editor().click_comments_resolve_button();
-                Thread.sleep(500);
-
-                //click out of ST, double clicking ST header title twice
-                BaseClass.staging5().click_smartTable_title_header();
-                BaseClass.staging5().click_smartTable_title_header();
-
-                //verify you see yellow comment icon with number 4
-                BaseClass.ck5editor().verify_unresolved_4_comment_is_Visible();
-//hover over unresolved yellow 4 comment icon and verify
-                BaseClass.ck5editor().hover_unresolved_4_comments_icon();
-                Thread.sleep(500);
-                BaseClass.ck5editor().verify_comments_hover_icon();
-                Thread.sleep(500);
-//hover over comments side bar status button and verify
-                BaseClass.ck5editor().hover_comments_icon_statusBar();
-                Thread.sleep(500);
-                BaseClass.ck5editor().verify_comments_hover_icon();
-                Thread.sleep(500);
-//click yellow 4 comment icon
-                BaseClass.ck5editor().click_unresolved_4_comments_icon();
-                Thread.sleep(1500);
-                //verify yellow icons in cells match the comments panel
-                BaseClass.ck5editor().verify_unresolved_comments_smartTable();
-                Thread.sleep(1500);
-                //verify green icons in cells match and so does the the comments panel
-                BaseClass.ck5editor().verify_resolved_comments_smartTable();
-                Thread.sleep(500);
-                BaseClass.ck5editor().click_close_button_popup();
-                Thread.sleep(500);
+                BaseClass.staging5().verify_done_icon_after_revision_isVisible();
+                BaseClass.staging5().capture_recent_revisions_history();
+                Thread.sleep(2500);
+                BaseClass.staging5().verify_done_icon_after_revision_isNotVisible();
+                BaseClass.staging5().click_cancel_button_popup();
                 BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+                Thread.sleep(500);
+                Thread.sleep(500);
+
+                //right click and add instruction - yellow notepad
+
+                BaseClass.smartTables().click_row7_column5_dynamic();
+                Thread.sleep(500);
+                BaseClass.ck5editor().click_escape_current_cell();
+                Thread.sleep(1000);
+                //right click r7c5 dynamic cell - after escape is clicked
+                BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+                Thread.sleep(500);
+                BaseClass.smartTables().click_add_instruction_dynamic_cell_dropdown_value();
+                Thread.sleep(500);
+                BaseClass.smartTables().enter_smartTable_instruction_text();
+                Thread.sleep(500);
+                BaseClass.smartTables().click_smartTable_sectionView();
+
+//                        BaseClass.staging5().click_smartTable_title_header();
+                Thread.sleep(500);
+                //click  r8c5 dynamic cell
+                BaseClass.smartTables().click_row8_column5_dynamic();
+                Thread.sleep(500);
+                //verify red corner instruction comment exists on  r7c5 dynamic cell
+                BaseClass.smartTables().verify_red_corner_instruction_cell();
+                Thread.sleep(500);
+                //hover r7c5 dynamic cell - verify instruction text
+                BaseClass.smartTables().hover_row7_column5_inside_ST();
+                //   Thread.sleep(500);
+                //      BaseClass.staging5().click_smartTable_title_header();
+                Thread.sleep(500);
+
                 BaseClass.smartTables().click_smartTable_sectionView();
                 Thread.sleep(500);
-//
-//        }
+        }
+
+        @Test
+        public void TR_022_duplicate_ST() throws InterruptedException {
+                WebDriver driver = getDriver();
+
+                driver.navigate().refresh();
+                Thread.sleep(500);
+
+                //DUPLICATE
+                BaseClass.smartTables().click_smartTable_sectionView();
+                Thread.sleep(500);
+
+                BaseClass.smartTables().click_smartTable_sectionView_checkbox();
+                Thread.sleep(500);
+                BaseClass.smartTables().click_duplicate_button_sectionView();
+                Thread.sleep(500);
+                driver.switchTo().alert().accept();
+                Thread.sleep(3000);
+                BaseClass.staging5().compare_smartTable_text();
+                Thread.sleep(3000);
+
+
         }
     }
 
