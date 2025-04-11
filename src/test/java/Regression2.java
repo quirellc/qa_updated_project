@@ -91,94 +91,94 @@ public class Regression2 extends ReusableAnnotations {
 
                 BaseClass.ck5editor().enter_comment_to_field();
                 Thread.sleep(1000);
-//                BaseClass.ck5editor().double_click_third_line_cell();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().click_comment_icon_ck5();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().verify_comment_highlight_is_Visible();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().enter_comment_to_field();
-//                Thread.sleep(500);
-//                //resolve second comment
-//                BaseClass.ck5editor().click_comments_resolve_button();
-//                Thread.sleep(1000);
-//                BaseClass.staging5().click_smartTable_title_header();
-//
-//                //     BaseClass.ck5editor().click_unresolved_1_comment_icon();
-//                Thread.sleep(1000);
-//                BaseClass.smartTables().click_c1_header();
-//                Thread.sleep(1000);
-//                BaseClass.ck5editor().click_unresolved_1_comment_icon();
-//                Thread.sleep(1500);
-//
-////click next cell, pl,aintext to add comment to
-//                BaseClass.smartTables().click_row1_plainText_inside_ST();
-//                Thread.sleep(500);
-//
-//                BaseClass.ck5editor().add_new_comment_to_ST();
-//                Thread.sleep(500);
-//
-//                //click next cell, number column to add comment to
-//                BaseClass.smartTables().click_row1_number_inside_ST();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().add_new_comment_to_ST();
-//                Thread.sleep(500);
-//
-////click next cell, formula column to add comment to
-//                BaseClass.smartTables().click_row1_formula_inside_ST();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().add_new_comment_to_ST();
-//                Thread.sleep(500);
-//
-////click next cell, dynamic column to add comment to and resolve comment
-//                BaseClass.smartTables().click_row1_dynamic_inside_ST();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().add_new_comment_to_ST();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().click_comments_resolve_button();
-//                Thread.sleep(500);
-//
-////click next cell, date column to add comment to and resolve comment
-//                BaseClass.smartTables().click_row1_date_inside_ST();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().add_new_comment_to_ST();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().click_comments_resolve_button();
-//                Thread.sleep(500);
-//
-//                //click out of ST, double clicking ST header title twice
-//                BaseClass.staging5().click_smartTable_title_header();
-//                BaseClass.staging5().click_smartTable_title_header();
-//
-//                //verify you see yellow comment icon with number 4
-//                BaseClass.ck5editor().verify_unresolved_4_comment_is_Visible();
-////hover over unresolved yellow 4 comment icon and verify
-//                BaseClass.ck5editor().hover_unresolved_4_comments_icon();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().verify_comments_hover_icon();
-//                Thread.sleep(500);
-////hover over comments side bar status button and verify
-//                BaseClass.ck5editor().hover_comments_icon_statusBar();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().verify_comments_hover_icon();
-//                Thread.sleep(500);
-////click yellow 4 comment icon
-//                BaseClass.ck5editor().click_unresolved_4_comments_icon();
-//                Thread.sleep(1500);
-//                //verify yellow icons in cells match the comments panel
-//                BaseClass.ck5editor().verify_unresolved_comments_smartTable();
-//                Thread.sleep(1500);
-//                //verify green icons in cells match and so does the the comments panel
-//                BaseClass.ck5editor().verify_resolved_comments_smartTable();
-//                Thread.sleep(500);
-//                BaseClass.ck5editor().click_close_button_popup();
-//                Thread.sleep(500);
-//                BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-//                BaseClass.smartTables().click_smartTable_sectionView();
-//                Thread.sleep(500);
+                BaseClass.ck5editor().double_click_third_line_cell();
+                Thread.sleep(500);
+                BaseClass.ck5editor().click_comment_icon_ck5();
+                Thread.sleep(500);
+                BaseClass.ck5editor().verify_comment_highlight_is_Visible();
+                Thread.sleep(500);
+                BaseClass.ck5editor().enter_comment_to_field();
+                Thread.sleep(500);
+                //resolve second comment
+                BaseClass.ck5editor().click_comments_resolve_button();
+                Thread.sleep(1000);
+                BaseClass.staging5().click_smartTable_title_header();
+                Thread.sleep(1000);
+                //     BaseClass.ck5editor().click_unresolved_1_comment_icon();
+                Thread.sleep(1000);
+                BaseClass.smartTables().click_c1_header();
+                Thread.sleep(1000);
+                BaseClass.ck5editor().click_unresolved_1_comment_icon();
+                Thread.sleep(1500);
 
-        }
+//click next cell, pl,aintext to add comment to
+                BaseClass.smartTables().click_row1_plainText_inside_ST();
+                Thread.sleep(500);
+
+                BaseClass.ck5editor().add_new_comment_to_ST();
+                Thread.sleep(500);
+
+                //click next cell, number column to add comment to
+                BaseClass.smartTables().click_row1_number_inside_ST();
+                Thread.sleep(500);
+                BaseClass.ck5editor().add_new_comment_to_ST();
+                Thread.sleep(500);
+
+//click next cell, formula column to add comment to
+                BaseClass.smartTables().click_row1_formula_inside_ST();
+                Thread.sleep(500);
+                BaseClass.ck5editor().add_new_comment_to_ST();
+                Thread.sleep(500);
+
+//click next cell, dynamic column to add comment to and resolve comment
+                BaseClass.smartTables().click_row1_dynamic_inside_ST();
+                Thread.sleep(500);
+                BaseClass.ck5editor().add_new_comment_to_ST();
+                Thread.sleep(500);
+                BaseClass.ck5editor().click_comments_resolve_button();
+                Thread.sleep(500);
+
+//click next cell, date column to add comment to and resolve comment
+                BaseClass.smartTables().click_row1_date_inside_ST();
+                Thread.sleep(500);
+                BaseClass.ck5editor().add_new_comment_to_ST();
+                Thread.sleep(500);
+                BaseClass.ck5editor().click_comments_resolve_button();
+                Thread.sleep(500);
+
+                //click out of ST, double clicking ST header title twice
+                BaseClass.staging5().click_smartTable_title_header();
+                BaseClass.staging5().click_smartTable_title_header();
+
+                //verify you see yellow comment icon with number 4
+                BaseClass.ck5editor().verify_unresolved_4_comment_is_Visible();
+//hover over unresolved yellow 4 comment icon and verify
+                BaseClass.ck5editor().hover_unresolved_4_comments_icon();
+                Thread.sleep(500);
+                BaseClass.ck5editor().verify_comments_hover_icon();
+                Thread.sleep(500);
+//hover over comments side bar status button and verify
+                BaseClass.ck5editor().hover_comments_icon_statusBar();
+                Thread.sleep(500);
+                BaseClass.ck5editor().verify_comments_hover_icon();
+                Thread.sleep(500);
+//click yellow 4 comment icon
+                BaseClass.ck5editor().click_unresolved_4_comments_icon();
+                Thread.sleep(1500);
+                //verify yellow icons in cells match the comments panel
+                BaseClass.ck5editor().verify_unresolved_comments_smartTable();
+                Thread.sleep(1500);
+                //verify green icons in cells match and so does the the comments panel
+                BaseClass.ck5editor().verify_resolved_comments_smartTable();
+                Thread.sleep(500);
+                BaseClass.ck5editor().click_close_button_popup();
+                Thread.sleep(500);
+                BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+                BaseClass.smartTables().click_smartTable_sectionView();
+                Thread.sleep(500);
+//
 //        }
+        }
     }
 
 
