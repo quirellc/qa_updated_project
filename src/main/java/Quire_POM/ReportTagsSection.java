@@ -139,7 +139,7 @@ public class ReportTagsSection extends ReusableAnnotations {
 
 
    // @FindBy(xpath = "//img[contains(@alt, 'picture of a') and contains(@alt, 'mapp')]")
-    @FindBy(xpath = "//img[@alt='signature']")
+   @FindBy(xpath = "//img[@alt='signature' or (contains(@alt, 'picture of a') and contains(@alt, 'mapp'))]")
     WebElement title_page_image_loaded;
     public void verify_title_page_image_loaded() throws InterruptedException {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, title_page_image_loaded,true,  logger," title_page_image_loaded ");
