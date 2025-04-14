@@ -853,7 +853,9 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         BaseClass.staging5().click_export_to_excel_file_dropdown_button();
         Thread.sleep(500);
         BaseClass.staging5().captureAlertMessage();
-        Thread.sleep(3000);
+        Thread.sleep(8000);
+
+        //removed TC with ST 4-14-25
 
         //  BaseClass.smartTables().click_smartTable_sectionView();
         //  Thread.sleep(2000);
@@ -871,38 +873,38 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 
 
         //click first row cell, accept changes, then cross out changes, print red items
-        BaseClass.smartTables().click_r1_c1();
-        Thread.sleep(500);
-
-        BaseClass.ck5editor().click_accept_TC_suggestion();
-        //    Thread.sleep(1000);
-        //    BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-        //    Thread.sleep(500);
-        BaseClass.ck5editor().select_all_and_backspace_RT_cell();
-        Thread.sleep(500);
-        //     driver.switchTo().defaultContent();
-        //   Thread.sleep(1500);
-        BaseClass.staging5().click_section_2_header();
-        Thread.sleep(1500);
-
-        //capture green , red , and spell check count
-
-        BaseClass.ck5editor().verify_TC_green_highlight();
-        Thread.sleep(500);
-        BaseClass.ck5editor().verify_TC_red_highlight();
-        Thread.sleep(1000);
-        // BaseClass.staging5().verify_no_spellCheck_errors();
-        // Thread.sleep(500);
-
+//        BaseClass.smartTables().click_r1_c1();
+//        Thread.sleep(500);
+//
+//        BaseClass.ck5editor().click_accept_TC_suggestion();
+//        //    Thread.sleep(1000);
+//        //    BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        //    Thread.sleep(500);
+//        BaseClass.ck5editor().select_all_and_backspace_RT_cell();
+//        Thread.sleep(500);
+//        //     driver.switchTo().defaultContent();
+//        //   Thread.sleep(1500);
+//        BaseClass.staging5().click_section_2_header();
+//        Thread.sleep(1500);
+//
+//        //capture green , red , and spell check count
+//
+//        BaseClass.ck5editor().verify_TC_green_highlight();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().verify_TC_red_highlight();
+//        Thread.sleep(1000);
+//        // BaseClass.staging5().verify_no_spellCheck_errors();
+//        // Thread.sleep(500);
+//
 
 //click notification button and read the smart table  excel file information
         BaseClass.staging5().click_active_notification_button();
         BaseClass.staging5().capture_unread_notification();
         Thread.sleep(1000);
 
-        //turn off track changes
-        BaseClass.staging5().click_and_capture_track_changes_button();
-        Thread.sleep(1000);
+//        //turn off track changes
+//        BaseClass.staging5().click_and_capture_track_changes_button();
+//        Thread.sleep(1000);
     }
 
 //    @Test

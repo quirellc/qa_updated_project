@@ -289,12 +289,15 @@ WebElement text_body1;
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Project Summary" , logger, "text_body1_ff");
         }}
 
+    @FindBy(xpath = "(//p)[11]")
+    WebElement loadAnalysis_text_field;
+
     public void enter_loadAnalysis_text() throws InterruptedException {
         if(driver instanceof ChromeDriver) {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automation Text - Load Analysis" , logger, "text_body1");
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, loadAnalysis_text_field,"QA Automation Text - Load Analysis" , logger, "loadAnalysis_text_field");
         }
         else {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automation Text - Load Analysis" , logger, "text_body1_ff");
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automation Text - Load Analysis" , logger, "loadAnalysis_text_field_ff");
         }}
 
 
