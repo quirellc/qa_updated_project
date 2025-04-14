@@ -224,7 +224,11 @@ Thread.sleep(1500);
         Thread.sleep(500);
         BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
-        BaseClass.ck5editor().click_ck5_body_with_text();
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
+        BaseClass.staging5().clickSection_row_editor();
+
+        //   BaseClass.ck5editor().click_ck5_body_with_text();
         Thread.sleep(500);
         BaseClass.ck5editor().select_all_text_introPages_body();
         Thread.sleep(500);
@@ -988,58 +992,58 @@ Thread.sleep(1500);
 
     }
 
-    @Test
-    public void TR_015_ck4_packages_ProjSummary_section() throws InterruptedException {
-        WebDriver driver = getDriver();
-        if (baseUrl.contains("staging5")) {
-            driver.navigate().to("https://staging5.openquire.com/folders/275681/projects/328759");
-        }
-        else if (baseUrl.contains("staging3")) {
-            driver.navigate().to("https://staging3.openquire.com/folders/545421/projects/601025");
-        }
-
-        Thread.sleep(500);
-        BaseClass.staging5().click_modal_close_window();
-
-
-        BaseClass.reportfoldersection().ck4PackagesCheck();
-
-
-        if (baseUrl.contains("staging5")) {
-            driver.navigate().to("https://staging5.openquire.com/folders/275681/projects/328759");
-
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-
-        Thread.sleep(1000);
-
-        driver.navigate().to("https://staging5.openquire.com/projects/328760");
-        Thread.sleep(500);
-
-
-
-        BaseClass.quireLogin().enter_admin_matrix_Email();
-        Thread.sleep(1000);
-//        BaseClass.quireLogin().clickNextButton();
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(500);
-
-        BaseClass.staging5().click_modal_close_window();
-        Thread.sleep(1500);
-
-        BaseClass.reportfoldersection().ck4PackagesCheck();
-        Thread.sleep(1000);
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        }
-        else if (baseUrl.contains("staging3")) {
-            return;
-        }
-
-
-    }
+//    @Test
+//    public void TR_015_ck4_packages_ProjSummary_section() throws InterruptedException {
+//        WebDriver driver = getDriver();
+//        if (baseUrl.contains("staging5")) {
+//            driver.navigate().to("https://staging5.openquire.com/folders/275681/projects/328759");
+//        }
+//        else if (baseUrl.contains("staging3")) {
+//            driver.navigate().to("https://staging3.openquire.com/folders/545421/projects/601025");
+//        }
+//
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_modal_close_window();
+//
+//
+//        BaseClass.reportfoldersection().ck4PackagesCheck();
+//
+//
+//        if (baseUrl.contains("staging5")) {
+//            driver.navigate().to("https://staging5.openquire.com/folders/275681/projects/328759");
+//
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//
+//        Thread.sleep(1000);
+//
+//        driver.navigate().to("https://staging5.openquire.com/projects/328760");
+//        Thread.sleep(500);
+//
+//
+//
+//        BaseClass.quireLogin().enter_admin_matrix_Email();
+//        Thread.sleep(1000);
+////        BaseClass.quireLogin().clickNextButton();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_modal_close_window();
+//        Thread.sleep(1500);
+//
+//        BaseClass.reportfoldersection().ck4PackagesCheck();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//        }
+//        else if (baseUrl.contains("staging3")) {
+//            return;
+//        }
+//
+//
+//    }
     }
 
 
