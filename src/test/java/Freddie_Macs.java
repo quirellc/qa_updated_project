@@ -903,8 +903,8 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         Thread.sleep(1000);
 
 //        //turn off track changes
-//        BaseClass.staging5().click_and_capture_track_changes_button();
-//        Thread.sleep(1000);
+        BaseClass.staging5().click_and_capture_track_changes_button();
+        Thread.sleep(1000);
     }
 
 //    @Test

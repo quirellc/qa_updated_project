@@ -67,88 +67,72 @@ public class Regression2 extends ReusableAnnotations {
         public void TR_001a_navigate() throws InterruptedException {
                 WebDriver driver = getDriver();
                 //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com/reports/1330334");
+                driver.navigate().to("https://staging3.openquire.com/reports/1330356");
                 Thread.sleep(500);
                 BaseClass.staging5().captureURL();
                 Thread.sleep(500);
                // BaseClass.staging5().click_and_capture_track_changes_button();
                 Thread.sleep(1000);
-//
         }
 
+
         @Test
-        public void TR_019_revisions_and_notepadInstructions() throws InterruptedException {
+        public void TR_004cc_FM1104_v11_sections_check() throws InterruptedException {
                 WebDriver driver = getDriver();
-                //click revert blue icon and revert to most recent
 
-                BaseClass.staging5().click_smartTable_revisions_blue_icon();
-                Thread.sleep(600);
-                BaseClass.staging5().click_revert_button_firstLink();
-                Thread.sleep(500);
-                BaseClass.staging5().verify_done_icon_after_revision_isVisible();
-                BaseClass.staging5().capture_recent_revisions_history();
-                Thread.sleep(2500);
-                BaseClass.staging5().verify_done_icon_after_revision_isNotVisible();
-                BaseClass.staging5().click_cancel_button_popup();
-                BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-                Thread.sleep(500);
+                BaseClass.staging5().click_section_III_property_details_sectionView();
+                BaseClass.fm_section().scroll_to_ElectricalConditions();
+             //   BaseClass.fm_section().select_electricalConditions_60amps_Dropdown();
+             //   BaseClass.fm_section().select_electricalConditions_lessThan40amps_Dropdown();
+             //   BaseClass.fm_section().enter_levelOfService_field();
                 Thread.sleep(500);
 
-                //right click and add instruction - yellow notepad
-
-                BaseClass.smartTables().click_row7_column5_dynamic();
+                BaseClass.fm_section().click_load_analysis_description_field();
                 Thread.sleep(500);
-                BaseClass.ck5editor().click_escape_current_cell();
+
+                BaseClass.ck5editor().enter_loadAnalysis_text();
                 Thread.sleep(1000);
-                //right click r7c5 dynamic cell - after escape is clicked
-                BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
-                Thread.sleep(500);
-                BaseClass.smartTables().click_add_instruction_dynamic_cell_dropdown_value();
-                Thread.sleep(500);
-                BaseClass.smartTables().enter_smartTable_instruction_text();
-                Thread.sleep(500);
-                BaseClass.smartTables().click_smartTable_sectionView();
-
-//                        BaseClass.staging5().click_smartTable_title_header();
-                Thread.sleep(500);
-                //click  r8c5 dynamic cell
-                BaseClass.smartTables().click_row8_column5_dynamic();
-                Thread.sleep(500);
-                //verify red corner instruction comment exists on  r7c5 dynamic cell
-                BaseClass.smartTables().verify_red_corner_instruction_cell();
-                Thread.sleep(500);
-                //hover r7c5 dynamic cell - verify instruction text
-                BaseClass.smartTables().hover_row7_column5_inside_ST();
-                //   Thread.sleep(500);
-                //      BaseClass.staging5().click_smartTable_title_header();
-                Thread.sleep(500);
-
-                BaseClass.smartTables().click_smartTable_sectionView();
-                Thread.sleep(500);
+//                // WebDriver driver = getDriver();
+//                //pca
+                BaseClass.staging5().click_out_of_section();
+                Thread.sleep(1000);
+//                BaseClass.fm_section().click_add_cost_rec_button_section_III_electrical_conditions();
+//                Thread.sleep(500);
+//
+//
+//                BaseClass.fm_section().enter_item_name_cost_recommendation();
+//                Thread.sleep(500);
+//                BaseClass.staging5().enter_cost_summary_quantity();
+//                BaseClass.staging5().enter_cost_summary_unit_cost();
+//                BaseClass.staging5().click_critical_repair_cost_checkbox();
+//                Thread.sleep(500);
+//                BaseClass.fm_section().enter_cost_summary_comments();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_save_button();
+//                Thread.sleep(1000);
+//
+//                BaseClass.fm_section().select_are_there_any_elevators_dropDown();
+//                BaseClass.fm_section().select_elevators_repairs_dropDown();
+//                BaseClass.fm_section().enter_elevators_description_field();
+////        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+////        BaseClass.fm_section().enter_elevator_ck4_text();
+//                Thread.sleep(500);
+//                // WebDriver driver = getDriver();
+////        driver.switchTo().defaultContent();
+//                BaseClass.fm_section().enter_elevator_costToCure_field();
+//                Thread.sleep(500);
+//                BaseClass.reportfoldersection().click_quick_preview_button();
+//                BaseClass.reportfoldersection().change_to_next_tab();
+//                Thread.sleep(500);
+//                BaseClass.fm_section().verify_fm1104_v11_QP();
+//
+//                driver.close();
+//                Thread.sleep(500);
+//
+//                BaseClass.staging5().switchToOriginalTab();
+//                Thread.sleep(500);
         }
 
-        @Test
-        public void TR_022_duplicate_ST() throws InterruptedException {
-                WebDriver driver = getDriver();
-
-                driver.navigate().refresh();
-                Thread.sleep(500);
-
-                //DUPLICATE
-                BaseClass.smartTables().click_smartTable_sectionView();
-                Thread.sleep(500);
-
-                BaseClass.smartTables().click_smartTable_sectionView_checkbox();
-                Thread.sleep(500);
-                BaseClass.smartTables().click_duplicate_button_sectionView();
-                Thread.sleep(500);
-                driver.switchTo().alert().accept();
-                Thread.sleep(3000);
-                BaseClass.staging5().compare_smartTable_text();
-                Thread.sleep(3000);
-
-
-        }
     }
 
 
