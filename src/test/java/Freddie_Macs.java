@@ -694,7 +694,7 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         Thread.sleep(500);
 
         BaseClass.fm_section().click_load_analysis_description_field();
-        Thread.sleep(1000);
+        Thread.sleep(1500);
 
         BaseClass.ck5editor().enter_loadAnalysis_text();
         Thread.sleep(500);
@@ -719,6 +719,8 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 
         BaseClass.fm_section().select_are_there_any_elevators_dropDown();
         BaseClass.fm_section().select_elevators_repairs_dropDown();
+        Thread.sleep(1000);
+
         BaseClass.fm_section().enter_elevators_description_field();
 //        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
 //        BaseClass.fm_section().enter_elevator_ck4_text();
@@ -728,6 +730,8 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         BaseClass.fm_section().enter_elevator_costToCure_field();
         Thread.sleep(500);
         BaseClass.reportfoldersection().click_quick_preview_button();
+        Thread.sleep(500);
+
         BaseClass.reportfoldersection().change_to_next_tab();
         Thread.sleep(500);
         BaseClass.fm_section().verify_fm1104_v11_QP();
