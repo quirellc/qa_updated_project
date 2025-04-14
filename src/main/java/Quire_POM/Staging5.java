@@ -1733,7 +1733,7 @@ public void click_target_report_view_link() {
     List<WebElement> locked_content_list_ck5;
 
     public void click_locked_content_ck5() {
-        ReusableMethodsLoggersPOM.doubleClickMethod(driver, locked_content_ck5, logger, "locked content ck5 ");
+        ReusableMethodsLoggersPOM.clickMethod(driver, locked_content_ck5, logger, "locked content ck5 ");
     }
 
     public void verify_locked_content_ck5() {

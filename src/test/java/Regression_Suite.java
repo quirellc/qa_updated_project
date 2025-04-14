@@ -221,7 +221,7 @@ Thread.sleep(1500);
 
         //enter body text iframe
         BaseClass.staging5().clickSection_row_editor();
-        Thread.sleep(500);
+        Thread.sleep(2000);
         BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_pixel_out_of_section();
