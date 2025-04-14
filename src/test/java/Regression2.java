@@ -82,39 +82,12 @@ public class Regression2 extends ReusableAnnotations {
 
                 BaseClass.staging5().click_section_III_property_details_sectionView();
                 BaseClass.fm_section().scroll_to_ElectricalConditions();
-                BaseClass.fm_section().select_electricalConditions_60amps_Dropdown();
-                BaseClass.fm_section().select_electricalConditions_lessThan40amps_Dropdown();
                 Thread.sleep(500);
-
-                BaseClass.fm_section().enter_levelOfService_field();
-                Thread.sleep(500);
-
-                BaseClass.fm_section().click_load_analysis_description_field();
-                Thread.sleep(1000);
-
-                BaseClass.ck5editor().enter_loadAnalysis_text();
-                Thread.sleep(500);
-                // WebDriver driver = getDriver();
-                //pca
-                BaseClass.staging5().click_out_of_section();
-                Thread.sleep(500);
-                BaseClass.fm_section().click_add_cost_rec_button_section_III_electrical_conditions();
-                Thread.sleep(500);
-
-
-                BaseClass.fm_section().enter_item_name_cost_recommendation();
-                Thread.sleep(500);
-                BaseClass.staging5().enter_cost_summary_quantity();
-                BaseClass.staging5().enter_cost_summary_unit_cost();
-                BaseClass.staging5().click_critical_repair_cost_checkbox();
-                Thread.sleep(500);
-                BaseClass.fm_section().enter_cost_summary_comments();
-                Thread.sleep(500);
-                BaseClass.staging5().click_save_button();
-                Thread.sleep(1000);
 
                 BaseClass.fm_section().select_are_there_any_elevators_dropDown();
                 BaseClass.fm_section().select_elevators_repairs_dropDown();
+                Thread.sleep(500);
+
                 BaseClass.fm_section().enter_elevators_description_field();
 //        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
 //        BaseClass.fm_section().enter_elevator_ck4_text();

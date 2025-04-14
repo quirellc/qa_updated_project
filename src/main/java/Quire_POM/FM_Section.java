@@ -99,7 +99,9 @@ public class FM_Section extends ReusableAnnotations {
     @FindBy(xpath = "//textarea[@name='elevators_investigation_repairs_description']")
     WebElement elevators_description_field;
 
-    public void enter_elevators_description_field() {
+    public void enter_elevators_description_field() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, elevators_description_field, logger, " elevators_description_field ");
+Thread.sleep(1500);
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, elevators_description_field, "QA Automation Text - Elevator Description", logger, "elevators_description_field");
     }
 

@@ -688,10 +688,13 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         BaseClass.fm_section().scroll_to_ElectricalConditions();
         BaseClass.fm_section().select_electricalConditions_60amps_Dropdown();
         BaseClass.fm_section().select_electricalConditions_lessThan40amps_Dropdown();
+        Thread.sleep(500);
+
         BaseClass.fm_section().enter_levelOfService_field();
+        Thread.sleep(500);
 
         BaseClass.fm_section().click_load_analysis_description_field();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         BaseClass.ck5editor().enter_loadAnalysis_text();
         Thread.sleep(500);
