@@ -54,6 +54,8 @@ public class Regression_Suite extends ReusableAnnotations {
         //UPLOAD STAMP
 
         BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
         BaseClass.staging5().click_userProfileTab_editProfile_dropdownItem();
         BaseClass.staging5().click_stamps_tab();
         Thread.sleep(1000);
@@ -254,6 +256,8 @@ Thread.sleep(1500);
 
 //
         BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 //        System.out.println("Browser name: " + browserName);
 //        if (browserName.contains("Chrome")) {
@@ -338,6 +342,8 @@ Thread.sleep(1500);
     @Test
     public void TR_006_ck5_author_login() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 
         BaseClass.quireLogin().enter_author_Email();
@@ -370,6 +376,8 @@ Thread.sleep(1500);
     @Test
     public void TR_007_ck5_editor_login() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 
         BaseClass.quireLogin().enter_editor_Email();
@@ -401,6 +409,8 @@ Thread.sleep(1500);
     @Test
     public void TR_008_ck5_PM_login() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 
         BaseClass.quireLogin().enter_pm_Email();
@@ -430,7 +440,10 @@ Thread.sleep(1500);
     @Test
     public void TR_009_ck5_root_login() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        Thread.sleep(500);
 
         BaseClass.quireLogin().enterRootUserEmail();
         BaseClass.quireLogin().enterPassword();
@@ -465,6 +478,8 @@ Thread.sleep(1500);
         Thread.sleep(500);
         BaseClass.staging5().click_save_button();
         Thread.sleep(1000);
+        BaseClass.staging5().click_cancel_alert_message();
+        Thread.sleep(1000);
 
 
 
@@ -472,7 +487,10 @@ Thread.sleep(1500);
     @Test
     public void TR_010_ck5_dashboard_contractor_login() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        Thread.sleep(500);
 
         BaseClass.quireLogin().enter_contractor_Email();
         BaseClass.quireLogin().enterPassword();
@@ -542,6 +560,8 @@ Thread.sleep(1500);
     @Test
     public void TR_011_ck5_sysadmin_login() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 
         BaseClass.quireLogin().enter_sysadmin_testingInc_email();
