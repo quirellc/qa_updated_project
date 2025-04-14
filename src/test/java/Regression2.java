@@ -67,7 +67,7 @@ public class Regression2 extends ReusableAnnotations {
         public void TR_001a_navigate() throws InterruptedException {
                 WebDriver driver = getDriver();
                 //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com/reports/1330356");
+                driver.navigate().to("https://staging3.openquire.com/reports/1330368");
                 Thread.sleep(500);
                 BaseClass.staging5().captureURL();
                 Thread.sleep(500);
@@ -77,228 +77,66 @@ public class Regression2 extends ReusableAnnotations {
 
 
         @Test
-        public void TR_004e_FM1104_new_cloned_template_and_report() throws InterruptedException {
-
-                BaseClass.templatesSection().clickTemplatesTab();
-                Thread.sleep(500);
-                BaseClass.templatesSection().clickAddTemplateButton();
-                Thread.sleep(500);
-                BaseClass.templatesSection().enterTemplateNameField_cloned_FM_1105();
-                Thread.sleep(500);
-                BaseClass.templatesSection().selectTemplateTypeDropdown_FM_1104();
-                Thread.sleep(500);
-                BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
-                Thread.sleep(500);
-                BaseClass.templatesSection().click_clone_template_dropdown();
-                Thread.sleep(500);
-                BaseClass.templatesSection().click_clone_existing_template_fm_1104_dropdown();
-                Thread.sleep(500);
-                BaseClass.templatesSection().enterTemplateDescriptionField();
-                Thread.sleep(500);
-                BaseClass.templatesSection().clickSave();
-                Thread.sleep(1000);
-
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //create report for FM 1104
-                //Go into to QA Automation Parent folder
-
-                BaseClass.reportfoldersection().clickReportsTab();
-                BaseClass.reportfoldersection().enterSearchField_QA_Report();
-                Thread.sleep(3500);
-
-                BaseClass.reportfoldersection().clickReportsFirstLink();
-                Thread.sleep(500);
-
-
-
-                BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
-
-                Thread.sleep(2000);
-
-                // create new FM 1104 report folder inside FM_1104 project folder w  template
-
-                BaseClass.reportfoldersection().clickAddReportButton();
-                BaseClass.reportfoldersection().enterReportName_QA_FM_1104_cloned_Field();
-                BaseClass.reportfoldersection().enterReportDescriptionField();
-                Thread.sleep(500);
-
-                BaseClass.templatesSection().click_clone_template_dropdown();
-                Thread.sleep(1000);
-
-                BaseClass.templatesSection().click_clone_existing_report_first_dropdown();
-                Thread.sleep(1000);
-                BaseClass.reportfoldersection().clickSave();
-                Thread.sleep(3000);
-                BaseClass.templatesSection().capture_created_AlertMessage();
-                Thread.sleep(1000);
-
-                BaseClass.reportfoldersection().clickHereLink();
-                Thread.sleep(1000);
-
-//        //comments
-//        BaseClass.staging5().click_comment_button_icon();
-//        BaseClass.staging5().enter_comments_to_field();
-//        BaseClass.staging5().capture_comments_content();
-//        BaseClass.staging5().click_cancel_button_popup();
-//        Thread.sleep(500);
-//        WebDriver driver = getDriver();
-//
-//        driver.navigate().refresh();
-//        Thread.sleep(500);
-//
-//        BaseClass.staging5().verify_if_comments_icon_isActive();
-//        Thread.sleep(1000);
-
-
-        }
-        @Test
-        public void TR_005_Freddie_Mac_1105_creation_template() throws InterruptedException {
-                BaseClass.templatesSection().clickTemplatesTab();
-                Thread.sleep(500);
-
-                BaseClass.templatesSection().clickAddTemplateButton();
-                Thread.sleep(500);
-
-                BaseClass.templatesSection().enterTemplateNameField_FM_1105();
-                Thread.sleep(500);
-
-                BaseClass.templatesSection().selectTemplateTypeDropdown_FM_1105();
-                Thread.sleep(500);
-
-                BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
-                Thread.sleep(1000);
-                BaseClass.templatesSection().enterTemplateDescriptionField();
-                Thread.sleep(500);
-
-                BaseClass.templatesSection().clickSave();
-                Thread.sleep(1000);
-                BaseClass.templatesSection().capture_created_AlertMessage();
-                BaseClass.templatesSection().clickHereLinkTemplate();
-                Thread.sleep(1000);
-
-        }
-        @Test
-        public void TR_006_FM1105_v11_sections() throws InterruptedException {
-
+        public void TR_004cc_FM1104_v11_sections_check() throws InterruptedException {
                 WebDriver driver = getDriver();
 
-
-                BaseClass.staging5().click_section_I_general_details_sectionView();
-                Thread.sleep(500);
                 BaseClass.staging5().click_section_III_property_details_sectionView();
+                BaseClass.fm_section().scroll_to_ElectricalConditions();
+                BaseClass.fm_section().select_electricalConditions_60amps_Dropdown();
+                BaseClass.fm_section().select_electricalConditions_lessThan40amps_Dropdown();
                 Thread.sleep(500);
-                BaseClass.staging5().click_section_IV_esa_details_sectionView();
-                Thread.sleep(500);
-                BaseClass.staging5().click_section_V_repair_details_sectionView();
-                Thread.sleep(500);
-                BaseClass.staging5().click_section_VI_details();
-                Thread.sleep(1000);
-                BaseClass.staging5().click_section_II_unit_details_sectionView();
-                Thread.sleep(500);
-                BaseClass.staging5().click_carport_item__section_II();
-                Thread.sleep(500);
-                //collection of test cases to enter in eul,rul,condition, actiondropdowns, comments, save
-                BaseClass.staging5().enter_costItem_details_sectionII();
-                Thread.sleep(500);
-                BaseClass.staging5().click_garages_item__section_II();
-                Thread.sleep(500);
-                //collection of test cases to enter in eul,rul,condition, actiondropdowns, comments, save
-                BaseClass.staging5().enter_costItem_details_sectionII();
-                Thread.sleep(500);
-                BaseClass.staging5().click_default_section_title();
 
+                BaseClass.fm_section().enter_levelOfService_field();
                 Thread.sleep(500);
-                BaseClass.pca_xml_section().clickAddSectionButton();
-                Thread.sleep(500);
-                BaseClass.staging5().click_add_costRecommendation_toSection();
 
-                Thread.sleep(1000);
+                BaseClass.fm_section().click_load_analysis_description_field();
+                Thread.sleep(1500);
 
-                driver.navigate().refresh();
+                BaseClass.ck5editor().enter_loadAnalysis_text();
                 Thread.sleep(500);
-                BaseClass.staging5().click_add_cost_recommendation_button();
+                // WebDriver driver = getDriver();
+                //pca
+                BaseClass.staging5().click_out_of_section();
+                Thread.sleep(500);
+                BaseClass.fm_section().click_add_cost_rec_button_section_III_electrical_conditions();
                 Thread.sleep(500);
 
 
-                BaseClass.staging5().select_carportItem_cost_recommendation();
+                BaseClass.fm_section().enter_item_name_cost_recommendation();
                 Thread.sleep(500);
                 BaseClass.staging5().enter_cost_summary_quantity();
-                Thread.sleep(500);
                 BaseClass.staging5().enter_cost_summary_unit_cost();
+                BaseClass.staging5().click_critical_repair_cost_checkbox();
                 Thread.sleep(500);
-                BaseClass.staging5().click_critical_repair_cost_checkbox_fm1105();
-                Thread.sleep(500);
-
-                BaseClass.staging5().click_save_and_add_another_button();
-                Thread.sleep(500);
-
-                BaseClass.staging5().select_garagesItem_cost_recommendation();
-                Thread.sleep(500);
-                BaseClass.staging5().enter_cost_summary_quantity();
-                Thread.sleep(500);
-                BaseClass.staging5().enter_cost_summary_unit_cost();
-                Thread.sleep(500);
-                BaseClass.staging5().click_critical_repair_cost_checkbox_fm1105();
+                BaseClass.fm_section().enter_cost_summary_comments();
                 Thread.sleep(500);
                 BaseClass.staging5().click_save_button();
+                Thread.sleep(1000);
 
+                BaseClass.fm_section().select_are_there_any_elevators_dropDown();
+                BaseClass.fm_section().select_elevators_repairs_dropDown();
                 Thread.sleep(1000);
-                BaseClass.staging5().verify_fm_1105_table_cost_summary();
-                Thread.sleep(1000);
-                BaseClass.staging5().click_section_II_unit_details_sectionView();
-                Thread.sleep(2000);
-                BaseClass.staging5().verify_section_II_error_message();
 
-
-//            v11_sections
-                BaseClass.staging5().click_section_I_general_details_sectionView();
-                BaseClass.fm_section().verify_fm1105_section1_v11();
-                BaseClass.fm_section().verify_sectionI_seismic_checklist_v11_fm1105();
-                BaseClass.staging5().click_section_II_unit_details_sectionView();
-                Thread.sleep(1000);
-                BaseClass.fm_section().enter_sectionII_overall_property_conditionRating_v11_fm1105();
-                Thread.sleep(1000);
-                BaseClass.fm_section().select_overall_condition_rating_dropDown_v11_fm1105();
-                Thread.sleep(1000);
-                BaseClass.staging5().click_section_III_property_details_sectionView();
-                BaseClass.fm_section().verify_section_III_repairs_identification_v11();
-                BaseClass.fm_section().verify_fm1105_v11_footer_text();
+                BaseClass.fm_section().enter_elevators_description_field();
+//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+//        BaseClass.fm_section().enter_elevator_ck4_text();
+                Thread.sleep(500);
+                // WebDriver driver = getDriver();
+//        driver.switchTo().defaultContent();
+                BaseClass.fm_section().enter_elevator_costToCure_field();
+                Thread.sleep(500);
                 BaseClass.reportfoldersection().click_quick_preview_button();
+                Thread.sleep(500);
+
                 BaseClass.reportfoldersection().change_to_next_tab();
                 Thread.sleep(500);
-                BaseClass.fm_section().verify_fm1105_v11_qp();
+                BaseClass.fm_section().verify_fm1104_v11_QP();
 
-                BaseClass.fm_section().verify_cost_rec_table_v11_fm1105_qp();
                 driver.close();
+                Thread.sleep(500);
+
                 BaseClass.staging5().switchToOriginalTab();
                 Thread.sleep(500);
-                BaseClass.staging5().click_section_III_property_details_sectionView();
-                Thread.sleep(500);
-
-
-
-
-
-
-
-
-//generate json , capture generated json text
-                BaseClass.reportfoldersection().click_generate_JSON_Button();
-                Thread.sleep(5000);
-                BaseClass.reportfoldersection().capture_generated_JSON_text();
-                Thread.sleep(2000);
-//generate json , capture generated json text
-
-                BaseClass.staging5().click_export_to_excel_fm1105();
-                BaseClass.staging5().captureAlertMessage();
-                Thread.sleep(4000);
-
-                BaseClass.staging5().click_active_notification_button();
-                BaseClass.staging5().capture_unread_notification();
-                Thread.sleep(2500);
-                driver.navigate().refresh();
-                Thread.sleep(2500);
-
         }
 
 
