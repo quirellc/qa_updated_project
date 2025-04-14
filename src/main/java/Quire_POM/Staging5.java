@@ -1332,12 +1332,27 @@ public void click_target_report_view_link() {
     @FindBy(xpath = "//button[normalize-space()='Add Stamp']")
     WebElement add_stamp_button;
 
-    public void click_add_stamp_button() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, add_stamp_button, logger, "add_stamp_button ");
+    @FindBy(xpath = "//div[@class='stamps-list-actions']//img[@class='image-stamp js-image-stamp']")
+    WebElement stamp_image;
+    @FindBy(xpath = "//div[@class='stamps-list-actions']//img[@class='image-stamp js-image-stamp']")
+    List <WebElement> stamp_images;
+    @FindBy(xpath = "//i[@class='fa fa-times fa-lg']")
+    WebElement delete_stamp_button;
+
+    public void delete_existing_stamps() throws InterruptedException {
+        int size = stamp_images.size();
+        for (int i = 0; i < size; i++) {
+            ReusableMethodsLoggersPOM.mouseHoverMethod(driver, stamp_image, logger, "stamp_image");
+            Thread.sleep(500);
+            ReusableMethodsLoggersPOM.clickMethod(driver, delete_stamp_button, logger, "delete_stamp_button");
+            Thread.sleep(500);
+            BaseClass.staging5().acceptAlert();
+            Thread.sleep(500);
+
+        }
     }
 
-    @FindBy(xpath = "//input[@type='file']")
-    WebElement stamp_file;
+
 
     public void upload_stamp_file() {
         //  ReusableMethodsLoggersPOM.sendKeysMethod(driver, stamp_file,"src/main/java/images/map.png",logger, "stamp_file ");
@@ -1345,6 +1360,8 @@ public void click_target_report_view_link() {
 
         // ReusableMethodsLoggersPOM.sendKeysMethod(driver, any_format_checkbox_appendix, "map.png",logger, "upload_appendix_section");
     }
+
+
 
     // @FindBy(xpath = "(//input[@type='file'])[2]")
     String insert_file_1 = "(//input[@type='file'])[1]";
@@ -3830,7 +3847,7 @@ public void enter_ca_section_cost() {
                 // Accept the alert
                 alert.accept();
                 System.out.println("Alert accepted successfully.");
-            } catch (NoAlertPresentException e) {
+            } catch (Exception e) {
                 // No alert is present
                 System.out.println("No alert present.");
             }

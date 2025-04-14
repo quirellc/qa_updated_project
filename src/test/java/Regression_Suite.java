@@ -48,7 +48,7 @@ public class Regression_Suite extends ReusableAnnotations {
     }
 
     @Test
-    public void TR_002_ck5_and_uploadtoProfile_current_admin_login() throws InterruptedException {
+    public void TR_002_uploadtoProfile_current_admin_login() throws InterruptedException {
 
 
         //UPLOAD STAMP
@@ -57,6 +57,9 @@ public class Regression_Suite extends ReusableAnnotations {
         BaseClass.staging5().click_userProfileTab_editProfile_dropdownItem();
         BaseClass.staging5().click_stamps_tab();
         Thread.sleep(1000);
+        BaseClass.staging5().delete_existing_stamps();
+        Thread.sleep(1000);
+
         BaseClass.staging5().upload_stamp_button();
         Thread.sleep(1500);
         BaseClass.templatesSection().clickSave2();
@@ -206,8 +209,8 @@ public class Regression_Suite extends ReusableAnnotations {
         Thread.sleep(500);
         WebDriver driver = getDriver();
 //
-        driver.switchTo().alert().accept();
-        Thread.sleep(1500);
+BaseClass.staging5().acceptAlert();
+Thread.sleep(1500);
      driver.navigate().refresh();
         Thread.sleep(1500);
 
