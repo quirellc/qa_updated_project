@@ -1742,14 +1742,18 @@ public void click_target_report_view_link() {
     }
 
     public void verify_unlocked_content_ck5() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, locked_content_ck5, false, logger, "No Locked content ck5 ");
+       // ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, locked_content_ck5, false, logger, "No Locked content ck5 ");
         int itemCount;
         if (locked_content_list_ck5 != null) {
             itemCount = locked_content_list_ck5.size();
+            System.out.println("Failed: There are " + itemCount + " locked items in Text Box.");
+            logger.log(LogStatus.FAIL, "Failed: There are " + itemCount + " locked items in Text Box.");
         } else {
             itemCount = 0;
+            System.out.println("Passed. There are " + itemCount + " locked items in Text Box.");
+            logger.log(LogStatus.PASS, "Passed. There are +" + itemCount + " locked items in Text Box.");
+
         }
-        System.out.println("\n" + " There are: " + itemCount + " locked items in Text Box." + "\n");
     }
 
 

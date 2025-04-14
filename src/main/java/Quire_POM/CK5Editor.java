@@ -834,7 +834,7 @@ WebElement instruction_text_ck5;
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, comments_archive_marked_as_resolved_message,true,  logger, "comments_archive_marked_as_resolved_message");
 }
 
-    @FindBy(xpath = "//button[@class='ck ck-button quireToggleTrackChanges ck-on']")
+    @FindBy(xpath = "//button[@class='ck ck-button quireHideTrackChangesMarkup ck-on']")
     WebElement TC_markup_icon_ck5;
     @FindBy(xpath = "//button[@class='ck ck-button ck-on ck-splitbutton__action' and @data-cke-tooltip-text='Track changes']")
     WebElement TC_enabled_icon_ck5;
