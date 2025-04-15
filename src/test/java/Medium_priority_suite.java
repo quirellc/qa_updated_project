@@ -586,6 +586,8 @@ public void TR001_user_login() throws InterruptedException {
         //go into medium priority template
         BaseClass.templatesSection().clickTemplatesTab();
         BaseClass.templatesSection().enterTemplateSearchField_updated_medium();
+        Thread.sleep(2000);
+
         BaseClass.pca_xml_section().clickFirstTemplateLink();
         // WB item
         BaseClass.staging5().click_wordbank_grey_icon();
@@ -667,10 +669,6 @@ public void TR001_user_login() throws InterruptedException {
 
     @Test
     public void TR_010b_delete_exclude_appendix_files() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
-
-
-
-
         BaseClass.reportfoldersection().clickSectionView_Appendices();
         Thread.sleep(1000);
         BaseClass.reportfoldersection().number_of_items_appendix_section();

@@ -63,80 +63,105 @@ public class Regression2 extends ReusableAnnotations {
         }
 
 
+//        @Test
+//        public void TR_001a_navigate() throws InterruptedException {
+//                WebDriver driver = getDriver();
+//                //navigate to empty report-automation testing report
+//                driver.navigate().to("https://staging3.openquire.com/reports/1330368");
+//                Thread.sleep(500);
+//                BaseClass.staging5().captureURL();
+//                Thread.sleep(500);
+//               // BaseClass.staging5().click_and_capture_track_changes_button();
+//                Thread.sleep(1000);
+//        }
+
         @Test
-        public void TR_001a_navigate() throws InterruptedException {
+        public void TR_010a_edit_image_captions() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
+
+                //Go into to QA Automation Parent folder
+                BaseClass.reportfoldersection().clickReportsTab();
+                BaseClass.reportfoldersection().enterSearchField_QA_Report();
+                Thread.sleep(3500);
+                BaseClass.reportfoldersection().clickReportsFirstLink();
+                Thread.sleep(500);
+
+
+
+                //Go into to pca Project Folder
+                BaseClass.projectFolderSection().click_PCA_ProjectFolderLink();
+                Thread.sleep(500);
+                BaseClass.reportfoldersection().clickReportsFirstLink();
+                Thread.sleep(1000);
+
+                BaseClass.reportfoldersection().enter_image1_updated_name();
+                Thread.sleep(1000);
+                BaseClass.reportfoldersection().verify_custom_image1_caption();
+                Thread.sleep(1000);
+                BaseClass.reportfoldersection().clickSectionView_Appendices();
+                Thread.sleep(1000);
+                BaseClass.reportfoldersection().verify_image1_original_name_appendix();
+                Thread.sleep(1000);
+
+
+                //        //quick preview button in next tab
+                BaseClass.reportfoldersection().click_quick_preview_button();
+                Thread.sleep(2000);
+                BaseClass.reportfoldersection().change_to_next_tab();
+                Thread.sleep(500);
+                //quick preview tab - capture header and footer data
+                BaseClass.reportfoldersection().verify_qp_updated_image_caption();
+                Thread.sleep(500);
                 WebDriver driver = getDriver();
-                //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com/reports/1330368");
+
+                //close second tab and go back to default tab
+                driver.close();
                 Thread.sleep(500);
-                BaseClass.staging5().captureURL();
-                Thread.sleep(500);
-               // BaseClass.staging5().click_and_capture_track_changes_button();
+                BaseClass.reportfoldersection().change_to_default_tab();
                 Thread.sleep(1000);
         }
 
-
         @Test
-        public void TR_004cc_FM1104_v11_sections_check() throws InterruptedException {
+        public void TR_010b_delete_exclude_appendix_files() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
+                BaseClass.reportfoldersection().clickSectionView_Appendices();
+                Thread.sleep(1000);
+                BaseClass.reportfoldersection().number_of_items_appendix_section();
+                Thread.sleep(500);
+
+                BaseClass.staging5().hover_to_delete_first_pdf_appendix_file();
+                Thread.sleep(500);
+                BaseClass.staging5().hover_to_exclude_first_pdf_appendix_file();
+                Thread.sleep(500);
+
+                BaseClass.staging5().hover_to_delete_first_gallery_appendix_file();
+                Thread.sleep(500);
+                BaseClass.staging5().hover_to_exclude_first_gallery_appendix_file();
+                Thread.sleep(500);
+
+                BaseClass.reportfoldersection().number_of_items_appendix_section();
+                Thread.sleep(500);
+
+                BaseClass.staging5().click_view_trash_button();
+                Thread.sleep(500);
+
+
+                //restore recent 2 deleted items (appendices)
+                BaseClass.staging5().click_restore_first_deleted_item();
+                Thread.sleep(500);
+                BaseClass.staging5().click_restore_first_deleted_item();
+                Thread.sleep(500);
+                //go back and refresh
                 WebDriver driver = getDriver();
 
-                BaseClass.staging5().click_section_III_property_details_sectionView();
-                BaseClass.fm_section().scroll_to_ElectricalConditions();
-                BaseClass.fm_section().select_electricalConditions_60amps_Dropdown();
-                BaseClass.fm_section().select_electricalConditions_lessThan40amps_Dropdown();
+                driver.navigate().back();
                 Thread.sleep(500);
-
-                BaseClass.fm_section().enter_levelOfService_field();
+                driver.navigate().refresh();
                 Thread.sleep(500);
-
-                BaseClass.fm_section().click_load_analysis_description_field();
+                BaseClass.reportfoldersection().clickSectionView_Appendices();
                 Thread.sleep(1500);
 
-                BaseClass.ck5editor().enter_loadAnalysis_text();
-                Thread.sleep(500);
-                // WebDriver driver = getDriver();
-                //pca
-                BaseClass.staging5().click_out_of_section();
-                Thread.sleep(500);
-                BaseClass.fm_section().click_add_cost_rec_button_section_III_electrical_conditions();
-                Thread.sleep(500);
-
-
-                BaseClass.fm_section().enter_item_name_cost_recommendation();
-                Thread.sleep(500);
-                BaseClass.staging5().enter_cost_summary_quantity();
-                BaseClass.staging5().enter_cost_summary_unit_cost();
-                BaseClass.staging5().click_critical_repair_cost_checkbox();
-                Thread.sleep(500);
-                BaseClass.fm_section().enter_cost_summary_comments();
-                Thread.sleep(500);
-                BaseClass.staging5().click_save_button();
+                BaseClass.reportfoldersection().number_of_items_appendix_section();
                 Thread.sleep(1000);
 
-                BaseClass.fm_section().select_are_there_any_elevators_dropDown();
-                BaseClass.fm_section().select_elevators_repairs_dropDown();
-                Thread.sleep(1000);
-
-                BaseClass.fm_section().enter_elevators_description_field();
-//        BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-//        BaseClass.fm_section().enter_elevator_ck4_text();
-                Thread.sleep(500);
-                // WebDriver driver = getDriver();
-//        driver.switchTo().defaultContent();
-                BaseClass.fm_section().enter_elevator_costToCure_field();
-                Thread.sleep(500);
-                BaseClass.reportfoldersection().click_quick_preview_button();
-                Thread.sleep(500);
-
-                BaseClass.reportfoldersection().change_to_next_tab();
-                Thread.sleep(500);
-                BaseClass.fm_section().verify_fm1104_v11_QP();
-
-                driver.close();
-                Thread.sleep(500);
-
-                BaseClass.staging5().switchToOriginalTab();
-                Thread.sleep(500);
         }
 
 

@@ -218,7 +218,7 @@ public class TemplatesSection extends ReusableAnnotations {
     @FindBy(xpath = "//div[contains(text(), 'Accessibility  Restroom/s')]")
     WebElement export_1_wb_item1;
 
-    @FindBy(xpath = "//div[normalize-space()='Accessibility ADA Assessment - EXTERIOR CIRCULATION ACCEPTABLE']")
+    @FindBy(xpath = "//div[contains(text(),'Accessibility ADA')]")
     WebElement export_1_wb_item2;
 
     @FindBy(xpath = "//input[@id='unassigned_items_search']")
