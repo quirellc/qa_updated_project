@@ -294,7 +294,7 @@ public class ReportFolderSection extends ReusableAnnotations {
         } else if (browserName.contains("Firefox")) {
             ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Dummy User-Firefox", logger, "QA Dummy Users - search field ff");
         }
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
     }
 

@@ -279,7 +279,7 @@ WebElement text_body1;
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1_ff");
     }}
 
-    @FindBy(xpath = "(//p)[3]")
+    @FindBy(xpath = "(//p)[1]")
     WebElement proj_summary_text_body;
     public void enter_proj_summary_text_body() {
         if(driver instanceof ChromeDriver) {

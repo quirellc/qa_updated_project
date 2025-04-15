@@ -815,7 +815,7 @@ public void TR001_user_login() throws InterruptedException {
      driver.navigate().to("https://staging5.openquire.com/portfolios/4699");
      Thread.sleep(2000);
  } else if (baseUrl.contains("staging3")) {
-     driver.navigate().to("https://staging3.openquire.com/portfolios/9299");
+     driver.navigate().to("https://staging3.openquire.com/portfolios/9301");
      Thread.sleep(2000);
  }
 
@@ -952,7 +952,7 @@ public void TR001_user_login() throws InterruptedException {
 
         Thread.sleep(500);
 //generate pdf and capture alert message
-        BaseClass.reportfoldersection().clickGeneratePDFButton();
+        BaseClass.reportfoldersection().clickRegeneratePDFButton();
         Thread.sleep(500);
         BaseClass.reportfoldersection().captureAlertMessage();
         Thread.sleep(3000);
@@ -978,7 +978,7 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.staging5().click_section_row_editor_projectSummary();
         Thread.sleep(1000);
 
-        BaseClass.ck5editor().select_all_text_projSummary_section_body();
+        BaseClass.ck5editor().select_all_text_introPages_body();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comment_icon_ck5();
         Thread.sleep(1000);
