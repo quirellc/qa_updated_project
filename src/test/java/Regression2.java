@@ -163,9 +163,545 @@ public class Regression2 extends ReusableAnnotations {
                 Thread.sleep(1000);
 
         }
+        @Test
+        public void TR_011_export_appendix_to_report() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
 
 
-    }
+
+                BaseClass.templatesSection().click_export_content_button();
+                Thread.sleep(1000);
+                BaseClass.reportfoldersection().change_to_next_tab();
+                Thread.sleep(1500);
+                BaseClass.staging5().mark_all_notifications_as_read();
+                Thread.sleep(1000);
+                //export pca report into medium priority report
+                BaseClass.templatesSection().click_export_to_single_template_button();
+                Thread.sleep(1000);
+                BaseClass.templatesSection().enter_export_to_report_field();
+                Thread.sleep(1000);
+                BaseClass.templatesSection().click_first_target_report_dropdown_link();
+                Thread.sleep(1000);
+                BaseClass.templatesSection().click_export_appendix_items();
+                Thread.sleep(1000);
+                BaseClass.templatesSection().click_export_now_button();
+                Thread.sleep(8000);
+                WebDriver driver = getDriver();
+
+                driver.navigate().refresh();
+                Thread.sleep(8000);
+                BaseClass.staging5().verify_active_notification_button();
+                Thread.sleep(1000);
+                BaseClass.staging5().click_active_notification_button();
+                Thread.sleep(1000);
+                BaseClass.staging5().confirm_export_3_unread_notification();
+                Thread.sleep(1000);
+                BaseClass.staging5().mark_all_as_read();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().verify_export_completed();
+                Thread.sleep(1000);
+
+
+                driver.close();
+                Thread.sleep(500);
+                BaseClass.reportfoldersection().change_to_default_tab();
+                Thread.sleep(1000);
+//
+                //Go into to QA Automation Parent folder
+                BaseClass.reportfoldersection().clickReportsTab();
+                BaseClass.reportfoldersection().enterSearchField_QA_Report();
+                Thread.sleep(3500);
+                BaseClass.reportfoldersection().clickReportsFirstLink();
+                Thread.sleep(500);
+                //Go into to medium priority Project Folder
+                BaseClass.projectFolderSection().click_medium_priority_ProjectFolderLink();
+                Thread.sleep(500);
+                BaseClass.reportfoldersection().clickReportsFirstLink();
+                Thread.sleep(2000);
+                BaseClass.templatesSection().verify_appendix_sections_exported();
+                Thread.sleep(1000);
+                BaseClass.reportfoldersection().clickSectionView_Appendices();
+                Thread.sleep(1000);
+                BaseClass.reportfoldersection().number_of_items_appendix_section();
+                Thread.sleep(2000);
+
+
+        }
+        @Test
+        public void TR_012_Report_tag_matrix_features() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+                WebDriver driver = getDriver();
+                if (baseUrl.contains("staging5")) {
+                        driver.navigate().to("https://staging5.openquire.com/projects/327971/report_tags");
+                        Thread.sleep(2000);
+                } else if (baseUrl.contains("staging3")) {
+                        driver.navigate().to("https://staging3.openquire.com/projects/601010/report_tags");
+                        Thread.sleep(2000);
+                }
+                //enter account manager name
+                BaseClass.staging5().click_reportTagMatrix_first_cell();
+                Thread.sleep(500);
+
+                BaseClass.staging5().enter_pca_portfolio_project_name_textBox();
+                Thread.sleep(500);
+
+                BaseClass.templatesSection().verify_alertMessage_reportTag();
+                Thread.sleep(500);
+
+                BaseClass.staging5().right_click_reportTagMatrix_first_cell();
+
+                Thread.sleep(500);
+                BaseClass.staging5().click_copy_data_across_rows_button();
+                Thread.sleep(500);
+                BaseClass.staging5().click_confirm_button();
+                Thread.sleep(1500);
+                BaseClass.staging5().capture_copy_data_confirmation_text();
+                Thread.sleep(500);
+                BaseClass.staging5().click_ok_button();
+                Thread.sleep(500);
+                BaseClass.staging5().confirm_copied_reportTagMatrix_cells_are_the_same();
+                Thread.sleep(500);
+
+        }
+        @Test
+        public void TR_013_Portfolio_features() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
+                WebDriver driver = getDriver();
+                if (baseUrl.contains("staging5")) {
+                        driver.navigate().to("https://staging5.openquire.com/portfolios/4699");
+                        Thread.sleep(2000);
+                } else if (baseUrl.contains("staging3")) {
+                        driver.navigate().to("https://staging3.openquire.com/portfolios/9299");
+                        Thread.sleep(2000);
+                }
+
+                //change to aggregated cost view
+                BaseClass.staging5().click_change_porfolio_view_button();
+                Thread.sleep(1000);
+                BaseClass.staging5().select_porfolio_view_aggregated();
+                Thread.sleep(500);
+                BaseClass.staging5().click_save_button();
+                Thread.sleep(1500);
+
+                //capture current cells under project name
+                BaseClass.staging5().capture_pca_portfolio_project_name_cells();
+                Thread.sleep(500);
+
+                //click project name cell, then enter qa_timeofsystem
+                BaseClass.staging5().click_pca_portfolio_project_name_cell();
+                Thread.sleep(500);
+                BaseClass.staging5().enter_pca_portfolio_project_name_textBox();
+                Thread.sleep(500);
+                //right click project name cell, copy data across, click confirm button, capture confirmation text, click ok
+                BaseClass.staging5().right_click_pca_portfolio_project_name_cell();
+                Thread.sleep(500);
+                BaseClass.staging5().click_copy_data_across_rows_button();
+                Thread.sleep(500);
+                BaseClass.staging5().click_confirm_button();
+                Thread.sleep(1500);
+                BaseClass.staging5().capture_copy_data_confirmation_text();
+                Thread.sleep(500);
+                BaseClass.staging5().click_ok_button();
+                Thread.sleep(500);
+
+                //capture and confirm copied cells in table
+                BaseClass.staging5().confirm_copied_pca_portfolio_project_name_cells();
+                Thread.sleep(1000);
+
+                //click undo button, capture alert, capture column data
+                BaseClass.staging5().click_undo_button();
+                Thread.sleep(500);
+                BaseClass.staging5().captureAlertMessage();
+                Thread.sleep(500);
+                BaseClass.staging5().capture_pca_portfolio_project_name_cells();
+                Thread.sleep(500);
+
+                //expoty excel and pdf
+                BaseClass.staging5().click_export_to_excel_fm1105();
+                Thread.sleep(500);
+                BaseClass.templatesSection().captureAlertMessage();
+                Thread.sleep(500);
+                BaseClass.staging5().click_cancel_alert_message();
+                Thread.sleep(500);
+                BaseClass.staging5().click_export_pdf_button();
+                Thread.sleep(500);
+                BaseClass.templatesSection().captureAlertMessage();
+                Thread.sleep(500);
+                BaseClass.staging5().click_cancel_alert_message();
+                Thread.sleep(7000);
+                driver.navigate().refresh();
+                Thread.sleep(5000);
+
+//click notification icon and click first link, and open new tab with link
+                BaseClass.staging5().click_active_notification_button();
+                Thread.sleep(500);
+                // BaseClass.staging5().mark_all_as_read();
+                // Thread.sleep(1000);
+                BaseClass.staging5().open_pca_portfolio_pdf_notification_link();
+                //  BaseClass.reportfoldersection().change_to_next_tab();
+                Thread.sleep(1000);
+                BaseClass.staging5().verify_portfolio_from_PDF();
+                Thread.sleep(500);
+                //navigate back to original page
+                driver.navigate().back();
+                Thread.sleep(500);
+        }
+
+        @Test
+        public void TR_014_proj_summary_table() throws InterruptedException, IOException {
+
+                BaseClass.reportfoldersection().clickReportsTab();
+                BaseClass.reportfoldersection().enterSearchField_QA_Report();
+                Thread.sleep(4500);
+                BaseClass.reportfoldersection().clickReportsFirstLink();
+                Thread.sleep(1000);
+                BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
+                Thread.sleep(1000);
+                //cloned fm 1104 report
+                BaseClass.reportfoldersection().clickReportSecondLink();
+                Thread.sleep(1000);
+
+
+                BaseClass.staging5().click_project_summary_sectionView();
+                Thread.sleep(1000);
+
+                BaseClass.staging5().click_section_row_editor_projectSummary();
+                Thread.sleep(1000);
+                BaseClass.ck5editor().enter_proj_summary_text_body();
+                Thread.sleep(500);
+                // click out of section, capture report tag text
+                BaseClass.staging5().click_out_of_section();
+                Thread.sleep(500);
+
+                BaseClass.staging5().enter_introPage_title_field();
+                Thread.sleep(1000);
+
+
+                BaseClass.staging5().click_section_row_editor_projectSummary();
+                BaseClass.ck5editor().click_report_link_icon_ck5();
+                BaseClass.staging5().click_link_updated_project_summary_to_section();
+                BaseClass.staging5().click_save_button();
+                Thread.sleep(1000);
+
+                BaseClass.staging5().click_out_of_section();
+                Thread.sleep(500);
+
+                BaseClass.staging5().verify_sectionLink_isVisible();
+                Thread.sleep(1000);
+
+
+
+                //quick preview button in next tab
+                BaseClass.reportfoldersection().click_quick_preview_button();
+                Thread.sleep(1000);
+                BaseClass.reportfoldersection().change_to_next_tab();
+                Thread.sleep(2000);
+
+                //quick preview tab - capture project summary linked section, updated title, checkmark, default section
+                BaseClass.reportfoldersection().verify_quick_preview_projectSummary();
+                Thread.sleep(500);
+                WebDriver driver = getDriver();
+//close second tab and go back to default tab
+                driver.close();
+                Thread.sleep(500);
+                BaseClass.reportfoldersection().change_to_default_tab();
+
+                Thread.sleep(500);
+//generate pdf and capture alert message
+                BaseClass.reportfoldersection().clickGeneratePDFButton();
+                Thread.sleep(500);
+                BaseClass.reportfoldersection().captureAlertMessage();
+                Thread.sleep(3000);
+                //capture and click generated pdf
+
+                BaseClass.reportfoldersection().captureGeneratedPDF_text();
+//
+                Thread.sleep(2000);
+
+
+                BaseClass.staging5().click_export_to_excel_fm1105();
+                //  Thread.sleep(500);
+                BaseClass.templatesSection().verify_excel_AlertMessage();
+                Thread.sleep(500);
+                BaseClass.staging5().click_cancel_alert_message();
+                Thread.sleep(500);
+                BaseClass.staging5().click_export_pdf_button();
+                BaseClass.templatesSection().verify_PDF_AlertMessage();
+                Thread.sleep(500);
+
+                BaseClass.staging5().click_project_summary_sectionView();
+                Thread.sleep(1000);
+                BaseClass.staging5().click_section_row_editor_projectSummary();
+                Thread.sleep(1000);
+
+                BaseClass.ck5editor().select_all_text_projSummary_section_body();
+                Thread.sleep(500);
+                BaseClass.ck5editor().click_comment_icon_ck5();
+                Thread.sleep(1000);
+                BaseClass.ck5editor().verify_comment_highlight_is_Visible();
+                Thread.sleep(1000);
+                BaseClass.ck5editor().enter_comments_to_field();
+                Thread.sleep(1000);
+                BaseClass.ck5editor().update_comments_in_field();
+                Thread.sleep(1000);
+                //verify yellow comments bubble says 1
+                //NOT WORKING AS OF NOW 9_16_24 -
+                // 10/16/24 - Working
+                BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
+                //   BaseClass.staging5().verify_if_comments_icon_isActive();
+                Thread.sleep(1000);
+                BaseClass.ck5editor().click_comments_resolve_button();
+                Thread.sleep(1000);
+
+                //        //NOT WORKING AS OF NOW 9_16_24
+                BaseClass.ck5editor().verify_resolved_2_comment_is_Visible();
+                Thread.sleep(1000);
+                //no comments archive button anymore 10-16-24
+                BaseClass.ck5editor().click_and_verify_comments_archive_icon();
+                Thread.sleep(1000);
+                BaseClass.ck5editor().update_comments_in_field();
+                Thread.sleep(1000);
+                // NEED VERIFICATION STEPS
+                BaseClass.ck5editor().reopen_archived_comment_discussion();
+                Thread.sleep(1000);
+                //NOT WORKING AS OF NOW 9_16_24
+                BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
+                // Thread.sleep(1000);
+
+                BaseClass.staging5().click_mark_intro_pages_complete_grey_icon_();
+                BaseClass.templatesSection().captureAlertMessage();
+                Thread.sleep(1000);
+                BaseClass.staging5().verify_intro_pages_blue_marked_complete_icon_is_Visible();
+                Thread.sleep(500);
+
+
+                BaseClass.templatesSection().clickdeleteToTrash();
+                Thread.sleep(500);
+                BaseClass.templatesSection().verify_alertMessage_deleteItem();
+                Thread.sleep(1000);
+                BaseClass.staging5().click_view_trash_button();
+                Thread.sleep(500);
+
+
+                //restore recent 2 deleted items (appendices)
+                BaseClass.staging5().click_restore_first_deleted_item();
+                Thread.sleep(500);
+                BaseClass.templatesSection().verify_alertMessage_item_restored();
+                Thread.sleep(500);
+
+
+                //go back and refresh
+                driver.navigate().back();
+                Thread.sleep(500);
+                driver.navigate().refresh();
+                Thread.sleep(500);
+
+                //export to pef checkbox options
+                BaseClass.staging5().hover_and_click_project_summary_sectionView_checkbox();
+                Thread.sleep(500);
+                BaseClass.staging5().click_sectionView_export();
+                Thread.sleep(500);
+
+                BaseClass.staging5().click_sectionView_export_to_word_button();
+                Thread.sleep(500);
+
+                BaseClass.staging5().verify_export_to_word_message();
+                Thread.sleep(500);
+
+                BaseClass.staging5().click_export_sections_button();
+                Thread.sleep(500);
+                BaseClass.templatesSection().verify_alertMessage_submitted_for_request();
+                Thread.sleep(500);
+                BaseClass.staging5().click_cancel_alert_message();
+                Thread.sleep(500);
+
+
+
+
+
+
+
+
+//        //turn on spell check and fix all issues
+//        BaseClass.staging5().click_and_capture_spell_check_button();
+//        Thread.sleep(5000);
+//        BaseClass.staging5().capture_spellCheck_error_sections();
+//        Thread.sleep(1500);
+//
+//        BaseClass.staging5().fix_all_spellCheck_errors();
+//        Thread.sleep(1000);
+
+        }
+
+        @Test
+        public void TR_015_libraries_ST_dropdown_valuese() throws InterruptedException, IOException {
+
+                BaseClass.staging5().clickLibrariesTab();
+                BaseClass.staging5().click_librariesTab_smartTableValues_Dropdown();
+                Thread.sleep(500);
+                BaseClass.staging5().click_export_to_excel();
+                Thread.sleep(500);
+                BaseClass.templatesSection().verify_excel_AlertMessage();
+                Thread.sleep(10000);
+                BaseClass.staging5().click_active_notification_button();
+                Thread.sleep(500);
+                BaseClass.staging5().verify_ST_dropdownvalue_excel_file_generated();
+                Thread.sleep(500);
+
+
+        }
+
+        @Test
+        public void TR_016_libraries_CostRecommendation() throws InterruptedException, IOException {
+
+                BaseClass.staging5().clickLibrariesTab();
+                BaseClass.staging5().click_librariesTab_costRec_Dropdown();
+                Thread.sleep(500);
+                BaseClass.staging5().click_export_to_excel();
+                Thread.sleep(500);
+
+                BaseClass.templatesSection().verify_excel_AlertMessage();
+                BaseClass.staging5().click_filter_by_labels_search_field();
+                Thread.sleep(500);
+                BaseClass.staging5().click_filter_by_labels_first_dropdown();
+                Thread.sleep(1500);
+                BaseClass.staging5().click_filter_by_labels_alan_dropdown();
+                Thread.sleep(500);
+                BaseClass.pca_xml_section().clickSearchField();
+                Thread.sleep(500);
+                BaseClass.staging5().verify_filter_has_0_results();
+                Thread.sleep(500);
+                BaseClass.staging5().click_remove_first_label();
+                Thread.sleep(500);
+                BaseClass.pca_xml_section().clickSearchField();
+                Thread.sleep(500);
+                BaseClass.staging5().verify_cost_rec_alan_label_587();
+                BaseClass.staging5().verify_cost_rec_alan_label_name();
+
+                Thread.sleep(500);
+
+                //remove label and search
+                BaseClass.staging5().click_remove_first_label();
+                Thread.sleep(500);
+                BaseClass.staging5().enter_587_cost_rec_searchField();
+                Thread.sleep(500);
+                BaseClass.staging5().verify_cost_rec_alan_label_587();
+                Thread.sleep(500);
+
+
+
+                BaseClass.staging5().click_active_notification_button();
+                Thread.sleep(500);
+
+                BaseClass.staging5().verify_ST_dropdownvalue_excel_file_generated();
+                Thread.sleep(500);
+
+
+        }
+        @Test
+        public void TR_017_Atlas_admin_permissions() throws InterruptedException, IOException {
+
+//log out current user, log into sysadmin atlas
+                BaseClass.staging5().clickUserProfileTab();
+                BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+                BaseClass.quireLogin().enterEmail_sysadmin_atlas();
+                BaseClass.quireLogin().enterPassword();
+                Thread.sleep(1000);
+                BaseClass.quireLogin().clickLogin();
+                Thread.sleep(500);
+                BaseClass.staging5().click_modal_close_window();
+                Thread.sleep(500);
+
+                //click templates tab, create new template button, verify it exists, then cancel
+                BaseClass.templatesSection().clickTemplatesTab();
+                Thread.sleep(500);
+
+                BaseClass.templatesSection().clickAddTemplateButton();
+                Thread.sleep(2000);
+
+                BaseClass.templatesSection().verify_NewTemplateModal_isVisible();
+                Thread.sleep(500);
+
+                BaseClass.templatesSection().clickCancel();
+                Thread.sleep(500);
+
+                //click first template in templates tab and click manage collaborators
+                BaseClass.reportfoldersection().clickReportsFirstLink();
+                Thread.sleep(1000);
+                BaseClass.templatesSection().click_manage_collaborators_button();
+                Thread.sleep(1000);
+
+
+                //hover and click first arrow button unassigned package...save
+                BaseClass.staging5().hover_unassigned__dropdown_value();
+                Thread.sleep(800);
+                BaseClass.staging5().click_unassigned_items_right_arrow();
+                Thread.sleep(1000);
+                BaseClass.pca_xml_section().getTemplatesPackagesList();
+                Thread.sleep(1000);
+                BaseClass.staging5().click_save_button();
+                Thread.sleep(500);
+                BaseClass.reportfoldersection().captureAlertMessage();
+                Thread.sleep(500);
+
+                //remove assigned first package hovering over checkbox
+                BaseClass.templatesSection().click_manage_collaborators_button();
+                Thread.sleep(1000);
+                BaseClass.pca_xml_section().hover_assigned_packages_first_item();
+                Thread.sleep(500);
+                BaseClass.pca_xml_section().click_cancel_button_first_assigned_package_button();
+                Thread.sleep(1000);
+                BaseClass.pca_xml_section().getTemplatesPackagesList();
+                Thread.sleep(500);
+                BaseClass.staging5().click_save_button();
+                Thread.sleep(500);
+                BaseClass.reportfoldersection().captureAlertMessage();
+                Thread.sleep(500);
+
+
+                //log out current user, log into admin atlas
+                BaseClass.staging5().clickUserProfileTab();
+                Thread.sleep(500);
+                BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+                BaseClass.quireLogin().enterEmail_admin_atlas();
+                BaseClass.quireLogin().enterPassword();
+                Thread.sleep(1000);
+                BaseClass.quireLogin().clickLogin();
+                Thread.sleep(500);
+                BaseClass.staging5().click_modal_close_window();
+                Thread.sleep(500);
+
+
+                //verify unable to click templates tab
+                BaseClass.templatesSection().clickTemplatesTab();
+                Thread.sleep(500);
+                BaseClass.templatesSection().verify_add_template_button_locked();
+                Thread.sleep(500);
+
+                //verify unable to click edit labels tab
+                BaseClass.templatesSection().verify_edit_labels_button_locked();
+                Thread.sleep(500);
+
+                //go to company users
+                BaseClass.staging5().clickUsersTab();
+                Thread.sleep(500);
+                BaseClass.staging5().click_usersTab_companyUsers_dropdownItem();
+                Thread.sleep(1000);
+
+                //find QA Dumnmy user
+                BaseClass.reportfoldersection().enterSearchField_QA_companyUser();
+                Thread.sleep(3000);
+                BaseClass.staging5().click_qa_dummy_user_link();
+                Thread.sleep(500);
+                BaseClass.staging5().verify_locked_companyUser_fields();
+                Thread.sleep(500);
+                BaseClass.staging5().select_company_user_status();
+                Thread.sleep(500);
+                BaseClass.staging5().clickSave();
+                Thread.sleep(500);
+                BaseClass.staging5().captureAlertMessage();
+
+        }
+
+
+}
 
 
                 //    @Test
