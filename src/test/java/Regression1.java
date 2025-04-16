@@ -237,19 +237,19 @@ public class Regression1 extends ReusableAnnotations {
 //            BaseClass.staging5().click_cancel_alert_message();
 //            Thread.sleep(1000);
     }
-}
-//    @Test
-//    public void TC03_delete_wb_items() throws InterruptedException {
-//
-//        BaseClass.staging5().clickLibrariesTab();
-//        BaseClass.staging5().click_librariesTab_wordBankDropdown();
-//        Thread.sleep(600);
-//        BaseClass.templatesSection().enterSearchField_QA_WB();
-//        Thread.sleep(3000);
-//        BaseClass.staging5().delete_QA_WB_items();
-//        Thread.sleep(1000);
-//
-//    }
+
+    @Test
+    public void TC03_delete_wb_items() throws InterruptedException {
+
+        BaseClass.staging5().clickLibrariesTab();
+        BaseClass.staging5().click_librariesTab_wordBankDropdown();
+        Thread.sleep(600);
+        BaseClass.templatesSection().enterSearchField_QA_WB();
+        Thread.sleep(3000);
+        BaseClass.staging5().delete_QA_WB_items();
+        Thread.sleep(1000);
+
+    }
 //
 //    @Test
 //    public void TC04_permanently_delete_trash_items() throws InterruptedException {
@@ -261,6 +261,6 @@ public class Regression1 extends ReusableAnnotations {
 //        Thread.sleep(1000);
 //
 //    }
-//    }
+    }
 
 
