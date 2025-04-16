@@ -978,7 +978,7 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.staging5().click_section_row_editor_projectSummary();
         Thread.sleep(1000);
 
-        BaseClass.ck5editor().select_all_text_introPages_body();
+        BaseClass.ck5editor().select_all_text_projSummary_section_body();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comment_icon_ck5();
         Thread.sleep(1000);

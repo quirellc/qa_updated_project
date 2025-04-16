@@ -260,17 +260,7 @@ WebElement text_body1;
             ReusableMethodsLoggersPOM.selectAll_method(driver, text_body2, logger, " text_body");
         }    }
 
-    @FindBy(xpath = "(//p)[5]")
-     WebElement projectSummaryText;
 
-    public void select_all_text_projSummary_section_body() {
-        if (driver instanceof FirefoxDriver) {
-            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1_ff, logger, " text_body");
-
-        }
-        else {
-            ReusableMethodsLoggersPOM.selectAll_method(driver, projectSummaryText, logger, " projectSummaryText");
-        }    }
     public void enter_sc_text_body_ck5() {
         if(driver instanceof ChromeDriver) {
                 ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1,"QA Automationn Testng Script - Spell Check Check Section" , logger, "text_body1");
@@ -289,6 +279,17 @@ WebElement text_body1;
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Project Summary" , logger, "text_body1_ff");
         }}
 
+    @FindBy(xpath = "(//p)[5]")
+    WebElement projectSummaryText;
+
+    public void select_all_text_projSummary_section_body() {
+        if (driver instanceof FirefoxDriver) {
+            ReusableMethodsLoggersPOM.selectAll_method(driver, text_body1_ff, logger, " text_body");
+
+        }
+        else {
+            ReusableMethodsLoggersPOM.selectAll_method(driver, proj_summary_text_body, logger, " projectSummaryText");
+        }    }
     @FindBy(xpath = "(//p)[9]")
     WebElement loadAnalysis_text_field;
 
