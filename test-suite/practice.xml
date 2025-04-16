@@ -12,7 +12,7 @@
     <test name="Practice Cases
 " preserve-order="true">
         <classes>
-            <class name="Medium_priority_suite" />
+            <class name="Regression2" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

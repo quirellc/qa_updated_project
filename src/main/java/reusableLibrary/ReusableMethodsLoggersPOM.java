@@ -262,8 +262,8 @@ public class ReusableMethodsLoggersPOM {
             Thread.sleep(500);
 
             wait.until(ExpectedConditions.elementToBeClickable((xpath))).sendKeys(Keys.ENTER);
-            System.out.println("Successfully clicked and submitted on: " + elementName);
-            logger.log(LogStatus.PASS, "Successfully clicked and submitted on: " + elementName);
+            System.out.println("Successfully  submitted on: " + elementName);
+            logger.log(LogStatus.PASS, "Successfully submitted on: " + elementName);
         } catch (Exception e) {
             System.out.println("Unable to submit on: " + elementName + ": " + e);
             logger.log(LogStatus.FAIL, "Unable to submit on: " + elementName + ": " + e);

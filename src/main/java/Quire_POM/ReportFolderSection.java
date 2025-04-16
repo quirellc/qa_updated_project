@@ -3,6 +3,7 @@ package Quire_POM;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -294,7 +295,10 @@ public class ReportFolderSection extends ReusableAnnotations {
         } else if (browserName.contains("Firefox")) {
             ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Dummy User-Firefox", logger, "QA Dummy Users - search field ff");
         }
-        Thread.sleep(4000);
+        Thread.sleep(5000);
+//        searchFieldButton.sendKeys("\n");
+//        searchFieldButton.sendKeys(Keys.RETURN);
+
         ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
     }
 
