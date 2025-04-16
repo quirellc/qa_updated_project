@@ -279,7 +279,7 @@ WebElement text_body1;
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Project Summary" , logger, "text_body1_ff");
         }}
 
-    @FindBy(xpath = "(//p)[5]")
+    @FindBy(xpath = "(//section[@class='switchboard CT-hide']//p)[2]")
     WebElement projectSummaryText;
 
     public void select_all_text_projSummary_section_body() {
@@ -288,7 +288,7 @@ WebElement text_body1;
 
         }
         else {
-            ReusableMethodsLoggersPOM.selectAll_method(driver, proj_summary_text_body, logger, " projectSummaryText");
+            ReusableMethodsLoggersPOM.selectAll_method(driver, projectSummaryText, logger, " projectSummaryText");
         }    }
     @FindBy(xpath = "(//p)[9]")
     WebElement loadAnalysis_text_field;
