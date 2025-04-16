@@ -458,13 +458,15 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         WebDriver driver = getDriver();
 
         BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
 
         BaseClass.reporttagssection().click_title_page_image_button();
         Thread.sleep(1000);
 
         BaseClass.staging5().click_signature_image_in_popup();
+        Thread.sleep(500);
         BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
         BaseClass.reporttagssection().verify_title_page_image_loaded();
         BaseClass.staging5().click_default_section_title();
         BaseClass.staging5().clickSection_row_editor();

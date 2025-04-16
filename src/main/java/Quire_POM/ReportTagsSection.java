@@ -134,8 +134,11 @@ public class ReportTagsSection extends ReusableAnnotations {
 
     @FindBy(xpath = "//span[normalize-space()='Title Page Image']/following::a[@class='js-select-gallery-image btn btn-default btn-xs']")
     WebElement title_page_image_button;
-    public void click_title_page_image_button() {
-        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, title_page_image_button, logger, "title_page_image_button");}
+    public void click_title_page_image_button() throws InterruptedException {
+        ReusableMethodsLoggersPOM.scrollToElementMethod(driver, title_page_image_button, logger, "title_page_image_button");
+    Thread.sleep(1000);
+    ReusableMethodsLoggersPOM.clickMethod(driver, title_page_image_button, logger, "title_page_image_button");
+    }
 
 
    // @FindBy(xpath = "//img[contains(@alt, 'picture of a') and contains(@alt, 'mapp')]")
