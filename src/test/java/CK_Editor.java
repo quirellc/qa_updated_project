@@ -668,16 +668,16 @@ public class CK_Editor extends ReusableAnnotations {
         BaseClass.reportfoldersection().clickEmailLink_hyperLink();
         Thread.sleep(4000);
 
-      //  BaseClass.reportfoldersection().open_report_email_pdf_link();
+        BaseClass.reportfoldersection().open_report_email_pdf_link();
         Thread.sleep(1500);
         BaseClass.staging5().verify_email_link_PDF();
         Thread.sleep(1000);
-        driver.navigate().back();
-        Thread.sleep(500);
-        driver.navigate().refresh();
-        Thread.sleep(500);
-        BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(800);
+//        driver.navigate().back();
+//        Thread.sleep(500);
+//        driver.navigate().refresh();
+//        Thread.sleep(500);
+//        BaseClass.reportfoldersection().clickReportsFirstLink();
+//        Thread.sleep(800);
 
 //generate pdf not saving, need to click again
         // open email pdf and send email
@@ -685,10 +685,10 @@ public class CK_Editor extends ReusableAnnotations {
      //   Thread.sleep(4500);
      //   BaseClass.reportfoldersection().clickSaveAndCopyLink();
      //   Thread.sleep(800);
-        BaseClass.reportfoldersection().clickSavedLinksButton();
-        Thread.sleep(800);
-        BaseClass.reportfoldersection().clickEmailLink_hyperLink();
-        Thread.sleep(800);
+//        BaseClass.reportfoldersection().clickSavedLinksButton();
+//        Thread.sleep(800);
+//        BaseClass.reportfoldersection().clickEmailLink_hyperLink();
+//        Thread.sleep(800);
         BaseClass.staging5().upload_signature_attachment();
         Thread.sleep(800);
         BaseClass.reportfoldersection().enter_SendTo_EmailAddress();
