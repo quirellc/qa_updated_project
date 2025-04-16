@@ -12,7 +12,7 @@
     <test name="Practice Cases
 " preserve-order="true">
         <classes>
-            <class name="Regression2" />
+            <class name="Regression_Suite" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
