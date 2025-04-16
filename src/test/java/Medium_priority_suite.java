@@ -902,7 +902,7 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
         Thread.sleep(1000);
         //cloned fm 1104 report
-        BaseClass.reportfoldersection().clickReportSecondLink();
+        BaseClass.reportfoldersection().click_fm_1104_report_link();
         Thread.sleep(1000);
 
 
