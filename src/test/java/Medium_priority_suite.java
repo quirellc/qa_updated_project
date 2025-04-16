@@ -903,7 +903,7 @@ public void TR001_user_login() throws InterruptedException {
         Thread.sleep(1000);
         //cloned fm 1104 report
         BaseClass.reportfoldersection().click_fm_1104_report_link();
-        Thread.sleep(1000);
+        Thread.sleep(1500);
 
 
         BaseClass.staging5().click_project_summary_sectionView();
