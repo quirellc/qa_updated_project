@@ -338,13 +338,16 @@ for (int i = 0; i < search_results_int; i++) {
     try {
 
                     BaseClass.pca_xml_section().clickFirstTemplateLink();
+        Thread.sleep(1000);
 
                     BaseClass.templatesSection().clickTemplateSettingsButton();
                     BaseClass.templatesSection().clickdeleteToTrash();
                     BaseClass.staging5().captureAlertMessage();
                     BaseClass.templatesSection().enterSearchField_automated_files();
+        Thread.sleep(2000);
 
-                } catch (Exception e) {
+
+    } catch (Exception e) {
                     System.out.println("Failed to delete edit link: " + e.getMessage());
                     logger.log(LogStatus.FAIL, "Failed to delete edit link: " + e.getMessage());
 
@@ -365,14 +368,15 @@ for (int i = 0; i < search_results_int; i++) {
             for (int i = 0; i < search_results_int; i++) {
                 try {
                     BaseClass.pca_xml_section().clickFirstTemplateLink();
+                    Thread.sleep(1000);
                     BaseClass.projectFolderSection().click_projectFolderSettings_button();
-                    Thread.sleep(200);
+                    Thread.sleep(500);
                     BaseClass.templatesSection().clickdeleteToTrash();
                     Thread.sleep(500);
                     BaseClass.staging5().captureAlertMessage();
                     Thread.sleep(500);
                     BaseClass.templatesSection().enterSearchField_automated_files();
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                 } catch (Exception e) {
                     System.out.println("Failed to delete edit link: " + e.getMessage());
                     logger.log(LogStatus.FAIL, "Failed to delete edit link: " + e.getMessage());

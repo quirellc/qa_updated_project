@@ -1225,6 +1225,8 @@ BaseClass.staging5().clickLibrariesTab();
         //verify unable to click edit labels tab
         BaseClass.templatesSection().verify_edit_labels_button_locked();
         Thread.sleep(500);
+        WebDriver driver = getDriver();
+        driver.navigate().refresh();
 
         //go to company users
         BaseClass.staging5().clickUsersTab();
