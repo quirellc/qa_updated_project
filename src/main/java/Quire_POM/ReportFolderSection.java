@@ -364,6 +364,13 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, reportSecondLink, logger, "reportSecondLink");
     }
 
+    @FindBy(xpath = "//span[normalize-space()='QA Automation Freddie Mac 1104 Test Report']")
+    WebElement fm_1104_report_link;
+
+    public void click_fm_1104_report_link() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, fm_1104_report_link, logger, "fm_1104_report_link");
+    }
+
 
 
 
