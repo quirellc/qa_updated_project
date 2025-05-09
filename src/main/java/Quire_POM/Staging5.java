@@ -942,7 +942,12 @@ public void click_target_report_view_link() {
     @FindBy(xpath = "//div[@class='app-viewTrash']")
     WebElement view_trash_button;
 
+    @FindBy(xpath = "//div[@class='app-footer-group']")
+    WebElement ask_quire_button;
+
     public void click_view_trash_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ask_quire_button, logger, "ask_quire_button");
+
         ReusableMethodsLoggersPOM.clickMethod(driver, view_trash_button, logger, "view_trash_button");
     }
 
@@ -3844,6 +3849,9 @@ public void enter_ca_section_cost() {
 
         }
     }
+
+
+
 
         public void acceptAlert() {
             try {

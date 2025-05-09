@@ -68,9 +68,11 @@ public void TC_006_Prod_login() throws InterruptedException {
         BaseClass.staging5().skip_if_error_message_appears();
         Thread.sleep(500);
 
-
         BaseClass.reportfoldersection().clickSectionView_Appendices();
-        Thread.sleep(1500);
+        Thread.sleep(2000);
+        BaseClass.reportfoldersection().deleteAllAppendixItems();
+        Thread.sleep(500);
+
         //add pdf appendix - pdf checkbox is set by default
         BaseClass.reportfoldersection().click_add_appendix_button();
         Thread.sleep(500);
@@ -277,7 +279,7 @@ public void TC_006_Prod_login() throws InterruptedException {
         WebDriver driver = getDriver();
 
         //navigate to empty report-automation testing report
-        driver.navigate().to("https://app.openquire.com/reports/1379930");
+        driver.navigate().to("https://app.openquire.com/reports/1417764");
         Thread.sleep(500);
         BaseClass.staging5().captureURL();
         Thread.sleep(500);
