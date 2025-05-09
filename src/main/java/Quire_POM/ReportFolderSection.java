@@ -419,7 +419,6 @@ public class ReportFolderSection extends ReusableAnnotations {
 
     //    @FindBy(xpath = "//a[normalize-space()='Move Appendix to Trash']")
     @FindBy(xpath = "(//i[@class='fa fa-trash-o'])[1]")
-
     WebElement delete_appendix_button;
 
     public void click_delete_appendix_button() {
@@ -540,6 +539,19 @@ public class ReportFolderSection extends ReusableAnnotations {
 
     public void verify_empty_appendix_section() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, empty_appendix_section, true,  logger, "empty_appendix_section");
+    }
+
+    @FindBy(xpath = "//button[normalize-space()='Yes, continue editing.']")
+    WebElement continue_editing_yes_modal_button;
+
+    @FindBy(xpath = "//i[@class='fa fa-trash-o']")
+    List<WebElement> delete_appendix_buttons;
+
+    public void deleteAllAppendixItems() throws InterruptedException {
+        while (!delete_appendix_buttons.isEmpty()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, delete_appendix_buttons.get(0), logger, "delete_appendix_buttons");
+            Thread.sleep(500); // allow DOM to refresh
+        }
     }
 
 
