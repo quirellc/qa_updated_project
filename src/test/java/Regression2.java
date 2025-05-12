@@ -103,8 +103,8 @@ public class Regression2 extends ReusableAnnotations {
                 BaseClass.staging5().clickUsersTab();
                 Thread.sleep(500);
                 BaseClass.staging5().click_usersTab_companyUsers_dropdownItem();
-                Thread.sleep(5000);
-
+                Thread.sleep(1000);
+                BaseClass.staging5().verify_loading_complete_sideBar();
                 //find QA Dumnmy user
                 BaseClass.reportfoldersection().enterSearchField_QA_companyUser();
                 Thread.sleep(3000);
