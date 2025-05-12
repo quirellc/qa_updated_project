@@ -238,7 +238,9 @@ public class FNMA_ESA_XML_Staging extends ReusableAnnotations {
         Thread.sleep(2000);
 
         BaseClass.esa_xml_section().selectDUS_compliance();
+        Thread.sleep(500);
 
+BaseClass.staging5().click_pixel_out_of_section();
         Thread.sleep(3000);
 
 
