@@ -2,10 +2,7 @@ package Quire_POM;
 //
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import reusableLibrary.ReusableAnnotations;
@@ -289,18 +286,45 @@ public class ReportFolderSection extends ReusableAnnotations {
     }
     String browserName = driver.getClass().getSimpleName();
 
-    public void enterSearchField_QA_companyUser() throws InterruptedException {
-        if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Dummy User-Chrome", logger, "QA Dummy Use - search field chrome");
-        } else if (browserName.contains("Firefox")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Dummy User-Firefox", logger, "QA Dummy Users - search field ff");
-        }
-        Thread.sleep(5000);
-//        searchFieldButton.sendKeys("\n");
-//        searchFieldButton.sendKeys(Keys.RETURN);
+  //  public void enterSearchField_QA_companyUser() throws InterruptedException {
+        public void enterSearchField_QA_companyUser() throws InterruptedException {
+            String searchText = browserName.contains("Chrome") ? "QA Dummy User-Chrome" : "QA Dummy User-Firefox";
+              ReusableMethodsLoggersPOM.clickMethod(driver, searchFieldButton, logger, "company users - search field");
 
-        ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
-    }
+            for (char c : searchText.toCharArray()) {
+                String s = String.valueOf(c);
+                searchFieldButton.sendKeys(s);
+                Thread.sleep(100); // Mimic human typing
+            }
+Thread.sleep(3000);
+            // Fire a real ENTER key event via JavaScript (works for most web apps)
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', code: 'Enter', which: 13, keyCode: 13, bubbles: true}));",
+                    searchFieldButton
+            );
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].dispatchEvent(new KeyboardEvent('keyup', {key: 'Enter', code: 'Enter', which: 13, keyCode: 13, bubbles: true}));",
+                    searchFieldButton
+            );
+            // Optionally, add an explicit wait here for results
+        }
+//        if (browserName.contains("Chrome")) {
+//            ReusableMethodsLoggersPOM.sendKeysMethod(driver, searchFieldButton, "QA Dummy User-Chrome", logger, "QA Dummy Use - search field chrome");
+//        } else if (browserName.contains("Firefox")) {
+//            ReusableMethodsLoggersPOM.sendKeysMethod(driver, searchFieldButton, "QA Dummy User-Firefox", logger, "QA Dummy Users - search field ff");
+//        }
+//       // Thread.sleep(3000);
+//       // ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
+//        Thread.sleep(5000);
+//
+////        searchFieldButton.sendKeys("\n");
+//        searchFieldButton.sendKeys(Keys.RETURN);
+//        searchFieldButton.sendKeys(Keys.ENTER);
+
+        //  ReusableMethodsLoggersPOM.clickMethod(driver, searchFieldButton, logger, "company users - search field");
+
+     //   ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
+
 
 
     public void enterSearchField_QA_wordbank_Report() throws InterruptedException {

@@ -67,7 +67,7 @@ public class Regression2 extends ReusableAnnotations {
         public void TR_001a_navigate() throws InterruptedException {
                 WebDriver driver = getDriver();
                 //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com/reports/1330398");
+                driver.navigate().to("https://staging3.openquire.com");
                 Thread.sleep(500);
                 BaseClass.staging5().captureURL();
                 Thread.sleep(500);
@@ -103,7 +103,7 @@ public class Regression2 extends ReusableAnnotations {
                 BaseClass.staging5().clickUsersTab();
                 Thread.sleep(500);
                 BaseClass.staging5().click_usersTab_companyUsers_dropdownItem();
-                Thread.sleep(1000);
+                Thread.sleep(5000);
 
                 //find QA Dumnmy user
                 BaseClass.reportfoldersection().enterSearchField_QA_companyUser();
