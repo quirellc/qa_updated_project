@@ -1,0 +1,22 @@
+version: v1.0
+name: Java
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Medium Priority Test
+    task:
+      epilogue:
+        always:
+          commands:
+            - artifact push project /home/semaphore/qa_updated_project/src/main/java/HTML_Report --force
+      jobs:
+        - name: Medium Priority Staging Job
+          commands:
+            - sem-version java 17
+            - mvn clean test -Dfile="test-suite\Medium_priority.xml"
+      prologue:
+        commands:
+          - checkout
+    dependencies: []
