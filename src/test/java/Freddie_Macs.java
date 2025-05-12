@@ -782,6 +782,8 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         //  Thread.sleep(500);
         BaseClass.ck5editor().click_accept_TC_suggestion();
         Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(1000);
 
         //second default  section - add smart table
         BaseClass.staging5().click_default_section_2();
