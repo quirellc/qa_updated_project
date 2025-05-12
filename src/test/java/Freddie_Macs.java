@@ -259,13 +259,13 @@ public void TR_003_report_Tags_template_FM_1104() throws InterruptedException {
     BaseClass.staging5().click_out_of_section();
     Thread.sleep(500);
     BaseClass.staging5().capture_ReportTagField();
-    Thread.sleep(500);
+    Thread.sleep(2000);
 
 
 
     //go to text body iframe, double click and delete text blue report tag
     BaseClass.staging5().clickSection_row_editor();
-    Thread.sleep(500);
+    Thread.sleep(2000);
     BaseClass.templatesSection().double_click_report_tag_iframe();
     Thread.sleep(500);
     // in blue report tag, select all and delete
@@ -278,12 +278,12 @@ public void TR_003_report_Tags_template_FM_1104() throws InterruptedException {
     BaseClass.staging5().click_out_of_section();
     Thread.sleep(500);
     BaseClass.staging5().capture_ReportTagField();
-    Thread.sleep(500);
+    Thread.sleep(1500);
 
 
     // go to text body iframe, and delete yellow report tag from text
     BaseClass.staging5().clickSection_row_editor();
-    Thread.sleep(500);
+    Thread.sleep(2000);
     // System.out.println(driver.getPageSource());  // Log page source
     //         Thread.sleep(500);
 
@@ -688,10 +688,10 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         BaseClass.fm_section().scroll_to_ElectricalConditions();
         BaseClass.fm_section().select_electricalConditions_60amps_Dropdown();
         BaseClass.fm_section().select_electricalConditions_lessThan40amps_Dropdown();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         BaseClass.fm_section().enter_levelOfService_field();
-        Thread.sleep(500);
+        Thread.sleep(2000);
 
         BaseClass.fm_section().click_load_analysis_description_field();
         Thread.sleep(1500);

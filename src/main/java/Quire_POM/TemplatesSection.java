@@ -330,7 +330,7 @@ public class TemplatesSection extends ReusableAnnotations {
     List<WebElement> search_results;
     public void delete_automation_templates() throws InterruptedException {
         BaseClass.templatesSection().enterSearchField_automated_files();
-        Thread.sleep(4000);
+        Thread.sleep(6000);
         int search_results_int = search_results.size();
 
         if (!search_results.isEmpty()) {
@@ -361,7 +361,7 @@ for (int i = 0; i < search_results_int; i++) {
     }
     public void delete_automation_folders() throws InterruptedException {
         BaseClass.templatesSection().enterSearchField_automated_files();
-        Thread.sleep(4000);
+        Thread.sleep(6000);
         int search_results_int = search_results.size();
 
         if (!search_results.isEmpty()) {

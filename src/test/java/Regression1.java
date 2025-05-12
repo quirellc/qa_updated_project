@@ -240,7 +240,10 @@ public class Regression1 extends ReusableAnnotations {
 
     @Test
     public void TC03_delete_wb_items() throws InterruptedException {
+        WebDriver driver = getDriver();
 
+        driver.navigate().refresh();
+        Thread.sleep(1500);
         BaseClass.staging5().clickLibrariesTab();
         BaseClass.staging5().click_librariesTab_wordBankDropdown();
         Thread.sleep(600);
