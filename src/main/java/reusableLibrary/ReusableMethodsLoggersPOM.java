@@ -195,7 +195,8 @@ public class ReusableMethodsLoggersPOM {
 //
 //            jse.executeScript("scroll(0,-5000)");
             Thread.sleep(2000);
-            wait.until(ExpectedConditions.elementToBeClickable(xpath)).click();
+            xpath.click();
+          //  wait.until(ExpectedConditions.elementToBeClickable(xpath)).click();
             System.out.println("Successfully scrolled and clicked: " + elementName);
             logger.log(LogStatus.PASS, "Successfully scrolled and clicked " + elementName);
 

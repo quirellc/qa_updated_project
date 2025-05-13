@@ -35,7 +35,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
         Thread.sleep(4500);
         BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         BaseClass.projectFolderSection().click_new_CK5_ProjectFolderLink();
         Thread.sleep(4500);
         //cloned fm 1104 report
