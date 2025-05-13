@@ -909,7 +909,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.smartTables().click_row1_formula_inside_ST();
         Thread.sleep(500);
         BaseClass.ck5editor().add_new_comment_to_ST();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
 //click next cell, dynamic column to add comment to and resolve comment
         BaseClass.smartTables().click_row1_dynamic_inside_ST();
@@ -917,7 +917,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.ck5editor().add_new_comment_to_ST();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comments_resolve_button();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
 //click next cell, date column to add comment to and resolve comment
         BaseClass.smartTables().click_row1_date_inside_ST();
@@ -925,7 +925,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.ck5editor().add_new_comment_to_ST();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comments_resolve_button();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         //click out of ST, double clicking ST header title twice
         BaseClass.staging5().click_smartTable_title_header();

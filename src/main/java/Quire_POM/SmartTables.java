@@ -338,6 +338,10 @@ public class SmartTables extends ReusableAnnotations {
     WebElement row1_column2_inside_ST;
     public void click_row1_plainText_inside_ST() throws InterruptedException {
         ReusableMethodsLoggersPOM.doubleClickMethod(driver, row1_column2_inside_ST, logger, " row1_column2_inside_ST ");
+        Thread.sleep(1000);
+        if (!BaseClass.smartTables().verify_comment_appears_to_ST()) {
+            ReusableMethodsLoggersPOM.doubleClickMethod(driver, row1_column2_inside_ST, logger, " row1_column2_inside_ST ");
+        }
      //   Thread.sleep(1000);
       //  ReusableMethodsLoggersPOM.clickMethod(driver, row1_column2_inside_ST, logger, " row1_column2_inside_ST ");
 
@@ -347,25 +351,66 @@ public class SmartTables extends ReusableAnnotations {
     WebElement row1_column3_inside_ST;
     public void click_row1_number_inside_ST() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, row1_column3_inside_ST, logger, " row1_column3_inside_ST ");
+        Thread.sleep(1000);
+        if (!BaseClass.smartTables().verify_comment_appears_to_ST()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, row1_column3_inside_ST, logger, " row1_column3_inside_ST ");
+        }
+
     }
 
     @FindBy(xpath = "//table[@class='htCore']//tr[1]//td[4]")
     WebElement row1_column4_inside_ST;
     public void click_row1_formula_inside_ST() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, row1_column4_inside_ST, logger, " row1_column4_inside_ST ");
+        Thread.sleep(1000);
+        if (!BaseClass.smartTables().verify_comment_appears_to_ST()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, row1_column4_inside_ST, logger, " row1_column4_inside_ST ");
+        }
     }
 
     @FindBy(xpath = "//table[@class='htCore']//tr[1]//td[5]")
     WebElement row1_column5_inside_ST;
     public void click_row1_dynamic_inside_ST() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, row1_column5_inside_ST, logger, " row1_column5_inside_ST ");
+        Thread.sleep(1000);
+        if (!BaseClass.smartTables().verify_comment_appears_to_ST()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, row1_column5_inside_ST, logger, " row1_column5_inside_ST ");
+        }
+
     }
+    @FindBy(xpath = "//div[@id='comments-createNewThreadAction']")
+    WebElement add_new_comment_button;
+
+    @FindBy(xpath = "//li[@class='section-comments js-sectionComments flex-container flex-align-center flex-content-center js-commentsActionTooltipProvider unresolved-comments comments-unresolvedIcon']")
+    WebElement unresolved_comments_icon;
+    public boolean verify_comment_appears_to_ST() throws InterruptedException {
+        try {
+            if (add_new_comment_button.isDisplayed()) {
+                return true;
+            }
+        } catch (Exception e) {
+            // Element not found or not attached to DOM
+        }
+
+        // Recovery actions
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(1000);
+        ReusableMethodsLoggersPOM.clickMethod(driver, unresolved_comments_icon, logger, "unresolved_comments_icon");
+
+        return false;
+    }
+
 
     @FindBy(xpath = "//table[@class='htCore']//tr[1]//td[6]")
     WebElement row1_column6_inside_ST;
     public void click_row1_date_inside_ST() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver,row1_column6_inside_ST , logger, " row1_column6_inside_ST ");
+        Thread.sleep(1000);
+        if (!BaseClass.smartTables().verify_comment_appears_to_ST()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver,row1_column6_inside_ST , logger, " row1_column6_inside_ST ");
+        }
     }
+
 
 
 

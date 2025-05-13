@@ -1202,7 +1202,11 @@ int count = TC_highlights.size();
     }
     @FindBy(xpath = "//div[@id='comments-createNewThreadAction']")
     WebElement add_new_comment_button;
+
+    @FindBy(xpath = "//li[@class='section-comments js-sectionComments flex-container flex-align-center flex-content-center js-commentsActionTooltipProvider unresolved-comments comments-unresolvedIcon']")
+    WebElement unresolved_comments_icon;
     public void add_new_comment_to_ST() throws InterruptedException {
+
         ReusableMethodsLoggersPOM.clickMethod(driver, add_new_comment_button, logger, " add_new_comment_button ");
         BaseClass.ck5editor().enter_comment_to_field();
     }
