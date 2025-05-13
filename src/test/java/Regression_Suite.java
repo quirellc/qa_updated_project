@@ -194,7 +194,7 @@ public class Regression_Suite extends ReusableAnnotations {
      //   Thread.sleep(800);
         //from previous script
         BaseClass.pca_xml_section().click_package_ESA();
-        Thread.sleep(500);
+        Thread.sleep(1500);
         BaseClass.pca_xml_section().click_remove_button();
         Thread.sleep(500);
 //remove other package hovering over checkbox

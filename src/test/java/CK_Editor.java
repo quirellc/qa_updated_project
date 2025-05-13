@@ -599,9 +599,9 @@ public class CK_Editor extends ReusableAnnotations {
         BaseClass.reportfoldersection().clickReportsTab();
         Thread.sleep(1000);
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
-        Thread.sleep(3500);
+        Thread.sleep(4500);
         BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
 
 
         //create ck5 project folder
