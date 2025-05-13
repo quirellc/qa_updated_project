@@ -1268,53 +1268,67 @@ public void click_target_report_view_link() {
     public void select_company_user_status() {
         ReusableMethodsLoggersPOM.selectByText(driver, company_user_status, "Inactive", "company_user_status ");}
 
-    @FindBy(xpath = "//input[(@class='search')]")
-    WebElement searchFieldButton;
-    @FindBy(xpath = "//a[contains(text(), 'QA Dummy User')]")
-    WebElement qa_dummy_user_link;
+    @FindBy(xpath = "(//span[@role='presentation'][normalize-space()='Created'])[2]")
+    WebElement created_filter_button;
+
+    public void click_created_filter_button_twice() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, created_filter_button, logger, "created_filter_button ");
+        Thread.sleep(2500);
+        ReusableMethodsLoggersPOM.clickMethod(driver, created_filter_button, logger, "created_filter_button ");
+
+    }
+    @FindBy(xpath = "//*[normalize-space()='QA Dummy User-Chrome']")
+    WebElement qa_dummy_user_link_chrome;
+
+    @FindBy(xpath = "//*[normalize-space()='QA Dummy User-Firefox']")
+    WebElement qa_dummy_user_link_ff;
     public void click_qa_dummy_user_link() throws InterruptedException {
-        try {
-        ReusableMethodsLoggersPOM.clickMethod(driver, qa_dummy_user_link, logger, "qa_dummy_user_link ");
-        } catch (Exception e) {
-            driver.navigate().refresh();
-            ReusableMethodsLoggersPOM.clickMethod(driver, searchFieldButton, logger, "searchFieldButton ");
-            Thread.sleep(1500);
-            String searchText = browserName.contains("Chrome") ? "QA Dummy User-Chrome" : "QA Dummy User-Firefox";
-
-            for (char c : searchText.toCharArray()) {
-                String s = String.valueOf(c);
-                searchFieldButton.sendKeys(s);
-                Thread.sleep(100); // Mimic human typing
-            }
-            Thread.sleep(3000);
-            // Fire a real ENTER key event via JavaScript (works for most web apps)
-            ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', code: 'Enter', which: 13, keyCode: 13, bubbles: true}));",
-                    searchFieldButton
-            );
-            ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].dispatchEvent(new KeyboardEvent('keyup', {key: 'Enter', code: 'Enter', which: 13, keyCode: 13, bubbles: true}));",
-                    searchFieldButton
-            );
-            // Optionally, add an explicit wait here for results
-
-//
-            Thread.sleep(3000);
-            ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
-
-//        searchFieldButton.sendKeys("\n");
-            searchFieldButton.sendKeys(Keys.RETURN);
-            searchFieldButton.sendKeys(Keys.ENTER);
-            Thread.sleep(5000);
-            ReusableMethodsLoggersPOM.clickMethod(driver, qa_dummy_user_link, logger, "qa_dummy_user_link ");
-
-//
-            //  ReusableMethodsLoggersPOM.clickMethod(driver, searchFieldButton, logger, "company users - search field");
-
-            //   ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
-
-
+//        try {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, qa_dummy_user_link_chrome, logger, "qa_dummy_user_link ");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, qa_dummy_user_link_ff, logger, "qa_dummy_user_link ");
         }
+//        } catch (Exception e) {
+//            driver.navigate().refresh();
+//            ReusableMethodsLoggersPOM.clickMethod(driver, searchFieldButton, logger, "searchFieldButton ");
+//            Thread.sleep(1500);
+//            String searchText = browserName.contains("Chrome") ? "QA Dummy User-Chrome" : "QA Dummy User-Firefox";
+//
+//            for (char c : searchText.toCharArray()) {
+//                String s = String.valueOf(c);
+//                searchFieldButton.sendKeys(s);
+//                Thread.sleep(100); // Mimic human typing
+//            }
+//            Thread.sleep(3000);
+//            // Fire a real ENTER key event via JavaScript (works for most web apps)
+//            ((JavascriptExecutor) driver).executeScript(
+//                    "arguments[0].dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', code: 'Enter', which: 13, keyCode: 13, bubbles: true}));",
+//                    searchFieldButton
+//            );
+//            ((JavascriptExecutor) driver).executeScript(
+//                    "arguments[0].dispatchEvent(new KeyboardEvent('keyup', {key: 'Enter', code: 'Enter', which: 13, keyCode: 13, bubbles: true}));",
+//                    searchFieldButton
+//            );
+//            // Optionally, add an explicit wait here for results
+//
+////
+//            Thread.sleep(3000);
+//            ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
+//
+////        searchFieldButton.sendKeys("\n");
+//            searchFieldButton.sendKeys(Keys.RETURN);
+//            searchFieldButton.sendKeys(Keys.ENTER);
+//            Thread.sleep(5000);
+//            ReusableMethodsLoggersPOM.clickMethod(driver, qa_dummy_user_link, logger, "qa_dummy_user_link ");
+//
+////
+//            //  ReusableMethodsLoggersPOM.clickMethod(driver, searchFieldButton, logger, "company users - search field");
+//
+//            //   ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
+//
+//
+//        }
     }
 
 
