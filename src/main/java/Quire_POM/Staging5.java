@@ -1268,10 +1268,54 @@ public void click_target_report_view_link() {
     public void select_company_user_status() {
         ReusableMethodsLoggersPOM.selectByText(driver, company_user_status, "Inactive", "company_user_status ");}
 
+    @FindBy(xpath = "//input[(@class='search')]")
+    WebElement searchFieldButton;
     @FindBy(xpath = "//a[contains(text(), 'QA Dummy User')]")
     WebElement qa_dummy_user_link;
-    public void click_qa_dummy_user_link() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, qa_dummy_user_link, logger, "qa_dummy_user_link ");}
+    public void click_qa_dummy_user_link() throws InterruptedException {
+        try {
+        ReusableMethodsLoggersPOM.clickMethod(driver, qa_dummy_user_link, logger, "qa_dummy_user_link ");
+        } catch (Exception e) {
+            driver.navigate().refresh();
+            ReusableMethodsLoggersPOM.clickMethod(driver, searchFieldButton, logger, "searchFieldButton ");
+            Thread.sleep(1500);
+            String searchText = browserName.contains("Chrome") ? "QA Dummy User-Chrome" : "QA Dummy User-Firefox";
+
+            for (char c : searchText.toCharArray()) {
+                String s = String.valueOf(c);
+                searchFieldButton.sendKeys(s);
+                Thread.sleep(100); // Mimic human typing
+            }
+            Thread.sleep(3000);
+            // Fire a real ENTER key event via JavaScript (works for most web apps)
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', code: 'Enter', which: 13, keyCode: 13, bubbles: true}));",
+                    searchFieldButton
+            );
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].dispatchEvent(new KeyboardEvent('keyup', {key: 'Enter', code: 'Enter', which: 13, keyCode: 13, bubbles: true}));",
+                    searchFieldButton
+            );
+            // Optionally, add an explicit wait here for results
+
+//
+            Thread.sleep(3000);
+            ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
+
+//        searchFieldButton.sendKeys("\n");
+            searchFieldButton.sendKeys(Keys.RETURN);
+            searchFieldButton.sendKeys(Keys.ENTER);
+            Thread.sleep(5000);
+            ReusableMethodsLoggersPOM.clickMethod(driver, qa_dummy_user_link, logger, "qa_dummy_user_link ");
+
+//
+            //  ReusableMethodsLoggersPOM.clickMethod(driver, searchFieldButton, logger, "company users - search field");
+
+            //   ReusableMethodsLoggersPOM.submitMethod(driver, searchFieldButton, logger, "company users - search field");
+
+
+        }
+    }
 
 
 
