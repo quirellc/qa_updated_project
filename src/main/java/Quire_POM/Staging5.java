@@ -165,11 +165,13 @@ public class Staging5 extends ReusableAnnotations {
             System.out.println("List is empty.");
         }
     }
+    String generatedPortfolioName;
 
     @FindBy(xpath = "//textarea[@class='handsontableInput']")
     WebElement pca_portfolio_project_name_textBox;
     public void enter_pca_portfolio_project_name_textBox() throws InterruptedException {
-        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, pca_portfolio_project_name_textBox, "QA_" + dateOfSystem, logger, "pca_portfolio_project_name_textBox");}
+        generatedPortfolioName =  dateOfSystem;
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, pca_portfolio_project_name_textBox, "QA_" + generatedPortfolioName, logger, "pca_portfolio_project_name_textBox");}
 
     @FindBy(xpath = "//div[@class='htItemWrapper']")
     WebElement copy_data_across_rows_button;
@@ -3726,7 +3728,7 @@ public void enter_ca_section_cost() {
         String pdfContent = ReusableMethodsLoggersPOM.getPDFContent_from_most_recent_download();
         SoftAssert softAssert = new SoftAssert();
         // Assertion 1
-        boolean assertionResult1 = pdfContent.contains("QA_"+timeOfSystem);
+        boolean assertionResult1 = pdfContent.contains("QA_"+generatedPortfolioName);
                 //&& pdfContent.contains("New") && pdfContent.contains("New1") ;
         softAssert.assertTrue(assertionResult1);
         if (assertionResult1) {

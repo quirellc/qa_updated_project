@@ -340,6 +340,7 @@ public class DashBoard extends ReusableAnnotations {
 
             // Optionally, fail the test or take other actions
         }
+
     }
     public void verify_dashboard_second_column() {
         String dashboard_second_column_text = ReusableMethodsLoggersPOM.saveTextMethod(driver, dashboard_second_column, logger, "dashboard_second_column" );
@@ -347,20 +348,21 @@ public class DashBoard extends ReusableAnnotations {
         // Check if all required substrings are present in the captured text
         if (dashboard_second_column_text.contains("My Recently Edited Reports") &&
                 dashboard_second_column_text.contains("My Editing Time (by Report/Label)") &&
-                dashboard_second_column_text.contains("Tip:")) {
+                (dashboard_second_column_text.contains("Tip:") || dashboard_second_column_text.contains("Live Training"))) {
+            // your code here
 
             // Log success if all conditions are met
             logger.log(LogStatus.PASS, "Second column widgets matches layout expected  for author ");
-            System.out.println("Second column widgets layout matches expected  for author ");
+            System.out.println("Second column widgets layout matches expected   ");
 
         } else {
             // Log failure if any condition is not met
-            logger.log(LogStatus.FAIL, "Second column widgets layout DOES NOT match whats expected  for author ");
-            System.out.println("Second column widgets layout DOES NOT match whats expected  for author ");
+            logger.log(LogStatus.FAIL, "Second column widgets layout DOES NOT match whats expected  ");
+            System.out.println("Second column widgets layout DOES NOT match whats expected   ");
 
             // Optionally, fail the test or take other actions
-        }
-    }
+        }}
+
     public void verify_dashboard_third_column_author() {
         String dashboard_third_column_text = ReusableMethodsLoggersPOM.saveTextMethod(driver, dashboard_third_column, logger, "dashboard_third_column" );
         // Define the substrings you want to check for

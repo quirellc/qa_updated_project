@@ -479,8 +479,8 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 //        BaseClass.staging5().switchTo_reportTag_dropdownItems_ck5_iFrame();
         BaseClass.staging5().click_titlePageImage_RT_dropDownItem();
 //        driver.switchTo().defaultContent();
-        BaseClass.staging5().click_default_section_title();
-        Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(1500);
         BaseClass.reporttagssection().verify_title_page_image_loaded();
         Thread.sleep(500);
 

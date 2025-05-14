@@ -1090,7 +1090,7 @@ BaseClass.staging5().clickLibrariesTab();
         BaseClass.templatesSection().verify_excel_AlertMessage();
         Thread.sleep(10000);
         BaseClass.staging5().click_active_notification_button();
-        Thread.sleep(500);
+        Thread.sleep(3000);
         BaseClass.staging5().verify_ST_dropdownvalue_excel_file_generated();
         Thread.sleep(500);
 
