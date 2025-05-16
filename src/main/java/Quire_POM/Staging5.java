@@ -251,8 +251,27 @@ public class Staging5 extends ReusableAnnotations {
     @FindBy(xpath = "//*[normalize-space()='Reports']")
     WebElement reportsTab;
 
+    @FindBy(xpath = "//span[normalize-space()='Reports']//i[@class='fa fa-caret-down']")
+    WebElement reportsCaretIcon;
+
+    @FindBy(xpath = "(//a[contains(text(),'All Folders')])[1]")
+    WebElement allFoldersDropdownItem;
+
     public void clickReportsTab() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
+        try {
+            // If caret icon is displayed, hover and click All Folders
+            if (reportsCaretIcon.isDisplayed()) {
+                ReusableMethodsLoggersPOM.mouseHoverMethod(driver, reportsTab, logger, "reports tab");
+                //Thread.sleep(500); // Wait for dropdown to appear
+                ReusableMethodsLoggersPOM.clickMethod(driver, allFoldersDropdownItem, logger, "All Folders dropdown");
+            } else {
+                // Default: click Reports tab
+                ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
+            }
+        } catch (Exception  e) {
+            // Fallback: just click Reports tab if caret or dropdown not present
+            ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
+        }
     }
 
     @FindBy(xpath = "//*[contains(text(),'All Folders')]")
@@ -440,8 +459,24 @@ public class Staging5 extends ReusableAnnotations {
     @FindBy(xpath = "//*[normalize-space()='Shared Reports']")
     WebElement sharedReportsTab;
 
+    @FindBy(xpath = "//span[normalize-space()='Shared Reports']//i[@class='fa fa-caret-down']")
+    WebElement sharedReportsCaretIcon;
+
+    @FindBy(xpath = "(//a[contains(text(),'Shared with Contractors')])[1]")
+    WebElement sharedWithContractorsDropdownItem;
+
     public void clickSharedReportsTab() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, sharedReportsTab, logger, "shared Reports Tab ");
+        try {
+            if (sharedReportsCaretIcon.isDisplayed()) {
+                ReusableMethodsLoggersPOM.mouseHoverMethod(driver, sharedReportsTab, logger, "shared Reports Tab");
+                ReusableMethodsLoggersPOM.clickMethod(driver, sharedWithContractorsDropdownItem, logger, "Shared with Contractors dropdown");
+            } else {
+                ReusableMethodsLoggersPOM.clickMethod(driver, sharedReportsTab, logger, "shared Reports Tab ");
+            }
+        } catch (Exception e) {
+            // Fallback: just click Shared Reports tab if caret or dropdown not present
+            ReusableMethodsLoggersPOM.clickMethod(driver, sharedReportsTab, logger, "shared Reports Tab ");
+        }
     }
 
     @FindBy(xpath = "//a[contains(text(),'Shared with Contractors')]")
