@@ -124,7 +124,12 @@ public class ProjectFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, projectFolder_Template_SearchField, "QA Automation", logger, "project folder-template search field ");
         Thread.sleep(1000);
         ReusableMethodsLoggersPOM.submitMethod(driver, projectFolder_Template_SearchField, logger, "project folder-template search field ");
+    }
 
+    public void enterProjectFolder_ZON_Template_SearchField() throws InterruptedException {
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, projectFolder_Template_SearchField, "QA Automation Testing ZON", logger, "project folder-template search field ");
+        Thread.sleep(1000);
+        ReusableMethodsLoggersPOM.submitMethod(driver, projectFolder_Template_SearchField, logger, "project folder-template search field ");
     }
 
     @FindBy(xpath = "//*[contains(text(),'PCA Template-Chrome')]")
@@ -175,9 +180,9 @@ public class ProjectFolderSection extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_SRA_Template_ff, logger, "QA sra template firefox");
         }}
 
-    @FindBy(xpath = "//*[contains(text(),'ZON Template-Chrome')]")
+    @FindBy(xpath = "//div[normalize-space()='QA Automation Testing ZON Template-Chrome']")
     WebElement projectFolder_ZON_Template_chrome;
-    @FindBy(xpath = "//*[contains(text(),'ZON Template-Firefox')]")
+    @FindBy(xpath = "//div[normalize-space()='QA Automation Testing ZON Template-Firefox']")
     WebElement projectFolder_ZON_Template_ff;
     public void click_ZON_Template_projectFolder_templatesTab() {
         if (browserName.contains("Chrome")) {

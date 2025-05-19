@@ -103,8 +103,8 @@ driver.navigate().refresh();
         //need to add wait before typing so it can search item in dropdownssffy
         Thread.sleep(2000);
 
-        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
-        Thread.sleep(2000);
+        BaseClass.projectFolderSection().enterProjectFolder_ZON_Template_SearchField();
+        Thread.sleep(3500);
 
         BaseClass.projectFolderSection().click_ZON_Template_projectFolder_templatesTab();
         BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
