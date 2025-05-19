@@ -1675,7 +1675,7 @@ public void TR_009_navigate_ck5_report() throws InterruptedException {
         BaseClass.smartTables().click_smartTable_sectionView();
         Thread.sleep(1500);
         BaseClass.smartTables().click_row6_dynamic();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         BaseClass.staging5().click_insert_wordbank_arrow_button();
         Thread.sleep(500);
         BaseClass.staging5().click_cancel_button_popup();
