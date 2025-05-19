@@ -485,7 +485,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.ck5editor().click_unlink_button_sectionLinkView();
         Thread.sleep(500);
-        BaseClass.staging5().click_smartTable_title_header();
+        BaseClass.staging5().click_pixel_out_of_section();
         Thread.sleep(500);
         BaseClass.smartTables().click_row4_richText();
         Thread.sleep(500);

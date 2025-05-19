@@ -559,11 +559,14 @@ WebElement instruction_text_ck5;
         ReusableMethodsLoggersPOM.doubleClickMethod(driver, linked_section_text_smartTable, logger, "linked_section_text ");
     }
 
+    @FindBy(xpath = "//td[contains(@class,'htLeft quire-rich-text current')]//span[@class='has-tooltip mceNonEditable quire-section-link js-quire-section-link']")
+    WebElement linked_section_text_smartTable1;
+
     public void verify_sectionLink_smartTable_isVisible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, linked_section_text_smartTable, true, logger, "linked_section_text_smartTable ");}
 
     public void verify_linked_sectionLink_isNot_visible() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, linked_section_text_smartTable, false, logger, "linked_section_text ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, linked_section_text_smartTable1, false, logger, "linked_section_text_smartTable1 ");
     }
 
     @FindBy(xpath = "//button[@data-cke-tooltip-text='Insert Variable']")
