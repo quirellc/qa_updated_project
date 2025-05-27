@@ -1652,12 +1652,14 @@ public void click_target_report_view_link() {
         }
     }
 
-    @FindBy(xpath = "(//li[@class='report_appendix pdf-appendix js-report-appendix stores-pdfs']//div[@class='appendix-item-thumb'])[1]")
+//    @FindBy(xpath = "(//li[@class='report_appendix pdf-appendix js-report-appendix stores-pdfs']//div[@class='appendix-item-thumb'])[1]")
+    @FindBy(xpath = "//li[contains(@class, 'report_appendix pdf-appendix js-report-appendix stores-pdfs')]//img[@class='appendix-item-thumb-img']")
     WebElement first_pdf_file_appendix;
-    @FindBy(xpath = "(//li[@class='report_appendix pdf-appendix js-report-appendix stores-pdfs']//i[@class='fa fa-trash-o has-tooltip'])")
-    WebElement first_pdf_file_appendix_delete;
+    //@FindBy(xpath = "(//li[@class='report_appendix pdf-appendix js-report-appendix stores-pdfs']//i[@class='fa fa-trash-o has-tooltip'])")
+   @FindBy(xpath = "(//i[@class='fa fa-trash-o has-tooltip'])[1]")
+    WebElement appendix_delete;
     @FindBy(xpath = "(//li[@class='report_appendix pdf-appendix js-report-appendix stores-pdfs']//i[@class='fa fa-minus-circle has-tooltip'])[1]")
-    WebElement first_pdf_file_appendix_exclude;
+    WebElement appendix_exclude;
     @FindBy(xpath = "(//li[@class='report_appendix pdf-appendix js-report-appendix stores-pdfs']//div[@class='appendix-item-excluded-label'])")
     WebElement verify_pdf_file_appendix_excluded;
     public void hover_to_delete_first_pdf_appendix_file() throws InterruptedException {
@@ -1665,13 +1667,13 @@ public void click_target_report_view_link() {
 
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_pdf_file_appendix, logger, "first_pdf_file_appendix");
         Thread.sleep(500);
-        ReusableMethodsLoggersPOM.clickMethod(driver, first_pdf_file_appendix_delete, logger, "first_pdf_file_appendix_delete");
+        ReusableMethodsLoggersPOM.clickMethod(driver, appendix_delete, logger, "first_pdf_file_appendix_delete");
         Thread.sleep(500);
     }
     public void hover_to_exclude_first_pdf_appendix_file() throws InterruptedException {
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_pdf_file_appendix, logger, "first_pdf_file_appendix");
         Thread.sleep(500);
-        ReusableMethodsLoggersPOM.clickMethod(driver, first_pdf_file_appendix_exclude, logger, "second_pdf_file_appendix_exclude");
+        ReusableMethodsLoggersPOM.clickMethod(driver, appendix_exclude, logger, "second_pdf_file_appendix_exclude");
         BaseClass.staging5().captureAlertMessage();
         Thread.sleep(500);
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, verify_pdf_file_appendix_excluded, true, logger, "verify_pdf_file_appendix_excluded");
@@ -1680,20 +1682,21 @@ public void click_target_report_view_link() {
 
 
 
-    @FindBy(xpath = "(//li[@class='report_appendix gallery-appendix js-report-appendix stores-images']//div[@class='appendix-item-thumb'])[1]")
+    @FindBy(xpath = "//li[contains(@class, 'report_appendix gallery-appendix js-report-appendix stores-images')]//img[@class='appendix-item-thumb-img']")
     WebElement first_gallery_file_appendix;
     @FindBy(xpath = "(//li[@class='report_appendix gallery-appendix js-report-appendix stores-images']//i[@class='fa fa-trash-o has-tooltip'])[1]")
     WebElement first_gallery_file_appendix_delete;
     @FindBy(xpath = "(//li[@class='report_appendix gallery-appendix js-report-appendix stores-images']//i[@class='fa fa-minus-circle has-tooltip'])[1]")
     WebElement first_gallery_file_appendix_exclude;
     @FindBy(xpath = "(//li[@class='report_appendix gallery-appendix js-report-appendix stores-images']//div[@class='appendix-item-excluded-label'])")
+    //li[contains(@class, 'report_appendix gallery-appendix js-report-appendix stores-images')]//div[@class='appendix-item-excluded-label']
     WebElement verify_gallery_file_appendix_excluded;
     public void hover_to_delete_first_gallery_appendix_file() throws InterruptedException {
         ReusableMethodsLoggersPOM.scrollToElementMethod(driver, first_gallery_file_appendix, logger, "first_gallery_file_appendix");
 
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_gallery_file_appendix, logger, "first_gallery_file_appendix");
         Thread.sleep(500);
-        ReusableMethodsLoggersPOM.clickMethod(driver, first_gallery_file_appendix_delete, logger, "first_gallery_file_appendix_delete");
+        ReusableMethodsLoggersPOM.clickMethod(driver, appendix_delete, logger, "first_gallery_file_appendix_delete");
         Thread.sleep(500);
 
     }
@@ -1701,7 +1704,7 @@ public void click_target_report_view_link() {
 
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_gallery_file_appendix, logger, "first_gallery_file_appendix");
         Thread.sleep(500);
-        ReusableMethodsLoggersPOM.clickMethod(driver, first_gallery_file_appendix_exclude, logger, "first_gallery_file_appendix_exclude");
+        ReusableMethodsLoggersPOM.clickMethod(driver, appendix_exclude, logger, "first_gallery_file_appendix_exclude");
         BaseClass.staging5().captureAlertMessage();
         Thread.sleep(500);
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, verify_gallery_file_appendix_excluded, true, logger, "verify_gallery_file_appendix_excluded");
