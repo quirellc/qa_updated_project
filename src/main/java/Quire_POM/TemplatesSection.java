@@ -652,11 +652,11 @@ for (int i = 0; i < search_results_int; i++) {
         try {
             ReusableMethodsLoggersPOM.clickMethod(driver, hereLink, logger, "here link");
             } catch (Exception e) {
-            Thread.sleep(1000);
+        //    Thread.sleep(1000);
             driver.navigate().refresh();
-            Thread.sleep(1000);
-            driver.navigate().refresh();
-            Thread.sleep(1000);
+//            Thread.sleep(1000);
+//            driver.navigate().refresh();
+//            Thread.sleep(1000);
 
             BaseClass.reportfoldersection().enterSearchField_QA();
             Thread.sleep(3500);

@@ -168,8 +168,13 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, reportNameField, "QA Automation Freddie Mac 1104 Test Report", logger, "FM_1104 report name field");
     }
 
+
     public void enterReportName_QA_FM_1104_cloned_Field() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, reportNameField, "QA Automation Freddie Mac 1104 Cloned Test Report", logger, "FM_1104 cloned report name field");
+    }
+
+    public void enterReportName_QA_Regression_suite_Field() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, reportNameField, "QA Automation Regression Suite Test Report", logger, " report name field");
     }
 
     public void enterReportName_QA_Medium_Priority_Report_Field() {

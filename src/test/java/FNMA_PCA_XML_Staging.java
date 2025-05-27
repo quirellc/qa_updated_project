@@ -228,7 +228,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
 
         BaseClass.templatesSection().capture_created_AlertMessage();
-        BaseClass.reportfoldersection().clickHereLink();
+        BaseClass.templatesSection().clickHereLinkReport();
         Thread.sleep(1000);
 
 

@@ -96,6 +96,20 @@ public class ProjectFolderSection extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, projectFolderName, "QA Automation Testing ZON Project Folder-Firefox "+ dateOfSystem, logger, "ZON Project Folder name field ff");
         }}
 
+    public void enterProjectFolderNameField_RegressionSuite() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, projectFolderName, "QA Automation Testing Regression Project Folder-Chrome "+  dateOfSystem, logger, "Regression Project Folder name field chrome");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, projectFolderName, "QA Automation Testing Regression Project Folder-Firefox "+ dateOfSystem, logger, "Regression Project Folder name field ff");
+        }}
+
+    public void enterProjectFolderNameField_TBD() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, projectFolderName, "QA Automation Testing TBD Project Folder-Chrome "+  dateOfSystem, logger, "TBD Project Folder name field chrome");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, projectFolderName, "QA Automation Testing TBD Project Folder-Firefox "+ dateOfSystem, logger, "TBD Project Folder name field ff");
+        }}
+
     public void enterProjectFolderNameField_Medium() {
         if (browserName.contains("Chrome")) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, projectFolderName, "QA Automation Testing Medium Priority Project Folder-Chrome "+  dateOfSystem, logger, "Medium Priority Project Folder name field chrome");
@@ -131,6 +145,8 @@ public class ProjectFolderSection extends ReusableAnnotations {
         Thread.sleep(1000);
         ReusableMethodsLoggersPOM.submitMethod(driver, projectFolder_Template_SearchField, logger, "project folder-template search field ");
     }
+
+
 
     @FindBy(xpath = "//*[contains(text(),'PCA Template-Chrome')]")
     WebElement projectFolder_QA_PCA_Template_chrome;
@@ -307,6 +323,37 @@ public class ProjectFolderSection extends ReusableAnnotations {
         } else if (browserName.contains("Firefox")) {
             ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_ZON_Link_ff, logger, "project folder ck5 link ff");
         }}
+
+    @FindBy(xpath = "//span[contains(text(),'Regression Project Folder-Chrome')]")
+    WebElement projectFolder_Regression_Link_chrome;
+    @FindBy(xpath = "//span[contains(text(),'Regression Project Folder-Firefox')]")
+    WebElement projectFolder_Regression_Link_ff;
+    public void click_RegressionSuite_ProjectFolderLink() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, projectFolder_Regression_Link_chrome, logger, "Regression folder  link chrome");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_Regression_Link_ff, logger, "Regression folder  link ff");
+        }}
+
+
+    @FindBy(xpath = "//span[contains(text(),'TBD Project Folder-Chrome')]")
+    WebElement projectFolder_TBD_Link_chrome;
+    @FindBy(xpath = "//span[contains(text(),'TBD Project Folder-Firefox')]")
+    WebElement projectFolder_TBD_Link_ff;
+    public void click_TBD_ProjectFolderLink() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, projectFolder_TBD_Link_chrome, logger, "tbd folder  link chrome");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_TBD_Link_ff, logger, "tbd folder  link ff");
+        }}
+
+    public void verify_TBD_ProjectFolderLink_isNotVisible() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, projectFolder_TBD_Link_chrome, false, logger, "projectFolder_TBD_Link_chrome");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, projectFolder_TBD_Link_chrome, false, logger, "projectFolder_TBD_Link_ff");
+        }}
+
 
     public void verify_ZON_ProjectFolderLink_isNotVisible() {
         if (browserName.contains("Chrome")) {

@@ -76,18 +76,66 @@ public class Regression_Suite extends ReusableAnnotations {
         BaseClass.templatesSection().clickSave2();
         Thread.sleep(3000);
 
-        //open cloned fm 1105 report, and upload stamp and signature
-        BaseClass.reportfoldersection().clickReportsTab();
+    }
+    @Test
+    public void TR_002a_create_regression_folder() throws InterruptedException {
+
+
+//create proj folder
+    BaseClass.reportfoldersection().clickReportsTab();
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
         Thread.sleep(3500);
         BaseClass.reportfoldersection().clickReportsFirstLink();
         Thread.sleep(1500);
-        BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
-        Thread.sleep(1500);
-        BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(1500);
 
-        //new ck5
+
+
+
+        //create RegressionSuite project folder
+
+        BaseClass.projectFolderSection().clickAddProjectFolderButton();
+        BaseClass.projectFolderSection().enterProjectFolderNameField_RegressionSuite();
+        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
+        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
+
+        //need to add wait before typing so it can search item in dropdownssffy
+        Thread.sleep(2000);
+
+        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
+        Thread.sleep(3500);
+
+        BaseClass.projectFolderSection().click_FM_1104_Template_projectFolder_templatesTab();
+        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
+        Thread.sleep(3000);
+
+        BaseClass.projectFolderSection().clickSave();
+        Thread.sleep(4500);
+        BaseClass.projectFolderSection().click_RegressionSuite_ProjectFolderLink();
+
+        //create RegressionSuite report folder with fm1104 template created
+
+        Thread.sleep(2000);
+
+        BaseClass.reportfoldersection().clickAddReportButton();
+
+        BaseClass.reportfoldersection().enterReportName_QA_Regression_suite_Field();
+        BaseClass.reportfoldersection().enterReportDescriptionField();
+        BaseClass.reportfoldersection().clickReport_TemplateDropdown();
+        Thread.sleep(2500);
+        BaseClass.reportfoldersection().clickDropdownItem();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().clickSave();
+        Thread.sleep(3000);
+
+        BaseClass.templatesSection().capture_created_AlertMessage();
+        BaseClass.templatesSection().clickHereLinkReport();
+        Thread.sleep(2000);
+
+    }
+
+    @Test
+    public void TR_002b_stamp_signature_in_report() throws InterruptedException {
+
         BaseClass.staging5().click_default_section_title();
         Thread.sleep(1000);
         BaseClass.pca_xml_section().clickAddSectionButton();
@@ -958,12 +1006,37 @@ Thread.sleep(1000);
     }
 
     @Test
-    public void TR_014_projFolders() throws InterruptedException {
+    public void TR_014_delete_projFolders() throws InterruptedException {
         BaseClass.staging5().clickReportsTab();
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
         BaseClass.reportfoldersection().clickReportsFirstLink();
 
-        BaseClass.projectFolderSection().click_ZON_ProjectFolderLink();
+        //create proj folder to be deleted -
+//create proj folder
+
+        //create RegressionSuite project folder
+
+        BaseClass.projectFolderSection().clickAddProjectFolderButton();
+        BaseClass.projectFolderSection().enterProjectFolderNameField_TBD();
+        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
+        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
+
+        //need to add wait before typing so it can search item in dropdownssffy
+        Thread.sleep(2000);
+
+        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
+        Thread.sleep(3500);
+
+        BaseClass.projectFolderSection().click_FM_1104_Template_projectFolder_templatesTab();
+        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
+        Thread.sleep(3000);
+
+        BaseClass.projectFolderSection().clickSave();
+        Thread.sleep(4500);
+
+        //create RegressionSuite report folder with fm1104 template created
+
+        BaseClass.projectFolderSection().click_TBD_ProjectFolderLink();
         BaseClass.projectFolderSection().click_projectFolderSettings_button();
         BaseClass.templatesSection().clickdeleteToTrash();
         Thread.sleep(200);
@@ -980,10 +1053,11 @@ Thread.sleep(1000);
         BaseClass.staging5().clickReportsTab();
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
         BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(2500);
 
         //go back and permanently delete zon project folder
 
-        BaseClass.projectFolderSection().click_ZON_ProjectFolderLink();
+        BaseClass.projectFolderSection().click_TBD_ProjectFolderLink();
         BaseClass.projectFolderSection().click_projectFolderSettings_button();
         BaseClass.templatesSection().clickdeleteToTrash();
         Thread.sleep(200);
@@ -1002,7 +1076,7 @@ Thread.sleep(1000);
         BaseClass.reportfoldersection().clickReportsFirstLink();
         Thread.sleep(1500);
 
-        BaseClass.projectFolderSection().verify_ZON_ProjectFolderLink_isNotVisible();
+        BaseClass.projectFolderSection().verify_TBD_ProjectFolderLink_isNotVisible();
         Thread.sleep(500);
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
