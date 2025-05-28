@@ -1094,17 +1094,29 @@ public class ReusableMethodsLoggersPOM {
     public static void getScreenShot(WebDriver driver, String imageName, ExtentTest logger) {
         try {
             String fileName = imageName + ".png";
-            String directory = null;
-            String snPath = null;
-            directory = "src/main/java/HTML_Report/Screenshots/";
-            snPath = "Screenshots//";
+            String screenshotDirectory = "src/main/java/HTML_Report/Screenshots/";
+            
+            // Create directory if it doesn't exist
+            new File(screenshotDirectory).mkdirs();
+            
+            // Take screenshot and save to file
             File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(sourceFile, new File(directory + fileName));
-            //String imgPath = directory + fileName;
-            String image = logger.addScreenCapture(snPath + fileName);
-            logger.log(LogStatus.FAIL, "", image);
+            File destFile = new File(screenshotDirectory + fileName);
+            FileUtils.copyFile(sourceFile, destFile);
+            
+            // For CI/CD environments, embed the image directly in the HTML report
+            // Convert screenshot to base64 string and embed it directly
+            String base64Image = "data:image/png;base64," + 
+                                 Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(destFile));
+            
+            // Add both the file reference (for local viewing) and base64 data (for CI/CD viewing)
+            String fileImage = logger.addScreenCapture("Screenshots/" + fileName);
+            logger.log(LogStatus.FAIL, "", fileImage);
+            
+            // Also add a base64 version that will be visible in CI/CD
+            logger.log(LogStatus.FAIL, "Screenshot", "<img src='" + base64Image + "' style='max-width:800px;'>");
         } catch (Exception e) {
-            logger.log(LogStatus.FAIL, "Error Occured while taking SCREENSHOT!!! " + e);
+            logger.log(LogStatus.FAIL, "Error Occurred while taking SCREENSHOT!!! " + e);
         }
     }//end of getScreenshot method
 

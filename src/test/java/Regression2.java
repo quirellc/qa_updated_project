@@ -58,7 +58,7 @@ public class Regression2 extends ReusableAnnotations {
                 Thread.sleep(1000);
                 BaseClass.quireLogin().clickLogin();
                 Thread.sleep(2000);
-                BaseClass.quireLogin().clickLogin();
+                BaseClass.reportfoldersection().clickSectionView_Appendices();
 
               //  BaseClass.smartTables().click_row1_dynamic_inside_ST();
 
