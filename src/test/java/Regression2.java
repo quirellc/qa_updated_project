@@ -57,68 +57,114 @@ public class Regression2 extends ReusableAnnotations {
                 BaseClass.quireLogin().enterPassword();
                 Thread.sleep(1000);
                 BaseClass.quireLogin().clickLogin();
-                Thread.sleep(3000);
+                Thread.sleep(2000);
+                BaseClass.quireLogin().clickLogin();
+
+              //  BaseClass.smartTables().click_row1_dynamic_inside_ST();
 
 
         }
 
+//        @Test
+//        public void TR_010b_delete_exclude_appendix_files() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
+//                BaseClass.reportfoldersection().clickSectionView_Appendices();
+//                Thread.sleep(1000);
+//                BaseClass.reportfoldersection().number_of_items_appendix_section();
+//                Thread.sleep(500);
+//
+//                BaseClass.staging5().hover_to_delete_first_pdf_appendix_file();
+//                Thread.sleep(500);
+//                BaseClass.staging5().hover_to_exclude_first_pdf_appendix_file();
+//                Thread.sleep(500);
+//
+//                BaseClass.staging5().hover_to_delete_first_gallery_appendix_file();
+//                Thread.sleep(500);
+//                BaseClass.staging5().hover_to_exclude_first_gallery_appendix_file();
+//                Thread.sleep(500);
+//
+//                BaseClass.reportfoldersection().number_of_items_appendix_section();
+//                Thread.sleep(500);
+//
+//                BaseClass.staging5().click_view_trash_button();
+//                Thread.sleep(500);
+//
+//
+//                //restore recent 2 deleted items (appendices)
+//                BaseClass.staging5().click_restore_first_deleted_item();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_restore_first_deleted_item();
+//                Thread.sleep(500);
+//                //go back and refresh
+//                WebDriver driver = getDriver();
+//
+//                driver.navigate().back();
+//                Thread.sleep(500);
+//                driver.navigate().refresh();
+//                Thread.sleep(500);
+//                BaseClass.reportfoldersection().clickSectionView_Appendices();
+//                Thread.sleep(1500);
+//
+//                BaseClass.reportfoldersection().number_of_items_appendix_section();
+//                Thread.sleep(1000);
+//
+//        }
 
-        @Test
-        public void TR_001a_navigate() throws InterruptedException {
-                WebDriver driver = getDriver();
-                //navigate to empty report-automation testing report
-                driver.navigate().to("https://staging3.openquire.com");
-                Thread.sleep(500);
-                BaseClass.staging5().captureURL();
-                Thread.sleep(500);
-                // BaseClass.staging5().click_and_capture_track_changes_button();
-                Thread.sleep(1000);
-
-
-                //log out current user, log into sysadmin atlas
-                BaseClass.staging5().clickUserProfileTab();
-                BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-                BaseClass.quireLogin().enterEmail_sysadmin_atlas();
-                BaseClass.quireLogin().enterPassword();
-                Thread.sleep(1000);
-                BaseClass.quireLogin().clickLogin();
-                Thread.sleep(500);
-                BaseClass.staging5().click_modal_close_window();
-                Thread.sleep(500);
-
-                //log out current user, log into admin atlas
-                BaseClass.staging5().clickUserProfileTab();
-                Thread.sleep(500);
-                BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-                BaseClass.quireLogin().enterEmail_admin_atlas();
-                BaseClass.quireLogin().enterPassword();
-                Thread.sleep(1000);
-                BaseClass.quireLogin().clickLogin();
-                Thread.sleep(500);
-                BaseClass.staging5().click_modal_close_window();
-                Thread.sleep(1000);
-
-
-                //go to company users
-                BaseClass.staging5().clickUsersTab();
-                Thread.sleep(500);
-                BaseClass.staging5().click_usersTab_companyUsers_dropdownItem();
-                Thread.sleep(1000);
-                BaseClass.staging5().verify_loading_complete_sideBar();
-                //find QA Dumnmy user
-                BaseClass.reportfoldersection().enterSearchField_QA_companyUser();
-                Thread.sleep(3000);
-                BaseClass.staging5().click_qa_dummy_user_link();
-                Thread.sleep(500);
-                BaseClass.staging5().verify_locked_companyUser_fields();
-                Thread.sleep(500);
-                BaseClass.staging5().select_company_user_status();
-                Thread.sleep(500);
-                BaseClass.staging5().clickSave();
-                Thread.sleep(500);
-                BaseClass.staging5().captureAlertMessage();
-
-        }
+//        @Test
+//        public void TR_001a_navigate() throws InterruptedException {
+//                WebDriver driver = getDriver();
+//                //navigate to empty report-automation testing report
+//                driver.navigate().to("https://staging3.openquire.com");
+//                Thread.sleep(500);
+//                BaseClass.staging5().captureURL();
+//                Thread.sleep(500);
+//                // BaseClass.staging5().click_and_capture_track_changes_button();
+//                Thread.sleep(1000);
+//
+//
+//                //log out current user, log into sysadmin atlas
+//                BaseClass.staging5().clickUserProfileTab();
+//                BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//                BaseClass.quireLogin().enterEmail_sysadmin_atlas();
+//                BaseClass.quireLogin().enterPassword();
+//                Thread.sleep(1000);
+//                BaseClass.quireLogin().clickLogin();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_modal_close_window();
+//                Thread.sleep(500);
+//
+//                //log out current user, log into admin atlas
+//                BaseClass.staging5().clickUserProfileTab();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//                BaseClass.quireLogin().enterEmail_admin_atlas();
+//                BaseClass.quireLogin().enterPassword();
+//                Thread.sleep(1000);
+//                BaseClass.quireLogin().clickLogin();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_modal_close_window();
+//                Thread.sleep(1000);
+//
+//
+//                //go to company users
+//                BaseClass.staging5().clickUsersTab();
+//                Thread.sleep(500);
+//                BaseClass.staging5().click_usersTab_companyUsers_dropdownItem();
+//                Thread.sleep(1000);
+//                BaseClass.staging5().verify_loading_complete_sideBar();
+//                //find QA Dumnmy user
+//                BaseClass.staging5().click_created_filter_button_twice();
+//                Thread.sleep(3000);
+//                BaseClass.staging5().click_qa_dummy_user_link();
+//                Thread.sleep(500);
+//                BaseClass.staging5().verify_locked_companyUser_fields();
+//                Thread.sleep(500);
+//                BaseClass.staging5().select_company_user_status();
+//                Thread.sleep(500);
+//                BaseClass.staging5().clickSave();
+//                Thread.sleep(500);
+//                BaseClass.staging5().captureAlertMessage();
+//
+//        }
 
 }
 

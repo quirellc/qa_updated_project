@@ -144,7 +144,7 @@ public class ReusableAnnotations {
         }
 
     }//end of before suite
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         if (getDriver() != null) {
             getDriver().quit();
@@ -190,7 +190,7 @@ public class ReusableAnnotations {
     }//end of before method
 
 
-    @AfterClass
+    @AfterClass(alwaysRun = true, dependsOnMethods = "tearDown")
     public void finishReport() {
         reports.flush();
     }//end of after suite

@@ -11,6 +11,7 @@ blocks:
         always:
           commands:
             - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force
+            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report/Screenshots --force
       jobs:
         - name: practice
           commands:

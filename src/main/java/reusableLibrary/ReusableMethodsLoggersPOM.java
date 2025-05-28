@@ -123,34 +123,29 @@ public class ReusableMethodsLoggersPOM {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         int maxAttempts = 3; // Maximum number of attempts
         int attempt = 0;
+        
         while (attempt < maxAttempts) {
-
             try {
                 wait.until(ExpectedConditions.elementToBeClickable(xpath)).click();
                 System.out.println("Successfully clicked on: " + elementName);
                 logger.log(LogStatus.PASS, "Successfully clicked on: " + elementName);
-                return;
-            } catch (TimeoutException e) {
-                // Handle timeout explicitly
-                System.out.println("\n" + e);
-                logger.log(LogStatus.INFO, e);
-
-            } catch (StaleElementReferenceException e) {
-                attempt++;
-                // Retry the click if StaleElementReferenceException is caught
-                System.out.println("\n" + "Stale element encountered, retrying click attempt " + attempt);
-                logger.log(LogStatus.INFO, "Stale element encountered, retrying click attempt " + attempt);
-                wait.until(ExpectedConditions.elementToBeClickable(xpath));
-                // Re-locate the element
+                return; // Success - exit the method
             } catch (Exception e) {
                 attempt++;
-                System.out.println("Unable to click on " + elementName + ": " + e);
-                logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ": " + e);
-                wait.until(ExpectedConditions.elementToBeClickable(xpath));
-                  getScreenShot(driver, "screenshot", logger);
+                // Log which type of exception for debugging purposes
+                String exceptionType = e.getClass().getSimpleName();
+                System.out.println("\n" + exceptionType + " encountered, attempt " + attempt + ": " + e);
+                logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ", attempt " + attempt + " (" + exceptionType + ")");
+                getScreenShot(driver, "click_failure_" + attempt, logger);
             }
-
         }
+        
+        // If we've exhausted all attempts, throw an AssertionError to stop the test
+        String errorMessage = "FAILED: Unable to click on " + elementName + " after " + maxAttempts + " attempts";
+        System.err.println(errorMessage);
+        logger.log(LogStatus.FATAL, errorMessage);
+        getScreenShot(driver, "final_failure_" + elementName.replaceAll("\\s+", "_"), logger);
+        throw new AssertionError(errorMessage);
     }//end of click method
 
     public static void clickByIndex(WebDriver driver, String xpath, int index, ExtentTest logger, String elementName) {
