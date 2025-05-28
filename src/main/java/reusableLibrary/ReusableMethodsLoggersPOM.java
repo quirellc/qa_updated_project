@@ -133,10 +133,8 @@ public class ReusableMethodsLoggersPOM {
             } catch (Exception e) {
                 attempt++;
                 // Log the exception for debugging purposes
-                String currentUrl = driver.getCurrentUrl();
                 System.out.println("\nException encountered, attempt " + attempt + ": " + e);
-                System.out.println("Failed on URL: " + currentUrl);
-                logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ", attempt " + attempt + ", URL: " + currentUrl);
+
             }
         }
         
@@ -144,6 +142,9 @@ public class ReusableMethodsLoggersPOM {
         String errorMessage = "FAILED: Unable to click on " + elementName + " after " + maxAttempts + " attempts";
         System.err.println(errorMessage);
         logger.log(LogStatus.FATAL, errorMessage);
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println("Failed on URL: " + currentUrl);
+        logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ", attempt " + attempt + ", URL: " + currentUrl);
         getScreenShot(driver, "final_failure_" + elementName.replaceAll("\\s+", "_"), logger);
         throw new AssertionError(errorMessage);
     }//end of click method
