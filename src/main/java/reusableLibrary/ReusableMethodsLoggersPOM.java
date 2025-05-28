@@ -139,12 +139,11 @@ public class ReusableMethodsLoggersPOM {
         }
         
         // If we've exhausted all attempts, throw an AssertionError to stop the test
-        String errorMessage = "FAILED: Unable to click on " + elementName + " after " + maxAttempts + " attempts";
-        System.err.println(errorMessage);
-        logger.log(LogStatus.FATAL, errorMessage);
         String currentUrl = driver.getCurrentUrl();
-        System.out.println("Failed on URL: " + currentUrl);
-        logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ", attempt " + attempt + ", URL: " + currentUrl);
+        String errorMessage = "FAILED: Unable to click on " + elementName + " after " + maxAttempts + " attempts" + " , URL: " + currentUrl;
+       // logger.log(LogStatus.FATAL, errorMessage);
+        System.out.println(errorMessage);
+        logger.log(LogStatus.FAIL, errorMessage);
         getScreenShot(driver, "final_failure_" + elementName.replaceAll("\\s+", "_"), logger);
         throw new AssertionError(errorMessage);
     }//end of click method
