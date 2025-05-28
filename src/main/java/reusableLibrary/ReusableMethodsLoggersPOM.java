@@ -132,11 +132,11 @@ public class ReusableMethodsLoggersPOM {
                 return; // Success - exit the method
             } catch (Exception e) {
                 attempt++;
-                // Log which type of exception for debugging purposes
-                String exceptionType = e.getClass().getSimpleName();
-                System.out.println("\n" + exceptionType + " encountered, attempt " + attempt + ": " + e);
-                logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ", attempt " + attempt + " (" + exceptionType + ")");
-                getScreenShot(driver, "click_failure_" + attempt, logger);
+                // Log the exception for debugging purposes
+                String currentUrl = driver.getCurrentUrl();
+                System.out.println("\nException encountered, attempt " + attempt + ": " + e);
+                System.out.println("Failed on URL: " + currentUrl);
+                logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ", attempt " + attempt + ", URL: " + currentUrl);
             }
         }
         
@@ -228,8 +228,7 @@ public class ReusableMethodsLoggersPOM {
             logger.log(LogStatus.PASS, "Successfully clicked on: " + elementName);
         } catch (Exception e) {
             System.out.println("Unable to select by value: " + elementName + ": " + e);
-            logger.log(LogStatus.FAIL, "Unable to click on: " + elementName + ": " + e);
-            getScreenShot(driver, "screenshot", logger);
+            logger.log(LogStatus.FAIL, "Unable to select by value: " + elementName + ": " + e);
         }//end of scroll by element exception
     }//end of scroll by element
 
@@ -1094,14 +1093,14 @@ public class ReusableMethodsLoggersPOM {
     public static void getScreenShot(WebDriver driver, String imageName, ExtentTest logger) {
         try {
             String fileName = imageName + ".png";
-            String screenshotDirectory = "src/main/java/HTML_Report/Screenshots/";
+            String directory = "src/main/java/HTML_Report/Screenshots/";
             
             // Create directory if it doesn't exist
-            new File(screenshotDirectory).mkdirs();
+            new File(directory).mkdirs();
             
             // Take screenshot and save to file
             File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File destFile = new File(screenshotDirectory + fileName);
+            File destFile = new File(directory + fileName);
             FileUtils.copyFile(sourceFile, destFile);
             
             // For CI/CD environments, embed the image directly in the HTML report
