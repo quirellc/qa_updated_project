@@ -279,7 +279,7 @@ public void TC_006_Prod_login() throws InterruptedException {
         WebDriver driver = getDriver();
 
         //navigate to empty report-automation testing report
-        driver.navigate().to("https://app.openquire.com/reports/1417764");
+        driver.navigate().to("https://app.openquire.com/reports/1436278");
         Thread.sleep(500);
         BaseClass.staging5().captureURL();
         Thread.sleep(500);
