@@ -10,8 +10,6 @@ import reusableLibrary.ReusableMethodsLoggersPOM;
 public class Regression_Suite extends ReusableAnnotations {
 //	WebDriver driver = getDriver();
 //    String browserName = ((RemoteWebDriver) driver).getCapabilities().getBrowserName();
-
-
     //@BeforeTest
     @Test
     public void TR_001_user_login() throws InterruptedException {

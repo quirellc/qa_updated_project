@@ -3,7 +3,11 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
+import org.xml.sax.SAXException;
 import reusableLibrary.ReusableAnnotations;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 
 public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
@@ -75,13 +79,31 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         BaseClass.templatesSection().clickHereLinkTemplate();
         Thread.sleep(1500);
     }
+
     @Test
-    public void TR003_Sections_PCA_Template() throws InterruptedException {
+    public void TR_003_add_title_page_image_report_tag() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
+
+        BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
+        Thread.sleep(500);
+        BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
+        Thread.sleep(1000);
+
+        BaseClass.reporttagssection().scroll_and_click_and_verify_title_page_image_checkbox();
+       // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
+       // Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(1000);
+
+
+    }
+    @Test
+    public void TR003a_Sections_PCA_Template() throws InterruptedException {
 
 
             //click default section title and add sections: pdf, C/A , C/A subsection
             BaseClass.staging5().click_default_section_title();
-            Thread.sleep(500);
+
+        Thread.sleep(500);
             BaseClass.pca_xml_section().clickAddSectionButton();
             Thread.sleep(500);
             BaseClass.staging5().click_add_pdf_link_section();
@@ -471,6 +493,9 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         BaseClass.staging5().click_default_section_title();
         BaseClass.staging5().clickSection_row_editor();
         Thread.sleep(500);
+        BaseClass.staging5().verify_ck5_feature_enabled();
+        Thread.sleep(500);
+
         BaseClass.ck5editor().click_report_tag_icon_ck5();
         Thread.sleep(500);
 

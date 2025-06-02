@@ -946,18 +946,31 @@ public void click_target_report_view_link() {
     @FindBy(xpath = "//div[@class='app-support js-app-support']")
     WebElement email_support_button;
 
-    public void confirm_email_support_button() {
+    @FindBy(xpath = "//h5[normalize-space()='Got questions?']")
+    WebElement got_questions_header;
 
+    @FindBy(xpath = "//input[@placeholder='Search for help']")
+    WebElement search_for_help_field;
+
+    @FindBy(xpath = "//div[@data-testid='header-close']")
+    WebElement close_email_support_button;
+
+    public void confirm_email_support_button() {
+click_view_trash_button();
         ReusableMethodsLoggersPOM.clickMethod(driver, email_support_button, logger, "email_support_button ");
         ReusableMethodsLoggersPOM.switch_to_iFrame(driver, email_support_iframe, logger, "email_support_iframe ");
-        ReusableMethodsLoggersPOM.captureTextMethod(driver, email_support_popup_header, logger, "Email Support Window - Title Header: ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, email_support_popup_header,true, logger, "Email Support Window - Title Header: ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, got_questions_header,true, logger, "Got Questions Header: ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, search_for_help_field,true, logger, "Search For Help Field: ");
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, close_email_support_button, logger, "close_email_support_button ");
         driver.switchTo().parentFrame();
-        ReusableMethodsLoggersPOM.clickMethod(driver, email_support_button, logger, "minimize_email_support_button");
+       // ReusableMethodsLoggersPOM.clickMethod(driver, email_support_button, logger, "minimize_email_support_button");
     }
 
     @FindBy(xpath = "//button[@aria-label='Minimize window']")
     WebElement minimize_chat_support_window;
-    @FindBy(xpath = "//h1[text()='Quire Chat Support']")
+    @FindBy(xpath = "//h1[contains(text(),'Quire') and contains(text(),'Support')]")
     WebElement chat_support_popup_header;
     @FindBy(xpath = "//iframe[@id='chat-widget']")
     WebElement chat_support_iframe;
@@ -965,10 +978,11 @@ public void click_target_report_view_link() {
     WebElement chat_support_button;
 
     public void confirm_chat_support_button() {
+        click_view_trash_button();
 
         ReusableMethodsLoggersPOM.clickMethod(driver, chat_support_button, logger, "chat_support_button ");
         ReusableMethodsLoggersPOM.switch_to_iFrame(driver, chat_support_iframe, logger, "chat_support_iframe ");
-        ReusableMethodsLoggersPOM.captureTextMethod(driver, chat_support_popup_header, logger, "Chat Support Window - Title Header: ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, chat_support_popup_header, true, logger, "Chat Support Window - Title Header: ");
         ReusableMethodsLoggersPOM.clickMethod(driver, minimize_chat_support_window, logger, "minimize_chat_support_window ");
 
         driver.switchTo().parentFrame();
@@ -983,7 +997,7 @@ public void click_target_report_view_link() {
     WebElement ask_quire_button;
 
     public void click_view_trash_button() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, ask_quire_button, logger, "ask_quire_button");
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, ask_quire_button, logger, "ask_quire_button");
 
         ReusableMethodsLoggersPOM.clickMethod(driver, view_trash_button, logger, "view_trash_button");
     }
@@ -2536,9 +2550,20 @@ public void click_target_report_view_link() {
         ReusableMethodsLoggersPOM.clickMethod(driver, whats_new_in_quire_dropdown_Button, logger, "whats_new_in_quire_dropdown_Button");
     }
 
+
+    public void verify_ck5_feature_enabled() throws InterruptedException {
+if (!userProfileTab.isDisplayed())
+{
+    System.out.println("User Profile Tab is not displayed....check toolbar:  " + driver.getCurrentUrl());
+    logger.log(LogStatus.FAIL , "User Profile Tab is not displayed....check toolbar:  " + driver.getCurrentUrl());
+    Assert.fail();
+}
+    }
+
+
+
     @FindBy(xpath = "//span[normalize-space()='1.0']")
     WebElement default_section_title;
-
     public void click_default_section_title() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, default_section_title, logger, "default_section_title ");
     }

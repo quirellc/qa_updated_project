@@ -126,6 +126,16 @@ public class ReportTagsSection extends ReusableAnnotations {
     public void click_ReportTags_manage_settings_icon() {
         ReusableMethodsLoggersPOM.clickMethod(driver, ReportTags_manage_settings_icon, logger, "ReportTags_manage_settings_icon");}
 
+    @FindBy(xpath = "//span[normalize-space()='Title Page Image']/following-sibling::i[@class='fa fa-square-o toggle fa-lg']")
+    WebElement title_page_image_checkbox;
+
+    @FindBy(xpath = "(//li[@id='12967'])[1]")
+    WebElement title_page_image_enabled;
+
+    public void scroll_and_click_and_verify_title_page_image_checkbox() {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, title_page_image_checkbox, logger, "title_page_image_checkbox");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, title_page_image_enabled, true, logger, "title_page_image_enabled");
+    }
     @FindBy(xpath = "//h1[contains(text(),'Report Tags for')]")
     WebElement ReportTags_settings_view;
 
