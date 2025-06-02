@@ -935,16 +935,27 @@ public class ReusableMethodsLoggersPOM {
         }
     }//end of verifyBooleanStatement
 
-    public static boolean isElementPresent(WebDriver driver, WebElement element) {
+    public static boolean isElementPresent(WebDriver driver, WebElement locator) {
         try {
+            WebElement element = driver.findElement((By) locator);
             return element.isDisplayed();
         } catch (Exception e) {
             System.out.println("Element not present or visible: " + e.getClass().getSimpleName() + " - " + e.getMessage());
 
+            // Quietly return false without verbose logging
             return false;
         }
     }
 
+//    public static boolean isElementPresent(WebDriver driver, WebElement element) {
+//        try {
+//            return element.isDisplayed();
+//        } catch (Exception e) {
+//            System.out.println("Element not present or visible: " + e.getClass().getSimpleName() + " - " + e.getMessage());
+//
+//            return false;
+//        }
+//    }
     public static void verify_url(WebDriver driver, String urlContent, ExtentTest logger)  {
         try {
             //Thread.sleep(2000);

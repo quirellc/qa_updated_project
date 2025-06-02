@@ -3978,18 +3978,22 @@ public void enter_ca_section_cost() {
     @FindBy(xpath = "//button[normalize-space()='Yes, continue editing.']")
     WebElement continue_editing_yes_modal_button;
     public void skip_if_error_message_appears() throws InterruptedException {
-        if (ReusableMethodsLoggersPOM.isElementPresent(driver, error_message)) {
-            ReusableMethodsLoggersPOM.clickMethod(driver, continue_editing_yes_modal_button, logger, "continue_editing_yes_modal_button");
-            Thread.sleep(1000);
-            BaseClass.staging5().click_default_section_title();
-
-        } else {
+        try {
+            if (error_message.isDisplayed()) {
+                ReusableMethodsLoggersPOM.clickMethod(driver, continue_editing_yes_modal_button, logger, "continue_editing_yes_modal_button");
+                Thread.sleep(1000);
+                BaseClass.staging5().click_default_section_title();
+            } else {
+                System.out.println("No error message present.");
+                logger.log(LogStatus.PASS, "No error message present.");
+            }
+        } catch (Exception e) {
+            // Element not found — treat as normal, quiet scenario
             System.out.println("No error message present.");
             logger.log(LogStatus.PASS, "No error message present.");
-
-
         }
     }
+
 
 
 
