@@ -1500,22 +1500,33 @@ click_view_trash_button();
         ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_1, "signature.jpg", logger, "Header_image");
     }
 
+    @FindBy(xpath = "//li[contains(@class, 'report_appendix pdf-appendix js-report-appendix stores-pdfs')]//span[contains(text(),'Drag files to upload or click anywhere in this pan')]")
+    WebElement file_uploaded_pdf_appendix;
     public void upload_files_to_pdf_first_appendix() throws InterruptedException {
         ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_1, "maptest.pdf", logger, "maptest pdf");
-        Thread.sleep(1000);
+       // ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_pdf_appendix, true, logger, "file_uploaded_pdf_appendix");
+       // driver.navigate().refresh();
         BaseClass.reportfoldersection().clickSectionView_Appendices();
-        Thread.sleep(1000);
+        Thread.sleep(8000);
 
         ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_1, "maptest2.pdf", logger, "maptest2 pdf");
+       // ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_pdf_appendix, true, logger, "file_uploaded_pdf_appendix");
+
 
     }
 
+    @FindBy(xpath = "//li[contains(@class, 'report_appendix gallery-appendix js-report-appendix stores-images')]//span[contains(text(),'Drag files to upload or click anywhere in this pan')]")
+    WebElement file_uploaded_gallery_appendix;
         public void upload_files_to_gallery_2nd_appendix() throws InterruptedException {
             ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "picture of a---------------------------------------------mapp.png", logger, "map picture - spellcheck");
-            Thread.sleep(1500);
+
+          //  ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_gallery_appendix, true, logger, "file_uploaded_gallery_appendix");
+            Thread.sleep(8000);
 
             ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "signature.jpg", logger, "signature");
-          //  Thread.sleep(500);
+          //  ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_gallery_appendix, true, logger, "file_uploaded_gallery_appendix");
+
+            //  Thread.sleep(500);
     }
 
     public void upload_footer_image() throws InterruptedException {

@@ -92,11 +92,18 @@ public void TC_006_Prod_login() throws InterruptedException {
         Thread.sleep(500);
         BaseClass.staging5().click_save_button();
         BaseClass.staging5().captureAlertMessage();
-        Thread.sleep(1000);
+        //Thread.sleep(2000);
+WebDriver driver = getDriver();
 
+        driver.navigate().refresh();
+        BaseClass.reportfoldersection().clickSectionView_Appendices();
+
+
+        Thread.sleep(1500);
 
         BaseClass.staging5().upload_files_to_gallery_2nd_appendix();
         Thread.sleep(6000);
+
 //upload to pdf - first appendix item
         BaseClass.staging5().upload_files_to_pdf_first_appendix();
         Thread.sleep(6000);
