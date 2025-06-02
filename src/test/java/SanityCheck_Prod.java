@@ -102,7 +102,7 @@ WebDriver driver = getDriver();
         Thread.sleep(1500);
 
         BaseClass.staging5().upload_files_to_gallery_2nd_appendix();
-        Thread.sleep(6000);
+        Thread.sleep(1000);
 
 //upload to pdf - first appendix item
         BaseClass.staging5().upload_files_to_pdf_first_appendix();

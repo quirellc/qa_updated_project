@@ -1504,13 +1504,17 @@ click_view_trash_button();
     WebElement file_uploaded_pdf_appendix;
     public void upload_files_to_pdf_first_appendix() throws InterruptedException {
         ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_1, "maptest.pdf", logger, "maptest pdf");
-       // ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_pdf_appendix, true, logger, "file_uploaded_pdf_appendix");
+        Thread.sleep(7000);
+
+        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_pdf_appendix, true, logger, "file_uploaded_pdf_appendix");
        // driver.navigate().refresh();
         BaseClass.reportfoldersection().clickSectionView_Appendices();
-        Thread.sleep(8000);
+        Thread.sleep(5000);
 
         ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_1, "maptest2.pdf", logger, "maptest2 pdf");
-       // ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_pdf_appendix, true, logger, "file_uploaded_pdf_appendix");
+        Thread.sleep(5000);
+
+        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_pdf_appendix, true, logger, "file_uploaded_pdf_appendix");
 
 
     }
@@ -1520,11 +1524,14 @@ click_view_trash_button();
         public void upload_files_to_gallery_2nd_appendix() throws InterruptedException {
             ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "picture of a---------------------------------------------mapp.png", logger, "map picture - spellcheck");
 
-          //  ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_gallery_appendix, true, logger, "file_uploaded_gallery_appendix");
-            Thread.sleep(8000);
+            Thread.sleep(7000);
+            ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_gallery_appendix, true, logger, "file_uploaded_gallery_appendix");
 
             ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "signature.jpg", logger, "signature");
           //  ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_gallery_appendix, true, logger, "file_uploaded_gallery_appendix");
+            Thread.sleep(7000);
+
+            ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_gallery_appendix, true, logger, "file_uploaded_gallery_appendix");
 
             //  Thread.sleep(500);
     }
