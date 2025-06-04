@@ -645,6 +645,16 @@ for (int i = 0; i < search_results_int; i++) {
     public void verify_alertMessage_templateDeleted() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_templateDeleted, true,  logger, "alertMessage_templateDeleted");}
 
+    @FindBy(xpath = "//*[contains(text(), 'Generating')]")
+    WebElement alertMessage_generating_PDFF;
+    public void verify_PDF_generating_AlertMessage() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_generating_PDFF, true,  logger, "alertMessage_generating_PDFF");}
+
+    @FindBy(xpath = "//span[@class='pdf-status']")
+    WebElement PDF_generating_loading_sign;
+    public void verify_PDF_finished_generating() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, PDF_generating_loading_sign, false,  logger, "PDF_generating_loading_sign");}
+
 
     @FindBy(xpath = "//a[text()='here']")
     WebElement hereLink;

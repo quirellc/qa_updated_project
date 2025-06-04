@@ -1084,6 +1084,22 @@ Thread.sleep(1000);
 
     }
 
+    @Test
+    public void TR_015_generate_PDF_projFolders() throws InterruptedException {
+        BaseClass.staging5().clickReportsTab();
+        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+Thread.sleep(4500);
+BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
+BaseClass.reportfoldersection().clickGeneratePDFButton();
+BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
+        BaseClass.reportfoldersection().click_regenerate_button_project_folder_view();
+        BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
+        Thread.sleep(1500);
+        BaseClass.templatesSection().verify_PDF_finished_generating();
+
+    }
+
 //    @Test
 //    public void TR_015_ck4_packages_ProjSummary_section() throws InterruptedException {
 //        WebDriver driver = getDriver();

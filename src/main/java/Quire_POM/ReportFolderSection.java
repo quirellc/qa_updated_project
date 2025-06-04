@@ -718,7 +718,12 @@ public class ReportFolderSection extends ReusableAnnotations {
     WebElement generatePDF_Button;
 
     public void clickGeneratePDFButton() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, generatePDF_Button, logger, "generatePDF_Button");
+        try {
+            ReusableMethodsLoggersPOM.clickMethod(driver, generatePDF_Button, logger, "generatePDF_Button");
+
+        }
+        catch (Exception e) {
+            System.out.println("Exception in clickGeneratePDFButton");        }
     }
 
     @FindBy(xpath = "//span[@class='link-title']")
@@ -730,6 +735,15 @@ public class ReportFolderSection extends ReusableAnnotations {
         } else {
             ReusableMethodsLoggersPOM.clickMethod(driver, generatePDF_Button, logger, "generatePDF_Button");
         }
+    }
+
+    @FindBy(xpath = "//button[@class='btn btn-default dropdown-toggle']")
+    WebElement pdf_dropdown_button;
+
+    public void click_regenerate_button_project_folder_view() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, pdf_dropdown_button, logger, "pdf_dropdown_button");
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, regeneratePDF_Button, logger, "regeneratePDF_Button");
     }
 
 
