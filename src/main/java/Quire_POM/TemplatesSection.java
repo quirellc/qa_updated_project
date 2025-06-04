@@ -648,12 +648,12 @@ for (int i = 0; i < search_results_int; i++) {
     @FindBy(xpath = "//*[contains(text(), 'Generating')]")
     WebElement alertMessage_generating_PDFF;
     public void verify_PDF_generating_AlertMessage() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_generating_PDFF, true,  logger, "alertMessage_generating_PDFF");}
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_generating_PDFF, true,  logger, "alertMessage_generating_PDF");}
 
     @FindBy(xpath = "//span[@class='pdf-status']")
     WebElement PDF_generating_loading_sign;
     public void verify_PDF_finished_generating() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, PDF_generating_loading_sign, false,  logger, "PDF_generating_loading_sign");}
+        ReusableMethodsLoggersPOM.verify_element_dissapeared(driver, alertMessage_generating_PDFF,   logger, "PDF Generating Loading Sign");}
 
 
     @FindBy(xpath = "//a[text()='here']")

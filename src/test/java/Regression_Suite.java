@@ -1089,13 +1089,21 @@ Thread.sleep(1000);
         BaseClass.staging5().clickReportsTab();
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
         BaseClass.reportfoldersection().clickReportsFirstLink();
-Thread.sleep(4500);
-BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
-BaseClass.reportfoldersection().clickGeneratePDFButton();
-BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
+        Thread.sleep(4500);
+        BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
+        Thread.sleep(2000);
+//regenerate existing report already from previous test steps
         BaseClass.reportfoldersection().click_regenerate_button_project_folder_view();
+        //verify green banner
         BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
-        Thread.sleep(1500);
+        Thread.sleep(2000);
+        //verify loading sign disappeared for pdf status
+        BaseClass.templatesSection().verify_PDF_finished_generating();
+//click generate pdf, if not available, will re generate second report
+        BaseClass.reportfoldersection().clickGeneratePDFButton_projfolderview();
+        BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
+        Thread.sleep(2000);
+
         BaseClass.templatesSection().verify_PDF_finished_generating();
 
     }

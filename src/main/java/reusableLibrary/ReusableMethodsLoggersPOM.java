@@ -900,6 +900,17 @@ public class ReusableMethodsLoggersPOM {
         }
     }//end of verifyBooleanStatement
 
+    public static void verify_element_dissapeared(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            wait.until(ExpectedConditions.invisibilityOf(xpath));
+            System.out.println("\nelement dissapeared as expected: " + elementName);
+            logger.log(LogStatus.PASS, "element dissapeared as expected: " + elementName);
+        } catch (TimeoutException e) {
+            logger.log(LogStatus.FAIL, "element did not dissapear: " + elementName + ": " + e);
+            System.out.println("element did not dissapear: " + elementName + ": " + e);
+        }
+    }
 
 
     public static void verifyBooleanStatement1(WebDriver driver, WebElement xpath, boolean expectedValue, ExtentTest logger, String elementName) {

@@ -720,11 +720,24 @@ public class ReportFolderSection extends ReusableAnnotations {
     public void clickGeneratePDFButton() {
         try {
             ReusableMethodsLoggersPOM.clickMethod(driver, generatePDF_Button, logger, "generatePDF_Button");
-
         }
         catch (Exception e) {
             System.out.println("Exception in clickGeneratePDFButton");        }
     }
+
+    public void clickGeneratePDFButton_projfolderview() {
+        try {
+            if (generatePDF_Button.isDisplayed()) {
+                generatePDF_Button.click();
+            } else {
+                click_regenerate_button_second_report_project_folder_view();
+            }
+        } catch (Exception e) {
+            // Element not found or any other issue — safely run fallback
+            click_regenerate_button_second_report_project_folder_view();
+        }
+    }
+
 
     @FindBy(xpath = "//span[@class='link-title']")
     WebElement regeneratePDF_Button;
@@ -744,6 +757,18 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, pdf_dropdown_button, logger, "pdf_dropdown_button");
 
         ReusableMethodsLoggersPOM.clickMethod(driver, regeneratePDF_Button, logger, "regeneratePDF_Button");
+    }
+
+    @FindBy(xpath = "(//button[@class='btn btn-default dropdown-toggle'])[2]")
+    WebElement second_pdf_dropdown_button;
+
+    @FindBy(xpath = "(//span[@class='link-title'])[2]")
+    WebElement regenerate_second_PDF_Button;
+
+    public void click_regenerate_button_second_report_project_folder_view() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, second_pdf_dropdown_button, logger, "pdf_dropdown_button");
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, regenerate_second_PDF_Button, logger, "regenerate_second_PDF_Button");
     }
 
 
