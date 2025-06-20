@@ -295,7 +295,7 @@ WebDriver driver = getDriver();
         BaseClass.staging5().click_and_capture_track_changes_button();
         Thread.sleep(1000);
         BaseClass.staging5().click_Section2_row_editor();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_pixel_out_of_section();
