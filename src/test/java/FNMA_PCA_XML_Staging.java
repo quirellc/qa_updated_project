@@ -81,7 +81,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
     }
 
     @Test
-    public void TR_003_add_title_page_image_report_tag() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
+    public void TR003_add_title_page_image_report_tag() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
 
         BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
         Thread.sleep(500);
@@ -90,9 +90,9 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
         BaseClass.reporttagssection().scroll_and_click_and_verify_title_page_image_checkbox();
        // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
-       // Thread.sleep(500);
-        BaseClass.staging5().click_save_button();
         Thread.sleep(1000);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(1500);
 
 
     }

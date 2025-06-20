@@ -956,7 +956,7 @@ public void click_target_report_view_link() {
     WebElement close_email_support_button;
 
     public void confirm_email_support_button() {
-click_view_trash_button();
+//click_view_trash_button();
         ReusableMethodsLoggersPOM.clickMethod(driver, email_support_button, logger, "email_support_button ");
         ReusableMethodsLoggersPOM.switch_to_iFrame(driver, email_support_iframe, logger, "email_support_iframe ");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, email_support_popup_header,true, logger, "Email Support Window - Title Header: ");
@@ -978,7 +978,7 @@ click_view_trash_button();
     WebElement chat_support_button;
 
     public void confirm_chat_support_button() {
-        click_view_trash_button();
+    //    click_view_trash_button();
 
         ReusableMethodsLoggersPOM.clickMethod(driver, chat_support_button, logger, "chat_support_button ");
         ReusableMethodsLoggersPOM.switch_to_iFrame(driver, chat_support_iframe, logger, "chat_support_iframe ");

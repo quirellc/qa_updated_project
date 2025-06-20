@@ -523,10 +523,17 @@ WebElement instruction_text_ck5;
     public void click_save_button_footnote() {
         ReusableMethodsLoggersPOM.clickMethod(driver, save_button_footnote, logger, "save_button_footnote");}
 
+
     @FindBy(xpath = "//button[@data-cke-tooltip-text='Insert Report Link']")
     WebElement report_link_icon_ck5;
     public void verify_report_link_icon_isVisible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, report_link_icon_ck5, true, logger, "report_link_icon_ck5");}
+
+
+    @FindBy(xpath = "//button[@data-cke-tooltip-text='Remove Format']")
+    WebElement tx_remove_format_icon_ck5;
+    public void verify_tx_remove_format_icon_isVisible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, tx_remove_format_icon_ck5, true, logger, "tx_remove_format_icon_ck5");}
     public void verify_report_link_icon_is_notVisible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, report_link_icon_ck5, false, logger, "report_link_icon_ck5");}
 
@@ -843,8 +850,6 @@ WebElement instruction_text_ck5;
     @FindBy(xpath = "//button[@class='ck ck-button ck-on ck-splitbutton__action' and @data-cke-tooltip-text='Track changes']")
     WebElement TC_enabled_icon_ck5;
     public void verify_TC_enabled_icon_isVisible() throws InterruptedException {
-
-
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, TC_enabled_icon_ck5, true, logger, "TC_enabled_icon_ck5");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, TC_markup_icon_ck5, true, logger, "TC_markup_enabled_icon_ck5");
 }
@@ -925,14 +930,14 @@ int count = TC_highlights.size();
     public void capture_ck5_editor_icons() {
         int itemCount = ck5_editor_items.size();
         // Check the count and print accordingly
-        if (itemCount % 40 == 0) {
+        if (itemCount % 41 == 0) {
             System.out.println("\n" + "This is either a Editor,Author,Contractor account.  There are: " + itemCount + " items in CK Editor." + "\n");
             logger.log(LogStatus.PASS, "This is either a Editor,Author,or Contractor account.  There are: " + itemCount + " items in CK Editor. ");
-        } else if (itemCount % 42 == 0) {
+        } else if (itemCount % 43 == 0) {
             System.out.println("\n" + "This is an Admin Level Account.  There are: " + itemCount + " items in CK Editor. " + "\n");
             logger.log(LogStatus.PASS, "This is an Admin Level Account.  There are: " + itemCount + " items in CK Editor. ");
 
-        } else if (itemCount % 41 == 0) {
+        } else if (itemCount % 42 == 0) {
             System.out.println("\n" + "This is a PM  Account.  There are: " + itemCount + " items in CK Editor. " + "\n");
             logger.log(LogStatus.PASS, "This is a PM  Account.  There are: " + itemCount + " items in CK Editor. ");
 
@@ -993,6 +998,7 @@ int count = TC_highlights.size();
         BaseClass.ck5editor().verify_wordBank_icon_isVisible();
         BaseClass.ck5editor().verify_stamp_icon_isVisible();
         BaseClass.ck5editor().verify_report_link_icon_isVisible();
+        BaseClass.ck5editor().verify_tx_remove_format_icon_isVisible();
 
 
         BaseClass.ck5editor().verify_footnote_icon_isVisible();
@@ -1023,6 +1029,7 @@ int count = TC_highlights.size();
         BaseClass.ck5editor().verify_report_link_icon_isVisible();
         BaseClass.ck5editor().verify_reference_tag_icon_isVisible();
         BaseClass.ck5editor().verify_TC_enabled_icon_isVisible();
+        BaseClass.ck5editor().verify_tx_remove_format_icon_isVisible();
 
 
         BaseClass.ck5editor().verify_lock_icon_is_NotVisible();
@@ -1051,6 +1058,7 @@ int count = TC_highlights.size();
         BaseClass.ck5editor().verify_lock_icon_isVisible();
         BaseClass.ck5editor().verify_reference_tag_icon_isVisible();
         BaseClass.ck5editor().verify_comment_icon_isVisible();
+        //button[@data-cke-tooltip-text='Remove Format']
        // BaseClass.ck5editor().verify_comments_archive_icon_isVisible();
        // BaseClass.ck5editor().verify_TC_icon_isVisible();
      //   BaseClass.ck5editor().verify_source_icon_isVisible();

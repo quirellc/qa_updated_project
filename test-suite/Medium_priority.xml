@@ -8,7 +8,7 @@
 
     <test name="Freddie Macs" preserve-order="true">
         <classes>
-            <class name="Regression_Suite" />
+<!--            <class name="Regression_Suite" />-->
             <class name="Medium_priority_suite" />
 
         </classes>

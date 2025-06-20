@@ -605,7 +605,7 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, image_1_signature_section_name, "signature_updated_caption", logger, "image_1_signature_section_name");
     }
 
-    @FindBy(xpath = "//li[@class='report_appendix gallery-appendix js-report-appendix stores-images']//div[normalize-space() = 'signature']")
+    @FindBy(xpath = "(//div[@class='appendix-item-caption js-appendixItem-caption has-tooltip'][normalize-space()='signature'])[1]")
     WebElement image_1_signature_appendix;
 
     public void verify_image1_original_name_appendix() throws InterruptedException {

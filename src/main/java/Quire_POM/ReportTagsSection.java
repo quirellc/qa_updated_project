@@ -142,7 +142,7 @@ public class ReportTagsSection extends ReusableAnnotations {
     public void verify_ReportTags_settings_view_isVisible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, ReportTags_settings_view, true,logger, "ReportTags_manage_settings_icon");}
 
-    @FindBy(xpath = "//span[normalize-space()='Title Page Image']/following::a[@class='js-select-gallery-image btn btn-default btn-xs']")
+    @FindBy(xpath = "//span[normalize-space()='Title Page Image']/following::a[1]")
     WebElement title_page_image_button;
     public void click_title_page_image_button() throws InterruptedException {
         ReusableMethodsLoggersPOM.scrollToElementMethod(driver, title_page_image_button, logger, "title_page_image_button");
