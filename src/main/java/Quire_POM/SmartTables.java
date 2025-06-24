@@ -219,7 +219,7 @@ public class SmartTables extends ReusableAnnotations {
     }
 
     public void click_r1_c5_dynamic() throws InterruptedException {
-        ReusableMethodsLoggersPOM.doubleClickMethod(driver, row1_column5_number, logger, " row1_column5_dynamic ");
+        ReusableMethodsLoggersPOM.clickMethod(driver, row1_column5_number, logger, " row1_column5_dynamic ");
     }
 
     public void verify_r1_empty() throws InterruptedException {
@@ -230,6 +230,30 @@ public class SmartTables extends ReusableAnnotations {
     public void verify_r2_empty() throws InterruptedException {
         ReusableMethodsLoggersPOM.verifyEmptyText(driver, row2_column1, logger, " row1_column5_text");
         ReusableMethodsLoggersPOM.verifyEmptyText(driver, row2_column5, logger, " row1_column1_text");
+    }
+
+
+    @FindBy(xpath = "(//tr[@role='row'])[23]")
+    WebElement row2_header_ST;
+
+    public void right_click_row2_header_ST() throws InterruptedException {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, row2_header_ST, logger, " row2_header_ST ");
+//Thread.sleep(5000);
+        ReusableMethodsLoggersPOM.rightClickMethod(driver, row2_header_ST, logger, " row2_header_ST ");
+    }
+
+    @FindBy(xpath = "//div[normalize-space()='Merge cells']")
+    WebElement merge_cells;
+
+    public void click_merge_cells() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, merge_cells, logger, " merge_cells ");
+    }
+
+    @FindBy(xpath = "//td[contains(@class, 'smartTable-cellMerged') and contains(@class, 'smartTable-cellMergedParent')][1]")
+    WebElement merged_row_ST_preview_mode;
+
+    public void verify_merged_row2_ST_preview_mode() throws InterruptedException {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, merged_row_ST_preview_mode, true, logger, " merged_row_ST_preview_mode ");
     }
 
     @FindBy(xpath = "//div[@class='ht_clone_top handsontable']//div[@role='presentation']//div[@role='presentation']//div[@role='presentation']//table[@role='presentation']//thead[@role='rowgroup']//tr[2]//th[@role='columnheader']//div[@role='presentation']//span[@role='presentation']")
@@ -325,7 +349,7 @@ public class SmartTables extends ReusableAnnotations {
     }
 
     public void click_r1_header() throws InterruptedException {
-        ReusableMethodsLoggersPOM.doubleClickMethod(driver, row_1_header_content, logger, " header_row_1 ");
+        ReusableMethodsLoggersPOM.clickMethod(driver, row_1_header_content, logger, " header_row_1 ");
     }
 
     @FindBy(xpath = "(//tr[@class='qit-header-row mergeCells-ignore'])[2]")

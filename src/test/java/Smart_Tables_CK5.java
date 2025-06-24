@@ -1011,6 +1011,126 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
     }
 
     @Test
+    public void TR_021_rows_and_headerRows() throws InterruptedException {
+        WebDriver driver = getDriver();
+
+//INSERT ROW ABOVE
+        BaseClass.smartTables().click_r1_c5_dynamic();
+        Thread.sleep(500);
+//click escape dynamic cell with data
+        BaseClass.smartTables().click_escape_dynamic_cell_with_data();
+        Thread.sleep(500);
+        //right click r1c5 dynamic cell - after escape is clicked
+        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+        Thread.sleep(500);
+        // dynamic cell - after right click - click insert row above
+        BaseClass.smartTables().click_insert_row_above_button();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_r1_empty();
+        Thread.sleep(500);
+
+//DELETE ROW 1 - no data
+        BaseClass.smartTables().click_r1_c5_dynamic();
+        Thread.sleep(500);
+//switch r5c5 dynamic cell to iframe
+        //     BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        //    Thread.sleep(500);
+//switch r5c5 dynamic cell to iframe - to click escape button
+        BaseClass.ck5editor().click_escape_current_cell();
+        Thread.sleep(500);
+        driver.switchTo().parentFrame();
+        Thread.sleep(500);
+        //right click r1c5 dynamic cell - after escape is clicked
+        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+        Thread.sleep(500);
+        // dynamic cell - after right click - click insert row above
+        BaseClass.smartTables().click_delete_row_button();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+        //   BaseClass.smartTables().verify_con();
+        //   Thread.sleep(500);
+
+
+//INSERT ROW Below
+        BaseClass.smartTables().click_r1_c5_dynamic();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_escape_dynamic_cell_with_data();
+        Thread.sleep(500);
+        //right click r1c5 dynamic cell - after escape is clicked
+        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+        Thread.sleep(500);
+        // dynamic cell - after right click - click insert row above
+        BaseClass.smartTables().click_insert_row_below_button();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_r2_empty();
+        Thread.sleep(500);
+
+
+
+
+        //merge row 2
+
+
+//INSERT Header Above in R1
+        BaseClass.smartTables().click_r1_c5_dynamic();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_escape_dynamic_cell_with_data();
+        Thread.sleep(500);
+        //right click r1c5 dynamic cell - after escape is clicked
+        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+        Thread.sleep(500);
+        // dynamic cell - after right click - click insert row above
+        BaseClass.smartTables().click_insert_header_above_button();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_r1_header_is_empty();
+        Thread.sleep(500);
+
+
+        //INSERT Header below empty R1 Header
+        BaseClass.smartTables().click_r1_header();
+        Thread.sleep(500);
+//switch r1c5 dynamic cell to iframe
+        //    BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        Thread.sleep(500);
+//switch r1c5 dynamic cell to iframe - to click escape button
+        BaseClass.ck5editor().click_escape_current_cell();
+        Thread.sleep(500);
+        driver.switchTo().parentFrame();
+        Thread.sleep(500);
+        //right click r1_header_smartTable - after escape is clicked
+        BaseClass.smartTables().rightClick_r1_header_smartTable();
+        Thread.sleep(500);
+        // dynamic cell - after right click - click insert row above
+        BaseClass.smartTables().click_insert_header_below_button();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_r2_header_is_empty();
+        Thread.sleep(500);
+
+
+        //  Thread.sleep(500);
+        BaseClass.smartTables().click_r1_header();
+        Thread.sleep(2500);
+        BaseClass.smartTables().right_click_row2_header_ST();
+        Thread.sleep(2500);
+        BaseClass.smartTables().click_merge_cells();
+        Thread.sleep(500);
+
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_merged_row2_ST_preview_mode();
+        Thread.sleep(500);
+    }
+
+    @Test
     public void TR_022_duplicate_ST() throws InterruptedException {
         WebDriver driver = getDriver();
 
