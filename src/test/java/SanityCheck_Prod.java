@@ -286,7 +286,7 @@ WebDriver driver = getDriver();
         WebDriver driver = getDriver();
 
         //navigate to empty report-automation testing report
-        driver.navigate().to("https://app.openquire.com/reports/1436278");
+        driver.navigate().to("https://app.openquire.com/reports/1464393");
         Thread.sleep(500);
         BaseClass.staging5().captureURL();
         Thread.sleep(500);
