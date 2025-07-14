@@ -20,7 +20,7 @@ public class Freddie_Macs extends ReusableAnnotations {
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
         } else if (baseUrl.contains("app")) {
-            BaseClass.quireLogin().enterProdEmail();
+            BaseClass.quireLogin().enter_admin_Email();
         }
         Thread.sleep(1000);
         BaseClass.quireLogin().enterPassword();
@@ -804,10 +804,7 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 
         BaseClass.smartTables().click_add_rows_to_bottom_button();
         Thread.sleep(500);
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(1000);
-
-        BaseClass.smartTables().click_smartTable_sectionView();
+        BaseClass.staging5().click_pixel_out_of_section();
 
         Thread.sleep(1000);
 
@@ -815,10 +812,8 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 //enter rich text - wrong spelling
         BaseClass.smartTables().enter_row1_Spellcheck_richText();
         Thread.sleep(1000);
-        BaseClass.staging5().click_smartTable_title_header();
+        BaseClass.staging5().click_pixel_out_of_section();
         Thread.sleep(1000);
-
-
 
 
         //enter rich text - wordbank r5c1
@@ -862,49 +857,45 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         BaseClass.staging5().click_export_to_excel_file_dropdown_button();
         Thread.sleep(500);
         BaseClass.staging5().captureAlertMessage();
-        Thread.sleep(8000);
+        Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
 
         //removed TC with ST 4-14-25
 
         //  BaseClass.smartTables().click_smartTable_sectionView();
-        //  Thread.sleep(2000);
+        // Thread.sleep(2000);
 
 
-        //turn on spell check and fix all issues
-
-        //       BaseClass.staging5().capture_spellCheck_error_sections();
-        //      Thread.sleep(5000);
-
-        //      BaseClass.staging5().fix_all_spellCheck_errors();
-        //      Thread.sleep(1000);
-        //      BaseClass.staging5().click_smartTable_title_header();
-        //     Thread.sleep(500);
 
 
         //click first row cell, accept changes, then cross out changes, print red items
-//        BaseClass.smartTables().click_r1_c1();
-//        Thread.sleep(500);
-//
-//        BaseClass.ck5editor().click_accept_TC_suggestion();
-//        //    Thread.sleep(1000);
-//        //    BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
-//        //    Thread.sleep(500);
-//        BaseClass.ck5editor().select_all_and_backspace_RT_cell();
-//        Thread.sleep(500);
-//        //     driver.switchTo().defaultContent();
-//        //   Thread.sleep(1500);
-//        BaseClass.staging5().click_section_2_header();
-//        Thread.sleep(1500);
+        BaseClass.smartTables().click_r1_c1();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().click_SmartTable_TC_highlight();
+        Thread.sleep(500);
+
+
+        BaseClass.ck5editor().click_accept_TC_suggestion();
+        //    Thread.sleep(1000);
+        //    BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+        //    Thread.sleep(500);
+        BaseClass.ck5editor().select_all_and_backspace_RT_cell();
+        Thread.sleep(500);
+        //     driver.switchTo().defaultContent();
+        //   Thread.sleep(1500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(1500);
 //
 //        //capture green , red , and spell check count
 //
-//        BaseClass.ck5editor().verify_TC_green_highlight();
-//        Thread.sleep(500);
-//        BaseClass.ck5editor().verify_TC_red_highlight();
-//        Thread.sleep(1000);
-//        // BaseClass.staging5().verify_no_spellCheck_errors();
-//        // Thread.sleep(500);
-//
+        BaseClass.ck5editor().verify_TC_green_highlight();
+        Thread.sleep(500);
+        BaseClass.ck5editor().verify_TC_red_highlight();
+        Thread.sleep(1000);
+        // BaseClass.staging5().verify_no_spellCheck_errors();
+        // Thread.sleep(500);
+
 
 //click notification button and read the smart table  excel file information
         BaseClass.staging5().click_active_notification_button();
@@ -914,6 +905,30 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 //        //turn off track changes
         BaseClass.staging5().click_and_capture_track_changes_button();
         Thread.sleep(1000);
+//remove section 2 text
+        BaseClass.staging5().click_Section2_row_editor();
+        Thread.sleep(500);
+
+        BaseClass.ck5editor().select_all_and_backspace_sc_tc_section();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
+
+
+
+        BaseClass.staging5().click_and_capture_spell_check_button();
+        Thread.sleep(5000);
+
+        //turn on spell check and fix all issues
+
+        //   BaseClass.staging5().capture_spellCheck_error_sections();
+        // Thread.sleep(5000);
+
+        BaseClass.staging5().fix_all_spellCheck_errors();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
     }
 
 //    @Test
