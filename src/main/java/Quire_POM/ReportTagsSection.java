@@ -126,10 +126,10 @@ public class ReportTagsSection extends ReusableAnnotations {
     public void click_ReportTags_manage_settings_icon() {
         ReusableMethodsLoggersPOM.clickMethod(driver, ReportTags_manage_settings_icon, logger, "ReportTags_manage_settings_icon");}
 
-    @FindBy(xpath = "//span[normalize-space()='Title Page Image']/following-sibling::i[@class='fa fa-square-o toggle fa-lg']")
+    @FindBy(xpath = "//li[.//span[normalize-space()='Title Page Image']]//i[contains(@class,'fa-square-o')]")
     WebElement title_page_image_checkbox;
 
-    @FindBy(xpath = "(//li[@id='12967'])[1]")
+    @FindBy(xpath = "//li[contains(@class, 'status-active') and .//span[normalize-space()='Title Page Image']]//i[contains(@class,'fa-check-square')]")
     WebElement title_page_image_enabled;
 
     public void scroll_and_click_and_verify_title_page_image_checkbox() {

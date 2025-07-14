@@ -209,7 +209,7 @@ public class Staging5 extends ReusableAnnotations {
     public void select_porfolio_view_individual() {
         String currentURL = driver.getCurrentUrl();
         // Check if current URL contains "staging5"
-        if (currentURL.contains("staging5")) {
+        if (currentURL.contains("staging5") || currentURL.contains("app")) {
             ReusableMethodsLoggersPOM.selectByText(driver, change_porfolio_view_dropdown_list, "rj - pca (individual)", "rj - pca (individual)");}
         // Check if current URL contains "staging2"
         else if (currentURL.contains("staging2")) {
@@ -219,7 +219,7 @@ public class Staging5 extends ReusableAnnotations {
     public void select_porfolio_view_aggregated() {
         String currentURL = driver.getCurrentUrl();
         // Check if current URL contains "staging5"
-        if (currentURL.contains("staging5")) {
+        if (currentURL.contains("staging5") || currentURL.contains("app")) {
             ReusableMethodsLoggersPOM.selectByText(driver, change_porfolio_view_dropdown_list, "rj - pca (aggregated)", "rj - pca (aggregated)");
         }
         // Check if current URL contains "staging2"
@@ -939,6 +939,227 @@ public void click_target_report_view_link() {
 
 
 
+    public void enter_all_company_users_with_roles() {
+        // username + correct permission index from the dropdown
+        Map<String, Integer> userPermissionMap = new LinkedHashMap<>();
+        userPermissionMap.put("qa_sysadmin", 0);   // System Admin
+        userPermissionMap.put("qa_sysadmin2", 0);  // System Admin
+        userPermissionMap.put("qa_admin", 1);   //  Admin
+        userPermissionMap.put("qa_admin2", 1);  //  Admin
+        userPermissionMap.put("qa_pm", 2);         // PM
+        userPermissionMap.put("qa_pm2", 2);        // PM
+        userPermissionMap.put("qa_editor", 3);     // Editor
+        userPermissionMap.put("qa_editor2", 3);    // Editor
+        userPermissionMap.put("qa_author2", 4);    // Author
+
+        for (Map.Entry<String, Integer> entry : userPermissionMap.entrySet()) {
+            String username = entry.getKey();
+            int permissionIndex = entry.getValue();
+            BaseClass.staging5().click_add_company_user();
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, company_user_name_field, username, logger, "company_user_name_field");
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, company_user_email_field, username + "@quiretest.com", logger, "company_user_email_field");
+            ReusableMethodsLoggersPOM.selectByIndex(driver, company_user_permission_level, permissionIndex, logger, "company_user_permission_level");
+                        BaseClass.staging5().enter_company_user_pw_field();
+            BaseClass.staging5().enter_company_user_pw_confirmation_field();
+            BaseClass.staging5().clickSave();
+
+            // If you have a Save or Add button, click it here:
+            // ReusableMethodsLoggersPOM.clickMethod(driver, saveButton, logger, "Save User");
+
+            // Optionally clear the form or reload it if needed
+        }
+    }
+
+    @FindBy(xpath = "//select[@id='company_feature_feature_id']")
+WebElement companyFeatureDropdown;
+
+    public void add_company_feature_HOT14() throws InterruptedException {
+        try {
+            if (unregister_HOT14_feature.isDisplayed()) {
+                System.out.println("Feature already enabled — unregister button visible.");
+                return;
+            }
+        } catch (Exception e) {
+            // Element not found or not visible — proceed to add feature
+            System.out.println("Unregister button not visible — adding feature.");
+        }
+
+        BaseClass.staging5().click_add_company_feature();
+        Thread.sleep(500);
+        ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown, "Handsontable 14", "companyFeatureDropdown ");
+        Thread.sleep(500);
+        ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger, "saveFeatureButton ");
+
+        Thread.sleep(1000);
+
+    }
+
+
+
+
+@FindBy(xpath = "//input[@type='submit' or @value='Register']")
+WebElement registerFeatureButton;
+
+@FindBy(xpath = "//a[normalize-space()='Add Company Feature']")
+WebElement addCompanyFeatureButton;
+
+public void click_add_company_feature() {
+    ReusableMethodsLoggersPOM.clickMethod(driver, addCompanyFeatureButton, logger, "addCompanyFeatureButton ");
+}
+
+
+
+
+
+@FindBy(xpath = "//tr[td[normalize-space()='Handsontable 14']]//a[contains(text(),'unregister')]")
+WebElement unregister_HOT14_feature;
+
+public void scroll_and_click_unregister_HOT14_feature() throws InterruptedException {
+    try
+    {
+if (unregister_HOT14_feature.isDisplayed()) {
+    ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregister_HOT14_feature, logger, "unregister_HOT14_feature ");
+    ReusableMethodsLoggersPOM.clickMethod(driver, unregister_HOT14_feature, logger, "unregister_HOT14_feature ");
+
+    Thread.sleep(1000);
+    driver.switchTo().alert().accept();
+}}
+catch (Exception e)
+{
+    System.out.println("HOT 14 feature not found...skipping");
+}}
+
+    @FindBy(xpath = "//tr[td[normalize-space()='Limit Template Access for Company Admins']]//a[contains(text(),'unregister')]")
+    WebElement unregister_atlas_feature;
+
+    public void scroll_and_click_unregister_atlas_feature() throws InterruptedException {
+        try
+        {
+            if (unregister_atlas_feature.isDisplayed()) {
+                ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregister_atlas_feature, logger, "unregister_HOT14_feature ");
+                ReusableMethodsLoggersPOM.clickMethod(driver, unregister_atlas_feature, logger, "unregister_HOT14_feature ");
+
+                Thread.sleep(1000);
+                driver.switchTo().alert().accept();
+            }}
+        catch (Exception e)
+        {
+            System.out.println("atlas admin feature not found...skipping");
+        }}
+
+@FindBy(xpath = "//input[@name='commit']")
+WebElement saveFeatureButton;
+
+public void add_all_company_features() throws InterruptedException {
+    // Map of feature names and their corresponding values from the dropdown
+    Map<String, String> featureMap = new LinkedHashMap<>();
+//    featureMap.put("Accessiblity Costs", "16");
+//    featureMap.put("AI Conversate (Beta)", "83");
+//    featureMap.put("AI Search (Beta)", "80");
+//    featureMap.put("Allow Company Admins to Toggle User Status", "67");
+//    featureMap.put("Analytics: Report Status Durations", "42");
+//    featureMap.put("API Configuration UI", "30");
+//    featureMap.put("Async API Notifications", "28");
+//    featureMap.put("CKEditor 5", "74");
+//    featureMap.put("CKEditor 5 (Beta) - AI", "76");
+//    featureMap.put("CKEditor 5 (Beta) - AI Assistant", "78");
+//    featureMap.put("CKEditor 5 (Beta) - AI Generative", "77");
+//    featureMap.put("CKEditor 5 (Beta) - AI Tone", "79");
+//    featureMap.put("Closer XML Data Standard (Engineering - Freddie Mac)", "51");
+//    featureMap.put("Closer XML Data Standard (Seismic)", "53");
+//    featureMap.put("Comments", "2");
+//    featureMap.put("Contacts", "11");
+//    featureMap.put("Contractor Ratings", "71");
+//    featureMap.put("Core", "1");
+//    featureMap.put("EDR Order Form", "58");
+//    featureMap.put("Email Integration", "15");
+//    featureMap.put("Enhanced Signatures", "10");
+//    featureMap.put("Envirosite Order Form", "29");
+//    featureMap.put("ERIS Order Form", "20");
+//    featureMap.put("External Integration", "6");
+//    featureMap.put("Fannie Mae Toolkit", "14");
+//    featureMap.put("FNMA XML Data Standard (ESA)", "47");
+//    featureMap.put("FNMA XML Data Standard (PCA)", "45");
+//    featureMap.put("FNMA XML Data Standard (SRA)", "46");
+//    featureMap.put("FNMA XML Data Standard (ZON)", "48");
+//    featureMap.put("Formulas", "69");
+//    featureMap.put("Freddie Mac 1104 Toolkit", "64");
+//    featureMap.put("Freddie Mac Core", "13");
+//    featureMap.put("Freddie Mac Toolkit", "23");
+//    featureMap.put("Freddie Mac Toolkit (deprecated)", "22");
+    featureMap.put("Gallery Image Filter UI", "59");
+    featureMap.put("Handsontable 14", "75");
+    featureMap.put("Import Word Template", "35");
+    featureMap.put("Import/Export", "12");
+    featureMap.put("Internal Links", "25");
+    featureMap.put("Manage Library Defaults", "33");
+    featureMap.put("Maps", "5");
+    featureMap.put("Merge Table Cells", "43");
+    featureMap.put("Mobile Data Integration", "32");
+    featureMap.put("Mobile SmartTables", "38");
+    featureMap.put("Multi Section Export", "26");
+    featureMap.put("PCA Reserve Planning", "31");
+    featureMap.put("PCA Toolkit", "3");
+    featureMap.put("Portfolio Toolkit", "9");
+    featureMap.put("Regulatory Records Review", "19");
+    featureMap.put("Remove PDF Throttling Limit", "61");
+    featureMap.put("Report Mapping", "4");
+    featureMap.put("Report Pinning", "8");
+    featureMap.put("Report Sharing", "4");
+    featureMap.put("RIMS Integration", "27");
+    featureMap.put("Stamps", "24");
+    featureMap.put("String Packages", "34");
+    featureMap.put("WordBank", "1");
+        // Loop through each feature and add it
+        for (Map.Entry<String, String> entry : featureMap.entrySet()) {
+            String featureName = entry.getKey();
+            String featureValue = entry.getValue();
+            
+            // First click the Add Company Feature button
+            ReusableMethodsLoggersPOM.clickMethod(driver, addCompanyFeatureButton, logger, "Add Company Feature button");
+            
+            // Select the feature from dropdown
+            ReusableMethodsLoggersPOM.selectByValue(driver, companyFeatureDropdown, featureValue, logger, "Selecting feature: " + featureName);
+            
+            // Click the save button
+            ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger, "Save feature button for: " + featureName);
+            
+            // Wait for the page to refresh/update
+            Thread.sleep(1000);
+            
+            // Re-initialize the elements after page refresh to avoid stale element exceptions
+            PageFactory.initElements(driver, this);
+            Thread.sleep(1000);
+
+        }
+    
+    logger.log(LogStatus.PASS, "All features have been added successfully");
+}
+
+    public void add_atlas_feature() throws InterruptedException {
+        try {
+            if (unregister_atlas_feature.isDisplayed()) {
+                System.out.println("Feature already enabled — unregister button visible.");
+                return;
+            }
+        } catch (Exception e) {
+            // Element not found or not visible — proceed to add feature
+            System.out.println("Unregister button not visible — adding feature.");
+        }
+
+        BaseClass.staging5().click_add_company_feature();
+        Thread.sleep(1000);
+
+        ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown,
+                "Limit Template Access for Company Admins",
+                "Limit Template Access for Company Admins ");
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
+                "Save feature button for: Atlas-Limit template access for admin");
+
+        Thread.sleep(1000);
+    }
+
     @FindBy(xpath = "//h2[normalize-space()='Quire Help Center']")
     WebElement email_support_popup_header;
     @FindBy(xpath = "//iframe[@id='widget-frame']")
@@ -1624,6 +1845,37 @@ public void click_target_report_view_link() {
             Thread.sleep(2000);
         }
     }
+@FindBy(xpath = "//div[@class='wsc-contextmenu wsc-element wsc-theme-ckeditor5 wsc--border-box']//button")
+WebElement suggestion_popup;
+
+    @FindBy(xpath = "//div[@id='info_table_section_edit']//div[@class='wsc-contenteditable-mirror wsc-element']//span[1]")
+    WebElement SC_suggestion_ST;
+
+    @FindBy(xpath = "//tbody//p[1]")
+    WebElement ST_textarea;
+
+@FindBy(xpath = "//div[contains(@class, 'handsontable')]//*[contains(@class, 'wsc-') and contains(@class, '-problem')]")
+//WebElement ST_spellCheck_error;
+    List<WebElement> spellCheck_errors_ST;
+    public void fix_ST_spellCheck_errors() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ST_textarea, logger, "ST_textarea");
+Thread.sleep(3000);
+        int spell_check_errors = spellCheck_errors_ST.size();
+        Thread.sleep(4000);
+
+        for (int i = 0; i < spell_check_errors ; i++) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, ST_textarea, logger, "ST_textarea");
+            Thread.sleep(1000);
+
+            ReusableMethodsLoggersPOM.mouseHoverMethod(driver, SC_suggestion_ST, logger, "SC_suggestion_ST");
+            Thread.sleep(1500);
+ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggestion_popup");
+            Thread.sleep(1000);
+            BaseClass.staging5().click_pixel_out_of_section();
+
+            Thread.sleep(2000);
+        }
+    }
 
 
     @FindBy(xpath = "//section[@class='switchboard CT-hide']//*[contains(@class, 'wsc-') and contains(@class, '-problem')]")
@@ -1751,7 +2003,7 @@ public void click_target_report_view_link() {
         ReusableMethodsLoggersPOM.clickMethod(driver, first_spellcheck_suggestion_prod, logger, "first_spellcheck_suggestion_prod");}
 
 
-    @FindBy(xpath = "//*[contains(@aria-label, 'Replace') and contains(@aria-label, 'with')]")
+    @FindBy(xpath = "//*[contains(@aria-label, 'Replace') and contains(@aria-label, 'with')] | //button[@class='wsc-button wsc-button--clear wsc--focusable wsc-item__content wsc-item__button wsc-contextmenu__button wsc-contextmenu__button--suggestion']")
     WebElement first_spellcheck_suggestion;
     public void click_first_spellcheck_suggestion() {
         ReusableMethodsLoggersPOM.clickMethod(driver, first_spellcheck_suggestion, logger, "first_spellcheck_suggestion");}
@@ -2554,7 +2806,7 @@ public void click_target_report_view_link() {
 
 
     //
-    @FindBy(xpath = "//div[@id='step-0']//button[@class='btn btn-default btn-sm'] | //a[normalize-space()='Close window']\n")
+    @FindBy(xpath = "//div[@id='step-0']//button[@class='btn btn-default btn-sm'] | //a[normalize-space()='Close window'] | (//strong[contains(text(),'No thanks.')])[2]")
     WebElement modal_close_window;
 
     public void click_modal_close_window() {
@@ -2893,7 +3145,36 @@ if (!userProfileTab.isDisplayed())
     @FindBy(xpath = "//span[@class='multiselect-selected-text']")
     WebElement conditionAction_dropdown_button;
     public void click_conditionAction_dropdown() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, conditionAction_dropdown_button, logger, " conditionAction_dropdown_button ");}
+        try {
+            if (conditionAction_dropdown_button.isDisplayed()) {
+
+                ReusableMethodsLoggersPOM.clickMethod(driver, conditionAction_dropdown_button, logger, " conditionAction_dropdown_button ");
+
+                BaseClass.staging5().click_conditionAction_dropdown_first_item();
+                BaseClass.staging5().captureAlertMessage();
+                BaseClass.staging5().click_out_of_section();
+                BaseClass.staging5().enter_conditionAction_comment_field();
+                BaseClass.staging5().click_out_of_section();
+                BaseClass.staging5().captureAlertMessage();
+           //     BaseClass.staging5().save_condition_action_field_text();
+
+          //      BaseClass.staging5().click_project_summary_sectionView();
+            //    BaseClass.staging5().save_project_summary_text_tableview();
+
+
+
+
+            }
+        } catch (Exception e) {
+click_conditionAction_dropdown_items();
+          //  BaseClass.staging5().save_condition_action_field_text();
+
+         //   BaseClass.staging5().click_project_summary_sectionView();
+          //  BaseClass.staging5().save_project_summary_text_tableview();
+
+        }
+    }
+
 
     @FindBy(xpath = "//label[normalize-space()='HREC']")
     WebElement conditionAction_dropdown_value_HREC;
@@ -2917,12 +3198,55 @@ List<WebElement> conditionAction_dropdown_items;
     public void click_conditionAction_dropdown_items() {
         for (WebElement element : conditionAction_dropdown_items) {
             // Ensure each element is visible and clickable
-            ReusableMethodsLoggersPOM.selectByIndex(driver, element, 1, logger," conditionAction_dropdown_items ");
+            ReusableMethodsLoggersPOM.selectByIndex(driver, element, 1,logger, " conditionAction_dropdown_items ");
         }
     }
 public void enter_ca_section_cost() {
     ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, CA_section_cost, "1000", logger, " CA_section_cost ");
 }
+
+@FindBy(xpath = "//li[contains(@id, 'condition') and contains(@id, 'action') and contains(@id, 'item')]")
+WebElement condition_action_field_text;
+
+    @FindBy(xpath = "//ol[@id='editor-container']")
+    WebElement condition_action_field_text2;
+
+    @FindBy(xpath = "//textarea[contains(@id, '_action')]")
+    WebElement conditionActionTextarea;
+
+    @FindBy(xpath = "//section[@class='project-summary']//tbody")
+    WebElement projSummary_section_text;
+    @FindBy(xpath = "(//div[@class='section-content'])[1]")
+    WebElement projSummary_section_text_QP;
+ //   String condition_action_section_text;
+    public void verify_CA_ProjSummary_and_QP() throws InterruptedException {
+        String   condition_action_section_text1 = ReusableMethodsLoggersPOM.captureTextMethod(driver, conditionActionTextarea,  logger, " conditionActionTextarea ");
+
+        String   condition_action_section_text2 = ReusableMethodsLoggersPOM.captureTextMethod(driver, condition_action_field_text2,  logger, " condition_action_field_text2 ");
+        String condition_action_section_text = condition_action_section_text2 + condition_action_section_text1;
+        BaseClass.staging5().click_project_summary_sectionView();
+        String  proj_summary_text = ReusableMethodsLoggersPOM.captureTextMethod(driver, projSummary_section_text, logger, " projSummary_section_text ");
+        if (condition_action_section_text != null && condition_action_section_text.contains(proj_summary_text)) {
+            System.out.println("All Project Summary text is present inside Condition Action text");
+        } else {
+            System.out.println("Project Summary text NOT found fully inside Condition Action text");
+        }
+
+        BaseClass.reportfoldersection().click_quick_preview_button();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().change_to_next_tab();
+        Thread.sleep(500);
+        String  qp_proj_summary_text = ReusableMethodsLoggersPOM.captureTextMethod(driver, projSummary_section_text_QP, logger, " projSummary_section_text_QP ");
+
+     if (qp_proj_summary_text != null && qp_proj_summary_text.contains(proj_summary_text)) {
+        System.out.println("All Project Summary text is present inside QP");
+    } else {
+        System.out.println("Project Summary text NOT found fully inside QP");
+    }}
+
+
+
+
 
 
     @FindBy(xpath = "//td[@class='hrec']//i[@class='fa fa-check']")
@@ -2947,20 +3271,23 @@ public void enter_ca_section_cost() {
     @FindBy(xpath = "//td[@class='estimated-cost' and normalize-space(text())='1000']")
     WebElement QP_proj_summary_cost_field;
 
-    public void verify_QP_proj_summary_section() {
+    public void verify_QP_CA_section() {
 
-            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, QP_proj_summary_noAction_checked, true, logger, " QP_proj_summary_noAction_checked ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, QP_proj_summary_noAction_checked, true, logger, " QP_proj_summary_noAction_checked ");
 
         String QP_proj_summary_text = ReusableMethodsLoggersPOM.captureTextMethod(driver, QP_proj_summary_section, logger, " QP_proj_summary_section ");
         if (QP_proj_summary_text.contains("QA automation testing condition/action text script") && QP_proj_summary_text.contains("C/A section")) {
-            System.out.println("QA automation testing condition/action text script is displayed");
-            logger.log(LogStatus.PASS, "QA automation testing condition/action text script is displayed");
+            System.out.println("QA automation testing condition/action text script is displayed\n");
+            logger.log(LogStatus.PASS, "QA automation testing condition/action text script is displayed\n");
+        } else if (QP_proj_summary_text.contains("Poor") && QP_proj_summary_text.contains("C/A section")) {
+            System.out.println("QA automation testing condition/action dropdown option and C/A section is displayed\n");
+            logger.log(LogStatus.PASS, "QA automation testing condition/action dropdown option and C/A section is displayed\n");
         } else {
-            System.out.println("QA automation testing condition/action text script is not displayed");
-            logger.log(LogStatus.FAIL, "QA automation testing condition/action text script is not displayed");
+            System.out.println("QA automation testing condition/action text script - NA or is not displayed\n");
+            logger.log(LogStatus.FAIL, "QA automation testing condition/action text script- NA or is not displayed\n");
         }
-
     }
+
     @FindBy(xpath = "//span[normalize-space()='QA automation testing condition/action text script']")
     WebElement QP_proj_summary_text;
 

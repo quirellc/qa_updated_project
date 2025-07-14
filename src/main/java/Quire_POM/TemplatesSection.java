@@ -550,7 +550,7 @@ for (int i = 0; i < search_results_int; i++) {
     public void click_insert_reportTag_dropdown_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, insert_reportTag_dropdown_button, logger, "insert_reportTag_dropdown_button");}
 
-    @FindBy(xpath = "//a[normalize-space()='Account Manager Email']")
+    @FindBy(xpath = "//div[@class='pdfFileNameFormat-reportTagContainer']//li[1]")
     WebElement reportTag_dropdown_value;
     public void click_reportTag_dropdown_value() {
         ReusableMethodsLoggersPOM.clickMethod(driver, reportTag_dropdown_value, logger, "reportTag_dropdown_value");}

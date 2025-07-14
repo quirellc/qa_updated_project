@@ -28,7 +28,7 @@ public class Regression_Suite extends ReusableAnnotations {
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
         } else if (baseUrl.contains("app")) {
-            BaseClass.quireLogin().enterProdEmail();
+            BaseClass.quireLogin().enter_admin_Email();
         }
 
         Thread.sleep(1000);
@@ -359,8 +359,14 @@ Thread.sleep(1500);
 //pin reports
         BaseClass.staging5().clickReportsTab();
         BaseClass.reportfoldersection().enterSearchField_HMReports();
+        Thread.sleep(1000);
+
         BaseClass.reportfoldersection().captureRecentReportName();
+        Thread.sleep(2000);
+
         BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(2000);
+
         BaseClass.projectFolderSection().clickProjectFolderLink_2023QAReport();
         Thread.sleep(2000);
         BaseClass.staging5().click_all_pin_icons();
@@ -509,6 +515,9 @@ Thread.sleep(1500);
         }
         else if (baseUrl.contains("staging3")) {
             driver.navigate().to("https://staging3.openquire.com/companies/20/company_email_templates?filter=report%3Astatus_change");
+        }
+        else if (baseUrl.contains("app")) {
+            driver.navigate().to("https://app.openquire.com/companies/253/company_email_templates?filter=report%3Astatus_change");
         }
         Thread.sleep(1000);
         BaseClass.staging5().click_modal_close_window();
@@ -950,6 +959,35 @@ Thread.sleep(1000);
 
     @Test
     public void TR_013_portfolios() throws InterruptedException {
+
+//        BaseClass.staging5().clickUserProfileTab();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+////enter root user
+//        BaseClass.quireLogin().enterRootUserEmail();
+//        BaseClass.quireLogin().enterPassword();
+//        //Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_modal_close_window();
+//        Thread.sleep(500);
+        WebDriver driver = getDriver();
+        if (baseUrl.contains("app")) {
+            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+        }
+        else if (baseUrl.contains("staging3")) {
+            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        }
+
+        BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
+        Thread.sleep(500);
+
+
+//        else if (baseUrl.contains("app")) {
+//            driver.navigate().to("https://app.openquire.com/companies/253/company_email_templates?filter=report%3Astatus_change");
+//        }
+
         //go to portfolios tab and into qa automation pca portfolio
         BaseClass.staging5().clickPortfoliosTab();
         BaseClass.staging5().click_QA_PCA_portfolio();
@@ -1001,13 +1039,41 @@ Thread.sleep(1000);
         Thread.sleep(500);
         BaseClass.staging5().click_cancel_alert_message();
         Thread.sleep(500);
+
+//        if (baseUrl.contains("app")) {
+//            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+//        }
+//        else if (baseUrl.contains("staging3")) {
+//            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+//        }
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().add_company_feature_HOT14();
+//        Thread.sleep(500);
+//
+
+
+        BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+        BaseClass.quireLogin().enter_sysadmin_testingInc_email();
+        BaseClass.quireLogin().enterPassword();
+        //Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+
     }
 
     @Test
     public void TR_014_delete_projFolders() throws InterruptedException {
         BaseClass.staging5().clickReportsTab();
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
+        Thread.sleep(2000);
+
         BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(2000);
 
         //create proj folder to be deleted -
 //create proj folder

@@ -54,8 +54,12 @@ public class ReportFolderSection extends ReusableAnnotations {
     @FindBy(xpath = "//*[@name='label[name]']")
     WebElement folderName;
 
-    public void enterFolderNameField() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, folderName, "QA Automation Testing Folder", logger, "Folder name field");
+    public void enterFolderNameField_QA() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, folderName, "QA Automation Testing Folder-Chrome", logger, "QA automation Reports - search field-chrome");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, folderName, "QA Automation Testing Folder-Firefox", logger, "QA automation Reports - search field-ff");
+        }
     }
 
 
@@ -1164,7 +1168,7 @@ int linkItemCount = linkItem.size();
             BaseClass.reportfoldersection().change_to_next_tab();
             Thread.sleep(500);
             //quick preview tab - capture header and footer data
-            BaseClass.staging5().verify_QP_proj_summary_section();
+            BaseClass.staging5().verify_QP_CA_section();
           //  Thread.sleep(500);
             WebDriver driver = getDriver();
 
@@ -1197,7 +1201,7 @@ int linkItemCount = linkItem.size();
            // BaseClass.staging5().click_project_summary_sectionView();
            // Thread.sleep(500);
             BaseClass.templatesSection().verify_spellCheck_text();
-            BaseClass.staging5().verify_QP_proj_summary_section();
+            BaseClass.staging5().verify_QP_CA_section();
 
             Thread.sleep(500);
 
@@ -1228,7 +1232,136 @@ int linkItemCount = linkItem.size();
 
     }
 
+    public void ck5PackagesCheck() throws InterruptedException {
+        int linkItemCount = linkItem.size();
 
+        if (browserName.contains("Chrome")) {
+            Thread.sleep(100);
+        } else if (browserName.contains("Firefox")) {
+            Thread.sleep(4000);
+        }
+        for (int i = 0; i <( linkItemCount-1); i++) {
+
+            // Skip index 3 and 7
+//            if (i == 0 || i == 4) {
+//                continue; // Skip this iteration and go to the next one
+//            }
+            ReusableMethodsLoggersPOM.captureTextMethod(driver, linkItem.get(i), logger, "report link name at index: " + i);
+            ReusableMethodsLoggersPOM.scrollToElementMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+            ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+            BaseClass.pca_xml_section().clickAddSectionButton();
+            Thread.sleep(1000);
+            BaseClass.staging5().click_add_conditionAction_toSection();
+            Thread.sleep(800);
+            BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+            Thread.sleep(800);
+
+            //change name for section title
+            BaseClass.staging5().enter_section_2_title_text();
+
+
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+
+
+      //      if (i != 5) {
+                BaseClass.staging5().click_conditionAction_dropdown();
+         //       Thread.sleep(500);
+            Thread.sleep(500);
+
+            //   }
+
+         //   BaseClass.staging5().captureAlertMessage();
+         //   Thread.sleep(500);
+
+         //   Thread.sleep(500);
+
+            Thread.sleep(500);
+
+
+            //  ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+
+            BaseClass.staging5().click_project_summary_sectionView();
+
+
+        //    BaseClass.staging5().click_section_row_editor_projectSummary();
+
+//            BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+
+//            BaseClass.templatesSection().select_all_body_and_delete_iFrame();
+
+//            BaseClass.templatesSection().enter_spellCheck_text_time_iFrame();
+//
+//            Thread.sleep(500);
+//            driver.switchTo().parentFrame();
+            Thread.sleep(500);
+
+            BaseClass.staging5().click_section_row_editor_projectSummary();
+            Thread.sleep(1000);
+            BaseClass.ck5editor().enter_and_verify_project_summary_text();
+            Thread.sleep(500);
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(500);
+            BaseClass.staging5().verify_CA_ProjSummary_and_QP();
+            Thread.sleep(500);
+
+
+//            //quick preview button in next tab
+//            BaseClass.reportfoldersection().click_quick_preview_button();
+//            Thread.sleep(1000);
+//            BaseClass.reportfoldersection().change_to_next_tab();
+//            Thread.sleep(500);
+//            //quick preview tab - capture header and footer data
+//            BaseClass.staging5().verify_QP_CA_section();
+            //  Thread.sleep(500);
+            WebDriver driver = getDriver();
+
+            //close second tab and go back to default tab
+            driver.close();
+            Thread.sleep(500);
+            BaseClass.reportfoldersection().change_to_default_tab();
+            Thread.sleep(1000);
+            // click out of section, capture report tag text
+         //   BaseClass.staging5().click_out_of_section();
+         //   BaseClass.templatesSection().verify_alertMessage_projectSummary();
+            // driver.navigate().refresh();
+            // Thread.sleep(500);
+            // BaseClass.staging5().click_project_summary_sectionView();
+            // Thread.sleep(500);
+          //  BaseClass.templatesSection().verify_spellCheck_text();
+        //    BaseClass.staging5().verify_QP_proj_summary_section();
+
+        //    Thread.sleep(500);
+
+            //delete c/a section 2
+            BaseClass.staging5().hover_and_click_section_2_checkbox();
+            Thread.sleep(500);
+            BaseClass.staging5().click_trash_icon_sectionView();
+            Thread.sleep(500);
+            driver.switchTo().alert().accept();
+            Thread.sleep(500);
+
+            BaseClass.projectFolderSection().clickPrevProjectButton();
+            Thread.sleep(1000);
+
+        }
+        //  ReusableMethodsLoggersPOM.captureTextMethodByIndex(driver, linkItem,linkItem.get(i) ,logger, "QA automation Reports - search field");}
+
+        //  @FindBy(xpath = "//*[@class='htLeft q-readonly current highlight']")
+        //  WebElement dateCreatedReport;
+
+//    public void captureRecentFolderDateCreated() {
+//        //String reportDate= dateCreatedReport.getAttribute("text");
+//       // System.out.println("date created: " + reportDate);
+//        String result2 = ReusableMethodsLoggersPOM.captureTextMethod(driver, dateCreatedReport, logger, "date created message ");
+//        System.out.println("\n" + "Date Created: " + result2);
+//    }
+
+
+    }
 
     public void ck4PackagesCheck2() throws InterruptedException {
         int linkItemCount = linkItem.size();
