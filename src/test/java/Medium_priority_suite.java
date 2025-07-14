@@ -29,7 +29,7 @@ public void TR001_user_login() throws InterruptedException {
     if (baseUrl.contains("staging")) {
         BaseClass.quireLogin().enter_admin_Email();
     } else if (baseUrl.contains("app")) {
-        BaseClass.quireLogin().enterProdEmail();
+        BaseClass.quireLogin().enter_admin_Email();
     }
 
     Thread.sleep(1000);
@@ -776,11 +776,54 @@ public void TR001_user_login() throws InterruptedException {
     @Test
     public void TR_012_Report_tag_matrix_features() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
         WebDriver driver = getDriver();
+
+        BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+        BaseClass.quireLogin().enterRootUserEmail();
+        BaseClass.quireLogin().enterPassword();
+        //Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+        if (baseUrl.contains("app")) {
+            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+        }
+        else if (baseUrl.contains("staging3")) {
+            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        }
+
+        BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
+
+
+        //log back in as admin
+
+      //  WebDriver driver = getDriver();
+
+        BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+        BaseClass.quireLogin().enter_admin_Email();
+        BaseClass.quireLogin().enterPassword();
+        //Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+
+
+        Thread.sleep(500);
         if (baseUrl.contains("staging5")) {
             driver.navigate().to("https://staging5.openquire.com/projects/327971/report_tags");
             Thread.sleep(2000);
         } else if (baseUrl.contains("staging3")) {
             driver.navigate().to("https://staging3.openquire.com/projects/601010/report_tags");
+            Thread.sleep(2000);
+        } else if (baseUrl.contains("app")) {
+            driver.navigate().to("https://app.openquire.com/projects/654503/report_tags");
             Thread.sleep(2000);
         }
         //enter account manager name
@@ -816,6 +859,10 @@ public void TR001_user_login() throws InterruptedException {
      Thread.sleep(2000);
  } else if (baseUrl.contains("staging3")) {
      driver.navigate().to("https://staging3.openquire.com/portfolios/9301");
+     Thread.sleep(2000);
+ }
+ else if (baseUrl.contains("app")) {
+     driver.navigate().to("https://app.openquire.com/portfolios/10393");
      Thread.sleep(2000);
  }
 
@@ -1144,13 +1191,40 @@ BaseClass.staging5().clickLibrariesTab();
 
 
     }
+
+
     @Test
     public void TR_017_Atlas_admin_permissions() throws InterruptedException, IOException {
+
+        WebDriver driver = getDriver();
+                BaseClass.staging5().clickUserProfileTab();
+                Thread.sleep(500);
+
+                BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+                BaseClass.quireLogin().enterRootUserEmail();
+                BaseClass.quireLogin().enterPassword();
+                //Thread.sleep(1000);
+                BaseClass.quireLogin().clickLogin();
+                Thread.sleep(500);
+                BaseClass.staging5().click_modal_close_window();
+                Thread.sleep(500);
+        if (baseUrl.contains("app")) {
+            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+        } else if (baseUrl.contains("staging3")) {
+            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        }
+        Thread.sleep(1000);
+        BaseClass.staging5().add_atlas_feature();
+        Thread.sleep(1000);
+
+        BaseClass.staging5().add_company_feature_HOT14();
+        Thread.sleep(1000);
 
 //log out current user, log into sysadmin atlas
         BaseClass.staging5().clickUserProfileTab();
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().enterEmail_sysadmin_atlas();
+        BaseClass.quireLogin().enter_sysadmin_testingInc_email();
         BaseClass.quireLogin().enterPassword();
         Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
@@ -1209,7 +1283,7 @@ BaseClass.staging5().clickLibrariesTab();
         BaseClass.staging5().clickUserProfileTab();
         Thread.sleep(500);
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().enterEmail_admin_atlas();
+        BaseClass.quireLogin().enter_admin_Email();
         BaseClass.quireLogin().enterPassword();
         Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
@@ -1227,7 +1301,7 @@ BaseClass.staging5().clickLibrariesTab();
         //verify unable to click edit labels tab
         BaseClass.templatesSection().verify_edit_labels_button_locked();
         Thread.sleep(500);
-        WebDriver driver = getDriver();
+        //  WebDriver driver = getDriver();
         driver.navigate().refresh();
 
         //go to company users
@@ -1250,7 +1324,137 @@ BaseClass.staging5().clickLibrariesTab();
         Thread.sleep(500);
         BaseClass.staging5().captureAlertMessage();
 
+        //remove Atlas feature
+        BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+        BaseClass.quireLogin().enterRootUserEmail();
+        BaseClass.quireLogin().enterPassword();
+        //Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+        if (baseUrl.contains("app")) {
+            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+        } else if (baseUrl.contains("staging3")) {
+            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        }
+
+        BaseClass.staging5().scroll_and_click_unregister_atlas_feature();
+        Thread.sleep(500);
+
     }
+
+//    @Test // old with atlas accounts
+//    public void TR_017_Atlas_admin_permissions() throws InterruptedException, IOException {
+//
+////log out current user, log into sysadmin atlas
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//        BaseClass.quireLogin().enterEmail_sysadmin_atlas();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_modal_close_window();
+//        Thread.sleep(500);
+//
+//        //click templates tab, create new template button, verify it exists, then cancel
+//        BaseClass.templatesSection().clickTemplatesTab();
+//        Thread.sleep(500);
+//
+//        BaseClass.templatesSection().clickAddTemplateButton();
+//        Thread.sleep(2000);
+//
+//        BaseClass.templatesSection().verify_NewTemplateModal_isVisible();
+//        Thread.sleep(500);
+//
+//        BaseClass.templatesSection().clickCancel();
+//        Thread.sleep(500);
+//
+//        //click first template in templates tab and click manage collaborators
+//        BaseClass.reportfoldersection().clickReportsFirstLink();
+//        Thread.sleep(1000);
+//        BaseClass.templatesSection().click_manage_collaborators_button();
+//        Thread.sleep(1000);
+//
+//
+//        //hover and click first arrow button unassigned package...save
+//        BaseClass.staging5().hover_unassigned__dropdown_value();
+//        Thread.sleep(800);
+//        BaseClass.staging5().click_unassigned_items_right_arrow();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().getTemplatesPackagesList();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(500);
+//        BaseClass.reportfoldersection().captureAlertMessage();
+//        Thread.sleep(500);
+//
+//        //remove assigned first package hovering over checkbox
+//        BaseClass.templatesSection().click_manage_collaborators_button();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().hover_assigned_packages_first_item();
+//        Thread.sleep(500);
+//        BaseClass.pca_xml_section().click_cancel_button_first_assigned_package_button();
+//        Thread.sleep(1000);
+//        BaseClass.pca_xml_section().getTemplatesPackagesList();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(500);
+//        BaseClass.reportfoldersection().captureAlertMessage();
+//        Thread.sleep(500);
+//
+//
+//        //log out current user, log into admin atlas
+//        BaseClass.staging5().clickUserProfileTab();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//        BaseClass.quireLogin().enterEmail_admin_atlas();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_modal_close_window();
+//        Thread.sleep(500);
+//
+//
+//        //verify unable to click templates tab
+//        BaseClass.templatesSection().clickTemplatesTab();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().verify_add_template_button_locked();
+//        Thread.sleep(500);
+//
+//        //verify unable to click edit labels tab
+//        BaseClass.templatesSection().verify_edit_labels_button_locked();
+//        Thread.sleep(500);
+//        WebDriver driver = getDriver();
+//        driver.navigate().refresh();
+//
+//        //go to company users
+//        BaseClass.staging5().clickUsersTab();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_usersTab_companyUsers_dropdownItem();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().verify_loading_complete_sideBar();
+//
+//        //find QA Dumnmy user
+//        BaseClass.reportfoldersection().enterSearchField_QA_companyUser();
+//        Thread.sleep(3000);
+//        BaseClass.staging5().click_qa_dummy_user_link();
+//        Thread.sleep(500);
+//        BaseClass.staging5().verify_locked_companyUser_fields();
+//        Thread.sleep(500);
+//        BaseClass.staging5().select_company_user_status();
+//        Thread.sleep(500);
+//        BaseClass.staging5().clickSave();
+//        Thread.sleep(500);
+//        BaseClass.staging5().captureAlertMessage();
+//
+//    }
 
 
 }

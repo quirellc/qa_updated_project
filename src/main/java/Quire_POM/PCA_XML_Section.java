@@ -187,16 +187,16 @@ public class PCA_XML_Section extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, templatePackagesTab, logger, " template packages tab ");
     }
 
-    @FindBy(xpath = "(//table[@class='htCore'])[7]")
+    @FindBy(xpath = "(//div[@class='ht_master handsontable'])[2]//table[@class='htCore']")
     WebElement templatePackagesList;
     public void getTemplatesPackagesList() {
        ReusableMethodsLoggersPOM.captureTextMethod(driver, templatePackagesList, logger, "Assigned Packages List ");}
 
-    @FindBy(xpath = "(//table[@class='htCore'])[7]//tbody//tr[1]")
+    @FindBy(xpath = "(//div[@class='ht_master handsontable'])[2]//table[@class='htCore']//tbody//tr[1]")
     WebElement assigned_packages_first_item;
     public void hover_assigned_packages_first_item() {
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, assigned_packages_first_item, logger, "assigned_packages_first_item");}
-    @FindBy(xpath = "(//table[@class='htCore'])[7]//tbody//tr[2]")
+    @FindBy(xpath = "(//div[@class='ht_master handsontable'])[2]//table[@class='htCore']//tbody//tr[2]")
     WebElement assigned_packages_second_item;
     public void hover_assigned_packages_second_item() {
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, assigned_packages_second_item, logger, "assigned_packages_second_item");}
@@ -205,11 +205,11 @@ public class PCA_XML_Section extends ReusableAnnotations {
     public void click_package_ESA() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, ESA_CA_package, logger, "ESA_CA_package");}
 
-    @FindBy(xpath = "(//table[@class='htCore'])[7]//tr[1]//i[@class='fa fa-times']")
+    @FindBy(xpath = "(//div[@class='ht_master handsontable'])[2]//table[@class='htCore']//tbody//tr[1]//i[@class='fa fa-times']")
     WebElement cancel_button_first_assigned_package;
     public void click_cancel_button_first_assigned_package_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, cancel_button_first_assigned_package, logger, "cancel_button_first_assigned_package");}
-    @FindBy(xpath = "(//table[@class='htCore'])[7]//tr[2]//i[@class='fa fa-times']")
+    @FindBy(xpath = "(//div[@class='ht_master handsontable'])[2]//table[@class='htCore']//tbody//tr[2]//i[@class='fa fa-times']")
     WebElement cancel_button_assigned_package;
     public void click_cancel_assigned_package_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, cancel_button_assigned_package, logger, "cancel_button_assigned_package");}

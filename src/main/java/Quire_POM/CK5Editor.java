@@ -11,6 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import reusableLibrary.ReusableAnnotations;
 import reusableLibrary.ReusableMethodsLoggersPOM;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class CK5Editor extends ReusableAnnotations {
@@ -278,6 +281,53 @@ WebElement text_body1;
         else {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff,"QA Automationn Testng Script - Project Summary" , logger, "text_body1_ff");
         }}
+
+    @FindBy(xpath = "//p[contains(text(),'QA Automationn Testng Script - Project Summary') and contains(text(), '_')]")
+    WebElement proj_summary_text;
+
+    DateFormat formatTime = new SimpleDateFormat("HH_mm_ss");
+
+    Date systemDate = new Date();
+    String timeOfSystem = formatTime.format(systemDate);
+
+    public void enter_and_verify_project_summary_text() throws InterruptedException {
+
+        select_all_and_backspace_sc_tc_section();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_out_of_section();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_section_row_editor_projectSummary();
+
+        Thread.sleep(500);
+        String time = "QA Automationn Testng Script - Project Summary " + timeOfSystem;
+
+
+        if(driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, proj_summary_text_body,  time , logger, "proj_summary_text_body");
+        }
+        else {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, text_body1_ff, time, logger, "text_body1_ff");
+        }
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_out_of_section();
+        BaseClass.templatesSection().verify_alertMessage_projectSummary();
+        Thread.sleep(500);
+
+       String projectSummary = ReusableMethodsLoggersPOM.saveTextMethod(driver, proj_summary_text,  logger, "proj_summary_text");
+        Thread.sleep(500);
+
+        if (projectSummary.contains(time)) {
+        System.out.println("Project Summary saved successfully");
+    }
+    else {
+        System.out.println("Project Summary not saved");
+    }
+    }
+
+
 
     @FindBy(xpath = "(//section[@class='switchboard CT-hide']//p)[2]")
     WebElement projectSummaryText;
@@ -886,6 +936,12 @@ int count = TC_highlights.size();
     public void click_current_section_TC_highlight() {
         ReusableMethodsLoggersPOM.clickMethod(driver, current_section_TC_highlight, logger, "current_section_TC_highlight");}
 
+
+    @FindBy(xpath = "(//span[@class='ck-suggestion-marker ck-suggestion-marker-insertion'][contains(text(),'QA Automationn Testing Script - Spell Check Check ')])[4]")
+    WebElement ST_TC_highlight;
+    public void click_SmartTable_TC_highlight() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ST_TC_highlight, logger, "ST_TC_highlight");}
+
     @FindBy(xpath = "//button[@class='ck ck-button ck-off ck-suggestion--accept']")
     WebElement accept_TC_suggestion;
     public void click_accept_TC_suggestion() {
@@ -1101,7 +1157,10 @@ int count = TC_highlights.size();
                 driver.navigate().to("https://staging5.openquire.com/reports/668855");
             }
             else if (baseUrl.contains("staging3")) {
-                                driver.navigate().to("https://staging3.openquire.com/reports/1330243");
+                driver.navigate().to("https://staging3.openquire.com/reports/1330243");
+            }
+    else if (baseUrl.contains("app")) {
+                    driver.navigate().to("https://app.openquire.com/reports/1461010");
 
 //                driver.navigate().to("https://staging3.openquire.com/reports/1330083");
             }

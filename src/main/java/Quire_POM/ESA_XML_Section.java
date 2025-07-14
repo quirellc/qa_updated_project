@@ -106,6 +106,16 @@ public class ESA_XML_Section extends ReusableAnnotations {
     public void clickGenerateXMLButton() throws InterruptedException {
         ReusableMethodsLoggersPOM.doubleClickMethod(driver, generateXMLButton, logger, " generate xml button ");
 
+        Thread.sleep(6000);
+
+        try {
+        if (backToFormButton.isDisplayed()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, backToFormButton, logger, " back to form button ");
+        }
+        } catch (Exception e) {
+            System.out.println("back to form button is not displayed...no errors as expected");
+        }
+
     }
     @FindBy(xpath = "//a[@class='download-non-pdf document-download js-download']")
     WebElement XMLButtonText;
