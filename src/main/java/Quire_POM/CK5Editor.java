@@ -929,8 +929,14 @@ int count = TC_highlights.size();
     public void verify_TC_red_highlight() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, TC_red_highlight, true, logger, "TC_red_highlight");}
 
+    @FindBy(xpath = "(//span[@class='ck-suggestion-marker ck-suggestion-marker-deletion'])[4]")
+    WebElement TC_red_highlight_editor_mode_ST;
+    public void click_TC_red_highlight_editor_ST() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, TC_red_highlight_editor_mode_ST, logger, "TC_red_highlight_editor_mode_ST");}
 
-//    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//span[contains(@class, 'ck-suggestion-marker ck-suggestion-marker-')]")
+
+
+    //    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//span[contains(@class, 'ck-suggestion-marker ck-suggestion-marker-')]")
    @FindBy(xpath = "//span[@class='ck-suggestion-marker ck-suggestion-marker-insertion']")
      WebElement current_section_TC_highlight;
     public void click_current_section_TC_highlight() {

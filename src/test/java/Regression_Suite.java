@@ -1176,6 +1176,28 @@ Thread.sleep(1000);
 
     }
 
+    @Test
+    public void TR_015_ck5_packages_ProjSummary_section() throws InterruptedException {
+        WebDriver driver = getDriver();
+        if (baseUrl.contains("staging5")) {
+            driver.navigate().to("https://staging5.openquire.com/folders/275681/projects/328759");
+        } else if (baseUrl.contains("staging3")) {
+            driver.navigate().to("https://staging3.openquire.com/folders/545421/projects/601025");
+        } else if (baseUrl.contains("app")) {
+            driver.navigate().to("https://app.openquire.com/projects/658267");
+        }
+
+        Thread.sleep(500);
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+
+        BaseClass.reportfoldersection().ck5PackagesCheck();
+        Thread.sleep(500);
+
+    }
+
+
+
 //    @Test
 //    public void TR_015_ck4_packages_ProjSummary_section() throws InterruptedException {
 //        WebDriver driver = getDriver();

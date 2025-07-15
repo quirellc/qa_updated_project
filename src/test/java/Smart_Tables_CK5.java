@@ -18,7 +18,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
         } else if (baseUrl.contains("app")) {
-            BaseClass.quireLogin().enterProdEmail();
+            BaseClass.quireLogin().enter_admin_Email();
         }
         Thread.sleep(1000);
         BaseClass.quireLogin().enterPassword();

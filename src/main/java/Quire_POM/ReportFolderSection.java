@@ -1240,7 +1240,7 @@ int linkItemCount = linkItem.size();
         } else if (browserName.contains("Firefox")) {
             Thread.sleep(4000);
         }
-        for (int i = 0; i <( linkItemCount-1); i++) {
+        for (int i = 0; i <( linkItemCount); i++) {
 
             // Skip index 3 and 7
 //            if (i == 0 || i == 4) {
@@ -1256,8 +1256,8 @@ int linkItemCount = linkItem.size();
             Thread.sleep(1000);
             BaseClass.staging5().click_add_conditionAction_toSection();
             Thread.sleep(800);
-            BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-            Thread.sleep(800);
+            driver.navigate().refresh();
+           Thread.sleep(800);
 
             //change name for section title
             BaseClass.staging5().enter_section_2_title_text();
@@ -1271,6 +1271,8 @@ int linkItemCount = linkItem.size();
                 BaseClass.staging5().click_conditionAction_dropdown();
          //       Thread.sleep(500);
             Thread.sleep(500);
+            driver.navigate().refresh();
+
 
             //   }
 
@@ -1305,7 +1307,7 @@ int linkItemCount = linkItem.size();
             Thread.sleep(500);
             BaseClass.staging5().click_default_section_title();
             Thread.sleep(500);
-            BaseClass.staging5().verify_CA_ProjSummary_and_QP();
+            BaseClass.staging5().verify_ConditionAction_ProjSummary_and_QP();
             Thread.sleep(500);
 
 
@@ -1342,10 +1344,19 @@ int linkItemCount = linkItem.size();
             BaseClass.staging5().click_trash_icon_sectionView();
             Thread.sleep(500);
             driver.switchTo().alert().accept();
+            Thread.sleep(1500);
+            try {
+                if (ok_button.isDisplayed()) {
+                    BaseClass.staging5().click_ok_button();
+
+                }
+            } catch (Exception e) {
+                System.out.println("no ok button");            }
+
             Thread.sleep(500);
 
             BaseClass.projectFolderSection().clickPrevProjectButton();
-            Thread.sleep(1000);
+            Thread.sleep(2500);
 
         }
         //  ReusableMethodsLoggersPOM.captureTextMethodByIndex(driver, linkItem,linkItem.get(i) ,logger, "QA automation Reports - search field");}
@@ -1362,7 +1373,8 @@ int linkItemCount = linkItem.size();
 
 
     }
-
+    @FindBy(xpath = "//button[normalize-space()='OK']")
+    WebElement ok_button;
     public void ck4PackagesCheck2() throws InterruptedException {
         int linkItemCount = linkItem.size();
 

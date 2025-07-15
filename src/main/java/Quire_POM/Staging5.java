@@ -1114,25 +1114,25 @@ public void add_all_company_features() throws InterruptedException {
         for (Map.Entry<String, String> entry : featureMap.entrySet()) {
             String featureName = entry.getKey();
             String featureValue = entry.getValue();
-            
+
             // First click the Add Company Feature button
             ReusableMethodsLoggersPOM.clickMethod(driver, addCompanyFeatureButton, logger, "Add Company Feature button");
-            
+
             // Select the feature from dropdown
             ReusableMethodsLoggersPOM.selectByValue(driver, companyFeatureDropdown, featureValue, logger, "Selecting feature: " + featureName);
-            
+
             // Click the save button
             ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger, "Save feature button for: " + featureName);
-            
+
             // Wait for the page to refresh/update
             Thread.sleep(1000);
-            
+
             // Re-initialize the elements after page refresh to avoid stale element exceptions
             PageFactory.initElements(driver, this);
             Thread.sleep(1000);
 
         }
-    
+
     logger.log(LogStatus.PASS, "All features have been added successfully");
 }
 
@@ -1853,6 +1853,9 @@ WebElement suggestion_popup;
 
     @FindBy(xpath = "//tbody//p[1]")
     WebElement ST_textarea;
+    public void click_ST_textarea() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ST_textarea, logger, "ST_textarea");
+    }
 
 @FindBy(xpath = "//div[contains(@class, 'handsontable')]//*[contains(@class, 'wsc-') and contains(@class, '-problem')]")
 //WebElement ST_spellCheck_error;
@@ -1861,11 +1864,13 @@ WebElement suggestion_popup;
         ReusableMethodsLoggersPOM.clickMethod(driver, ST_textarea, logger, "ST_textarea");
 Thread.sleep(3000);
         int spell_check_errors = spellCheck_errors_ST.size();
-        Thread.sleep(4000);
+        Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
 
         for (int i = 0; i < spell_check_errors ; i++) {
             ReusableMethodsLoggersPOM.clickMethod(driver, ST_textarea, logger, "ST_textarea");
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             ReusableMethodsLoggersPOM.mouseHoverMethod(driver, SC_suggestion_ST, logger, "SC_suggestion_ST");
             Thread.sleep(1500);
@@ -3244,6 +3249,62 @@ WebElement condition_action_field_text;
         System.out.println("Project Summary text NOT found fully inside QP");
     }}
 
+    public void verify_ConditionAction_ProjSummary_and_QP() throws InterruptedException {
+        // Step 1: Safely capture condition/action text from <textarea> if it's visible
+        String caTextareaText = "";
+        try {
+            if (conditionActionTextarea.isDisplayed()) {
+                caTextareaText = ReusableMethodsLoggersPOM.captureTextMethod(driver, conditionActionTextarea, logger, "conditionActionTextarea");
+            } else {
+                System.out.println("Textarea not visible — skipping capture.");
+            }
+        } catch (Exception e) {
+            System.out.println("Skipping textarea capture due to exception: " + e.getMessage());
+        }
+
+        // Step 2: Capture condition/action section container
+        String caContainerText = ReusableMethodsLoggersPOM.captureTextMethod(driver, condition_action_field_text2, logger, "condition_action_field_text2");
+
+        // Combine both pieces of condition/action content
+        String fullCAText = (caContainerText + " " + caTextareaText).toLowerCase().replaceAll("\\s+", " ").trim();
+
+        // Step 3: Click to open Project Summary section
+        BaseClass.staging5().click_project_summary_sectionView();
+
+        // Step 4: Capture project summary text
+        String projectSummaryText = ReusableMethodsLoggersPOM.captureTextMethod(driver, projSummary_section_text, logger, "projSummary_section_text");
+        String normalizedSummary = projectSummaryText.toLowerCase().replaceAll("\\s+", " ").trim();
+
+        // Step 5: Token-by-token presence check
+        boolean allTokensFound = true;
+        for (String token : normalizedSummary.split(" ")) {
+            if (!fullCAText.contains(token)) {
+                allTokensFound = false;
+                System.out.println("❌ Missing token in CA section: " + token);
+            }
+        }
+
+        if (allTokensFound) {
+            System.out.println("✅ All Project Summary tokens are present in Condition Action text");
+        } else {
+            System.out.println("❌ One or more Project Summary tokens NOT found in Condition Action text");
+        }
+
+        // Step 6: Open Quick Preview and validate QP contents
+        BaseClass.reportfoldersection().click_quick_preview_button();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().change_to_next_tab();
+        Thread.sleep(500);
+
+        String qpSummaryText = ReusableMethodsLoggersPOM.captureTextMethod(driver, projSummary_section_text_QP, logger, "projSummary_section_text_QP");
+        String normalizedQPSummary = qpSummaryText.toLowerCase().replaceAll("\\s+", " ").trim();
+
+        if (normalizedQPSummary.contains(normalizedSummary)) {
+            System.out.println("✅ Quick Preview contains full Project Summary text");
+        } else {
+            System.out.println("❌ Quick Preview does NOT contain full Project Summary text");
+        }
+    }
 
 
 
