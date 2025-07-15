@@ -24,7 +24,7 @@ public class FNMA_ZON_XML_Staging extends ReusableAnnotations {
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
         } else if (baseUrl.contains("app")) {
-            BaseClass.quireLogin().enterProdEmail();
+            BaseClass.quireLogin().enter_admin_Email();
         }
 
         Thread.sleep(1000);

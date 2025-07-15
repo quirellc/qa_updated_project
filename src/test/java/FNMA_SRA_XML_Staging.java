@@ -26,7 +26,7 @@ public void TR001_user_login() throws InterruptedException {
     if (baseUrl.contains("staging")) {
         BaseClass.quireLogin().enter_admin_Email();
     } else if (baseUrl.contains("app")) {
-        BaseClass.quireLogin().enterProdEmail();
+        BaseClass.quireLogin().enter_admin_Email();
     }
 
     Thread.sleep(1000);

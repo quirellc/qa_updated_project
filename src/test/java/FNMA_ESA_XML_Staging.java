@@ -25,7 +25,7 @@ public class FNMA_ESA_XML_Staging extends ReusableAnnotations {
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
         } else if (baseUrl.contains("app")) {
-            BaseClass.quireLogin().enterProdEmail();
+            BaseClass.quireLogin().enter_admin_Email();
         }
 
         Thread.sleep(1000);
@@ -251,9 +251,9 @@ BaseClass.staging5().click_pixel_out_of_section();
         BaseClass.zon_xml_section().getXMLButtonText();
         Thread.sleep(1000);
         BaseClass.pca_xml_section().downloadGeneratedXML_ZIP();
-        Thread.sleep(8000);
+        Thread.sleep(6000);
         BaseClass.staging5().unZip_ESA_XML_Folder();
-        Thread.sleep(5000);
+        Thread.sleep(4000);
         BaseClass.staging5().capture_ESA_version_from_XML();
         Thread.sleep(1000);
     }

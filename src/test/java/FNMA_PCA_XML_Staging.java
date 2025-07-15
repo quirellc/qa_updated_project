@@ -31,7 +31,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
             BaseClass.quireLogin().enter_admin_Email();
 
         } else if (baseUrl.contains("app")) {
-            BaseClass.quireLogin().enterProdEmail();
+            BaseClass.quireLogin().enter_admin_Email();
         }
 
             Thread.sleep(1000);
@@ -505,7 +505,9 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         BaseClass.staging5().click_titlePageImage_RT_dropDownItem();
 //        driver.switchTo().defaultContent();
         BaseClass.staging5().click_pixel_out_of_section();
-        Thread.sleep(1500);
+        Thread.sleep(500);
+        driver.navigate().refresh();
+        Thread.sleep(1000);
         BaseClass.reporttagssection().verify_title_page_image_loaded();
         Thread.sleep(500);
 
