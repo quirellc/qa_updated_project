@@ -1747,7 +1747,8 @@ public void add_all_company_features() throws InterruptedException {
 
             Thread.sleep(7000);
             ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_gallery_appendix, true, logger, "file_uploaded_gallery_appendix");
-
+            BaseClass.reportfoldersection().clickSectionView_Appendices();
+            Thread.sleep(4000);
             ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "signature.jpg", logger, "signature");
           //  ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_gallery_appendix, true, logger, "file_uploaded_gallery_appendix");
             Thread.sleep(7000);
