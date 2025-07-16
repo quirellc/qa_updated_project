@@ -388,6 +388,31 @@ WebElement instruction_text_ck5;
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, wb_body_ff, "QA Test Automation - WordBank Content", logger, "wb_body_ff");
         }}
 
+    @FindBy(xpath = "//form[@id='word_bank_definition_form']")
+    WebElement wordbank_details_preview_text_ck5;
+    public void verify_wordbank_details_preview_text_ck5() {
+        String wb_text = ReusableMethodsLoggersPOM.captureTextMethod(driver, wordbank_details_preview_text_ck5, logger, "wordbank_details_preview_text_ck5");
+        if (wb_text.contains("Title\n" +
+                "Label\n" +
+                "pca\n" +
+                "Instructions\n" +
+                "QA Test Automation - WordBank Content\n" +
+                "Content\n" +
+                "QA Test Automation - WordBank Content")) {
+            System.out.println("Wordbank Details Preview text verified successfully");
+            logger.log(LogStatus.PASS, "Wordbank Details Preview text verified successfully");
+        } else {
+            System.out.println("Wordbank Details Preview text NOT verified");
+            logger.log(LogStatus.FAIL, "Wordbank Details Preview text NOT verified");
+        }
+    }
+   @FindBy(xpath = "//a[normalize-space()='Delete WordBank Item']")
+   WebElement delete_wordbank_item_ck5;
+   public void click_delete_wordbank_item_ck5() {
+       ReusableMethodsLoggersPOM.clickMethod(driver, delete_wordbank_item_ck5, logger, "delete_wordbank_item_ck5");}
+
+
+
     @FindBy(xpath = "//button[@data-cke-tooltip-text='To-do List']")
     WebElement to_do_list_icon_ck5;
     public void click_to_do_list_icon_ck5() {

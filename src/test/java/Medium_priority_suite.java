@@ -1191,6 +1191,64 @@ BaseClass.staging5().clickLibrariesTab();
 
 
     }
+    @Test
+    public void TR_017_Wordbank_settings() throws InterruptedException {
+        WebDriver driver = getDriver();
+        BaseClass.staging5().clickLibrariesTab();
+        BaseClass.staging5().click_librariesTab_wordBankDropdown();
+        Thread.sleep(500);
+        BaseClass.staging5().click_addWordBankItem_button();
+
+
+        BaseClass.staging5().enter_wordbank_librariesTab_new_title();
+        Thread.sleep(900);
+
+        BaseClass.staging5().clickWordBank_label_dropdown_arrow();
+
+        Thread.sleep(400);
+
+        BaseClass.staging5().clickWordBank_label_dropdown_firstLink();
+        Thread.sleep(900);
+
+
+        //add content row
+        BaseClass.templatesSection().clickAddContentRow_instruction();
+        Thread.sleep(400);
+
+        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+        Thread.sleep(400);
+        BaseClass.ck5editor().enter_wb_text_ck5();
+        Thread.sleep(400);
+        BaseClass.staging5().click_wordBank_add_content_row();
+        Thread.sleep(400);
+        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+        Thread.sleep(400);
+        BaseClass.ck5editor().enter_wb_text_ck5();
+        Thread.sleep(400);
+        BaseClass.templatesSection().clickSave2();
+        Thread.sleep(400);
+
+        BaseClass.pca_xml_section().clickSearchField();
+        Thread.sleep(400);
+
+        BaseClass.staging5().enter_wb_librariesTab_searchField();
+        Thread.sleep(400);
+
+        BaseClass.staging5().click_filter_by_labels_search_field();
+        Thread.sleep(500);
+        BaseClass.staging5().click_filter_by_labels_first_dropdown();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_wordBank_libraries_link();
+        Thread.sleep(500);
+        BaseClass.ck5editor().verify_wordbank_details_preview_text_ck5();
+        Thread.sleep(500);
+        BaseClass.ck5editor().click_delete_wordbank_item_ck5();
+        Thread.sleep(500);
+
+        driver.switchTo().alert().accept();
+        Thread.sleep(3000);
+    }
 
 
     @Test

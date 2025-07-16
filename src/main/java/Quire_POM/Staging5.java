@@ -506,12 +506,16 @@ public class Staging5 extends ReusableAnnotations {
     public void click_librariesTab_wordBankDropdown() {
         ReusableMethodsLoggersPOM.clickMethod(driver, librariesTab_wordBankDropdown, logger, "libraries Tab - Word Bank Dropdown ");}
 
+    @FindBy(xpath = "//a[normalize-space()='Add WordBank Item']")
+    WebElement librariesTab_addWordBankItem;
+    public void click_addWordBankItem_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, librariesTab_addWordBankItem, logger, "librariesTab_addWordBankItem");}
     @FindBy(xpath = "//a[text()='Cost Recommendations']")
     WebElement librariesTab_costRec_Dropdown;
     public void click_librariesTab_costRec_Dropdown() {
         ReusableMethodsLoggersPOM.clickMethod(driver, librariesTab_costRec_Dropdown, logger, "librariesTab_costRec_Dropdown");}
 
-    @FindBy(xpath = "//input[@placeholder='Filter by Labels...']")
+    @FindBy(xpath = "//input[contains(@placeholder, 'Filter by') and contains(@placeholder, '...')]")
     WebElement filter_by_labels_search_field;
     public void click_filter_by_labels_search_field() {
         ReusableMethodsLoggersPOM.clickMethod(driver, filter_by_labels_search_field, logger, "filter_by_labels_search_field");}
@@ -544,6 +548,9 @@ public class Staging5 extends ReusableAnnotations {
     @FindBy(xpath = "//input[@id='tag-matrix-search']")
     WebElement searchField;
 
+    public void enter_wb_librariesTab_searchField() {
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchField, "QA WordBank Item-Libraries", logger, "587");
+    }
     public void enter_587_cost_rec_searchField() {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchField, "587", logger, "587");
     }
@@ -2573,11 +2580,21 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Item", logger, "wordBank_New_Title ");
     }
 
+    public void enter_wordbank_librariesTab_new_title() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Item-Libraries Tab", logger, "wordBank_New_Title ");
+    }
+
+
     public void enter_wordbank_ST_new_title() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Smart Table New Item", logger, "wordBank_New_Title ");
     }
 
+    @FindBy(xpath = "//a[contains(text(), 'QA WordBank Item-Libraries Tab')]")
+    WebElement wordBank_libraries_link;
 
+    public void click_wordBank_libraries_link() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, wordBank_libraries_link, logger, "wordBank_libraries_link ");
+    }
     @FindBy(xpath = "//i[@class='fa fa-angle-down fa-lg']")
     WebElement wordBank_label_dropdown_arrow;
 
