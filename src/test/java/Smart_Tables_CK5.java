@@ -1119,14 +1119,14 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         //  Thread.sleep(500);
         BaseClass.smartTables().click_r1_header();
         Thread.sleep(2500);
-        BaseClass.smartTables().right_click_row2_header_ST();
+        BaseClass.smartTables().right_click_row4_header_ST();
         Thread.sleep(2500);
         BaseClass.smartTables().click_merge_cells();
         Thread.sleep(500);
 
         BaseClass.smartTables().click_smartTable_sectionView();
         Thread.sleep(500);
-        BaseClass.smartTables().verify_merged_row2_ST_preview_mode();
+        BaseClass.smartTables().verify_merged_row_ST_preview_mode();
         Thread.sleep(500);
     }
 

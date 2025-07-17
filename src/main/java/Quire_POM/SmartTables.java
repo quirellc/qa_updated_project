@@ -233,14 +233,22 @@ public class SmartTables extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "(//tr[@role='row'])[23]")
-    WebElement row2_header_ST;
+    @FindBy(xpath = "(//span[contains(text(),'4')])[2]")
+    WebElement row4_header_ST;
 
-    public void right_click_row2_header_ST() throws InterruptedException {
-//        ReusableMethodsLoggersPOM.clickMethod(driver, row2_header_ST, logger, " row2_header_ST ");
-//Thread.sleep(5000);
-        ReusableMethodsLoggersPOM.rightClickMethod(driver, row2_header_ST, logger, " row2_header_ST ");
+    public void right_click_row4_header_ST() throws InterruptedException {
+       // ReusableMethodsLoggersPOM.clickMethod(driver, row4_header_ST, logger, " row2_header_ST ");
+//Thread.sleep(500);
+        ReusableMethodsLoggersPOM.rightClickMethod(driver, row4_header_ST, logger, " row4_header_ST ");
+try {
+    if (merge_cells.isDisplayed()) {
+        return;
     }
+    } catch(Exception e){
+        ReusableMethodsLoggersPOM.rightClickMethod(driver, row4_header_ST, logger, " row4_header_ST ");
+    }
+
+}
 
     @FindBy(xpath = "//div[normalize-space()='Merge cells']")
     WebElement merge_cells;
@@ -252,7 +260,7 @@ public class SmartTables extends ReusableAnnotations {
     @FindBy(xpath = "//td[contains(@class, 'smartTable-cellMerged') and contains(@class, 'smartTable-cellMergedParent')][1]")
     WebElement merged_row_ST_preview_mode;
 
-    public void verify_merged_row2_ST_preview_mode() throws InterruptedException {
+    public void verify_merged_row_ST_preview_mode() throws InterruptedException {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, merged_row_ST_preview_mode, true, logger, " merged_row_ST_preview_mode ");
     }
 

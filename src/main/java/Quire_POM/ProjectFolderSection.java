@@ -160,7 +160,7 @@ public class ProjectFolderSection extends ReusableAnnotations {
         }
     }
 
-    @FindBy(xpath = "//*[contains(text(),'ESA Template')]")
+    @FindBy(xpath = "//div[contains(text(),'ESA Template')]")
     WebElement projectFolder_ESA_Template;
 //    @FindBy(xpath = "//*[contains(text(),'ESA Template-Firefox')]")
 //    WebElement projectFolder_ESA_Template_ff;
