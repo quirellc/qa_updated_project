@@ -5,6 +5,8 @@ import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import reusableLibrary.ReusableAnnotations;
 import reusableLibrary.ReusableMethodsLoggersPOM;
 
@@ -14,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -250,9 +253,45 @@ public class ReportFolderSection extends ReusableAnnotations {
     @FindBy(xpath = "//a[text()='here']")
     WebElement hereLink;
 
-    public void clickHereLink() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, hereLink, logger, "here link");
+    public void clickHereLink() throws InterruptedException {
+        try {
+            ReusableMethodsLoggersPOM.clickMethod(driver, hereLink, logger, "here link");
+
+        } catch (Exception e1) {
+            try {
+                driver.navigate().refresh();
+                Thread.sleep(1000);
+
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+                WebElement columnHeader;
+                for (int i = 0; i < 3; i++) {
+                    columnHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//th[.//span[contains(text(), 'Created')]]//span[contains(@class, 'colHeader')]")
+                    ));
+
+                    String classAttr = columnHeader.getAttribute("class");
+
+                    if (classAttr.contains("descending")) {
+                        break;
+                    } else {
+                        columnHeader.click();
+                        Thread.sleep(1000);
+                    }
+                }
+
+                BaseClass.reportfoldersection().enterSearchField_QA();
+                Thread.sleep(3500);
+                BaseClass.reportfoldersection().clickReportsFirstLink();
+
+            } catch (Exception e2) {
+                logger.log( LogStatus.FAIL,"Failed in fallback logic for 'here link'. Error: " + e2.getMessage());
+                // Optionally take screenshot or throw if critical
+                // throw e2;
+            }
+        }
     }
+
 
     @FindBy(xpath = "//*[contains(@href,'/projects/')]")
     WebElement prevProjectButton;

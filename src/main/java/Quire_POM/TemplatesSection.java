@@ -658,21 +658,47 @@ for (int i = 0; i < search_results_int; i++) {
 
     @FindBy(xpath = "//a[text()='here']")
     WebElement hereLink;
+
     public void clickHereLinkTemplate() throws InterruptedException {
         try {
             ReusableMethodsLoggersPOM.clickMethod(driver, hereLink, logger, "here link");
-            } catch (Exception e) {
-        //    Thread.sleep(1000);
-            driver.navigate().refresh();
-//            Thread.sleep(1000);
-//            driver.navigate().refresh();
-//            Thread.sleep(1000);
 
-            BaseClass.reportfoldersection().enterSearchField_QA();
-            Thread.sleep(3500);
-           BaseClass.reportfoldersection().clickReportsFirstLink();
+        } catch (Exception e1) {
+            try {
+                driver.navigate().refresh();
+                Thread.sleep(1000);
+
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+                WebElement columnHeader;
+                for (int i = 0; i < 3; i++) {
+                    columnHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//th[.//span[contains(text(), 'Created')]]//span[contains(@class, 'colHeader')]")
+                    ));
+
+                    String classAttr = columnHeader.getAttribute("class");
+
+                    if (classAttr.contains("descending")) {
+                        break;
+                    } else {
+                        columnHeader.click();
+                        Thread.sleep(500);
+                    }
+                }
+
+                BaseClass.reportfoldersection().enterSearchField_QA();
+                Thread.sleep(3500);
+                BaseClass.reportfoldersection().clickReportsFirstLink();
+
+            } catch (Exception e2) {
+                logger.log( LogStatus.FAIL,"Failed in fallback logic for 'here link'. Error: " + e2.getMessage());
+                // Optionally take screenshot or throw if critical
+                // throw e2;
+            }
         }
     }
+
+
 
     public void clickHereLinkReport() throws InterruptedException {
         try {

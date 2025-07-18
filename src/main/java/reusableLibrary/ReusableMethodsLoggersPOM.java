@@ -512,7 +512,7 @@ public class ReusableMethodsLoggersPOM {
     }
 
     public static void open_href_attribute_link(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(500));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         String result = null;
         try {
             WebElement foundElement = wait.until(ExpectedConditions.elementToBeClickable(xpath)) ;

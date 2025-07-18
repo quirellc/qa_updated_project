@@ -454,18 +454,18 @@ public void TR_003_report_Tags_template_FM_1104() throws InterruptedException {
         Thread.sleep(500);
 
         BaseClass.staging5().click_section_I_general_details_sectionView();
-        Thread.sleep(500);
-        BaseClass.staging5().click_section_IV_esa_details_sectionView();
-        Thread.sleep(500);
-        BaseClass.staging5().click_section_V_repair_details_sectionView();
-        Thread.sleep(500);
-        BaseClass.staging5().click_section_VI_details();
         Thread.sleep(1000);
+        BaseClass.staging5().click_section_IV_esa_details_sectionView();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_section_V_repair_details_sectionView();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_section_VI_details();
+        Thread.sleep(2000);
 
 
         // click on section III property details section view
         BaseClass.staging5().click_section_III_property_details_sectionView();
-        Thread.sleep(1000);
+        Thread.sleep(2500);
         BaseClass.staging5().click_add_cost_recommendation_button();
         Thread.sleep(500);
 
@@ -619,7 +619,7 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
     Thread.sleep(3000);
     BaseClass.templatesSection().capture_created_AlertMessage();
     BaseClass.reportfoldersection().clickHereLink();
-    Thread.sleep(1000);
+    Thread.sleep(4000);
 
 
 //        Thread.sleep(500);
