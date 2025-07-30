@@ -174,7 +174,15 @@ public class Quire_AI extends ReusableAnnotations {
 @FindBy(xpath= "//input[@placeholder=\"Tell Quire AI what you're looking for...\"]")
 WebElement quire_AI_prompt_search_field;
 public void enter_quire_AI_prompt_search_field() {
-    ReusableMethodsLoggersPOM.sendKeysMethod(driver, quire_AI_prompt_search_field, "texas" ,  logger, "quire_AI_prompt_search_field");}
+    ReusableMethodsLoggersPOM.sendKeysMethod(driver, quire_AI_prompt_search_field, "hide" ,  logger, "quire_AI_prompt_search_field");}
+
+    @FindBy(xpath = "//i[@class='fa fa-filter fa-lg fa-fw']")
+    WebElement quire_AI_filter_button;
+    public void click_quire_AI_filter_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_filter_button, logger, "quire_AI_filter_button");}
+
+
+
 
     @FindBy(xpath= "//button[normalize-space()='Search']")
     WebElement quire_AI_search_button;
@@ -193,12 +201,14 @@ public void enter_quire_AI_prompt_search_field() {
 
     @FindBy(xpath= "//sl-option[contains(@role, 'option')]")
     List<WebElement> quire_AI_status_dropdown_values;
-    public void capture_quire_AI_status_value() {
+    public void confirm_quire_AI_status_value() {
 
-        List<String> expectedValues = Arrays.asList("Data Entry", "Review", "Draft", "Final", "Final - Locked");
+//        List<String> expectedValues = Arrays.asList("Data Entry", "Review", "Draft", "Final", "Final - Locked");
+        List<String> expectedValues = Arrays.asList("Writing", "Ready for Review", "In Review", "Draft", "Final", "Final Locked");
+
         List<String> actualValues = new ArrayList<>();
 
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i <= 5; i++) {
             String text =ReusableMethodsLoggersPOM.saveTextMethod(driver, quire_AI_status_dropdown_values.get(i), logger, "quire_AI_status_dropdown_values");
             actualValues.add(text);
         }
@@ -210,6 +220,11 @@ public void enter_quire_AI_prompt_search_field() {
             System.out.println("Actual: " + actualValues);
         }
     }
+
+    @FindBy(xpath= "//sl-option[@value='295']")
+    WebElement writing_status_dropdown_option;
+    public void click_writing_status_dropdown() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, writing_status_dropdown_option, logger, "writing_status_dropdown_option");}
 
     @FindBy(xpath= "//div[contains(@class, 'ai-search-result js-ai-search-result flex items-center gap-8 width-full')]")
     WebElement quire_AI_search_result;
@@ -237,6 +252,7 @@ if (report_name_AI.equals(report_title_name)) {
 } else {
     System.out.println("Report from AI search " + report_name_AI + " does not match report opened: " + report_title_name);
 }
+driver.close();
         BaseClass.reportfoldersection().change_to_default_tab();
         BaseClass.quire_AI().hover_quire_AI_first_search_result();
 
@@ -253,19 +269,95 @@ if (report_name_AI.equals(report_title_name)) {
         }
     }
 
+    @FindBy(xpath = "//div[@class='ai-chat-launcher js-ai-chat-launcher']")
+    WebElement ask_quire_button;
+    public void click_ask_quire_button() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, ask_quire_button, logger, "ask_quire_button");
 
-
-    @FindBy(xpath= "//button[contains(@data-original-title, 'Ask AI')]")
-    WebElement quire_AI_ask_about_report_button;
-    public void click_quire_AI_ask_ai_button() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_ask_about_report_button, logger, "quire_AI_ask_about_report_button");
+        ReusableMethodsLoggersPOM.clickMethod(driver, ask_quire_button, logger, "ask_quire_button");
     }
+
+    @FindBy(xpath = "//i[@class='fa fa-angle-left fa-lg fa-fw']")
+    WebElement AI_chat_back_button;
+    public void click_AI_chat_back_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, AI_chat_back_button, logger, "AI_chat_back_button");
+    }
+
+    @FindBy(xpath = "//div[@class='ai-chat-body js-ai-chat-body grow-1 overflow-y-auto']")
+    WebElement AI_chat_body;
+    public void verify_AI_intro_chat_body() {
+        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_body, logger, "AI_chat_body");
+        if (result.contains("Continue our current conversation") &&
+                result.contains("Find Reports with AI (and chat with them)") &&
+                result.contains("Chat from a Report, Project Folder, or Portfolio view")) {
+            System.out.println("Chat AI body matches ✅");
+            logger.log(LogStatus.PASS, "Chat AI body matches ✅");
+        } else {
+            logger.log(LogStatus.FAIL, "Chat AI body does not match ❌");
+            System.out.println("Chat AI body does not match ❌");
+        }
+
+    }
+    @FindBy(xpath= "//button[normalize-space()='All Folders']")
+    WebElement quire_AI_all_folders_button;
+    public void click_quire_AI_all_folders_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_all_folders_button, logger, "quire_AI_all_folders_button");
+    }
+
+    @FindBy(xpath= "//button[normalize-space()='All Portfolios']")
+    WebElement quire_AI_all_portfolios_button;
+    public void click_quire_AI_all_portfolios_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_all_portfolios_button, logger, "quire_AI_all_portfolios_button");
+    }
+
+    @FindBy(xpath= "//button[@class='btn btn-ai-light flex items-center gap-8']")
+    WebElement quire_AI_continue_conversation_button;
+        public void click_quire_AI_continue_conversation_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_continue_conversation_button, logger, "quire_AI_continue_conversation_button");
+    }
+
+    @FindBy(xpath= "//q-chat-session-start-active[@class='ai-chat-response flex gap-8']//div[@class='ai-chat-message js-ai-chat-message flex flex-column gap-12 rounded-2xl width-full p-16']")
+    WebElement AI_chat_response;
+    public void verify_AI_chat_create_summary_response() {
+        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response, logger, "AI_chat_response");
+        if (result.contains("How can I help you with") &&
+                result.contains("Create Summary") &&
+                result.contains("You can also respond by typing in the chat field below.")) {
+            System.out.println("Chat AI response matches ✅");
+            logger.log(LogStatus.PASS, "Chat AI response matches ✅");
+        } else {
+            logger.log(LogStatus.FAIL, "Chat AI response does not match ❌");
+            System.out.println("Chat AI response does not match ❌");
+        }
+    }
+
+    @FindBy(xpath = "(//q-button[@data-action='summarize'])[2]")
+    WebElement quire_AI_create_summary_button;
+    public void click_quire_AI_create_summary_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_create_summary_button, logger, "quire_AI_create_summary_button");
+    }
+
+    @FindBy(xpath = "(//q-chat-response)[1]")
+    WebElement AI_chat_response_text;
+    public void verify_AI_chat_response_text() {
+        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+        if ((result.contains("PCA")) && (result.contains("CBRE")) && (result.contains("100-unit")) && (result.contains("Texas"))) {
+            System.out.println("Chat AI response text matches ✅");
+            logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
+        } else {
+            logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");
+            System.out.println("Chat AI response text does not match ❌");
+        }
+    }
+
 
     @FindBy(xpath = "//button[contains(@data-action, 'open-external')]")
     WebElement quire_AI_open_external_button;
     public void click_quire_AI_open_external_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_open_external_button, logger, "quire_AI_open_external_button");
     }
+
+
 
     @FindBy(xpath = "//button[@data-action='open']")
     WebElement quire_AI_open_link_button;
