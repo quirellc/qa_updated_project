@@ -78,7 +78,7 @@ public class Quire_AI_Testing extends ReusableAnnotations {
 //   Thread.sleep(1000);
 //   }
 @Test
-public void TR_015_ck5_packages_ProjSummary_section() throws InterruptedException {
+public void TR_002_API_Testing() throws InterruptedException {
  WebDriver driver = getDriver();
 BaseClass.quire_AI().click_quire_AI_search_field();
  BaseClass.quire_AI().verify_quire_AI_prompt_text();
@@ -105,14 +105,16 @@ BaseClass.quire_AI().click_quire_AI_search_field();
  Thread.sleep(500);
 
  BaseClass.quire_AI().verify_AI_intro_chat_body();
- Thread.sleep(500);
- BaseClass.quire_AI().verify_AI_intro_chat_body();
+// Thread.sleep(500);
+// BaseClass.quire_AI().verify_AI_intro_chat_body();
  Thread.sleep(500);
  BaseClass.quire_AI().click_quire_AI_continue_conversation_button();
  Thread.sleep(500);
- BaseClass.quire_AI().click_quire_AI_create_summary_button();
- Thread.sleep(500);
  BaseClass.quire_AI().verify_AI_chat_create_summary_response();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_create_summary_button();
+ Thread.sleep(2000);
+ BaseClass.quire_AI().verify_AI_chat_response_text();
  Thread.sleep(2000);
 
 }
