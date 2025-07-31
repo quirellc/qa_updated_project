@@ -417,6 +417,7 @@ Thread.sleep(1500);
 
         BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
         Thread.sleep(1000);
+        BaseClass.staging5().click_modal_close_window();
 
           BaseClass.staging5().clickSection_row_editor();
         Thread.sleep(1000);
@@ -451,6 +452,8 @@ Thread.sleep(1500);
 
         BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
         Thread.sleep(1000);
+        BaseClass.staging5().click_modal_close_window();
+
         BaseClass.staging5().clickSection_row_editor();
         Thread.sleep(1000);
 
@@ -482,6 +485,7 @@ Thread.sleep(1500);
         Thread.sleep(1000);
         BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
         Thread.sleep(1000);
+        BaseClass.staging5().click_modal_close_window();
 
           BaseClass.staging5().clickSection_row_editor();
         Thread.sleep(1000);
@@ -518,6 +522,9 @@ Thread.sleep(1500);
         }
         else if (baseUrl.contains("app")) {
             driver.navigate().to("https://app.openquire.com/companies/253/company_email_templates?filter=report%3Astatus_change");
+        }
+        else  {
+            driver.navigate().to(baseUrl + "companies/253/company_email_templates?filter=report%3Astatus_change");
         }
         Thread.sleep(1000);
         BaseClass.staging5().click_modal_close_window();
@@ -636,6 +643,8 @@ Thread.sleep(1000);
         //Thread.sleep(2000);
 
         BaseClass.ck5editor().navigateTo_ck5_report_HM_folder();
+        BaseClass.staging5().click_modal_close_window();
+
         //Thread.sleep(1000);
 
         //  BaseClass.staging5().clickSection_row_editor();
@@ -1177,7 +1186,7 @@ Thread.sleep(1000);
     }
 
     @Test
-    public void TR_015_ck5_packages_ProjSummary_section() throws InterruptedException {
+    public void TR_016_ck5_packages_ProjSummary_section() throws InterruptedException {
         WebDriver driver = getDriver();
         if (baseUrl.contains("staging5")) {
             driver.navigate().to("https://staging5.openquire.com/folders/275681/projects/328759");
@@ -1185,6 +1194,9 @@ Thread.sleep(1000);
             driver.navigate().to("https://staging3.openquire.com/folders/545421/projects/601025");
         } else if (baseUrl.contains("app")) {
             driver.navigate().to("https://app.openquire.com/projects/658267");
+        }
+        else {
+            driver.navigate().to(baseUrl + "projects/658267");
         }
 
         Thread.sleep(500);
