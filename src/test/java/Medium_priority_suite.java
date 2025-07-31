@@ -795,6 +795,9 @@ public void TR001_user_login() throws InterruptedException {
         else if (baseUrl.contains("staging3")) {
             driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
         }
+        else  {
+            driver.navigate().to(baseUrl + "companies/253/company_features");
+        }
 
         BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
 
@@ -822,8 +825,8 @@ public void TR001_user_login() throws InterruptedException {
         } else if (baseUrl.contains("staging3")) {
             driver.navigate().to("https://staging3.openquire.com/projects/601010/report_tags");
             Thread.sleep(2000);
-        } else if (baseUrl.contains("app")) {
-            driver.navigate().to("https://app.openquire.com/projects/654503/report_tags");
+        } else  {
+            driver.navigate().to(baseUrl + "projects/654503/report_tags");
             Thread.sleep(2000);
         }
         //enter account manager name
@@ -861,8 +864,8 @@ public void TR001_user_login() throws InterruptedException {
      driver.navigate().to("https://staging3.openquire.com/portfolios/9301");
      Thread.sleep(2000);
  }
- else if (baseUrl.contains("app")) {
-     driver.navigate().to("https://app.openquire.com/portfolios/10393");
+ else  {
+     driver.navigate().to(baseUrl   +"portfolios/10393");
      Thread.sleep(2000);
  }
 
@@ -1217,13 +1220,17 @@ BaseClass.staging5().clickLibrariesTab();
 
         BaseClass.ck5editor().capture_ck5_editor_inner_icons();
         Thread.sleep(400);
-        BaseClass.ck5editor().enter_wb_text_ck5();
+        BaseClass.ck5editor().enter_instruction_text_ck5();
+
+//        BaseClass.ck5editor().enter_wb_text_ck5();
         Thread.sleep(400);
         BaseClass.staging5().click_wordBank_add_content_row();
         Thread.sleep(400);
         BaseClass.ck5editor().capture_ck5_editor_inner_icons();
         Thread.sleep(400);
-        BaseClass.ck5editor().enter_wb_text_ck5();
+//        BaseClass.ck5editor().enter_wb_text_ck5();
+        BaseClass.ck5editor().enter_instruction_text_ck5();
+
         Thread.sleep(400);
         BaseClass.templatesSection().clickSave2();
         Thread.sleep(400);
@@ -1271,6 +1278,10 @@ BaseClass.staging5().clickLibrariesTab();
             driver.navigate().to("https://app.openquire.com/companies/253/company_features");
         } else if (baseUrl.contains("staging3")) {
             driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        }
+        else {
+
+                driver.navigate().to(baseUrl + "companies/253/company_features");
         }
         Thread.sleep(1000);
         BaseClass.staging5().add_atlas_feature();
@@ -1400,6 +1411,11 @@ BaseClass.staging5().clickLibrariesTab();
         } else if (baseUrl.contains("staging3")) {
             driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
         }
+        else {
+
+            driver.navigate().to(baseUrl + "companies/253/company_features");
+        }
+        Thread.sleep(500);
 
         BaseClass.staging5().scroll_and_click_unregister_atlas_feature();
         Thread.sleep(500);

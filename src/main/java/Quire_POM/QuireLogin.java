@@ -174,11 +174,11 @@ public class QuireLogin extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_atlas2@quiretest.com", logger, "automation_sysadmin_atlas");
         }}
 
-    public void enter_cbre_admin_Email() {
+    public void enter_cbre_sysadmin_Email() {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_admin_cbre@quiretest.com", logger, "automation_admin_cbre");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_cbre@quiretest.com", logger, "automation_sysadmin_cbre");
         } else if (browserName.contains("Firefox")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_admin_cbre@quiretest.com", logger, "automation_admin_cbre");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_cbre@quiretest.com", logger, "automation_sysadmin_cbre");
         }}
 
 
@@ -232,15 +232,23 @@ public class QuireLogin extends ReusableAnnotations {
 
     public void navigate_to_admin_pinnedStatus_reports() throws InterruptedException {
         BaseClass.reportfoldersection().clickReportsTab();
+        BaseClass.staging5().click_modal_close_window();
+
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
         Thread.sleep(4500);
         BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(1000);
+        BaseClass.staging5().click_modal_close_window();
+
+      //  Thread.sleep(1000);
         BaseClass.projectFolderSection().click_misc_Link_ProjectFolderLink();
-        Thread.sleep(2000);
+        BaseClass.staging5().click_modal_close_window();
+
+     //   Thread.sleep(2000);
         //cloned fm 1104 report
         BaseClass.reportfoldersection().clickReportsFirstLink();
-        Thread.sleep(2000);
+        BaseClass.staging5().click_modal_close_window();
+
+     //   Thread.sleep(2000);
 //        if (browserName.contains("Chrome")) {
 //            driver.navigate().to("https://staging5.openquire.com/reports/666419");
 //        } else if (browserName.contains("Firefox")) {

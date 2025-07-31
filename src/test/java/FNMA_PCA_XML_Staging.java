@@ -46,6 +46,8 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
         BaseClass.staging5().captureURL();
         Thread.sleep(2000);
+        BaseClass.staging5().click_modal_close_window();
+
     }
 
     @Test
@@ -53,7 +55,10 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
 
         BaseClass.templatesSection().clickTemplatesTab();
+        BaseClass.staging5().click_modal_close_window();
+
         Thread.sleep(1000);
+
 
         BaseClass.templatesSection().clickAddTemplateButton();
         Thread.sleep(2000);
@@ -78,6 +83,9 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         BaseClass.templatesSection().capture_created_AlertMessage();
         BaseClass.templatesSection().clickHereLinkTemplate();
         Thread.sleep(1500);
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+
     }
 
     @Test
@@ -213,12 +221,16 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
     }
     @Test
-    public void TR005_Report_creation_PCA() throws InterruptedException {
+    public void     TR005_Report_creation_PCA() throws InterruptedException {
 
         BaseClass.reportfoldersection().clickReportsTab();
+        Thread.sleep(1500);
+        BaseClass.staging5().click_modal_close_window();
+
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
         Thread.sleep(5500);
         BaseClass.reportfoldersection().clickReportsFirstLink();
+        BaseClass.staging5().click_modal_close_window();
 
 
         BaseClass.projectFolderSection().clickAddProjectFolderButton();
@@ -235,7 +247,9 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         BaseClass.projectFolderSection().clickSave();
         Thread.sleep(6000);
         BaseClass.projectFolderSection().click_PCA_ProjectFolderLink();
-        Thread.sleep(2000);
+        BaseClass.staging5().click_modal_close_window();
+
+        Thread.sleep(500);
 
         BaseClass.reportfoldersection().clickAddReportButton();
 
@@ -259,6 +273,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
     @Test
     public void TR006_Report_addRemove_sections_fillSections_PCA() throws InterruptedException {
         // add/remove sections report
+        BaseClass.staging5().click_modal_close_window();
 
         //click default section title and add sections: pdf, C/A , C/A subsection
         BaseClass.staging5().click_default_section_title();

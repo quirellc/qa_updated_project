@@ -1192,8 +1192,10 @@ int count = TC_highlights.size();
             }
     else if (baseUrl.contains("app")) {
                     driver.navigate().to("https://app.openquire.com/reports/1461010");
-
 //                driver.navigate().to("https://staging3.openquire.com/reports/1330083");
+            } else {
+                driver.navigate().to(baseUrl + "reports/1461010");
+
             }
 
 //            BaseClass.staging5().clickReportsTab();

@@ -1015,7 +1015,7 @@ public class ReusableMethodsLoggersPOM {
 
     //click action is one of the type of void method
     public static void click_modal(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
         try {
             wait.until(ExpectedConditions.elementToBeClickable(xpath)).click();
             System.out.println("Successfully clicked on: " + elementName);

@@ -1277,7 +1277,7 @@ int linkItemCount = linkItem.size();
         if (browserName.contains("Chrome")) {
             Thread.sleep(100);
         } else if (browserName.contains("Firefox")) {
-            Thread.sleep(4000);
+            Thread.sleep(8000);
         }
         for (int i = 0; i <( linkItemCount); i++) {
 
