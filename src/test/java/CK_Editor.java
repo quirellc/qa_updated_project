@@ -378,6 +378,7 @@ public class CK_Editor extends ReusableAnnotations {
         BaseClass.ck5editor().enter_sc_text_body_ck5();
         Thread.sleep(500);
         BaseClass.staging5().click_out_of_section();
+        Thread.sleep(500);
 
 
         //click grey icon and add instruction text to cover letter

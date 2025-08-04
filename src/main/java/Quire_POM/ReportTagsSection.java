@@ -126,7 +126,7 @@ public class ReportTagsSection extends ReusableAnnotations {
     public void click_ReportTags_manage_settings_icon() {
         ReusableMethodsLoggersPOM.clickMethod(driver, ReportTags_manage_settings_icon, logger, "ReportTags_manage_settings_icon");}
 
-    @FindBy(xpath = "//li[.//span[normalize-space()='Title Page Image']]//i[contains(@class,'fa-square-o')]")
+    @FindBy(xpath = "//span[normalize-space()='Title Page Image']/following-sibling::i[1]")
     WebElement title_page_image_checkbox;
 
     @FindBy(xpath = "//li[contains(@class, 'status-active') and .//span[normalize-space()='Title Page Image']]//i[contains(@class,'fa-check-square')]")

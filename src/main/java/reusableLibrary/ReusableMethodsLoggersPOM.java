@@ -1465,6 +1465,18 @@ public class ReusableMethodsLoggersPOM {
 
             // Sort files by last modified timestamp (most recent first)
             Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+//            try {
+//                WebDriver driver = getDriver();
+//
+//                // Refresh only for Firefox
+//                if (driver instanceof FirefoxDriver) {
+//                    System.out.println("Firefox detected, refreshing before checking for PDF...");
+//                    driver.navigate().refresh();
+//                    Thread.sleep(3000); // Give it time to reload and finalize download
+//                }
+//            } catch (Exception e) {
+//                System.out.println(e);
+//            }
 
             // Get the most recently downloaded PDF file
             File latestPdfFile = files[0];

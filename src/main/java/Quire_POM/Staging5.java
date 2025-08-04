@@ -3167,6 +3167,11 @@ if (!userProfileTab.isDisplayed())
 
     @FindBy(xpath = "//span[@class='multiselect-selected-text']")
     WebElement conditionAction_dropdown_button;
+
+    public void click_conditionAction_dropdown_field() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, conditionAction_dropdown_button, logger, " conditionAction_dropdown_button ");
+
+    }
     public void click_conditionAction_dropdown() {
         try {
             if (conditionAction_dropdown_button.isDisplayed()) {

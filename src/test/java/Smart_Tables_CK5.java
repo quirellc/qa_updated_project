@@ -512,6 +512,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.smartTables().click_smartTable_sectionView();
 
+        Thread.sleep(1000);
 
         //QP and verify Reference tag value and Section Link
         BaseClass.reportfoldersection().click_quick_preview_button();
@@ -769,8 +770,11 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.smartTables().click_plainText_dropdown_arrow_in_cell_smartTable();
         Thread.sleep(500);
         BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
 
         BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+
 //for formula dropdown
         driver.navigate().refresh();
         Thread.sleep(1000);

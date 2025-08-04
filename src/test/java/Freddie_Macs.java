@@ -389,7 +389,7 @@ public void TR_003_report_Tags_template_FM_1104() throws InterruptedException {
         BaseClass.staging5().click_default_section_title();
         Thread.sleep(1000);
 
-        BaseClass.staging5().click_conditionAction_dropdown();
+        BaseClass.staging5().click_conditionAction_dropdown_field();
         Thread.sleep(500);
 
         BaseClass.staging5().click_conditionAction_dropdown_value_HREC();
