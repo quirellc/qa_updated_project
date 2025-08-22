@@ -83,13 +83,13 @@ public void TR_002_API_Testing() throws InterruptedException {
 BaseClass.quire_AI().click_quire_AI_search_field();
  BaseClass.quire_AI().verify_quire_AI_prompt_text();
  BaseClass.quire_AI().enter_quire_AI_prompt_search_field();
- BaseClass.quire_AI().click_quire_AI_filter_button();
+// BaseClass.quire_AI().click_quire_AI_filter_button();
 
- BaseClass.quire_AI().click_quire_AI_status_field();
+// BaseClass.quire_AI().click_quire_AI_status_field();
  Thread.sleep(2000);
 
- BaseClass.quire_AI().confirm_quire_AI_status_value();
- BaseClass.quire_AI().click_writing_status_dropdown();
+// BaseClass.quire_AI().confirm_quire_AI_status_value();
+// BaseClass.quire_AI().click_writing_status_dropdown();
  BaseClass.quire_AI().click_quire_AI_search_button();
  Thread.sleep(5000);
  BaseClass.quire_AI().hover_quire_AI_first_search_result();

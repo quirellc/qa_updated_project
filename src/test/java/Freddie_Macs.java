@@ -1389,7 +1389,6 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 
     WebDriver driver = getDriver();
 
-
              BaseClass.staging5().click_section_I_general_details_sectionView();
             Thread.sleep(500);
             BaseClass.staging5().click_section_III_property_details_sectionView();

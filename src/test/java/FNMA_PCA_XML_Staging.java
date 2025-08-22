@@ -100,8 +100,10 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
        // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
         Thread.sleep(1000);
         BaseClass.staging5().click_save_button();
-        Thread.sleep(1500);
+        Thread.sleep(500);
+        WebDriver driver = getDriver();
 
+        driver.navigate().refresh();
 
     }
     @Test

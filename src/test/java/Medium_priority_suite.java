@@ -433,8 +433,8 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
         Thread.sleep(500);
         BaseClass.staging5().click_userProfileTab_viewTrash_dropdownItem();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_restore_first_deleted_item();
+        Thread.sleep(6000);
+        BaseClass.pca_xml_section().click_restore_updated_medium_template_link();
        // Thread.sleep(500);
        // BaseClass.staging5().captureAlertMessage();
         Thread.sleep(4000);
@@ -463,6 +463,10 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().capture_unread_notification();
+        Thread.sleep(500);
+        WebDriver driver = getDriver();
+
+        driver.navigate().refresh();
         Thread.sleep(500);
 
     }
@@ -1231,7 +1235,7 @@ BaseClass.staging5().clickLibrariesTab();
 //        BaseClass.ck5editor().enter_wb_text_ck5();
         BaseClass.ck5editor().enter_instruction_text_ck5();
 
-        Thread.sleep(400);
+        Thread.sleep(1000);
         BaseClass.templatesSection().clickSave2();
         Thread.sleep(400);
 
