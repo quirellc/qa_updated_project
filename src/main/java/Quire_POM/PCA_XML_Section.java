@@ -173,6 +173,15 @@ public class PCA_XML_Section extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, templateFirstLink, logger, "fannie mae - template link");
     }
 
+
+    @FindBy(xpath = "//tr[contains(., 'QA Automation Testing New Updated Medium Priority Template')]//a[text()='Restore']")
+    WebElement restore_updated_medium_template_link;
+
+
+    public void click_restore_updated_medium_template_link() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, restore_updated_medium_template_link, logger, "restore_updated_medium_template_link");
+    }
+
     @FindBy(xpath = "//*[contains(text(),'Template Settings')]")
     WebElement templateSettingsButton;
 

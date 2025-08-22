@@ -549,8 +549,11 @@ public class Staging5 extends ReusableAnnotations {
     WebElement searchField;
 
     public void enter_wb_librariesTab_searchField() {
-        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchField, "QA WordBank Item-Libraries", logger, "587");
-    }
+        if (browserName.contains("Chrome")){
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchField, "QA WordBank Item Chrome-Libraries", logger, "587");
+    } else if (browserName.contains("Firefox")) {
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchField, "QA WordBank Item Firefox-Libraries", logger, "587");
+    }}
     public void enter_587_cost_rec_searchField() {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchField, "587", logger, "587");
     }
@@ -2581,7 +2584,12 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
     }
 
     public void enter_wordbank_librariesTab_new_title() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Item-Libraries Tab", logger, "wordBank_New_Title ");
+        if ( browserName.contains("Chrome")){
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Item Chrome-Libraries Tab", logger, "wordBank_New_Title ");
+    }
+        else if ( browserName.contains("Firefox")){
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Item Firefox-Libraries Tab", logger, "wordBank_New_Title ");
+        }
     }
 
 
@@ -2589,12 +2597,19 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Smart Table New Item", logger, "wordBank_New_Title ");
     }
 
-    @FindBy(xpath = "//a[contains(text(), 'QA WordBank Item-Libraries Tab')]")
-    WebElement wordBank_libraries_link;
+    @FindBy(xpath = "//a[contains(text(), 'QA WordBank Item Chrome-Libraries Tab')]")
+    WebElement wordBank_libraries_link_chrome;
+    @FindBy(xpath = "//a[contains(text(), 'QA WordBank Item Firefox-Libraries Tab')]")
+    WebElement wordBank_libraries_link_firefox;
 
     public void click_wordBank_libraries_link() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, wordBank_libraries_link, logger, "wordBank_libraries_link ");
-    }
+        if ( browserName.contains("Chrome")){
+            ReusableMethodsLoggersPOM.clickMethod(driver, wordBank_libraries_link_chrome, logger, "wordBank_libraries_link_chrome ");
+        }
+        else if ( browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, wordBank_libraries_link_firefox, logger, "wordBank_libraries_link_firefox ");
+        }}
+
     @FindBy(xpath = "//i[@class='fa fa-angle-down fa-lg']")
     WebElement wordBank_label_dropdown_arrow;
 
