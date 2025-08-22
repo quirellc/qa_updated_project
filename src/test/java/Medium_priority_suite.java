@@ -1236,14 +1236,17 @@ BaseClass.staging5().clickLibrariesTab();
         BaseClass.ck5editor().enter_instruction_text_ck5();
 
         Thread.sleep(1000);
+        BaseClass.staging5().click_out_of_modal();
+        Thread.sleep(1000);
+
         BaseClass.templatesSection().clickSave2();
-        Thread.sleep(400);
+        Thread.sleep(3000);
 
         BaseClass.pca_xml_section().clickSearchField();
-        Thread.sleep(400);
+        Thread.sleep(1000);
 
         BaseClass.staging5().enter_wb_librariesTab_searchField();
-        Thread.sleep(400);
+        Thread.sleep(1000);
 
         BaseClass.staging5().click_filter_by_labels_search_field();
         Thread.sleep(500);
@@ -1252,6 +1255,10 @@ BaseClass.staging5().clickLibrariesTab();
 
         BaseClass.staging5().click_wordBank_libraries_link();
         Thread.sleep(500);
+
+        BaseClass.staging5().click_wordBank_libraries_link();
+        Thread.sleep(500);
+
         BaseClass.ck5editor().verify_wordbank_details_preview_text_ck5();
         Thread.sleep(500);
         BaseClass.ck5editor().click_delete_wordbank_item_ck5();
@@ -1260,7 +1267,6 @@ BaseClass.staging5().clickLibrariesTab();
         driver.switchTo().alert().accept();
         Thread.sleep(3000);
     }
-
 
     @Test
     public void TR_018_Atlas_admin_permissions() throws InterruptedException, IOException {
