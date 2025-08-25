@@ -501,6 +501,11 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, librariesTab, logger, "Libraries tab button");
     }
 
+    @FindBy(xpath = "//a[normalize-space()='Quire Lazarus Reports']")
+    WebElement librariesTab_quireLazarusReports;
+    public void click_librariesTab_quireLazarusReports_Dropdown() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, librariesTab_quireLazarusReports, logger, "llibrariesTab_quireLazarusReports");}
+
     @FindBy(xpath = "//a[text()='WordBank']")
     WebElement librariesTab_wordBankDropdown;
     public void click_librariesTab_wordBankDropdown() {
@@ -1713,6 +1718,8 @@ public void add_all_company_features() throws InterruptedException {
     String insert_file_2 = "(//input[@type='file'])[2]";
     String insert_file_3 = "(//input[@type='file'])[3]";
 
+    String insert_file_4 = "(//input[@type='file'])[4]";
+
 
     public void upload_signature_button() {
         ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_file_2, "signature.jpg", logger, "add_signature_file");
@@ -1746,9 +1753,9 @@ public void add_all_company_features() throws InterruptedException {
         Thread.sleep(5000);
 
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, file_uploaded_pdf_appendix, true, logger, "file_uploaded_pdf_appendix");
-
-
     }
+
+
 
     @FindBy(xpath = "//li[contains(@class, 'report_appendix gallery-appendix js-report-appendix stores-images')]//span[contains(text(),'Drag files to upload or click anywhere in this pan')]")
     WebElement file_uploaded_gallery_appendix;

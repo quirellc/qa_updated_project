@@ -42,7 +42,9 @@ public class Quire_AI_Testing extends ReusableAnnotations {
 
   //   String pageTitle = driver.getTitle();
   if (baseUrl.contains("staging")) {
-   BaseClass.quireLogin().enter_cbre_sysadmin_Email();
+   BaseClass.quireLogin().enterRootUserEmail();
+
+//   BaseClass.quireLogin().enter_cbre_sysadmin_Email();
   } else if (baseUrl.contains("app")) {
    BaseClass.quireLogin().enter_admin_Email();
   }
@@ -77,47 +79,79 @@ public class Quire_AI_Testing extends ReusableAnnotations {
 //   BaseClass.reportfoldersection().enterFolderNameField_QA();
 //   Thread.sleep(1000);
 //   }
-@Test
-public void TR_002_API_Testing() throws InterruptedException {
- WebDriver driver = getDriver();
-BaseClass.quire_AI().click_quire_AI_search_field();
- BaseClass.quire_AI().verify_quire_AI_prompt_text();
- BaseClass.quire_AI().enter_quire_AI_prompt_search_field();
-// BaseClass.quire_AI().click_quire_AI_filter_button();
-
-// BaseClass.quire_AI().click_quire_AI_status_field();
- Thread.sleep(2000);
-
-// BaseClass.quire_AI().confirm_quire_AI_status_value();
-// BaseClass.quire_AI().click_writing_status_dropdown();
- BaseClass.quire_AI().click_quire_AI_search_button();
- Thread.sleep(5000);
- BaseClass.quire_AI().hover_quire_AI_first_search_result();
 
 
- Thread.sleep(2000);
- BaseClass.quire_AI().confirm_report_opened_new_tab();
- BaseClass.quire_AI().click_ask_quire_button();
+ @Test
+ public void TR_002a_lazarus_upload() throws InterruptedException {
+  WebDriver driver = getDriver();
 
- Thread.sleep(2000);
+  driver.navigate().to("https://staging3.openquire.com/companies/77/ai_legacy_reports");
+  Thread.sleep(3000);
 
- BaseClass.quire_AI().click_AI_chat_back_button();
- Thread.sleep(500);
+  BaseClass.staging5().clickLibrariesTab();
+  BaseClass.staging5().click_librariesTab_quireLazarusReports_Dropdown();
 
- BaseClass.quire_AI().verify_AI_intro_chat_body();
+  BaseClass.quire_AI().click_upload_files_button();
+  Thread.sleep(2000);
+  BaseClass.quire_AI().upload_pdf_file_to_lazarus();
+  Thread.sleep(2000);
+
+  BaseClass.quire_AI().click_upload_files_button();
+  Thread.sleep(2000);
+  BaseClass.quire_AI().upload_pdf_file_2_to_lazarus();
+  Thread.sleep(2000);
+  BaseClass.quire_AI().verify_4_items_uploading_lazarus2();
+
+  Thread.sleep(5000);
+  BaseClass.quire_AI().hover_and_click_ask_AI_lazarus_Button();
+  Thread.sleep(5000);
+
+
+
+ }
+
+
+// @Test
+//public void TR_002b_Quire_AI_searchField_and_prompt_Testing() throws InterruptedException {
+// WebDriver driver = getDriver();
+//BaseClass.quire_AI().click_quire_AI_search_field();
+// BaseClass.quire_AI().verify_quire_AI_prompt_text();
+// BaseClass.quire_AI().enter_quire_AI_prompt_search_field();
+//// BaseClass.quire_AI().click_quire_AI_filter_button();
+//
+//// BaseClass.quire_AI().click_quire_AI_status_field();
+// Thread.sleep(2000);
+//
+//// BaseClass.quire_AI().confirm_quire_AI_status_value();
+//// BaseClass.quire_AI().click_writing_status_dropdown();
+// BaseClass.quire_AI().click_quire_AI_search_button();
+// Thread.sleep(5000);
+// BaseClass.quire_AI().hover_quire_AI_first_search_result();
+//
+//
+// Thread.sleep(2000);
+// BaseClass.quire_AI().confirm_report_opened_new_tab();
+// BaseClass.quire_AI().click_ask_quire_button();
+//
+// Thread.sleep(2000);
+//
+// BaseClass.quire_AI().click_AI_chat_back_button();
 // Thread.sleep(500);
+//
 // BaseClass.quire_AI().verify_AI_intro_chat_body();
- Thread.sleep(500);
- BaseClass.quire_AI().click_quire_AI_continue_conversation_button();
- Thread.sleep(500);
- BaseClass.quire_AI().verify_AI_chat_create_summary_response();
- Thread.sleep(500);
- BaseClass.quire_AI().click_quire_AI_create_summary_button();
- Thread.sleep(2000);
- BaseClass.quire_AI().verify_AI_chat_response_text();
- Thread.sleep(2000);
-
-}
+//// Thread.sleep(500);
+//// BaseClass.quire_AI().verify_AI_intro_chat_body();
+// Thread.sleep(500);
+// BaseClass.quire_AI().click_quire_AI_continue_conversation_button();
+// Thread.sleep(500);
+// BaseClass.quire_AI().verify_AI_chat_create_summary_response();
+// Thread.sleep(500);
+// BaseClass.quire_AI().click_quire_AI_create_summary_button();
+// Thread.sleep(2000);
+// BaseClass.quire_AI().verify_AI_chat_response_text();
+// Thread.sleep(2000);
+//
+//}
 
  }
 

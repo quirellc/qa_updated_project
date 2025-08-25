@@ -2,15 +2,15 @@ package Quire_POM;
 
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import reusableLibrary.ReusableAnnotations;
 import reusableLibrary.ReusableMethodsLoggersPOM;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -365,6 +365,46 @@ driver.close();
         ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_open_link_button, logger, "quire_AI_open_link_button");
     }
 
+
+    @FindBy(xpath = "//a[normalize-space()='Upload Files']")
+    WebElement upload_files_button;
+    public void click_upload_files_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, upload_files_button, logger, "upload_files_button");}
+
+    String insert_lazarus_file = "(//input[@type='file'])[2]";
+    public void upload_pdf_file_to_lazarus() throws InterruptedException {
+        ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_lazarus_file, "maptest.pdf", logger, "maptest pdf");
+    }
+
+    public void upload_pdf_file_2_to_lazarus() throws InterruptedException {
+        ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_lazarus_file, "maptest2.pdf", logger, "maptest pdf 2");
+    }
+
+    public void verify_4_items_uploading_lazarus2() throws InterruptedException {
+        // Confirm all 4 Pending are present
+        List<WebElement> pendingList = driver.findElements(By.xpath("//td[normalize-space()='Pending']"));
+        if (pendingList.size() == 4) {
+            System.out.println("✅ Exactly 4 Pending found");
+        } else {
+            throw new AssertionError("Expected 4 Pending but found: " + pendingList.size());
+        }
+
+// Wait until all become Completed
+        new WebDriverWait(driver, Duration.ofSeconds(60))
+                .until(ExpectedConditions.numberOfElementsToBe(
+                        By.xpath("//td[normalize-space()='Ready']"), 4));
+
+        System.out.println("✅ All 4 statuses changed to Ready");
+
+    }
+
+    @FindBy(xpath = "//button[@data-original-title='Ask AI']")
+    WebElement ask_AI_lazarus_hoverButton;
+    public void hover_and_click_ask_AI_lazarus_Button() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, ask_AI_lazarus_hoverButton, logger, "ask_AI_lazarus_hoverButton");
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_lazarus_hoverButton, logger, "ask_AI_lazarus_hoverButton");
+    }
 }
 
 
