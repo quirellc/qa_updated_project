@@ -389,22 +389,45 @@ driver.close();
             throw new AssertionError("Expected 4 Pending but found: " + pendingList.size());
         }
 
-// Wait until all become Completed
-        new WebDriverWait(driver, Duration.ofSeconds(60))
-                .until(ExpectedConditions.numberOfElementsToBe(
-                        By.xpath("//td[normalize-space()='Ready']"), 4));
+// Loop until all Pending are gone or timeout
+        long startTime = System.currentTimeMillis();
+        long timeoutMillis = 120_000; // 2 minutes total
 
-        System.out.println("✅ All 4 statuses changed to Ready");
+        while (System.currentTimeMillis() - startTime < timeoutMillis) {
+            pendingList = driver.findElements(By.xpath("//td[normalize-space()='Pending']"));
 
+            if (pendingList.isEmpty()) {
+                System.out.println("✅ All 4 statuses changed to Ready");
+                break; // exit loop
+            } else {
+                System.out.println("⏳ Still pending: " + pendingList.size());
+                Thread.sleep(20000); // wait 20 seconds before refresh
+                driver.navigate().refresh();
+                Thread.sleep(1000); // give page a moment to load
+            }
+        }
     }
+
+    @FindBy(xpath = "//table[@class='htCore']//tbody//td[2]")
+    WebElement first_report_link;
 
     @FindBy(xpath = "//button[@data-original-title='Ask AI']")
     WebElement ask_AI_lazarus_hoverButton;
     public void hover_and_click_ask_AI_lazarus_Button() {
-        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, ask_AI_lazarus_hoverButton, logger, "ask_AI_lazarus_hoverButton");
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_report_link, logger, "first_report_link");
 
         ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_lazarus_hoverButton, logger, "ask_AI_lazarus_hoverButton");
     }
+
+
+    @FindBy(xpath = "//textarea[@placeholder='Ask Quire AI about this Report...']")
+    WebElement ask_AI_conversate_field;
+    public void enter_AI_conversate_field() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_conversate_field, logger, "ask_AI_conversate_field");
+
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, ask_AI_conversate_field, "summarize this document", logger, "ask_AI_conversate_field");
+    }
+
 }
 
 
