@@ -40,11 +40,31 @@ public class ReportFolderSection extends ReusableAnnotations {
     WebElement portfoliosTab;
 
 
-    @FindBy(xpath = "//*[text()='Reports']")
+
+    @FindBy(xpath = "//*[normalize-space()='Reports']")
     WebElement reportsTab;
 
+    @FindBy(xpath = "//span[normalize-space()='Reports']//i[@class='fa fa-caret-down']")
+    WebElement reportsCaretIcon;
+
+    @FindBy(xpath = "(//a[contains(text(),'All Folders')])[1]")
+    WebElement allFoldersDropdownItem;
+
     public void clickReportsTab() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
+        try {
+            // If caret icon is displayed, hover and click All Folders
+            if (reportsCaretIcon.isDisplayed()) {
+                ReusableMethodsLoggersPOM.mouseHoverMethod(driver, reportsTab, logger, "reports tab");
+                //Thread.sleep(500); // Wait for dropdown to appear
+                ReusableMethodsLoggersPOM.clickMethod(driver, allFoldersDropdownItem, logger, "All Folders dropdown");
+            } else {
+                // Default: click Reports tab
+                ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
+            }
+        } catch (Exception  e) {
+            // Fallback: just click Reports tab if caret or dropdown not present
+            ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
+        }
     }
 
     @FindBy(xpath = "//*[contains(text(),'Add Folder')]")
@@ -1288,7 +1308,7 @@ int linkItemCount = linkItem.size();
             ReusableMethodsLoggersPOM.captureTextMethod(driver, linkItem.get(i), logger, "report link name at index: " + i);
             ReusableMethodsLoggersPOM.scrollToElementMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
             ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
-
+            Thread.sleep(1500);
             BaseClass.staging5().click_default_section_title();
             Thread.sleep(1000);
             BaseClass.pca_xml_section().clickAddSectionButton();

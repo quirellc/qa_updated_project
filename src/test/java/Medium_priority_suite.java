@@ -467,7 +467,7 @@ public void TR001_user_login() throws InterruptedException {
         WebDriver driver = getDriver();
 
         driver.navigate().refresh();
-        Thread.sleep(500);
+        Thread.sleep(2500);
 
     }
 
@@ -622,7 +622,7 @@ public void TR001_user_login() throws InterruptedException {
         BaseClass.templatesSection().verify_exported_wb_item();
         Thread.sleep(1000);
         BaseClass.staging5().click_out_of_section();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
     }
 
@@ -1431,6 +1431,7 @@ BaseClass.staging5().clickLibrariesTab();
         Thread.sleep(500);
 
     }
+
 
 //    @Test // old with atlas accounts
 //    public void TR_017_Atlas_admin_permissions() throws InterruptedException, IOException {

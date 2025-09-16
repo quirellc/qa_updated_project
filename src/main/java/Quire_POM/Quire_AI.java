@@ -237,7 +237,7 @@ public void enter_quire_AI_prompt_search_field() {
 
     @FindBy(xpath= "//a[@title='Click to view all reports in this project']")
     WebElement report_title;
-    public void confirm_report_opened_new_tab() throws InterruptedException {
+    public void confirm_report_opened_new_tab_and_sameTab() throws InterruptedException {
       String report_name_AI =  ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_search_result_title, logger, "quire_AI_search_result_title");
 
         BaseClass.quire_AI().click_quire_AI_open_external_button();
@@ -287,7 +287,7 @@ driver.close();
     WebElement AI_chat_body;
     public void verify_AI_intro_chat_body() {
         String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_body, logger, "AI_chat_body");
-        if (result.contains("Continue our current conversation") &&
+        if (result.contains("Here are some things you can do:") &&
                 result.contains("Find Reports with AI (and chat with them)") &&
                 result.contains("Chat from a Report, Project Folder, or Portfolio view")) {
             System.out.println("Chat AI body matches ✅");
@@ -331,6 +331,21 @@ driver.close();
         }
     }
 
+    @FindBy(xpath= "(//q-chat-session-start-pending[@class='ai-chat-response flex gap-8'])[1]")
+    WebElement AI_chat_intro_loading_message;
+    public void verify_AI_chat_intro_loading_message() {
+        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_intro_loading_message, logger, "AI_chat_response");
+        if (result.contains("Hello automation_sysadmin_cbre!") &&
+                result.contains("retrieve the content") &&
+                result.contains("This should only take a few moments")) {
+            System.out.println("Chat AI response matches ✅");
+            logger.log(LogStatus.PASS, "Chat AI response matches ✅");
+        } else {
+            logger.log(LogStatus.FAIL, "Chat AI response does not match ❌");
+            System.out.println("Chat AI response does not match ❌");
+        }
+    }
+
     @FindBy(xpath = "(//q-button[@data-action='summarize'])[2]")
     WebElement quire_AI_create_summary_button;
     public void click_quire_AI_create_summary_button() {
@@ -339,7 +354,7 @@ driver.close();
 
     @FindBy(xpath = "(//q-chat-response)[1]")
     WebElement AI_chat_response_text;
-    public void verify_AI_chat_response_text() {
+    public void verify_AI_chat_hideReport_summary_Texas_response_text() {
         String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
         if ((result.contains("PCA")) && (result.contains("CBRE")) && (result.contains("100-unit")) && (result.contains("Texas"))) {
             System.out.println("Chat AI response text matches ✅");
@@ -350,6 +365,159 @@ driver.close();
         }
     }
 
+
+    public void verify_AI_chat_asbestos_state_response_text() throws InterruptedException {
+        int maxRetries = 5; // safety limit
+        int attempt = 0;
+        String result = "";
+
+        while (attempt < maxRetries) {
+            attempt++;
+            System.out.println("🔄 Attempt " + attempt);
+
+            result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+
+            if (result.contains("Michigan")) {
+                System.out.println("Chat AI response text matches ✅ (found on attempt " + attempt + ")");
+                logger.log(LogStatus.PASS, "Chat AI response text matches ✅ (found on attempt " + attempt + ")");
+                return; // success, exit method
+            }
+
+            if (result.contains("I apologize, but I cannot provide an answer")) {
+                System.out.println("⚠️ AI gave no-documents response. Retrying...");
+                driver.navigate().refresh();
+                BaseClass.quire_AI().hover_and_click_ask_AI_lazarus_Button();
+                Thread.sleep(3000);
+                BaseClass.quire_AI().enter_AI_conversate_field_locationOfDocument();
+                Thread.sleep(6000);
+            } else {
+                System.out.println("⚠️ AI response did not contain expected text. Retrying...");
+                Thread.sleep(3000); // wait a bit before retry
+            }
+        }
+
+        // If we got here, all retries failed
+        System.out.println("❌ Chat AI response text does not match after " + maxRetries + " attempts");
+        logger.log(LogStatus.FAIL, "Chat AI response text does not match after " + maxRetries + " attempts ❌");
+    }
+
+    @FindBy(xpath = "(//q-chat-response)")
+    List<WebElement> AI_chat_responses;
+
+
+    public void verify_AI_chat_asbestos_state_response_text1() throws InterruptedException {
+        int maxRetries = 5; // safety limit
+        int attempt = 0;
+        String result = "";
+        int previousResponseCount = 0; // to track new responses
+
+        while (attempt < maxRetries) {
+            attempt++;
+            System.out.println("🔄 Attempt " + attempt);
+
+            // Wait until at least one response exists
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(d -> AI_chat_responses.size() > 0);
+
+            // Get the latest response safely
+            List<WebElement> responses = AI_chat_responses;
+            WebElement latestResponse = responses.get(responses.size() - 1);
+
+            result = ReusableMethodsLoggersPOM.captureTextMethod(driver, latestResponse, logger, "AI_chat_response_text");
+            System.out.println("Latest AI Response:\n" + result);
+
+            // Check if the response contains expected text
+            if (result.contains("Michigan")) {
+                System.out.println("Chat AI response text matches ✅ (found on attempt " + attempt + ")");
+                logger.log(LogStatus.PASS, "Chat AI response text matches ✅ (found on attempt " + attempt + ")");
+                return; // success
+            }
+
+            // If response is not what we expect, click regenerate
+            System.out.println("⚠️ AI response did not contain expected text. Clicking Regenerate...");
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            WebElement regenerateBtn = (WebElement) js.executeScript(
+                    "return document.querySelector('sl-icon-button[data-action=\"regenerate_response\"]').shadowRoot.querySelector('button')"
+            );
+            regenerateBtn.click();
+
+            // Wait for a new response to appear (size increases)
+            wait.until(d -> AI_chat_responses.size() > responses.size());
+            Thread.sleep(1000); // short buffer for content to fully render
+        }
+
+        // If all retries failed
+        System.out.println("❌ Chat AI response text does not match after " + maxRetries + " attempts");
+        logger.log(LogStatus.FAIL, "Chat AI response text does not match after " + maxRetries + " attempts ❌");
+    }
+
+
+
+
+    public void verify_AI_chat_asbestos_summary_response_text() throws InterruptedException {
+        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+
+        if (result.contains("I apologize, but I cannot provide an answer")) {
+            System.out.println("⚠️ AI gave no-documents response. Retrying once...");
+            enter_AI_conversate_field_locationOfDocument();
+            Thread.sleep(7000);
+
+        }
+
+        if (result.contains("asbestos inspection")) {
+            System.out.println("Chat AI response text matches ✅");
+            logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
+        } else {
+            logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");
+            System.out.println("Chat AI response text does not match ❌");
+        }
+    }
+
+    public void verify_AI_chat_author_fnmae_response_text() throws InterruptedException {
+        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+
+        // Retry once if the AI says no documents uploaded
+        if (result.contains("I apologize, but I cannot provide an answer")) {
+            System.out.println("⚠️ AI gave no-documents response. Retrying once...");
+            enter_AI_conversate_field_authorOfDocument();
+            Thread.sleep(7000);
+
+        }
+
+        if ((result.contains("FANNIE MAE PHASE ONE")) && (result.contains("ENVIRONMENTAL SITE ASSESSMENT")) && (result.contains("Consulting Solutions")) && (result.contains("Mallory Seagraves"))) {
+            System.out.println("Chat AI response text matches ✅");
+            logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
+        } else {
+            logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");
+            System.out.println("Chat AI response text does not match ❌");
+        }
+    }
+
+    public void verify_AI_chat_issues_fnmae_response_text() throws InterruptedException {
+        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+
+        // Retry once if the AI says no documents uploaded
+        if (result.contains("I apologize, but I cannot provide an answer")) {
+            System.out.println("⚠️ AI gave no-documents response. Retrying once...");
+            enter_AI_conversate_field_authorOfDocument();
+            Thread.sleep(7000);
+
+        }
+
+        if ((result.contains("FANNIE MAE PHASE ONE")) && (result.contains("ENVIRONMENTAL SITE ASSESSMENT")) && (result.contains("Water Intrusion")) && (result.contains("Radon")) && (result.contains("Lead")) &&(result.contains("Asbestos"))) {
+            System.out.println("Chat AI response text matches ✅");
+            logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
+        } else {
+            logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");
+            System.out.println("Chat AI response text does not match ❌");
+        }
+    }
+
+    @FindBy(xpath = "//i[@class='fa fa-times fa-lg']")
+    WebElement AI_chat_close_button;
+    public void click_AI_chat_close_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, AI_chat_close_button, logger, "AI_chat_close_button");
+    }
 
     @FindBy(xpath = "//button[contains(@data-action, 'open-external')]")
     WebElement quire_AI_open_external_button;
@@ -372,12 +540,12 @@ driver.close();
         ReusableMethodsLoggersPOM.clickMethod(driver, upload_files_button, logger, "upload_files_button");}
 
     String insert_lazarus_file = "(//input[@type='file'])[2]";
-    public void upload_pdf_file_to_lazarus() throws InterruptedException {
-        ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_lazarus_file, "maptest.pdf", logger, "maptest pdf");
+    public void upload_fnmae_pdf_file_to_lazarus() throws InterruptedException {
+        ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_lazarus_file, "fnmae.pdf", logger, "fnmae.pdf");
     }
 
-    public void upload_pdf_file_2_to_lazarus() throws InterruptedException {
-        ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_lazarus_file, "maptest2.pdf", logger, "maptest pdf 2");
+    public void upload_asbestosSummary_doc_file_to_lazarus() throws InterruptedException {
+        ReusableMethodsLoggersPOM.uploadFileMethod(driver, insert_lazarus_file, "asbestos_summary.docx", logger, "asbestos_summary.docx");
     }
 
     public void verify_4_items_uploading_lazarus2() throws InterruptedException {
@@ -408,13 +576,30 @@ driver.close();
         }
     }
 
+    @FindBy(xpath = "//table[@class='htCore']//tbody//tr[2]/td[2]")
+    WebElement second_report_link;
+
+    @FindBy(xpath = "(//button[normalize-space()='Ask AI'])[2]")
+    WebElement ask_AI_second_hoverButton;
+    public void hover_and_click_second_report_ask_AI_Button() throws InterruptedException {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, second_report_link, logger, "second_report_link");
+Thread.sleep(6000);
+//        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, ask_AI_lazarus_hoverButton, logger, "ask_AI_lazarus_hoverButton");
+//        Thread.sleep(2000);
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_second_hoverButton, logger, "ask_AI_second_hoverButton");
+    }
+
     @FindBy(xpath = "//table[@class='htCore']//tbody//td[2]")
     WebElement first_report_link;
 
-    @FindBy(xpath = "//button[@data-original-title='Ask AI']")
+    @FindBy(xpath = "(//button[@title='Ask AI'][normalize-space()='Ask AI'])[1]")
     WebElement ask_AI_lazarus_hoverButton;
-    public void hover_and_click_ask_AI_lazarus_Button() {
+    public void hover_and_click_ask_AI_lazarus_Button() throws InterruptedException {
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_report_link, logger, "first_report_link");
+        Thread.sleep(1000);
+//        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, ask_AI_lazarus_hoverButton, logger, "ask_AI_lazarus_hoverButton");
+//        Thread.sleep(2000);
 
         ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_lazarus_hoverButton, logger, "ask_AI_lazarus_hoverButton");
     }
@@ -422,10 +607,102 @@ driver.close();
 
     @FindBy(xpath = "//textarea[@placeholder='Ask Quire AI about this Report...']")
     WebElement ask_AI_conversate_field;
-    public void enter_AI_conversate_field() {
+    public void enter_AI_conversate_field_summarizeDocument() {
         ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_conversate_field, logger, "ask_AI_conversate_field");
-
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, ask_AI_conversate_field, "summarize this document", logger, "ask_AI_conversate_field");
+    }
+    public void enter_AI_conversate_field_locationOfDocument() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_conversate_field, logger, "ask_AI_conversate_field");
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, ask_AI_conversate_field, "what state is mentioned in the document", logger, "ask_AI_conversate_field");
+    }
+
+    public void enter_AI_conversate_field_authorOfDocument() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_conversate_field, logger, "ask_AI_conversate_field");
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, ask_AI_conversate_field, "Who wrote this report", logger, "ask_AI_conversate_field");
+    }
+
+    public void enter_AI_conversate_field_issues_or_concerns() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, ask_AI_conversate_field, logger, "ask_AI_conversate_field");
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, ask_AI_conversate_field, "Are there any issues of concern in the Project Summary ", logger, "ask_AI_conversate_field");
+    }
+
+    @FindBy(xpath = "(//div[@class='ai-legacy-reports-system-label-container js-ai-legacy-reports-system-label-container'])[1]")
+    WebElement first_link_systemLabel_dropdownButtonr;
+    public void click_first_link_systemLabel_dropdownButton() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, first_link_systemLabel_dropdownButtonr, logger, "first_link_systemLabel_dropdownButton");
+    }
+
+    @FindBy(xpath = "(//option[@value='13'][normalize-space()='Reliance Letter'])[1]")
+    WebElement reliance_letter_dropdown_option;
+    public void click_reliance_letter_dropdown_option() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, reliance_letter_dropdown_option, logger, "reliance_letter_dropdown_option");
+    }
+
+    @FindBy(xpath = "//a[@title='Remove']")
+    WebElement remove_label_button;
+    public void click_remove_label_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, remove_label_button, logger, "remove_label_button");
+    }
+
+    @FindBy(xpath = "//input[@placeholder='Label: All']")
+    WebElement label_field;
+    public void enter_label_field_relianceLetter() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, label_field, logger, "label_field");
+
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, label_field, "Reliance Letter", logger, "label_field");}
+
+    @FindBy(xpath = "//a[normalize-space()='asbestos summary']")
+    WebElement automation_asbestos_report_link;
+    public void verify_automation_asbestos_report_link() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, automation_asbestos_report_link, true, logger, "automation_asbestos_report_link");
+    }
+
+    @FindBy(xpath = "//a[normalize-space()='fnmae']")
+    WebElement automation_fnmae_report_link;
+    public void verify_automation_fnmae_report_link() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, automation_fnmae_report_link, true, logger, "automation_fnmae_report_link");
+    }
+
+    @FindBy(xpath = "//div[@class='ht_clone_top handsontable']//i[@class='fa fa-square-o']")
+    WebElement all_reports_checkbox;
+    public void click_all_reports_checkbox() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, all_reports_checkbox, logger, "all_reports_checkbox");
+    }
+
+    @FindBy(xpath = "//li[@class='bulk-action-item download-action js-bulk-actions-download-selection']")
+    WebElement compress_and_download_button;
+    public void click_compress_and_download_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, compress_and_download_button, logger, "compress_and_download_button");
+    }
+
+    @FindBy(xpath = "//input[@name='commit']")
+    WebElement commit_button;
+    public void click_commit_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, commit_button, logger, "commit_button");
+    }
+
+    @FindBy(xpath = "//div[@class='alert alert-notice' and contains(normalize-space(), 'Your download link will be available in your Notifications when ready.')]")
+    WebElement download_link_notification;
+    public void verify_download_link_notification() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, download_link_notification, true, logger, "download_link_notification");
+    }
+
+    @FindBy(xpath = "//li[@class='bulk-action-item clear-action js-bulk-actions-clear-selection']")
+    WebElement clear_selection_button;
+    public void click_clear_selection_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, clear_selection_button, logger, "clear_selection_button");
+    }
+
+    @FindBy(xpath = "//li[@class='bulk-action-item delete-action js-bulk-actions-delete_selection']")
+    WebElement delete_button;
+    public void click_delete_files_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, delete_button, logger, "delete_button");
+    }
+
+    @FindBy(xpath = "//div[@class='alert alert-notice' and contains(normalize-space(), 'deleted')]")
+    WebElement files_deleted_notification;
+    public void verify_files_deleted_notification() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, files_deleted_notification, true, logger, "files_deleted_notification");
     }
 
 }
