@@ -3538,7 +3538,7 @@ WebElement condition_action_field_text;
 //    @FindBy(xpath = "//a[@id='pca_form_outline']")
     WebElement section_III_property_details;
 
-    public void click_section_III_property_details_sectionView() {
+    public void  click_section_III_property_details_sectionView() {
         ReusableMethodsLoggersPOM.clickMethod(driver, section_III_property_details, logger, " section_III_property_details ");
     }
 
