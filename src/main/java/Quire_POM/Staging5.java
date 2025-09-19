@@ -3504,7 +3504,7 @@ WebElement condition_action_field_text;
         ReusableMethodsLoggersPOM.clickMethod(driver, condition_dropDown_propertyItem, logger, " condition_dropDown_propertyItem ");
     }
 
-    @FindBy(xpath = "//label[normalize-space()='A']")
+    @FindBy(xpath = "//label[normalize-space()='2']")
     WebElement condition_dropDown_item_propertyItem;
 
     public void select_condition_dropDown_propertyItem() {

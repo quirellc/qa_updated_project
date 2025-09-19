@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import reusableLibrary.ReusableAnnotations;
 import reusableLibrary.ReusableMethodsLoggersPOM;
 
+import java.util.List;
+
 public class FM_Section extends ReusableAnnotations {
     //]must declare a local logger variable to be used for each pom class
     ExtentTest logger;
@@ -56,6 +58,12 @@ public class FM_Section extends ReusableAnnotations {
     WebElement instruction_text_iFrame;
     public void enter_loadAnalysis_text() {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod2(driver, instruction_text_iFrame, "QA Automation Text - Load Analysis", logger, "instruction_text_iFrame");
+    }
+
+    @FindBy(xpath = "//select[@id='electrical_systems_condition']")
+    WebElement electricalConditions_condition_Dropdown;
+    public void select_electricalConditions_condition_Dropdown() {
+        ReusableMethodsLoggersPOM.selectByValue(driver, electricalConditions_condition_Dropdown, "4",  logger, "electricalConditions_condition_Dropdown");
     }
 
     @FindBy(xpath = "//div[@class='fmac1104-electricalConditions-costContainer']//a[@class='btn btn-subtle btn-sm add-cost-summary'][normalize-space()='Add Cost Recommendation']")
@@ -134,17 +142,26 @@ Thread.sleep(1500);
 
     @FindBy(xpath = "//span[normalize-space()='qa cost rec comment - Electrical Capacity Upgrades']")
     WebElement electricalConditions_costRec_summary_field_qp;
-    @FindBy(xpath = "//div[@class='fmac-form-version-footer' and contains(text(), 'Freddie Mac Form 1104 (v11, 12/2024)')]")
-    WebElement fm1104_v11_footer_text_qp;
+    @FindBy(xpath = "//div[@class='fmac-form-version-footer' and contains(text(), 'Freddie Mac Form 1104 (v12, 08/2025)')]")
+    WebElement fm1104_v12_footer_text_qp;
 
-    public void verify_fm1104_v11_QP() {
+    @FindBy(xpath = "//span[@class='fmac1104-questionAnswer-label' and normalize-space()='What is the rating of this component?']/following-sibling::span[normalize-space(.)='4']")
+    WebElement electricalSystems_conditionRating_dropDownValue;
+
+    @FindBy(xpath = "//label[normalize-space()='2 - Very Good/Good']")
+   WebElement numerical_conditionRatings_1104;
+
+
+    public void verify_fm1104_v12_QP() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, electricalConditions_levelOfService_field_qp, true, logger, " electricalConditions_levelOfService_field_qp ");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, electricalConditions_description_field_qp, true, logger, " electricalConditions_description_field_qp ");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, elevator_description_field_qp, true, logger, " elevator_description_field_qp ");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, elevator_costToCure_field_qp, true, logger, " elevator_costToCure_field_qp ");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, electricalConditions_costRec_summary_field_qp, true, logger, " electricalConditions_costRec_summary_field_qp ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, electricalSystems_conditionRating_dropDownValue, true, logger, " electricalSystems_conditionRating_dropDownValue ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, numerical_conditionRatings_1104, true, logger, " numerical_conditionRatings_1104 ");
 
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fm1104_v11_footer_text_qp, true, logger, " fm1104_v11_footer_text_qp ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fm1104_v12_footer_text_qp, true, logger, " fm1104_v11_footer_text_qp ");
     }
 
     @FindBy(xpath = "//div[normalize-space()='Year(s) of construction']")
@@ -198,7 +215,7 @@ Thread.sleep(1500);
     @FindBy(xpath = "//select[@id='overall_condition_rating']")
     WebElement overall_condition_rating_dropDown;
     public void select_overall_condition_rating_dropDown_v11_fm1105() {
-        ReusableMethodsLoggersPOM.selectByValue(driver, overall_condition_rating_dropDown, "excellent",  logger, "overall_condition_rating_dropDown");
+        ReusableMethodsLoggersPOM.selectByValue(driver, overall_condition_rating_dropDown, "1 - Excellent",  logger, "overall_condition_rating_dropDown");
     }
 
     @FindBy(xpath = "//input[@value='site' and @checked='checked']")
@@ -207,7 +224,7 @@ Thread.sleep(1500);
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, siteCheckbox, true,  logger, "section_III_repairs_identification_v11");
     }
 
-    @FindBy(xpath = "//div[@class='fmac-form-version-footer js-fmacFormVersionFooter' and contains(text(), 'Freddie Mac Multifamily Form 1105 (12/2024)')]")
+    @FindBy(xpath = "//div[@class='fmac-form-version-footer js-fmacFormVersionFooter' and contains(text(), 'Freddie Mac Multifamily Form 1105 (08/2025)')]")
     WebElement fm1105_v11_footer_text;
 
     public void verify_fm1105_v11_footer_text() {
@@ -234,15 +251,37 @@ Thread.sleep(1500);
         }
     }
 
+    @FindBy(xpath = "//table[@data-category='site']//th[contains(normalize-space(.), 'Condition (1, 2, 3, 4, 5)')]")
+    WebElement section_II_numerical_condition_rating;
+    public void verify_section_II_numerical_condition_rating() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, section_II_numerical_condition_rating, true,  logger, " section_II_numerical_condition_rating ");}
+
+
     @FindBy(xpath = "//span[contains(text(),'QA Automation text - Overall property condition rating')]")
     WebElement sectionII_overall_property_condition_description_v11_fm1105_qp;
 
-    @FindBy(xpath = "//span[contains(text(),'Excellent')]")
-    WebElement sectionII_overall_property_conditionRating_v11_fm1105_qp;
+    @FindBy(xpath = "//span[contains(text(),'1 - Excellent')]")
+    WebElement sectionII_overall_property_conditionRating_v12_fm1105_qp;
 
-    public void verify_fm1105_v11_qp() {
+    @FindBy(xpath = "(//div[@class='fmac-section-description'][contains(text(),'1 = Excellent, 2 = Very Good/Good, 3 = fair 4 - Deteriorated and 5 = Unacceptable')])")
+    List <WebElement> numerical_conditionRatings_list;
+
+    public void verify_numerical_conditionRatings_list() {
+        if (numerical_conditionRatings_list.size() == 4) {
+            System.out.println("✅ Found exactly 4 instances of numerical_conditionRatings_list");
+            logger.log(LogStatus.PASS, "Found exactly 4 instances of numerical_conditionRatings_list");
+
+
+        } else {
+            logger.log(LogStatus.FAIL, "❌ Expected 4 instances of numerical_conditionRatings_list, but found " + numerical_conditionRatings_list.size());
+            System.out.println("❌ Expected 4 instances of numerical_conditionRatings_list, but found " + numerical_conditionRatings_list.size());
+        }}
+
+    public void verify_fm1105_v12_qp() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, sectionII_overall_property_condition_description_v11_fm1105_qp, true,  logger, "sectionII_overall_property_condition_description_v11_fm1105_qp");
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, sectionII_overall_property_conditionRating_v11_fm1105_qp, true,  logger, "sectionII_overall_property_conditionRating_v11_fm1105_qp");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, sectionII_overall_property_conditionRating_v12_fm1105_qp, true,  logger, "sectionII_overall_property_conditionRating_v12_fm1105_qp");
+        verify_section_II_numerical_condition_rating();
+        verify_numerical_conditionRatings_list();
 
     }
 

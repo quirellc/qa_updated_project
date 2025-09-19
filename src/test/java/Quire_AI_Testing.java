@@ -253,11 +253,11 @@ BaseClass.quire_AI().click_quire_AI_search_field();
 
  Thread.sleep(4000);
   BaseClass.quire_AI().verify_AI_chat_intro_loading_message();
+  Thread.sleep(6000);
+  BaseClass.quire_AI().verify_AI_chat_hideReport_summary_Texas_response_text();
   Thread.sleep(500);
-
  BaseClass.quire_AI().click_AI_chat_back_button();
  Thread.sleep(4000);
-
  BaseClass.quire_AI().verify_AI_intro_chat_body();
 // Thread.sleep(500);
 // BaseClass.quire_AI().verify_AI_intro_chat_body();
@@ -271,8 +271,6 @@ BaseClass.quire_AI().click_quire_AI_search_field();
 
 
  //BaseClass.quire_AI().click_quire_AI_create_summary_button();
- Thread.sleep(6000);
- BaseClass.quire_AI().verify_AI_chat_hideReport_summary_Texas_response_text();
  Thread.sleep(2000);
 
 }

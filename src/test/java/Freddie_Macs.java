@@ -681,7 +681,7 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 //    }
 
     @Test
-    public void TR_004cc_FM1104_v11_sections_check() throws InterruptedException {
+    public void TR_004cc_FM1104_v12_sections_check() throws InterruptedException {
         WebDriver driver = getDriver();
 
         BaseClass.staging5().click_section_III_property_details_sectionView();
@@ -702,6 +702,9 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         //pca
         BaseClass.staging5().click_out_of_section();
         Thread.sleep(500);
+        BaseClass.fm_section().select_electricalConditions_condition_Dropdown();
+        Thread.sleep(500);
+
         BaseClass.fm_section().click_add_cost_rec_button_section_III_electrical_conditions();
         Thread.sleep(500);
 
@@ -734,7 +737,7 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 
         BaseClass.reportfoldersection().change_to_next_tab();
         Thread.sleep(500);
-        BaseClass.fm_section().verify_fm1104_v11_QP();
+        BaseClass.fm_section().verify_fm1104_v12_QP();
 
         driver.close();
         Thread.sleep(500);
@@ -1456,11 +1459,15 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
             BaseClass.staging5().verify_section_II_error_message();
 
 
-//            v11_sections
+//            v12 and v11 _sections
     BaseClass.staging5().click_section_I_general_details_sectionView();
     BaseClass.fm_section().verify_fm1105_section1_v11();
     BaseClass.fm_section().verify_sectionI_seismic_checklist_v11_fm1105();
     BaseClass.staging5().click_section_II_unit_details_sectionView();
+    Thread.sleep(1000);
+    BaseClass.fm_section().verify_section_II_numerical_condition_rating();
+    Thread.sleep(1000);
+    BaseClass.fm_section().verify_numerical_conditionRatings_list();
     Thread.sleep(1000);
     BaseClass.fm_section().enter_sectionII_overall_property_conditionRating_v11_fm1105();
     Thread.sleep(1000);
@@ -1472,7 +1479,7 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
     BaseClass.reportfoldersection().click_quick_preview_button();
     BaseClass.reportfoldersection().change_to_next_tab();
     Thread.sleep(500);
-    BaseClass.fm_section().verify_fm1105_v11_qp();
+    BaseClass.fm_section().verify_fm1105_v12_qp();
 
     BaseClass.fm_section().verify_cost_rec_table_v11_fm1105_qp();
     driver.close();
@@ -1480,11 +1487,6 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
     Thread.sleep(500);
     BaseClass.staging5().click_section_III_property_details_sectionView();
     Thread.sleep(500);
-
-
-
-
-
 
 
 
