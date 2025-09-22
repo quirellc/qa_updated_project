@@ -263,13 +263,13 @@ Thread.sleep(1500);
     @FindBy(xpath = "//span[contains(text(),'1 - Excellent')]")
     WebElement sectionII_overall_property_conditionRating_v12_fm1105_qp;
 
-    @FindBy(xpath = "(//div[@class='fmac-section-description'][contains(text(),'1 = Excellent, 2 = Very Good/Good, 3 = fair 4 - Deteriorated and 5 = Unacceptable')])")
+    @FindBy(xpath = "//th[contains(normalize-space(.), 'Condition (1, 2, 3, 4, 5)')]")
     List <WebElement> numerical_conditionRatings_list;
 
-    public void verify_numerical_conditionRatings_list() {
+    public void verify_1104_sectionII_numerical_conditionRatings_list() {
         if (numerical_conditionRatings_list.size() == 4) {
             System.out.println("✅ Found exactly 4 instances of numerical_conditionRatings_list");
-            logger.log(LogStatus.PASS, "Found exactly 4 instances of numerical_conditionRatings_list");
+            logger.log(LogStatus.PASS, "✅Found exactly 4 instances of numerical_conditionRatings_list");
 
 
         } else {
@@ -280,8 +280,8 @@ Thread.sleep(1500);
     public void verify_fm1105_v12_qp() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, sectionII_overall_property_condition_description_v11_fm1105_qp, true,  logger, "sectionII_overall_property_condition_description_v11_fm1105_qp");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, sectionII_overall_property_conditionRating_v12_fm1105_qp, true,  logger, "sectionII_overall_property_conditionRating_v12_fm1105_qp");
-        verify_section_II_numerical_condition_rating();
-        verify_numerical_conditionRatings_list();
+      //  verify_section_II_numerical_condition_rating();
+        verify_1104_sectionII_numerical_conditionRatings_list();
 
     }
 

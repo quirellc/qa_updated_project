@@ -3438,7 +3438,7 @@ WebElement condition_action_field_text;
     @FindBy(xpath = "//i[@class='fa fa-exclamation-circle js-has-warning-tooltip']")
     WebElement section_II_error_message;
     public void verify_section_II_error_message() {
-        ReusableMethodsLoggersPOM.errorDisplayed(driver, section_II_error_message, logger, " section_II_items ");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, section_II_error_message, true,  logger, " section_II_items error message ");
 
 
     }

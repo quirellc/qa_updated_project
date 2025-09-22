@@ -888,14 +888,14 @@ public class ReusableMethodsLoggersPOM {
 
 
             if (elementState == expectedValue) {
-                System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - as expected" + "\n");
-                logger.log(LogStatus.PASS, "\n" + elementName + "\n" + "Visibility: " + elementState + " - as expected");
+                System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - as expected ✅" + "\n");
+                logger.log(LogStatus.PASS, "\n" + elementName + "\n" + "Visibility: " + elementState + "  - as expected ✅");
                 return;
 
             } else {
                 attempt++;
-                System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected....retrying attempt: " + attempt + "\n");
-                logger.log(LogStatus.FAIL, "\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected....retrying attempt: " + attempt );
+                System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected ❌....retrying attempt: " + attempt + "\n");
+                logger.log(LogStatus.FAIL, "\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected ❌....retrying attempt: " + attempt );
             }
         }
     }//end of verifyBooleanStatement

@@ -734,14 +734,11 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         Thread.sleep(500);
         BaseClass.reportfoldersection().click_quick_preview_button();
         Thread.sleep(500);
-
         BaseClass.reportfoldersection().change_to_next_tab();
         Thread.sleep(500);
         BaseClass.fm_section().verify_fm1104_v12_QP();
-
         driver.close();
         Thread.sleep(500);
-
         BaseClass.staging5().switchToOriginalTab();
         Thread.sleep(500);
     }
@@ -1388,7 +1385,7 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
 
     }
 @Test
-        public void TR_006_FM1105_v11_sections() throws InterruptedException {
+        public void TR_006_FM1105_v12_sections() throws InterruptedException {
 
     WebDriver driver = getDriver();
 
@@ -1467,7 +1464,7 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
     Thread.sleep(1000);
     BaseClass.fm_section().verify_section_II_numerical_condition_rating();
     Thread.sleep(1000);
-    BaseClass.fm_section().verify_numerical_conditionRatings_list();
+    BaseClass.fm_section().verify_1104_sectionII_numerical_conditionRatings_list();
     Thread.sleep(1000);
     BaseClass.fm_section().enter_sectionII_overall_property_conditionRating_v11_fm1105();
     Thread.sleep(1000);
