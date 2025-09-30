@@ -55,7 +55,7 @@ public class ReportFolderSection extends ReusableAnnotations {
             // If caret icon is displayed, hover and click All Folders
             if (reportsCaretIcon.isDisplayed()) {
                 ReusableMethodsLoggersPOM.mouseHoverMethod(driver, reportsTab, logger, "reports tab");
-                //Thread.sleep(500); // Wait for dropdown to appear
+                Thread.sleep(500); // Wait for dropdown to appear
                 ReusableMethodsLoggersPOM.clickMethod(driver, allFoldersDropdownItem, logger, "All Folders dropdown");
             } else {
                 // Default: click Reports tab

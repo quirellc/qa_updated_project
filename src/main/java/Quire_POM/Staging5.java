@@ -3450,18 +3450,18 @@ WebElement condition_action_field_text;
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, occupied_field_section_II_unit_details, "10", logger, " occupied_field_section_II_unit_details ");
     }
 
-    @FindBy(xpath = "//a[normalize-space()='Carports']")
+    @FindBy(xpath = "//tr[@class='js-line-item-descriptor']//a[normalize-space()='Carports']")
     WebElement carport_item__section_II;
 
     public void click_carport_item__section_II() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, carport_item__section_II, logger, " carport_item__section_II ");
+        ReusableMethodsLoggersPOM.clickMethod(driver, carport_item__section_II, logger, " carport_item_section_II ");
     }
 
-    @FindBy(xpath = "//a[normalize-space()='Garages']")
+    @FindBy(xpath = "//tr[@class='js-line-item-descriptor']//a[normalize-space()='Garages']")
     WebElement garages_item__section_II;
 
     public void click_garages_item__section_II() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, garages_item__section_II, logger, " garages_item__section_II ");
+        ReusableMethodsLoggersPOM.clickMethod(driver, garages_item__section_II, logger, " garages_item_section_II ");
     }
 
     public void enter_costItem_details_sectionII() throws InterruptedException {
@@ -3504,13 +3504,18 @@ WebElement condition_action_field_text;
         ReusableMethodsLoggersPOM.clickMethod(driver, condition_dropDown_propertyItem, logger, " condition_dropDown_propertyItem ");
     }
 
+    @FindBy(xpath = "//label[normalize-space()='G']")
+    WebElement condition_dropDown_item_propertyItem_v11;
+
     @FindBy(xpath = "//label[normalize-space()='2']")
-    WebElement condition_dropDown_item_propertyItem;
+    WebElement condition_dropDown_item_propertyItem_v12;
 
     public void select_condition_dropDown_propertyItem() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, condition_dropDown_item_propertyItem, logger, " condition_dropDown_item_propertyItem ");
+        ReusableMethodsLoggersPOM.clickMethod(driver, condition_dropDown_item_propertyItem_v11, logger, " condition_dropDown_item_propertyItem ");
     }
-
+    public void select_condition_dropDown_propertyItem_v12  () {
+        ReusableMethodsLoggersPOM.clickMethod(driver, condition_dropDown_item_propertyItem_v12, logger, " condition_dropDown_item_propertyItem_v12 ");
+    }
 
     @FindBy(xpath = "(//span[@class='multiselect-native-select'])[2]")
     WebElement action_dropDown_propertyItem;
@@ -3934,7 +3939,11 @@ WebElement condition_action_field_text;
 
 // Move to the element and offset 10 pixels to the right (x: +10, y: 0)
         Actions actions = new Actions(driver);
-        actions.moveToElement(pixel_out_of_section, 10, 0).click().perform();}
+        actions.moveToElement(pixel_out_of_section, 10, 0).click().perform();
+        System.out.println("Successfully clicked out of section");
+        logger.log(LogStatus.PASS, "Successfully   clicked out of section");
+
+    }
 
     @FindBy(xpath = "//div[normalize-space()='1.0']")
     WebElement default_section_case;

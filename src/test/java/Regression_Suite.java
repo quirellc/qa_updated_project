@@ -335,7 +335,7 @@ Thread.sleep(1500);
         Thread.sleep(1000);
 
         BaseClass.dashBoard().verify_statusChange_to_review_pinnedItems();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 //unpinned status trigger check
 
         BaseClass.quireLogin().navigate_to_admin_pinnedStatus_reports();

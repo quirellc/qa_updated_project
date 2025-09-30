@@ -548,21 +548,49 @@ public class ReusableMethodsLoggersPOM {
 
     //hover over by mouse
     //create a void method for mouse hoover
-    public static void mouseHoverMethod(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
+    public static void mouseHoverMethod(WebDriver driver, WebElement element, ExtentTest logger, String elementName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         Actions mouseActions = new Actions(driver);
+
         try {
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable((xpath)));
-            mouseActions.moveToElement(element).perform();
-            System.out.println("Successfully hovered over: " + elementName);
-            logger.log(LogStatus.PASS, "Successfully hover over: " + elementName);
+            // Primary: Direct Actions hover
+            WebElement el = wait.until(ExpectedConditions.visibilityOf(element));
+
+            // Scroll into view to improve reliability
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", el);
+
+            mouseActions.moveToElement(el).perform();
+
+            // Optional small wait for menus/tooltips
+            Thread.sleep(500);
+
+            System.out.println("✅ Successfully hovered over: " + elementName);
+            logger.log(LogStatus.PASS, "Successfully hovered over: " + elementName);
 
         } catch (Exception e) {
-            System.out.println("Unable to hover over: " + elementName + ": " + e);
-            logger.log(LogStatus.FAIL, "Unable to hover over: " + elementName + ": " + e);
-            getScreenShot(driver, "screenshot", logger);
-        }//end of mouse hover exception
-    }//end of mouse hover method
+            System.out.println("⚠️ Direct hover failed on: " + elementName + " → Trying offset hover...");
+            logger.log(LogStatus.WARNING, "Fallback to offset hover for: " + elementName);
+
+            try {
+                WebElement el = wait.until(ExpectedConditions.visibilityOf(element));
+
+                // Offset hover (secondary)
+                mouseActions.moveToElement(el, 5, 5).perform();
+
+                Thread.sleep(500);
+
+                System.out.println("✅ Successfully hovered (via offset): " + elementName);
+                logger.log(LogStatus.PASS, "Successfully hovered (via offset): " + elementName);
+
+            } catch (Exception ex) {
+                System.out.println("❌ Unable to hover over: " + elementName + " using both methods → " + ex);
+                logger.log(LogStatus.FAIL, "Unable to hover over: " + elementName + " using both methods → " + ex);
+                getScreenShot(driver, "screenshot", logger);
+            }
+        }
+    }
+
+
 
     //double click
     //create a void method for double click

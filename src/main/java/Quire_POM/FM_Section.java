@@ -285,6 +285,36 @@ Thread.sleep(1500);
 
     }
 
+    @FindBy(xpath = "//label[.//span[normalize-space(.)='Form Version']]/following-sibling::div//select")
+    WebElement FM_form_version_dropdown;
+
+    public void select_FM_form_version_v11() {
+        ReusableMethodsLoggersPOM.selectByValue(driver, FM_form_version_dropdown, "2024_12_12", logger, "FM_form_version_dropdown v11 ");
+    }
+    public void select_FM_form_version_v12() {
+        ReusableMethodsLoggersPOM.selectByValue(driver, FM_form_version_dropdown, "2025_08_01", logger, "FM_form_version_dropdown v11 ");
+    }
+
+
+    @FindBy(xpath = "(//div[@class='fmac-validation-data invalid-condition-rating-error'])[2]")
+    WebElement FM_form_conditionRating_errors;
+
+    @FindBy(xpath = "//div[@class='tooltip-inner' and contains(text(),'Values from an incompatible form version were included in this rating and have been omitted.')]")
+    WebElement FM_form_conditionRating_error_hover_message;
+
+
+    public void verify_FM1105_v12_conditionRating_errors() throws InterruptedException {
+            ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, FM_form_conditionRating_errors, true,  logger, "FM_form_conditionRating_errors");
+        Thread.sleep(200);
+
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, FM_form_conditionRating_errors, logger, "FM_form_conditionRating_error");
+        Thread.sleep(200);
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, FM_form_conditionRating_error_hover_message, true,  logger, "FM_form_conditionRatingError_hover_message");
+        Thread.sleep(500);
+
+
+    }
+
 
 
 }
