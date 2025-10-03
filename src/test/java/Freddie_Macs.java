@@ -1504,7 +1504,9 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         BaseClass.staging5().select_condition_dropDown_propertyItem_v12();
         Thread.sleep(500);
         BaseClass.staging5().click_save_button();
-        Thread.sleep(500);
+        Thread.sleep(1000);
+        BaseClass.fm_section().verify_no_FM1105_v12_conditionRating_errors();
+        Thread.sleep(1000);
 
 
 

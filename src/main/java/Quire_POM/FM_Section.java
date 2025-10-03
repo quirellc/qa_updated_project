@@ -315,7 +315,10 @@ Thread.sleep(1500);
 
     }
 
+    public void verify_no_FM1105_v12_conditionRating_errors() throws InterruptedException {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, FM_form_conditionRating_errors, false,  logger, "FM_form_conditionRating_errors");
 
+    }
 
 }
 
