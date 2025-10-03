@@ -430,7 +430,7 @@ WebDriver driver = getDriver();
         BaseClass.templatesSection().captureAlertMessage();
         // Thread.sleep(500);
         //  BaseClass.staging5().click_cancel_alert_message();
-        //    Thread.sleep(500);
+            Thread.sleep(1500);
 //click notification icon and click first link, and open new tab with link
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
@@ -463,7 +463,7 @@ WebDriver driver = getDriver();
         BaseClass.dashBoard().confirm_recentlySharedReports_items();
         Thread.sleep(500);
         BaseClass.dashBoard().refresh_all_widgets();
-        Thread.sleep(3500);
+        Thread.sleep(5000);
         BaseClass.dashBoard().verify_no_fetching_data_messages();
         Thread.sleep(500);
         BaseClass.staging5().clickUserProfileTab();
