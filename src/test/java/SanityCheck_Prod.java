@@ -430,11 +430,11 @@ WebDriver driver = getDriver();
         BaseClass.templatesSection().captureAlertMessage();
         // Thread.sleep(500);
         //  BaseClass.staging5().click_cancel_alert_message();
-            Thread.sleep(1500);
+            Thread.sleep(300);
 //click notification icon and click first link, and open new tab with link
-        BaseClass.staging5().click_active_notification_button();
-        Thread.sleep(500);
-        BaseClass.staging5().mark_all_as_read();
+        BaseClass.staging5().verify_and_markRead_if_notification_is_active();
+//        Thread.sleep(500);
+//        BaseClass.staging5().mark_all_as_read();
         Thread.sleep(9500);
         driver.navigate().refresh();
         Thread.sleep(1000);

@@ -676,7 +676,12 @@ public class Staging5 extends ReusableAnnotations {
     WebElement active_notification_button;
     public void click_active_notification_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, active_notification_button, logger, "active_notification_button");}
+    public void click_active_notification_button_if_exists() {
+        if (active_notification_button.isDisplayed()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, active_notification_button, logger, "active_notification_button");
+        }
 
+        }
     @FindBy(xpath = "//a[@id='persistent-notifications-link'][//span[@class='noty-manager-bubble' and normalize-space(text()) != '0']]")
     // and text()='1'
     WebElement active_notification_visible;
@@ -690,7 +695,7 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, fetching_company_data_message,true, logger, "loading_sideBar");}
 
     public void verify_and_markRead_if_notification_is_active() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         WebElement element = null;
         try {
             // Wait for the active notification button to be visible
@@ -716,7 +721,6 @@ public class Staging5 extends ReusableAnnotations {
             Thread.currentThread().interrupt();  // Restore interrupted status
         }
     }
-
 
 
 
