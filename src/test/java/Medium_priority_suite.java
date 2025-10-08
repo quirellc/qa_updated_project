@@ -1269,6 +1269,49 @@ BaseClass.staging5().clickLibrariesTab();
     }
 
     @Test
+    public void TR_018_Cloning_ck4_report_in_CK5() throws InterruptedException {
+        WebDriver driver = getDriver();
+        BaseClass.staging5().navigateTo_automation_report_ck5_HM_folder();
+        //create ck5 report folder with ck5 template created
+
+        BaseClass.reportfoldersection().clickAddReportButton();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().enterReportName_QA_New_CK4_clone_Field();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().enterReportDescriptionField();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().click_clone_existing_report_checkbox();
+        Thread.sleep(3000);
+        BaseClass.reportfoldersection().enter_clone_report_field_ck4report();
+        Thread.sleep(2000);
+        BaseClass.templatesSection().click_first_target_report_dropdown_link();
+        Thread.sleep(1000);
+
+        BaseClass.reportfoldersection().clickSave();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().captureAlertMessage();
+        Thread.sleep(2000);
+
+        BaseClass.reportfoldersection().clickHereLink();
+        Thread.sleep(2000);
+        BaseClass.staging5().clickSection_row_editor();
+        Thread.sleep(500);
+        BaseClass.staging5().verify_ck4_editor_toolbar_isVisible();
+        Thread.sleep(500);
+        BaseClass.staging5().click_out_of_section();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().clickReportSettingsButton();
+        Thread.sleep(500);
+        //   BaseClass.reportfoldersection().clickReportSettingsButton();
+        Thread.sleep(500);
+        BaseClass.templatesSection().clickdeleteToTrash();
+        Thread.sleep(500);
+        BaseClass.templatesSection().verify_alertMessage_templateDeleted();
+        Thread.sleep(500);
+
+    }
+
+    @Test
     public void TR_018_Atlas_admin_permissions() throws InterruptedException, IOException {
 
         WebDriver driver = getDriver();
