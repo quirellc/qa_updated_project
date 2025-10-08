@@ -1414,6 +1414,13 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         Thread.sleep(500);
         BaseClass.staging5().click_section_VI_details();
         Thread.sleep(1000);
+
+        BaseClass.staging5().click_section_VII_details();
+        Thread.sleep(1000);
+        BaseClass.staging5().verify_section_VII_text();
+        Thread.sleep(1000);
+
+
         BaseClass.staging5().click_section_II_unit_details_sectionView();
         Thread.sleep(500);
         BaseClass.staging5().click_carport_item__section_II();

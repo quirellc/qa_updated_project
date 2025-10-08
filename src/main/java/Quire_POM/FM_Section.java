@@ -282,6 +282,8 @@ Thread.sleep(1500);
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, sectionII_overall_property_conditionRating_v12_fm1105_qp, true,  logger, "sectionII_overall_property_conditionRating_v12_fm1105_qp");
       //  verify_section_II_numerical_condition_rating();
         verify_1104_sectionII_numerical_conditionRatings_list();
+        BaseClass.staging5().verify_section_VII_text_QP();
+
 
     }
 
