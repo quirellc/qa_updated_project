@@ -312,7 +312,20 @@ public class Staging5 extends ReusableAnnotations {
         BaseClass.reportfoldersection().clickAutomationReport_link();
     }
 
+    public void navigateTo_automation_report_ck5_HM_folder() throws InterruptedException {
 
+//        driver.navigate().to("https://staging5.openquire.com/reports/666234");
+//        driver.navigate().to("https://staging3.openquire.com/reports/1330028");
+
+        BaseClass.staging5().clickReportsTab();
+        BaseClass.reportfoldersection().enterSearchField_HMReports();
+        Thread.sleep(2000);
+//
+//        BaseClass.reportfoldersection().captureRecentReportName();
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        BaseClass.projectFolderSection().clickProjectFolderLink_2023QAReport();
+     //   BaseClass.reportfoldersection().clickAutomationReport_link();
+    }
     @FindBy(xpath = "//*[contains(text(),'Add Folder')]")
     WebElement addFolderButton;
 
@@ -1066,6 +1079,8 @@ catch (Exception e)
             System.out.println("atlas admin feature not found...skipping");
         }}
 
+
+
 @FindBy(xpath = "//input[@name='commit']")
 WebElement saveFeatureButton;
 
@@ -1179,6 +1194,46 @@ public void add_all_company_features() throws InterruptedException {
         Thread.sleep(1000);
     }
 
+    @FindBy(xpath = "//tr[td[normalize-space()='CKEditor 5']]//a[contains(text(),'unregister')]")
+    WebElement unregister_ck5_feature;
+    public void register_ck5_feature() throws InterruptedException {
+        try {
+            if (unregister_ck5_feature.isDisplayed()) {
+                System.out.println("Feature already enabled — unregister button visible.");
+                return;
+            }
+        } catch (Exception e) {
+            // Element not found or not visible — proceed to add feature
+            System.out.println("Unregister button not visible — adding feature.");
+        }
+
+        BaseClass.staging5().click_add_company_feature();
+        Thread.sleep(1000);
+
+        ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown,
+                "CKEditor 5",
+                "CKEditor 5");
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
+                "Save feature button for: CKEditor 5");
+
+        Thread.sleep(1000);
+    }
+
+    public void scroll_and_click_unregister_ck5_feature() throws InterruptedException {
+        try
+        {
+            if (unregister_ck5_feature.isDisplayed()) {
+                ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregister_ck5_feature, logger, "unregister_ck5_feature ");
+                ReusableMethodsLoggersPOM.clickMethod(driver, unregister_ck5_feature, logger, "unregister_ck5_feature ");
+
+                Thread.sleep(1000);
+                driver.switchTo().alert().accept();
+            }}
+        catch (Exception e)
+        {
+            System.out.println("ck5 feature not found/ already unregistered...skipping");
+        }}
     @FindBy(xpath = "//h2[normalize-space()='Quire Help Center']")
     WebElement email_support_popup_header;
     @FindBy(xpath = "//iframe[@id='widget-frame']")
@@ -2460,6 +2515,14 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         ReusableMethodsLoggersPOM.clickMethod(driver, section_row_editor, logger, "section_row_editor ");
     }
 
+
+    @FindBy(xpath = "//div[@class='cke_inner']")
+    WebElement ck4_editor_toolbar;
+
+    public void verify_ck4_editor_toolbar_isVisible() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, ck4_editor_toolbar,true, logger ,"ck4_editor_toolbar ");
+    }
+
     public void click_Section2_row_editor() {
         ReusableMethodsLoggersPOM.clickMethod(driver, section2_row_editor, logger, "section2_row_editor ");
     }
@@ -3581,6 +3644,72 @@ WebElement condition_action_field_text;
         ReusableMethodsLoggersPOM.clickMethod(driver, section_VI_capital_details, logger, " section_VI_capital_details ");
     }
 
+    @FindBy(xpath = "//span[contains(@data-title,'Section VII:')]")
+    WebElement section_VII__details;
+
+    public void click_section_VII_details() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, section_VII__details, logger, " section_VII__details ");
+    }
+
+
+    @FindBy(xpath = "//section[@class='switchboard CT-hide']//div[@class='section-block']")
+    WebElement section_VII_text;
+
+    public void verify_section_VII_text() {
+        // Get the full visible text for the section
+        String Section_VII_text = ReusableMethodsLoggersPOM.saveTextMethod(driver, section_VII_text, logger, "section_VII_text");
+
+        // Verify it starts with "Section VII: Definitions" and includes all main expected parts
+        if (Section_VII_text.contains("Section VII: Definitions") &&
+                Section_VII_text.contains("Conditions") &&
+                Section_VII_text.contains("1 - Excellent") &&
+                Section_VII_text.contains("2 - Very Good/Good") &&
+                Section_VII_text.contains("3 - Fair") &&
+                Section_VII_text.contains("4 - Deteriorated") &&
+                Section_VII_text.contains("5 - Unacceptable") &&
+                Section_VII_text.contains("Repair Categories") &&
+                Section_VII_text.contains("Critical Repairs") &&
+                Section_VII_text.contains("PR-90 Repairs") &&
+                Section_VII_text.contains("Priority Repairs")) {
+
+            System.out.println("✅ Section VII: Definitions text verified successfully.");
+            logger.log(LogStatus.PASS, "Section VII: Definitions text verified successfully.");
+
+        } else {
+            System.out.println("❌ Section VII: Definitions text is missing expected content.");
+            logger.log(LogStatus.FAIL, "Section VII: Definitions text is missing expected content.\nActual Text:\n" + Section_VII_text);
+        }
+    }
+
+
+    @FindBy(xpath = "(//div[@class='fmac-cost-table-page'])[12]")
+    WebElement section_VII_text_QP;
+
+    public void verify_section_VII_text_QP() {
+        // Get the full visible text for the section
+        String Section_VII_text = ReusableMethodsLoggersPOM.saveTextMethod(driver, section_VII_text_QP, logger, "section_VII_text_QP");
+
+        // Verify it starts with "Section VII: Definitions" and includes all main expected parts
+        if (Section_VII_text.contains("Section VII: Definitions") &&
+                Section_VII_text.contains("Conditions") &&
+                Section_VII_text.contains("1 - Excellent") &&
+                Section_VII_text.contains("2 - Very Good/Good") &&
+                Section_VII_text.contains("3 - Fair") &&
+                Section_VII_text.contains("4 - Deteriorated") &&
+                Section_VII_text.contains("5 - Unacceptable") &&
+                Section_VII_text.contains("Repair Categories") &&
+                Section_VII_text.contains("Critical Repairs") &&
+                Section_VII_text.contains("PR-90 Repairs") &&
+                Section_VII_text.contains("Priority Repairs")) {
+
+            System.out.println("✅ Section VII: Definitions text verified successfully.");
+            logger.log(LogStatus.PASS, "Section VII: Definitions text verified successfully.");
+
+        } else {
+            System.out.println("❌ Section VII: Definitions text is missing expected content.");
+            logger.log(LogStatus.FAIL, "Section VII: Definitions text is missing expected content.\nActual Text:\n" + Section_VII_text);
+        }
+    }
 
     @FindBy(xpath = "//a[@class='btn btn-subtle btn-sm add-cost-summary'][normalize-space()='Add Cost Recommendation']")
     WebElement add_cost_recommendation_button_section_III;

@@ -640,7 +640,7 @@ for (int i = 0; i < search_results_int; i++) {
     public void verify_alertMessage_reportTag() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_reportTag, true,  logger, "alertMessage_reportTag");}
 
-    @FindBy(xpath = "//div[contains(text(), 'Template was deleted')]")
+    @FindBy(xpath = "//div[contains(@class, 'alert') and contains(normalize-space(.), 'was deleted')]")
     WebElement alertMessage_templateDeleted;
     public void verify_alertMessage_templateDeleted() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_templateDeleted, true,  logger, "alertMessage_templateDeleted");}

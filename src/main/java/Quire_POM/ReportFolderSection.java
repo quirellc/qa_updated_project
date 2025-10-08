@@ -182,6 +182,10 @@ public class ReportFolderSection extends ReusableAnnotations {
         }
     }
 
+    public void enterReportName_QA_New_CK4_clone_Field() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, reportNameField, "QA Automation New CK4 Cloned Test Report", logger, "\"QA Automation New CK4 Cloned Test Report\"");
+    }
+
     public void enterReportName_QA_CK5_Field() {
 
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, reportNameField, "QA Automation CK5 Test Report", logger, "CK5 report name field");
@@ -248,6 +252,12 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, clone_existing_report_checkbox, logger, "clone_existing_report_checkbox");
     }
 
+    @FindBy(xpath = "//input[@placeholder='Type at least 3 characters to search']")
+    WebElement clone_report_field;
+
+    public void enter_clone_report_field_ck4report() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, clone_report_field, "Automation Report", logger, "clone existing report -Automation Report ck4");
+    }
     @FindBy(xpath = "//input[@id='report_source_type_report']")
     WebElement clone_existing_report_text_field;
 
@@ -477,6 +487,12 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, automationReport_link, logger, "automationReport_link");
     }
 
+    @FindBy(xpath = "//span[normalize-space()='Automation Report']")
+    WebElement automationReportCK5_link;
+
+    public void clickAutomationReportCK5_link() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, automationReportCK5_link, logger, "automationReportCK5_link");
+    }
     @FindBy(xpath = "//span[normalize-space()='QA CK5 Sanity Test Report']")
     WebElement ck5_sanity_test_report_link;
 

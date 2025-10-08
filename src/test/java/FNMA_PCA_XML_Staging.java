@@ -49,7 +49,49 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         BaseClass.staging5().click_modal_close_window();
 
     }
+    @Test
+    public void TR001a_ck5_feature_enable() throws InterruptedException {
 
+        WebDriver driver = getDriver();
+        BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+        BaseClass.quireLogin().enterRootUserEmail();
+        BaseClass.quireLogin().enterPassword();
+        //Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+        if (baseUrl.contains("app")) {
+            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+        } else if (baseUrl.contains("staging3")) {
+            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        }
+        else {
+
+            driver.navigate().to(baseUrl + "companies/253/company_features");
+        }
+        Thread.sleep(1000);
+
+        BaseClass.staging5().register_ck5_feature();
+        Thread.sleep(1000);
+
+//log out current user, log into sysadmin atlas
+        BaseClass.staging5().clickUserProfileTab();
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        BaseClass.quireLogin().enter_admin_Email();
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+
+
+    }
     @Test
     public void TR002_FannieMae_Template() throws InterruptedException {
 
