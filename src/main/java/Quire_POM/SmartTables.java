@@ -235,6 +235,8 @@ public class SmartTables extends ReusableAnnotations {
 
     @FindBy(xpath = "(//span[contains(text(),'4')])[2]")
     WebElement row4_header_ST;
+    @FindBy(xpath = "(//span[contains(text(),'4')])[3]")
+    WebElement row4_header_ST1;
 
     public void right_click_row4_header_ST() throws InterruptedException {
        // ReusableMethodsLoggersPOM.clickMethod(driver, row4_header_ST, logger, " row2_header_ST ");
@@ -245,7 +247,7 @@ try {
         return;
     }
     } catch(Exception e){
-        ReusableMethodsLoggersPOM.rightClickMethod(driver, row4_header_ST, logger, " row4_header_ST ");
+        ReusableMethodsLoggersPOM.rightClickMethod(driver, row4_header_ST1, logger, " row4_header_ST ");
     }
 
 }
@@ -781,7 +783,7 @@ WebElement toBeDeleted_column_dropdown;
         ReusableMethodsLoggersPOM.escapeMethod(driver, sum_formula_smartTable, logger, " sum_formula_smartTable ");
     }
 
-    @FindBy(xpath = "//td[contains(@class, 'quire-formula htLeft htNumeric hasFunction current')]")
+    @FindBy(xpath = "//td[contains(@class, 'quire-formula') and contains(@class, 'htLeft') and contains(@class, 'current')]")
     WebElement formula_cell_smartTable;
 
     public void rightClick_formula_cell_smartTable() {

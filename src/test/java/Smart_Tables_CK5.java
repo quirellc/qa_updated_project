@@ -424,8 +424,15 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.smartTables().click_smartTable_sectionView();
         Thread.sleep(1000);
+        BaseClass.smartTables().click_row1_formula();
+        Thread.sleep(1000);
+
+        BaseClass.smartTables().click_escape_button_formula_smartTable();
+        Thread.sleep(1000);
 
         BaseClass.smartTables().rightClick_formula_cell_smartTable();
+        Thread.sleep(500);
+
         BaseClass.smartTables().click_add_or_edit_cell_reference_tag_button();
         Thread.sleep(1000);
         BaseClass.smartTables().enter_cell_name_reference_tag();
