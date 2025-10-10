@@ -1312,7 +1312,7 @@ BaseClass.staging5().clickLibrariesTab();
     }
 
     @Test
-    public void TR_018_Atlas_admin_permissions() throws InterruptedException, IOException {
+    public void TR_019_Atlas_admin_permissions() throws InterruptedException, IOException {
 
         WebDriver driver = getDriver();
                 BaseClass.staging5().clickUserProfileTab();

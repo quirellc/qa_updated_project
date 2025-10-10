@@ -233,9 +233,9 @@ public class SmartTables extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "(//span[contains(text(),'4')])[2]")
+    @FindBy(xpath = "//th[@role='rowheader']//span[@class='rowHeader' and text()='4']")
     WebElement row4_header_ST;
-    @FindBy(xpath = "(//span[contains(text(),'4')])[3]")
+    @FindBy(xpath = "//tr[@aria-rowindex='6']//span[@class='rowHeader']")
     WebElement row4_header_ST1;
 
     public void right_click_row4_header_ST() throws InterruptedException {
