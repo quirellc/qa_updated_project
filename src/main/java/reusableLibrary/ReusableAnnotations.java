@@ -126,10 +126,17 @@ public class ReusableAnnotations {
             FirefoxProfile profile = new FirefoxProfile();
             profile.setPreference("browser.download.dir", downloadDir);
             profile.setPreference("browser.download.folderList", 2);
-            profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf"); // Set MIME type of the file you're downloading
-            profile.setPreference("pdfjs.disabled", true); // **Disable Firefox built-in PDF viewer**
-            profile.setPreference("browser.download.useDownloadDir", true); // Ensure files go to the specified folder
-            profile.setPreference("browser.download.panel.shown", false); // Hide download panel popup
+            profile.setPreference("browser.download.useDownloadDir", true);
+            profile.setPreference("browser.download.panel.shown", false);
+            profile.setPreference("browser.download.manager.showWhenStarting", false);
+            profile.setPreference("browser.download.alwaysOpenPanel", false);
+            profile.setPreference("browser.helperApps.neverAsk.saveToDisk",
+                    "application/pdf,application/octet-stream,application/x-pdf,application/download");
+            profile.setPreference("browser.helperApps.neverAsk.openFile",
+                    "application/pdf,application/octet-stream,application/x-pdf,application/download");
+            profile.setPreference("pdfjs.disabled", true);
+            profile.setPreference("plugin.disable_full_page_plugin_for_types", "application/pdf");
+            profile.setPreference("browser.download.forbid_open_with", true);
             options.addArguments("--disable-gpu");
 
 
