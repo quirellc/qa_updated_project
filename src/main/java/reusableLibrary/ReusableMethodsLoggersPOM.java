@@ -511,23 +511,19 @@ public class ReusableMethodsLoggersPOM {
         return result;
     }
 
-    public static void open_href_attribute_link(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        String result = null;
+    public static void open_href_attribute_link(WebDriver driver, WebElement linkElement, ExtentTest logger, String elementName) {
         try {
-            WebElement foundElement = wait.until(ExpectedConditions.elementToBeClickable(xpath)) ;
-            result = foundElement.getAttribute("href");
-            driver.get(result);
-           System.out.println("Successfully opened href link  from " + elementName);
-            logger.log(LogStatus.PASS, "Successfully opened href link from" + elementName);
+            // Click the link using JS to trigger download
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", linkElement);
+            System.out.println("Clicked download link: " + elementName);
+            logger.log(LogStatus.PASS, "Clicked download link: " + elementName);
 
         } catch (Exception e) {
-            System.out.println("Unable open href link " + elementName + ": " + e);
-            logger.log(LogStatus.FAIL, "Unable to Unable open href link from: " + elementName + ": " + e);
-            // Assuming you have a method to take screenshots
-            // getScreenShot(driver, "screenshot", logger);
+            System.out.println("Failed to click download link: " + elementName + " -> " + e);
+            logger.log(LogStatus.FAIL, "Failed to click download link: " + elementName + " -> " + e);
         }
     }
+
 
     public static void setAttributeValue(WebDriver driver, WebElement element, ExtentTest logger, String attributeName, String attributeValue) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
