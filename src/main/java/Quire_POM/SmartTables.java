@@ -233,16 +233,18 @@ public class SmartTables extends ReusableAnnotations {
     }
 
 
-    @FindBy(xpath = "//th[@role='rowheader']//span[@class='rowHeader' and text()='4']")
+    @FindBy(xpath = "(//th[@role='rowheader']//span[@class='rowHeader' and text()='4'])[2]")
     WebElement row4_header_ST;
-    @FindBy(xpath = "//tr[@aria-rowindex='6']//span[@class='rowHeader']")
+    @FindBy(xpath = "(//tr[@aria-rowindex='6']//span[@class='rowHeader'])[2]")
     WebElement row4_header_ST1;
 
     public void right_click_row4_header_ST() throws InterruptedException {
        // ReusableMethodsLoggersPOM.clickMethod(driver, row4_header_ST, logger, " row2_header_ST ");
 //Thread.sleep(500);
+        ReusableMethodsLoggersPOM.clickMethod(driver, row4_header_ST, logger, " row4_header_ST ");
         ReusableMethodsLoggersPOM.rightClickMethod(driver, row4_header_ST, logger, " row4_header_ST ");
-try {
+
+        try {
     if (merge_cells.isDisplayed()) {
         return;
     }
