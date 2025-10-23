@@ -346,7 +346,7 @@ WebElement trm_platform_headerButton;
     @FindBy(xpath = "//a[normalize-space()='Contact Us']")
     WebElement contact_us_header_button;
 
-    @FindBy(xpath = "//h1[contains(text(),'READY TO TAKE THE NEXT STEP?')]")
+    @FindBy(xpath = "//h2[normalize-space()='CONTACT SALES']")
     WebElement contact_us_page_text;
     public void click_and_verify_contact_us_header_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver,  contact_us_header_button, logger, "contact_us_header_button");
