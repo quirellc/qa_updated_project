@@ -225,10 +225,10 @@ Thread.sleep(1500);
     }
 
     @FindBy(xpath = "//div[@class='fmac-form-version-footer js-fmacFormVersionFooter' and contains(text(), 'Freddie Mac Multifamily Form 1105 (08/2025)')]")
-    WebElement fm1105_v11_footer_text;
+    WebElement fm1105_v12_footer_text;
 
-    public void verify_fm1105_v11_footer_text() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fm1105_v11_footer_text, true,  logger, "fm1105_v11_footer_text");
+    public void verify_fm1105_v12_footer_text() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fm1105_v12_footer_text, true,  logger, "fm1105_v12_footer_text");
     }
 
     @FindBy(xpath = "//table[@class='fmac-critical-priority-cost-table fmac-table']")
