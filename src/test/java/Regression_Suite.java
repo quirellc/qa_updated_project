@@ -916,6 +916,7 @@ Thread.sleep(1000);
 //    }
     @Test
     public void TR_012_Company_users() throws InterruptedException {
+        WebDriver driver = getDriver();
 
         //export company users to excel
         BaseClass.staging5().clickUsersTab();
@@ -947,13 +948,15 @@ Thread.sleep(1000);
         Thread.sleep(1500);
         BaseClass.staging5().clickSave();
         Thread.sleep(1000);
+        driver.navigate().refresh();
+        Thread.sleep(1000);
+
         BaseClass.reportfoldersection().enterSearchField_QA_companyUser();
         Thread.sleep(3000);
         BaseClass.staging5().click_qa_dummy_user_link();
         Thread.sleep(500);
         BaseClass.templatesSection().clickdeleteToTrash();
         Thread.sleep(1000);
-        WebDriver driver = getDriver();
 
         driver.switchTo().alert().accept();
         Thread.sleep(1000);
