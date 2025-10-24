@@ -231,6 +231,7 @@ Thread.sleep(1500);
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, fm1105_v12_footer_text, true,  logger, "fm1105_v12_footer_text");
     }
 
+
     @FindBy(xpath = "//table[@class='fmac-critical-priority-cost-table fmac-table']")
     WebElement cost_rec_table_v11_fm1105_qp;
 

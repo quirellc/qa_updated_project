@@ -30,21 +30,21 @@ public class Freddie_Macs extends ReusableAnnotations {
         BaseClass.staging5().captureURL();
         Thread.sleep(500);}
 
-//    @Test
-//    public void TR_002_Global_Search() throws InterruptedException {
-////        Thread.sleep(3000);
-////
-//        BaseClass.staging5().click_report_global_search_field();
-//        Thread.sleep(2000);
-////        BaseClass.staging5().click_report_global_search_field2();
-////        Thread.sleep(2000);
+    @Test
+    public void TR_002_Global_Search() throws InterruptedException {
+//        Thread.sleep(3000);
 //
-//        BaseClass.staging5().enter_report_global_search_field();
-//        Thread.sleep(4000);
-//        BaseClass.staging5().capture_recent_row_Information();
-//        Thread.sleep(500);
+        BaseClass.staging5().click_report_global_search_field();
+        Thread.sleep(2000);
+//        BaseClass.staging5().click_report_global_search_field2();
+//        Thread.sleep(2000);
 
-//    }
+        BaseClass.staging5().enter_report_global_search_field();
+        Thread.sleep(4000);
+        BaseClass.staging5().capture_recent_row_Information();
+        Thread.sleep(500);
+
+    }
 
  @Test
     public void TR_002_Freddie_Mac_1104_template() throws InterruptedException {
@@ -492,79 +492,79 @@ public void TR_003_report_Tags_template_FM_1104() throws InterruptedException {
 
     }
 
-//    @Test
-//    public void TR_004c_FM1104_report_creation_and_comments() throws InterruptedException {
-//        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//         //create report for FM 1104
-//        //Go into to QA Automation Parent folder
-//
-//
-//        BaseClass.reportfoldersection().clickReportsTab();
-//        BaseClass.reportfoldersection().enterSearchField_QA_Report();
-//        Thread.sleep(3500);
-//
-//        BaseClass.reportfoldersection().clickReportsFirstLink();
+    @Test
+    public void TR_004c_FM1104_report_creation_and_comments() throws InterruptedException {
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+         //create report for FM 1104
+        //Go into to QA Automation Parent folder
+
+
+        BaseClass.reportfoldersection().clickReportsTab();
+        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+        Thread.sleep(3500);
+
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(500);
+
+
+        // create new project folder with  FM 1104 templete created from previous step
+        BaseClass.projectFolderSection().clickAddProjectFolderButton();
+        BaseClass.projectFolderSection().enterProjectFolderNameField_FM_1104();
+        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
+        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
+
+        //need to add wait before typing so it can search item in dropdown
+        Thread.sleep(2000);
+        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
+        Thread.sleep(2000);
+
+        BaseClass.projectFolderSection().click_FM_1104_Template_projectFolder_templatesTab();
+        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
+        Thread.sleep(2000);
+
+        BaseClass.projectFolderSection().clickSave();
+        Thread.sleep(1000);
+        WebDriver driver = getDriver();
+
+        driver.navigate().refresh();
+        Thread.sleep(1000);
+
+        BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
+
+        Thread.sleep(2000);
+
+        // create new FM 1104 report folder inside FM_1104 project folder w  template
+
+        BaseClass.reportfoldersection().clickAddReportButton();
+        BaseClass.reportfoldersection().enterReportName_QA_FM_1104_Field();
+        BaseClass.reportfoldersection().enterReportDescriptionField();
+        BaseClass.reportfoldersection().clickReport_TemplateDropdown();
+        Thread.sleep(1500);
+
+        BaseClass.reportfoldersection().clickDropdownItem();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().clickSave();
+        Thread.sleep(3000);
+        BaseClass.templatesSection().capture_created_AlertMessage();
+        BaseClass.reportfoldersection().clickHereLink();
+        Thread.sleep(1000);
+
+        //comments
+        BaseClass.staging5().click_comment_button_icon();
+        BaseClass.staging5().enter_comments_to_field();
+        BaseClass.staging5().capture_comments_content();
+        BaseClass.staging5().click_cancel_button_popup();
+        Thread.sleep(1000);
+        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+        Thread.sleep(1000);
+
 //        Thread.sleep(500);
-//
-//
-//        // create new project folder with  FM 1104 templete created from previous step
-//        BaseClass.projectFolderSection().clickAddProjectFolderButton();
-//        BaseClass.projectFolderSection().enterProjectFolderNameField_FM_1104();
-//        BaseClass.projectFolderSection().enterProjectFolderDescriptionField();
-//        BaseClass.projectFolderSection().clickProjectFolder_TemplatesTab();
-//
-//        //need to add wait before typing so it can search item in dropdown
-//        Thread.sleep(2000);
-//        BaseClass.projectFolderSection().enterProjectFolder_Template_SearchField();
-//        Thread.sleep(2000);
-//
-//        BaseClass.projectFolderSection().click_FM_1104_Template_projectFolder_templatesTab();
-//        BaseClass.projectFolderSection().clickProjectFolder_AddTemplateButton();
-//        Thread.sleep(2000);
-//
-//        BaseClass.projectFolderSection().clickSave();
-//        Thread.sleep(1000);
-//        WebDriver driver = getDriver();
-//
 //        driver.navigate().refresh();
-//        Thread.sleep(1000);
-//
-//        BaseClass.projectFolderSection().click_FM_1104_ProjectFolderLink();
-//
-//        Thread.sleep(2000);
-//
-//        // create new FM 1104 report folder inside FM_1104 project folder w  template
-//
-//        BaseClass.reportfoldersection().clickAddReportButton();
-//        BaseClass.reportfoldersection().enterReportName_QA_FM_1104_Field();
-//        BaseClass.reportfoldersection().enterReportDescriptionField();
-//        BaseClass.reportfoldersection().clickReport_TemplateDropdown();
-//        Thread.sleep(1500);
-//
-//        BaseClass.reportfoldersection().clickDropdownItem();
-//        Thread.sleep(1000);
-//        BaseClass.reportfoldersection().clickSave();
-//        Thread.sleep(3000);
-//        BaseClass.templatesSection().capture_created_AlertMessage();
-//        BaseClass.reportfoldersection().clickHereLink();
-//        Thread.sleep(1000);
-//
-//        //comments
-//        BaseClass.staging5().click_comment_button_icon();
-//        BaseClass.staging5().enter_comments_to_field();
-//        BaseClass.staging5().capture_comments_content();
-//        BaseClass.staging5().click_cancel_button_popup();
-//        Thread.sleep(1000);
-//        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-//        Thread.sleep(1000);
-//
-////        Thread.sleep(500);
-////        driver.navigate().refresh();
-////        Thread.sleep(500);
-//
-//        BaseClass.staging5().verify_if_comments_icon_isActive();
-//        Thread.sleep(1000);
-//    }
+//        Thread.sleep(500);
+
+        BaseClass.staging5().verify_if_comments_icon_isActive();
+        Thread.sleep(1000);
+    }
 @Test
 public void TR_004c_FM1104_report_creation() throws InterruptedException {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1533,7 +1533,8 @@ public void TR_004c_FM1104_report_creation() throws InterruptedException {
         Thread.sleep(1000);
         BaseClass.staging5().click_section_III_property_details_sectionView();
         BaseClass.fm_section().verify_section_III_repairs_identification_v11();
-        BaseClass.fm_section().verify_fm1105_v11_footer_text();
+        BaseClass.fm_section().verify_fm1105_v12_footer_text();
+
         BaseClass.reportfoldersection().click_quick_preview_button();
         BaseClass.reportfoldersection().change_to_next_tab();
         Thread.sleep(500);
