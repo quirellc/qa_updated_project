@@ -136,6 +136,28 @@ public class ReportTagsSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.scrollandClickMethod(driver, title_page_image_checkbox, logger, "title_page_image_checkbox");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, title_page_image_enabled, true, logger, "title_page_image_enabled");
     }
+
+
+    @FindBy(xpath = "//span[normalize-space()='Multiple Cost Tables']/following-sibling::i[1]")
+    WebElement multiple_cost_tables_checkbox;
+
+    @FindBy(xpath = "//li[contains(@class, 'status-active') and .//span[normalize-space()='Multiple Cost Tables']]//i[contains(@class,'fa-check-square')]")
+    WebElement multiple_cost_tables_checkbox_enabled;
+
+    public void scroll_and_click_and_verify_multiple_cost_tables_checkbox() {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, multiple_cost_tables_checkbox, logger, "title_page_image_checkbox");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, multiple_cost_tables_checkbox_enabled, true, logger, "title_page_image_enabled");
+    }
+
+    @FindBy(xpath = "//label[.//span[normalize-space(.)='Form Version']]/following-sibling::div//select")
+    WebElement multiple_cost_tables_RT_dropdown;
+
+    public void select_multiple_cost_tables_feature_dropdown() {
+        ReusableMethodsLoggersPOM.scrollToElementMethod(driver, multiple_cost_tables_RT_dropdown, logger, "multiple_cost_tables_feature_dropdown ");
+
+        ReusableMethodsLoggersPOM.selectByValue(driver, multiple_cost_tables_RT_dropdown, "Enabled", logger, "multiple_cost_tables_feature_dropdown ");
+    }
+
     @FindBy(xpath = "//h1[contains(text(),'Report Tags for')]")
     WebElement ReportTags_settings_view;
 
