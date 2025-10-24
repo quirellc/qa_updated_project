@@ -279,6 +279,14 @@ public class TemplatesSection extends ReusableAnnotations {
 //        ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing ESA Template-Firefox", logger, "ESA template name field ff");
 //    }
 //}
+
+    public void enterTemplateNameField_old_PCA() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing OLD PCA Template-Chrome", logger, "OLD PCA  template name field chrome");
+
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing OLD PCA  Template-Firefox", logger, "OLD PCA  template name field ff");
+        }}
     public void enterTemplateNameField_SRA() {
         if (browserName.contains("Chrome")) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing SRA Template-Chrome", logger, "SRA template name field chrome");
@@ -508,6 +516,8 @@ for (int i = 0; i < search_results_int; i++) {
         ReusableMethodsLoggersPOM.selectByValue(driver, templateTypeDropdown, "freddie_mac1104", logger, "templateTypeDropdown");}
     public void selectTemplateTypeDropdown_FM_1105() {
         ReusableMethodsLoggersPOM.selectByValue(driver, templateTypeDropdown, "freddie_mac_v2", logger, "templateTypeDropdown");}
+    public void selectTemplateTypeDropdown_old_PCA() {
+        ReusableMethodsLoggersPOM.selectByValue(driver, templateTypeDropdown, "pca", logger, "pca templateTypeDropdown");}
 
     @FindBy(xpath = "//div[@class='option active'][normalize-space()='General Other']")
     WebElement templateLabel_GeneralOther;
