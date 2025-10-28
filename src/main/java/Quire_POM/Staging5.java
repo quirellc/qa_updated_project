@@ -3746,12 +3746,20 @@ WebElement condition_action_field_text;
         ReusableMethodsLoggersPOM.clickMethod(driver, parking_test_item_link, logger, " parking_test_item_link ");
     }
 
-    @FindBy(xpath = "//div[@class='selectize-control single']//div[@class='selectize-input items not-full has-options']")
-    WebElement cost_rec_label_field;
+    @FindBy(xpath = "//div[@class='selectize-control single']//input[@type='text']")
+    WebElement cost_rec_label_field_2;
     public void enter_cost_rec_parking_label_field() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, cost_rec_label_field, "parking test label", logger, " cost_rec_label_field parking");
+//        ReusableMethodsLoggersPOM.clickMethod(driver, cost_rec_label_field, logger, " cost_rec_label_field ");
+
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, cost_rec_label_field_2, "parking test label", logger, " cost_rec_label_field_2 parking");
     }
+
+
+    @FindBy(xpath = "//div[@class='selectize-input items not-full']//input[@type='text']")
+    WebElement cost_rec_label_field;
     public void enter_cost_rec_boiler_label_field() {
+//        ReusableMethodsLoggersPOM.clickMethod(driver, cost_rec_label_field, logger, " cost_rec_label_field ");
+
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, cost_rec_label_field, "boiler test label", logger, " cost_rec_label_field boiler");
     }
 
@@ -3843,9 +3851,14 @@ WebElement condition_action_field_text;
 
     @FindBy(xpath = "//section[@class='immediate-repair-cost']")
     WebElement immediate_repair_cost_section_text;
+
+
+    @FindBy(xpath = "//div[@id='immediate-repair-cost']//table")
+    WebElement immediate_repair_cost_section_text_qp;
     public void verify_immediate_repair_cost_section_text() {
      String result =   ReusableMethodsLoggersPOM.captureTextMethod(driver, immediate_repair_cost_section_text, logger, " immediate_repair_cost_section_text ");
-        if (result.equals("Item\n" +
+        if (result.equals("boiler test label\n"+
+                        "Item\n" +
                 "Quantity\n" +
                 "Unit\n" +
                 "Unit Cost\n" +
@@ -3860,6 +3873,23 @@ WebElement condition_action_field_text;
         }
     }
 
+    public void verify_immediate_repair_cost_section_text_qp() {
+        String result =   ReusableMethodsLoggersPOM.captureTextMethod(driver, immediate_repair_cost_section_text_qp, logger, " immediate_repair_cost_section_text_qp ");
+        if (result.equals("boiler test label\n"+
+                "Item\n" +
+                "Quantity\n" +
+                "Unit\n" +
+                "Unit Cost\n" +
+                "Replacement Percent\n" +
+                "Immediate Total\n" +
+                "1.0 Default Section Title\n" +
+                "boiler test item 5 EA $1,000.00 100% $5,000\n" +
+                "Total Repair Cost $5,000.00") ) {
+            System.out.println("✅ immediate_repair_cost_section_text_qp as expected");
+        } else {
+            System.out.println("❌ immediate_repair_cost_section_text_qp NOT AS Expected");
+        }
+    }
     @FindBy(xpath = "//li[contains(., 'Capital Reserve Schedule')]")
     WebElement capital_reserve_schedule_outline;
 
@@ -3869,9 +3899,12 @@ WebElement condition_action_field_text;
 
     @FindBy(xpath = "//section[@class='capital-reserve-schedule']")
     WebElement capital_reserved_schedule_cost_section_text;
+    @FindBy(xpath = "//div[@id='capital-reserve-schedule']//table")
+    WebElement capital_reserved_schedule_cost_section_text_qp;
     public void verify_capital_reserved_schedule_cost_section_text() {
         String result =   ReusableMethodsLoggersPOM.captureTextMethod(driver, capital_reserved_schedule_cost_section_text, logger, " capital_reserved_schedule_cost_section_text ");
-        if (result.equals("Item\n" +
+        if (result.equals("parking test label\n"+
+                "Item\n" +
                 "EUL\n" +
                 "EFF AGE\n" +
                 "RUL\n" +
@@ -3909,12 +3942,72 @@ WebElement condition_action_field_text;
             System.out.println("❌ capital_reserved_schedule_cost_section_text NOOT AS EXPECTED");
         }
     }
+    public void verify_capital_reserved_schedule_cost_section_text_qp() {
+        String result =   ReusableMethodsLoggersPOM.captureTextMethod(driver, capital_reserved_schedule_cost_section_text_qp, logger, " capital_reserved_schedule_cost_section_text_qp ");
+        if (result.equals("parking test label\n" +
+                "Item\n" +
+                "EUL\n" +
+                "EFF AGE\n" +
+                "RUL\n" +
+                "Quantity\n" +
+                "Unit\n" +
+                "Unit Cost\n" +
+                "Cycle Replace\n" +
+                "Replace Percent\n" +
+                "Year 1\n" +
+                "Year 2\n" +
+                "Year 3\n" +
+                "Year 4\n" +
+                "Year 5\n" +
+                "Year 6\n" +
+                "Year 7\n" +
+                "Year 8\n" +
+                "Year 9\n" +
+                "Year 10\n" +
+                "Year 11\n" +
+                "Year 12\n" +
+                "Total Cost\n" +
+                "1.0 Default Section Title\n" +
+                "parking test item 0 5 EA $1,000.00 $5,000 100% $424 $416 $416 $416 $416 $416 $416 $416 $416 $416 $416 $416 $5,000\n" +
+                "Total (Uninflated)\n" +
+                "Inflation Factor (2.5%) 1.0 1.025 1.051 1.077 1.104 1.131 1.16 1.189 1.218 1.249 1.28 1.312\n" +
+                "Total (inflated)\n" +
+                "Evaluation Period: 12\n" +
+                "# of Guest Rooms: 1\n" +
+                "Reserve per Guest Room per year (Uninflated) $417\n" +
+                "Reserve per Guest Room per year (Inflated) $479") ) {
+            System.out.println("✅ capital_reserved_schedule_cost_section_text_qp as expected");
+        } else {
+            System.out.println("❌ capital_reserved_schedule_cost_section_text_qp NOT AS EXPECTED");
+        }
+    }
 
     @FindBy(xpath = "//section[@class='project-summary']")
     WebElement old_pca_project_summary_text;
     public void verify_old_pca_project_summary_text() {
         String result =   ReusableMethodsLoggersPOM.captureTextMethod(driver, old_pca_project_summary_text, logger, " old_pca_project_summary_text ");
         if (result.equals("Construction System\n" +
+                "Good\n" +
+                "Fair\n" +
+                "Poor\n" +
+                "Action\n" +
+                "Immediate\n" +
+                "Over Term Years 1-12\n" +
+                "Totals $5,000 $5,000\n" +
+                "Summary Today's Dollars $/Guest Room\n" +
+                "Immediate Repairs $5,000 $5,000\n" +
+                "Today's Dollars $/Guest Room $/Guest Room/Year\n" +
+                "Replacement Reserves, today's dollars $5,000 $5,000 $417\n" +
+                "Replacement Reserves, w/12, 2.5% escalation $5,747 $5,747 $479") ) {
+            System.out.println("✅ old_pca_project_summary_text as expected");
+        } else {
+            System.out.println("❌ old_pca_project_summary_text NOT AS Expected");
+        }
+    }
+    public void verify_old_pca_project_summary_text_qp() {
+        String result =   ReusableMethodsLoggersPOM.captureTextMethod(driver, old_pca_project_summary_text, logger, " old_pca_project_summary_text ");
+        if (result.equals("Project Summary\n" +
+                "Construction System\n" +
                 "Good\n" +
                 "Fair\n" +
                 "Poor\n" +
