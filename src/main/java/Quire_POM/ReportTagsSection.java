@@ -144,18 +144,22 @@ public class ReportTagsSection extends ReusableAnnotations {
     @FindBy(xpath = "//li[contains(@class, 'status-active') and .//span[normalize-space()='Multiple Cost Tables']]//i[contains(@class,'fa-check-square')]")
     WebElement multiple_cost_tables_checkbox_enabled;
 
-    public void scroll_and_click_and_verify_multiple_cost_tables_checkbox() {
-        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, multiple_cost_tables_checkbox, logger, "title_page_image_checkbox");
-        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, multiple_cost_tables_checkbox_enabled, true, logger, "title_page_image_enabled");
+    public void scroll_and_click_and_verify_multiple_cost_tables_checkbox() throws InterruptedException {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, multiple_cost_tables_checkbox, logger, "multiple_cost_tables_checkbox");
+        Thread.sleep(2000);
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, multiple_cost_tables_checkbox_enabled, true, logger, "multiple_cost_tables_checkboxt_enabled");
     }
 
-    @FindBy(xpath = "//label[.//span[normalize-space(.)='Form Version']]/following-sibling::div//select")
+
+    @FindBy(xpath = "//label[.//span[normalize-space(.)='Multiple Cost Tables']]/following-sibling::div//select")
     WebElement multiple_cost_tables_RT_dropdown;
+    @FindBy(xpath = "//div[normalize-space()='site']")
+    WebElement site_reportTags_section;
 
     public void select_multiple_cost_tables_feature_dropdown() {
-        ReusableMethodsLoggersPOM.scrollToElementMethod(driver, multiple_cost_tables_RT_dropdown, logger, "multiple_cost_tables_feature_dropdown ");
+        ReusableMethodsLoggersPOM.scrollToViewMethod(driver, site_reportTags_section, logger, "site_reportTags_section ");
 
-        ReusableMethodsLoggersPOM.selectByValue(driver, multiple_cost_tables_RT_dropdown, "Enabled", logger, "multiple_cost_tables_feature_dropdown ");
+        ReusableMethodsLoggersPOM.selectByValue(driver, multiple_cost_tables_RT_dropdown, "1", logger, "multiple_cost_tables_feature_dropdown ");
     }
 
     @FindBy(xpath = "//h1[contains(text(),'Report Tags for')]")
