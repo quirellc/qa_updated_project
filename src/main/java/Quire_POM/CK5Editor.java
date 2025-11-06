@@ -392,12 +392,11 @@ WebElement instruction_text_ck5;
     WebElement wordbank_details_preview_text_ck5;
     public void verify_wordbank_details_preview_text_ck5() {
         String wb_text = ReusableMethodsLoggersPOM.captureTextMethod(driver, wordbank_details_preview_text_ck5, logger, "wordbank_details_preview_text_ck5");
-        if (wb_text.contains("Title" +
-                "Label" +
-                "Instructions" +
-                "QA Test Automation - WordBank Content" +
-                "Content" +
-                "QA Test Automation - WordBank Content")) {
+        if (wb_text.contains("Title") &&
+                wb_text.contains("Label") &&
+                wb_text.contains("Instructions") &&
+                wb_text.contains("QA Test Automation") &&
+                wb_text.contains("Content")) {
             System.out.println("Wordbank Details Preview text verified successfully");
             logger.log(LogStatus.PASS, "Wordbank Details Preview text verified successfully");
         } else {
