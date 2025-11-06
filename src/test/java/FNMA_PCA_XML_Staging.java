@@ -2,9 +2,11 @@ import Quire_POM.BaseClass;
 import com.relevantcodes.extentreports.LogStatus;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import reusableLibrary.ReusableAnnotations;
+import reusableLibrary.ReusableMethodsLoggersPOM;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -50,7 +52,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
     }
     @Test
-    public void TR001a_ck5_feature_enable() throws InterruptedException {
+    public void TR001a_ck5_and_other_feature_check() throws InterruptedException {
 
         WebDriver driver = getDriver();
         BaseClass.staging5().clickUserProfileTab();
@@ -75,9 +77,22 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
             driver.navigate().to(baseUrl + "companies/253/company_features");
         }
         Thread.sleep(1000);
+        if (driver instanceof FirefoxDriver) {
+            Thread.sleep(5000);
+
+        }
+
 
         BaseClass.staging5().register_ck5_feature();
         Thread.sleep(1000);
+        BaseClass.staging5().scroll_and_click_unregister_allUsersAccessToAllReports_feature();
+        Thread.sleep(1000);
+        BaseClass.staging5().scroll_and_click_unregister_unregister_allTemplate_feature();
+        Thread.sleep(1000);
+
+        BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
+        Thread.sleep(1000);
+
 
 //log out current user, log into sysadmin atlas
         BaseClass.staging5().clickUserProfileTab();
@@ -146,6 +161,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         WebDriver driver = getDriver();
 
         driver.navigate().refresh();
+        Thread.sleep(2000);
 
     }
     @Test
