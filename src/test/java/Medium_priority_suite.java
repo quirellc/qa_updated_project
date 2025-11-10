@@ -1482,6 +1482,7 @@ BaseClass.staging5().clickLibrariesTab();
 
     @Test
     public void TR_020_Atlas_admin_permissions() throws InterruptedException, IOException {
+        Thread.sleep(1000);
 
         WebDriver driver = getDriver();
                 BaseClass.staging5().clickUserProfileTab();
@@ -1505,9 +1506,9 @@ BaseClass.staging5().clickLibrariesTab();
 
                 driver.navigate().to(baseUrl + "companies/253/company_features");
         }
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         BaseClass.staging5().add_atlas_feature();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         BaseClass.staging5().add_company_feature_HOT14();
         Thread.sleep(1000);
