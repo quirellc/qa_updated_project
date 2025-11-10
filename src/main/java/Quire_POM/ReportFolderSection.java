@@ -513,7 +513,7 @@ public class ReportFolderSection extends ReusableAnnotations {
     WebElement file_name_appendix;
 
     public void enter_file_name_appendix() {
-        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, file_name_appendix, "signatureee", logger, "file_name_appendix");
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, file_name_appendix, "signaturee", logger, "file_name_appendix");
     }
 
     @FindBy(xpath = "//div[@title='Edit Title']")
@@ -522,7 +522,7 @@ public class ReportFolderSection extends ReusableAnnotations {
     public void enter_appendix_name() throws InterruptedException {
         ReusableMethodsLoggersPOM.clearMethod(driver, appendix_name, logger, "appendix_title");
         Thread.sleep(500);
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, appendix_name, "testinggg", logger, "appendix_title");
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, appendix_name, "testinng", logger, "appendix_title");
     }
 
     //    @FindBy(xpath = "//a[normalize-space()='Move Appendix to Trash']")
