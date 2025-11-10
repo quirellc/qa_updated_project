@@ -1113,7 +1113,11 @@ Thread.sleep(1000);
         //create RegressionSuite report folder with fm1104 template created
 
         BaseClass.projectFolderSection().click_TBD_ProjectFolderLink();
+        Thread.sleep(500);
+
         BaseClass.projectFolderSection().click_projectFolderSettings_button();
+        Thread.sleep(500);
+
         BaseClass.templatesSection().clickdeleteToTrash();
         Thread.sleep(200);
         BaseClass.staging5().captureAlertMessage();
@@ -1138,7 +1142,7 @@ Thread.sleep(1000);
         BaseClass.templatesSection().clickdeleteToTrash();
         Thread.sleep(200);
         BaseClass.staging5().captureAlertMessage();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         BaseClass.staging5().click_view_trash_button();
         Thread.sleep(500);
