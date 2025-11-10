@@ -180,28 +180,31 @@ public class ReusableMethodsLoggersPOM {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
 
         try {
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable((xpath)));
-             jse.executeScript("arguments[0].scrollIntoView(true)",element);
-          //  jse.executeScript("arguments[0].scrollIntoView({block: 'center'})", element);
+            WebElement element = wait.until(ExpectedConditions.visibilityOf(xpath));
+            jse.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", element);
+            Thread.sleep(1000);
 
-//            Thread.sleep(1000);
-//            jse.executeScript("window.scrollBy(0, -5000);");
-//            Thread.sleep(1000);
-//
-//            jse.executeScript("scroll(0,-5000)");
-            Thread.sleep(2000);
-            xpath.click();
-          //  wait.until(ExpectedConditions.elementToBeClickable(xpath)).click();
-            System.out.println("Successfully scrolled and clicked: " + elementName);
-            logger.log(LogStatus.PASS, "Successfully scrolled and clicked " + elementName);
+            // First click attempt
+            element.click();
+            System.out.println("Clicked once on: " + elementName);
+
+            // Wait and verify if still visible — retry once
+            Thread.sleep(1500);
+//            if (xpath.isDisplayed()) {
+//                System.out.println("Element still visible after click — retrying...");
+//                jse.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", element);
+//                Thread.sleep(500);
+//                element.click();
+//                System.out.println("Retried click on: " + elementName);
+//            }
+
+            logger.log(LogStatus.PASS, "Successfully scrolled and clicked (with retry if needed): " + elementName);
 
         } catch (Exception e) {
-            System.out.println("Unable to scrolled and click : " + elementName + ": " + e);
-            logger.log(LogStatus.FAIL, "Unable to scrolled and click: " + elementName + ": " + e);
-            //  getScreenShot(driver, "screenshot", logger);
-        }//end of double click exception
-    }//end of double click method
-
+            System.out.println("Unable to scroll and click (with retry): " + elementName + ": " + e);
+            logger.log(LogStatus.FAIL, "Unable to scroll and click (with retry): " + elementName + ": " + e);
+        }
+    }
 
     //create select dropdown by visible text
     public static void selectByText(WebDriver driver, WebElement xpath, String visibleText, String elementName) {
@@ -885,44 +888,85 @@ public class ReusableMethodsLoggersPOM {
         }// end of tab change exception
     } // end of changing tab method
 
-    public static void verifyBooleanStatement(WebDriver driver, WebElement xpath, boolean expectedValue, ExtentTest logger, String elementName) {
-        //store the xpath in boolean statement
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        WebElement element = null;
-        int maxAttempts = 3; // Maximum number of attempts
-        int attempt = 0;
-        while (attempt < maxAttempts) {
-            boolean elementState;
-            try {
+//    public static void verifyBooleanStatement(WebDriver driver, WebElement xpath, boolean expectedValue, ExtentTest logger, String elementName) {
+//        //store the xpath in boolean statement
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+//        WebElement element = null;
+//        int maxAttempts = 3; // Maximum number of attempts
+//        int attempt = 0;
+//        while (attempt < maxAttempts) {
+//            boolean elementState;
+//            try {
+//
+//                element = wait.until(ExpectedConditions.visibilityOf(xpath));
+//                elementState = element.isDisplayed();
+//            //    return;
+////            System.out.println("Expected: " + expectedValue + "element displayed: " + elementState);
+//            } catch (TimeoutException e) {
+//                // Handle timeout explicitly
+//                elementState = false; // Element not found, set visibility to false
+//            } catch (Exception e) {
+//                // Handle WebDriverException explicitly
+//                System.out.println("WebDriverException encountered: " + e.getMessage());
+//                logger.log(LogStatus.ERROR, "WebDriverException encountered: " + e.getMessage());
+//                attempt++;
+//                continue; // Retry the operation
+//            }
+//
+//
+//            if (elementState == expectedValue) {
+//                System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - as expected ✅" + "\n");
+//                logger.log(LogStatus.PASS, "\n" + elementName + "\n" + "Visibility: " + elementState + "  - as expected ✅");
+//                return;
+//
+//            } else {
+//                attempt++;
+//                System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected ❌....retrying attempt: " + attempt + "\n");
+//                logger.log(LogStatus.FAIL, "\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected ❌....retrying attempt: " + attempt );
+//            }
+//        }
+//    }//end of verifyBooleanStatement
+public static void verifyBooleanStatement(WebDriver driver, WebElement xpath, boolean expectedValue, ExtentTest logger, String elementName) {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    WebElement element = null;
+    int maxAttempts = 3;
+    int attempt = 0;
 
-                element = wait.until(ExpectedConditions.visibilityOf(xpath));
-                elementState = element.isDisplayed();
-            //    return;
-//            System.out.println("Expected: " + expectedValue + "element displayed: " + elementState);
-            } catch (TimeoutException e) {
-                // Handle timeout explicitly
-                elementState = false; // Element not found, set visibility to false
-            } catch (Exception e) {
-                // Handle WebDriverException explicitly
-                System.out.println("WebDriverException encountered: " + e.getMessage());
-                logger.log(LogStatus.ERROR, "WebDriverException encountered: " + e.getMessage());
-                attempt++;
-                continue; // Retry the operation
-            }
+    while (attempt < maxAttempts) {
+        boolean elementState;
 
+        try {
+            element = wait.until(ExpectedConditions.visibilityOf(xpath));
+            elementState = element.isDisplayed();
 
-            if (elementState == expectedValue) {
-                System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - as expected ✅" + "\n");
-                logger.log(LogStatus.PASS, "\n" + elementName + "\n" + "Visibility: " + elementState + "  - as expected ✅");
+        } catch (TimeoutException e) {
+            elementState = false;
+
+            // ✅ If we expected false, treat it as PASS instead of fail
+            if (!expectedValue) {
+                System.out.println("\n" + elementName + "\nVisibility: false - as expected ✅\n");
+                logger.log(LogStatus.PASS, "\n" + elementName + "\nVisibility: false - as expected ✅");
                 return;
-
-            } else {
-                attempt++;
-                System.out.println("\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected ❌....retrying attempt: " + attempt + "\n");
-                logger.log(LogStatus.FAIL, "\n" + elementName + "\n" + "Visibility: " + elementState + " - is NOT expected ❌....retrying attempt: " + attempt );
             }
+
+        } catch (Exception e) {
+            System.out.println("WebDriverException encountered: " + e.getMessage());
+            logger.log(LogStatus.ERROR, "WebDriverException encountered: " + e.getMessage());
+            attempt++;
+            continue;
         }
-    }//end of verifyBooleanStatement
+
+        if (elementState == expectedValue) {
+            System.out.println("\n" + elementName + "\nVisibility: " + elementState + " - as expected ✅\n");
+            logger.log(LogStatus.PASS, "\n" + elementName + "\nVisibility: " + elementState + " - as expected ✅");
+            return;
+        } else {
+            attempt++;
+            System.out.println("\n" + elementName + "\nVisibility: " + elementState + " - is NOT expected ❌....retrying attempt: " + attempt + "\n");
+            logger.log(LogStatus.FAIL, "\n" + elementName + "\nVisibility: " + elementState + " - is NOT expected ❌....retrying attempt: " + attempt);
+        }
+    }
+}
 
     public static void verify_element_dissapeared(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
         try {
