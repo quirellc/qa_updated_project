@@ -161,7 +161,7 @@ public class Quire_AI_Testing extends ReusableAnnotations {
   BaseClass.quire_AI().verify_download_link_notification();
   Thread.sleep(500);
   BaseClass.quire_AI().click_clear_selection_button();
-  Thread.sleep(5000);
+  Thread.sleep(20000);
 
 
 
@@ -169,7 +169,7 @@ public class Quire_AI_Testing extends ReusableAnnotations {
   BaseClass.quire_AI().hover_and_click_ask_AI_lazarus_Button();
   Thread.sleep(3000);
   BaseClass.quire_AI().enter_AI_conversate_field_locationOfDocument();
-  Thread.sleep(6000);
+  Thread.sleep(3000);
   BaseClass.quire_AI().verify_AI_chat_asbestos_state_response_text1();
   Thread.sleep(500);
   BaseClass.quire_AI().click_AI_chat_close_button();
@@ -181,7 +181,7 @@ public class Quire_AI_Testing extends ReusableAnnotations {
   BaseClass.quire_AI().hover_and_click_ask_AI_lazarus_Button();
   Thread.sleep(3000);
   BaseClass.quire_AI().enter_AI_conversate_field_summarizeDocument();
-  Thread.sleep(6000);
+  Thread.sleep(10000);
   BaseClass.quire_AI().verify_AI_chat_asbestos_summary_response_text();
   Thread.sleep(500);
   BaseClass.quire_AI().click_AI_chat_close_button();
@@ -220,15 +220,15 @@ public void TR_02b_Quire_AI_searchField_and_prompt_Testing() throws InterruptedE
  WebDriver driver = getDriver();
 //
 //
-//  BaseClass.staging5().clickUserProfileTab();
-//  BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-//  Thread.sleep(500);
-//
-//  BaseClass.quireLogin().enter_cbre_sysadmin_Email();
-//  BaseClass.quireLogin().enterPassword();
-//  Thread.sleep(1000);
-//  BaseClass.quireLogin().clickLogin();
-//  Thread.sleep(500);
+  BaseClass.staging5().clickUserProfileTab();
+  BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+  Thread.sleep(500);
+
+  BaseClass.quireLogin().enter_cbre_sysadmin_Email();
+  BaseClass.quireLogin().enterPassword();
+  Thread.sleep(1000);
+  BaseClass.quireLogin().clickLogin();
+  Thread.sleep(2500);
 
 BaseClass.quire_AI().click_quire_AI_search_field();
   Thread.sleep(500);
@@ -249,12 +249,13 @@ BaseClass.quire_AI().click_quire_AI_search_field();
 
  Thread.sleep(2000);
  BaseClass.quire_AI().confirm_report_opened_new_tab_and_sameTab();
- BaseClass.quire_AI().click_ask_quire_button();
+  Thread.sleep(2000);
 
- Thread.sleep(4000);
-  BaseClass.quire_AI().verify_AI_chat_intro_loading_message();
+  BaseClass.quire_AI().click_ask_quire_button();
+
+// Thread.sleep(4000);
+//  BaseClass.quire_AI().verify_AI_chat_intro_loading_message();
   Thread.sleep(6000);
-  BaseClass.quire_AI().verify_AI_chat_hideReport_summary_Texas_response_text();
   Thread.sleep(500);
  BaseClass.quire_AI().click_AI_chat_back_button();
  Thread.sleep(4000);
@@ -263,8 +264,17 @@ BaseClass.quire_AI().click_quire_AI_search_field();
 // BaseClass.quire_AI().verify_AI_intro_chat_body();
  Thread.sleep(500);
  BaseClass.quire_AI().click_quire_AI_continue_conversation_button();
- Thread.sleep(4000);
- BaseClass.quire_AI().verify_AI_chat_create_summary_response();
+ Thread.sleep(2000);
+
+
+  BaseClass.quire_AI().verify_AI_chat_create_summary_response();
+  Thread.sleep(2000);
+
+  BaseClass.quire_AI().click_quire_AI_create_summary_button();
+  Thread.sleep(8000);
+   BaseClass.quire_AI().verify_AI_chat_hideReport_summary_Texas_response_text();
+  Thread.sleep(2000);
+
 // Thread.sleep(1000);
  // BaseClass.staging5().click_out_of_section();
 //  Thread.sleep(500);

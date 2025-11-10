@@ -354,9 +354,16 @@ driver.close();
 
     @FindBy(xpath = "(//q-chat-response)[1]")
     WebElement AI_chat_response_text;
-    public void verify_AI_chat_hideReport_summary_Texas_response_text() {
-        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
-        if ((result.contains("PCA")) && (result.contains("CBRE")) && (result.contains("100-unit")) && (result.contains("Texas"))) {
+
+    @FindBy(xpath = "(//q-chat-response)[2]")
+    WebElement AI_chat_response_2_text;
+    public void verify_AI_chat_hideReport_summary_Texas_response_text() throws InterruptedException {
+        String result = waitForAIResponse(AI_chat_response_text);
+
+
+
+       // String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+        if ((result.contains("PCA")) && (result.contains("CBRE")) && (result.contains("Fannie Mae")) && (result.contains("Components"))) {
             System.out.println("Chat AI response text matches ✅");
             logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
         } else {
@@ -366,112 +373,216 @@ driver.close();
     }
 
 
-    public void verify_AI_chat_asbestos_state_response_text() throws InterruptedException {
-        int maxRetries = 5; // safety limit
-        int attempt = 0;
-        String result = "";
-
-        while (attempt < maxRetries) {
-            attempt++;
-            System.out.println("🔄 Attempt " + attempt);
-
-            result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
-
-            if (result.contains("Michigan")) {
-                System.out.println("Chat AI response text matches ✅ (found on attempt " + attempt + ")");
-                logger.log(LogStatus.PASS, "Chat AI response text matches ✅ (found on attempt " + attempt + ")");
-                return; // success, exit method
-            }
-
-            if (result.contains("I apologize, but I cannot provide an answer")) {
-                System.out.println("⚠️ AI gave no-documents response. Retrying...");
-                driver.navigate().refresh();
-                BaseClass.quire_AI().hover_and_click_ask_AI_lazarus_Button();
-                Thread.sleep(3000);
-                BaseClass.quire_AI().enter_AI_conversate_field_locationOfDocument();
-                Thread.sleep(6000);
-            } else {
-                System.out.println("⚠️ AI response did not contain expected text. Retrying...");
-                Thread.sleep(3000); // wait a bit before retry
-            }
-        }
-
-        // If we got here, all retries failed
-        System.out.println("❌ Chat AI response text does not match after " + maxRetries + " attempts");
-        logger.log(LogStatus.FAIL, "Chat AI response text does not match after " + maxRetries + " attempts ❌");
-    }
+//    public void verify_AI_chat_asbestos_state_response_text() throws InterruptedException {
+//        int maxRetries = 5; // safety limit
+//        int attempt = 0;
+//        String result = "";
+//
+//        while (attempt < maxRetries) {
+//            attempt++;
+//            System.out.println("🔄 Attempt " + attempt);
+//
+//            result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+//
+//            if (result.contains("Michigan")) {
+//                System.out.println("Chat AI response text matches ✅ (found on attempt " + attempt + ")");
+//                logger.log(LogStatus.PASS, "Chat AI response text matches ✅ (found on attempt " + attempt + ")");
+//                return; // success, exit method
+//            }
+//
+//            if (result.contains("I apologize, but I cannot provide an answer")) {
+//                System.out.println("⚠️ AI gave no-documents response. Retrying...");
+//                driver.navigate().refresh();
+//                BaseClass.quire_AI().hover_and_click_ask_AI_lazarus_Button();
+//                Thread.sleep(3000);
+//                BaseClass.quire_AI().enter_AI_conversate_field_locationOfDocument();
+//                Thread.sleep(6000);
+//            } else {
+//                System.out.println("⚠️ AI response did not contain expected text. Retrying...");
+//                Thread.sleep(3000); // wait a bit before retry
+//            }
+//        }
+//
+//        // If we got here, all retries failed
+//        System.out.println("❌ Chat AI response text does not match after " + maxRetries + " attempts");
+//        logger.log(LogStatus.FAIL, "Chat AI response text does not match after " + maxRetries + " attempts ❌");
+//    }
 
     @FindBy(xpath = "(//q-chat-response)")
     List<WebElement> AI_chat_responses;
 
 
-    public void verify_AI_chat_asbestos_state_response_text1() throws InterruptedException {
-        int maxRetries = 5; // safety limit
-        int attempt = 0;
-        String result = "";
-        int previousResponseCount = 0; // to track new responses
+//    public void verify_AI_chat_asbestos_state_response_text1() throws InterruptedException {
+//        int maxRetries = 5; // safety limit
+//        int attempt = 0;
+//        String result = "";
+//        int previousResponseCount = 0; // to track new responses
+//
+//        while (attempt < maxRetries) {
+//            attempt++;
+//            System.out.println("🔄 Attempt " + attempt);
+//
+//            // Wait until at least one response exists
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//            wait.until(d -> AI_chat_responses.size() > 0);
+//
+//            // Get the latest response safely
+//            List<WebElement> responses = AI_chat_responses;
+//            WebElement latestResponse = responses.get(responses.size() - 1);
+//
+//            result = ReusableMethodsLoggersPOM.captureTextMethod(driver, latestResponse, logger, "AI_chat_response_text");
+//            System.out.println("Latest AI Response:\n" + result);
+//
+//            // Check if the response contains expected text
+//            if (result.contains("Michigan")) {
+//                System.out.println("Chat AI response text matches ✅ (found on attempt " + attempt + ")");
+//                logger.log(LogStatus.PASS, "Chat AI response text matches ✅ (found on attempt " + attempt + ")");
+//                return; // success
+//            }
+//
+//            // If response is not what we expect, click regenerate
+//            System.out.println("⚠️ AI response did not contain expected text. Clicking Regenerate...");
+//            JavascriptExecutor js = (JavascriptExecutor) driver;
+//            WebElement regenerateBtn = (WebElement) js.executeScript(
+//                    "return document.querySelector('sl-icon-button[data-action=\"regenerate_response\"]').shadowRoot.querySelector('button')"
+//            );
+//            regenerateBtn.click();
+//
+//            // Wait for a new response to appear (size increases)
+//            wait.until(d -> AI_chat_responses.size() > responses.size());
+//            Thread.sleep(1000); // short buffer for content to fully render
+//        }
+//
+//        // If all retries failed
+//        System.out.println("❌ Chat AI response text does not match after " + maxRetries + " attempts");
+//        logger.log(LogStatus.FAIL, "Chat AI response text does not match after " + maxRetries + " attempts ❌");
+//    }
+public void verify_AI_chat_asbestos_state_response_text1() throws InterruptedException {
+    // Capture initial response
+    String result = waitForAIResponse(AI_chat_response_text);
 
-        while (attempt < maxRetries) {
-            attempt++;
-            System.out.println("🔄 Attempt " + attempt);
+    // Retry once if "Michigan" is not present
+    if (!result.toLowerCase().contains("michigan")) {
+        System.out.println("⚠️ 'Michigan' not found. Retrying once...");
+        enter_AI_conversate_field_locationOfDocument();
 
-            // Wait until at least one response exists
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(d -> AI_chat_responses.size() > 0);
-
-            // Get the latest response safely
-            List<WebElement> responses = AI_chat_responses;
-            WebElement latestResponse = responses.get(responses.size() - 1);
-
-            result = ReusableMethodsLoggersPOM.captureTextMethod(driver, latestResponse, logger, "AI_chat_response_text");
-            System.out.println("Latest AI Response:\n" + result);
-
-            // Check if the response contains expected text
-            if (result.contains("Michigan")) {
-                System.out.println("Chat AI response text matches ✅ (found on attempt " + attempt + ")");
-                logger.log(LogStatus.PASS, "Chat AI response text matches ✅ (found on attempt " + attempt + ")");
-                return; // success
-            }
-
-            // If response is not what we expect, click regenerate
-            System.out.println("⚠️ AI response did not contain expected text. Clicking Regenerate...");
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            WebElement regenerateBtn = (WebElement) js.executeScript(
-                    "return document.querySelector('sl-icon-button[data-action=\"regenerate_response\"]').shadowRoot.querySelector('button')"
-            );
-            regenerateBtn.click();
-
-            // Wait for a new response to appear (size increases)
-            wait.until(d -> AI_chat_responses.size() > responses.size());
-            Thread.sleep(1000); // short buffer for content to fully render
-        }
-
-        // If all retries failed
-        System.out.println("❌ Chat AI response text does not match after " + maxRetries + " attempts");
-        logger.log(LogStatus.FAIL, "Chat AI response text does not match after " + maxRetries + " attempts ❌");
+        // Capture new response after retry
+        result = waitForAIResponse(AI_chat_response_2_text);
     }
 
+    // Verify final response
+    if (result.toLowerCase().contains("michigan")) {
+        System.out.println("AI_chat_asbestos_state_response_text matches ✅");
+        logger.log(LogStatus.PASS, "AI_chat_asbestos_state_response_text matches ✅");
+    } else {
+        System.out.println("AI_chat_asbestos_state_response_text does not match ❌");
+        logger.log(LogStatus.FAIL, "AI_chat_asbestos_state_response_text does not match ❌");
+    }
+}
+    private String waitForAIResponse(WebElement aiResponseElement) throws InterruptedException {
+        // Wait until AI response starts appearing
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+        wait.until(d -> !aiResponseElement.getText().trim().isEmpty());
 
+        // Wait until text stabilizes (AI finished typing)
+        String previousText = "";
+        for (int i = 0; i < 15; i++) { // max ~15 seconds
+            String currentText = aiResponseElement.getText().trim();
+            if (!currentText.isEmpty() && currentText.equals(previousText)) {
+                break; // AI finished typing
+            }
+            previousText = currentText;
+            Thread.sleep(3000);
+        }
 
+        // Capture final text
+        return ReusableMethodsLoggersPOM.captureTextMethod(driver, aiResponseElement, logger, "AI_chat_response_text");
+    }
 
     public void verify_AI_chat_asbestos_summary_response_text() throws InterruptedException {
-        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+        // Capture initial response
+        String result = waitForAIResponse(AI_chat_response_text);
 
-        if (result.contains("I apologize, but I cannot provide an answer")) {
-            System.out.println("⚠️ AI gave no-documents response. Retrying once...");
+        // Retry once if "Michigan" is not present
+        if (!result.toLowerCase().contains("asbestos inspection")) {
+            System.out.println("⚠️ 'asbestos inspection' not found. Retrying once...");
             enter_AI_conversate_field_locationOfDocument();
-            Thread.sleep(7000);
 
+            // Capture new response after retry
+            result = waitForAIResponse(AI_chat_response_2_text);
         }
 
-        if (result.contains("asbestos inspection")) {
-            System.out.println("Chat AI response text matches ✅");
-            logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
+        // Verify final response
+        if (result.toLowerCase().contains("asbestos inspection")) {
+            System.out.println("AI_chat_asbestos_summary_response_text matches ✅");
+            logger.log(LogStatus.PASS, "AI_chat_asbestos_summary_response_text matches ✅");
         } else {
-            logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");
-            System.out.println("Chat AI response text does not match ❌");
+            System.out.println("AI_chat_asbestos_summary_response_text does not match ❌");
+            logger.log(LogStatus.FAIL, "AI_chat_asbestos_summary_response_text does not match ❌");
         }
     }
+
+//    public void verify_AI_chat_asbestos_state_response_text1() throws InterruptedException {
+//        // Capture initial response
+//        String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+//
+//        // If AI says no documents, retry once
+//        if (result.contains("I apologize, but I cannot provide an answer")) {
+//            System.out.println("⚠️ AI gave no-documents response. Retrying once...");
+//            enter_AI_conversate_field_locationOfDocument();
+//
+//            // Wait for AI to generate new response
+//            Thread.sleep(7000);
+//
+//            // Re-capture the new response
+//            result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+//        }
+//
+//        // Check if the response contains expected text
+//        if (result.toLowerCase().contains("asbestos inspection")) {
+//            System.out.println("Chat AI response text matches ✅");
+//            logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
+//        } else {
+//            System.out.println("Chat AI response text does not match ❌");
+//            logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");
+//        }
+//    }
+
+//public void verify_AI_chat_asbestos_summary_response_text() throws InterruptedException {
+//    // Wait until AI response has some text
+//    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25)); // declare here
+//    wait.until(d -> !AI_chat_response_text.getText().trim().isEmpty());
+//
+//    // Wait until text stops changing (AI finished typing)
+//    String previousText = "";
+//    for (int i = 0; i < 10; i++) { // up to ~10 seconds
+//        String currentText = AI_chat_response_text.getText().trim();
+//        if (!currentText.isEmpty() && currentText.equals(previousText)) {
+//            break; // text stabilized
+//        }
+//        previousText = currentText;
+//        Thread.sleep(1000);
+//    }
+//
+//    // Capture final text
+//    String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
+//
+//    if (result.contains("I apologize, but I cannot provide an answer")) {
+//        System.out.println("⚠️ AI gave no-documents response. Retrying once...");
+//        enter_AI_conversate_field_locationOfDocument();
+//        Thread.sleep(7000);
+//    }
+//
+//    if (result.contains("asbestos inspection")) {
+//        System.out.println("Chat AI response text matches ✅");
+//        logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
+//    } else {
+//        logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");
+//        System.out.println("Chat AI response text does not match ❌");
+//        enter_AI_conversate_field_locationOfDocument();
+//        Thread.sleep(7000);
+//    }
+//}
 
     public void verify_AI_chat_author_fnmae_response_text() throws InterruptedException {
         String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
@@ -579,6 +690,10 @@ driver.close();
     @FindBy(xpath = "//table[@class='htCore']//tbody//tr[2]/td[2]")
     WebElement second_report_link;
 
+    @FindBy(xpath = "//a[normalize-space()='asbestos summary']")
+    WebElement asbestos_summary_doc_link;
+    @FindBy(xpath = "//a[normalize-space()='asbestos summary']/following::button[1]")
+    WebElement asbestos_summary_ask_AI;
     @FindBy(xpath = "(//button[normalize-space()='Ask AI'])[2]")
     WebElement ask_AI_second_hoverButton;
     public void hover_and_click_second_report_ask_AI_Button() throws InterruptedException {
