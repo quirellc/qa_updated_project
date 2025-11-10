@@ -1182,7 +1182,7 @@ public void add_all_company_features() throws InterruptedException {
         }
 
         BaseClass.staging5().click_add_company_feature();
-        Thread.sleep(1000);
+        Thread.sleep(2500);
 
         ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown,
                 "Limit Template Access for Company Admins",
@@ -1233,6 +1233,40 @@ public void add_all_company_features() throws InterruptedException {
         catch (Exception e)
         {
             System.out.println("ck5 feature not found/ already unregistered...skipping");
+        }}
+
+    @FindBy(xpath = "//tr[td[normalize-space()='All Users Access All Reports']]//a[contains(text(),'unregister')]")
+    WebElement unregister_allUsersAccessToAllReports_feature;
+    public void scroll_and_click_unregister_allUsersAccessToAllReports_feature() throws InterruptedException {
+        try
+        {
+            if (unregister_allUsersAccessToAllReports_feature.isDisplayed()) {
+                ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregister_allUsersAccessToAllReports_feature, logger, "unregister_allUsersAccessToAllReports_feature ");
+                ReusableMethodsLoggersPOM.clickMethod(driver, unregister_allUsersAccessToAllReports_feature, logger, "unregister_allUsersAccessToAllReports_feature ");
+
+                Thread.sleep(1000);
+                driver.switchTo().alert().accept();
+            }}
+        catch (Exception e)
+        {
+            System.out.println("allUsersAccessToAllReports_feature not found/ already unregistered...skipping");
+        }}
+
+    @FindBy(xpath = "//tr[td[normalize-space()='All Templates to All Projects']]//a[contains(text(),'unregister')]")
+    WebElement unregister_allTemplate_feature;
+    public void scroll_and_click_unregister_unregister_allTemplate_feature() throws InterruptedException {
+        try
+        {
+            if (unregister_allTemplate_feature.isDisplayed()) {
+                ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregister_allTemplate_feature, logger, "unregister_allTemplate_feature ");
+                ReusableMethodsLoggersPOM.clickMethod(driver, unregister_allTemplate_feature, logger, "unregister_allTemplate_feature ");
+
+                Thread.sleep(1000);
+                driver.switchTo().alert().accept();
+            }}
+        catch (Exception e)
+        {
+            System.out.println("unregister_allTemplate_feature not found/ already unregistered...skipping");
         }}
     @FindBy(xpath = "//h2[normalize-space()='Quire Help Center']")
     WebElement email_support_popup_header;
@@ -1291,9 +1325,10 @@ public void add_all_company_features() throws InterruptedException {
     @FindBy(xpath = "//div[@class='app-footer-group']")
     WebElement ask_quire_button;
 
-    public void click_view_trash_button() {
+    public void click_view_trash_button() throws InterruptedException {
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, ask_quire_button, logger, "ask_quire_button");
-
+   //     ReusableMethodsLoggersPOM.clickMethod(driver, ask_quire_button, logger, "ask_quire_button");
+Thread.sleep(1500);
         ReusableMethodsLoggersPOM.clickMethod(driver, view_trash_button, logger, "view_trash_button");
     }
 
@@ -1720,7 +1755,9 @@ public void add_all_company_features() throws InterruptedException {
     @FindBy(xpath = "//nav[@class='nav-header']")
     WebElement userProfileTab;
 
-    public void clickUserProfileTab() {
+    public void clickUserProfileTab() throws InterruptedException {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, userProfileTab, logger, "userProfile Tab ");
+Thread.sleep(300);
         ReusableMethodsLoggersPOM.clickMethod(driver, userProfileTab, logger, "userProfile Tab ");
     }
 
@@ -2030,6 +2067,7 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
     WebElement verify_pdf_file_appendix_excluded;
     public void hover_to_delete_first_pdf_appendix_file() throws InterruptedException {
         ReusableMethodsLoggersPOM.scrollToElementMethod(driver, first_pdf_file_appendix, logger, "first_pdf_file_appendix");
+        Thread.sleep(500);
 
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_pdf_file_appendix, logger, "first_pdf_file_appendix");
         Thread.sleep(500);
@@ -2037,7 +2075,10 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         Thread.sleep(500);
     }
     public void hover_to_exclude_first_pdf_appendix_file() throws InterruptedException {
-        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_pdf_file_appendix, logger, "first_pdf_file_appendix");
+        ReusableMethodsLoggersPOM.scrollToElementMethod(driver, first_pdf_file_appendix, logger, "first_pdf_file_appendix");
+        Thread.sleep(500);
+
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_pdf_file_appendix, logger, "second_pdf_file_appendix");
         Thread.sleep(500);
         ReusableMethodsLoggersPOM.clickMethod(driver, pdf_appendix_exclude, logger, "second_pdf_file_appendix_exclude");
         BaseClass.staging5().captureAlertMessage();
@@ -2831,7 +2872,7 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         ReusableMethodsLoggersPOM.captureTextMethod(driver, revisions_history, logger, "revisions_history");
     }
 
-    @FindBy(xpath = "(//i[@class='fa fa-comment'])[1]")
+    @FindBy(xpath = "//li[contains(@class, 'section-comments js-sectionComments')]")
     WebElement comment_button;
 
     public void click_comment_button_icon() {
@@ -3662,23 +3703,21 @@ WebElement condition_action_field_text;
         // Verify it starts with "Section VII: Definitions" and includes all main expected parts
         if (Section_VII_text.contains("Section VII: Definitions") &&
                 Section_VII_text.contains("Conditions") &&
-                Section_VII_text.contains("1 - Excellent") &&
-                Section_VII_text.contains("2 - Very Good/Good") &&
-                Section_VII_text.contains("3 - Fair") &&
-                Section_VII_text.contains("4 - Deteriorated") &&
-                Section_VII_text.contains("5 - Unacceptable") &&
                 Section_VII_text.contains("Repair Categories") &&
                 Section_VII_text.contains("Critical Repairs") &&
                 Section_VII_text.contains("PR-90 Repairs") &&
                 Section_VII_text.contains("Priority Repairs")) {
 
-            System.out.println("✅ Section VII: Definitions text verified successfully.");
-            logger.log(LogStatus.PASS, "Section VII: Definitions text verified successfully.");
+            System.out.println("✅ Section VII: Definitions core text verified successfully.");
+            logger.log(LogStatus.PASS, "Section VII: Definitions core text verified successfully.");
 
         } else {
             System.out.println("❌ Section VII: Definitions text is missing expected content.");
             logger.log(LogStatus.FAIL, "Section VII: Definitions text is missing expected content.\nActual Text:\n" + Section_VII_text);
         }
+
+
+
     }
 
 

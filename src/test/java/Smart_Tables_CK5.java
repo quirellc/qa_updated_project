@@ -767,9 +767,9 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.staging5().click_add_button_unassigned_item();
         Thread.sleep(500);
         BaseClass.templatesSection().clickSave2();
-        Thread.sleep(500);
+        Thread.sleep(2000);
         BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
+        Thread.sleep(2000);
 
         BaseClass.smartTables().click_row4_dynamic();
         Thread.sleep(500);
@@ -936,11 +936,14 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.ck5editor().add_new_comment_to_ST();
         Thread.sleep(500);
         BaseClass.ck5editor().click_comments_resolve_button();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
 
         //click out of ST, double clicking ST header title twice
         BaseClass.staging5().click_smartTable_title_header();
-        BaseClass.staging5().click_smartTable_title_header();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_default_section_title();
+        Thread.sleep(500);
 
         //verify you see yellow comment icon with number 4
         BaseClass.ck5editor().verify_unresolved_4_comment_is_Visible();
