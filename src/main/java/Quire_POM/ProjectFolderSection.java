@@ -342,7 +342,7 @@ public class ProjectFolderSection extends ReusableAnnotations {
     WebElement projectFolder_TBD_Link_ff;
     public void click_TBD_ProjectFolderLink() {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.clickMethod(driver, projectFolder_TBD_Link_chrome, logger, "tbd folder  link chrome");
+            ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_TBD_Link_chrome, logger, "tbd folder  link chrome");
         } else if (browserName.contains("Firefox")) {
             ReusableMethodsLoggersPOM.scrollandClickMethod(driver, projectFolder_TBD_Link_ff, logger, "tbd folder  link ff");
         }}

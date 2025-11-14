@@ -32,7 +32,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
 
-        } else if (baseUrl.contains("app")) {
+        } else {
             BaseClass.quireLogin().enter_admin_Email();
         }
 
@@ -69,8 +69,8 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         Thread.sleep(500);
         if (baseUrl.contains("app")) {
             driver.navigate().to("https://app.openquire.com/companies/253/company_features");
-        } else if (baseUrl.contains("staging3")) {
-            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+            driver.navigate().to( baseUrl + "/companies/4/company_features");
         }
         else {
 
@@ -78,7 +78,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         }
         Thread.sleep(1000);
         if (driver instanceof FirefoxDriver) {
-            Thread.sleep(5000);
+            Thread.sleep(8000);
 
         }
 

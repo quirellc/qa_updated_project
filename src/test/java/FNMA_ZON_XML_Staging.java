@@ -23,7 +23,8 @@ public class FNMA_ZON_XML_Staging extends ReusableAnnotations {
         //   String pageTitle = driver.getTitle();
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
-        } else if (baseUrl.contains("app")) {
+
+        } else {
             BaseClass.quireLogin().enter_admin_Email();
         }
 
@@ -39,6 +40,8 @@ public class FNMA_ZON_XML_Staging extends ReusableAnnotations {
 
         BaseClass.staging5().captureURL();
         Thread.sleep(2000);
+        BaseClass.staging5().click_modal_close_window();
+
     }
 
     @Test

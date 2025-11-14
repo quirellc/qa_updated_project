@@ -1184,9 +1184,9 @@ int count = TC_highlights.size();
 
             if (baseUrl.contains("staging5")) {
                 driver.navigate().to("https://staging5.openquire.com/reports/668855");
-            }
-            else if (baseUrl.contains("staging3")) {
-                driver.navigate().to("https://staging3.openquire.com/reports/1330243");
+
+        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+                driver.navigate().to(baseUrl +"/reports/1330243");
             }
     else if (baseUrl.contains("app")) {
                     driver.navigate().to("https://app.openquire.com/reports/1461010");

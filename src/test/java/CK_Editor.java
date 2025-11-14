@@ -10,21 +10,25 @@ import java.io.IOException;
 
 public class CK_Editor extends ReusableAnnotations {
 	//WebDriver driver = getDriver();
-    @Test
 
+    @Test
     public void TR_0001_user_login() throws InterruptedException {
         WebDriver driver = getDriver();
         System.out.println(driver.getClass().getSimpleName());
         driver.navigate().to(baseUrl);
         System.out.println("Navigating to: " + baseUrl);
-        Thread.sleep(500);
+        // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
+//        driver.navigate().to("https://staging5.openquire.com/");
+        //     driver.navigate().to("https://app-next.openquire.com/");
+//        driver.navigate().to("https://staging5-next.openquire.com/");
 
+        //  WebDriver driver1 = getDriver();
 
-
-
+        //   String pageTitle = driver.getTitle();
         if (baseUrl.contains("staging")) {
             BaseClass.quireLogin().enter_admin_Email();
-        } else if (baseUrl.contains("app")) {
+
+        } else {
             BaseClass.quireLogin().enter_admin_Email();
         }
 
@@ -32,11 +36,17 @@ public class CK_Editor extends ReusableAnnotations {
         BaseClass.quireLogin().enterPassword();
         Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
-        Thread.sleep(2000);
-           BaseClass.staging5().captureURL();
-          Thread.sleep(500);
-    }
+        Thread.sleep(3000);
+        //   } else {
+        //       System.out.println("\n" + "Already logged in. Skipping login steps.");
+        //      Thread.sleep(3000);
+        //  }
 
+        BaseClass.staging5().captureURL();
+        Thread.sleep(2000);
+        BaseClass.staging5().click_modal_close_window();
+
+    }
     @Test
     public void TR_0002_createTemplate() throws InterruptedException {
 

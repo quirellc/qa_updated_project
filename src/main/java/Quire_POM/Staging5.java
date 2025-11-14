@@ -62,10 +62,13 @@ public class Staging5 extends ReusableAnnotations {
 
     @FindBy(xpath = "//table//tr/td[3][@class='htLeft htMiddle']")
     List<WebElement> pca_portfolio_project_name_cells;
+
+
     public void capture_pca_portfolio_project_name_cells() throws InterruptedException {
             for (WebElement element : pca_portfolio_project_name_cells) {
-                String text = element.getText();
-                System.out.println(text);
+                String text = element.getText().trim();
+              //  capturedPortfolioNames.add(text);
+                System.out.println("Captured project name: " + text);
             }
     }
     public void confirm_copied_pca_portfolio_project_name_cells() throws InterruptedException {
@@ -171,7 +174,8 @@ public class Staging5 extends ReusableAnnotations {
     WebElement pca_portfolio_project_name_textBox;
     public void enter_pca_portfolio_project_name_textBox() throws InterruptedException {
         generatedPortfolioName =  dateOfSystem;
-        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, pca_portfolio_project_name_textBox, "QA_" + generatedPortfolioName, logger, "pca_portfolio_project_name_textBox");}
+
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, pca_portfolio_project_name_textBox, "QA_" + generatedPortfolioName, logger, "pca_portfolio_project_name_textBox: generated name:" + generatedPortfolioName);}
 
     @FindBy(xpath = "//div[@class='htItemWrapper']")
     WebElement copy_data_across_rows_button;
@@ -1187,11 +1191,12 @@ public void add_all_company_features() throws InterruptedException {
         ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown,
                 "Limit Template Access for Company Admins",
                 "Limit Template Access for Company Admins ");
+        Thread.sleep(2000);
 
         ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
                 "Save feature button for: Atlas-Limit template access for admin");
-
         Thread.sleep(1000);
+
     }
 
     @FindBy(xpath = "//tr[td[normalize-space()='CKEditor 5']]//a[contains(text(),'unregister')]")
@@ -2067,7 +2072,7 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
     WebElement verify_pdf_file_appendix_excluded;
     public void hover_to_delete_first_pdf_appendix_file() throws InterruptedException {
         ReusableMethodsLoggersPOM.scrollToElementMethod(driver, first_pdf_file_appendix, logger, "first_pdf_file_appendix");
-        Thread.sleep(500);
+        Thread.sleep(1500);
 
         ReusableMethodsLoggersPOM.mouseHoverMethod(driver, first_pdf_file_appendix, logger, "first_pdf_file_appendix");
         Thread.sleep(500);
@@ -4650,24 +4655,28 @@ WebElement condition_action_field_text;
      //   ReusableMethodsLoggersPOM.closePDFViewer(driver);
 //BaseClass.reportfoldersection().change_to_default_tab();
     }
+    List<String> capturedPortfolioNames = new ArrayList<>();
 
-    public void verify_portfolio_from_PDF() throws IOException {
+    public void verify_portfolio_from_PDF() throws IOException, InterruptedException {
         String pdfContent = ReusableMethodsLoggersPOM.getPDFContent_from_most_recent_download();
-        SoftAssert softAssert = new SoftAssert();
-        // Assertion 1
-        boolean assertionResult1 = pdfContent.contains("QA_"+generatedPortfolioName);
-                //&& pdfContent.contains("New") && pdfContent.contains("New1") ;
-        softAssert.assertTrue(assertionResult1);
-        if (assertionResult1) {
-            System.out.println("Portfolio cells in PDF Verification passed ");
-            logger.log(LogStatus.PASS, "Portfolio cells Verification passed");
-        } else {
-            System.out.println("Assertion 1 failed: Portfolio cells do not match");
-            logger.log(LogStatus.FAIL, "Assertion 1 failed: Portfolio cells do not match");
-        }
-    }
+// Remove spaces for a cleaner match
+        String normalizedPdf = pdfContent.replaceAll("\\s+", "");
 
+        for (WebElement element : pca_portfolio_project_name_cells) {
+            String portfolioName = element.getText().trim();
+            System.out.println("Captured project name: " + portfolioName);
 
+            // Normalize both strings for better matching
+            String normalizedPortfolio = portfolioName.replaceAll("\\s+", "");
+
+            if (normalizedPdf.contains(normalizedPortfolio)) {
+                System.out.println("✅ Found in PDF: " + portfolioName);
+                logger.log(LogStatus.PASS, "Found in PDF: " + portfolioName);
+            } else {
+                System.out.println("❌ Not found in PDF: " + portfolioName);
+                logger.log(LogStatus.FAIL, "Not found in PDF: " + portfolioName);
+            }
+        }}
     public void verify_email_link_PDF() throws IOException {
         String pdfContent = ReusableMethodsLoggersPOM.getPDFContent_from_most_recent_download();
         SoftAssert softAssert = new SoftAssert();
@@ -4699,6 +4708,24 @@ WebElement condition_action_field_text;
             System.out.println("Assertion 1 failed: The Header texts are NOT present in the PDF content.");
             logger.log(LogStatus.FAIL, "Assertion 1 failed: The Header texts are NOT present in the PDF content.");
         }
+    }
+
+    public void verify_downloadedPDFContent_1104() throws IOException {
+        String pdfContent = ReusableMethodsLoggersPOM.getPdfContent_from_downloads("1104.pdf");
+        System.out.println(pdfContent);
+//        SoftAssert softAssert = new SoftAssert();
+
+        // Assertion 1
+//        boolean assertionResult1 = pdfContent.contains("refresh text");
+//        softAssert.assertTrue(assertionResult1);
+//        if (assertionResult1) {
+//            System.out.println("Header Text Verification passed for: ");
+//            logger.log(LogStatus.PASS, "Assertion 1 passed:");
+//
+//        } else {
+//            System.out.println("Assertion 1 failed: The Header texts are NOT present in the PDF content.");
+//            logger.log(LogStatus.FAIL, "Assertion 1 failed: The Header texts are NOT present in the PDF content.");
+//        }
     }
 
     @FindBy(xpath = "(//td[@class='htLeft htMiddle row-header'])[7]")

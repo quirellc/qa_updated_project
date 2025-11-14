@@ -28,7 +28,8 @@ public void TR001_user_login() throws InterruptedException {
     //   String pageTitle = driver.getTitle();
     if (baseUrl.contains("staging")) {
         BaseClass.quireLogin().enter_admin_Email();
-    } else if (baseUrl.contains("app")) {
+
+    } else {
         BaseClass.quireLogin().enter_admin_Email();
     }
 
@@ -43,6 +44,13 @@ public void TR001_user_login() throws InterruptedException {
     //  }
 
     BaseClass.staging5().captureURL();
+    Thread.sleep(2000);
+    BaseClass.staging5().click_modal_close_window();
+    //   } else {
+    //       System.out.println("\n" + "Already logged in. Skipping login steps.");
+    //      Thread.sleep(3000);
+    //  }
+
     Thread.sleep(2000);
 }
     @Test
@@ -476,12 +484,21 @@ public void TR001_user_login() throws InterruptedException {
 
         //go into medium priority template
         BaseClass.templatesSection().clickTemplatesTab();
+        Thread.sleep(1000);
+        WebDriver driver = getDriver();
+driver.navigate().refresh();
+        Thread.sleep(1500);
+
         BaseClass.templatesSection().enterTemplateSearchField_updated_medium();
+        Thread.sleep(1000);
+
         BaseClass.pca_xml_section().clickFirstTemplateLink();
         //assign WB item
         BaseClass.staging5().click_wordbank_grey_icon();
         Thread.sleep(1000);
         BaseClass.reportfoldersection().click_recent_row_item_wordBank();
+        Thread.sleep(1000);
+
         BaseClass.staging5().click_add_button_unassigned_item();
         Thread.sleep(1000);
         BaseClass.templatesSection().clickSave2();
@@ -539,7 +556,6 @@ public void TR001_user_login() throws InterruptedException {
         Thread.sleep(1000);
         BaseClass.templatesSection().click_export_now_button();
         Thread.sleep(10000);
-        WebDriver driver = getDriver();
 
         driver.navigate().refresh();
         Thread.sleep(5000);
@@ -795,9 +811,9 @@ public void TR001_user_login() throws InterruptedException {
         Thread.sleep(500);
         if (baseUrl.contains("app")) {
             driver.navigate().to("https://app.openquire.com/companies/253/company_features");
-        }
-        else if (baseUrl.contains("staging3")) {
-            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+
+    } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+            driver.navigate().to(baseUrl +"/companies/4/company_features");
         }
         else  {
             driver.navigate().to(baseUrl + "companies/253/company_features");
@@ -826,8 +842,8 @@ public void TR001_user_login() throws InterruptedException {
         if (baseUrl.contains("staging5")) {
             driver.navigate().to("https://staging5.openquire.com/projects/327971/report_tags");
             Thread.sleep(2000);
-        } else if (baseUrl.contains("staging3")) {
-            driver.navigate().to("https://staging3.openquire.com/projects/601010/report_tags");
+        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+            driver.navigate().to(baseUrl + "/projects/601010/report_tags");
             Thread.sleep(2000);
         } else  {
             driver.navigate().to(baseUrl + "projects/654503/report_tags");
@@ -864,8 +880,8 @@ public void TR001_user_login() throws InterruptedException {
  if (baseUrl.contains("staging5")) {
      driver.navigate().to("https://staging5.openquire.com/portfolios/4699");
      Thread.sleep(2000);
- } else if (baseUrl.contains("staging3")) {
-     driver.navigate().to("https://staging3.openquire.com/portfolios/9301");
+ } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+     driver.navigate().to(baseUrl + "/portfolios/9301");
      Thread.sleep(2000);
  }
  else  {
@@ -1499,8 +1515,8 @@ BaseClass.staging5().clickLibrariesTab();
                 Thread.sleep(500);
         if (baseUrl.contains("app")) {
             driver.navigate().to("https://app.openquire.com/companies/253/company_features");
-        } else if (baseUrl.contains("staging3")) {
-            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+            driver.navigate().to(baseUrl +"/companies/4/company_features");
         }
         else {
 
@@ -1631,14 +1647,14 @@ BaseClass.staging5().clickLibrariesTab();
         Thread.sleep(500);
         if (baseUrl.contains("app")) {
             driver.navigate().to("https://app.openquire.com/companies/253/company_features");
-        } else if (baseUrl.contains("staging3")) {
-            driver.navigate().to("https://staging3.openquire.com/companies/4/company_features");
+        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+            driver.navigate().to(baseUrl +"/companies/4/company_features");
         }
         else {
 
             driver.navigate().to(baseUrl + "companies/253/company_features");
         }
-        Thread.sleep(500);
+        Thread.sleep(3000);
 
         BaseClass.staging5().scroll_and_click_unregister_atlas_feature();
         Thread.sleep(500);
