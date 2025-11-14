@@ -37,6 +37,17 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDResources;
+import org.apache.pdfbox.pdmodel.graphics.PDXObject;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import org.apache.pdfbox.pdmodel.graphics.form.PDFormXObject;
+import org.apache.pdfbox.cos.COSName;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.io.ByteArrayOutputStream;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -204,6 +215,294 @@ public class ReusableMethodsLoggersPOM {
             System.out.println("Unable to scroll and click (with retry): " + elementName + ": " + e);
             logger.log(LogStatus.FAIL, "Unable to scroll and click (with retry): " + elementName + ": " + e);
         }
+    }
+
+    /**
+     * Extract image XObject names from the most recent downloaded PDF. Optionally saves images to disk for debugging.
+     * Location scanned: src/main/java/downloads
+     *
+     * @param saveImages if true, saves images to src/main/java/downloads/extracted_images/
+     * @return list of image object names found across all pages (e.g., Im1, X1, etc.) or empty list if none
+     */
+    public static java.util.List<String> getPDFImageNames_from_most_recent_download(boolean saveImages) throws IOException {
+        java.util.List<String> imageNames = new java.util.ArrayList<>();
+        // Specify the custom download directory
+        String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads";
+
+        // Create a File object for the downloads folder
+        File folder = new File(downloadDir);
+
+        // List all PDF files in the directory
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf"));
+
+        // Check if there are no PDF files
+        if (files == null || files.length == 0) {
+            System.out.println("No PDF files found in the downloads folder.");
+            return imageNames;
+        }
+
+        // Sort files by last modified timestamp (most recent first)
+        Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+
+        // Get the most recently downloaded PDF file
+        File latestPdfFile = files[0];
+        System.out.println("Opening latest downloaded PDF for image scan: " + latestPdfFile.getName());
+
+        // Prepare output folder if saving is enabled
+        File outDir = null;
+        if (saveImages) {
+            outDir = new File(downloadDir + "/extracted_images");
+            if (!outDir.exists()) {
+                outDir.mkdirs();
+            }
+        }
+
+        // Load the PDF document
+        try (PDDocument document = PDDocument.load(latestPdfFile)) {
+            int pageIndex = 0;
+            for (PDPage page : document.getPages()) {
+                pageIndex++;
+                PDResources resources = page.getResources();
+                if (resources == null) continue;
+
+                for (COSName xObjectName : resources.getXObjectNames()) {
+                    try {
+                        PDXObject xObject = resources.getXObject(xObjectName);
+                        if (xObject instanceof PDImageXObject) {
+                            String name = xObjectName.getName();
+                            imageNames.add(name);
+                            System.out.println("Found image on page " + pageIndex + ": " + name);
+
+                            if (saveImages) {
+                                BufferedImage bimg = ((PDImageXObject) xObject).getImage();
+                                if (bimg != null) {
+                                    String outName = "page-" + pageIndex + "-" + name + ".png";
+                                    File outFile = new File(outDir, outName);
+                                    ImageIO.write(bimg, "png", outFile);
+                                    System.out.println("Saved image: " + outFile.getAbsolutePath());
+                                }
+                            }
+                        }
+                    } catch (Exception inner) {
+                        // Skip non-image xobjects or failures gracefully
+                    }
+                }
+            }
+        }
+
+        if (imageNames.isEmpty()) {
+            System.out.println("No images found in the latest PDF.");
+        }
+        return imageNames;
+    }
+
+    public static java.util.List<String> getPDFImageInfo_from_most_recent_download_page_deep(int pageIndexOneBased, boolean saveImages) throws IOException {
+        java.util.List<String> infos = new java.util.ArrayList<>();
+        String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads";
+        File folder = new File(downloadDir);
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf"));
+        if (files == null || files.length == 0) {
+            System.out.println("No PDF files found in the downloads folder.");
+            return infos;
+        }
+        Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+        File latestPdfFile = files[0];
+
+        File outDir = null;
+        if (saveImages) {
+            outDir = new File(downloadDir + "/extracted_images");
+            if (!outDir.exists()) {
+                outDir.mkdirs();
+            }
+        }
+
+        try (PDDocument document = PDDocument.load(latestPdfFile)) {
+            int currentIndex = 0;
+            for (PDPage page : document.getPages()) {
+                currentIndex++;
+                if (currentIndex != pageIndexOneBased) continue;
+                PDResources resources = page.getResources();
+                if (resources == null) break;
+                traverseResourcesForImages(resources, "", currentIndex, outDir, saveImages, infos);
+                break;
+            }
+        }
+
+        if (infos.isEmpty()) {
+            System.out.println("No images found on page " + pageIndexOneBased + " (deep scan).");
+        }
+        return infos;
+    }
+
+    private static void traverseResourcesForImages(PDResources resources, String prefix, int pageIndex,
+                                                   File outDir, boolean saveImages, java.util.List<String> infos) throws IOException {
+        for (COSName name : resources.getXObjectNames()) {
+            try {
+                PDXObject xObject = resources.getXObject(name);
+                String fullName = prefix.isEmpty() ? name.getName() : prefix + "/" + name.getName();
+                if (xObject instanceof PDImageXObject) {
+                    BufferedImage bimg = ((PDImageXObject) xObject).getImage();
+                    String hash = (bimg != null) ? sha256OfImage(bimg) : "";
+                    infos.add("page=" + pageIndex + ", name=" + fullName + ", hash=" + hash);
+                    System.out.println("Found image (deep) on page " + pageIndex + ": " + fullName + " hash=" + hash);
+                    if (saveImages && bimg != null && outDir != null) {
+                        String outName = "page-" + pageIndex + "-" + fullName.replace('/', '_') + ".png";
+                        File outFile = new File(outDir, outName);
+                        ImageIO.write(bimg, "png", outFile);
+                        System.out.println("Saved image: " + outFile.getAbsolutePath());
+                    }
+                } else if (xObject instanceof PDFormXObject) {
+                    PDFormXObject form = (PDFormXObject) xObject;
+                    PDResources formRes = form.getResources();
+                    if (formRes != null) {
+                        traverseResourcesForImages(formRes, fullName, pageIndex, outDir, saveImages, infos);
+                    }
+                }
+            } catch (Exception ignore) {
+            }
+        }
+    }
+
+    private static String sha256OfImage(BufferedImage img) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(img, "png", baos);
+            byte[] bytes = baos.toByteArray();
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] digest = md.digest(bytes);
+            StringBuilder sb = new StringBuilder();
+            for (byte b : digest) sb.append(String.format("%02x", b));
+            return sb.toString();
+        } catch (IOException | NoSuchAlgorithmException e) {
+            return "";
+        }
+    }
+
+    /**
+     * Extract image XObject names from a specific PDF file path. Optionally saves images to disk for debugging.
+     *
+     * @param absolutePdfPath absolute path to the PDF to scan
+     * @param saveImages if true, saves images next to the PDF under an "extracted_images" subfolder
+     * @return list of image object names found across all pages, or empty list if none
+     */
+    public static java.util.List<String> getPDFImageNames_from_path(String absolutePdfPath, boolean saveImages) throws IOException {
+        java.util.List<String> imageNames = new java.util.ArrayList<>();
+        if (absolutePdfPath == null) {
+            System.out.println("PDF path is null.");
+            return imageNames;
+        }
+
+        File pdfFile = new File(absolutePdfPath);
+        if (!pdfFile.exists() || !pdfFile.isFile()) {
+            System.out.println("PDF not found: " + absolutePdfPath);
+            return imageNames;
+        }
+
+        System.out.println("Opening PDF for image scan: " + pdfFile.getAbsolutePath());
+
+        // Prepare output folder if saving is enabled
+        File outDir = null;
+        if (saveImages) {
+            outDir = new File(pdfFile.getParentFile(), "extracted_images");
+            if (!outDir.exists()) {
+                outDir.mkdirs();
+            }
+        }
+
+        try (PDDocument document = PDDocument.load(pdfFile)) {
+            int pageIndex = 0;
+            for (PDPage page : document.getPages()) {
+                pageIndex++;
+                PDResources resources = page.getResources();
+                if (resources == null) continue;
+
+                for (COSName xObjectName : resources.getXObjectNames()) {
+                    try {
+                        PDXObject xObject = resources.getXObject(xObjectName);
+                        if (xObject instanceof PDImageXObject) {
+                            String name = xObjectName.getName();
+                            imageNames.add(name);
+                            System.out.println("Found image on page " + pageIndex + ": " + name);
+
+                            if (saveImages) {
+                                BufferedImage bimg = ((PDImageXObject) xObject).getImage();
+                                if (bimg != null) {
+                                    String outName = pdfFile.getName().replaceAll("\\.pdf$","") + "-page-" + pageIndex + "-" + name + ".png";
+                                    File outFile = new File(outDir, outName);
+                                    ImageIO.write(bimg, "png", outFile);
+                                    System.out.println("Saved image: " + outFile.getAbsolutePath());
+                                }
+                            }
+                        }
+                    } catch (Exception inner) {
+                        // Skip non-image xobjects or failures gracefully
+                    }
+                }
+            }
+        }
+
+        if (imageNames.isEmpty()) {
+            System.out.println("No images found in PDF: " + pdfFile.getName());
+        }
+        return imageNames;
+    }
+
+    public static java.util.List<String> getPDFImageNames_from_most_recent_download_page(int pageIndexOneBased, boolean saveImages) throws IOException {
+        java.util.List<String> imageNames = new java.util.ArrayList<>();
+        String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads";
+        File folder = new File(downloadDir);
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf"));
+        if (files == null || files.length == 0) {
+            System.out.println("No PDF files found in the downloads folder.");
+            return imageNames;
+        }
+        Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+        File latestPdfFile = files[0];
+
+        File outDir = null;
+        if (saveImages) {
+            outDir = new File(downloadDir + "/extracted_images");
+            if (!outDir.exists()) {
+                outDir.mkdirs();
+            }
+        }
+
+        try (PDDocument document = PDDocument.load(latestPdfFile)) {
+            int currentIndex = 0;
+            for (PDPage page : document.getPages()) {
+                currentIndex++;
+                if (currentIndex != pageIndexOneBased) continue;
+                PDResources resources = page.getResources();
+                if (resources == null) break;
+
+                for (COSName xObjectName : resources.getXObjectNames()) {
+                    try {
+                        PDXObject xObject = resources.getXObject(xObjectName);
+                        if (xObject instanceof PDImageXObject) {
+                            String name = xObjectName.getName();
+                            imageNames.add(name);
+                            System.out.println("Found image on page " + currentIndex + ": " + name);
+                            if (saveImages) {
+                                BufferedImage bimg = ((PDImageXObject) xObject).getImage();
+                                if (bimg != null) {
+                                    String outName = "page-" + currentIndex + "-" + name + ".png";
+                                    File outFile = new File(outDir, outName);
+                                    ImageIO.write(bimg, "png", outFile);
+                                    System.out.println("Saved image: " + outFile.getAbsolutePath());
+                                }
+                            }
+                        }
+                    } catch (Exception inner) {
+                    }
+                }
+                break;
+            }
+        }
+
+        if (imageNames.isEmpty()) {
+            System.out.println("No images found on page " + pageIndexOneBased + ".");
+        }
+        return imageNames;
     }
 
     //create select dropdown by visible text
@@ -556,7 +855,7 @@ public class ReusableMethodsLoggersPOM {
             WebElement el = wait.until(ExpectedConditions.visibilityOf(element));
 
             // Scroll into view to improve reliability
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", el);
+          //  ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", el);
 
             mouseActions.moveToElement(el).perform();
 
@@ -639,6 +938,27 @@ public class ReusableMethodsLoggersPOM {
         } catch (Exception e) {
             System.out.println("Unable to double click : " + elementName + ": " + e);
             logger.log(LogStatus.FAIL, "Unable to double click: " + elementName + ": " + e);
+            getScreenShot(driver, "screenshot", logger);
+        }//end of double click exception
+    }//end of double click method
+    public static void click_to_right_method(WebDriver driver, WebElement xpath, ExtentTest logger, String elementName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        Actions mouseActions = new Actions(driver);
+
+        try {
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable((xpath)));
+            mouseActions.moveToElement(element, 70, 0)   // move 70px right from center
+                    .doubleClick()                   // double-click at **current mouse location**
+                    .perform();
+
+            Thread.sleep(500);
+            System.out.println("Successfully  clicked to right: " + elementName);
+            logger.log(LogStatus.PASS, "Successfully  clicked to right: " + elementName);
+
+        } catch (Exception e) {
+            System.out.println("Unable to  click to right: " + elementName + ": " + e);
+            logger.log(LogStatus.FAIL, "Unable to click to right:" + elementName + ": " + e);
             getScreenShot(driver, "screenshot", logger);
         }//end of double click exception
     }//end of double click method
