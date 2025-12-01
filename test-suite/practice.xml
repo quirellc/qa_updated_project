@@ -6,8 +6,8 @@
 <!--    <parameter name="env" value="app" />-->
 
 
-<!--    <parameter name="browser" value="chrome"/>-->
-    <parameter name="browser" value="firefox"/>
+    <parameter name="browser" value="chrome"/>
+<!--    <parameter name="browser" value="firefox"/>-->
 
     <test name="Practice Cases
 " preserve-order="true">
