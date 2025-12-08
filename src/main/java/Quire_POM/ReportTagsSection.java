@@ -126,6 +126,35 @@ public class ReportTagsSection extends ReusableAnnotations {
     public void click_ReportTags_manage_settings_icon() {
         ReusableMethodsLoggersPOM.clickMethod(driver, ReportTags_manage_settings_icon, logger, "ReportTags_manage_settings_icon");}
 
+    @FindBy(xpath = "//span[normalize-space()='User 1']/following-sibling::i[1]")
+    WebElement user1_checkbox;
+
+    @FindBy(xpath = "//li[contains(@class, 'status-active') and .//span[normalize-space()='User 1']]//i[contains(@class,'fa-check-square')]")
+    WebElement user1_enabled;
+
+    public void scroll_and_click_and_verify_user1_checkbox() {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, user1_checkbox, logger, "user1_checkbox");
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, user1_enabled, true, logger, "user1_enabled");
+    }
+
+    @FindBy(xpath = "//input[@placeholder='Find users by name...']")
+    WebElement signature_field_RT;
+
+
+    public void scroll_and_enter_user1_field_RT() throws InterruptedException {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, signature_field_RT, logger, "signature_field_RT");
+        Thread.sleep(500);
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, signature_field_RT, "qa_admin", logger, "signature_field_RT");
+    }
+
+    @FindBy(xpath = "//div[@class='report-tag-block'][.//span[@class='text' and contains(text(), 'User 1')] and .//span[@class='label-name' and text()='qa_admin']]")
+    WebElement user1_qaAdmin_signature_RT_loaded;
+
+    public void verify_user1_qaAdmin_signature_RT_loaded() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, user1_qaAdmin_signature_RT_loaded, true, logger, "user1_qaAdmin_signature_RT_loaded");
+    }
+
+
     @FindBy(xpath = "//span[normalize-space()='Title Page Image']/following-sibling::i[1]")
     WebElement title_page_image_checkbox;
 
@@ -136,6 +165,7 @@ public class ReportTagsSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.scrollandClickMethod(driver, title_page_image_checkbox, logger, "title_page_image_checkbox");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, title_page_image_enabled, true, logger, "title_page_image_enabled");
     }
+
 
 
     @FindBy(xpath = "//span[normalize-space()='Multiple Cost Tables']/following-sibling::i[1]")

@@ -2696,6 +2696,36 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         ReusableMethodsLoggersPOM.scrollandClickMethod(driver, titlePageImage_RT_dropDownItem, logger, "titlePageImage_RT_dropDownItem ");
     }
 
+    @FindBy(xpath = "//span[normalize-space()='Signature 1']")
+    WebElement user1Signature_RT_dropDownItem;
+
+    public void click_Signature1_RT_dropDownItem() {
+        ReusableMethodsLoggersPOM.scrollandClickMethod(driver, user1Signature_RT_dropDownItem, logger, "Signature1_RT_dropDownItem ");
+    }
+
+    @FindBy(xpath = "//div[@class='mceNonEditable contentTag']")
+    WebElement Signature_grey_contentTag;
+
+    public void verify_Signature_contentTag() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, Signature_grey_contentTag, true, logger, "Signature_grey_contentTag");
+    }
+
+    @FindBy(xpath = "//div[contains(@class, 'mceNonEditable contentTag') and contains(@class, 'widget')]")
+    WebElement content_tag_editor;
+    public void click_content_tag_in_editor() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, content_tag_editor, logger, "content_tag_editor");
+
+    }
+
+    @FindBy(xpath = "//*[contains(@alt, 'qa_admin') and contains(@class, 'user-signature')]")
+    WebElement signature_populated_contentTag;
+
+    public void verify_Signature_populated_contentTag() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, signature_populated_contentTag, true, logger, "signature_populated_contentTag");
+    }
+
+
+
     @FindBy(xpath = "//input[@id='word_bank_definition_keyword']")
     WebElement wordBank_New_Title;
 
@@ -4693,26 +4723,9 @@ WebElement condition_action_field_text;
     }
 
 
-    public void verify_downloadedPDFContent() throws IOException {
-        String pdfContent = ReusableMethodsLoggersPOM.getPdfContent_from_downloads("QA Automation Testing ZON Template.pdf");
-        SoftAssert softAssert = new SoftAssert();
-
-        // Assertion 1
-        boolean assertionResult1 = pdfContent.contains("refresh text");
-        softAssert.assertTrue(assertionResult1);
-        if (assertionResult1) {
-            System.out.println("Header Text Verification passed for: ");
-            logger.log(LogStatus.PASS, "Assertion 1 passed:");
-
-        } else {
-            System.out.println("Assertion 1 failed: The Header texts are NOT present in the PDF content.");
-            logger.log(LogStatus.FAIL, "Assertion 1 failed: The Header texts are NOT present in the PDF content.");
-        }
-    }
-
-    public void verify_downloadedPDFContent_1104() throws IOException {
-        String pdfContent = ReusableMethodsLoggersPOM.getPdfContent_from_downloads("1104.pdf");
-        System.out.println(pdfContent);
+    // PDF verification methods moved to PDFVerificationHelper.java
+    // Use: BaseClass.pdfVerification().verify_xxx() instead
+    
 //        SoftAssert softAssert = new SoftAssert();
 
         // Assertion 1
@@ -4726,7 +4739,12 @@ WebElement condition_action_field_text;
 //            System.out.println("Assertion 1 failed: The Header texts are NOT present in the PDF content.");
 //            logger.log(LogStatus.FAIL, "Assertion 1 failed: The Header texts are NOT present in the PDF content.");
 //        }
-    }
+
+
+    /**
+     * New method to verify PDF images with custom logos
+     * Customize this method with your specific logo paths and logic
+     */
 
     @FindBy(xpath = "(//td[@class='htLeft htMiddle row-header'])[7]")
     WebElement pca_portfolio_report_name_cell7;

@@ -146,8 +146,8 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
     }
 
     @Test
-    public void TR003_add_title_page_image_report_tag() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
-
+    public void TR003_add_titlePageImage_signature_report_tag_settings() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
+//log in as root and enable title page image and signature report tag checkbox in RT settings page
         BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
         Thread.sleep(500);
         BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
@@ -155,6 +155,10 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
         BaseClass.reporttagssection().scroll_and_click_and_verify_title_page_image_checkbox();
        // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
+        Thread.sleep(1000);
+        BaseClass.reporttagssection().scroll_and_click_and_verify_user1_checkbox();
+        Thread.sleep(1000);
+        BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
         Thread.sleep(1000);
         BaseClass.staging5().click_save_button();
         Thread.sleep(500);
@@ -280,6 +284,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
 
     }
+
     @Test
     public void     TR005_Report_creation_PCA() throws InterruptedException {
 
@@ -551,7 +556,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
     }
 
     @Test
-    public void TR007a_upload_titlePageImage_ReporTag() throws InterruptedException {
+    public void TR007a_upload_titlePageImage_ReportTag() throws InterruptedException {
         WebDriver driver = getDriver();
 
         BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
@@ -587,6 +592,60 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         Thread.sleep(500);
 
 
+    }
+
+
+    @Test
+    public void TR007b_upload_signature_ReportTag() throws InterruptedException {
+        WebDriver driver = getDriver();
+//add user1 signature report tag
+        BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
+        Thread.sleep(3000);
+
+        BaseClass.reporttagssection().scroll_and_enter_user1_field_RT();
+        Thread.sleep(1000);
+        driver.navigate().refresh();
+
+        Thread.sleep(2000);
+        BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
+        Thread.sleep(1500);
+        BaseClass.reporttagssection().verify_user1_qaAdmin_signature_RT_loaded();
+        Thread.sleep(2000);
+        BaseClass.staging5().click_default_section_title();
+        Thread.sleep(500);
+
+        //add signature report tag in editor
+        BaseClass.staging5().clickSection_row_editor();
+        Thread.sleep(500);
+
+        BaseClass.ck5editor().click_report_tag_icon_ck5();
+        Thread.sleep(500);
+        BaseClass.staging5().click_Signature1_RT_dropDownItem();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_pixel_out_of_section();
+//        Thread.sleep(500);
+        Thread.sleep(1000);
+        BaseClass.staging5().verify_Signature_contentTag();
+        Thread.sleep(500);
+
+        //insert signature into report tag in editor
+        BaseClass.staging5().clickSection_row_editor();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_content_tag_in_editor();
+        Thread.sleep(500);
+
+        BaseClass.ck5editor().click_signature_icon_ck5();
+        Thread.sleep(500);
+
+        BaseClass.ck5editor().click_stamp_icon_dropdown_ck5();
+
+        Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
+        BaseClass.staging5().verify_Signature_populated_contentTag();
+        Thread.sleep(500);
     }
 
 
