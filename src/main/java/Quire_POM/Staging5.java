@@ -1212,28 +1212,52 @@ public void add_all_company_features() throws InterruptedException {
             System.out.println("Unregister button not visible — adding feature.");
         }
 
-        BaseClass.staging5().click_add_company_feature();
-        Thread.sleep(1000);
-
-        ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown,
+        String[] ck5Features = {
                 "CKEditor 5",
-                "CKEditor 5");
+                "CKEditor 5 (Beta) - AI",
+                "CKEditor 5 (Beta) - AI Assistant",
+                "CKEditor 5 (Beta) - AI Generative",
+                "CKEditor 5 (Beta) - AI Tone"
+        };
 
-        ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
-                "Save feature button for: CKEditor 5");
+        for (String feature : ck5Features) {
+            BaseClass.staging5().click_add_company_feature();
+            Thread.sleep(1000);
 
-        Thread.sleep(1000);
+            ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown, feature, feature);
+
+            ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
+                    "Save feature button for: " + feature);
+
+            Thread.sleep(1000);
+        }
     }
 
     public void scroll_and_click_unregister_ck5_feature() throws InterruptedException {
         try
         {
             if (unregister_ck5_feature.isDisplayed()) {
-                ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregister_ck5_feature, logger, "unregister_ck5_feature ");
-                ReusableMethodsLoggersPOM.clickMethod(driver, unregister_ck5_feature, logger, "unregister_ck5_feature ");
+                String[] ck5Features = {
+                        "CKEditor 5",
+                        "CKEditor 5 (Beta) - AI",
+                        "CKEditor 5 (Beta) - AI Assistant",
+                        "CKEditor 5 (Beta) - AI Generative",
+                        "CKEditor 5 (Beta) - AI Tone"
+                };
 
-                Thread.sleep(1000);
-                driver.switchTo().alert().accept();
+                for (String feature : ck5Features) {
+                    try {
+                        WebElement unregisterButton = driver.findElement(By.xpath("//tr[td[normalize-space()='" + feature + "']]//a[contains(text(),'unregister')]"));
+                        if (unregisterButton.isDisplayed()) {
+                            ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregisterButton, logger, "unregister " + feature);
+                            ReusableMethodsLoggersPOM.clickMethod(driver, unregisterButton, logger, "unregister " + feature);
+                            Thread.sleep(1000);
+                            driver.switchTo().alert().accept();
+                        }
+                    } catch (Exception ex) {
+                        System.out.println(feature + " not found/ already unregistered...skipping");
+                    }
+                }
             }}
         catch (Exception e)
         {
