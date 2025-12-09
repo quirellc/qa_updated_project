@@ -148,9 +148,9 @@ public class ProjectFolderSection extends ReusableAnnotations {
 
 
 
-    @FindBy(xpath = "//*[contains(text(),'PCA Template-Chrome')]")
+    @FindBy(xpath = "//*[contains(text(),'Testing PCA Template-Chrome')]")
     WebElement projectFolder_QA_PCA_Template_chrome;
-    @FindBy(xpath = "//*[contains(text(),'PCA Template-Firefox')]")
+    @FindBy(xpath = "//*[contains(text(),'Testing PCA Template-Firefox')]")
     WebElement projectFolder_QA_PCA_Template_firefox;
     public void click_PCA_Template_projectFolder_templatesTab() {
         if (browserName.contains("Chrome")) {

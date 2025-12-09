@@ -516,18 +516,18 @@ Thread.sleep(1500);
         BaseClass.quireLogin().VERIFY_NO_something_went_wrong_MESSAGE();
         Thread.sleep(1000);
 
-        if (baseUrl.contains("staging5")) {
-            driver.navigate().to("https://staging5.openquire.com/companies/20/company_email_templates?filter=report%3Astatus_chang");
-
-    } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
-            driver.navigate().to(baseUrl + "companies/20/company_email_templates?filter=report%3Astatus_change");
-        }
-        else if (baseUrl.contains("app")) {
-            driver.navigate().to("https://app.openquire.com/companies/253/company_email_templates?filter=report%3Astatus_change");
-        }
-        else  {
+//        if (baseUrl.contains("staging5")) {
+//            driver.navigate().to("https://staging5.openquire.com/companies/20/company_email_templates?filter=report%3Astatus_chang");
+//
+//    } else if (baseUrl.contains("staging3") || baseUrl.contains("app")) {
             driver.navigate().to(baseUrl + "companies/253/company_email_templates?filter=report%3Astatus_change");
-        }
+//        }
+//        else if (baseUrl.contains("devops")) {
+//            driver.navigate().to("https://app.openquire.com/companies/253/company_email_templates?filter=report%3Astatus_change");
+//        }
+//        else  {
+//            driver.navigate().to(baseUrl + "companies/253/company_email_templates?filter=report%3Astatus_change");
+//        }
         Thread.sleep(1000);
         BaseClass.staging5().click_modal_close_window();
         Thread.sleep(500);
@@ -622,7 +622,7 @@ Thread.sleep(1000);
 
     }
     @Test
-    public void TR_011_ck5_sysadmin_login() throws InterruptedException {
+    public void TR_011_ck5_sysadmin_login_analytics_check() throws InterruptedException {
         BaseClass.staging5().clickUserProfileTab();
         Thread.sleep(500);
 
@@ -711,25 +711,25 @@ Thread.sleep(1000);
     @Test
     public void TR_013_portfolios() throws InterruptedException {
 
-//        BaseClass.staging5().clickUserProfileTab();
-//        Thread.sleep(500);
-//
-//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-////enter root user
-//        BaseClass.quireLogin().enterRootUserEmail();
-//        BaseClass.quireLogin().enterPassword();
-//        //Thread.sleep(1000);
-//        BaseClass.quireLogin().clickLogin();
-//        Thread.sleep(500);
-//        BaseClass.staging5().click_modal_close_window();
-//        Thread.sleep(500);
-        WebDriver driver = getDriver();
-        if (baseUrl.contains("app")) {
-            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+        BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
 
-    } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
-            driver.navigate().to(baseUrl +"/companies/4/company_features");
-        }
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+        BaseClass.quireLogin().enterRootUserEmail();
+        BaseClass.quireLogin().enterPassword();
+        //Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+        WebDriver driver = getDriver();
+//        if (baseUrl.contains("staging5")) {
+//            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+//
+//    } else if (baseUrl.contains("staging3") || baseUrl.contains("app")) {
+            driver.navigate().to(baseUrl +"/companies/253/company_features");
+//        }
 
         BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
         Thread.sleep(500);
@@ -942,10 +942,10 @@ Thread.sleep(1000);
         if (baseUrl.contains("staging5")) {
             driver.navigate().to("https://staging5.openquire.com/folders/275681/projects/328759");
 
-        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+        } else if (baseUrl.contains("staging3") || baseUrl.contains("app")) {
 
         driver.navigate().to(baseUrl + "/folders/545421/projects/601025");
-        } else if (baseUrl.contains("app")) {
+        } else if (baseUrl.contains("devops")) {
             driver.navigate().to("https://app.openquire.com/projects/658267");
         }
         else {

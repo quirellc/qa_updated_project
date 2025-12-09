@@ -396,6 +396,22 @@ for (int i = 0; i < search_results_int; i++) {
 
         }
     }
+
+
+    @FindBy(xpath = "//span[contains(text(),'QA Automation Testing PCA Template-Firefox')]")
+    WebElement template_PCA_Link_ff;
+    @FindBy(xpath = "//span[contains(text(),'QA Automation Testing PCA Template-Chrome')]")
+    WebElement template_PCA_Link_chrome;
+    public void click_PCA_templateLink() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.scrollandClickMethod(driver, template_PCA_Link_chrome, logger, "template_PCA_Link_chrome");
+
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.scrollandClickMethod(driver, template_PCA_Link_ff, logger, "template_PCA_Link_ff");
+        }
+    }
+
+
     @FindBy(xpath = "//input[@id='tag-matrix-search']")
     WebElement search_field;
 
@@ -898,6 +914,7 @@ for (int i = 0; i < search_results_int; i++) {
 
 //        ReusableMethodsLoggersPOM.doubleClick_noScrollMethod(driver, report_tag_iframe, logger, "report_tag_iframe");
     }
+
 
 
     @FindBy(xpath = "(//span[contains(@class, 'mceNonEditable reportTag ck') and contains(@class, 'widget')])[2]")

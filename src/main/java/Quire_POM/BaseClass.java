@@ -37,6 +37,12 @@ public class BaseClass extends ReusableAnnotations {
         Staging5 staging5 = new Staging5(driver);
         return staging5;
     }//end of static reference for GoogleHome class
+    
+    //create static reference for PDF verification helper
+    public static PDFVerificationHelper pdfVerification() {
+        PDFVerificationHelper pdfHelper = new PDFVerificationHelper(ReusableAnnotations.logger);
+        return pdfHelper;
+    }//end of static reference for PDF verification
 
     public static QuireLogin quireLogin() {
         WebDriver driver = getDriver();

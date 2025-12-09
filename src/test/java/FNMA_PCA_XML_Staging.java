@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
    // WebDriver driver = getDriver();
+   private String templateUrl;
 
     @Test
     public void TR001_user_login() throws InterruptedException {
@@ -67,15 +68,15 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().click_modal_close_window();
         Thread.sleep(500);
-        if (baseUrl.contains("app")) {
-            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
-        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
-            driver.navigate().to( baseUrl + "/companies/4/company_features");
-        }
-        else {
+      //  if (baseUrl.contains("app")) {
+      //      driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+      //  } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+      //      driver.navigate().to( baseUrl + "/companies/4/company_features");
+     //   }
+      //  else {
 
             driver.navigate().to(baseUrl + "companies/253/company_features");
-        }
+      //  }
         Thread.sleep(1000);
         if (driver instanceof FirefoxDriver) {
             Thread.sleep(8000);
@@ -143,11 +144,30 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         BaseClass.staging5().click_modal_close_window();
         Thread.sleep(500);
 
+        WebDriver driver = getDriver();
+        templateUrl = driver.getCurrentUrl();
+        System.out.println("Template URL saved: " + templateUrl);
     }
 
     @Test
     public void TR003_add_titlePageImage_signature_report_tag_settings() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
 //log in as root and enable title page image and signature report tag checkbox in RT settings page
+
+        WebDriver driver = getDriver();
+        BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+        BaseClass.quireLogin().enterRootUserEmail();
+        BaseClass.quireLogin().enterPassword();
+        //Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        driver.navigate().to(templateUrl);
+        System.out.println("Navigated to saved template URL: " + templateUrl);
+        Thread.sleep(1000);
+
         BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
         Thread.sleep(500);
         BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
@@ -162,16 +182,33 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         Thread.sleep(1000);
         BaseClass.staging5().click_save_button();
         Thread.sleep(500);
-        WebDriver driver = getDriver();
+     //   WebDriver driver = getDriver();
 
         driver.navigate().refresh();
         Thread.sleep(2000);
+
+//log out current user, log into sysadmin atlas
+        BaseClass.staging5().clickUserProfileTab();
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        BaseClass.quireLogin().enter_admin_Email();
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        //       BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+
+
 
     }
     @Test
     public void TR003a_Sections_PCA_Template() throws InterruptedException {
 
+        WebDriver driver = getDriver();
 
+        driver.navigate().to(templateUrl);
+        System.out.println("Navigated to saved template URL: " + templateUrl);
+        Thread.sleep(1000);
             //click default section title and add sections: pdf, C/A , C/A subsection
             BaseClass.staging5().click_default_section_title();
 
@@ -184,7 +221,6 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
             Thread.sleep(1000);
             BaseClass.staging5().click_add_fannie_mae_ConditionAction_sub_section();
             Thread.sleep(1000);
-        WebDriver driver = getDriver();
 
         driver.navigate().refresh();
             Thread.sleep(700);

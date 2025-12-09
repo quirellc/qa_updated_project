@@ -17,7 +17,6 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         // logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
 //        driver.navigate().to("https://staging5.openquire.com/");
         //     driver.navigate().to("https://app-next.openquire.com/");
-//        driver.navigate().to("https://staging5-next.openquire.com/");
 
         //  WebDriver driver1 = getDriver();
 
@@ -41,6 +40,8 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
 
         BaseClass.staging5().captureURL();
         Thread.sleep(2000);
+//        driver.navigate().to("https://staging3.openquire.com/reports/1595300");
+
         BaseClass.staging5().click_modal_close_window();
 
     }

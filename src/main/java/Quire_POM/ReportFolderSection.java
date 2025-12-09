@@ -1193,9 +1193,9 @@ int linkItemCount = linkItem.size();
         for (int i = 0; i <( linkItemCount-1); i++) {
 
             // Skip index 3 and 7
-            if (i == 0 || i == 4) {
-                continue; // Skip this iteration and go to the next one
-            }
+//            if (i == 0 || i == 4) {
+//                continue; // Skip this iteration and go to the next one
+//            }
             ReusableMethodsLoggersPOM.captureTextMethod(driver, linkItem.get(i), logger, "report link name at index: " + i);
             ReusableMethodsLoggersPOM.scrollToElementMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
             ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
@@ -1215,53 +1215,64 @@ int linkItemCount = linkItem.size();
 
             BaseClass.staging5().click_default_section_title();
             Thread.sleep(1000);
-
-
-            if (i != 5) {
-                BaseClass.staging5().click_conditionAction_dropdown();
-                Thread.sleep(500);
-                BaseClass.staging5().click_conditionAction_dropdown_first_item();
-            }
-
-//    BaseClass.staging5().click_conditionAction_dropdown_items();
-
-
-
-            BaseClass.staging5().captureAlertMessage();
-            Thread.sleep(500);
-
-            BaseClass.staging5().enter_conditionAction_comment_field();
-            Thread.sleep(500);
-
-            BaseClass.staging5().click_out_of_section();
-            BaseClass.staging5().captureAlertMessage();
-            Thread.sleep(500);
-
-            //quick preview button in next tab
-            BaseClass.reportfoldersection().click_quick_preview_button();
+//li[@id='quire_pca_extended_item_13259440']//div[@class='section-block']
+ BaseClass.staging5().click_conditionAction_dropdown();
             Thread.sleep(1000);
-            BaseClass.reportfoldersection().change_to_next_tab();
-            Thread.sleep(500);
-            //quick preview tab - capture header and footer data
-            BaseClass.staging5().verify_QP_CA_section();
-          //  Thread.sleep(500);
-            WebDriver driver = getDriver();
-
-            //close second tab and go back to default tab
-            driver.close();
-            Thread.sleep(500);
-            BaseClass.reportfoldersection().change_to_default_tab();
+            driver.navigate().refresh();
             Thread.sleep(1000);
-            //  ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
+
+//            Thread.sleep(1000);
+//            click_conditionAction_dropdown();
+//
+////            if (i != 5) {
+////                BaseClass.staging5().click_conditionAction_dropdown();
+////                Thread.sleep(500);
+////                BaseClass.staging5().click_conditionAction_dropdown_first_item();
+////            }
+//
+////    BaseClass.staging5().click_conditionAction_dropdown_items();
+//
+//
+//
+//            BaseClass.staging5().captureAlertMessage();
+//            Thread.sleep(500);
+//
+//            BaseClass.staging5().enter_conditionAction_comment_field();
+//            Thread.sleep(500);
+//
+//            BaseClass.staging5().click_out_of_section();
+//            BaseClass.staging5().captureAlertMessage();
+//            Thread.sleep(500);
+//
+//            //quick preview button in next tab
+//            BaseClass.reportfoldersection().click_quick_preview_button();
+//            Thread.sleep(1000);
+//            BaseClass.reportfoldersection().change_to_next_tab();
+//            Thread.sleep(500);
+//            //quick preview tab - capture header and footer data
+//            BaseClass.staging5().verify_QP_CA_section();
+//          //  Thread.sleep(500);
+//            WebDriver driver = getDriver();
+//
+//            //close second tab and go back to default tab
+//            driver.close();
+//            Thread.sleep(500);
+//            BaseClass.reportfoldersection().change_to_default_tab();
+//            Thread.sleep(1000);
+//            //  ReusableMethodsLoggersPOM.clickMethod(driver, linkItem.get(i), logger, "report link at index: " + i);
 
             BaseClass.staging5().click_project_summary_sectionView();
+            Thread.sleep(500);
 
 
             BaseClass.staging5().click_section_row_editor_projectSummary();
+            Thread.sleep(500);
 
             BaseClass.templatesSection().switchTo_instruction_text_ck5_iFrame();
+            Thread.sleep(500);
 
             BaseClass.templatesSection().select_all_body_and_delete_iFrame();
+            Thread.sleep(500);
 
             BaseClass.templatesSection().enter_spellCheck_text_time_iFrame();
 
@@ -1275,10 +1286,24 @@ int linkItemCount = linkItem.size();
            // Thread.sleep(500);
            // BaseClass.staging5().click_project_summary_sectionView();
            // Thread.sleep(500);
+
             BaseClass.templatesSection().verify_spellCheck_text();
-            BaseClass.staging5().verify_QP_CA_section();
+            Thread.sleep(500);
+            BaseClass.staging5().click_default_section_title();
+            Thread.sleep(1000);
+
+            BaseClass.staging5().verify_ConditionAction_ProjSummary_and_QP();
+
+//            BaseClass.staging5().verify_QP_CA_section();
 
             Thread.sleep(500);
+            WebDriver driver = getDriver();
+
+            //close second tab and go back to default tab
+            driver.close();
+            Thread.sleep(500);
+            BaseClass.reportfoldersection().change_to_default_tab();
+            Thread.sleep(1000);
 
             //delete c/a section 2
             BaseClass.staging5().hover_and_click_section_2_checkbox();
@@ -1286,7 +1311,19 @@ int linkItemCount = linkItem.size();
             BaseClass.staging5().click_trash_icon_sectionView();
             Thread.sleep(500);
             driver.switchTo().alert().accept();
+            Thread.sleep(1500);
+            try {
+                if (ok_button.isDisplayed()) {
+                    BaseClass.staging5().click_ok_button();
+
+                }
+            } catch (Exception e) {
+                System.out.println("no ok button");            }
+
             Thread.sleep(500);
+
+            BaseClass.projectFolderSection().clickPrevProjectButton();
+            Thread.sleep(2500);
 
             BaseClass.projectFolderSection().clickPrevProjectButton();
             Thread.sleep(1000);

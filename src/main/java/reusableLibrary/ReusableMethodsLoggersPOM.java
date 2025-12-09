@@ -42,6 +42,7 @@ import org.apache.pdfbox.pdmodel.PDResources;
 import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.apache.pdfbox.pdmodel.graphics.form.PDFormXObject;
+import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotation;
 import org.apache.pdfbox.cos.COSName;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -503,6 +504,377 @@ public class ReusableMethodsLoggersPOM {
             System.out.println("No images found on page " + pageIndexOneBased + ".");
         }
         return imageNames;
+    }
+
+    /**
+     * Compares images from the most recent downloaded PDF with multiple expected logo images using pixel comparison.
+     * Saves extracted PDF images to disk and checks if any match the provided expected images.
+     * Use this version when you have multiple logos to compare. Includes automatic ExtentReport logging.
+     *
+     * @param logger ExtentTest logger for logging results (can be null if no logging needed)
+     * @param similarityThreshold Percentage threshold for match (0.0 to 100.0). E.g., 95.0 means 95% similarity required
+     * @param expectedImagePaths Variable number of absolute paths to expected logo images (e.g., "logo1.png", "logo2.png", "logo3.png")
+     * @return Map with image names as keys and match results (true/false) as values
+     * @throws IOException if PDF or image files cannot be read
+     */
+    public static Map<String, Boolean> compareImagesInPDF_with_expected_logos(
+            ExtentTest logger,
+            double similarityThreshold,
+            String... expectedImagePaths) throws IOException {
+        
+        Map<String, Boolean> matchResults = new HashMap<>();
+        String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads";
+        
+        // Get most recent PDF
+        File folder = new File(downloadDir);
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf"));
+        if (files == null || files.length == 0) {
+            System.out.println("No PDF files found in the downloads folder.");
+            return matchResults;
+        }
+        Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+        File latestPdfFile = files[0];
+        System.out.println("Comparing images in PDF: " + latestPdfFile.getName());
+        
+        // Load expected images
+        java.util.List<BufferedImage> expectedImages = new java.util.ArrayList<>();
+        java.util.List<String> expectedImageNames = new java.util.ArrayList<>();
+        
+        for (String imagePath : expectedImagePaths) {
+            if (imagePath != null && !imagePath.isEmpty()) {
+                File imgFile = new File(imagePath);
+                if (imgFile.exists()) {
+                    BufferedImage img = ImageIO.read(imgFile);
+                    if (img != null) {
+                        expectedImages.add(img);
+                        expectedImageNames.add(imgFile.getName());
+                        System.out.println("Loaded expected image: " + imgFile.getName());
+                    } else {
+                        System.out.println("Warning: Could not read image: " + imagePath);
+                    }
+                } else {
+                    System.out.println("Warning: Expected image not found: " + imagePath);
+                }
+            }
+        }
+        
+        if (expectedImages.isEmpty()) {
+            System.out.println("No valid expected images to compare against.");
+            return matchResults;
+        }
+        
+        // Create output directory for extracted images
+        File outDir = new File(downloadDir + "/extracted_images");
+        if (!outDir.exists()) {
+            outDir.mkdirs();
+        }
+        
+        // Extract and compare images from PDF (skip duplicates, early exit when all found)
+        Set<String> processedImages = new HashSet<>();
+        Set<Integer> matchedLogoIndices = new HashSet<>(); // Track which expected logos have been matched
+        int expectedLogosCount = expectedImageNames.size();
+        
+        try (PDDocument document = PDDocument.load(latestPdfFile)) {
+            int pageIndex = 0;
+            pageLoop: for (PDPage page : document.getPages()) {
+                pageIndex++;
+                PDResources resources = page.getResources();
+                if (resources == null) continue;
+                
+                for (COSName xObjectName : resources.getXObjectNames()) {
+                    try {
+                        PDXObject xObject = resources.getXObject(xObjectName);
+                        if (xObject instanceof PDImageXObject) {
+                            String imageName = xObjectName.getName();
+                            
+                            // Skip if we already processed this image name
+                            if (processedImages.contains(imageName)) {
+                                System.out.println("Skipping duplicate image '" + imageName + "' on page " + pageIndex);
+                                continue;
+                            }
+                            processedImages.add(imageName);
+                            
+                            BufferedImage pdfImage = ((PDImageXObject) xObject).getImage();
+                            
+                            if (pdfImage != null) {
+                                // Save extracted image
+                                String outName = "page-" + pageIndex + "-" + imageName + ".png";
+                                File outFile = new File(outDir, outName);
+                                ImageIO.write(pdfImage, "png", outFile);
+                                System.out.println("Extracted image: " + outFile.getAbsolutePath());
+                                
+                                // Compare with each expected image (skip already matched logos)
+                                boolean foundMatch = false;
+                                for (int i = 0; i < expectedImages.size(); i++) {
+                                    // Skip if this expected logo was already matched
+                                    if (matchedLogoIndices.contains(i)) {
+                                        continue;
+                                    }
+                                    
+                                    BufferedImage expectedImage = expectedImages.get(i);
+                                    String expectedName = expectedImageNames.get(i);
+                                    double similarity = calculateImageSimilarity(pdfImage, expectedImage);
+                                    
+                                    System.out.println("Comparing '" + imageName + "' with '" + expectedName + "': " + 
+                                                     String.format("%.2f", similarity) + "% similarity");
+                                    
+                                    if (similarity >= similarityThreshold) {
+                                        foundMatch = true;
+                                        matchedLogoIndices.add(i); // Mark this logo as matched
+                                        System.out.println("✓ MATCH FOUND: '" + imageName + "' matches '" + expectedName + 
+                                                         "' (similarity: " + String.format("%.2f", similarity) + "%)");
+                                        break;
+                                    }
+                                }
+                                
+                                matchResults.put(imageName, foundMatch);
+                                if (!foundMatch) {
+                                    System.out.println("✗ NO MATCH: '" + imageName + "' does not match any expected images");
+                                }
+                                
+                                // Early exit: Stop if all expected logos have been found
+                                if (matchedLogoIndices.size() >= expectedLogosCount) {
+                                    System.out.println("\n✓ All " + expectedLogosCount + " expected logos found! Stopping search early.");
+                                    break pageLoop;
+                                }
+                            }
+                        }
+                    } catch (Exception inner) {
+                        System.out.println("Error processing image: " + inner.getMessage());
+                    }
+                }
+            }
+        }
+        
+        // Summary with detailed results
+        System.out.println("\n=== COMPARISON SUMMARY ===");
+        long matchCount = matchResults.values().stream().filter(match -> match).count();
+        long totalImages = matchResults.size();
+        
+        System.out.println("Total images in PDF: " + totalImages);
+        System.out.println("Images matching expected logos: " + matchCount);
+        System.out.println("Unmatched images: " + (totalImages - matchCount));
+        System.out.println("Expected logos provided: " + expectedLogosCount);
+        
+        // Universal result evaluation with ExtentReport logging
+        if (matchCount == 0) {
+            System.out.println("\n✗ RESULT: No expected logos found in PDF");
+            if (logger != null) {
+                logger.log(LogStatus.FAIL, "Logo verification failed: No logos found in PDF");
+            }
+        } else if (matchCount < expectedLogosCount) {
+            System.out.println("\n⚠ RESULT: Only " + matchCount + " of " + expectedLogosCount + " expected logos found");
+            if (logger != null) {
+                logger.log(LogStatus.WARNING, "Logo verification partial: Only " + matchCount + " of " + expectedLogosCount + " logos found");
+            }
+        } else {
+            System.out.println("\n✓ RESULT: All " + expectedLogosCount + " expected logos found in PDF");
+            if (logger != null) {
+                logger.log(LogStatus.PASS, "Logo verification passed: All " + expectedLogosCount + " logos found in PDF");
+            }
+        }
+        
+        return matchResults;
+    }
+
+    /**
+     * Compares images from the most recent downloaded PDF with expected logo images using pixel comparison.
+     * Saves extracted PDF images to disk and checks if any match the provided expected images.
+     *
+     * @param expectedImage1Path Absolute path to first expected logo image (e.g., "/path/to/logo1.png")
+     * @param expectedImage2Path Absolute path to second expected logo image (e.g., "/path/to/logo2.png") - can be null
+     * @param similarityThreshold Percentage threshold for match (0.0 to 100.0). E.g., 95.0 means 95% similarity required
+     * @return Map with image names as keys and match results (true/false) as values
+     * @throws IOException if PDF or image files cannot be read
+     */
+    public static Map<String, Boolean> compareImagesInPDF_with_expected_logos(
+            String expectedImage1Path,
+            String expectedImage2Path,
+            double similarityThreshold) throws IOException {
+        
+        Map<String, Boolean> matchResults = new HashMap<>();
+        String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads";
+        
+        // Get most recent PDF
+        File folder = new File(downloadDir);
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf"));
+        if (files == null || files.length == 0) {
+            System.out.println("No PDF files found in the downloads folder.");
+            return matchResults;
+        }
+        Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+        File latestPdfFile = files[0];
+        System.out.println("Comparing images in PDF: " + latestPdfFile.getName());
+        
+        // Load expected images
+        java.util.List<BufferedImage> expectedImages = new java.util.ArrayList<>();
+        java.util.List<String> expectedImageNames = new java.util.ArrayList<>();
+        
+        // Load first image
+        if (expectedImage1Path != null && !expectedImage1Path.isEmpty()) {
+            File imgFile1 = new File(expectedImage1Path);
+            if (imgFile1.exists()) {
+                BufferedImage img = ImageIO.read(imgFile1);
+                if (img != null) {
+                    expectedImages.add(img);
+                    expectedImageNames.add(imgFile1.getName());
+                    System.out.println("Loaded expected image 1: " + imgFile1.getName());
+                } else {
+                    System.out.println("Warning: Could not read image: " + expectedImage1Path);
+                }
+            } else {
+                System.out.println("Warning: Expected image not found: " + expectedImage1Path);
+            }
+        }
+        
+        // Load second image (optional)
+        if (expectedImage2Path != null && !expectedImage2Path.isEmpty()) {
+            File imgFile2 = new File(expectedImage2Path);
+            if (imgFile2.exists()) {
+                BufferedImage img = ImageIO.read(imgFile2);
+                if (img != null) {
+                    expectedImages.add(img);
+                    expectedImageNames.add(imgFile2.getName());
+                    System.out.println("Loaded expected image 2: " + imgFile2.getName());
+                } else {
+                    System.out.println("Warning: Could not read image: " + expectedImage2Path);
+                }
+            } else {
+                System.out.println("Warning: Expected image not found: " + expectedImage2Path);
+            }
+        }
+        
+        if (expectedImages.isEmpty()) {
+            System.out.println("No valid expected images to compare against.");
+            return matchResults;
+        }
+        
+        // Create output directory for extracted images
+        File outDir = new File(downloadDir + "/extracted_images");
+        if (!outDir.exists()) {
+            outDir.mkdirs();
+        }
+        
+        // Extract and compare images from PDF
+        try (PDDocument document = PDDocument.load(latestPdfFile)) {
+            int pageIndex = 0;
+            for (PDPage page : document.getPages()) {
+                pageIndex++;
+                PDResources resources = page.getResources();
+                if (resources == null) continue;
+                
+                for (COSName xObjectName : resources.getXObjectNames()) {
+                    try {
+                        PDXObject xObject = resources.getXObject(xObjectName);
+                        if (xObject instanceof PDImageXObject) {
+                            String imageName = xObjectName.getName();
+                            BufferedImage pdfImage = ((PDImageXObject) xObject).getImage();
+                            
+                            if (pdfImage != null) {
+                                // Save extracted image
+                                String outName = "page-" + pageIndex + "-" + imageName + ".png";
+                                File outFile = new File(outDir, outName);
+                                ImageIO.write(pdfImage, "png", outFile);
+                                System.out.println("Extracted image: " + outFile.getAbsolutePath());
+                                
+                                // Compare with each expected image
+                                boolean foundMatch = false;
+                                for (int i = 0; i < expectedImages.size(); i++) {
+                                    BufferedImage expectedImage = expectedImages.get(i);
+                                    String expectedName = expectedImageNames.get(i);
+                                    double similarity = calculateImageSimilarity(pdfImage, expectedImage);
+                                    
+                                    System.out.println("Comparing '" + imageName + "' with '" + expectedName + "': " + 
+                                                     String.format("%.2f", similarity) + "% similarity");
+                                    
+                                    if (similarity >= similarityThreshold) {
+                                        foundMatch = true;
+                                        System.out.println("✓ MATCH FOUND: '" + imageName + "' matches '" + expectedName + 
+                                                         "' (similarity: " + String.format("%.2f", similarity) + "%)");
+                                        break;
+                                    }
+                                }
+                                
+                                matchResults.put(imageName, foundMatch);
+                                if (!foundMatch) {
+                                    System.out.println("✗ NO MATCH: '" + imageName + "' does not match any expected images");
+                                }
+                            }
+                        }
+                    } catch (Exception inner) {
+                        System.out.println("Error processing image: " + inner.getMessage());
+                    }
+                }
+            }
+        }
+        
+        // Summary
+        System.out.println("\n=== COMPARISON SUMMARY ===");
+        long matchCount = matchResults.values().stream().filter(match -> match).count();
+        System.out.println("Total images in PDF: " + matchResults.size());
+        System.out.println("Matched images: " + matchCount);
+        System.out.println("Unmatched images: " + (matchResults.size() - matchCount));
+        
+        return matchResults;
+    }
+    
+    /**
+     * Calculates pixel-by-pixel similarity between two images.
+     * Returns percentage of matching pixels (0.0 to 100.0).
+     * Images are resized to match dimensions if different.
+     */
+    private static double calculateImageSimilarity(BufferedImage img1, BufferedImage img2) {
+        // Resize images to same dimensions if needed
+        int width = Math.min(img1.getWidth(), img2.getWidth());
+        int height = Math.min(img1.getHeight(), img2.getHeight());
+        
+        BufferedImage resized1 = resizeImage(img1, width, height);
+        BufferedImage resized2 = resizeImage(img2, width, height);
+        
+        long totalPixels = (long) width * height;
+        long matchingPixels = 0;
+        
+        // Compare each pixel with tolerance for minor variations
+        int tolerance = 10; // RGB tolerance per channel
+        
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int rgb1 = resized1.getRGB(x, y);
+                int rgb2 = resized2.getRGB(x, y);
+                
+                int r1 = (rgb1 >> 16) & 0xFF;
+                int g1 = (rgb1 >> 8) & 0xFF;
+                int b1 = rgb1 & 0xFF;
+                
+                int r2 = (rgb2 >> 16) & 0xFF;
+                int g2 = (rgb2 >> 8) & 0xFF;
+                int b2 = rgb2 & 0xFF;
+                
+                if (Math.abs(r1 - r2) <= tolerance && 
+                    Math.abs(g1 - g2) <= tolerance && 
+                    Math.abs(b1 - b2) <= tolerance) {
+                    matchingPixels++;
+                }
+            }
+        }
+        
+        return (matchingPixels * 100.0) / totalPixels;
+    }
+    
+    /**
+     * Resizes an image to specified dimensions.
+     */
+    private static BufferedImage resizeImage(BufferedImage original, int targetWidth, int targetHeight) {
+        if (original.getWidth() == targetWidth && original.getHeight() == targetHeight) {
+            return original;
+        }
+        
+        BufferedImage resized = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = resized.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.drawImage(original, 0, 0, targetWidth, targetHeight, null);
+        g.dispose();
+        return resized;
     }
 
     //create select dropdown by visible text
@@ -1833,6 +2205,48 @@ public static void verifyBooleanStatement(WebDriver driver, WebElement xpath, bo
         }
     }
 
+
+    /**
+     * Extracts all annotations (including tooltips/notes) from the most recent PDF
+     * @return List of annotation contents
+     */
+    public static java.util.List<String> getPDFAnnotations_from_most_recent_download() throws IOException {
+        java.util.List<String> annotations = new java.util.ArrayList<>();
+        String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads";
+        
+        File folder = new File(downloadDir);
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf"));
+        
+        if (files == null || files.length == 0) {
+            System.out.println("No PDF files found in the downloads folder.");
+            return annotations;
+        }
+        
+        Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+        File latestPdfFile = files[0];
+        System.out.println("Extracting annotations from: " + latestPdfFile.getName());
+        
+        try (PDDocument document = PDDocument.load(latestPdfFile)) {
+            for (PDPage page : document.getPages()) {
+                java.util.List<PDAnnotation> pageAnnotations = page.getAnnotations();
+                for (PDAnnotation annotation : pageAnnotations) {
+                    String contents = annotation.getContents();
+                    if (contents != null && !contents.isEmpty()) {
+                        System.out.println("Found annotation: " + contents);
+                        annotations.add(contents);
+                    }
+                }
+            }
+        }
+        
+        if (annotations.isEmpty()) {
+            System.out.println("No annotations found in PDF.");
+        } else {
+            System.out.println("Total annotations found: " + annotations.size());
+        }
+        
+        return annotations;
+    }
 
     public static String getPDFContent_from_most_recent_download() throws IOException {
         try {
