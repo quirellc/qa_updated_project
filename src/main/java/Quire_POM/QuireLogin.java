@@ -181,6 +181,20 @@ public class QuireLogin extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "automation_sysadmin_cbre@quiretest.com", logger, "automation_sysadmin_cbre");
         }}
 
+    public void enterEmail_qa_admin_aei() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "qa_admin_aei@quiretest.com", logger, "qa_admin_aei");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "qa_admin_aei2@quiretest.com", logger, "qa_admin_aei2");
+        }}
+
+    public void enterEmail_qa_admin_efi() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "qa_admin_efi@quiretest.com", logger, "qa_admin_efi");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "qa_admin_efi2@quiretest.com", logger, "qa_admin_efi2");
+        }}
+
 
     @FindBy(xpath = "//input[@id='identifierId']")
     WebElement gmail_ID;

@@ -621,7 +621,7 @@ public class ReusableMethodsLoggersPOM {
                                     if (similarity >= similarityThreshold) {
                                         foundMatch = true;
                                         matchedLogoIndices.add(i); // Mark this logo as matched
-                                        System.out.println("✓ MATCH FOUND: '" + imageName + "' matches '" + expectedName + 
+                                        System.out.println("✅ MATCH FOUND: '" + imageName + "' matches '" + expectedName +
                                                          "' (similarity: " + String.format("%.2f", similarity) + "%)");
                                         break;
                                     }
@@ -629,12 +629,12 @@ public class ReusableMethodsLoggersPOM {
                                 
                                 matchResults.put(imageName, foundMatch);
                                 if (!foundMatch) {
-                                    System.out.println("✗ NO MATCH: '" + imageName + "' does not match any expected images");
+                                    System.out.println(" ❌ NO MATCH: '" + imageName + "' does not match any expected images");
                                 }
                                 
                                 // Early exit: Stop if all expected logos have been found
                                 if (matchedLogoIndices.size() >= expectedLogosCount) {
-                                    System.out.println("\n✓ All " + expectedLogosCount + " expected logos found! Stopping search early.");
+                                    System.out.println("\n✅ All " + expectedLogosCount + " expected logos found! Stopping search early.");
                                     break pageLoop;
                                 }
                             }
@@ -658,9 +658,9 @@ public class ReusableMethodsLoggersPOM {
         
         // Universal result evaluation with ExtentReport logging
         if (matchCount == 0) {
-            System.out.println("\n✗ RESULT: No expected logos found in PDF");
+            System.out.println("\n❌  RESULT: No expected logos found in PDF");
             if (logger != null) {
-                logger.log(LogStatus.FAIL, "Logo verification failed: No logos found in PDF");
+                logger.log(LogStatus.FAIL, "❌ Logo verification failed: No logos found in PDF");
             }
         } else if (matchCount < expectedLogosCount) {
             System.out.println("\n⚠ RESULT: Only " + matchCount + " of " + expectedLogosCount + " expected logos found");
@@ -668,9 +668,9 @@ public class ReusableMethodsLoggersPOM {
                 logger.log(LogStatus.WARNING, "Logo verification partial: Only " + matchCount + " of " + expectedLogosCount + " logos found");
             }
         } else {
-            System.out.println("\n✓ RESULT: All " + expectedLogosCount + " expected logos found in PDF");
+            System.out.println("\n✅ RESULT: All " + expectedLogosCount + " expected logos found in PDF");
             if (logger != null) {
-                logger.log(LogStatus.PASS, "Logo verification passed: All " + expectedLogosCount + " logos found in PDF");
+                logger.log(LogStatus.PASS, "✅ Logo verification passed: All " + expectedLogosCount + " logos found in PDF");
             }
         }
         
@@ -2297,6 +2297,52 @@ public static void verifyBooleanStatement(WebDriver driver, WebElement xpath, bo
             // Print extracted text for debugging
             System.out.println("Extracted text from PDF:");
             System.out.println(text);
+
+            return text;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null; // Handle the exception and return null if an error occurs
+        }
+    }
+
+    public static String getPDFContent_with_indentation_from_most_recent_download() throws IOException {
+        try {
+            // Specify the custom download directory
+            String downloadDir = System.getProperty("user.dir") + "/src/main/java/downloads";
+
+            // Create a File object for the downloads folder
+            File folder = new File(downloadDir);
+
+            // List all PDF files in the directory
+            File[] files = folder.listFiles((dir, name) -> name.endsWith(".pdf"));
+
+            // Check if there are no PDF files
+            if (files == null || files.length == 0) {
+                System.out.println("No PDF files found in the downloads folder.");
+                return null;
+            }
+
+            // Sort files by last modified timestamp (most recent first)
+            Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+
+            // Get the most recently downloaded PDF file
+            File latestPdfFile = files[0];
+            System.out.println("Opening latest downloaded PDF (with indentation): " + latestPdfFile.getName());
+
+            // Load the PDF document
+            PDDocument document = PDDocument.load(latestPdfFile);
+
+            // Extract text using PDFTextStripper with indentation preservation
+            PDFTextStripper pdfStripper = new PDFTextStripper();
+            pdfStripper.setSortByPosition(true); // Sort text by position to preserve layout
+            pdfStripper.setSpacingTolerance(10.0f); // Increase spacing tolerance to preserve indents
+            pdfStripper.setAverageCharTolerance(20.0f); // Preserve character spacing
+            pdfStripper.setIndentThreshold(20.0f); // Preserve indentation
+            String text = pdfStripper.getText(document);
+
+            // Close the document
+            document.close();
 
             return text;
 
