@@ -686,7 +686,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
 
     @Test
-    public void TR008_PCA_FannieMae_quickFactsTable_export_quickPreview() throws InterruptedException {
+    public void TR008_PCA_FannieMae_quickFactsTable_export_quickPreview_comments() throws InterruptedException {
 
         BaseClass.pca_xml_section().clickSectionView_QuickFactsTable();
         Thread.sleep(1500);
@@ -731,6 +731,11 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().click_cancel_alert_message();
         Thread.sleep(500);
+
+
+        BaseClass.ck5editor().ck5_special_section_comments_test();
+        Thread.sleep(500);
+
 
 
 

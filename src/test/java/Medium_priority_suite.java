@@ -1659,6 +1659,9 @@ BaseClass.staging5().clickLibrariesTab();
         BaseClass.staging5().scroll_and_click_unregister_atlas_feature();
         Thread.sleep(500);
 
+        BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
+        Thread.sleep(500);
+
     }
 
     @Test

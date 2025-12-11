@@ -45,6 +45,16 @@ public class Staging5 extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, portfoliosTab, logger, "portfolios tab");
     }
 
+
+    @FindBy(xpath = "//a[@id='bulk-change-report-status-action']")
+    WebElement report_status_button;
+
+    public void clickReportStatusButton() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, report_status_button, logger, "report_status_button");
+    }
+
+
+
     @FindBy(xpath = "//span[normalize-space()='QA Automation PCA Portfolio']")
     WebElement QA_PCA_portfolio;
 
@@ -4925,6 +4935,7 @@ WebElement condition_action_field_text;
                 System.out.println("No alert present.");
             }
         }
+
 
 //    @FindBy(xpath = "(//table[@class='htCore'])//tr//td[2]")
 //    List<WebElement> pca_portfolio_report_name_cells;

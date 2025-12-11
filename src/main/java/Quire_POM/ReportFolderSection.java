@@ -131,6 +131,20 @@ public class ReportFolderSection extends ReusableAnnotations {
     public void click_review_status_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, review_status_button, logger, "review_status_button");}
 
+    @FindBy(xpath = "//select[@id='report_status_selector']")
+    WebElement report_status_selector;
+    public void select_review_status_from_dropdown() {
+        ReusableMethodsLoggersPOM.selectByText(driver, report_status_selector, "Review", "report status dropdown - Review");
+        System.out.println("✅ Selected 'Review' from report status dropdown");
+        logger.log(LogStatus.PASS, "✅ Selected 'Review' from report status dropdown");
+    }
+
+    @FindBy(xpath = "//div[@id='bulk-pdf-generator-warning'][contains(.,'Changing all Reports to this Status will create a bulk PDF generation request')]")
+    WebElement bulk_pdf_warning_message;
+    public void verify_bulk_pdf_warning_message_displayed() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, bulk_pdf_warning_message, true, logger, "bulk PDF generation warning message");
+    }
+
     @FindBy(xpath = "//div[contains(text(),'Draft')]")
     WebElement draft_status_button;
     public void click_draft_status_button() {

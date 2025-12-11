@@ -937,6 +937,37 @@ Thread.sleep(1000);
     }
 
     @Test
+    public void TR_016_generate_bulk_PDF_portfolios() throws InterruptedException {
+        BaseClass.staging5().clickPortfoliosTab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_QA_PCA_portfolio();
+        Thread.sleep(2500);
+
+        BaseClass.staging5().clickReportStatusButton();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().select_review_status_from_dropdown();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().verify_bulk_pdf_warning_message_displayed();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+//regenerate existing report already from previous test steps
+        //  BaseClass.reportfoldersection().click_regenerate_button_project_folder_view();
+        //verify green banner
+        BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
+        //    Thread.sleep(2000);
+        //verify loading sign disappeared for pdf status
+        //  BaseClass.templatesSection().verify_PDF_finished_generating();
+//click generate pdf, if not available, will re generate second report
+        BaseClass.reportfoldersection().clickGeneratePDFButton_projfolderview();
+        BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
+        Thread.sleep(2000);
+
+        BaseClass.templatesSection().verify_PDF_finished_generating();
+
+    }
+
+    @Test
     public void TR_016_ck5_packages_ProjSummary_section() throws InterruptedException {
         WebDriver driver = getDriver();
         if (baseUrl.contains("staging5")) {
