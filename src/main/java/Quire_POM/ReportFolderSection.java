@@ -139,10 +139,70 @@ public class ReportFolderSection extends ReusableAnnotations {
         logger.log(LogStatus.PASS, "✅ Selected 'Review' from report status dropdown");
     }
 
+    public void select_dataEntry_status_from_dropdown() {
+        ReusableMethodsLoggersPOM.selectByText(driver, report_status_selector, "Data Entry", "report status dropdown - Data entry");
+        System.out.println("✅ Selected 'Data Entry' from report status dropdown");
+        logger.log(LogStatus.PASS, "✅ Selected 'Data Entry' from report status dropdown");
+    }
+
+
+
+    @FindBy(xpath = "//td[contains(@class,'htAutocomplete')][contains(text(),'Data Entry')]")
+    List<WebElement> data_entry_cells;
+
+    public void verify_data_entry_cells_count_is_4() {
+        int expectedCount = 4;
+        int actualCount = data_entry_cells.size();
+        
+        if (actualCount == expectedCount) {
+            System.out.println("✅ Found " + actualCount + " Data Entry cells - as expected");
+            logger.log(LogStatus.PASS, "✅ Found " + actualCount + " Data Entry cells - as expected");
+        } else {
+            System.out.println("❌ Found " + actualCount + " Data Entry cells - Expected " + expectedCount);
+            logger.log(LogStatus.FAIL, "❌ Found " + actualCount + " Data Entry cells - Expected " + expectedCount);
+        }
+    }
+
+    @FindBy(xpath = "//td[contains(@class,'htAutocomplete')][contains(text(),'Review')]")
+    List<WebElement> review_cells;
+    
+    public void verify_review_cells_count_is_4() {
+        int expectedCount = 4;
+        int actualCount = review_cells.size();
+        
+        if (actualCount == expectedCount) {
+            System.out.println("✅ Found " + actualCount + " Review cells - as expected");
+            logger.log(LogStatus.PASS, "✅ Found " + actualCount + " Review cells - as expected");
+        } else {
+            System.out.println("❌ Found " + actualCount + " Review cells - Expected " + expectedCount);
+            logger.log(LogStatus.FAIL, "❌ Found " + actualCount + " Review cells - Expected " + expectedCount);
+        }
+    }
+
     @FindBy(xpath = "//div[@id='bulk-pdf-generator-warning'][contains(.,'Changing all Reports to this Status will create a bulk PDF generation request')]")
     WebElement bulk_pdf_warning_message;
     public void verify_bulk_pdf_warning_message_displayed() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, bulk_pdf_warning_message, true, logger, "bulk PDF generation warning message");
+    }
+
+    @FindBy(xpath = "//div[@id='bulkPdfGenerator-status'][contains(@class,'async-fetch-status-waiting')]")
+    WebElement bulk_pdf_generator_loading;
+    
+    public void verify_bulk_pdf_generation_and_wait_for_completion() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, bulk_pdf_generator_loading, true, logger, "bulk PDF generation loading");
+        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+        wait.until(driver -> {
+            try {
+                WebElement statusElement = driver.findElement(By.xpath("//div[@id='bulkPdfGenerator-status'][contains(@class,'async-fetch-status-complete')]"));
+                return statusElement != null;
+            } catch (Exception e) {
+                return false;
+            }
+        });
+        
+        System.out.println("✅ Bulk PDF generation is 100% completed");
+        logger.log(LogStatus.PASS, "✅ Bulk PDF is 100% generation completed");
     }
 
     @FindBy(xpath = "//div[contains(text(),'Draft')]")

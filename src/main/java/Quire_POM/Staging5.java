@@ -721,6 +721,8 @@ public class Staging5 extends ReusableAnnotations {
     public void verify_loading_complete_sideBar() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, fetching_company_data_message,true, logger, "loading_sideBar");}
 
+
+
     public void verify_and_markRead_if_notification_is_active() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         WebElement element = null;

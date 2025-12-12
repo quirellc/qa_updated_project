@@ -943,6 +943,8 @@ Thread.sleep(1000);
 
         BaseClass.staging5().click_QA_PCA_portfolio();
         Thread.sleep(2500);
+BaseClass.reportfoldersection().verify_data_entry_cells_count_is_4();
+        Thread.sleep(500);
 
         BaseClass.staging5().clickReportStatusButton();
         Thread.sleep(500);
@@ -951,19 +953,21 @@ Thread.sleep(1000);
         BaseClass.reportfoldersection().verify_bulk_pdf_warning_message_displayed();
         Thread.sleep(500);
         BaseClass.staging5().click_save_button();
-//regenerate existing report already from previous test steps
-        //  BaseClass.reportfoldersection().click_regenerate_button_project_folder_view();
-        //verify green banner
-        BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
-        //    Thread.sleep(2000);
-        //verify loading sign disappeared for pdf status
-        //  BaseClass.templatesSection().verify_PDF_finished_generating();
-//click generate pdf, if not available, will re generate second report
-        BaseClass.reportfoldersection().clickGeneratePDFButton_projfolderview();
-        BaseClass.templatesSection().verify_PDF_generating_AlertMessage();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 
-        BaseClass.templatesSection().verify_PDF_finished_generating();
+        BaseClass.reportfoldersection().verify_review_cells_count_is_4();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().verify_bulk_pdf_generation_and_wait_for_completion();
+        Thread.sleep(4000);
+
+        BaseClass.staging5().clickReportStatusButton();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().select_dataEntry_status_from_dropdown();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(4000);
+        BaseClass.reportfoldersection().verify_data_entry_cells_count_is_4();
+        Thread.sleep(500);
 
     }
 
