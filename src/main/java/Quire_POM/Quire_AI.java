@@ -98,8 +98,9 @@ public class Quire_AI extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyEmptyText(driver, quire_AI_empty_prompt, logger, "quire_AI_empty_prompt");}
        // ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_empty_prompt, true, logger, "quire_AI_empty_prompt");}
 
-    @FindBy(xpath = "QA Automation Testing")
+    @FindBy(xpath = "//p[contains(text(), 'QA Automation Testing Script') and contains(text(), 'Spell Check') and contains(text(), 'quality assurance')]")
     WebElement quire_AI_summarized_generated_prompt;
+    
     public void verify_quire_AI_summarize_generated_prompt() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_summarized_generated_prompt, true, logger, "quire_AI_summarized_generated_prompt");}
 
@@ -109,13 +110,13 @@ public class Quire_AI extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_thesaurus_generated_prompt, true, logger, "quire_AI_thesaurus_generated_prompt");}
 
 
-    @FindBy(xpath = "//div[@class='ck ck-content ck-reset_all-excluded ck-ai-form__content-field']//h2[contains(text(), 'Systematic') and contains(text(), 'Automation') and contains(text(), 'Framework')]")
+    @FindBy(xpath = "//div[@class='ck ck-ai-form__content-area']//p[contains(text(), 'Automated Quality Assurance') and contains(text(), 'Validation') and contains(text(), 'Lexical')]")
     WebElement quire_AI_technical_tone_generated_prompt;
     public void verify_quire_AI_technical_tone_generated_prompt() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_technical_tone_generated_prompt, true, logger, "quire_AI_technical_tone_generated_prompt");}
 
 
-    @FindBy(xpath = "//h2[contains(text(), 'Systematic') and contains(text(), 'Automation')]")
+    @FindBy(xpath = "//p[contains(text(), 'Automated Quality Assurance') and contains(text(), 'Validation') and contains(text(), 'Lexical')]")
     WebElement quire_AI_technical_tone_generated_text;
     public void verify_quire_AI_technical_tone_generated_text() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_technical_tone_generated_text, true, logger, "quire_AI_technical_tone_generated_text");}

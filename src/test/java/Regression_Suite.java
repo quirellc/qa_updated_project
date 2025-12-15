@@ -709,7 +709,7 @@ Thread.sleep(1000);
     }
 
     @Test
-    public void TR_013_portfolios() throws InterruptedException {
+    public void TR_013_portfolios_export_to_pdf_and_aggregate_inidividual_view_verification() throws InterruptedException {
 
         BaseClass.staging5().clickUserProfileTab();
         Thread.sleep(500);

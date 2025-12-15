@@ -715,6 +715,125 @@ public class CK_Editor extends ReusableAnnotations {
 
 
     }
+    @Test
+    public void TR_0008_ck5_AI_toolbar() throws InterruptedException {
+
+        BaseClass.reportfoldersection().clickReportsTab();
+        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+        Thread.sleep(4500);
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(1000);
+        BaseClass.projectFolderSection().click_new_CK5_ProjectFolderLink();
+        Thread.sleep(4500);
+        //cloned fm 1104 report
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(2000);
+
+        BaseClass.staging5().click_coverLetter_sectionView();
+
+
+        BaseClass.templatesSection().clickAddContentRow_introPages();
+
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().verify_quire_AI_icon_isVisible();
+        //Thread.sleep(1000);
+
+        BaseClass.quire_AI().click_quire_AI_icon();
+        //Thread.sleep(1000);
+
+        BaseClass.quire_AI().verify_quire_AI_dropDownItems();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_dropDown_generateContent_header_button();
+        BaseClass.quire_AI().click_quire_AI_dropDown_summarize_button();
+        BaseClass.quire_AI().verify_quire_AI_loading_prompt();
+
+        BaseClass.quire_AI().click_quire_AI_stop_button();
+        BaseClass.quire_AI().verify_quire_AI_empty_prompt();
+        BaseClass.quire_AI().click_quire_AI_try_again_button();
+        //   //Thread.sleep(3000);
+
+        BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+        //Thread.sleep(1000);
+
+        BaseClass.quire_AI().click_quire_AI_replace_button();
+        //Thread.sleep(1000);
+        BaseClass.staging5().acceptAlert();
+        //Thread.sleep(1500);
+
+        BaseClass.staging5().click_out_of_section();
+        //Thread.sleep(1000);
+
+        BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+
+        BaseClass.staging5().click_title_page_sectionView();
+        //Thread.sleep(1000);
+        BaseClass.templatesSection().clickAddContentRow_introPages();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_icon();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_dropDown_generateContent_header_button();
+        BaseClass.quire_AI().click_quire_AI_dropDown_summarize_button();
+        BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_copy_text_button();
+        //Thread.sleep(1000);
+        BaseClass.staging5().click_out_of_section();
+        //Thread.sleep(1000);
+        BaseClass.templatesSection().clickAddContentRow_introPages();
+        //Thread.sleep(1000);
+        BaseClass.ck5editor().paste_text_introPages_body();
+        //Thread.sleep(1000);
+        BaseClass.staging5().click_out_of_section();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+
+
+        BaseClass.staging5().click_executive_summary_sectionView();
+        //Thread.sleep(1000);
+        BaseClass.templatesSection().clickAddContentRow_introPages();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_icon();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_dropDown_contentAssistant_header_button();
+
+        BaseClass.quire_AI().click_quire_AI_dropDown_thesaurus_button();
+        //Thread.sleep(3000);
+
+        BaseClass.quire_AI().verify_quire_AI_thesaurus_generated_prompt();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_replace_button();
+        //Thread.sleep(1000);
+        BaseClass.staging5().acceptAlert();
+        //Thread.sleep(1500);
+        BaseClass.staging5().click_out_of_section();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().verify_quire_AI_thesaurus_generated_prompt();
+
+
+        BaseClass.staging5().click_default_section_title();
+        //Thread.sleep(1000);
+
+        BaseClass.staging5().clickSection_row_editor();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_icon();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_dropDown_adjustContentTone_header_button();
+
+        BaseClass.quire_AI().click_quire_AI_dropDown_technical_tone_button();
+        //Thread.sleep(1000);
+
+        BaseClass.quire_AI().verify_quire_AI_technical_tone_generated_prompt();
+        //Thread.sleep(1000);
+        BaseClass.quire_AI().click_quire_AI_replace_button();
+        //Thread.sleep(1000);
+        BaseClass.staging5().acceptAlert();
+        //Thread.sleep(1500);
+        BaseClass.staging5().click_out_of_section();
+        Thread.sleep(1000);
+        BaseClass.quire_AI().verify_quire_AI_technical_tone_generated_text();
+        Thread.sleep(1000);
+
+    }
 
 //
 //    @Test
