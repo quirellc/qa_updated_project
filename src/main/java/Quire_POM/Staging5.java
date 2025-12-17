@@ -1244,17 +1244,52 @@ public void add_all_company_features() throws InterruptedException {
 
     @FindBy(xpath = "//tr[td[normalize-space()='CKEditor 5']]//a[contains(text(),'unregister')]")
     WebElement unregister_ck5_feature;
-    public void register_ck5_feature() throws InterruptedException {
+    
+    @FindBy(xpath = "//tr[td[normalize-space()='CKEditor 4 - AI']]//a[contains(text(),'unregister')]")
+    WebElement unregister_ck4_ai_feature;
+    
+    public void register_ck5_feature_unregister_ck4_features() throws InterruptedException {
+        // Step 1: Unregister all CK4 AI features first
+        System.out.println("⏳ Checking for CK4 AI features to unregister...");
+        logger.log(LogStatus.INFO, "⏳ Checking for CK4 AI features to unregister...");
+        
+        String[] ck4Features = {
+                "CKEditor 4 - AI",
+                "CKEditor 4 - AI Assistant",
+                "CKEditor 4 - AI Generative",
+                "CKEditor 4 - AI Tone"
+        };
+
+        for (String feature : ck4Features) {
+            try {
+                WebElement unregisterButton = driver.findElement(By.xpath("//tr[td[normalize-space()='" + feature + "']]//a[contains(text(),'unregister')]"));
+                if (unregisterButton.isDisplayed()) {
+                    System.out.println("🗑️ Unregistering: " + feature);
+                    ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregisterButton, logger, "unregister " + feature);
+                    ReusableMethodsLoggersPOM.clickMethod(driver, unregisterButton, logger, "unregister " + feature);
+                    Thread.sleep(1000);
+                    driver.switchTo().alert().accept();
+                    Thread.sleep(500);
+                }
+            } catch (Exception ex) {
+                System.out.println("ℹ️ " + feature + " not found/already unregistered...skipping");
+            }
+        }
+        
+        // Step 2: Check if CK5 is already enabled
         try {
             if (unregister_ck5_feature.isDisplayed()) {
-                System.out.println("Feature already enabled — unregister button visible.");
+                System.out.println("✅ CK5 feature already enabled — unregister button visible.");
+                logger.log(LogStatus.PASS, "✅ CK5 feature already enabled");
                 return;
             }
         } catch (Exception e) {
             // Element not found or not visible — proceed to add feature
-            System.out.println("Unregister button not visible — adding feature.");
+            System.out.println("⏳ CK5 not enabled — registering CK5 and AI features...");
+            logger.log(LogStatus.INFO, "⏳ Registering CK5 and AI features...");
         }
 
+        // Step 3: Register CK5 and all AI features
         String[] ck5Features = {
                 "CKEditor 5",
                 "CKEditor 5 (Beta) - AI",
@@ -1264,16 +1299,24 @@ public void add_all_company_features() throws InterruptedException {
         };
 
         for (String feature : ck5Features) {
-            BaseClass.staging5().click_add_company_feature();
-            Thread.sleep(1000);
+            try {
+                System.out.println("➕ Registering: " + feature);
+                BaseClass.staging5().click_add_company_feature();
+                Thread.sleep(1000);
 
-            ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown, feature, feature);
+                ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown, feature, feature);
 
-            ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
-                    "Save feature button for: " + feature);
+                ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
+                        "Save feature button for: " + feature);
 
-            Thread.sleep(1000);
+                Thread.sleep(1000);
+            } catch (Exception ex) {
+                System.out.println("ℹ️ " + feature + " already registered or could not be added...skipping");
+            }
         }
+        
+        System.out.println("✅ CK5 and AI features registered successfully");
+        logger.log(LogStatus.PASS, "✅ CK5 and AI features registered successfully");
     }
 
     public void scroll_and_click_unregister_ck5_feature() throws InterruptedException {
@@ -4872,13 +4915,13 @@ WebElement condition_action_field_text;
             // Perform all assertions
             softAssert.assertAll();
             // If assertAll() does not throw any exception, all assertions passed
-            System.out.println("All report names in portfolio match with pdf");
-            logger.log(LogStatus.PASS, "All report names in portfolio match with pdf");
+            System.out.println("✅ All report names in portfolio match with pdf");
+            logger.log(LogStatus.PASS, "✅ All report names in portfolio match with pdf");
 
         } catch (AssertionError e) {
             // If assertAll() throws an exception, at least one assertion failed
-            System.out.println("report names in portfolio DO NOT match with pdf");
-            logger.log(LogStatus.FAIL, "some report name in portfolio DO NOT match with pdf");
+            System.out.println("❌ report names in portfolio DO NOT match with pdf");
+            logger.log(LogStatus.FAIL, "❌ some report name in portfolio DO NOT match with pdf");
         }
     }
 
