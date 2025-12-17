@@ -84,7 +84,7 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
         }
 
 
-        BaseClass.staging5().register_ck5_feature();
+        BaseClass.staging5().register_ck5_feature_unregister_ck4_features();
         Thread.sleep(1000);
         BaseClass.staging5().scroll_and_click_unregister_allUsersAccessToAllReports_feature();
         Thread.sleep(1000);
