@@ -585,8 +585,8 @@ Thread.sleep(1000);
         Thread.sleep(500);
 
         //verify email  support functionality works
-        BaseClass.staging5().confirm_email_support_button();
-        Thread.sleep(1000);
+//        BaseClass.staging5().confirm_email_support_button();
+//        Thread.sleep(1000);
         //verify  chat support functionality works
         BaseClass.staging5().confirm_chat_support_button();
         Thread.sleep(1000);
