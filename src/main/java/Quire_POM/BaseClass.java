@@ -44,6 +44,7 @@ public class BaseClass extends ReusableAnnotations {
         return pdfHelper;
     }//end of static reference for PDF verification
 
+
     public static QuireLogin quireLogin() {
         WebDriver driver = getDriver();
         QuireLogin quireLogin = new QuireLogin(driver);
