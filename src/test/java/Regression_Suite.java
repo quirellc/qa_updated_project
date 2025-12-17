@@ -1,10 +1,8 @@
 import Quire_POM.BaseClass;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 import reusableLibrary.ReusableAnnotations;
-import reusableLibrary.ReusableMethodsLoggersPOM;
 
 
 public class Regression_Suite extends ReusableAnnotations {
