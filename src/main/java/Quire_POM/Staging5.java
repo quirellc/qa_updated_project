@@ -751,6 +751,37 @@ public class Staging5 extends ReusableAnnotations {
         }
     }
 
+    public void wait_for_pdf_notification_with_refresh(int maxWaitSeconds) throws InterruptedException {
+        int elapsedSeconds = 0;
+        int refreshInterval = 15;
+        
+        System.out.println("⏳ Waiting for PDF notification to appear (max " + maxWaitSeconds + " seconds)...");
+        logger.log(LogStatus.INFO, "⏳ Waiting for PDF notification to appear (max " + maxWaitSeconds + " seconds)...");
+        
+        while (elapsedSeconds < maxWaitSeconds) {
+            try {
+                WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(2));
+                shortWait.until(ExpectedConditions.visibilityOf(active_notification_button));
+                
+                System.out.println("✅ PDF notification appeared after " + elapsedSeconds + " seconds");
+                logger.log(LogStatus.PASS, "✅ PDF notification appeared after " + elapsedSeconds + " seconds");
+                return;
+                
+            } catch (TimeoutException e) {
+                elapsedSeconds += refreshInterval;
+                
+                if (elapsedSeconds < maxWaitSeconds) {
+                    System.out.println("⏳ No notification yet (" + elapsedSeconds + "s elapsed), refreshing page...");
+                    driver.navigate().refresh();
+                    Thread.sleep(refreshInterval * 1000);
+                }
+            }
+        }
+        
+        System.out.println("⚠️ PDF notification did not appear within " + maxWaitSeconds + " seconds");
+        logger.log(LogStatus.WARNING, "⚠️ PDF notification did not appear within " + maxWaitSeconds + " seconds");
+    }
+
 
 
     @FindBy(xpath = "//div[@class='persistent-notification unread']//a[@target='_blank'][normalize-space()='QA Automation PCA Portfolio'][1]")

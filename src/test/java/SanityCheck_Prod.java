@@ -433,11 +433,7 @@ WebDriver driver = getDriver();
             Thread.sleep(300);
 //click notification icon and click first link, and open new tab with link
         BaseClass.staging5().verify_and_markRead_if_notification_is_active();
-//        Thread.sleep(500);
-//        BaseClass.staging5().mark_all_as_read();
-        Thread.sleep(9500);
-        driver.navigate().refresh();
-        Thread.sleep(1000);
+        BaseClass.staging5().wait_for_pdf_notification_with_refresh(90);
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().open_jenTest_pdf_notification_link();
