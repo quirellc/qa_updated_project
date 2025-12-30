@@ -40,16 +40,39 @@ public class SendEmailWithAttachment_test extends ReusableAnnotations {
         return formatMonth.format(calendar.getTime());
     }
 
+    private String getCurrentYear() {
+        // Get the current date
+        Calendar calendar = Calendar.getInstance();
+
+        // Format the current year
+        DateFormat formatYear = new SimpleDateFormat("yyyy");
+        return formatYear.format(calendar.getTime());
+    }
+
+    private String getPreviousMonthYear() {
+        // Get the current date
+        Calendar calendar = Calendar.getInstance();
+
+        // Subtract one month
+        calendar.add(Calendar.MONTH, -1);
+
+        // Format the year of the previous month
+        DateFormat formatYear = new SimpleDateFormat("yyyy");
+        return formatYear.format(calendar.getTime());
+    }
+
     @Test
     public void TR_001_User_Login()  throws InterruptedException, IOException {
         WebDriver driver = getDriver();
 
         String currentMonth = getCurrentMonth();
         String previousMonth = getPreviousMonth();
+        String currentYear = getCurrentYear();
+        String previousMonthYear = getPreviousMonthYear();
 
 
 //  logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
-        driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + previousMonth + "&year=2024");
+        driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + previousMonth + "&year=" + previousMonthYear);
 
         Thread.sleep(1000);
 
@@ -82,7 +105,7 @@ public class SendEmailWithAttachment_test extends ReusableAnnotations {
         BaseClass.staging5().open_company_usage_reports_link();
 
         Thread.sleep(1000);
-        driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + currentMonth + "&year=2024");
+        driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + currentMonth + "&year=" + currentYear);
         Thread.sleep(1000);
 
 
@@ -186,7 +209,7 @@ public class SendEmailWithAttachment_test extends ReusableAnnotations {
             // Set the recipient address
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ibrarj@openquire.com, hetnam@openquire.com"));
             // Set the subject of the email
-            message.setSubject("QA Updated projeect Company Usage Reports Test Email:  " + previousMonth + " -> " + currentMonth + " - QA Automated");
+            message.setSubject("QA Updated project Company Usage Reports Test Email:  " + previousMonth + " -> " + currentMonth + " - QA Automated");
 
             // Create a Multipart object to hold the email body and attachments
             // Create a Multipart object to hold the email body and attachments

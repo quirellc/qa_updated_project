@@ -1677,7 +1677,7 @@ public static void verifyBooleanStatement(WebDriver driver, WebElement xpath, bo
         //store the xpath in boolean statement
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = null;
-        int maxAttempts = 3; // Maximum number of attempts
+        int maxAttempts = 4; // Maximum number of attempts
         int attempt = 0;
         while (attempt < maxAttempts) {
             boolean elementState;
