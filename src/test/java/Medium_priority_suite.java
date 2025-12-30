@@ -875,7 +875,7 @@ driver.navigate().refresh();
 
     }
     @Test
-    public void TR_013_Portfolio_features() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
+    public void TR_013_Portfolio_copyCells_and_aggregatedView_pdf_verification() throws InterruptedException, IOException, ParserConfigurationException, SAXException {
         WebDriver driver = getDriver();
 // if (baseUrl.contains("staging5")) {
      driver.navigate().to("https://staging3.openquire.com/portfolios/10393");
@@ -1514,13 +1514,13 @@ BaseClass.staging5().clickLibrariesTab();
                 BaseClass.staging5().click_modal_close_window();
                 Thread.sleep(500);
 //        if (baseUrl.contains("app")) {
-            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+//            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
 //        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
 //            driver.navigate().to(baseUrl +"/companies/4/company_features");
 //        }
 //        else {
 //
-//                driver.navigate().to(baseUrl + "companies/253/company_features");
+                driver.navigate().to(baseUrl + "companies/253/company_features");
 //        }
         Thread.sleep(3000);
         BaseClass.staging5().add_atlas_feature();
@@ -1646,13 +1646,13 @@ BaseClass.staging5().clickLibrariesTab();
         BaseClass.staging5().click_modal_close_window();
         Thread.sleep(500);
 //        if (baseUrl.contains("app")) {
-            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+//            driver.navigate().to("https://app.openquire.com/companies/253/company_features");
 //        } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
 //            driver.navigate().to(baseUrl +"/companies/4/company_features");
 //        }
 //        else {
 //
-//            driver.navigate().to(baseUrl + "companies/253/company_features");
+            driver.navigate().to(baseUrl + "companies/253/company_features");
 //        }
         Thread.sleep(3000);
 

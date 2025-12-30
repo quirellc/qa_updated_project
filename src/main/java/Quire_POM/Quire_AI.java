@@ -175,7 +175,7 @@ public class Quire_AI extends ReusableAnnotations {
 @FindBy(xpath= "//input[@placeholder=\"Tell Quire AI what you're looking for...\"]")
 WebElement quire_AI_prompt_search_field;
 public void enter_quire_AI_prompt_search_field() {
-    ReusableMethodsLoggersPOM.sendKeysMethod(driver, quire_AI_prompt_search_field, "hide" ,  logger, "quire_AI_prompt_search_field");}
+    ReusableMethodsLoggersPOM.sendKeysMethod(driver, quire_AI_prompt_search_field, "ESA String Package" ,  logger, "quire_AI_prompt_search_field");}
 
     @FindBy(xpath = "//i[@class='fa fa-filter fa-lg fa-fw']")
     WebElement quire_AI_filter_button;
@@ -361,10 +361,24 @@ driver.close();
     public void verify_AI_chat_hideReport_summary_Texas_response_text() throws InterruptedException {
         String result = waitForAIResponse(AI_chat_response_text);
 
-
-
        // String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
         if ((result.contains("PCA")) && (result.contains("CBRE")) && (result.contains("Fannie Mae")) && (result.contains("Components"))) {
+            System.out.println("Chat AI response text matches ✅");
+            logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
+        } else {
+            logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");
+            System.out.println("Chat AI response text does not match ❌");
+        }
+    }
+
+    public void verify_AI_chat_summary_ESA_String_Package_response_text() throws InterruptedException {
+        String result = waitForAIResponse(AI_chat_response_text);
+        String normalized = result.toLowerCase();
+
+        if ((normalized.contains("phase i")) &&
+                (normalized.contains("environmental")) &&
+                (normalized.contains("cbre")) &&
+                (normalized.contains("astm e1527-21"))) {
             System.out.println("Chat AI response text matches ✅");
             logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
         } else {
