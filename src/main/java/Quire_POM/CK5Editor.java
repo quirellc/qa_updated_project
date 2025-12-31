@@ -61,6 +61,8 @@ WebElement text_body;
         ReusableMethodsLoggersPOM.clickEnterThenPaste_method(driver, text_body, logger, " text_introPages_body");
     }
 
+
+
     //div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']
     @FindBy(xpath = "//div[@class='quire-smarttable-rt-editor-container']//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']//p[contains(text(),'QA Automation line 1')]")
     WebElement text_body_firstLine_cell;

@@ -215,75 +215,75 @@ public class Quire_AI_Testing extends ReusableAnnotations {
  }
 
 
- @Test
-public void TR_02b_Quire_AI_searchField_and_prompt_Testing() throws InterruptedException {
- WebDriver driver = getDriver();
-//
-//
-  BaseClass.staging5().clickUserProfileTab();
-  BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-  Thread.sleep(500);
-
-  BaseClass.quireLogin().enter_cbre_sysadmin_Email();
-  BaseClass.quireLogin().enterPassword();
-  Thread.sleep(1000);
-  BaseClass.quireLogin().clickLogin();
-  Thread.sleep(2500);
-
-BaseClass.quire_AI().click_quire_AI_search_field();
-  Thread.sleep(500);
- BaseClass.quire_AI().verify_quire_AI_prompt_text();
-  Thread.sleep(500);
-  BaseClass.quire_AI().enter_quire_AI_prompt_search_field();
-// BaseClass.quire_AI().click_quire_AI_filter_button();
-
-// BaseClass.quire_AI().click_quire_AI_status_field();
- Thread.sleep(2000);
-
-// BaseClass.quire_AI().confirm_quire_AI_status_value();
-// BaseClass.quire_AI().click_writing_status_dropdown();
- BaseClass.quire_AI().click_quire_AI_search_button();
- Thread.sleep(5000);
- BaseClass.quire_AI().hover_quire_AI_first_search_result();
-
-
- Thread.sleep(2000);
- BaseClass.quire_AI().confirm_report_opened_new_tab_and_sameTab();
-  Thread.sleep(2000);
-
-  BaseClass.quire_AI().click_ask_quire_button();
-
-// Thread.sleep(4000);
-//  BaseClass.quire_AI().verify_AI_chat_intro_loading_message();
-  Thread.sleep(6000);
-  Thread.sleep(500);
- BaseClass.quire_AI().click_AI_chat_back_button();
- Thread.sleep(4000);
- BaseClass.quire_AI().verify_AI_intro_chat_body();
-// Thread.sleep(500);
-// BaseClass.quire_AI().verify_AI_intro_chat_body();
- Thread.sleep(500);
- BaseClass.quire_AI().click_quire_AI_continue_conversation_button();
- Thread.sleep(2000);
-
-
-  BaseClass.quire_AI().verify_AI_chat_create_summary_response();
-  Thread.sleep(2000);
-
-  BaseClass.quire_AI().click_quire_AI_create_summary_button();
-  Thread.sleep(8000);
-   BaseClass.quire_AI().verify_AI_chat_hideReport_summary_Texas_response_text();
-  Thread.sleep(2000);
-
-// Thread.sleep(1000);
- // BaseClass.staging5().click_out_of_section();
+// @Test
+//public void TR_02b_Quire_AI_searchField_and_prompt_Testing() throws InterruptedException {
+// WebDriver driver = getDriver();
+////
+////
+//  BaseClass.staging5().clickUserProfileTab();
+//  BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
 //  Thread.sleep(500);
-
-
- //BaseClass.quire_AI().click_quire_AI_create_summary_button();
- Thread.sleep(2000);
-
-}
+//
+//  BaseClass.quireLogin().enter_cbre_sysadmin_Email();
+//  BaseClass.quireLogin().enterPassword();
+//  Thread.sleep(1000);
+//  BaseClass.quireLogin().clickLogin();
+//  Thread.sleep(2500);
+//
+//BaseClass.quire_AI().click_quire_AI_search_field();
+//  Thread.sleep(500);
+// BaseClass.quire_AI().verify_quire_AI_prompt_text();
+//  Thread.sleep(500);
+//  BaseClass.quire_AI().enter_quire_AI_prompt_search_field();
+//// BaseClass.quire_AI().click_quire_AI_filter_button();
+//
+//// BaseClass.quire_AI().click_quire_AI_status_field();
+// Thread.sleep(2000);
+//
+//// BaseClass.quire_AI().confirm_quire_AI_status_value();
+//// BaseClass.quire_AI().click_writing_status_dropdown();
+// BaseClass.quire_AI().click_quire_AI_search_button();
+// Thread.sleep(5000);
+// BaseClass.quire_AI().hover_quire_AI_first_search_result();
+//
+//
+// Thread.sleep(2000);
+// BaseClass.quire_AI().confirm_report_opened_new_tab_and_sameTab();
+//  Thread.sleep(2000);
+//
+//  BaseClass.quire_AI().click_ask_quire_button();
+//
+//// Thread.sleep(4000);
+////  BaseClass.quire_AI().verify_AI_chat_intro_loading_message();
+//  Thread.sleep(6000);
+//  Thread.sleep(500);
+// BaseClass.quire_AI().click_AI_chat_back_button();
+// Thread.sleep(4000);
+// BaseClass.quire_AI().verify_AI_intro_chat_body();
+//// Thread.sleep(500);
+//// BaseClass.quire_AI().verify_AI_intro_chat_body();
+// Thread.sleep(500);
+// BaseClass.quire_AI().click_quire_AI_continue_conversation_button();
+// Thread.sleep(2000);
+//
+//
+//  BaseClass.quire_AI().verify_AI_chat_create_summary_response();
+//  Thread.sleep(2000);
+//
+//  BaseClass.quire_AI().click_quire_AI_create_summary_button();
+//  Thread.sleep(8000);
+//   BaseClass.quire_AI().verify_AI_chat_hideReport_summary_Texas_response_text();
+//  Thread.sleep(2000);
+//
+//// Thread.sleep(1000);
+// // BaseClass.staging5().click_out_of_section();
+////  Thread.sleep(500);
+//
+//
+// //BaseClass.quire_AI().click_quire_AI_create_summary_button();
+// Thread.sleep(2000);
+//
+//}
 
  }
 

@@ -71,10 +71,10 @@ public class Quire_AI extends ReusableAnnotations {
     public void click_quire_AI_dropDown_summarize_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_dropDown_summarize_button, logger, "quire_AI_dropDown_summarize_button");}
 
-    @FindBy(xpath = "//span[contains(text(), 'Thesaurus')]")
-    WebElement quire_AI_dropDown_thesaurus_button;
-    public void click_quire_AI_dropDown_thesaurus_button() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_dropDown_thesaurus_button, logger, "quire_AI_dropDown_thesaurus_button");}
+    @FindBy(xpath = "//span[contains(text(), 'Suggest References')]")
+    WebElement quire_AI_dropDown_suggest_references_button;
+    public void click_quire_AI_dropDown_suggest_references_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, quire_AI_dropDown_suggest_references_button, logger, "quire_AI_dropDown_suggest_references_button");}
 
     @FindBy(xpath = "//span[contains(text(), 'Technical')]")
     WebElement  quire_AI_dropDown_technical_button;
@@ -98,21 +98,39 @@ public class Quire_AI extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.verifyEmptyText(driver, quire_AI_empty_prompt, logger, "quire_AI_empty_prompt");}
        // ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_empty_prompt, true, logger, "quire_AI_empty_prompt");}
 
-    @FindBy(xpath = "//p[contains(text(), 'QA Automation Testing Script') and contains(text(), 'Spell Check') and contains(text(), 'quality assurance')]")
+    @FindBy(xpath = "//p[contains(text(), 'CBRE, Inc.') and contains(text(), 'Phase I Environmental Site Assessment') and contains(text(), 'ASTM E 1527-21') and contains(text(), '40 C.F.R. Part 312')]")
     WebElement quire_AI_summarized_generated_prompt;
-    
+
     public void verify_quire_AI_summarize_generated_prompt() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_summarized_generated_prompt, true, logger, "quire_AI_summarized_generated_prompt");}
+    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'CBRE, Inc.') and contains(text(), 'Phase I Environmental Site Assessment') and contains(text(), 'ASTM E 1527-21')]")
+    WebElement quire_AI_summarize_coverLetter_inserted_text;
 
-    @FindBy(xpath = "//li[contains(text(),': quality assurance, quality control, inspection')]")
-    WebElement quire_AI_thesaurus_generated_prompt;
-    public void verify_quire_AI_thesaurus_generated_prompt() {
-        ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_thesaurus_generated_prompt, true, logger, "quire_AI_thesaurus_generated_prompt");}
+    public void verify_quire_AI_summarize_coverLetter_inserted_text() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_summarize_coverLetter_inserted_text, true, logger, "quire_AI_summarize_coverLetter_inserted_text");}
+    @FindBy(xpath = "//p[contains(text(), 'Environmental Site Assessment') and contains(text(), 'Wawa') and contains(text(), 'placeholders')]")
+    WebElement quire_AI_summarize_titlePage_generated_prompt;
+    public void verify_quire_AI_summarize_titlePage_generated_prompt() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_summarize_titlePage_generated_prompt, true, logger, "quire_AI_summarize_titlePage_generated_prompt");}
 
+    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'Environmental Site Assessment') and contains(text(), 'Wawa') and contains(text(), 'placeholders')]")
+    WebElement quire_AI_summarize_titlePage_inserted_text;
+    public void verify_quire_AI_summarize_titlePage_inserted_text() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_summarize_titlePage_inserted_text, true, logger, " quire_AI_summarize_titlePage_inserted_text");}
+
+    @FindBy(xpath = "//li[contains(., 'ASTM International') and contains(., 'E1527-21')]")
+    WebElement quire_AI_suggest_references_generated_prompt;
+    public void verify_quire_AI_suggest_references_generated_prompt() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_suggest_references_generated_prompt, true, logger, "quire_AI_suggest_references_generated_prompt");}
+
+    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'ASTM International') and contains(text(), 'E1527-21') and contains(text(), 'Environmental Site Assessment')]")
+    WebElement quire_AI_suggest_references_inserted_text;
+    public void verify_quire_AI_suggest_references_inserted_text() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_suggest_references_inserted_text, true, logger, "quire_AI_suggest_references_inserted_text");}
 
     @FindBy(xpath = "//div[@class='ck ck-ai-form__content-area']//p[contains(text(), 'Automated Quality Assurance') and contains(text(), 'Validation') and contains(text(), 'Lexical')]")
-    WebElement quire_AI_technical_tone_generated_prompt;
-    public void verify_quire_AI_technical_tone_generated_prompt() {
+    WebElement quire_AI_technical_tone_generated_prompt1;
+    public void verify_quire_AI_technical_tone_generated_prompt1() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_technical_tone_generated_prompt, true, logger, "quire_AI_technical_tone_generated_prompt");}
 
 
@@ -121,6 +139,28 @@ public class Quire_AI extends ReusableAnnotations {
     public void verify_quire_AI_technical_tone_generated_text() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_technical_tone_generated_text, true, logger, "quire_AI_technical_tone_generated_text");}
 
+
+
+    @FindBy(xpath = "//span[contains(text(), 'Interior architectural surfaces') and contains(text(), 'gypsum board') and contains(text(), 'resilient flooring') and contains(text(), 'concrete')]")
+    WebElement quire_AI_technical_tone_generated_prompt;
+    public void verify_quire_AI_technical_tone_generated_prompt() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_technical_tone_generated_prompt, true, logger, " quire_AI_technical_tone_generated_prompt");}
+
+    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'Interior architectural surfaces') and contains(text(), 'gypsum board') and contains(text(), 'resilient flooring')]")
+    WebElement quire_AI_technical_tone_inserted_text;
+    public void verify_quire_AI_technical_tone_inserted_text() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_technical_tone_inserted_text, true, logger, " quire_AI_technical_tone_inserted_text");}
+
+    @FindBy(xpath = "//span[contains(text(),'Walls of painted drywall; floors of carpet, resili')]")
+    WebElement smartTable_cell_text_to_select;
+    public void click_smartTable_cell_text_to_select() {
+        ReusableMethodsLoggersPOM.doubleClickMethod(driver, smartTable_cell_text_to_select, logger, "smartTable_cell_text_to_select");}
+
+
+    @FindBy(xpath = "//div[@aria-label='Rich Text Editor. Editing area: main. Press ⌥0 for help.']")
+    WebElement TC_body_text;
+    public void select_all_TC_body_text() {
+        ReusableMethodsLoggersPOM.selectAll_method(driver, TC_body_text, logger, "TC_body_text");}
 
 
 

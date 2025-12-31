@@ -834,7 +834,7 @@ for (int i = 0; i < search_results_int; i++) {
         ReusableMethodsLoggersPOM.clickMethod(driver, AddContentRow_instruction, logger, "AddContentRow_instruction");
     }
 
-    @FindBy(xpath = "//section[@class='intro-section editor-section lockable js-spellCheckContent']")
+    @FindBy(xpath = "//section[contains(@class, 'intro-section editor-section lockable js-spellCheckContent')]")
     WebElement addContentRow;
     public void clickAddContentRow_introPages() {
         ReusableMethodsLoggersPOM.clickMethod(driver, addContentRow, logger, "addContentRow");}

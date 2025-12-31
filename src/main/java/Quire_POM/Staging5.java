@@ -2976,6 +2976,20 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         ReusableMethodsLoggersPOM.clickMethod(driver, revert_button_firstLink, logger, "revert_button_firstLink");
     }
 
+    @FindBy(xpath = "(//a[contains(@class,'restore-revision-action')])[2]")
+    WebElement revert_button_secondLink;
+
+    public void click_revert_button_secondLink() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, revert_button_secondLink, logger, "revert_button_secondLink");
+    }
+
+    @FindBy(xpath = "(//a[@class='has-tooltip js-revision-action-link'])[2]")
+    WebElement smartTable_revisions_icon_second;
+
+    public void click_smartTable_revisions_icon_second() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, smartTable_revisions_icon_second, logger, "smartTable_revisions_icon_second");
+    }
+
     @FindBy(xpath = "//a[normalize-space()='Done!']")
     WebElement done_icon_after_revision;
 
@@ -3003,11 +3017,19 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         ReusableMethodsLoggersPOM.clickMethod(driver, revisions_grey_icon, logger, "revisions_grey_icon");
     }
 
-    @FindBy(xpath = "//section[@class='switchboard CT-hide']//i[contains(@class, 'fa fa-history')]")
+    @FindBy(xpath = "//section[contains(@class, 'switchboard')]//i[contains(@class, 'fa fa-history')]")
     WebElement intro_pages_revisions_icon;
 
-    public void click_intro_pages_revisions_icon() {
+    @FindBy(xpath = "//a[@class='js-closePanel']")
+    WebElement close_button_popup;
+
+
+    public void click_intro_pages_revisions_icon() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, intro_pages_revisions_icon, logger, "intro_pages_revisions_icon");
+        Thread.sleep(1000);
+        if (close_button_popup.isDisplayed()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, intro_pages_revisions_icon, logger, "intro_pages_revisions_icon");
+        }
     }
 
     @FindBy(xpath = "//ul[@class='insert_revision_items list-group js-revisions-container']")
