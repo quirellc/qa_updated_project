@@ -68,6 +68,28 @@ public class SendEmailWithAttachment extends ReusableAnnotations {
         return formatYear.format(calendar.getTime());
     }
 
+    private void renameLatestDownloadedFile(String newFileName) {
+        String directoryPath = System.getProperty("user.dir") + "/src/main/java/downloads";
+        File directory = new File(directoryPath);
+        
+        if (directory.isDirectory()) {
+            File[] files = directory.listFiles((dir, name) -> name.toLowerCase().endsWith(".xlsx"));
+            if (files != null && files.length > 0) {
+                // Sort files by last modified time to get the most recent
+                java.util.Arrays.sort(files, java.util.Comparator.comparingLong(File::lastModified));
+                File latestFile = files[files.length - 1];
+                
+                // Rename the file
+                File renamedFile = new File(directory, newFileName);
+                if (latestFile.renameTo(renamedFile)) {
+                    System.out.println("File renamed to: " + newFileName);
+                } else {
+                    System.out.println("Failed to rename file");
+                }
+            }
+        }
+    }
+
     @Test
     public void TR_001_User_Login()  throws InterruptedException, IOException {
         WebDriver driver = getDriver();
@@ -110,7 +132,11 @@ public class SendEmailWithAttachment extends ReusableAnnotations {
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().open_company_usage_reports_link();
-
+        Thread.sleep(2000);
+        
+        // Rename the downloaded file for previous month
+        renameLatestDownloadedFile("company_usage_report_" + previousMonth + "_" + previousMonthYear + ".xlsx");
+        
         Thread.sleep(1000);
         driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + currentMonth + "&year=" + currentYear);
         Thread.sleep(1000);
@@ -133,6 +159,11 @@ public class SendEmailWithAttachment extends ReusableAnnotations {
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().open_company_usage_reports_link();
+        Thread.sleep(2000);
+        
+        // Rename the downloaded file for current month
+        renameLatestDownloadedFile("company_usage_report_" + currentMonth + "_" + currentYear + ".xlsx");
+        
         Thread.sleep(1500);
 //        Thread.sleep(20000);
 //        BaseClass.staging5().click_export_to_excel();
@@ -223,7 +254,7 @@ public class SendEmailWithAttachment extends ReusableAnnotations {
 
             // Add the email body part
             BodyPart messageBodyPart1 = new MimeBodyPart();
-            messageBodyPart1.setText("The first attachment should be previous Month, the second attachment is current month.");
+            messageBodyPart1.setText("Please find attached the company usage reports for the previous and current month. Each file is labeled with the corresponding month and year for your reference.");
             multipart.addBodyPart(messageBodyPart1);
 
             // Specify the directory containing the files you want to attach

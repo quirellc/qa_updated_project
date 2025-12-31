@@ -19,56 +19,46 @@ import java.util.Calendar;
 import java.util.Properties;
 
 public class SendEmailWithAttachment_test extends ReusableAnnotations {
-    private String getCurrentMonth() {
-        // Get the current date
-        Calendar calendar = Calendar.getInstance();
-
-        // Format the current month
-        DateFormat formatMonth = new SimpleDateFormat("MM");
-        return formatMonth.format(calendar.getTime());
-    }
-
-    private String getPreviousMonth() {
-        // Get the current date
-        Calendar calendar = Calendar.getInstance();
-
-        // Subtract one month
-        calendar.add(Calendar.MONTH, -1);
-
-        // Format the previous month
-        DateFormat formatMonth = new SimpleDateFormat("MM");
-        return formatMonth.format(calendar.getTime());
-    }
-
-    private String getCurrentYear() {
-        // Get the current date
-        Calendar calendar = Calendar.getInstance();
-
-        // Format the current year
-        DateFormat formatYear = new SimpleDateFormat("yyyy");
-        return formatYear.format(calendar.getTime());
-    }
-
-    private String getPreviousMonthYear() {
-        // Get the current date
-        Calendar calendar = Calendar.getInstance();
-
-        // Subtract one month
-        calendar.add(Calendar.MONTH, -1);
-
-        // Format the year of the previous month
-        DateFormat formatYear = new SimpleDateFormat("yyyy");
-        return formatYear.format(calendar.getTime());
+    private void renameLatestDownloadedFile(String newFileName) {
+        String directoryPath = System.getProperty("user.dir") + "/src/main/java/downloads";
+        File directory = new File(directoryPath);
+        
+        if (directory.isDirectory()) {
+            File[] files = directory.listFiles((dir, name) -> name.toLowerCase().endsWith(".xlsx"));
+            if (files != null && files.length > 0) {
+                // Sort files by last modified time to get the most recent
+                java.util.Arrays.sort(files, java.util.Comparator.comparingLong(File::lastModified));
+                File latestFile = files[files.length - 1];
+                
+                // Rename the file
+                File renamedFile = new File(directory, newFileName);
+                if (latestFile.renameTo(renamedFile)) {
+                    System.out.println("File renamed to: " + newFileName);
+                } else {
+                    System.out.println("Failed to rename file");
+                }
+            }
+        }
     }
 
     @Test
     public void TR_001_User_Login()  throws InterruptedException, IOException {
         WebDriver driver = getDriver();
 
-        String currentMonth = getCurrentMonth();
-        String previousMonth = getPreviousMonth();
-        String currentYear = getCurrentYear();
-        String previousMonthYear = getPreviousMonthYear();
+        // Set current date to January 1, 2026
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2026, Calendar.JANUARY, 1);
+        
+        // Get current month and year
+        DateFormat formatMonth = new SimpleDateFormat("MM");
+        DateFormat formatYear = new SimpleDateFormat("yyyy");
+        String currentMonth = formatMonth.format(calendar.getTime());
+        String currentYear = formatYear.format(calendar.getTime());
+        
+        // Get previous month and year
+        calendar.add(Calendar.MONTH, -1);
+        String previousMonth = formatMonth.format(calendar.getTime());
+        String previousMonthYear = formatYear.format(calendar.getTime());
 
 
 //  logger.log(LogStatus.PASS, "Browser Name: " + driver.getClass().getSimpleName());
@@ -103,7 +93,11 @@ public class SendEmailWithAttachment_test extends ReusableAnnotations {
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().open_company_usage_reports_link();
-
+        Thread.sleep(2000);
+        
+        // Rename the downloaded file for previous month (December 2025)
+        renameLatestDownloadedFile("company_usage_report_12_2025.xlsx");
+        
         Thread.sleep(1000);
         driver.navigate().to("https://app.openquire.com/company_usage_reports?month=" + currentMonth + "&year=" + currentYear);
         Thread.sleep(1000);
@@ -126,6 +120,11 @@ public class SendEmailWithAttachment_test extends ReusableAnnotations {
         BaseClass.staging5().click_active_notification_button();
         Thread.sleep(500);
         BaseClass.staging5().open_company_usage_reports_link();
+        Thread.sleep(2000);
+        
+        // Rename the downloaded file for current month (January 2026)
+        renameLatestDownloadedFile("company_usage_report_1_2026.xlsx");
+        
         Thread.sleep(1500);
 //        Thread.sleep(20000);
 //        BaseClass.staging5().click_export_to_excel();
@@ -209,7 +208,7 @@ public class SendEmailWithAttachment_test extends ReusableAnnotations {
             // Set the recipient address
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ibrarj@openquire.com, hetnam@openquire.com"));
             // Set the subject of the email
-            message.setSubject("QA Updated project Company Usage Reports Test Email:  " + previousMonth + " -> " + currentMonth + " - QA Automated");
+            message.setSubject("QA  Company Usage Reports Test Email:  " + previousMonth + " -> " + currentMonth + " - QA Automated");
 
             // Create a Multipart object to hold the email body and attachments
             // Create a Multipart object to hold the email body and attachments
@@ -217,7 +216,7 @@ public class SendEmailWithAttachment_test extends ReusableAnnotations {
 
             // Add the email body part
             BodyPart messageBodyPart1 = new MimeBodyPart();
-            messageBodyPart1.setText("The first attachment should be previous Month, the second attachment is current month.");
+            messageBodyPart1.setText("Please find attached the company usage reports for the previous and current month. Each file is labeled with the corresponding month and year for your reference.");
             multipart.addBodyPart(messageBodyPart1);
 
             // Specify the directory containing the files you want to attach
