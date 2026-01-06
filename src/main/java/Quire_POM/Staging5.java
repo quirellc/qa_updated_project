@@ -3026,7 +3026,7 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
 
     public void click_intro_pages_revisions_icon() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, intro_pages_revisions_icon, logger, "intro_pages_revisions_icon");
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         if (close_button_popup.isDisplayed()) {
             ReusableMethodsLoggersPOM.clickMethod(driver, intro_pages_revisions_icon, logger, "intro_pages_revisions_icon");
         }

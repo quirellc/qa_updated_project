@@ -1636,8 +1636,8 @@ public static void verifyBooleanStatement(WebDriver driver, WebElement xpath, bo
 
             // ✅ If we expected false, treat it as PASS instead of fail
             if (!expectedValue) {
-                System.out.println("\n" + elementName + "\nVisibility: false - as expected ✅\n");
-                logger.log(LogStatus.PASS, "\n" + elementName + "\nVisibility: false - as expected ✅");
+                System.out.println("\n" + elementName + "\n✅Visibility: false - as expected ✅\n");
+                logger.log(LogStatus.PASS, "\n" + elementName + "\n✅Visibility: false - as expected ✅");
                 return;
             }
 
@@ -1649,8 +1649,8 @@ public static void verifyBooleanStatement(WebDriver driver, WebElement xpath, bo
         }
 
         if (elementState == expectedValue) {
-            System.out.println("\n" + elementName + "\nVisibility: " + elementState + " - as expected ✅\n");
-            logger.log(LogStatus.PASS, "\n" + elementName + "\nVisibility: " + elementState + " - as expected ✅");
+            System.out.println("\n" + elementName + "\n✅Visibility: " + elementState + " - as expected ✅\n");
+            logger.log(LogStatus.PASS, "\n" + elementName + "\n✅Visibility: " + elementState + " - as expected ✅");
             return;
         } else {
             attempt++;

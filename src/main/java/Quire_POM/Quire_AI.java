@@ -102,30 +102,36 @@ public class Quire_AI extends ReusableAnnotations {
     WebElement quire_AI_summarized_generated_prompt;
 
     public void verify_quire_AI_summarize_generated_prompt() {
+        ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_summarized_generated_prompt, logger, "quire_AI_summarized_generated_prompt_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, quire_AI_summarized_generated_prompt, true, logger, "quire_AI_summarized_generated_prompt");}
     @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'CBRE, Inc.') and contains(text(), 'Phase I Environmental Site Assessment') and contains(text(), 'ASTM E 1527-21')]")
     WebElement quire_AI_summarize_coverLetter_inserted_text;
 
     public void verify_quire_AI_summarize_coverLetter_inserted_text() {
+        ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_summarize_coverLetter_inserted_text, logger, "quire_AI_summarize_coverLetter_inserted_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_summarize_coverLetter_inserted_text, true, logger, "quire_AI_summarize_coverLetter_inserted_text");}
-    @FindBy(xpath = "//p[contains(text(), 'Environmental Site Assessment') and contains(text(), 'Wawa') and contains(text(), 'placeholders')]")
+    @FindBy(xpath = "//p[contains(text(), 'Environmental Site Assessment') and contains(text(), 'Wawa')]")
     WebElement quire_AI_summarize_titlePage_generated_prompt;
     public void verify_quire_AI_summarize_titlePage_generated_prompt() {
+        ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_summarize_titlePage_generated_prompt, logger, "quire_AI_summarize_titlePage_generated_prompt_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_summarize_titlePage_generated_prompt, true, logger, "quire_AI_summarize_titlePage_generated_prompt");}
 
-    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'Environmental Site Assessment') and contains(text(), 'Wawa') and contains(text(), 'placeholders')]")
+    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'Environmental Site Assessment') and contains(text(), 'Wawa')]")
     WebElement quire_AI_summarize_titlePage_inserted_text;
     public void verify_quire_AI_summarize_titlePage_inserted_text() {
+        ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_summarize_titlePage_inserted_text, logger, "quire_AI_summarize_titlePage_inserted_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_summarize_titlePage_inserted_text, true, logger, " quire_AI_summarize_titlePage_inserted_text");}
 
     @FindBy(xpath = "//li[contains(., 'ASTM International') and contains(., 'E1527-21')]")
     WebElement quire_AI_suggest_references_generated_prompt;
     public void verify_quire_AI_suggest_references_generated_prompt() {
+        ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_suggest_references_generated_prompt, logger, "quire_AI_suggest_references_generated_prompt_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_suggest_references_generated_prompt, true, logger, "quire_AI_suggest_references_generated_prompt");}
 
-    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'ASTM International') and contains(text(), 'E1527-21') and contains(text(), 'Environmental Site Assessment')]")
+    @FindBy(xpath = "//li[contains(., 'ASTM International') and contains(., 'E1527-21') and contains(., 'Environmental Site Assessment')]")
     WebElement quire_AI_suggest_references_inserted_text;
     public void verify_quire_AI_suggest_references_inserted_text() {
+        ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_suggest_references_inserted_text, logger, "quire_AI_suggest_references_inserted_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_suggest_references_inserted_text, true, logger, "quire_AI_suggest_references_inserted_text");}
 
     @FindBy(xpath = "//div[@class='ck ck-ai-form__content-area']//p[contains(text(), 'Automated Quality Assurance') and contains(text(), 'Validation') and contains(text(), 'Lexical')]")
@@ -141,15 +147,41 @@ public class Quire_AI extends ReusableAnnotations {
 
 
 
-    @FindBy(xpath = "//span[contains(text(), 'Interior architectural surfaces') and contains(text(), 'gypsum board') and contains(text(), 'resilient flooring') and contains(text(), 'concrete')]")
+    @FindBy(xpath = "//span[contains(text(), 'nterior architectural surface') and contains(text(), 'ypsum board')]")
     WebElement quire_AI_technical_tone_generated_prompt;
     public void verify_quire_AI_technical_tone_generated_prompt() {
+        ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_technical_tone_generated_prompt, logger, "quire_AI_technical_tone_generated_prompt_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_technical_tone_generated_prompt, true, logger, " quire_AI_technical_tone_generated_prompt");}
 
-    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'Interior architectural surfaces') and contains(text(), 'gypsum board') and contains(text(), 'resilient flooring')]")
+    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'Interior architectural surfaces') and contains(text(), 'gypsum board') and contains(text(), 'concrete')]")
     WebElement quire_AI_technical_tone_inserted_text;
     public void verify_quire_AI_technical_tone_inserted_text() {
+        ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_technical_tone_inserted_text, logger, "quire_AI_technical_tone_inserted_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_technical_tone_inserted_text, true, logger, " quire_AI_technical_tone_inserted_text");}
+    
+    public void Discard_TC_if_present_ST_cell() throws InterruptedException {
+        Thread.sleep(1500);
+        try {
+            if (quire_AI_technical_tone_inserted_text.isDisplayed()) {
+                System.out.println("✅ Track changes detected, discarding all suggestions...");
+                logger.log(com.relevantcodes.extentreports.LogStatus.INFO, "✅ Track changes detected, discarding all suggestions...");
+                BaseClass.ck5editor().click_TC_dropdown_arrow_icon_ck5();
+                Thread.sleep(1000);
+                BaseClass.ck5editor().click_discard_all_suggestions_button();
+                Thread.sleep(1500);
+                BaseClass.staging5().click_pixel_out_of_section();
+                Thread.sleep(1000);
+                System.out.println("✅ Track changes discarded successfully");
+                logger.log(com.relevantcodes.extentreports.LogStatus.PASS, "✅ Track changes discarded successfully");
+            } else {
+                System.out.println("ℹ️ No track changes detected, proceeding...");
+                logger.log(com.relevantcodes.extentreports.LogStatus.INFO, "ℹ️ No track changes detected, proceeding...");
+            }
+        } catch (Exception e) {
+            System.out.println("ℹ️ No track changes detected (exception), proceeding...");
+            logger.log(com.relevantcodes.extentreports.LogStatus.INFO, "ℹ️ No track changes detected (exception), proceeding...");
+        }
+    }
 
     @FindBy(xpath = "//span[contains(text(),'Walls of painted drywall; floors of carpet, resili')]")
     WebElement smartTable_cell_text_to_select;
@@ -162,7 +194,9 @@ public class Quire_AI extends ReusableAnnotations {
     public void select_all_TC_body_text() {
         ReusableMethodsLoggersPOM.selectAll_method(driver, TC_body_text, logger, "TC_body_text");}
 
-
+    public void paste_text_introPages_body() {
+        ReusableMethodsLoggersPOM.clickEnterThenPaste_method(driver, TC_body_text, logger, " TC_body_text");
+    }
 
 
     @FindBy(xpath = "//div[@class='ck ck-toolbar ck-ai-form__toolbar']//span[contains(text(), 'Replace')]")

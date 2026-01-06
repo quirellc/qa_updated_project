@@ -934,6 +934,13 @@ WebElement instruction_text_ck5;
     public void click_TC_dropdown_arrow_icon_ck5() {
         ReusableMethodsLoggersPOM.clickMethod(driver, TC_dropdown_arrow_icon_ck5, logger, "TC_dropdown_arrow_icon_ck5");}
 
+    @FindBy(xpath = "//span[contains(text(), 'Discard all suggestions')]")
+    WebElement discard_all_suggestions_button;
+    public void click_discard_all_suggestions_button() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, discard_all_suggestions_button, logger, "discard_all_suggestions_button");}
+
+    
+
     @FindBy(xpath = "//span[contains(@class, 'ck-suggestion-marker ck-suggestion-marker-')]")
     List <WebElement> TC_highlights;
     public void count_TC_highlights() {
