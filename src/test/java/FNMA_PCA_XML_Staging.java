@@ -2,6 +2,7 @@ import Quire_POM.BaseClass;
 import com.relevantcodes.extentreports.LogStatus;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
@@ -56,56 +57,61 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
     public void TR001a_ck5_and_other_feature_check() throws InterruptedException {
 
         WebDriver driver = getDriver();
-        BaseClass.staging5().clickUserProfileTab();
-        Thread.sleep(500);
-
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-//enter root user
-        BaseClass.quireLogin().enterRootUserEmail();
-        BaseClass.quireLogin().enterPassword();
-        //Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(500);
-        BaseClass.staging5().click_modal_close_window();
-        Thread.sleep(500);
-      //  if (baseUrl.contains("app")) {
-      //      driver.navigate().to("https://app.openquire.com/companies/253/company_features");
-      //  } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
-      //      driver.navigate().to( baseUrl + "/companies/4/company_features");
-     //   }
-      //  else {
-
-            driver.navigate().to(baseUrl + "companies/253/company_features");
-      //  }
-        Thread.sleep(1000);
-        if (driver instanceof FirefoxDriver) {
+        if (driver instanceof ChromeDriver) {
             Thread.sleep(8000);
 
-        }
+
+            BaseClass.staging5().clickUserProfileTab();
+            Thread.sleep(500);
+
+            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+            BaseClass.quireLogin().enterRootUserEmail();
+            BaseClass.quireLogin().enterPassword();
+            //Thread.sleep(1000);
+            BaseClass.quireLogin().clickLogin();
+            Thread.sleep(500);
+            BaseClass.staging5().click_modal_close_window();
+            Thread.sleep(500);
+            //  if (baseUrl.contains("app")) {
+            //      driver.navigate().to("https://app.openquire.com/companies/253/company_features");
+            //  } else if (baseUrl.contains("staging3") || baseUrl.contains("devops")) {
+            //      driver.navigate().to( baseUrl + "/companies/4/company_features");
+            //   }
+            //  else {
+
+            driver.navigate().to(baseUrl + "companies/253/company_features");
+            //  }
+            Thread.sleep(1000);
 
 
-        BaseClass.staging5().register_ck5_feature_unregister_ck4_features();
-        Thread.sleep(1000);
-        BaseClass.staging5().scroll_and_click_unregister_allUsersAccessToAllReports_feature();
-        Thread.sleep(1000);
-        BaseClass.staging5().scroll_and_click_unregister_unregister_allTemplate_feature();
-        Thread.sleep(1000);
+            BaseClass.staging5().register_ck5_feature_unregister_ck4_features();
+            Thread.sleep(1000);
+            BaseClass.staging5().scroll_and_click_unregister_allUsersAccessToAllReports_feature();
+            Thread.sleep(1000);
+            BaseClass.staging5().scroll_and_click_unregister_unregister_allTemplate_feature();
+            Thread.sleep(1000);
 
-        BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
-        Thread.sleep(1000);
+            BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
+            Thread.sleep(1000);
 
 
 //log out current user, log into sysadmin atlas
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().enter_admin_Email();
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(500);
-        BaseClass.staging5().click_modal_close_window();
-        Thread.sleep(500);
+            BaseClass.staging5().clickUserProfileTab();
+            BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+            BaseClass.quireLogin().enter_admin_Email();
+            BaseClass.quireLogin().enterPassword();
+            Thread.sleep(1000);
+            BaseClass.quireLogin().clickLogin();
+            Thread.sleep(500);
+            BaseClass.staging5().click_modal_close_window();
+            Thread.sleep(500);
+        }
 
+        if (driver instanceof FirefoxDriver) {
+            Thread.sleep(15000);
+
+        }
 
     }
     @Test
