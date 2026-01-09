@@ -142,6 +142,18 @@ public class ReusableMethodsLoggersPOM {
                 System.out.println("Successfully clicked on: " + elementName);
                 logger.log(LogStatus.PASS, "Successfully clicked on: " + elementName);
                 return; // Success - exit the method
+            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+                attempt++;
+                System.out.println("\nElementClickInterceptedException encountered, attempt " + attempt + ": " + e.getMessage());
+                logger.log(LogStatus.WARNING, "Click intercepted on attempt " + attempt + ", attempting to dismiss blocking modal");
+                
+                // Try to dismiss blocking modal/dialog
+                try {
+                    dismissBlockingModal(driver, logger);
+                    Thread.sleep(500); // Brief pause after dismissing modal
+                } catch (Exception modalException) {
+                    System.out.println("Could not dismiss modal: " + modalException.getMessage());
+                }
             } catch (Exception e) {
                 attempt++;
                 // Log the exception for debugging purposes
@@ -159,6 +171,41 @@ public class ReusableMethodsLoggersPOM {
         getScreenShot(driver, "final_failure_" + elementName.replaceAll("\\s+", "_"), logger);
         throw new AssertionError(errorMessage);
     }//end of click method
+    
+    private static void dismissBlockingModal(WebDriver driver, ExtentTest logger) {
+        try {
+            // Try to find and click the "Yes, continue editing" button from the modal
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(2));
+            WebElement continueButton = shortWait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[normalize-space()='Yes, continue editing.']")));
+            continueButton.click();
+            System.out.println("✅ Dismissed blocking modal by clicking 'Yes, continue editing' button");
+            logger.log(LogStatus.INFO, "✅ Dismissed blocking modal by clicking 'Yes, continue editing' button");
+            Thread.sleep(500);
+        } catch (Exception e) {
+            // If specific button not found, try generic modal close approaches
+            try {
+                WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(1));
+                // Try to find any visible modal and click its close button or overlay
+                List<WebElement> modals = driver.findElements(By.cssSelector("div.modal.in, div.modal.show, div.bootbox.modal.in"));
+                if (!modals.isEmpty()) {
+                    // Try clicking modal backdrop or close button
+                    try {
+                        WebElement closeBtn = shortWait.until(ExpectedConditions.elementToBeClickable(
+                            By.cssSelector("button.close, button[data-dismiss='modal']")));
+                        closeBtn.click();
+                        System.out.println("✅ Dismissed modal using close button");
+                        logger.log(LogStatus.INFO, "✅ Dismissed modal using close button");
+                    } catch (Exception closeException) {
+                        System.out.println("⚠️ Modal detected but could not dismiss it");
+                        logger.log(LogStatus.WARNING, "⚠️ Modal detected but could not dismiss it");
+                    }
+                }
+            } catch (Exception genericException) {
+                // No modal found or couldn't dismiss - this is acceptable
+            }
+        }
+    }
 
     public static void clickByIndex(WebDriver driver, String xpath, int index, ExtentTest logger, String elementName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
