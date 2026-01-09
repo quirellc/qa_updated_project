@@ -147,24 +147,31 @@ public class Quire_AI extends ReusableAnnotations {
 
 
 
-    @FindBy(xpath = "//span[contains(text(), 'nterior architectural surface') and contains(text(), 'ypsum board')]")
+    @FindBy(xpath = "//div[contains(@class,'ck-ai-form__content-field') and contains(., 'nterior architectural surface') and contains(., 'ypsum board')]")
     WebElement quire_AI_technical_tone_generated_prompt;
     public void verify_quire_AI_technical_tone_generated_prompt() {
         ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_technical_tone_generated_prompt, logger, "quire_AI_technical_tone_generated_prompt_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_technical_tone_generated_prompt, true, logger, " quire_AI_technical_tone_generated_prompt");}
 
-    @FindBy(xpath = "//span[contains(@class,'ck-suggestion-marker ck-suggestion-marker-insertion') and contains(text(), 'Interior architectural surfaces') and contains(text(), 'gypsum board') and contains(text(), 'concrete')]")
-    WebElement quire_AI_technical_tone_inserted_text;
+@FindBy(xpath = "//td[contains(., 'Interior architectural surfaces') and contains(., 'ypsum board')]")
+WebElement quire_AI_technical_tone_inserted_text;
     public void verify_quire_AI_technical_tone_inserted_text() {
         ReusableMethodsLoggersPOM.captureTextMethod(driver, quire_AI_technical_tone_inserted_text, logger, "quire_AI_technical_tone_inserted_ACTUAL_TEXT");
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, quire_AI_technical_tone_inserted_text, true, logger, " quire_AI_technical_tone_inserted_text");}
-    
+
+
+    @FindBy(xpath = "//span[@class='ck-suggestion-marker ck-suggestion-marker-insertion'] | (//span[@class='ck-suggestion-marker ck-suggestion-marker-insertion'])[2]")
+    WebElement quire_AI_technical_tone_inserted_text_ST_cell;
+
+
     public void Discard_TC_if_present_ST_cell() throws InterruptedException {
         Thread.sleep(1500);
         try {
-            if (quire_AI_technical_tone_inserted_text.isDisplayed()) {
+            if (quire_AI_technical_tone_inserted_text_ST_cell.isDisplayed()) {
                 System.out.println("✅ Track changes detected, discarding all suggestions...");
                 logger.log(com.relevantcodes.extentreports.LogStatus.INFO, "✅ Track changes detected, discarding all suggestions...");
+                Thread.sleep(2000);
+
                 BaseClass.ck5editor().click_TC_dropdown_arrow_icon_ck5();
                 Thread.sleep(1000);
                 BaseClass.ck5editor().click_discard_all_suggestions_button();

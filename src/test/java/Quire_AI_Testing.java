@@ -215,76 +215,327 @@ public class Quire_AI_Testing extends ReusableAnnotations {
  }
 
 
-// @Test
-//public void TR_02b_Quire_AI_searchField_and_prompt_Testing() throws InterruptedException {
-// WebDriver driver = getDriver();
-////
-////
-//  BaseClass.staging5().clickUserProfileTab();
-//  BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-//  Thread.sleep(500);
-//
-//  BaseClass.quireLogin().enter_cbre_sysadmin_Email();
-//  BaseClass.quireLogin().enterPassword();
-//  Thread.sleep(1000);
-//  BaseClass.quireLogin().clickLogin();
-//  Thread.sleep(2500);
-//
-//BaseClass.quire_AI().click_quire_AI_search_field();
-//  Thread.sleep(500);
-// BaseClass.quire_AI().verify_quire_AI_prompt_text();
-//  Thread.sleep(500);
-//  BaseClass.quire_AI().enter_quire_AI_prompt_search_field();
-//// BaseClass.quire_AI().click_quire_AI_filter_button();
-//
-//// BaseClass.quire_AI().click_quire_AI_status_field();
-// Thread.sleep(2000);
-//
-//// BaseClass.quire_AI().confirm_quire_AI_status_value();
-//// BaseClass.quire_AI().click_writing_status_dropdown();
-// BaseClass.quire_AI().click_quire_AI_search_button();
-// Thread.sleep(5000);
-// BaseClass.quire_AI().hover_quire_AI_first_search_result();
+ @Test
+public void TR_02b_Quire_AI_searchField_and_chat_prompt_Testing() throws InterruptedException {
+ WebDriver driver = getDriver();
 //
 //
-// Thread.sleep(2000);
-// BaseClass.quire_AI().confirm_report_opened_new_tab_and_sameTab();
-//  Thread.sleep(2000);
-//
-//  BaseClass.quire_AI().click_ask_quire_button();
-//
-//// Thread.sleep(4000);
-////  BaseClass.quire_AI().verify_AI_chat_intro_loading_message();
-//  Thread.sleep(6000);
-//  Thread.sleep(500);
-// BaseClass.quire_AI().click_AI_chat_back_button();
-// Thread.sleep(4000);
-// BaseClass.quire_AI().verify_AI_intro_chat_body();
-//// Thread.sleep(500);
-//// BaseClass.quire_AI().verify_AI_intro_chat_body();
-// Thread.sleep(500);
-// BaseClass.quire_AI().click_quire_AI_continue_conversation_button();
-// Thread.sleep(2000);
-//
-//
-//  BaseClass.quire_AI().verify_AI_chat_create_summary_response();
-//  Thread.sleep(2000);
-//
-//  BaseClass.quire_AI().click_quire_AI_create_summary_button();
-//  Thread.sleep(8000);
-//   BaseClass.quire_AI().verify_AI_chat_hideReport_summary_Texas_response_text();
-//  Thread.sleep(2000);
-//
-//// Thread.sleep(1000);
-// // BaseClass.staging5().click_out_of_section();
-////  Thread.sleep(500);
-//
-//
-// //BaseClass.quire_AI().click_quire_AI_create_summary_button();
-// Thread.sleep(2000);
-//
-//}
+  BaseClass.staging5().clickUserProfileTab();
+  BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+  Thread.sleep(500);
 
+  BaseClass.quireLogin().enter_cbre_sysadmin_Email();
+  BaseClass.quireLogin().enterPassword();
+  Thread.sleep(1000);
+  BaseClass.quireLogin().clickLogin();
+  Thread.sleep(2500);
+
+BaseClass.quire_AI().click_quire_AI_search_field();
+  Thread.sleep(500);
+ BaseClass.quire_AI().verify_quire_AI_prompt_text();
+  Thread.sleep(500);
+  BaseClass.quire_AI().enter_quire_AI_prompt_search_field();
+// BaseClass.quire_AI().click_quire_AI_filter_button();
+
+// BaseClass.quire_AI().click_quire_AI_status_field();
+ Thread.sleep(2000);
+
+// BaseClass.quire_AI().confirm_quire_AI_status_value();
+// BaseClass.quire_AI().click_writing_status_dropdown();
+ BaseClass.quire_AI().click_quire_AI_search_button();
+ Thread.sleep(5000);
+ BaseClass.quire_AI().hover_quire_AI_first_search_result();
+
+
+ Thread.sleep(2000);
+ BaseClass.quire_AI().confirm_report_opened_new_tab_and_sameTab();
+  Thread.sleep(2000);
+
+  BaseClass.quire_AI().click_ask_quire_button();
+
+// Thread.sleep(4000);
+//  BaseClass.quire_AI().verify_AI_chat_intro_loading_message();
+  Thread.sleep(6000);
+  Thread.sleep(500);
+ BaseClass.quire_AI().click_AI_chat_back_button();
+ Thread.sleep(4000);
+ BaseClass.quire_AI().verify_AI_intro_chat_body();
+// Thread.sleep(500);
+// BaseClass.quire_AI().verify_AI_intro_chat_body();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_continue_conversation_button();
+ Thread.sleep(2000);
+
+
+  BaseClass.quire_AI().verify_AI_chat_create_summary_response();
+  Thread.sleep(2000);
+
+  BaseClass.quire_AI().click_quire_AI_create_summary_button();
+  Thread.sleep(8000);
+   BaseClass.quire_AI().verify_AI_chat_hideReport_summary_Texas_response_text();
+  Thread.sleep(2000);
+
+// Thread.sleep(1000);
+ // BaseClass.staging5().click_out_of_section();
+//  Thread.sleep(500);
+
+
+ //BaseClass.quire_AI().click_quire_AI_create_summary_button();
+ Thread.sleep(2000);
+
+}
+@Test
+public void TR_02c_ck5_AI_toolbar() throws InterruptedException {
+ WebDriver driver = getDriver();
+ BaseClass.staging5().clickUserProfileTab();
+ BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+ Thread.sleep(500);
+
+ BaseClass.quireLogin().enter_admin_Email();
+ BaseClass.quireLogin().enterPassword();
+ Thread.sleep(1000);
+ BaseClass.quireLogin().clickLogin();
+ Thread.sleep(2500);
+
+ driver.navigate().to("https://staging3.openquire.com/reports/1595463");
+
+//         Enable spell check and track changes
+
+ BaseClass.staging5().click_and_capture_spell_check_button();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_and_capture_track_changes_button();
+ Thread.sleep(4500);
+
+//         ========== TEST 1: Generate Content > Summarize (with Replace button) ==========
+//         Test AI Summarize feature with Stop/Try Again and Replace functionality
+ BaseClass.staging5().click_coverLetter_sectionView();
+ Thread.sleep(1000);
+ BaseClass.templatesSection().clickAddContentRow_introPages();
+ Thread.sleep(1000);
+
+ BaseClass.quire_AI().verify_quire_AI_icon_isVisible();
+ Thread.sleep(500);
+ BaseClass.quire_AI().select_all_TC_body_text();
+ Thread.sleep(500);
+
+ BaseClass.quire_AI().click_quire_AI_icon();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_icon();
+ Thread.sleep(500);
+ BaseClass.quire_AI().verify_quire_AI_dropDownItems();
+ Thread.sleep(500);
+
+ // Click Generate Content > Summarize
+ BaseClass.quire_AI().click_quire_AI_dropDown_generateContent_header_button();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_dropDown_summarize_button();
+ Thread.sleep(1000);
+ BaseClass.quire_AI().verify_quire_AI_loading_prompt();
+
+ // Test Stop button - should clear the AI response
+ BaseClass.quire_AI().click_quire_AI_stop_button();
+ Thread.sleep(500);
+ BaseClass.quire_AI().verify_quire_AI_empty_prompt();
+ Thread.sleep(500);
+
+ // Test Try Again button - should regenerate AI response
+ BaseClass.quire_AI().click_quire_AI_try_again_button();
+ Thread.sleep(5000);
+ BaseClass.quire_AI().verify_quire_AI_summarize_generated_prompt();
+ Thread.sleep(1000);
+
+ // Test Replace button - replaces editor content with AI generated text
+ BaseClass.quire_AI().click_quire_AI_replace_button();
+ Thread.sleep(500);
+ BaseClass.staging5().acceptAlert();
+ Thread.sleep(1000);
+
+ // Verify the AI text was inserted into the editor
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(1000);
+ BaseClass.quire_AI().verify_quire_AI_summarize_coverLetter_inserted_text();
+ Thread.sleep(500);
+
+ // Revert Cover Letter changes
+ BaseClass.staging5().click_coverLetter_sectionView();
+ Thread.sleep(500);
+ BaseClass.staging5().click_intro_pages_revisions_icon();
+ Thread.sleep(1000);
+
+//        BaseClass.ck5editor().click_close_button_popup();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_intro_pages_revisions_icon();
+//        Thread.sleep(1000);
+
+ BaseClass.staging5().click_revert_button_secondLink();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(500);
+
+
+ // ========== TEST 2: Generate Content > Summarize (with Copy button) ==========
+ // Test AI Copy feature - generate AI text, copy it, then paste into different section
+ BaseClass.staging5().click_title_page_sectionView();
+ Thread.sleep(1000);
+ BaseClass.templatesSection().clickAddContentRow_introPages();
+ Thread.sleep(1000);
+ BaseClass.quire_AI().select_all_TC_body_text();
+ Thread.sleep(500);
+ // Open AI toolbar and generate summarize content
+ BaseClass.quire_AI().click_quire_AI_icon();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_icon();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_dropDown_generateContent_header_button();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_dropDown_summarize_button();
+ Thread.sleep(2000);
+ BaseClass.quire_AI().verify_quire_AI_summarize_titlePage_generated_prompt();
+ Thread.sleep(1000);
+
+ // Click Copy button (copies AI text to clipboard, does NOT insert into editor)
+ BaseClass.quire_AI().click_quire_AI_copy_text_button();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(1000);
+
+ // Now paste the copied AI text into the editor manually
+ BaseClass.templatesSection().clickAddContentRow_introPages();
+ Thread.sleep(500);
+ BaseClass.quire_AI().paste_text_introPages_body();
+ Thread.sleep(500);
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(1000);
+
+ // Verify the pasted AI text appears in the editor
+ BaseClass.quire_AI().verify_quire_AI_summarize_titlePage_inserted_text();
+ Thread.sleep(500);
+
+ // Revert Title Page changes
+ BaseClass.staging5().click_title_page_sectionView();
+ Thread.sleep(500);
+ BaseClass.staging5().click_intro_pages_revisions_icon();
+ Thread.sleep(1000);
+//        BaseClass.ck5editor().click_close_button_popup();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_intro_pages_revisions_icon();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_revert_button_secondLink();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(1000);
+
+ // ========== TEST 3: Content Assistant > Suggest References ==========
+ // Test AI Suggest References feature in Executive Summary intro page
+
+
+ BaseClass.staging5().click_executive_summary_sectionView();
+ Thread.sleep(1000);
+ BaseClass.templatesSection().clickAddContentRow_introPages();
+ Thread.sleep(1000);
+ BaseClass.quire_AI().select_all_TC_body_text();
+ Thread.sleep(500);
+ // Open AI toolbar and click Content Assistant > Thesaurus
+ BaseClass.quire_AI().click_quire_AI_icon();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_icon();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_dropDown_contentAssistant_header_button();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_dropDown_suggest_references_button();
+ Thread.sleep(6000);
+
+ // Verify thesaurus suggestions appear
+ BaseClass.quire_AI().verify_quire_AI_suggest_references_generated_prompt();
+ Thread.sleep(1000);
+
+ // Replace text with thesaurus suggestion
+ BaseClass.quire_AI().click_quire_AI_replace_button();
+ Thread.sleep(500);
+ BaseClass.staging5().acceptAlert();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(1500);
+
+ // Verify the thesaurus replacement persists
+ BaseClass.quire_AI().verify_quire_AI_suggest_references_inserted_text();
+ Thread.sleep(500);
+ // Revert Executive Summary changes
+ BaseClass.staging5().click_executive_summary_sectionView();
+ Thread.sleep(500);
+ BaseClass.staging5().click_intro_pages_revisions_icon();
+ Thread.sleep(1000);
+//        BaseClass.ck5editor().click_close_button_popup();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_intro_pages_revisions_icon();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_revert_button_secondLink();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(2000);
+
+//         ========== TEST 4: Adjust Content Tone > Technical ==========
+//         Test AI Tone Adjustment - converts text to technical tone in Default Section SmartTable
+
+
+
+ driver.navigate().refresh();
+ Thread.sleep(2000);
+ BaseClass.staging5().click_default_section_title();
+ Thread.sleep(1000);
+ BaseClass.quire_AI().click_smartTable_cell_text_to_select();
+ Thread.sleep(1000);
+ //  BaseClass.quire_AI().Discard_TC_if_present_ST_cell();
+ Thread.sleep(1000);
+ //   BaseClass.quire_AI().click_smartTable_cell_text_to_select();
+ Thread.sleep(1000);
+ BaseClass.quire_AI().select_all_TC_body_text();
+ Thread.sleep(500);
+ // Open AI toolbar and click Adjust Content Tone > Technical
+ BaseClass.quire_AI().click_quire_AI_icon();
+ Thread.sleep(500);
+ //  BaseClass.quire_AI().click_quire_AI_icon();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_dropDown_adjustContentTone_header_button();
+ Thread.sleep(500);
+ BaseClass.quire_AI().click_quire_AI_dropDown_technical_tone_button();
+ Thread.sleep(2000);
+
+ // Verify technical tone content appears
+ BaseClass.quire_AI().verify_quire_AI_technical_tone_generated_prompt();
+ Thread.sleep(1000);
+
+ // Replace text with technical tone version
+ BaseClass.quire_AI().click_quire_AI_replace_button();
+ Thread.sleep(500);
+ BaseClass.staging5().acceptAlert();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(1000);
+
+ // Verify the technical tone text persists
+ BaseClass.quire_AI().verify_quire_AI_technical_tone_inserted_text();
+ Thread.sleep(1000);
+ // Revert Default Section SmartTable changes
+ BaseClass.staging5().click_default_section_title();
+ Thread.sleep(500);
+ BaseClass.staging5().click_smartTable_revisions_icon_second();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_revert_button_secondLink();
+ Thread.sleep(1000);
+ BaseClass.staging5().click_pixel_out_of_section();
+ Thread.sleep(1000);
+//
+//Thread.sleep(2000);
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_and_capture_track_changes_button();
+//        Thread.sleep(2000);
+//        BaseClass.quire_AI().click_smartTable_cell_text_to_select();
+//        Thread.sleep(1000);
+//        BaseClass.quire_AI().Discard_TC_if_present_ST_cell();
+//        Thread.sleep(1000);
+}
  }
 
 
