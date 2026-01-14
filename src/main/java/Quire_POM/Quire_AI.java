@@ -256,7 +256,10 @@ WebElement quire_AI_technical_tone_inserted_text;
 @FindBy(xpath= "//input[@placeholder=\"Tell Quire AI what you're looking for...\"]")
 WebElement quire_AI_prompt_search_field;
 public void enter_quire_AI_prompt_search_field() {
-    ReusableMethodsLoggersPOM.sendKeysMethod(driver, quire_AI_prompt_search_field, "ESA String Package" ,  logger, "quire_AI_prompt_search_field");}
+//    ReusableMethodsLoggersPOM.sendKeysMethod(driver, quire_AI_prompt_search_field, "ESA String Package" ,  logger, "quire_AI_prompt_search_field");
+    ReusableMethodsLoggersPOM.sendKeysMethod(driver, quire_AI_prompt_search_field, "CB25US093864-6" ,  logger, "quire_AI_prompt_search_field report #");
+
+}
 
     @FindBy(xpath = "//i[@class='fa fa-filter fa-lg fa-fw']")
     WebElement quire_AI_filter_button;
@@ -443,8 +446,11 @@ driver.close();
         String result = waitForAIResponse(AI_chat_response_text);
 
        // String result = ReusableMethodsLoggersPOM.captureTextMethod(driver, AI_chat_response_text, logger, "AI_chat_response_text");
-        if ((result.contains("PCA")) && (result.contains("CBRE")) && (result.contains("Fannie Mae")) && (result.contains("Components"))) {
-            System.out.println("Chat AI response text matches ✅");
+//        if ((result.contains("PCA")) && (result.contains("CBRE")) && (result.contains("Fannie Mae")) && (result.contains("Components"))) {
+
+            if ((result.contains("0182306104010")) && (result.contains("Colorado")) && (result.contains("I-3")) && (result.contains("CBRE"))) {
+
+                System.out.println("Chat AI response text matches ✅");
             logger.log(LogStatus.PASS, "Chat AI response text matches ✅");
         } else {
             logger.log(LogStatus.FAIL, "Chat AI response text does not match ❌");

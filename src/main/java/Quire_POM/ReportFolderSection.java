@@ -431,9 +431,9 @@ public class ReportFolderSection extends ReusableAnnotations {
 
     public void enterSearchField_QA_Report() throws InterruptedException {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Automation Testing Folder-Chrome", logger, "QA automation Reports - search field-chrome");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Automation Testing Folder-Chrome", logger, "QA automation Reports - search field CK5-chrome");
         } else if (browserName.contains("Firefox")) {
-            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Automation Testing Folder-Firefox", logger, "QA automation Reports - search field-ff");
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, searchFieldButton, "QA Automation Testing Folder-Firefox", logger, "QA automation Reports - search field CK5-ff");
         }
     }
     String browserName = driver.getClass().getSimpleName();

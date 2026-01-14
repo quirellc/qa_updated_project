@@ -913,10 +913,18 @@ WebElement instruction_text_ck5;
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, comments_archive_message_ck5, true, logger, "comments_archive_icon_ck5");}
     public void verify_comments_archive_icon_is_notVisible() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, comments_archive_message_ck5, false, logger, "comments_archive_icon_ck5");}
+    @FindBy(xpath = "//div[@id='comments-resolvedAnnotationContainer']")
+    WebElement resolved_comments_opened_pane;
     @FindBy(xpath = "//div[contains(text(),'Marked as resolved')]")
     WebElement comments_archive_marked_as_resolved_message;
-    public void click_and_verify_comments_archive_icon() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, comments_archive_message_ck5, logger, "comments_archive_icon_ck5");
+    public void click_and_verify_comments_archive_icon() throws InterruptedException {
+        if (!resolved_comments_opened_pane.isDisplayed()) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, comments_archive_message_ck5, logger, "comments_archive_icon_ck5");
+            Thread.sleep(1000);
+        } else {
+            System.out.println("\nℹ️ Resolved comments pane already open - skipping click");
+            logger.log(LogStatus.INFO, "ℹ️ Resolved comments pane already open - skipping click");
+        }
         ReusableMethodsLoggersPOM.verifyBooleanStatement1(driver, comments_archive_marked_as_resolved_message,true,  logger, "comments_archive_marked_as_resolved_message");
 }
 
@@ -1300,11 +1308,15 @@ int count = TC_highlights.size();
         BaseClass.ck5editor().verify_unresolved_1_comment_is_Visible();
         BaseClass.ck5editor().click_comments_resolve_button();
         BaseClass.ck5editor().verify_resolved_1_comment_is_Visible();
+        Thread.sleep(1000);
 
         BaseClass.ck5editor().click_and_verify_comments_archive_icon();
+        Thread.sleep(1000);
 
         BaseClass.ck5editor().reopen_archived_comment_discussion();
         BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
+        Thread.sleep(1000);
+
         BaseClass.ck5editor().delete_comments_in_field();
         BaseClass.ck5editor().verify_section_grey_empty_comments_icon();
         BaseClass.ck5editor().click_close_button_popup();
