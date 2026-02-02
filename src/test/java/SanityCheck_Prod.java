@@ -123,7 +123,16 @@ WebDriver driver = getDriver();
          BaseClass.reportfoldersection().clickRegeneratePDFButton();
          Thread.sleep(500);
 //         BaseClass.reportfoldersection().clickRegeneratePDFButton1();
-         Thread.sleep(500);
+         Thread.sleep(2000);
+
+         try {
+             driver.switchTo().alert().accept();
+             System.out.println("Browser alert accepted - continuing PDF generation without unavailable files");
+             Thread.sleep(500);
+         } catch (Exception e) {
+             // No browser alert present, continue normally
+         }
+
          BaseClass.staging5().captureAlertMessage();
          Thread.sleep(10000);
          BaseClass.reportfoldersection().captureGeneratedPDF_text();
