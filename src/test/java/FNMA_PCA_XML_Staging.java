@@ -57,8 +57,12 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
     public void TR001a_ck5_and_other_feature_check() throws InterruptedException {
 
         WebDriver driver = getDriver();
-        if (driver instanceof ChromeDriver) {
-            Thread.sleep(8000);
+        if (driver instanceof FirefoxDriver) {
+            Thread.sleep(15000);
+
+        }
+
+        Thread.sleep(8000);
 
 
             BaseClass.staging5().clickUserProfileTab();
@@ -106,12 +110,8 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
             Thread.sleep(500);
             BaseClass.staging5().click_modal_close_window();
             Thread.sleep(500);
-        }
 
-        if (driver instanceof FirefoxDriver) {
-            Thread.sleep(15000);
 
-        }
 
     }
     @Test
