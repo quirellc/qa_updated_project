@@ -31,11 +31,11 @@ public class Company_Connections extends ReusableAnnotations {
     @FindBy(xpath = "//div[contains(@class,'js-shareWithCompanySelector')]//div[contains(@class,'selectize-input')]/input")
     WebElement company_name_dropdown_field;
 
-    public void clickandEnter_cbre_CompanyNameDropdownField() throws InterruptedException {
+    public void clickandEnter_DemoCompany_CompanyNameDropdownField() throws InterruptedException {
 
         ReusableMethodsLoggersPOM.clickMethod(driver, company_name_dropdown_field, logger,"Company Name Dropdown Field");
         Thread.sleep(500);
-        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, company_name_dropdown_field, "cbre", logger,"Company Name Dropdown Field");
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, company_name_dropdown_field, "Demo Company", logger,"Company Name Dropdown Field");
 
     }
 
@@ -58,12 +58,22 @@ WebElement testing_inc_link;
 public void clickTestingIncLink() {
     ReusableMethodsLoggersPOM.clickMethod(driver, testing_inc_link, logger, "Testing Inc Link");}
 
-    @FindBy(xpath = "//span[normalize-space()='QA Automation Testing Medium Report']")
-    WebElement qa_automation_testing_medium_report;
-    public void clickQA_Automation_Testing_Medium_Report() {
-        ReusableMethodsLoggersPOM.clickMethod(driver, qa_automation_testing_medium_report, logger, "QA Automation Testing Medium Report");
-    }
+    @FindBy(xpath = "(//a[normalize-space()='QATE'])[1]")
+    WebElement qate_link;
+    public void clickQATELink() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, qate_link, logger, "QATE Link");}
 
+    @FindBy(xpath = "//span[normalize-space()='QA Automation New CK5 Test Report']")
+    WebElement qa_automation_new_ck5_test_report;
+    public void clickQA_Automation_CK5_Test_Report() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, qa_automation_new_ck5_test_report, logger, "QA Automation New CK5 Test Report");}
+
+
+    @FindBy(xpath = "//span[normalize-space()='QA Automation PCA Test Report-Chrome']")
+    WebElement qa_automation_pca_test_report_chrome;
+    public void clickQA_Automation_Testing_PCA_Report() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, qa_automation_pca_test_report_chrome, logger, "QA Automation Testing pca Report");
+    }
 
 
 

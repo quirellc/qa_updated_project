@@ -753,6 +753,8 @@ WebElement instruction_text_ck5;
     WebElement reopen_discussion_comments_field;
 
     public void reopen_archived_comment_discussion() {
+
+
         if (driver instanceof FirefoxDriver) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, add_a_comment_field, "QA Automation updated comment - on archived comment", logger, "reopen_archived_comment");
 
@@ -915,10 +917,21 @@ WebElement instruction_text_ck5;
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, comments_archive_message_ck5, false, logger, "comments_archive_icon_ck5");}
     @FindBy(xpath = "//div[@id='comments-resolvedAnnotationContainer']")
     WebElement resolved_comments_opened_pane;
+
+    @FindBy(xpath = "//span[@class='showWhen-collapsed']")
+    WebElement resolved_comments_closed_message;
+
     @FindBy(xpath = "//div[contains(text(),'Marked as resolved')]")
     WebElement comments_archive_marked_as_resolved_message;
     public void click_and_verify_comments_archive_icon() throws InterruptedException {
-        if (!resolved_comments_opened_pane.isDisplayed()) {
+        boolean isPaneClosed = false;
+        try {
+            isPaneClosed = resolved_comments_closed_message.isDisplayed();
+        } catch (Exception e) {
+            isPaneClosed = false;
+        }
+        
+        if (isPaneClosed) {
             ReusableMethodsLoggersPOM.clickMethod(driver, comments_archive_message_ck5, logger, "comments_archive_icon_ck5");
             Thread.sleep(1000);
         } else {

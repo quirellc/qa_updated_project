@@ -67,6 +67,8 @@ public class ReportFolderSection extends ReusableAnnotations {
         }
     }
 
+
+
     @FindBy(xpath = "//*[contains(text(),'Add Folder')]")
     WebElement addFolderButton;
 

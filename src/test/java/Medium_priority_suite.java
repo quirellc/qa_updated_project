@@ -1723,6 +1723,120 @@ BaseClass.staging5().clickLibrariesTab();
         Thread.sleep(2000);
     }
 
+    @Test
+    public void TR_022_Company_connections() throws InterruptedException, IOException {
+        WebDriver driver = BaseClass.getDriver();
+
+        // STEP 1: Share PCA report with Demo Company
+        BaseClass.reportfoldersection().clickReportsTab();
+        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+        Thread.sleep(3500);
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(500);
+
+        BaseClass.projectFolderSection().click_PCA_ProjectFolderLink();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(1000);
+
+        BaseClass.company_connections().clickSharingSettingsButton();
+        Thread.sleep(1000);
+        BaseClass.company_connections().clickandEnter_DemoCompany_CompanyNameDropdownField();
+        Thread.sleep(1000);
+        BaseClass.company_connections().clickSaveSharingSettingsButton();
+        Thread.sleep(1000);
+
+        // STEP 2: Share CK5 report with Demo Company
+        BaseClass.reportfoldersection().clickReportsTab();
+        BaseClass.reportfoldersection().enterSearchField_QA_Report();
+        Thread.sleep(3500);
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(1000);
+
+        BaseClass.projectFolderSection().click_CK5_ProjectFolderLink();
+        Thread.sleep(1000);
+        BaseClass.reportfoldersection().clickReportsFirstLink();
+        Thread.sleep(1000);
+
+        BaseClass.company_connections().clickSharingSettingsButton();
+        Thread.sleep(1000);
+        BaseClass.company_connections().clickandEnter_DemoCompany_CompanyNameDropdownField();
+        Thread.sleep(1000);
+        BaseClass.company_connections().clickSaveSharingSettingsButton();
+        Thread.sleep(1000);
+
+        // STEP 3: Login as Demo Company sysadmin
+        BaseClass.staging5().clickUserProfileTab();
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        Thread.sleep(500);
+
+        BaseClass.quireLogin().enter_demo_sysadmin_Email();
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        BaseClass.staging5().click_modal_close_window();
+
+        // STEP 4: Test CK5 report - Smart Tables wordbank insertion
+        BaseClass.reportfoldersection().clickReportsTab();
+        Thread.sleep(500);
+        BaseClass.staging5().click_modal_close_window();
+
+        BaseClass.company_connections().clickAllCompaniesTab();
+        Thread.sleep(1000);
+        BaseClass.company_connections().clickQATELink();
+        Thread.sleep(1000);
+        BaseClass.company_connections().clickQA_Automation_CK5_Test_Report();
+        Thread.sleep(1000);
+
+        BaseClass.smartTables().click_row9_column5_dynamic();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_insert_wordbank_arrow_button();
+        Thread.sleep(500);
+        BaseClass.staging5().click_cancel_button_popup();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(1000);
+        BaseClass.templatesSection().verify_alertMessage_valueSaved();
+        Thread.sleep(1000);
+
+        driver.navigate().refresh();
+        Thread.sleep(1000);
+
+        // STEP 5: Test PCA report - Special sections comments
+        BaseClass.reportfoldersection().clickReportsTab();
+        Thread.sleep(1000);
+
+        BaseClass.company_connections().clickAllCompaniesTab();
+        Thread.sleep(1000);
+        BaseClass.company_connections().clickQATELink();
+        Thread.sleep(1000);
+        BaseClass.company_connections().clickQA_Automation_Testing_PCA_Report();
+        Thread.sleep(1000);
+
+        // Test Appendices section comments
+        BaseClass.reportfoldersection().clickSectionView_Appendices();
+        Thread.sleep(1000);
+        BaseClass.ck5editor().ck5_special_section_comments_test();
+        Thread.sleep(1000);
+
+        // Test PCA XML section comments
+        BaseClass.pca_xml_section().clickSectionView_PCA_XML();
+        Thread.sleep(2000);
+        BaseClass.ck5editor().ck5_special_section_comments_test();
+        Thread.sleep(1000);
+
+        // Fill PCA XML fields and verify save
+        BaseClass.pca_xml_section().enterDealIdentifier();
+        BaseClass.pca_xml_section().select_ClientName_DUS_Lender();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(1000);
+        BaseClass.templatesSection().verify_alertMessage_projectSummary();
+        Thread.sleep(1000);
+
+    }
+
 //    @Test // old with atlas accounts
 //    public void TR_017_Atlas_admin_permissions() throws InterruptedException, IOException {
 //

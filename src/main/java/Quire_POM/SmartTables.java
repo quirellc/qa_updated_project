@@ -605,6 +605,13 @@ WebElement toBeDeleted_column_dropdown;
         ReusableMethodsLoggersPOM.clickMethod(driver, row8_column5, logger, " row8_column5_dynamic");
     }
 
+    @FindBy(xpath = "//table[@class='table info-table']//tr[9]//td[5]")
+    WebElement row9_column5_dynamic;
+
+    public void click_row9_column5_dynamic() throws InterruptedException {
+        ReusableMethodsLoggersPOM.clickMethod(driver, row9_column5_dynamic, logger, " row9_column5_dynamic");
+    }
+
     @FindBy(xpath = "//div[normalize-space()='Add Instruction']")
     WebElement add_instruction_dynamic_cell_dropdown_value;
 

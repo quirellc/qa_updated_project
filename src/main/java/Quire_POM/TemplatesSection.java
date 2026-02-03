@@ -656,6 +656,11 @@ for (int i = 0; i < search_results_int; i++) {
     public void verify_alertMessage_projectSummary() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_projectSummary, true,  logger, "alertMessage_projectSummary");}
 
+    @FindBy(xpath = "//div[contains(text(), 'Value was saved')]")
+    WebElement alertMessage_valueSaved;
+    public void verify_alertMessage_valueSaved() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, alertMessage_valueSaved, true,  logger, "alertMessage_valueSaved");}
+
     @FindBy(xpath = "//div[contains(text(), 'Report Status updated')]")
     WebElement alertMessage_reportStatus;
     public void verify_alertMessage_reportStatus() {
