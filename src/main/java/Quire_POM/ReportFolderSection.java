@@ -1036,6 +1036,35 @@ public class ReportFolderSection extends ReusableAnnotations {
         ReusableMethodsLoggersPOM.clickMethod(driver, reportSettingsButton, logger, "reportSettingsButton");
     }
 
+    @FindBy(xpath = "//a[@id='styles-tab']")
+    WebElement stylesTab_ReportSettings;
+
+    public void clickStylesTab_ReportSettings() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, stylesTab_ReportSettings, logger, "stylesTab_ReportSettings");
+    }
+@FindBy(xpath = "//div[contains(text(),'EFI 2024 Style')]")
+WebElement efi2024StyleButton;
+
+public void clickEFI2024StyleButton() {
+    ReusableMethodsLoggersPOM.clickMethod(driver, efi2024StyleButton, logger, "efi2024StyleButton");
+}
+
+    @FindBy(xpath = "(//button[@type='button'][normalize-space()='Add'])[1]")
+    WebElement add_button_styles_package;
+
+
+    public void click_add_button_styles_package() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, add_button_styles_package, logger, "add_button_styles_package");
+    }
+
+
+
+@FindBy(xpath = "//div[contains(text(),'AEI Report Style - 2022')]")
+WebElement AEIReportStyle2022Button;
+
+public void clickAEIReportStyle2022Button() {
+    ReusableMethodsLoggersPOM.clickMethod(driver, AEIReportStyle2022Button, logger, "AEIReportStyle2022Button");
+}
     @FindBy(xpath = "//a[normalize-space()='Header']")
     WebElement headerTab_ReportSettings;
 

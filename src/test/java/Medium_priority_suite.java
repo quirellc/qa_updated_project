@@ -1664,63 +1664,125 @@ BaseClass.staging5().clickLibrariesTab();
 
     }
 
+//   old check in other companies
+//    @Test
+//    public void TR_021_styles_logo_indentation_check() throws InterruptedException, IOException {
+//        WebDriver driver = getDriver();
+//
+//        // Test AEI report
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//        BaseClass.quireLogin().enterEmail_qa_admin_aei();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_modal_close_window();
+//        Thread.sleep(500);
+//
+//        //AEI CK4
+//
+//        driver.navigate().to("https://staging3.openquire.com/reports/741432#");
+//        //AEI CK5
+////        driver.navigate().to("https://staging3.openquire.com/reports/1595390");
+//
+//        Thread.sleep(3000);
+//        BaseClass.reportfoldersection().clickRegeneratePDFButton();
+//        Thread.sleep(3000);
+//        BaseClass.reportfoldersection().captureGeneratedPDF_text();
+//        Thread.sleep(3500);
+//        BaseClass.reportfoldersection().click_GeneratedPDF_button();
+//        Thread.sleep(3500);
+//        BaseClass.pdfVerification().verify_aei_styles_pdf();
+//        Thread.sleep(2000);
+//
+//        // Test EFI report
+//        BaseClass.staging5().clickUserProfileTab();
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//        BaseClass.quireLogin().enterEmail_qa_admin_efi();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_modal_close_window();
+//        Thread.sleep(500);
+//
+//        //EFI ck4
+////        driver.navigate().to("https://staging3.openquire.com/reports/1595392");
+//
+//        //EFI ck5
+//         driver.navigate().to("https://staging3.openquire.com/reports/1595391");
+//        Thread.sleep(3000);
+//        BaseClass.reportfoldersection().clickRegeneratePDFButton();
+//        Thread.sleep(3000);
+//        BaseClass.reportfoldersection().captureGeneratedPDF_text();
+//        Thread.sleep(3500);
+//        BaseClass.reportfoldersection().click_GeneratedPDF_button();
+//        Thread.sleep(3500);
+//
+//        BaseClass.pdfVerification().verify_efi_styles_pdf();
+//        Thread.sleep(2000);
+//    }
     @Test
     public void TR_021_styles_logo_indentation_check() throws InterruptedException, IOException {
         WebDriver driver = getDriver();
-        
-        // Test AEI report
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().enterEmail_qa_admin_aei();
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(500);
-        BaseClass.staging5().click_modal_close_window();
-        Thread.sleep(500);
 
-        //AEI CK4
-
-        driver.navigate().to("https://staging3.openquire.com/reports/741432#");
-        //AEI CK5
-//        driver.navigate().to("https://staging3.openquire.com/reports/1595390");
-
-        Thread.sleep(3000);
-        BaseClass.reportfoldersection().clickRegeneratePDFButton();
-        Thread.sleep(3000);
-        BaseClass.reportfoldersection().captureGeneratedPDF_text();
-        Thread.sleep(3500);
-        BaseClass.reportfoldersection().click_GeneratedPDF_button();
-        Thread.sleep(3500);
-        BaseClass.pdfVerification().verify_aei_styles_pdf();
-        Thread.sleep(2000);
-        
-        // Test EFI report
-        BaseClass.staging5().clickUserProfileTab();
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().enterEmail_qa_admin_efi();
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(500);
-        BaseClass.staging5().click_modal_close_window();
-        Thread.sleep(500);
 
         //EFI ck4
 //        driver.navigate().to("https://staging3.openquire.com/reports/1595392");
 
         //EFI ck5
-         driver.navigate().to("https://staging3.openquire.com/reports/1595391");
+        driver.navigate().to("https://staging3.openquire.com/reports/1595683");
         Thread.sleep(3000);
+//        BaseClass.staging5().clickSection_row_editor();
+//        Thread.sleep(3000);
+//        BaseClass.ck5editor().enter_styles_indented_text_body_ck5();
+//        Thread.sleep(30000);
+        BaseClass.reportfoldersection().clickReportSettingsButton();
+        BaseClass.reportfoldersection().clickStylesTab_ReportSettings();
+        BaseClass.reportfoldersection().clickEFI2024StyleButton();
+        BaseClass.reportfoldersection().click_add_button_styles_package();
+        BaseClass.staging5().click_save_button();
+
         BaseClass.reportfoldersection().clickRegeneratePDFButton();
         Thread.sleep(3000);
         BaseClass.reportfoldersection().captureGeneratedPDF_text();
         Thread.sleep(3500);
         BaseClass.reportfoldersection().click_GeneratedPDF_button();
         Thread.sleep(3500);
-        
+
         BaseClass.pdfVerification().verify_efi_styles_pdf();
         Thread.sleep(2000);
+
+        BaseClass.reportfoldersection().clickReportSettingsButton();
+        BaseClass.reportfoldersection().clickStylesTab_ReportSettings();
+        BaseClass.pca_xml_section().hover_assigned_packages_first_item();
+        Thread.sleep(800);
+        BaseClass.pca_xml_section().click_cancel_button_first_assigned_package_button();
+        Thread.sleep(1000);
+
+        BaseClass.reportfoldersection().clickAEIReportStyle2022Button();
+        BaseClass.reportfoldersection().click_add_button_styles_package();
+        BaseClass.staging5().click_save_button();
+
+
+        BaseClass.reportfoldersection().clickRegeneratePDFButton();
+        Thread.sleep(3000);
+        BaseClass.reportfoldersection().captureGeneratedPDF_text();
+        Thread.sleep(3500);
+        BaseClass.reportfoldersection().click_GeneratedPDF_button();
+        Thread.sleep(3500);
+
+        BaseClass.pdfVerification().verify_aei_styles_pdf();
+        Thread.sleep(2000);
+
+        BaseClass.reportfoldersection().clickReportSettingsButton();
+        BaseClass.reportfoldersection().clickStylesTab_ReportSettings();
+        BaseClass.pca_xml_section().hover_assigned_packages_first_item();
+        Thread.sleep(800);
+        BaseClass.pca_xml_section().click_cancel_button_first_assigned_package_button();
+        Thread.sleep(1000);
+
     }
 
     @Test
