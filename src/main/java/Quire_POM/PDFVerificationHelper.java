@@ -34,7 +34,9 @@ public class PDFVerificationHelper {
     public void verify_aei_styles_pdf() throws IOException {
         String aeiCoverLetter = System.getProperty("user.dir") + "/src/main/java/images/aei_coverletter.png";
         String aeiLogo = System.getProperty("user.dir") + "/src/main/java/images/aei_logo.png";
-        verify_pdf_logos(95.0, aeiCoverLetter, aeiLogo);
+        String aeiCoverLetter_footer = System.getProperty("user.dir") + "/src/main/java/images/aei_cover_letter_footer.png";
+
+        verify_pdf_logos(95.0, aeiCoverLetter, aeiLogo, aeiCoverLetter_footer);
 
         // Verify bullet indentation
         verify_pdf_bullet_indentation(
@@ -62,7 +64,7 @@ public class PDFVerificationHelper {
      */
     public void verify_efi_styles_pdf() throws IOException {
         String efiLogo = System.getProperty("user.dir") + "/src/main/java/images/efi_logo.jpg";
-        String efiFooterLogo = System.getProperty("user.dir") + "/src/main/java/images/efi_footer_logo.jpg";
+        String efiFooterLogo = System.getProperty("user.dir") + "/src/main/java/images/efi_letterhead.jpg";
         verify_pdf_logos(87.0, efiLogo, efiFooterLogo);
 
         // Verify bullet indentation
