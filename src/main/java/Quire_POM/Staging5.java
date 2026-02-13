@@ -3869,6 +3869,11 @@ WebElement condition_action_field_text;
 
         // Verify it starts with "Section VII: Definitions" and includes all main expected parts
         if (Section_VII_text.contains("Section VII: Definitions") &&
+                Section_VII_text.contains("1 - Excellent") &&
+                Section_VII_text.contains("2 - Very Good/Good") &&
+                Section_VII_text.contains("3 - Fair") &&
+                Section_VII_text.contains("4 - Deteriorated") &&
+                Section_VII_text.contains("5 - Unacceptable") &&
                 Section_VII_text.contains("Conditions") &&
                 Section_VII_text.contains("Repair Categories") &&
                 Section_VII_text.contains("Critical Repairs") &&
