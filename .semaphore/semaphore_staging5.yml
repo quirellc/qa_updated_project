@@ -14,9 +14,9 @@ blocks:
         - name: Sanity Job Staging5
           commands:
             - sem-version java 17
-            - mvn clean test -Dtest="SanityCheck_Staging5"
+            - cd ck5 && mvn clean test -Dtest="SanityCheck_Staging5"
       env_vars: []
       epilogue:
         always:
           commands:
-            - artifact push project /home/semaphore/qa_updated_project/src/main/java/HTML_Report --force
+            - artifact push project /home/semaphore/qa_updated_project/ck5/src/main/java/HTML_Report --force

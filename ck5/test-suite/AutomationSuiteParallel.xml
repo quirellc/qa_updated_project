@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My Test Suite" parallel="tests" thread-count="2" preserve-order="true" verbose="2" group-by-instances="true">
+
+<!--        <parameter name="env" value="staging5" />-->
+<!--    <parameter name="env" value="staging5-next" />-->
+<!--    <parameter name="env" value="app" />-->
+<!--    <parameter name="env" value="app-next" />-->
+
+
+
+    <test name="Chrome Tests">
+<!--        <parameter name="browser" value= "firefox" />-->
+        <parameter name="browser" value="chrome" />
+<!--        <parameter name="env" value="app" />-->
+<!--        <parameter name="env" value="mobile-staging" />-->
+                <parameter name="env" value="staging3" />
+
+        <classes>
+<!--                        <class name="Regression1" />-->
+<!--                        <class name="FNMA_PCA_XML_Staging" />-->
+<!--            <class name="FNMA_ESA_XML_Staging" />-->
+<!--            <class name="FNMA_SRA_XML_Staging" />-->
+<!--            <class name="FNMA_ZON_XML_Staging" />&lt;!&ndash;&ndash;&gt;-->
+<!--            <class name="CK_Editor" />-->
+<!--                        <class name="Smart_Tables_CK5" />-->
+                        <class name="Freddie_Macs" />
+<!--            <class name="Regression_Suite" />-->
+<!--                        <class name="Medium_priority_suite" />-->
+<!--            <class name="Quire_AI_Testing" />-->
+            <!--            <class name="Marketing_Site" />-->
+<!--            <class name="Refresh_script" />-->
+        </classes>
+    </test>
+    <test name="FF Tests">
+<!--        <parameter name="browser" value="chrome" />-->
+
+                <parameter name="browser" value= "firefox" />
+<!--        <parameter name="env" value="app" />-->
+        <parameter name="env" value="staging3" />
+<!--        <parameter name="env" value="mobile-staging" />-->
+
+
+        <classes>
+<!--                        <class name="Regression1" />-->
+<!--                        <class name="FNMA_PCA_XML_Staging" />-->
+<!--            <class name="FNMA_ESA_XML_Staging" />-->
+<!--            <class name="FNMA_SRA_XML_Staging" />-->
+<!--            <class name="FNMA_ZON_XML_Staging" />&lt;!&ndash;&ndash;&gt;-->
+<!--            <class name="CK_Editor" />-->
+<!--            <class name="Smart_Tables_CK5" />-->
+<!--                        <class name="Freddie_Macs" />-->
+<!--                        <class name="Regression_Suite" />-->
+<!--                        <class name="Medium_priority_suite" />-->
+<!--            <class name="Quire_AI_Testing" />-->
+
+            <!--            <class name="Marketing_Site" />-->
+<!--            <class name="Refresh_script" />-->
+
+        </classes>
+     </test>
+
+</suite>

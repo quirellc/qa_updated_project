@@ -10,12 +10,12 @@ blocks:
       epilogue:
         always:
           commands:
-            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force
+            - artifact push project /home/semaphore/qa_updated_project/ck5/src/main/java/HTML_Report --force
       jobs:
         - name: PCA XML Job
           commands:
             - sem-version java 17
-            - mvn clean test -Dtest="FNMA_PCA_XML_Prod"
+            - cd ck5 && mvn clean test -Dfile="test-suite\PCA_XML.xml"
       prologue:
         commands:
           - checkout

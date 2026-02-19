@@ -10,12 +10,12 @@ blocks:
       epilogue:
         always:
           commands:
-            - artifact push project /home/semaphore/qa_updated_project/src/main/java/HTML_Report --force
+            - artifact push project /home/semaphore/qa_updated_project/ck5/src/main/java/HTML_Report --force
       jobs:
         - name: Freddie_macs Staging 5 Job
           commands:
             - sem-version java 17
-            - mvn clean test -Dfile="test-suite\Freddie_macs.xml"
+            - cd ck5 && mvn clean test -Dfile="test-suite\Freddie_macs.xml"
       prologue:
         commands:
           - checkout

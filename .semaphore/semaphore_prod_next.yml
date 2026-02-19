@@ -15,7 +15,7 @@ blocks:
           commands:
             - sem-version java 17
 #            - mvn clean test -DsuiteXmlFile=test-suite\SanityCheck_Prod.xml
-            - mvn clean test -Dfile="test-suite\SanityCheck_Prod_next.xml"
+            - cd ck5 && mvn clean test -Dtest="SanityCheck_Prod"
 
 
 
@@ -23,4 +23,4 @@ blocks:
       epilogue:
         always:
           commands:
-            - artifact push project /home/semaphore/Quire_QA_Automation_Project/src/main/java/HTML_Report --force
+            - artifact push project /home/semaphore/qa_updated_project/ck5/src/main/java/HTML_Report --force

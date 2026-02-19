@@ -10,13 +10,13 @@ blocks:
       epilogue:
         always:
           commands:
-            - artifact push project /home/semaphore/qa_updated_project/src/main/java/HTML_Report --force
+            - artifact push project /home/semaphore/qa_updated_project/ck5/src/main/java/HTML_Report --force
       jobs:
         - name: Marketing Site - Regression Job
           commands:
             - sem-version java 17
 #            - sem-version firefox 102
-            - mvn clean test -Dfile="test-suite\marketing.xml"
+            - cd ck5 && mvn clean test -Dfile="test-suite\marketing.xml"
       prologue:
         commands:
           - checkout
