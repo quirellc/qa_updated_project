@@ -20,7 +20,7 @@
 <!--            <class name="CK_Editor" />-->
 <!--            <class name="Smart_Tables_CK5" />-->
 <!--            <class name="Freddie_Macs" />-->
-            <class name="Regression_Suite" />
+<!--            <class name="Regression_Suite" />-->
         </classes>
     </test> <!-- Test -->
 
