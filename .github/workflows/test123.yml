@@ -9,12 +9,13 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "SanityCheck" ]
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - ".github/workflows/test123.yml"
+  workflow_dispatch:
+#  push:
+#    branches: [ "SanityCheck" ]
+#  pull_request:
+#    branches: [ "main" ]
+#    paths:
+#      - ".github/workflows/test123.yml"
 
 jobs:
   build:
