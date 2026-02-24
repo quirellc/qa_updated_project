@@ -1496,25 +1496,42 @@ BaseClass.staging5().clickLibrariesTab();
 //        Thread.sleep(1000);
 //
 //    }
+/**
+ * Test: TR_019_MarxOkubo_MCT_labels
+ * 
+ * Purpose: Verify Multiple Cost Tables (MCT) labels functionality for Marx Okubo admin user
+ * 
+ * Test Flow:
+ * 1. Login as Marx Okubo admin and create MCT template
+ * 2. Add Marx Okubo package and cost recommendation sections
+ * 3. Create multiple cost recommendations (boiler, parking, roof)
+ * 4. Switch between users to configure MCT settings
+ * 5. Test label assignment, editing, and deletion
+ * 6. Verify MCT sections display correctly in quick preview
+ */
 @Test
 public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOException {
     WebDriver driver = getDriver();
 
+    // ===== USER LOGIN AS MARX OKUBO ADMIN =====
     BaseClass.staging5().clickUserProfileTab();
     Thread.sleep(500);
 
     BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-//enter root user
+    // Login as Marx Okubo admin user
     BaseClass.quireLogin().enter_marx_okubo_admin_Email();
     BaseClass.quireLogin().enterPassword();
     //Thread.sleep(1000);
     BaseClass.quireLogin().clickLogin();
     Thread.sleep(500);
 
+    // ===== CREATE MCT TEMPLATE =====
     BaseClass.templatesSection().clickTemplatesTab();
     BaseClass.templatesSection().clickAddTemplateButton();
+    // Set template name for MCT testing
     BaseClass.templatesSection().enterTemplateNameField_MCT();
     BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
+    // Select old PCA template type
     BaseClass.templatesSection().selectTemplateTypeDropdown_old_PCA();
 
     Thread.sleep(1000);
@@ -1524,16 +1541,17 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     BaseClass.templatesSection().clickSave();
     Thread.sleep(3000);
 
+    // Verify template creation and navigate to template
     BaseClass.templatesSection().capture_created_AlertMessage();
     BaseClass.templatesSection().clickHereLinkTemplate();
     Thread.sleep(2000);
 
-    //add M|O Package
-
+    // ===== ADD MARX OKUBO PACKAGE =====
     BaseClass.templatesSection().clickTemplateSettingsButton();
 
     BaseClass.templatesSection().clickTemplateSettings_PackagesTab();
 
+    // Search and add Marx Okubo specific package
     BaseClass.templatesSection().enterTemplateSettings_PackagesTab_SearchField_MarxOkubo();
     Thread.sleep(1000);
 
@@ -1545,12 +1563,14 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
 
 
 
-    //add cost rec
+    // ===== ADD COST RECOMMENDATION SECTIONS =====
+    // Navigate to default section to add cost rec sections
     BaseClass.staging5().hoverto_default_section_title();
 
     BaseClass.staging5().click_default_section_title();
 
     Thread.sleep(500);
+    // Add project summary and cost recommendation sections
     BaseClass.pca_xml_section().clickAddSectionButton();
     Thread.sleep(500);
     BaseClass.staging5().click_add_projSummary_toSection();
@@ -1562,13 +1582,16 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     driver.navigate().refresh();
     Thread.sleep(1000);
 
+    // ===== CREATE BOILER COST RECOMMENDATION =====
     BaseClass.staging5().click_add_cost_recommendation_button();
     Thread.sleep(500);
 
+    // Fill boiler cost recommendation details
     BaseClass.staging5().enter_boiler_name_cost_recommendation();
     Thread.sleep(500);
     BaseClass.staging5().enter_cost_summary_5_quantity();
     BaseClass.staging5().enter_cost_summary_unit_1000_cost();
+    // Mark as critical repair
     BaseClass.staging5().click_critical_repair_cost_checkbox();
     Thread.sleep(500);
     BaseClass.staging5().enter_boiler_cost_summary_description_field();
@@ -1578,14 +1601,17 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     Thread.sleep(1000);
 
 
+    // ===== CREATE PARKING COST RECOMMENDATION =====
     BaseClass.staging5().click_add_cost_recommendation_button();
     Thread.sleep(500);
 
+    // Fill parking cost recommendation details
     BaseClass.staging5().enter_parking_name_cost_recommendation();
     Thread.sleep(500);
     BaseClass.staging5().enter_cost_summary_5_quantity();
     BaseClass.staging5().enter_cost_summary_unit_1000_cost();
     Thread.sleep(500);
+    // Mark for all years repair (toggle twice to ensure selection)
     BaseClass.staging5().click_all_Years_repair_cost_checkbox();
     BaseClass.staging5().click_all_Years_repair_cost_checkbox();
     BaseClass.staging5().enter_parking_cost_summary_description_field();
@@ -1596,16 +1622,19 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
 
 
 
+    // ===== CREATE ROOF COST RECOMMENDATION =====
     BaseClass.staging5().click_add_cost_recommendation_button();
     Thread.sleep(500);
 
+    // Fill roof cost recommendation details
     BaseClass.staging5().enter_roof_name_cost_recommendation();
     Thread.sleep(500);
     BaseClass.staging5().enter_cost_summary_quantity();
     BaseClass.staging5().enter_cost_summary_unit_cost();
     Thread.sleep(500);
+    // Mark as critical repair
     BaseClass.staging5().click_critical_repair_cost_checkbox();
-
+    // Mark for all years repair
     BaseClass.staging5().click_all_Years_repair_cost_checkbox();
     BaseClass.staging5().click_all_Years_repair_cost_checkbox();
     BaseClass.staging5().enter_roof_cost_summary_description_field();
@@ -1614,29 +1643,35 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     BaseClass.staging5().click_save_button();
     Thread.sleep(1000);
 
+    // Save current URL for navigation between users
     String currentUrl = driver.getCurrentUrl();
     System.out.println("Saved URL: " + currentUrl);
     Thread.sleep(2000);
 
 
+    // ===== SWITCH TO ROOT USER TO ENABLE MCT FEATURE =====
     BaseClass.staging5().clickUserProfileTab();
     Thread.sleep(500);
 
     BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+    // Login as root user to access admin settings
     BaseClass.quireLogin().enterRootUserEmail();
     BaseClass.quireLogin().enterPassword();
     Thread.sleep(1000);
     BaseClass.quireLogin().clickLogin();
     Thread.sleep(1000);
 
+    // Navigate back to template
     driver.navigate().to(currentUrl);
     Thread.sleep(500);
 
+    // ===== ENABLE MULTIPLE COST TABLES FEATURE =====
     BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
     Thread.sleep(500);
     BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
     Thread.sleep(500);
 
+    // Enable multiple cost tables checkbox feature
     BaseClass.reporttagssection().scroll_and_click_and_verify_multiple_cost_tables_checkbox();
     // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
     Thread.sleep(1000);
@@ -1644,6 +1679,7 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     Thread.sleep(1000);
     //  WebDriver driver = getDriver();
 
+    // ===== SWITCH BACK TO MARX OKUBO USER =====
     BaseClass.staging5().clickUserProfileTab();
     Thread.sleep(500);
 
@@ -1657,6 +1693,8 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     Thread.sleep(1500);
 
 
+    // ===== ASSIGN LABELS TO COST RECOMMENDATIONS =====
+    // Navigate to report tags section
     BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
     Thread.sleep(500);
 
@@ -1664,6 +1702,8 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     Thread.sleep(500);
     BaseClass.reporttagssection().select_multiple_cost_tables_feature_dropdown();
     Thread.sleep(500);
+    
+    // ===== ASSIGN BOILER LABEL =====
     BaseClass.staging5().click_default_section_title();
     Thread.sleep(500);
     BaseClass.staging5().click_boiler_test_item_link();
@@ -1673,42 +1713,47 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     BaseClass.staging5().click_save_button();
     Thread.sleep(500);
 
+    // ===== ASSIGN PARKING LABEL =====
     BaseClass.staging5().click_parking_test_item_link();
     Thread.sleep(500);
     BaseClass.staging5().enter_cost_rec_parking_label_field();
     Thread.sleep(500);
     BaseClass.staging5().click_save_button();
     Thread.sleep(500);
-//        // TODO: Verify "boiler test label" appears on boiler cost rec
-//        // TODO: Verify "parking test label" appears on parking cost rec
-//        // TODO: Verify roof cost rec has NO label (third one left unlabeled)
 
+    // ===== VERIFY LABELS DISPLAY =====
+    // Verify boiler and parking labels are displayed
     BaseClass.staging5().verify_cost_rec_boiler_test_label();
     BaseClass.staging5().verify_cost_rec_parking_test_label();
 
+    // Refresh and verify uncategorized label for roof (no label assigned)
     driver.navigate().refresh();
     Thread.sleep(1000);
     BaseClass.staging5().verify_cost_rec_uncategorized_label();
 
+    // ===== ASSIGN ROOF LABEL =====
     BaseClass.staging5().click_roof_test_item_link();
     Thread.sleep(500);
     BaseClass.staging5().enter_cost_rec_roof_label_field();
     Thread.sleep(500);
     BaseClass.staging5().click_save_button();
     Thread.sleep(500);
+    // Verify roof label is now displayed
     BaseClass.staging5().verify_cost_rec_roof_test_label();
 
 
 
 
+    // ===== TEST IMMEDIATE REPAIR COST SECTION =====
     Thread.sleep(500);
     BaseClass.staging5().click_add_immediate_repair_cost_section();
     Thread.sleep(500);
 
 
+    // ===== EDIT ROOF LABEL =====
     BaseClass.staging5().click_rename_reorder_cost_tables_link();
     Thread.sleep(500);
-//
+    // Edit the roof label to test label modification
     BaseClass.staging5().edit_cost_rec_roof_label_field();
     Thread.sleep(500);
 
@@ -1716,12 +1761,13 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     Thread.sleep(500);
 
 
+    // Verify updated roof label
     BaseClass.staging5().click_default_section_title();
     BaseClass.staging5().verify_cost_rec_roof_test_label_updated();
 
     BaseClass.staging5().click_add_immediate_repair_cost_section();
 
-
+    // ===== VERIFY MCT SECTIONS CONTENT =====
     BaseClass.staging5().verify_MCT_immediate_repair_cost_section_text();
     Thread.sleep(500);
 
@@ -1730,19 +1776,17 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     BaseClass.staging5().verify_MCT_capital_reserved_schedule_cost_section_text();
     Thread.sleep(500);
 
-
     BaseClass.staging5().click_project_summary_sectionView();
     Thread.sleep(500);
     BaseClass.staging5().verify_MCT_project_summary_text();
     Thread.sleep(500);
 
-
+    // ===== QUICK PREVIEW VERIFICATION =====
     BaseClass.reportfoldersection().click_quick_preview_button();
     Thread.sleep(1000);
     BaseClass.reportfoldersection().change_to_next_tab();
     Thread.sleep(500);
-    //quick preview tab - capture header and footer data
-
+    // Verify all MCT sections display correctly in quick preview
 
     BaseClass.staging5().verify_MCT_project_summary_text_qp();
     BaseClass.staging5().verify_MCT_immediate_repair_cost_section_text_qp();
@@ -1750,35 +1794,44 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
 
     Thread.sleep(500);
 
-    //close second tab and go back to default tab
+    // Close preview tab and return to main view
     driver.close();
     Thread.sleep(500);
     BaseClass.reportfoldersection().change_to_default_tab();
     Thread.sleep(500);
 
+    // ===== TEST LABEL DELETION =====
     BaseClass.staging5().click_add_capital_reserve_schedule_section();
     BaseClass.staging5().click_rename_reorder_cost_tables_link();
     Thread.sleep(500);
+    // Delete boiler label to test label removal
     BaseClass.staging5().delete_boiler_test_label();
     Thread.sleep(500);
     BaseClass.staging5().click_save_button();
     Thread.sleep(500);
+    
+    // Verify boiler label is removed from immediate repair cost section
     BaseClass.staging5().click_add_immediate_repair_cost_section();
     Thread.sleep(500);
     BaseClass.staging5().verify_MCT_boiler_label_removed_immediate_repair_cost_section_text();
 
+    // ===== VERIFY LABEL DELETION IN QUICK PREVIEW =====
     BaseClass.reportfoldersection().click_quick_preview_button();
     Thread.sleep(1000);
     BaseClass.reportfoldersection().change_to_next_tab();
     Thread.sleep(500);
+    // Verify boiler label is removed in quick preview
     BaseClass.staging5().verify_MCT_boiler_label_removed_immediate_repair_cost_section_qp();
     Thread.sleep(500);
     driver.close();
     Thread.sleep(500);
     BaseClass.reportfoldersection().change_to_default_tab();
     Thread.sleep(1000);
+    
+    // ===== FINAL VERIFICATION =====
     driver.navigate().refresh();
     Thread.sleep(1000);
+    // Verify uncategorized label appears after deletion
     BaseClass.staging5().verify_cost_rec_uncategorized_label();
     Thread.sleep(1000);
 
