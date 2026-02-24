@@ -234,13 +234,27 @@ public class    Regression2 extends ReusableAnnotations {
 //
 
     }
+
+
+
     @Test
-    public void TR_019_old_pca_costTable_labels() throws InterruptedException, IOException {
+    public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOException {
         WebDriver driver = getDriver();
+
+        BaseClass.staging5().clickUserProfileTab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+        BaseClass.quireLogin().enter_marx_okubo_admin_Email();
+        BaseClass.quireLogin().enterPassword();
+        //Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
 
         BaseClass.templatesSection().clickTemplatesTab();
         BaseClass.templatesSection().clickAddTemplateButton();
-        BaseClass.templatesSection().enterTemplateNameField_old_PCA();
+        BaseClass.templatesSection().enterTemplateNameField_MCT();
         BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
         BaseClass.templatesSection().selectTemplateTypeDropdown_old_PCA();
 
@@ -255,6 +269,23 @@ public class    Regression2 extends ReusableAnnotations {
         BaseClass.templatesSection().clickHereLinkTemplate();
         Thread.sleep(2000);
 
+        //add M|O Package
+
+        BaseClass.templatesSection().clickTemplateSettingsButton();
+
+            BaseClass.templatesSection().clickTemplateSettings_PackagesTab();
+
+            BaseClass.templatesSection().enterTemplateSettings_PackagesTab_SearchField_MarxOkubo();
+        Thread.sleep(1000);
+
+        BaseClass.templatesSection().clickTemplateSettings_PackagesTab_clickFirstDropDownItem();
+        Thread.sleep(1000);
+
+        BaseClass.templatesSection().clickTemplateSettings_PackagesTab_addPackage_button();
+        BaseClass.templatesSection().clickTemplateSettings_SaveButton();
+
+
+
         //add cost rec
         BaseClass.staging5().hoverto_default_section_title();
 
@@ -264,13 +295,13 @@ public class    Regression2 extends ReusableAnnotations {
         BaseClass.pca_xml_section().clickAddSectionButton();
         Thread.sleep(500);
         BaseClass.staging5().click_add_projSummary_toSection();
-        Thread.sleep(1000);
+        Thread.sleep(500);
         BaseClass.staging5().click_add_costRecommendation_toSection();
 
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
         driver.navigate().refresh();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         BaseClass.staging5().click_add_cost_recommendation_button();
         Thread.sleep(500);
@@ -281,8 +312,9 @@ public class    Regression2 extends ReusableAnnotations {
         BaseClass.staging5().enter_cost_summary_unit_1000_cost();
         BaseClass.staging5().click_critical_repair_cost_checkbox();
         Thread.sleep(500);
-        BaseClass.staging5().enter_cost_summary_comments();
+        BaseClass.staging5().enter_boiler_cost_summary_description_field();
         Thread.sleep(500);
+
         BaseClass.staging5().click_save_button();
         Thread.sleep(1000);
 
@@ -297,6 +329,28 @@ public class    Regression2 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.staging5().click_all_Years_repair_cost_checkbox();
         BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+        BaseClass.staging5().enter_parking_cost_summary_description_field();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(1000);
+
+
+
+        BaseClass.staging5().click_add_cost_recommendation_button();
+        Thread.sleep(500);
+
+        BaseClass.staging5().enter_roof_name_cost_recommendation();
+        Thread.sleep(500);
+        BaseClass.staging5().enter_cost_summary_quantity();
+        BaseClass.staging5().enter_cost_summary_unit_cost();
+        Thread.sleep(500);
+        BaseClass.staging5().click_critical_repair_cost_checkbox();
+
+        BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+        BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+        BaseClass.staging5().enter_roof_cost_summary_description_field();
+
         Thread.sleep(1000);
         BaseClass.staging5().click_save_button();
         Thread.sleep(1000);
@@ -317,25 +371,25 @@ public class    Regression2 extends ReusableAnnotations {
         Thread.sleep(1000);
 
         driver.navigate().to(currentUrl);
-        Thread.sleep(3000);
+        Thread.sleep(500);
 
         BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
-        Thread.sleep(1500);
+        Thread.sleep(500);
         BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
-        Thread.sleep(3000);
+        Thread.sleep(500);
 
         BaseClass.reporttagssection().scroll_and_click_and_verify_multiple_cost_tables_checkbox();
         // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
         Thread.sleep(1000);
         BaseClass.staging5().click_save_button();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         //  WebDriver driver = getDriver();
 
         BaseClass.staging5().clickUserProfileTab();
         Thread.sleep(500);
 
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().enter_admin_Email();
+        BaseClass.quireLogin().enter_marx_okubo_admin_Email();
         BaseClass.quireLogin().enterPassword();
         Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
@@ -356,42 +410,84 @@ public class    Regression2 extends ReusableAnnotations {
         BaseClass.staging5().click_boiler_test_item_link();
         Thread.sleep(500);
         BaseClass.staging5().enter_cost_rec_boiler_label_field();
-        Thread.sleep(2000);
+        Thread.sleep(500);
         BaseClass.staging5().click_save_button();
-        Thread.sleep(2000);
+        Thread.sleep(500);
+
         BaseClass.staging5().click_parking_test_item_link();
-        Thread.sleep(2000);
+        Thread.sleep(500);
         BaseClass.staging5().enter_cost_rec_parking_label_field();
-        Thread.sleep(2000);
+        Thread.sleep(500);
         BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
+//        // TODO: Verify "boiler test label" appears on boiler cost rec
+//        // TODO: Verify "parking test label" appears on parking cost rec
+//        // TODO: Verify roof cost rec has NO label (third one left unlabeled)
+
+        BaseClass.staging5().verify_cost_rec_boiler_test_label();
+        BaseClass.staging5().verify_cost_rec_parking_test_label();
+
+        driver.navigate().refresh();
+        Thread.sleep(1000);
+        BaseClass.staging5().verify_cost_rec_uncategorized_label();
+
+        BaseClass.staging5().click_roof_test_item_link();
+        Thread.sleep(500);
+        BaseClass.staging5().enter_cost_rec_roof_label_field();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
+        BaseClass.staging5().verify_cost_rec_roof_test_label();
 
 
-        Thread.sleep(2000);
+
+
+        Thread.sleep(500);
         BaseClass.staging5().click_add_immediate_repair_cost_section();
-        Thread.sleep(1000);
-        BaseClass.staging5().verify_immediate_repair_cost_section_text();
-        Thread.sleep(1000);
+        Thread.sleep(500);
+
+
+        BaseClass.staging5().click_rename_reorder_cost_tables_link();
+        Thread.sleep(500);
+//
+        BaseClass.staging5().edit_cost_rec_roof_label_field();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
+
+
+        BaseClass.staging5().click_default_section_title();
+        BaseClass.staging5().verify_cost_rec_roof_test_label_updated();
+
+        BaseClass.staging5().click_add_immediate_repair_cost_section();
+
+
+        BaseClass.staging5().verify_MCT_immediate_repair_cost_section_text();
+        Thread.sleep(500);
 
         BaseClass.staging5().click_add_capital_reserve_schedule_section();
-        Thread.sleep(1000);
-        BaseClass.staging5().verify_capital_reserved_schedule_cost_section_text();
-        Thread.sleep(1000);
+        Thread.sleep(500);
+        BaseClass.staging5().verify_MCT_capital_reserved_schedule_cost_section_text();
+        Thread.sleep(500);
 
 
         BaseClass.staging5().click_project_summary_sectionView();
-        Thread.sleep(1000);
-        BaseClass.staging5().verify_old_pca_project_summary_text();
-        Thread.sleep(1000);
+        Thread.sleep(500);
+        BaseClass.staging5().verify_MCT_project_summary_text();
+        Thread.sleep(500);
 
 
         BaseClass.reportfoldersection().click_quick_preview_button();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         BaseClass.reportfoldersection().change_to_next_tab();
         Thread.sleep(500);
         //quick preview tab - capture header and footer data
-        BaseClass.staging5().verify_old_pca_project_summary_text_qp();
-        BaseClass.staging5().verify_immediate_repair_cost_section_text_qp();
-        BaseClass.staging5().verify_capital_reserved_schedule_cost_section_text_qp();
+
+
+        BaseClass.staging5().verify_MCT_project_summary_text_qp();
+        BaseClass.staging5().verify_MCT_immediate_repair_cost_section_text_qp();
+        BaseClass.staging5().verify_MCT_capital_reserved_schedule_cost_section_text_qp();
 
         Thread.sleep(500);
 
@@ -399,7 +495,34 @@ public class    Regression2 extends ReusableAnnotations {
         driver.close();
         Thread.sleep(500);
         BaseClass.reportfoldersection().change_to_default_tab();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_add_capital_reserve_schedule_section();
+        BaseClass.staging5().click_rename_reorder_cost_tables_link();
+        Thread.sleep(500);
+        BaseClass.staging5().delete_boiler_test_label();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
+        BaseClass.staging5().click_add_immediate_repair_cost_section();
+        Thread.sleep(500);
+        BaseClass.staging5().verify_MCT_boiler_label_removed_immediate_repair_cost_section_text();
+
+        BaseClass.reportfoldersection().click_quick_preview_button();
         Thread.sleep(1000);
+        BaseClass.reportfoldersection().change_to_next_tab();
+        Thread.sleep(500);
+        BaseClass.staging5().verify_MCT_boiler_label_removed_immediate_repair_cost_section_qp();
+        Thread.sleep(500);
+        driver.close();
+        Thread.sleep(500);
+        BaseClass.reportfoldersection().change_to_default_tab();
+        Thread.sleep(1000);
+        driver.navigate().refresh();
+        Thread.sleep(1000);
+        BaseClass.staging5().verify_cost_rec_uncategorized_label();
+        Thread.sleep(1000);
+
 
     }
 
