@@ -282,10 +282,10 @@ public class TemplatesSection extends ReusableAnnotations {
 
     public void enterTemplateNameField_MCT() {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing MCT Template-Chrome", logger, "OLD PCA  template name field chrome");
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing MCT Template-Chrome", logger, "MCT template name field chrome");
 
         } else if (browserName.contains("Firefox")) {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing OLD PCA  Template-Firefox", logger, "OLD PCA  template name field ff");
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing MCT Template-Firefox", logger, "MCT template name field ff");
         }}
     public void enterTemplateNameField_SRA() {
         if (browserName.contains("Chrome")) {
