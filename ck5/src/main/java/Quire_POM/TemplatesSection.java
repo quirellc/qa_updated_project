@@ -280,9 +280,9 @@ public class TemplatesSection extends ReusableAnnotations {
 //    }
 //}
 
-    public void enterTemplateNameField_old_PCA() {
+    public void enterTemplateNameField_MCT() {
         if (browserName.contains("Chrome")) {
-            ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing OLD PCA Template-Chrome", logger, "OLD PCA  template name field chrome");
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing MCT Template-Chrome", logger, "OLD PCA  template name field chrome");
 
         } else if (browserName.contains("Firefox")) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateName, "QA Automation Testing OLD PCA  Template-Firefox", logger, "OLD PCA  template name field ff");
@@ -785,6 +785,11 @@ for (int i = 0; i < search_results_int; i++) {
 
     public void enterTemplateSettings_PackagesTab_SearchField_ZON() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, templateSettings_PackagesTab_SearchField, "FNMA XML Data Standard (ZON)" ,logger, "templateSettings_PackagesTab_SearchField_ZON");
+    }
+
+
+    public void enterTemplateSettings_PackagesTab_SearchField_MarxOkubo() {
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, templateSettings_PackagesTab_SearchField, "M|O PCA Cost Tables RUL" ,logger, "templateSettings_PackagesTab_SearchField_ZON");
     }
 
 

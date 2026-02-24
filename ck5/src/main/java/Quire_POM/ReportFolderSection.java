@@ -50,21 +50,33 @@ public class ReportFolderSection extends ReusableAnnotations {
     @FindBy(xpath = "(//a[contains(text(),'All Folders')])[1]")
     WebElement allFoldersDropdownItem;
 
-    public void clickReportsTab() {
+    public void clickReportsTab() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(reportsTab));
+        Thread.sleep(500);
+        
         try {
-            // If caret icon is displayed, hover and click All Folders
             if (reportsCaretIcon.isDisplayed()) {
                 ReusableMethodsLoggersPOM.mouseHoverMethod(driver, reportsTab, logger, "reports tab");
-                Thread.sleep(500); // Wait for dropdown to appear
-                ReusableMethodsLoggersPOM.clickMethod(driver, allFoldersDropdownItem, logger, "All Folders dropdown");
-            } else {
-                // Default: click Reports tab
-                ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
+                Thread.sleep(500);
+                
+                try {
+                    wait.until(ExpectedConditions.visibilityOf(allFoldersDropdownItem));
+                    ReusableMethodsLoggersPOM.clickMethod(driver, allFoldersDropdownItem, logger, "All Folders dropdown");
+                } catch (Exception e) {
+                    System.out.println("⚠️ Dropdown not visible, refreshing page");
+                    logger.log(LogStatus.WARNING, "⚠️ Dropdown not visible, refreshing page");
+                    driver.navigate().refresh();
+                    Thread.sleep(2000);
+                    clickReportsTab();
+                }
+                return;
             }
-        } catch (Exception  e) {
-            // Fallback: just click Reports tab if caret or dropdown not present
-            ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
+        } catch (Exception e) {
+            // No caret icon
         }
+        
+        ReusableMethodsLoggersPOM.clickMethod(driver, reportsTab, logger, "reports tab");
     }
 
 

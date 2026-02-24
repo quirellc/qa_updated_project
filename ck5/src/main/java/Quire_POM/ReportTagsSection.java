@@ -183,11 +183,10 @@ public class ReportTagsSection extends ReusableAnnotations {
 
     @FindBy(xpath = "//label[.//span[normalize-space(.)='Multiple Cost Tables']]/following-sibling::div//select")
     WebElement multiple_cost_tables_RT_dropdown;
-    @FindBy(xpath = "//div[normalize-space()='site']")
-    WebElement site_reportTags_section;
+
 
     public void select_multiple_cost_tables_feature_dropdown() {
-        ReusableMethodsLoggersPOM.scrollToViewMethod(driver, site_reportTags_section, logger, "site_reportTags_section ");
+        ReusableMethodsLoggersPOM.scrollToViewMethod(driver, multiple_cost_tables_RT_dropdown, logger, "multiple_cost_tables_RT_dropdown ");
 
         ReusableMethodsLoggersPOM.selectByValue(driver, multiple_cost_tables_RT_dropdown, "1", logger, "multiple_cost_tables_feature_dropdown ");
     }

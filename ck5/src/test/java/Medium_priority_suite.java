@@ -1327,175 +1327,463 @@ BaseClass.staging5().clickLibrariesTab();
 
     }
 
-    @Test
-    public void TR_019_old_pca_costTable_labels() throws InterruptedException, IOException {
-        WebDriver driver = getDriver();
+//  old mct test non M|O
+//    @Test
+//    public void TR_019_old_pca_costTable_labels() throws InterruptedException, IOException {
+//        WebDriver driver = getDriver();
+//
+//        BaseClass.templatesSection().clickTemplatesTab();
+//        BaseClass.templatesSection().clickAddTemplateButton();
+//        BaseClass.templatesSection().enterTemplateNameField_old_PCA();
+//        BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
+//        BaseClass.templatesSection().selectTemplateTypeDropdown_old_PCA();
+//
+//        Thread.sleep(1000);
+//
+//
+//        BaseClass.templatesSection().enterTemplateDescriptionField();
+//        BaseClass.templatesSection().clickSave();
+//        Thread.sleep(3000);
+//
+//        BaseClass.templatesSection().capture_created_AlertMessage();
+//        BaseClass.templatesSection().clickHereLinkTemplate();
+//        Thread.sleep(2000);
+//
+//        //add cost rec
+//        BaseClass.staging5().hoverto_default_section_title();
+//
+//        BaseClass.staging5().click_default_section_title();
+//
+//        Thread.sleep(500);
+//        BaseClass.pca_xml_section().clickAddSectionButton();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_add_projSummary_toSection();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_add_costRecommendation_toSection();
+//
+//        Thread.sleep(1000);
+//
+//        driver.navigate().refresh();
+//        Thread.sleep(2000);
+//
+//        BaseClass.staging5().click_add_cost_recommendation_button();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().enter_boiler_name_cost_recommendation();
+//        Thread.sleep(500);
+//        BaseClass.staging5().enter_cost_summary_5_quantity();
+//        BaseClass.staging5().enter_cost_summary_unit_1000_cost();
+//        BaseClass.staging5().click_critical_repair_cost_checkbox();
+//        Thread.sleep(500);
+//        BaseClass.staging5().enter_cost_summary_comments();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(1000);
+//
+//
+//        BaseClass.staging5().click_add_cost_recommendation_button();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().enter_parking_name_cost_recommendation();
+//        Thread.sleep(500);
+//        BaseClass.staging5().enter_cost_summary_5_quantity();
+//        BaseClass.staging5().enter_cost_summary_unit_1000_cost();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+//        BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(1000);
+//
+//        String currentUrl = driver.getCurrentUrl();
+//        System.out.println("Saved URL: " + currentUrl);
+//        Thread.sleep(2000);
+//
+//
+//        BaseClass.staging5().clickUserProfileTab();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//        BaseClass.quireLogin().enterRootUserEmail();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(1000);
+//
+//        driver.navigate().to(currentUrl);
+//        Thread.sleep(3000);
+//
+//        BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
+//        Thread.sleep(1500);
+//        BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
+//        Thread.sleep(3000);
+//
+//        BaseClass.reporttagssection().scroll_and_click_and_verify_multiple_cost_tables_checkbox();
+//        // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(2000);
+//        //  WebDriver driver = getDriver();
+//
+//        BaseClass.staging5().clickUserProfileTab();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//        BaseClass.quireLogin().enter_admin_Email();
+//        BaseClass.quireLogin().enterPassword();
+//        Thread.sleep(1000);
+//        BaseClass.quireLogin().clickLogin();
+//        Thread.sleep(1500);
+//        driver.navigate().to(currentUrl);
+//        Thread.sleep(1500);
+//
+//
+//        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+//        Thread.sleep(500);
+//
+//        BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
+//        Thread.sleep(500);
+//        BaseClass.reporttagssection().select_multiple_cost_tables_feature_dropdown();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_boiler_test_item_link();
+//        Thread.sleep(500);
+//        BaseClass.staging5().enter_cost_rec_boiler_label_field();
+//        Thread.sleep(2000);
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(2000);
+//        BaseClass.staging5().click_parking_test_item_link();
+//        Thread.sleep(2000);
+//        BaseClass.staging5().enter_cost_rec_parking_label_field();
+//        Thread.sleep(2000);
+//        BaseClass.staging5().click_save_button();
+//
+//
+//        Thread.sleep(2000);
+//        BaseClass.staging5().click_add_immediate_repair_cost_section();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().verify_immediate_repair_cost_section_text();
+//        Thread.sleep(1000);
+//
+//        BaseClass.staging5().click_add_capital_reserve_schedule_section();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().verify_capital_reserved_schedule_cost_section_text();
+//        Thread.sleep(1000);
+//
+//
+//        BaseClass.staging5().click_project_summary_sectionView();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().verify_old_pca_project_summary_text();
+//        Thread.sleep(1000);
+//
+//
+//        BaseClass.reportfoldersection().click_quick_preview_button();
+//        Thread.sleep(2000);
+//        BaseClass.reportfoldersection().change_to_next_tab();
+//        Thread.sleep(500);
+//        //quick preview tab - capture header and footer data
+//        BaseClass.staging5().verify_old_pca_project_summary_text_qp();
+//        BaseClass.staging5().verify_immediate_repair_cost_section_text_qp();
+//        BaseClass.staging5().verify_capital_reserved_schedule_cost_section_text_qp();
+//
+//        Thread.sleep(500);
+//
+//        //close second tab and go back to default tab
+//        driver.close();
+//        Thread.sleep(500);
+//        BaseClass.reportfoldersection().change_to_default_tab();
+//        Thread.sleep(1000);
+//
+//    }
+@Test
+public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOException {
+    WebDriver driver = getDriver();
 
-        BaseClass.templatesSection().clickTemplatesTab();
-        BaseClass.templatesSection().clickAddTemplateButton();
-        BaseClass.templatesSection().enterTemplateNameField_old_PCA();
-        BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
-        BaseClass.templatesSection().selectTemplateTypeDropdown_old_PCA();
+    BaseClass.staging5().clickUserProfileTab();
+    Thread.sleep(500);
 
-        Thread.sleep(1000);
+    BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+//enter root user
+    BaseClass.quireLogin().enter_marx_okubo_admin_Email();
+    BaseClass.quireLogin().enterPassword();
+    //Thread.sleep(1000);
+    BaseClass.quireLogin().clickLogin();
+    Thread.sleep(500);
 
+    BaseClass.templatesSection().clickTemplatesTab();
+    BaseClass.templatesSection().clickAddTemplateButton();
+    BaseClass.templatesSection().enterTemplateNameField_MCT();
+    BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
+    BaseClass.templatesSection().selectTemplateTypeDropdown_old_PCA();
 
-        BaseClass.templatesSection().enterTemplateDescriptionField();
-        BaseClass.templatesSection().clickSave();
-        Thread.sleep(3000);
-
-        BaseClass.templatesSection().capture_created_AlertMessage();
-        BaseClass.templatesSection().clickHereLinkTemplate();
-        Thread.sleep(2000);
-
-        //add cost rec
-        BaseClass.staging5().hoverto_default_section_title();
-
-        BaseClass.staging5().click_default_section_title();
-
-        Thread.sleep(500);
-        BaseClass.pca_xml_section().clickAddSectionButton();
-        Thread.sleep(500);
-        BaseClass.staging5().click_add_projSummary_toSection();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_add_costRecommendation_toSection();
-
-        Thread.sleep(1000);
-
-        driver.navigate().refresh();
-        Thread.sleep(2000);
-
-        BaseClass.staging5().click_add_cost_recommendation_button();
-        Thread.sleep(500);
-
-        BaseClass.staging5().enter_boiler_name_cost_recommendation();
-        Thread.sleep(500);
-        BaseClass.staging5().enter_cost_summary_5_quantity();
-        BaseClass.staging5().enter_cost_summary_unit_1000_cost();
-        BaseClass.staging5().click_critical_repair_cost_checkbox();
-        Thread.sleep(500);
-        BaseClass.staging5().enter_cost_summary_comments();
-        Thread.sleep(500);
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(1000);
+    Thread.sleep(1000);
 
 
-        BaseClass.staging5().click_add_cost_recommendation_button();
-        Thread.sleep(500);
+    BaseClass.templatesSection().enterTemplateDescriptionField();
+    BaseClass.templatesSection().clickSave();
+    Thread.sleep(3000);
 
-        BaseClass.staging5().enter_parking_name_cost_recommendation();
-        Thread.sleep(500);
-        BaseClass.staging5().enter_cost_summary_5_quantity();
-        BaseClass.staging5().enter_cost_summary_unit_1000_cost();
-        Thread.sleep(500);
-        BaseClass.staging5().click_all_Years_repair_cost_checkbox();
-        BaseClass.staging5().click_all_Years_repair_cost_checkbox();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(1000);
+    BaseClass.templatesSection().capture_created_AlertMessage();
+    BaseClass.templatesSection().clickHereLinkTemplate();
+    Thread.sleep(2000);
 
-        String currentUrl = driver.getCurrentUrl();
-        System.out.println("Saved URL: " + currentUrl);
-        Thread.sleep(2000);
+    //add M|O Package
 
+    BaseClass.templatesSection().clickTemplateSettingsButton();
 
-        BaseClass.staging5().clickUserProfileTab();
-        Thread.sleep(500);
+    BaseClass.templatesSection().clickTemplateSettings_PackagesTab();
 
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().enterRootUserEmail();
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(1000);
+    BaseClass.templatesSection().enterTemplateSettings_PackagesTab_SearchField_MarxOkubo();
+    Thread.sleep(1000);
 
-        driver.navigate().to(currentUrl);
-        Thread.sleep(3000);
+    BaseClass.templatesSection().clickTemplateSettings_PackagesTab_clickFirstDropDownItem();
+    Thread.sleep(1000);
 
-        BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
-        Thread.sleep(1500);
-        BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
-        Thread.sleep(3000);
-
-        BaseClass.reporttagssection().scroll_and_click_and_verify_multiple_cost_tables_checkbox();
-        // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
-        Thread.sleep(1000);
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(2000);
-        //  WebDriver driver = getDriver();
-
-        BaseClass.staging5().clickUserProfileTab();
-        Thread.sleep(500);
-
-        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-        BaseClass.quireLogin().enter_admin_Email();
-        BaseClass.quireLogin().enterPassword();
-        Thread.sleep(1000);
-        BaseClass.quireLogin().clickLogin();
-        Thread.sleep(1500);
-        driver.navigate().to(currentUrl);
-        Thread.sleep(1500);
+    BaseClass.templatesSection().clickTemplateSettings_PackagesTab_addPackage_button();
+    BaseClass.templatesSection().clickTemplateSettings_SaveButton();
 
 
-        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
-        Thread.sleep(500);
 
-        BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
-        Thread.sleep(500);
-        BaseClass.reporttagssection().select_multiple_cost_tables_feature_dropdown();
-        Thread.sleep(500);
-        BaseClass.staging5().click_default_section_title();
-        Thread.sleep(500);
-        BaseClass.staging5().click_boiler_test_item_link();
-        Thread.sleep(500);
-        BaseClass.staging5().enter_cost_rec_boiler_label_field();
-        Thread.sleep(2000);
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(2000);
-        BaseClass.staging5().click_parking_test_item_link();
-        Thread.sleep(2000);
-        BaseClass.staging5().enter_cost_rec_parking_label_field();
-        Thread.sleep(2000);
-        BaseClass.staging5().click_save_button();
+    //add cost rec
+    BaseClass.staging5().hoverto_default_section_title();
 
+    BaseClass.staging5().click_default_section_title();
 
-        Thread.sleep(2000);
-        BaseClass.staging5().click_add_immediate_repair_cost_section();
-        Thread.sleep(1000);
-        BaseClass.staging5().verify_immediate_repair_cost_section_text();
-        Thread.sleep(1000);
+    Thread.sleep(500);
+    BaseClass.pca_xml_section().clickAddSectionButton();
+    Thread.sleep(500);
+    BaseClass.staging5().click_add_projSummary_toSection();
+    Thread.sleep(500);
+    BaseClass.staging5().click_add_costRecommendation_toSection();
 
-        BaseClass.staging5().click_add_capital_reserve_schedule_section();
-        Thread.sleep(1000);
-        BaseClass.staging5().verify_capital_reserved_schedule_cost_section_text();
-        Thread.sleep(1000);
+    Thread.sleep(500);
 
+    driver.navigate().refresh();
+    Thread.sleep(1000);
 
-        BaseClass.staging5().click_project_summary_sectionView();
-        Thread.sleep(1000);
-        BaseClass.staging5().verify_old_pca_project_summary_text();
-        Thread.sleep(1000);
+    BaseClass.staging5().click_add_cost_recommendation_button();
+    Thread.sleep(500);
+
+    BaseClass.staging5().enter_boiler_name_cost_recommendation();
+    Thread.sleep(500);
+    BaseClass.staging5().enter_cost_summary_5_quantity();
+    BaseClass.staging5().enter_cost_summary_unit_1000_cost();
+    BaseClass.staging5().click_critical_repair_cost_checkbox();
+    Thread.sleep(500);
+    BaseClass.staging5().enter_boiler_cost_summary_description_field();
+    Thread.sleep(500);
+
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(1000);
 
 
-        BaseClass.reportfoldersection().click_quick_preview_button();
-        Thread.sleep(2000);
-        BaseClass.reportfoldersection().change_to_next_tab();
-        Thread.sleep(500);
-        //quick preview tab - capture header and footer data
-        BaseClass.staging5().verify_old_pca_project_summary_text_qp();
-        BaseClass.staging5().verify_immediate_repair_cost_section_text_qp();
-        BaseClass.staging5().verify_capital_reserved_schedule_cost_section_text_qp();
+    BaseClass.staging5().click_add_cost_recommendation_button();
+    Thread.sleep(500);
 
-        Thread.sleep(500);
+    BaseClass.staging5().enter_parking_name_cost_recommendation();
+    Thread.sleep(500);
+    BaseClass.staging5().enter_cost_summary_5_quantity();
+    BaseClass.staging5().enter_cost_summary_unit_1000_cost();
+    Thread.sleep(500);
+    BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+    BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+    BaseClass.staging5().enter_parking_cost_summary_description_field();
+    Thread.sleep(500);
 
-        //close second tab and go back to default tab
-        driver.close();
-        Thread.sleep(500);
-        BaseClass.reportfoldersection().change_to_default_tab();
-        Thread.sleep(1000);
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(1000);
 
-    }
 
+
+    BaseClass.staging5().click_add_cost_recommendation_button();
+    Thread.sleep(500);
+
+    BaseClass.staging5().enter_roof_name_cost_recommendation();
+    Thread.sleep(500);
+    BaseClass.staging5().enter_cost_summary_quantity();
+    BaseClass.staging5().enter_cost_summary_unit_cost();
+    Thread.sleep(500);
+    BaseClass.staging5().click_critical_repair_cost_checkbox();
+
+    BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+    BaseClass.staging5().click_all_Years_repair_cost_checkbox();
+    BaseClass.staging5().enter_roof_cost_summary_description_field();
+
+    Thread.sleep(1000);
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(1000);
+
+    String currentUrl = driver.getCurrentUrl();
+    System.out.println("Saved URL: " + currentUrl);
+    Thread.sleep(2000);
+
+
+    BaseClass.staging5().clickUserProfileTab();
+    Thread.sleep(500);
+
+    BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+    BaseClass.quireLogin().enterRootUserEmail();
+    BaseClass.quireLogin().enterPassword();
+    Thread.sleep(1000);
+    BaseClass.quireLogin().clickLogin();
+    Thread.sleep(1000);
+
+    driver.navigate().to(currentUrl);
+    Thread.sleep(500);
+
+    BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
+    Thread.sleep(500);
+    BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
+    Thread.sleep(500);
+
+    BaseClass.reporttagssection().scroll_and_click_and_verify_multiple_cost_tables_checkbox();
+    // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
+    Thread.sleep(1000);
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(1000);
+    //  WebDriver driver = getDriver();
+
+    BaseClass.staging5().clickUserProfileTab();
+    Thread.sleep(500);
+
+    BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+    BaseClass.quireLogin().enter_marx_okubo_admin_Email();
+    BaseClass.quireLogin().enterPassword();
+    Thread.sleep(1000);
+    BaseClass.quireLogin().clickLogin();
+    Thread.sleep(1500);
+    driver.navigate().to(currentUrl);
+    Thread.sleep(1500);
+
+
+    BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+    Thread.sleep(500);
+
+    BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
+    Thread.sleep(500);
+    BaseClass.reporttagssection().select_multiple_cost_tables_feature_dropdown();
+    Thread.sleep(500);
+    BaseClass.staging5().click_default_section_title();
+    Thread.sleep(500);
+    BaseClass.staging5().click_boiler_test_item_link();
+    Thread.sleep(500);
+    BaseClass.staging5().enter_cost_rec_boiler_label_field();
+    Thread.sleep(500);
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(500);
+
+    BaseClass.staging5().click_parking_test_item_link();
+    Thread.sleep(500);
+    BaseClass.staging5().enter_cost_rec_parking_label_field();
+    Thread.sleep(500);
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(500);
+//        // TODO: Verify "boiler test label" appears on boiler cost rec
+//        // TODO: Verify "parking test label" appears on parking cost rec
+//        // TODO: Verify roof cost rec has NO label (third one left unlabeled)
+
+    BaseClass.staging5().verify_cost_rec_boiler_test_label();
+    BaseClass.staging5().verify_cost_rec_parking_test_label();
+
+    driver.navigate().refresh();
+    Thread.sleep(1000);
+    BaseClass.staging5().verify_cost_rec_uncategorized_label();
+
+    BaseClass.staging5().click_roof_test_item_link();
+    Thread.sleep(500);
+    BaseClass.staging5().enter_cost_rec_roof_label_field();
+    Thread.sleep(500);
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(500);
+    BaseClass.staging5().verify_cost_rec_roof_test_label();
+
+
+
+
+    Thread.sleep(500);
+    BaseClass.staging5().click_add_immediate_repair_cost_section();
+    Thread.sleep(500);
+
+
+    BaseClass.staging5().click_rename_reorder_cost_tables_link();
+    Thread.sleep(500);
+//
+    BaseClass.staging5().edit_cost_rec_roof_label_field();
+    Thread.sleep(500);
+
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(500);
+
+
+    BaseClass.staging5().click_default_section_title();
+    BaseClass.staging5().verify_cost_rec_roof_test_label_updated();
+
+    BaseClass.staging5().click_add_immediate_repair_cost_section();
+
+
+    BaseClass.staging5().verify_MCT_immediate_repair_cost_section_text();
+    Thread.sleep(500);
+
+    BaseClass.staging5().click_add_capital_reserve_schedule_section();
+    Thread.sleep(500);
+    BaseClass.staging5().verify_MCT_capital_reserved_schedule_cost_section_text();
+    Thread.sleep(500);
+
+
+    BaseClass.staging5().click_project_summary_sectionView();
+    Thread.sleep(500);
+    BaseClass.staging5().verify_MCT_project_summary_text();
+    Thread.sleep(500);
+
+
+    BaseClass.reportfoldersection().click_quick_preview_button();
+    Thread.sleep(1000);
+    BaseClass.reportfoldersection().change_to_next_tab();
+    Thread.sleep(500);
+    //quick preview tab - capture header and footer data
+
+
+    BaseClass.staging5().verify_MCT_project_summary_text_qp();
+    BaseClass.staging5().verify_MCT_immediate_repair_cost_section_text_qp();
+    BaseClass.staging5().verify_MCT_capital_reserved_schedule_cost_section_text_qp();
+
+    Thread.sleep(500);
+
+    //close second tab and go back to default tab
+    driver.close();
+    Thread.sleep(500);
+    BaseClass.reportfoldersection().change_to_default_tab();
+    Thread.sleep(500);
+
+    BaseClass.staging5().click_add_capital_reserve_schedule_section();
+    BaseClass.staging5().click_rename_reorder_cost_tables_link();
+    Thread.sleep(500);
+    BaseClass.staging5().delete_boiler_test_label();
+    Thread.sleep(500);
+    BaseClass.staging5().click_save_button();
+    Thread.sleep(500);
+    BaseClass.staging5().click_add_immediate_repair_cost_section();
+    Thread.sleep(500);
+    BaseClass.staging5().verify_MCT_boiler_label_removed_immediate_repair_cost_section_text();
+
+    BaseClass.reportfoldersection().click_quick_preview_button();
+    Thread.sleep(1000);
+    BaseClass.reportfoldersection().change_to_next_tab();
+    Thread.sleep(500);
+    BaseClass.staging5().verify_MCT_boiler_label_removed_immediate_repair_cost_section_qp();
+    Thread.sleep(500);
+    driver.close();
+    Thread.sleep(500);
+    BaseClass.reportfoldersection().change_to_default_tab();
+    Thread.sleep(1000);
+    driver.navigate().refresh();
+    Thread.sleep(1000);
+    BaseClass.staging5().verify_cost_rec_uncategorized_label();
+    Thread.sleep(1000);
+
+
+}
     @Test
     public void TR_020_Atlas_admin_permissions() throws InterruptedException, IOException {
         Thread.sleep(1000);
@@ -1781,7 +2069,7 @@ BaseClass.staging5().clickLibrariesTab();
         BaseClass.pca_xml_section().hover_assigned_packages_first_item();
         Thread.sleep(800);
         BaseClass.pca_xml_section().click_cancel_button_first_assigned_package_button();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
     }
 
@@ -1791,6 +2079,8 @@ BaseClass.staging5().clickLibrariesTab();
 
         // STEP 1: Share PCA report with Demo Company
         BaseClass.reportfoldersection().clickReportsTab();
+        Thread.sleep(500);
+
         BaseClass.reportfoldersection().enterSearchField_QA_Report();
         Thread.sleep(3500);
         BaseClass.reportfoldersection().clickReportsFirstLink();
@@ -1863,7 +2153,7 @@ BaseClass.staging5().clickLibrariesTab();
         Thread.sleep(1000);
 
         driver.navigate().refresh();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         // STEP 5: Test PCA report - Special sections comments
         BaseClass.reportfoldersection().clickReportsTab();

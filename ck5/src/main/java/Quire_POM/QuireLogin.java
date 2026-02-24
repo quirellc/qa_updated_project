@@ -76,6 +76,13 @@ public class QuireLogin extends ReusableAnnotations {
             ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "qa_admin2@quiretest.com", logger, "test admin 2 ID");
         }}
 
+    public void enter_marx_okubo_admin_Email() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "qa_admin_marx@quiretest.com", logger, "Admin Email ID");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "qa_admin_marx2@quiretest.com", logger, "test admin 2 ID");
+        }}
+
     public void enter_author_Email() {
         if (browserName.contains("Chrome")) {
             ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, userID, "qa_author@quiretest.com", logger, "Author Email ID");
