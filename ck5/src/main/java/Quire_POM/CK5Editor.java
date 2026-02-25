@@ -382,6 +382,14 @@ WebElement instruction_text_ck5;
         else{
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, wb_body_ff, "QA Test Automation - WordBank Content", logger, "wb_body_ff");
         }}
+
+    public void enter_wb_text_ck5_PM() {
+        if (driver instanceof ChromeDriver) {
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, instruction_text_ck5, "QA PM - WB Content", logger, "QA PM - WB Content");
+        }
+        else{
+            ReusableMethodsLoggersPOM.sendKeysMethod(driver, wb_body_ff, "QA PM - WB Content", logger, "QA PM - WB Content");
+        }}
     public void enter_footnote_text_ck5() {
         if (driver instanceof ChromeDriver) {
             ReusableMethodsLoggersPOM.sendKeysMethod(driver, footNote_textBox,"QA Automation Footnote text" ,  logger, "footNote_textBox");

@@ -100,6 +100,21 @@ public class TemplatesSection extends ReusableAnnotations {
     WebElement manage_collaborators;
     public void click_manage_collaborators_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, manage_collaborators, logger, "manage_collaborators button");}
+
+    @FindBy(xpath = "//div[@class='assignmentList-itemNameText js-assignmentList-itemNameText' and normalize-space()='qa_pm']")
+    WebElement qa_pm_collaborator;
+    
+    @FindBy(xpath = "//div[@class='assignmentList-itemNameText js-assignmentList-itemNameText' and normalize-space()='qa_pm2']")
+    WebElement qa_pm2_collaborator;
+    
+    public void select_pm_collaborator() {
+        if (browserName.contains("Chrome")) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, qa_pm_collaborator, logger, "qa_pm collaborator Chrome");
+        } else if (browserName.contains("Firefox")) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, qa_pm2_collaborator, logger, "qa_pm2 collaborator Firefox");
+        }
+    }
+
     @FindBy(xpath = "//a[@title='Export Content']")
     WebElement export_content_button;
     public void click_export_content_button() {

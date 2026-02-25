@@ -73,6 +73,19 @@ public class CK_Editor extends ReusableAnnotations {
 
     }
     @Test
+    public void TR_0002a_add_PM_as_collaborator() throws InterruptedException {
+        BaseClass.templatesSection().click_manage_collaborators_button();
+        Thread.sleep(800);
+        BaseClass.templatesSection().select_pm_collaborator();
+        Thread.sleep(800);
+        BaseClass.staging5().click_add_button_unassigned_item();
+        Thread.sleep(800);
+        BaseClass.templatesSection().clickSave2();
+        Thread.sleep(800);
+    }
+
+
+    @Test
     public void TR_0003_new_ck5_intro_pages_and_report_tag() throws InterruptedException {
         //add intro pages to template
         BaseClass.pca_xml_section().clickAddSectionButton();

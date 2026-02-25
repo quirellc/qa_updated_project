@@ -721,6 +721,36 @@ WebElement toBeDeleted_column_dropdown;
     public void click_smartTable_settings_dropdown_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, smartTable_settings_dropdown_button, logger, " smartTable_settings_dropdown_button ");}
 
+
+    @FindBy(xpath = "//input[@id='info_table_section_header_title']")
+    WebElement smartTable_settings_table_title;
+    public void enter_smartTable_settings_table_title() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, smartTable_settings_table_title, "QA PM ST Title", logger, " smartTable_settings_table_title ");}
+
+    public void clear_smartTable_settings_table_title() {
+        ReusableMethodsLoggersPOM.clearMethod(driver, smartTable_settings_table_title, logger, " smartTable_settings_table_title ");}
+
+
+    @FindBy(xpath = "//th[normalize-space()='QA PM ST Title']")
+    WebElement smartTable_table_title_text_PM;
+    public void verify_smartTable_table_title_text_PM() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, smartTable_table_title_text_PM, true, logger, "smartTable_table_title_text_PM");
+    }
+
+    public void verify_no_smartTable_table_title_text_PM() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, smartTable_table_title_text_PM, false, logger, "smartTable_table_title_text_PM");
+    }
+    @FindBy(xpath = "(//p[contains(text(),'QA PM ST Title') and contains(text(),'QA PM - WB Content')])[1]")
+    WebElement smartTable_wb_content_PM;
+    public void verify_smartTable_wb_content_richtext_PM() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, smartTable_wb_content_PM, true, logger, "smartTable_wb_content_PM");
+    }
+    @FindBy(xpath = "(//p[contains(text(),'QA PM ST Title') and contains(text(),'QA PM - WB Content')])[2]")
+    WebElement smartTable_wb_content_dynamic_PM;
+    public void verify_smartTable_wb_content_dynamic_PM() {
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, smartTable_wb_content_dynamic_PM, true, logger, "smartTable_wb_content_dynamic_PM");
+    }
+
     @FindBy(xpath = "//input[@id='info_table_section_flags_256']")
     WebElement allow_column_sorting_checkbox;
     public void click_allow_column_sorting_checkbox() {

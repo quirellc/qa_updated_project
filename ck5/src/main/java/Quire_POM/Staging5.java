@@ -2856,6 +2856,9 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
     public void enter_wordbank_ST_new_title() {
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Smart Table New Item", logger, "wordBank_New_Title ");
     }
+    public void enter_wordbank_ST_PM_title() {
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA_PM_ST", logger, "wordBank_New_Title QA_PM_ST ");
+    }
 
     @FindBy(xpath = "//a[contains(text(), 'QA WordBank Item Chrome-Libraries Tab')]")
     WebElement wordBank_libraries_link_chrome;
@@ -4721,7 +4724,11 @@ WebElement condition_action_field_text;
     public void enter_QA_ST_wordBank_unassigned_items() {
         ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, QA_wordBank_searchField, "QA_WordBank_Smart_Table_New_Item", logger, " QA_wordBank_searchField ");
         ReusableMethodsLoggersPOM.submitMethod(driver, QA_wordBank_searchField, logger, " QA_wordBank_searchField ");
+    }
 
+    public void enter_QA_ST_wordBank_unassigned_items_PM() {
+        ReusableMethodsLoggersPOM.sendKeysandSubmitMethod(driver, QA_wordBank_searchField, "QA_PM_ST", logger, " QA_PM_ST searchfield ");
+        ReusableMethodsLoggersPOM.submitMethod(driver, QA_wordBank_searchField, logger, " QA_PM_ST searchfield ");
     }
 
 
@@ -4749,6 +4756,15 @@ WebElement condition_action_field_text;
         ReusableMethodsLoggersPOM.clickMethod(driver, QA_wordBank_unassigned_item, logger, "QA_wordBank_unassigned_item");
     }
 
+    @FindBy(xpath = "//*[contains(text(),'QA_PM_ST')]")
+    WebElement QA_wordBank_PM_unassigned_item;
+
+    public void click_QA_wordBank_unassigned_item_PM() {
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, QA_wordBank_PM_unassigned_item, logger, "QA_PM_ST unassigned_item");
+    }
+
+
 
     @FindBy(xpath = "//button[@type='button'][normalize-space()='Add']")
     WebElement add_button;
@@ -4768,6 +4784,13 @@ WebElement condition_action_field_text;
 
     public void click_insert_wordbank_arrow_button() {
         ReusableMethodsLoggersPOM.clickMethod(driver, insert_wordbank_arrow_button, logger, "insert_wordbank_arrow_button");
+    }
+
+    @FindBy(xpath = "//div[contains(normalize-space(),'QA_PM_ST')]/a")
+    WebElement insert_wordbank_arrow_button_PM;
+
+    public void click_insert_wordbank_arrow_button_PM() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, insert_wordbank_arrow_button_PM, logger, "insert_wordbank_arrow_button_PM");
     }
 
   //  @FindBy(xpath = "(//div[@class='editor-section-title spellCheck-pending'])[2]")
