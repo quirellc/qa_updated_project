@@ -98,6 +98,9 @@ public class  FNMA_PCA_XML_Staging extends ReusableAnnotations {
 
             BaseClass.staging5().scroll_and_click_unregister_HOT14_feature();
             Thread.sleep(1000);
+        BaseClass.staging5().scroll_and_click_unregister_company_connections_feature();
+        Thread.sleep(1000);
+
 
 
 //log out current user, log into sysadmin atlas
