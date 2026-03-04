@@ -1086,7 +1086,24 @@ public void click_add_company_feature() {
     ReusableMethodsLoggersPOM.clickMethod(driver, addCompanyFeatureButton, logger, "addCompanyFeatureButton ");
 }
 
+    @FindBy(xpath = "//tr[td[normalize-space()='Company Connections']]//a[contains(text(),'unregister')]")
+    WebElement unregister_company_connections_feature;
 
+    public void scroll_and_click_unregister_company_connections_feature() throws InterruptedException {
+        try
+        {
+            if (unregister_company_connections_feature.isDisplayed()) {
+                ReusableMethodsLoggersPOM.scrollToElementMethod(driver, unregister_company_connections_feature, logger, "unregister_company_connections_feature");
+                ReusableMethodsLoggersPOM.clickMethod(driver, unregister_company_connections_feature, logger, "unregister_company_connections_feature");
+
+                Thread.sleep(1000);
+                driver.switchTo().alert().accept();
+            }}
+        catch (Exception e)
+        {
+            System.out.println("Company Connections feature not found...skipping");
+            logger.log(LogStatus.INFO, "Company Connections feature not found...skipping");
+        }}
 
 
 
@@ -1238,6 +1255,33 @@ public void add_all_company_features() throws InterruptedException {
 
         ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
                 "Save feature button for: Atlas-Limit template access for admin");
+        Thread.sleep(1000);
+
+    }
+
+    public void add_company_connections_feature() throws InterruptedException {
+        try {
+            if (unregister_company_connections_feature.isDisplayed()) {
+                System.out.println("Feature already enabled — unregister button visible.");
+                logger.log(LogStatus.INFO, "Company Connections feature already enabled");
+                return;
+            }
+        } catch (Exception e) {
+            // Element not found or not visible — proceed to add feature
+            System.out.println("Unregister button not visible — adding feature.");
+            logger.log(LogStatus.INFO, "Adding Company Connections feature");
+        }
+
+        BaseClass.staging5().click_add_company_feature();
+        Thread.sleep(2500);
+
+        ReusableMethodsLoggersPOM.selectByText(driver, companyFeatureDropdown,
+                "Company Connections",
+                "Company Connections");
+        Thread.sleep(2000);
+
+        ReusableMethodsLoggersPOM.clickMethod(driver, saveFeatureButton, logger,
+                "Save feature button for: Company Connections");
         Thread.sleep(1000);
 
     }
@@ -2857,7 +2901,7 @@ ReusableMethodsLoggersPOM.clickMethod(driver, suggestion_popup, logger, "suggest
         ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA WordBank Smart Table New Item", logger, "wordBank_New_Title ");
     }
     public void enter_wordbank_ST_PM_title() {
-        ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA_PM_ST", logger, "wordBank_New_Title QA_PM_ST ");
+        ReusableMethodsLoggersPOM.sendKeysMethod(driver, wordBank_New_Title, "QA PM ST", logger, "wordBank_New_Title QA_PM_ST ");
     }
 
     @FindBy(xpath = "//a[contains(text(), 'QA WordBank Item Chrome-Libraries Tab')]")
@@ -4756,7 +4800,7 @@ WebElement condition_action_field_text;
         ReusableMethodsLoggersPOM.clickMethod(driver, QA_wordBank_unassigned_item, logger, "QA_wordBank_unassigned_item");
     }
 
-    @FindBy(xpath = "//*[contains(text(),'QA_PM_ST')]")
+    @FindBy(xpath = "//*[contains(text(),'QA PM ST')]")
     WebElement QA_wordBank_PM_unassigned_item;
 
     public void click_QA_wordBank_unassigned_item_PM() {
@@ -4786,7 +4830,7 @@ WebElement condition_action_field_text;
         ReusableMethodsLoggersPOM.clickMethod(driver, insert_wordbank_arrow_button, logger, "insert_wordbank_arrow_button");
     }
 
-    @FindBy(xpath = "//div[contains(normalize-space(),'QA_PM_ST')]/a")
+    @FindBy(xpath = "//div[contains(normalize-space(),'PM')]/a")
     WebElement insert_wordbank_arrow_button_PM;
 
     public void click_insert_wordbank_arrow_button_PM() {
