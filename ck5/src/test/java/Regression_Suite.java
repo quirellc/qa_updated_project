@@ -357,6 +357,8 @@ Thread.sleep(1500);
         Thread.sleep(2500);
         BaseClass.staging5().click_second_pinned_Item_portfolios();
 //pin reports
+        Thread.sleep(1000);
+
         BaseClass.staging5().clickReportsTab();
         BaseClass.reportfoldersection().enterSearchField_HMReports();
         Thread.sleep(1000);
@@ -811,7 +813,7 @@ Thread.sleep(1000);
         BaseClass.quireLogin().enterPassword();
         //Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
-        Thread.sleep(500);
+        Thread.sleep(1500);
 
     }
 

@@ -1498,9 +1498,9 @@ BaseClass.staging5().clickLibrariesTab();
 //    }
 /**
  * Test: TR_019_MarxOkubo_MCT_labels
- * 
+ *
  * Purpose: Verify Multiple Cost Tables (MCT) labels functionality for Marx Okubo admin user
- * 
+ *
  * Test Flow:
  * 1. Login as Marx Okubo admin and create MCT template
  * 2. Add Marx Okubo package and cost recommendation sections
@@ -1523,6 +1523,10 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     BaseClass.quireLogin().enterPassword();
     //Thread.sleep(1000);
     BaseClass.quireLogin().clickLogin();
+    Thread.sleep(500);
+
+    // Click modal close button
+    BaseClass.staging5().click_modal_close_window();
     Thread.sleep(500);
 
     // ===== CREATE MCT TEMPLATE =====
@@ -1702,7 +1706,7 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     Thread.sleep(500);
     BaseClass.reporttagssection().select_multiple_cost_tables_feature_dropdown();
     Thread.sleep(500);
-    
+
     // ===== ASSIGN BOILER LABEL =====
     BaseClass.staging5().click_default_section_title();
     Thread.sleep(500);
@@ -1809,7 +1813,7 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     Thread.sleep(500);
     BaseClass.staging5().click_save_button();
     Thread.sleep(500);
-    
+
     // Verify boiler label is removed from immediate repair cost section
     BaseClass.staging5().click_add_immediate_repair_cost_section();
     Thread.sleep(500);
@@ -1827,7 +1831,7 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     Thread.sleep(500);
     BaseClass.reportfoldersection().change_to_default_tab();
     Thread.sleep(1000);
-    
+
     // ===== FINAL VERIFICATION =====
     driver.navigate().refresh();
     Thread.sleep(1000);
@@ -2130,6 +2134,18 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
     public void TR_022_Company_connections() throws InterruptedException, IOException {
         WebDriver driver = BaseClass.getDriver();
 
+        BaseClass.staging5().clickUserProfileTab();
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        Thread.sleep(500);
+
+        BaseClass.quireLogin().enterRootUserEmail();
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        BaseClass.staging5().add_company_connections_feature();
+        Thread.sleep(500);
+
         // STEP 1: Share PCA report with Demo Company
         BaseClass.reportfoldersection().clickReportsTab();
         Thread.sleep(500);
@@ -2240,6 +2256,17 @@ public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOExcepti
         BaseClass.templatesSection().verify_alertMessage_projectSummary();
         Thread.sleep(1000);
 
+        BaseClass.staging5().clickUserProfileTab();
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        Thread.sleep(500);
+
+        BaseClass.quireLogin().enterRootUserEmail();
+        BaseClass.quireLogin().enterPassword();
+        Thread.sleep(1000);
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+        BaseClass.staging5().scroll_and_click_unregister_company_connections_feature();
+        Thread.sleep(1500);
     }
 
 //    @Test // old with atlas accounts

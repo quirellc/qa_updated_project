@@ -740,12 +740,12 @@ WebElement toBeDeleted_column_dropdown;
     public void verify_no_smartTable_table_title_text_PM() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, smartTable_table_title_text_PM, false, logger, "smartTable_table_title_text_PM");
     }
-    @FindBy(xpath = "(//p[contains(text(),'QA PM ST Title') and contains(text(),'QA PM - WB Content')])[1]")
+    @FindBy(xpath = "(//p[contains(text(),'QAPMST') and contains(text(),'QA PM - WB Content')])[1]")
     WebElement smartTable_wb_content_PM;
     public void verify_smartTable_wb_content_richtext_PM() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, smartTable_wb_content_PM, true, logger, "smartTable_wb_content_PM");
     }
-    @FindBy(xpath = "(//p[contains(text(),'QA PM ST Title') and contains(text(),'QA PM - WB Content')])[2]")
+    @FindBy(xpath = "(//p[contains(text(),'QAPMST') and contains(text(),'QA PM - WB Content')])[2]")
     WebElement smartTable_wb_content_dynamic_PM;
     public void verify_smartTable_wb_content_dynamic_PM() {
         ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, smartTable_wb_content_dynamic_PM, true, logger, "smartTable_wb_content_dynamic_PM");
@@ -1000,6 +1000,14 @@ WebElement toBeDeleted_column_dropdown;
 
     public void click_assign_wordBank_item_smartTable_dropdown() throws InterruptedException {
         ReusableMethodsLoggersPOM.clickMethod(driver, assign_wordBank_item_smartTable_dropDown, logger, " assign_wordBank_item_smartTable_dropDown ");
+    }
+
+
+    @FindBy(xpath = "(//div[@class='assignmentList-container js-assignmentList-container assignmentList-assigned js-assignmentList-assigned']//div[@class='assignmentList-item js-assignmentList-item'])[1]")
+    WebElement assigned_WB_first_item;
+
+    public void hover_assigned_WB_first_item() {
+        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, assigned_WB_first_item, logger, "assigned_WB_first_item");
     }
 
     @FindBy(xpath = "//span[normalize-space()='Manage Dropdown Values...']")

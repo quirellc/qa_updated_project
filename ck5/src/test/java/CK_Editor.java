@@ -616,6 +616,391 @@ public class CK_Editor extends ReusableAnnotations {
         BaseClass.staging5().click_default_section_title();
         Thread.sleep(1000);
     }
+    @Test
+    public void TR_0005a_create_ST() throws InterruptedException {
+//        BaseClass.staging5().capture_Section_row_editor();
+//        Thread.sleep(500);
+        WebDriver driver = getDriver();
+        BaseClass.staging5().click_default_section_title();
+        Thread.sleep(500);
+
+        BaseClass.pca_xml_section().clickAddSectionButton();
+        Thread.sleep(500);
+        BaseClass.staging5().click_add_smartTable_toSection();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_add_column_button_smartTable();
+        Thread.sleep(500);
+
+        //add rich text column, rich text column default
+
+        BaseClass.smartTables().enter_column_name_richText_smartTable();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_and_add_another_button();
+        Thread.sleep(500);
+
+        //add plain text column
+
+        BaseClass.smartTables().enter_column_name_plainText_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().select_column_type_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_plainText_dropDown_column_type();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_and_add_another_button();
+        Thread.sleep(500);
+
+
+        //add number column
+        BaseClass.smartTables().enter_column_name_number_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().select_column_type_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_number_dropDown_column_type();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_and_add_another_button();
+        Thread.sleep(500);
+
+        //add formula column
+        BaseClass.smartTables().enter_column_name_formula_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().select_column_type_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_formula_column_type();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(1500);
+
+
+
+
+        BaseClass.smartTables().click_add_rows_to_bottom_button();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(1000);
+
+        Thread.sleep(500);
+
+        driver.navigate().refresh();
+
+        Thread.sleep(500);
+
+
+        //    add date column
+        BaseClass.smartTables().click_c1_header();
+        Thread.sleep(500);
+
+        BaseClass.smartTables().click_smartTable_actions_button();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_add_column_ST_dropdown_button();
+        Thread.sleep(500);
+
+        BaseClass.smartTables().enter_column_name_date_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().select_column_type_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_date_column_type();
+        Thread.sleep(500);
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+
+        driver.navigate().refresh();
+
+        Thread.sleep(500);
+
+        //     click date column, add to left, add dynamic column
+        BaseClass.smartTables().click_c1_header();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_date_column_dropdown();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_add_column_to_left_dropdown();
+        Thread.sleep(500);
+
+        BaseClass.smartTables().enter_column_name_dynamic_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().select_column_type_smartTable();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_dynamic_column_type();
+
+        Thread.sleep(1000);
+        //  BaseClass.staging5().click_out_of_modal();
+        //   Thread.sleep(1000);
+        BaseClass.staging5().click_save_button();
+        //Thread.sleep(1500);
+//        BaseClass.staging5().click_smartTable_sectionView();
+        Thread.sleep(500);
+
+        driver.navigate().refresh();
+
+        Thread.sleep(500);
+
+        // add column to right of date- TO BE DELETED
+
+        //   BaseClass.staging5().click_r1_c1();
+        //   Thread.sleep(500);
+        BaseClass.smartTables().click_c1_header();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_date_column_dropdown();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_add_column_to_right_dropdown();
+
+        BaseClass.smartTables().enter_column_name_toBeDeleted_smartTable();
+        Thread.sleep(1000);
+        BaseClass.staging5().click_save_button();
+        // Thread.sleep(500);
+        Thread.sleep(500);
+
+        driver.navigate().refresh();
+
+        Thread.sleep(500);
+//           Thread.sleep(500);
+        BaseClass.smartTables().click_c1_header();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_toBeDeleted_column_dropdown();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_delete_column_dropdown();
+        Thread.sleep(500);
+        driver.switchTo().alert().accept();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_toBeDeletedColumn_isNot_visible();
+        Thread.sleep(1500);
+
+
+    }
+    @Test
+    public void TR_0005b_create_assign_WB_PM_user() throws InterruptedException {
+//enter rich text - wordbank r5c1
+        WebDriver driver = getDriver();
+//
+//        BaseClass.staging5().click_default_section_title();
+//        Thread.sleep(1000);
+//
+//        BaseClass.pca_xml_section().clickAddSectionButton();
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_add_smartTable_toSection();
+//        Thread.sleep(1000);
+//        BaseClass.smartTables().click_add_column_button_smartTable();
+//        Thread.sleep(1000);
+//
+//        //add rich text column, rich text column default
+//
+//        BaseClass.smartTables().enter_column_name_richText_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_save_and_add_another_button();
+//        Thread.sleep(1500);
+//
+//        BaseClass.smartTables().enter_column_name_dynamic_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().select_column_type_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_dynamic_column_type();
+//
+//        Thread.sleep(1000);
+//        BaseClass.staging5().click_save_button();
+//
+//        BaseClass.smartTables().click_add_rows_to_bottom_button();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_pixel_out_of_section();
+//
+//        Thread.sleep(1000);
+
+
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println("Saved URL: " + currentUrl);
+        Thread.sleep(2000);
+        BaseClass.staging5().clickUserProfileTab();
+        BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        Thread.sleep(500);
+
+        // Login as PM
+        BaseClass.quireLogin().enter_pm_Email();
+        BaseClass.quireLogin().enterPassword();
+        BaseClass.quireLogin().clickLogin();
+        Thread.sleep(500);
+
+        driver.navigate().to(currentUrl);
+        Thread.sleep(500);
+
+        //wordbank create item
+        BaseClass.smartTables().click_row2_richText();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_first_column_dropdown_smartTable();
+        Thread.sleep(1500);
+        BaseClass.smartTables().click_create_wordBank_item_smartTable_dropdown();
+        Thread.sleep(1500);
+        BaseClass.staging5().enter_wordbank_ST_PM_title();
+        Thread.sleep(1500);
+        BaseClass.staging5().clickWordBank_label_dropdown_arrow();
+        Thread.sleep(800);
+        BaseClass.staging5().clickWordBank_label_dropdown_firstLink();
+        Thread.sleep(900);
+        //add content row
+        BaseClass.templatesSection().clickAddContentRow_instruction();
+        Thread.sleep(500);
+        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+        Thread.sleep(500);
+        BaseClass.ck5editor().enter_wb_text_ck5_PM();
+        Thread.sleep(1500);
+        BaseClass.staging5().click_wordBank_add_content_row();
+        Thread.sleep(500);
+        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+        Thread.sleep(500);
+        BaseClass.ck5editor().enter_wb_text_ck5_PM();
+        Thread.sleep(1500);
+        BaseClass.templatesSection().clickAddContentRow_instruction();
+
+        //    BaseClass.staging5().click_out_of_modal();
+        Thread.sleep(500);
+
+        BaseClass.templatesSection().clickSave2();
+        Thread.sleep(5000);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+
+
+        //wordbank assign item
+        BaseClass.smartTables().click_row2_richText();
+        Thread.sleep(1000);
+
+        BaseClass.smartTables().click_first_column_dropdown_smartTable();
+        Thread.sleep(500);
+
+        BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
+        Thread.sleep(500);
+
+        BaseClass.staging5().enter_QA_ST_wordBank_unassigned_items_PM();
+        Thread.sleep(1500);
+
+        BaseClass.staging5().click_QA_wordBank_unassigned_item_PM();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_add_button_unassigned_item();
+        Thread.sleep(500);
+        BaseClass.templatesSection().clickSave2();
+        Thread.sleep(500);
+
+
+//add wordbank assigned item to cell
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+
+        BaseClass.smartTables().click_row2_richText();
+        Thread.sleep(1500);
+
+        BaseClass.staging5().click_insert_wordbank_arrow_button_PM();
+        Thread.sleep(1500);
+
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_smartTable_wb_content_richtext_PM();
+        Thread.sleep(500);
+
+//unassign WB item
+
+
+        //wordbank create item
+        BaseClass.smartTables().click_row2_richText();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_first_column_dropdown_smartTable();
+        Thread.sleep(1500);
+        BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
+        Thread.sleep(1500);
+//remove other package hovering over checkbox
+        BaseClass.smartTables().hover_assigned_WB_first_item();
+        Thread.sleep(500);
+        BaseClass.pca_xml_section().click_cancel_assigned_package_button();
+        Thread.sleep(500);
+        BaseClass.templatesSection().clickSave2();
+        Thread.sleep(800);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(900);
+//        BaseClass.staging5().click_smartTable_sectionView();
+
+//add refresh for semaphore   for      BaseClass.staging5().click_number_dropDown_dynamic_cell();
+
+
+
+        //add column header via ST settings
+        BaseClass.smartTables().click_row2_richText();
+        BaseClass.smartTables().click_smartTable_actions_button();
+        BaseClass.smartTables().click_smartTable_settings_dropdown_button();
+        BaseClass.smartTables().enter_smartTable_settings_table_title();
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
+        driver.navigate().refresh();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_smartTable_table_title_text_PM();
+
+        BaseClass.smartTables().click_row2_richText();
+        BaseClass.smartTables().click_smartTable_actions_button();
+        BaseClass.smartTables().click_smartTable_settings_dropdown_button();
+        BaseClass.smartTables().clear_smartTable_settings_table_title();
+        BaseClass.staging5().click_save_button();
+        Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
+        driver.navigate().refresh();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_no_smartTable_table_title_text_PM();
+        Thread.sleep(500);
+
+    }
+    @Test
+    public void TR_0005c_dynamic_column_cells_PM_user() throws InterruptedException {
+        WebDriver driver = getDriver();
+
+
+        BaseClass.smartTables().click_row9_column5_dynamic();
+        Thread.sleep(500);
+        BaseClass.ck5editor().click_escape_current_cell();
+        Thread.sleep(1000);
+        //right click r5c5 dynamic cell - after escape is clicked
+        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+        Thread.sleep(2000);
+
+
+        BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
+        Thread.sleep(500);
+
+        BaseClass.staging5().enter_QA_ST_wordBank_unassigned_items_PM();
+        Thread.sleep(800);
+
+        BaseClass.staging5().click_QA_wordBank_unassigned_item_PM();
+        Thread.sleep(500);
+
+        BaseClass.staging5().click_add_button_unassigned_item();
+        Thread.sleep(500);
+        BaseClass.templatesSection().clickSave2();
+        Thread.sleep(500);
+
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(1500);
+        BaseClass.smartTables().click_row9_column5_dynamic();
+        Thread.sleep(500);
+        BaseClass.staging5().click_insert_wordbank_arrow_button();
+        Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_smartTable_wb_content_dynamic_PM();
+        Thread.sleep(500);
+//        BaseClass.staging5().click_cancel_button_popup();
+//        Thread.sleep(500);
+//        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+
+    }
+
+
 
     @Test
     public void TR_0006_new_ck5_report_creation() throws InterruptedException{
