@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test Suite ">
+    <suite-files>
+<!--                <suite-file path="SanityCheck_Prod.xml"/>-->
+        <!--        <suite-file path="testng-ESA.xml"/>-->
+        <!--        <suite-file path="testng-SRA.xml"/>-->
+        <suite-file path="Regression_chrome.xml"/>
+        <!--        <suite-file path="testng-ZON.xml"/>-->
+        <!--        <suite-file path="testng-seleniumgrid-theinternet.xml"/>-->
+        <!--        <suite-file path="testng-lambdatest-selenium-playground.xml"/>-->
+    </suite-files>
+</suite>

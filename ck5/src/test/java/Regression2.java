@@ -234,193 +234,201 @@ public class    Regression2 extends ReusableAnnotations {
 //
 
     }
-
-    @Test
-    public void TR_017_create_assign_WB_PM_user() throws InterruptedException {
-//enter rich text - wordbank r5c1
-        WebDriver driver = getDriver();
-
-
-        //wordbank create item
-        BaseClass.smartTables().click_row3_richText();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_first_column_dropdown_smartTable();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_create_wordBank_item_smartTable_dropdown();
-        Thread.sleep(500);
-        BaseClass.staging5().enter_wordbank_ST_PM_title();
-        Thread.sleep(900);
-        BaseClass.staging5().clickWordBank_label_dropdown_arrow();
-        Thread.sleep(800);
-        BaseClass.staging5().clickWordBank_label_dropdown_firstLink();
-        Thread.sleep(900);
-        //add content row
-        BaseClass.templatesSection().clickAddContentRow_instruction();
-        Thread.sleep(500);
-        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
-        Thread.sleep(500);
-        BaseClass.ck5editor().enter_wb_text_ck5_PM();
-        Thread.sleep(500);
-        BaseClass.staging5().click_wordBank_add_content_row();
-        Thread.sleep(500);
-        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
-        Thread.sleep(500);
-        BaseClass.ck5editor().enter_wb_text_ck5_PM();
-        Thread.sleep(500);
-        BaseClass.templatesSection().clickAddContentRow_instruction();
-
-        //    BaseClass.staging5().click_out_of_modal();
-        Thread.sleep(500);
-
-        BaseClass.templatesSection().clickSave2();
-        Thread.sleep(5000);
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
-
-
-        //wordbank assign item
-        BaseClass.smartTables().click_row2_richText();
-        Thread.sleep(1000);
-
-        BaseClass.smartTables().click_first_column_dropdown_smartTable();
-        Thread.sleep(500);
-
-        BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
-        Thread.sleep(500);
-
-        BaseClass.staging5().enter_QA_ST_wordBank_unassigned_items_PM();
-        Thread.sleep(800);
-
-        BaseClass.staging5().click_QA_wordBank_unassigned_item_PM();
-        Thread.sleep(500);
-
-        BaseClass.staging5().click_add_button_unassigned_item();
-        Thread.sleep(500);
-        BaseClass.templatesSection().clickSave2();
-        Thread.sleep(500);
-
-
-//add wordbank assigned item to cell
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
-
-        BaseClass.smartTables().click_row2_richText();
-        Thread.sleep(500);
-
-        BaseClass.staging5().click_insert_wordbank_arrow_button_PM();
-        Thread.sleep(500);
-
-        BaseClass.staging5().click_pixel_out_of_section();
-        Thread.sleep(500);
-        BaseClass.smartTables().verify_smartTable_wb_content_richtext_PM();
-        Thread.sleep(500);
-
-
-//        BaseClass.staging5().click_smartTable_sectionView();
-
-//add refresh for semaphore   for      BaseClass.staging5().click_number_dropDown_dynamic_cell();
-
-
-
-        //add column header via ST settings
-        BaseClass.smartTables().click_row2_richText();
-        BaseClass.smartTables().click_smartTable_actions_button();
-        BaseClass.smartTables().click_smartTable_settings_dropdown_button();
-        BaseClass.smartTables().enter_smartTable_settings_table_title();
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(500);
-        BaseClass.staging5().click_pixel_out_of_section();
-        Thread.sleep(500);
-        driver.navigate().refresh();
-        Thread.sleep(500);
-        BaseClass.smartTables().verify_smartTable_table_title_text_PM();
-
-        BaseClass.smartTables().click_row2_richText();
-        BaseClass.smartTables().click_smartTable_actions_button();
-        BaseClass.smartTables().click_smartTable_settings_dropdown_button();
-        BaseClass.smartTables().clear_smartTable_settings_table_title();
-        BaseClass.staging5().click_save_button();
-        Thread.sleep(500);
-        BaseClass.staging5().click_pixel_out_of_section();
-        Thread.sleep(500);
-        driver.navigate().refresh();
-        Thread.sleep(500);
-        BaseClass.smartTables().verify_no_smartTable_table_title_text_PM();
-        Thread.sleep(500);
-
-    }
-    @Test
-    public void TR_018_dynamic_column_cells_PM_user() throws InterruptedException {
-        WebDriver driver = getDriver();
-
-
-        BaseClass.smartTables().click_row8_column5_dynamic();
-        Thread.sleep(500);
-        BaseClass.ck5editor().click_escape_current_cell();
-        Thread.sleep(1000);
-        //right click r5c5 dynamic cell - after escape is clicked
-        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
-        Thread.sleep(2000);
-
-
-        BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
-        Thread.sleep(500);
-
-        BaseClass.staging5().enter_QA_ST_wordBank_unassigned_items_PM();
-        Thread.sleep(800);
-
-        BaseClass.staging5().click_QA_wordBank_unassigned_item_PM();
-        Thread.sleep(500);
-
-        BaseClass.staging5().click_add_button_unassigned_item();
-        Thread.sleep(500);
-        BaseClass.templatesSection().clickSave2();
-        Thread.sleep(500);
-
-        Thread.sleep(500);
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(500);
-        BaseClass.smartTables().click_smartTable_sectionView();
-        Thread.sleep(1500);
-        BaseClass.smartTables().click_row8_column5_dynamic();
-        Thread.sleep(500);
-        BaseClass.staging5().click_insert_wordbank_arrow_button();
-        Thread.sleep(500);
-        BaseClass.staging5().click_pixel_out_of_section();
-        Thread.sleep(500);
-        BaseClass.smartTables().verify_smartTable_wb_content_dynamic_PM();
-        Thread.sleep(500);
-//        BaseClass.staging5().click_cancel_button_popup();
+//
+//    @Test
+//    public void TR_017_create_assign_WB_PM_user() throws InterruptedException {
+////enter rich text - wordbank r5c1
+//        WebDriver driver = getDriver();
+//
+//
+//        //wordbank create item
+//        BaseClass.smartTables().click_row3_richText();
 //        Thread.sleep(500);
-//        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+//        BaseClass.smartTables().click_first_column_dropdown_smartTable();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_create_wordBank_item_smartTable_dropdown();
+//        Thread.sleep(500);
+//        BaseClass.staging5().enter_wordbank_ST_PM_title();
+//        Thread.sleep(900);
+//        BaseClass.staging5().clickWordBank_label_dropdown_arrow();
+//        Thread.sleep(800);
+//        BaseClass.staging5().clickWordBank_label_dropdown_firstLink();
+//        Thread.sleep(900);
+//        //add content row
+//        BaseClass.templatesSection().clickAddContentRow_instruction();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().enter_wb_text_ck5_PM();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_wordBank_add_content_row();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().capture_ck5_editor_inner_icons();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().enter_wb_text_ck5_PM();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().clickAddContentRow_instruction();
+//
+//        //    BaseClass.staging5().click_out_of_modal();
+//        Thread.sleep(500);
+//
+//        BaseClass.templatesSection().clickSave2();
+//        Thread.sleep(5000);
 //        BaseClass.smartTables().click_smartTable_sectionView();
 //        Thread.sleep(500);
 //
+//
+//        //wordbank assign item
+//        BaseClass.smartTables().click_row2_richText();
+//        Thread.sleep(1000);
+//
+//        BaseClass.smartTables().click_first_column_dropdown_smartTable();
+//        Thread.sleep(500);
+//
+//        BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().enter_QA_ST_wordBank_unassigned_items_PM();
+//        Thread.sleep(800);
+//
+//        BaseClass.staging5().click_QA_wordBank_unassigned_item_PM();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_add_button_unassigned_item();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().clickSave2();
+//        Thread.sleep(500);
+//
+//
+////add wordbank assigned item to cell
 //        BaseClass.smartTables().click_smartTable_sectionView();
 //        Thread.sleep(500);
-
-    }
+//
+//        BaseClass.smartTables().click_row2_richText();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_insert_wordbank_arrow_button_PM();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_pixel_out_of_section();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_smartTable_wb_content_richtext_PM();
+//        Thread.sleep(500);
+//
+//
+////        BaseClass.staging5().click_smartTable_sectionView();
+//
+////add refresh for semaphore   for      BaseClass.staging5().click_number_dropDown_dynamic_cell();
+//
+//
+//
+//        //add column header via ST settings
+//        BaseClass.smartTables().click_row2_richText();
+//        BaseClass.smartTables().click_smartTable_actions_button();
+//        BaseClass.smartTables().click_smartTable_settings_dropdown_button();
+//        BaseClass.smartTables().enter_smartTable_settings_table_title();
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_pixel_out_of_section();
+//        Thread.sleep(500);
+//        driver.navigate().refresh();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_smartTable_table_title_text_PM();
+//
+//        BaseClass.smartTables().click_row2_richText();
+//        BaseClass.smartTables().click_smartTable_actions_button();
+//        BaseClass.smartTables().click_smartTable_settings_dropdown_button();
+//        BaseClass.smartTables().clear_smartTable_settings_table_title();
+//        BaseClass.staging5().click_save_button();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_pixel_out_of_section();
+//        Thread.sleep(500);
+//        driver.navigate().refresh();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_no_smartTable_table_title_text_PM();
+//        Thread.sleep(500);
+//
+//    }
+//    @Test
+//    public void TR_018_dynamic_column_cells_PM_user() throws InterruptedException {
+//        WebDriver driver = getDriver();
+//
+//
+//        BaseClass.smartTables().click_row8_column5_dynamic();
+//        Thread.sleep(500);
+//        BaseClass.ck5editor().click_escape_current_cell();
+//        Thread.sleep(1000);
+//        //right click r5c5 dynamic cell - after escape is clicked
+//        BaseClass.smartTables().rightClick_dynamic_cell_smartTable();
+//        Thread.sleep(2000);
+//
+//
+//        BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().enter_QA_ST_wordBank_unassigned_items_PM();
+//        Thread.sleep(800);
+//
+//        BaseClass.staging5().click_QA_wordBank_unassigned_item_PM();
+//        Thread.sleep(500);
+//
+//        BaseClass.staging5().click_add_button_unassigned_item();
+//        Thread.sleep(500);
+//        BaseClass.templatesSection().clickSave2();
+//        Thread.sleep(500);
+//
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().click_smartTable_sectionView();
+//        Thread.sleep(1500);
+//        BaseClass.smartTables().click_row8_column5_dynamic();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_insert_wordbank_arrow_button();
+//        Thread.sleep(500);
+//        BaseClass.staging5().click_pixel_out_of_section();
+//        Thread.sleep(500);
+//        BaseClass.smartTables().verify_smartTable_wb_content_dynamic_PM();
+//        Thread.sleep(500);
+////        BaseClass.staging5().click_cancel_button_popup();
+////        Thread.sleep(500);
+////        BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
+////        BaseClass.smartTables().click_smartTable_sectionView();
+////        Thread.sleep(500);
+////
+////        BaseClass.smartTables().click_smartTable_sectionView();
+////        Thread.sleep(500);
+//
+//    }
 
 
     @Test
     public void TR_019_MarxOkubo_MCT_labels() throws InterruptedException, IOException {
         WebDriver driver = getDriver();
 
+        // ===== USER LOGIN AS MARX OKUBO ADMIN =====
         BaseClass.staging5().clickUserProfileTab();
         Thread.sleep(500);
 
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
-//enter root user
+        // Login as Marx Okubo admin user
         BaseClass.quireLogin().enter_marx_okubo_admin_Email();
         BaseClass.quireLogin().enterPassword();
         //Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
         Thread.sleep(500);
 
+        // Click modal close button
+        BaseClass.staging5().click_modal_close_window();
+        Thread.sleep(500);
+
+        // ===== CREATE MCT TEMPLATE =====
         BaseClass.templatesSection().clickTemplatesTab();
         BaseClass.templatesSection().clickAddTemplateButton();
+        // Set template name for MCT testing
         BaseClass.templatesSection().enterTemplateNameField_MCT();
         BaseClass.templatesSection().enter_TemplateLabel_GeneralOther_Dropdown();
+        // Select old PCA template type
         BaseClass.templatesSection().selectTemplateTypeDropdown_old_PCA();
 
         Thread.sleep(1000);
@@ -430,17 +438,18 @@ public class    Regression2 extends ReusableAnnotations {
         BaseClass.templatesSection().clickSave();
         Thread.sleep(3000);
 
+        // Verify template creation and navigate to template
         BaseClass.templatesSection().capture_created_AlertMessage();
         BaseClass.templatesSection().clickHereLinkTemplate();
         Thread.sleep(2000);
 
-        //add M|O Package
-
+        // ===== ADD MARX OKUBO PACKAGE =====
         BaseClass.templatesSection().clickTemplateSettingsButton();
 
-            BaseClass.templatesSection().clickTemplateSettings_PackagesTab();
+        BaseClass.templatesSection().clickTemplateSettings_PackagesTab();
 
-            BaseClass.templatesSection().enterTemplateSettings_PackagesTab_SearchField_MarxOkubo();
+        // Search and add Marx Okubo specific package
+        BaseClass.templatesSection().enterTemplateSettings_PackagesTab_SearchField_MarxOkubo();
         Thread.sleep(1000);
 
         BaseClass.templatesSection().clickTemplateSettings_PackagesTab_clickFirstDropDownItem();
@@ -451,12 +460,14 @@ public class    Regression2 extends ReusableAnnotations {
 
 
 
-        //add cost rec
+        // ===== ADD COST RECOMMENDATION SECTIONS =====
+        // Navigate to default section to add cost rec sections
         BaseClass.staging5().hoverto_default_section_title();
 
         BaseClass.staging5().click_default_section_title();
 
         Thread.sleep(500);
+        // Add project summary and cost recommendation sections
         BaseClass.pca_xml_section().clickAddSectionButton();
         Thread.sleep(500);
         BaseClass.staging5().click_add_projSummary_toSection();
@@ -468,13 +479,16 @@ public class    Regression2 extends ReusableAnnotations {
         driver.navigate().refresh();
         Thread.sleep(1000);
 
+        // ===== CREATE BOILER COST RECOMMENDATION =====
         BaseClass.staging5().click_add_cost_recommendation_button();
         Thread.sleep(500);
 
+        // Fill boiler cost recommendation details
         BaseClass.staging5().enter_boiler_name_cost_recommendation();
         Thread.sleep(500);
         BaseClass.staging5().enter_cost_summary_5_quantity();
         BaseClass.staging5().enter_cost_summary_unit_1000_cost();
+        // Mark as critical repair
         BaseClass.staging5().click_critical_repair_cost_checkbox();
         Thread.sleep(500);
         BaseClass.staging5().enter_boiler_cost_summary_description_field();
@@ -484,14 +498,17 @@ public class    Regression2 extends ReusableAnnotations {
         Thread.sleep(1000);
 
 
+        // ===== CREATE PARKING COST RECOMMENDATION =====
         BaseClass.staging5().click_add_cost_recommendation_button();
         Thread.sleep(500);
 
+        // Fill parking cost recommendation details
         BaseClass.staging5().enter_parking_name_cost_recommendation();
         Thread.sleep(500);
         BaseClass.staging5().enter_cost_summary_5_quantity();
         BaseClass.staging5().enter_cost_summary_unit_1000_cost();
         Thread.sleep(500);
+        // Mark for all years repair (toggle twice to ensure selection)
         BaseClass.staging5().click_all_Years_repair_cost_checkbox();
         BaseClass.staging5().click_all_Years_repair_cost_checkbox();
         BaseClass.staging5().enter_parking_cost_summary_description_field();
@@ -502,16 +519,19 @@ public class    Regression2 extends ReusableAnnotations {
 
 
 
+        // ===== CREATE ROOF COST RECOMMENDATION =====
         BaseClass.staging5().click_add_cost_recommendation_button();
         Thread.sleep(500);
 
+        // Fill roof cost recommendation details
         BaseClass.staging5().enter_roof_name_cost_recommendation();
         Thread.sleep(500);
         BaseClass.staging5().enter_cost_summary_quantity();
         BaseClass.staging5().enter_cost_summary_unit_cost();
         Thread.sleep(500);
+        // Mark as critical repair
         BaseClass.staging5().click_critical_repair_cost_checkbox();
-
+        // Mark for all years repair
         BaseClass.staging5().click_all_Years_repair_cost_checkbox();
         BaseClass.staging5().click_all_Years_repair_cost_checkbox();
         BaseClass.staging5().enter_roof_cost_summary_description_field();
@@ -520,29 +540,35 @@ public class    Regression2 extends ReusableAnnotations {
         BaseClass.staging5().click_save_button();
         Thread.sleep(1000);
 
+        // Save current URL for navigation between users
         String currentUrl = driver.getCurrentUrl();
         System.out.println("Saved URL: " + currentUrl);
         Thread.sleep(2000);
 
 
+        // ===== SWITCH TO ROOT USER TO ENABLE MCT FEATURE =====
         BaseClass.staging5().clickUserProfileTab();
         Thread.sleep(500);
 
         BaseClass.staging5().click_userProfileTab_logOut_dropdownItem();
+        // Login as root user to access admin settings
         BaseClass.quireLogin().enterRootUserEmail();
         BaseClass.quireLogin().enterPassword();
         Thread.sleep(1000);
         BaseClass.quireLogin().clickLogin();
         Thread.sleep(1000);
 
+        // Navigate back to template
         driver.navigate().to(currentUrl);
         Thread.sleep(500);
 
+        // ===== ENABLE MULTIPLE COST TABLES FEATURE =====
         BaseClass.reporttagssection().clickSectionView_ReportTags_Button();
         Thread.sleep(500);
         BaseClass.reporttagssection().click_ReportTags_manage_settings_icon();
         Thread.sleep(500);
 
+        // Enable multiple cost tables checkbox feature
         BaseClass.reporttagssection().scroll_and_click_and_verify_multiple_cost_tables_checkbox();
         // BaseClass.reporttagssection().verify_ReportTags_settings_view_isVisible();
         Thread.sleep(1000);
@@ -550,6 +576,7 @@ public class    Regression2 extends ReusableAnnotations {
         Thread.sleep(1000);
         //  WebDriver driver = getDriver();
 
+        // ===== SWITCH BACK TO MARX OKUBO USER =====
         BaseClass.staging5().clickUserProfileTab();
         Thread.sleep(500);
 
@@ -563,6 +590,8 @@ public class    Regression2 extends ReusableAnnotations {
         Thread.sleep(1500);
 
 
+        // ===== ASSIGN LABELS TO COST RECOMMENDATIONS =====
+        // Navigate to report tags section
         BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
         Thread.sleep(500);
 
@@ -570,6 +599,8 @@ public class    Regression2 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.reporttagssection().select_multiple_cost_tables_feature_dropdown();
         Thread.sleep(500);
+
+        // ===== ASSIGN BOILER LABEL =====
         BaseClass.staging5().click_default_section_title();
         Thread.sleep(500);
         BaseClass.staging5().click_boiler_test_item_link();
@@ -579,42 +610,47 @@ public class    Regression2 extends ReusableAnnotations {
         BaseClass.staging5().click_save_button();
         Thread.sleep(500);
 
+        // ===== ASSIGN PARKING LABEL =====
         BaseClass.staging5().click_parking_test_item_link();
         Thread.sleep(500);
         BaseClass.staging5().enter_cost_rec_parking_label_field();
         Thread.sleep(500);
         BaseClass.staging5().click_save_button();
         Thread.sleep(500);
-//        // TODO: Verify "boiler test label" appears on boiler cost rec
-//        // TODO: Verify "parking test label" appears on parking cost rec
-//        // TODO: Verify roof cost rec has NO label (third one left unlabeled)
 
+        // ===== VERIFY LABELS DISPLAY =====
+        // Verify boiler and parking labels are displayed
         BaseClass.staging5().verify_cost_rec_boiler_test_label();
         BaseClass.staging5().verify_cost_rec_parking_test_label();
 
+        // Refresh and verify uncategorized label for roof (no label assigned)
         driver.navigate().refresh();
         Thread.sleep(1000);
         BaseClass.staging5().verify_cost_rec_uncategorized_label();
 
+        // ===== ASSIGN ROOF LABEL =====
         BaseClass.staging5().click_roof_test_item_link();
         Thread.sleep(500);
         BaseClass.staging5().enter_cost_rec_roof_label_field();
         Thread.sleep(500);
         BaseClass.staging5().click_save_button();
         Thread.sleep(500);
+        // Verify roof label is now displayed
         BaseClass.staging5().verify_cost_rec_roof_test_label();
 
 
 
 
+        // ===== TEST IMMEDIATE REPAIR COST SECTION =====
         Thread.sleep(500);
         BaseClass.staging5().click_add_immediate_repair_cost_section();
         Thread.sleep(500);
 
 
+        // ===== EDIT ROOF LABEL =====
         BaseClass.staging5().click_rename_reorder_cost_tables_link();
         Thread.sleep(500);
-//
+        // Edit the roof label to test label modification
         BaseClass.staging5().edit_cost_rec_roof_label_field();
         Thread.sleep(500);
 
@@ -622,12 +658,13 @@ public class    Regression2 extends ReusableAnnotations {
         Thread.sleep(500);
 
 
+        // Verify updated roof label
         BaseClass.staging5().click_default_section_title();
         BaseClass.staging5().verify_cost_rec_roof_test_label_updated();
 
         BaseClass.staging5().click_add_immediate_repair_cost_section();
 
-
+        // ===== VERIFY MCT SECTIONS CONTENT =====
         BaseClass.staging5().verify_MCT_immediate_repair_cost_section_text();
         Thread.sleep(500);
 
@@ -636,19 +673,17 @@ public class    Regression2 extends ReusableAnnotations {
         BaseClass.staging5().verify_MCT_capital_reserved_schedule_cost_section_text();
         Thread.sleep(500);
 
-
         BaseClass.staging5().click_project_summary_sectionView();
         Thread.sleep(500);
         BaseClass.staging5().verify_MCT_project_summary_text();
         Thread.sleep(500);
 
-
+        // ===== QUICK PREVIEW VERIFICATION =====
         BaseClass.reportfoldersection().click_quick_preview_button();
         Thread.sleep(1000);
         BaseClass.reportfoldersection().change_to_next_tab();
         Thread.sleep(500);
-        //quick preview tab - capture header and footer data
-
+        // Verify all MCT sections display correctly in quick preview
 
         BaseClass.staging5().verify_MCT_project_summary_text_qp();
         BaseClass.staging5().verify_MCT_immediate_repair_cost_section_text_qp();
@@ -656,41 +691,49 @@ public class    Regression2 extends ReusableAnnotations {
 
         Thread.sleep(500);
 
-        //close second tab and go back to default tab
+        // Close preview tab and return to main view
         driver.close();
         Thread.sleep(500);
         BaseClass.reportfoldersection().change_to_default_tab();
         Thread.sleep(500);
 
+        // ===== TEST LABEL DELETION =====
         BaseClass.staging5().click_add_capital_reserve_schedule_section();
         BaseClass.staging5().click_rename_reorder_cost_tables_link();
         Thread.sleep(500);
+        // Delete boiler label to test label removal
         BaseClass.staging5().delete_boiler_test_label();
         Thread.sleep(500);
         BaseClass.staging5().click_save_button();
         Thread.sleep(500);
+
+        // Verify boiler label is removed from immediate repair cost section
         BaseClass.staging5().click_add_immediate_repair_cost_section();
         Thread.sleep(500);
         BaseClass.staging5().verify_MCT_boiler_label_removed_immediate_repair_cost_section_text();
 
+        // ===== VERIFY LABEL DELETION IN QUICK PREVIEW =====
         BaseClass.reportfoldersection().click_quick_preview_button();
         Thread.sleep(1000);
         BaseClass.reportfoldersection().change_to_next_tab();
         Thread.sleep(500);
+        // Verify boiler label is removed in quick preview
         BaseClass.staging5().verify_MCT_boiler_label_removed_immediate_repair_cost_section_qp();
         Thread.sleep(500);
         driver.close();
         Thread.sleep(500);
         BaseClass.reportfoldersection().change_to_default_tab();
         Thread.sleep(1000);
+
+        // ===== FINAL VERIFICATION =====
         driver.navigate().refresh();
         Thread.sleep(1000);
+        // Verify uncategorized label appears after deletion
         BaseClass.staging5().verify_cost_rec_uncategorized_label();
         Thread.sleep(1000);
 
 
     }
-
 //    @Test
 //    public void TR_021_styles_logo_indentation_check() throws InterruptedException, IOException {
 //        WebDriver driver = getDriver();

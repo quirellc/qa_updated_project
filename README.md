@@ -40,7 +40,7 @@ quire_updated_project/
 │   │       ├── CK_Editor.java          # CKEditor functionality tests
 │   │       ├── New_CK5_Editor.java     # CK5-specific editor tests
 │   │       ├── Quire_AI_Testing.java   # AI feature tests
-│   │       ├── Smart_Tables_CK5.java   # Smart tables functionality
+│   │       ├── Smart_Tables_CK4.java   # Smart tables functionality
 │   │       ├── FNMA_*_XML_Staging.java # FNMA XML generation tests
 │   │       ├── Freddie_Macs.java       # Freddie Mac XML tests
 │   │       ├── Marketing_Site.java     # Marketing site tests
