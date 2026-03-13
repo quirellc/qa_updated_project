@@ -354,33 +354,30 @@ public class TemplatesSection extends ReusableAnnotations {
     public void delete_automation_templates() throws InterruptedException {
         BaseClass.templatesSection().enterSearchField_automated_files();
         Thread.sleep(6000);
-        int search_results_int = search_results.size();
 
-        if (!search_results.isEmpty()) {
-for (int i = 0; i < search_results_int; i++) {
-    try {
+        while (!search_results.isEmpty()) {
+            try {
+                BaseClass.pca_xml_section().clickFirstTemplateLink();
+                Thread.sleep(1000);
 
-                    BaseClass.pca_xml_section().clickFirstTemplateLink();
-        Thread.sleep(1000);
+                BaseClass.templatesSection().clickTemplateSettingsButton();
+                BaseClass.templatesSection().clickdeleteToTrash();
+                BaseClass.staging5().captureAlertMessage();
+                
+                BaseClass.templatesSection().clickTemplatesTab();
+                Thread.sleep(1000);
+                BaseClass.templatesSection().enterSearchField_automated_files();
+                Thread.sleep(3000);
 
-                    BaseClass.templatesSection().clickTemplateSettingsButton();
-                    BaseClass.templatesSection().clickdeleteToTrash();
-                    BaseClass.staging5().captureAlertMessage();
-                    BaseClass.templatesSection().enterSearchField_automated_files();
-        Thread.sleep(2000);
-
-
-    } catch (Exception e) {
-                    System.out.println("Failed to delete edit link: " + e.getMessage());
-                    logger.log(LogStatus.FAIL, "Failed to delete edit link: " + e.getMessage());
-
-                }
+            } catch (Exception e) {
+                System.out.println("Failed to delete template: " + e.getMessage());
+                logger.log(LogStatus.FAIL, "Failed to delete template: " + e.getMessage());
+                break;
             }
-        } else {
-            System.out.println("No edit links found.");
-            logger.log(LogStatus.PASS, "No edit links found.");
-
         }
+        
+        System.out.println("All automation templates deleted.");
+        logger.log(LogStatus.PASS, "All automation templates deleted.");
     }
     public void delete_automation_folders() throws InterruptedException {
         BaseClass.templatesSection().enterSearchField_automated_files();
