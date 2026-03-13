@@ -412,8 +412,38 @@ public class SmartTables extends ReusableAnnotations {
         if (!BaseClass.smartTables().verify_comment_appears_to_ST()) {
             ReusableMethodsLoggersPOM.clickMethod(driver, row1_column5_inside_ST, logger, " row1_column5_inside_ST ");
         }
-
     }
+
+    @FindBy(xpath = "//span[@class='comments-accordionTitle' and contains(., 'Dynamic')]")
+    WebElement dynamicDropdown;
+    public void click_dynamic_dropdown_commentsPane(){
+        ReusableMethodsLoggersPOM.clickMethod(driver, dynamicDropdown, logger, " dynamicDropdown ");
+}
+
+    @FindBy(xpath = "//div[@id='comments-contentRegion-virtual']")
+    WebElement comments_content_region;
+    public void verify_no_duplicate_comment_text(){
+        String text = ReusableMethodsLoggersPOM.captureTextMethod(driver, comments_content_region, logger, " comments_content_region ");
+        
+        String searchText = "QA Automation Comment Test Message";
+        int firstIndex = text.indexOf(searchText);
+        int secondIndex = text.indexOf(searchText, firstIndex + searchText.length());
+        
+        if (firstIndex != -1 && secondIndex == -1) {
+            System.out.println("\n✅ Comment appears exactly 1 time - NO duplicates found ✅\n");
+            logger.log(LogStatus.PASS, "✅ Comment appears exactly 1 time - NO duplicates found ✅");
+        } else {
+            System.out.println("\n❌ DUPLICATES DETECTED - Comment appears multiple times ❌\n");
+            logger.log(LogStatus.FAIL, "❌ DUPLICATES DETECTED - Comment appears multiple times ❌");
+        }
+    }
+
+    @FindBy(xpath = "(//div[@aria-label='Annotations sidebar'])[2]")
+    WebElement duplicate_annotations_sidebar;
+    public void verify_no_duplicate_annotations_sidebar(){
+        ReusableMethodsLoggersPOM.verifyBooleanStatement(driver, duplicate_annotations_sidebar, false, logger, "duplicate_annotations_sidebar ");
+    }
+
     @FindBy(xpath = "//div[@id='comments-createNewThreadAction']")
     WebElement add_new_comment_button;
 
@@ -1006,9 +1036,17 @@ WebElement toBeDeleted_column_dropdown;
     @FindBy(xpath = "(//div[@class='assignmentList-container js-assignmentList-container assignmentList-assigned js-assignmentList-assigned']//div[@class='assignmentList-item js-assignmentList-item'])[1]")
     WebElement assigned_WB_first_item;
 
-    public void hover_assigned_WB_first_item() {
-        ReusableMethodsLoggersPOM.mouseHoverMethod(driver, assigned_WB_first_item, logger, "assigned_WB_first_item");
+    public void click_assigned_WB_first_item() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, assigned_WB_first_item, logger, "assigned_WB_first_item");
     }
+
+    @FindBy(xpath = "//button[normalize-space()='Remove']")
+    WebElement remove_wb_item_package;
+
+    public void click_remove_wb_item_package() {
+        ReusableMethodsLoggersPOM.clickMethod(driver, remove_wb_item_package, logger, "remove_wb_item_package");
+    }
+
 
     @FindBy(xpath = "//span[normalize-space()='Manage Dropdown Values...']")
     WebElement manage_dropDown_values_smartTable_dropDown;

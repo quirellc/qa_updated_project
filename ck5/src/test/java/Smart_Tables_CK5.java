@@ -687,8 +687,10 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         BaseClass.smartTables().enter_sum_formula_smartTable();
         Thread.sleep(500);
 
-        BaseClass.smartTables().click_smartTable_sectionView();
-        BaseClass.smartTables().click_smartTable_sectionView();
+      //  BaseClass.smartTables().click_smartTable_sectionView();
+       // BaseClass.smartTables().click_smartTable_sectionView();
+        BaseClass.staging5().click_pixel_out_of_section();
+
         Thread.sleep(1000);
 
         //  Thread.sleep(600);
@@ -946,7 +948,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         //resolve second comment
         BaseClass.ck5editor().click_comments_resolve_button();
         Thread.sleep(1000);
-        BaseClass.staging5().click_smartTable_title_header();
+        BaseClass.staging5().click_pixel_out_of_section();
 
         //     BaseClass.ck5editor().click_unresolved_1_comment_icon();
         Thread.sleep(1000);
@@ -991,7 +993,7 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(3000);
 
         //click out of ST, double clicking ST header title twice
-        BaseClass.staging5().click_smartTable_title_header();
+        BaseClass.staging5().click_pixel_out_of_section();
         Thread.sleep(500);
 
         BaseClass.staging5().click_default_section_title();
@@ -1022,6 +1024,18 @@ public class Smart_Tables_CK5 extends ReusableAnnotations {
         Thread.sleep(500);
         BaseClass.reporttagssection().hover_to_ReportTags_sections_Button();
         BaseClass.smartTables().click_smartTable_sectionView();
+        Thread.sleep(500);
+
+//click into comments icon, and go into dynamic comment section, and verify no duplicater occurence via text and DOM structure
+        BaseClass.ck5editor().click_unresolved_4_comments_icon();
+        Thread.sleep(500);
+        BaseClass.smartTables().click_dynamic_dropdown_commentsPane();
+        Thread.sleep(500);
+        BaseClass.smartTables().verify_no_duplicate_comment_text();
+        Thread.sleep(500);
+
+        BaseClass.smartTables().verify_no_duplicate_annotations_sidebar();
+
         Thread.sleep(500);
 
     }
