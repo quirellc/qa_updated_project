@@ -199,7 +199,8 @@ public class CK_Editor extends ReusableAnnotations {
         Thread.sleep(1000);
         //NOT WORKING AS OF NOW 9_16_24
         BaseClass.ck5editor().verify_unresolved_2_comment_is_Visible();
-        // Thread.sleep(1000);
+         Thread.sleep(1000);
+        BaseClass.staging5().click_pixel_out_of_section();
 
         driver.navigate().refresh();
         Thread.sleep(1000);
@@ -472,6 +473,8 @@ public class CK_Editor extends ReusableAnnotations {
         Thread.sleep(500);
 
         BaseClass.staging5().verify_blue_WB_icon_introPages_is_Visible();
+        Thread.sleep(500);
+        BaseClass.staging5().click_pixel_out_of_section();
         Thread.sleep(500);
 
         //CHECK REVISION HISTORY
@@ -907,9 +910,9 @@ public class CK_Editor extends ReusableAnnotations {
         BaseClass.smartTables().click_assign_wordBank_item_smartTable_dropdown();
         Thread.sleep(1500);
 //remove other package hovering over checkbox
-        BaseClass.smartTables().hover_assigned_WB_first_item();
+        BaseClass.smartTables().click_assigned_WB_first_item();
         Thread.sleep(500);
-        BaseClass.pca_xml_section().click_cancel_assigned_package_button();
+        BaseClass.smartTables().click_remove_wb_item_package();
         Thread.sleep(500);
         BaseClass.templatesSection().clickSave2();
         Thread.sleep(800);

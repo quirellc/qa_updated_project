@@ -929,18 +929,21 @@ WebElement instruction_text_ck5;
     @FindBy(xpath = "//span[@class='showWhen-collapsed']")
     WebElement resolved_comments_closed_message;
 
+    @FindBy(xpath = "//div[@class='comments-resolvedRegion comments-inlineResolvedRegion']")
+    WebElement resolved_comments_region_button;
+
     @FindBy(xpath = "//div[contains(text(),'Marked as resolved')]")
     WebElement comments_archive_marked_as_resolved_message;
     public void click_and_verify_comments_archive_icon() throws InterruptedException {
-        boolean isPaneClosed = false;
+        boolean isPaneAlreadyOpen = false;
         try {
-            isPaneClosed = resolved_comments_closed_message.isDisplayed();
+            isPaneAlreadyOpen = comments_archive_marked_as_resolved_message.isDisplayed();
         } catch (Exception e) {
-            isPaneClosed = false;
+            isPaneAlreadyOpen = false;
         }
         
-        if (isPaneClosed) {
-            ReusableMethodsLoggersPOM.clickMethod(driver, comments_archive_message_ck5, logger, "comments_archive_icon_ck5");
+        if (!isPaneAlreadyOpen) {
+            ReusableMethodsLoggersPOM.clickMethod(driver, resolved_comments_region_button, logger, "resolved_comments_region_button");
             Thread.sleep(1000);
         } else {
             System.out.println("\nℹ️ Resolved comments pane already open - skipping click");
